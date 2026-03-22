@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotomated — Claude Code Build Spec</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --navy2: #111827;
+    --blue: #00C2FF;
+    --violet: #7B2FFF;
+    --green: #00E5A0;
+    --orange: #FF6B35;
+    --white: #FFFFFF;
+    --light: #F4F6FB;
+    --mid: #E2E8F0;
+    --text: #1A202C;
+    --muted: #64748B;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #F8FAFC;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--navy);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,194,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(0,194,255,0.12);
+    border: 1px solid rgba(0,194,255,0.3);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .site-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .site-header h1 span { color: var(--blue); }
+  .site-header p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+    max-width: 520px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .header-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .header-meta-item strong { color: rgba(255,255,255,0.75); }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+  /* NAV */
+  .phase-nav {
+    background: var(--navy2);
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    scrollbar-width: none;
+  }
+  .phase-nav::-webkit-scrollbar { display: none; }
+  .phase-nav a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.85rem 1.1rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .phase-nav a:hover { color: rgba(255,255,255,0.85); }
+  .phase-nav a.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* OVERVIEW CARDS */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 2.5rem;
+  }
+  .ov-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    text-align: center;
+  }
+  .ov-card .val {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .ov-card .lbl {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* PHASE SECTION */
+  .phase-section {
+    margin-bottom: 3rem;
+  }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-num {
+    background: var(--navy);
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .phase-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    flex: 1;
+  }
+  .phase-timeline {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* PROMPT CARDS */
+  .prompt-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+  }
+  .prompt-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  .prompt-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1rem 1.25rem 0.8rem;
+  }
+  .prompt-num {
+    background: var(--navy);
+    color: var(--blue);
+    font-size: 0.7rem;
+    font-weight: 700;
+    min-width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .prompt-info { flex: 1; }
+  .prompt-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .prompt-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .priority-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .p0 { background: #FEF3C7; color: #92400E; }
+  .p1 { background: #D1FAE5; color: #065F46; }
+  .p2 { background: #EDE9FE; color: #4C1D95; }
+
+  /* PROMPT BOX */
+  .prompt-box {
+    margin: 0 1.25rem 1rem;
+    background: #0D1117;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .prompt-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: #161B22;
+    border-bottom: 1px solid #30363D;
+  }
+  .prompt-box-label {
+    font-size: 0.7rem;
+    color: #8B949E;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .copy-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid #30363D;
+    color: #8B949E;
+    font-size: 0.68rem;
+    font-family: 'Space Grotesk', sans-serif;
+    padding: 3px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { background: rgba(255,255,255,0.1); color: #E6EDF3; }
+  .copy-btn.copied { color: #00E5A0; border-color: rgba(0,229,160,0.3); }
+  .prompt-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #E6EDF3;
+    padding: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prompt-text .kw { color: var(--blue); }
+  .prompt-text .str { color: #A5D6FF; }
+  .prompt-text .cm { color: #8B949E; font-style: italic; }
+
+  /* TAGS */
+  .prompt-tags {
+    display: flex;
+    gap: 6px;
+    padding: 0 1.25rem 1rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--light);
+    padding: 3px 9px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  /* OUTCOME BOX */
+  .outcome-box {
+    margin: 0 1.25rem 1rem;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .outcome-icon { font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+  .outcome-text { font-size: 0.78rem; color: #166534; line-height: 1.5; }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), var(--violet), transparent);
+    margin: 2.5rem 0;
+    opacity: 0.3;
+  }
+
+  /* STACK BOX */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+  .stack-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .stack-card-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .stack-card-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stack-item {
+    font-size: 0.82rem;
+    color: var(--navy);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .stack-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+  .stack-dot.green { background: var(--green); }
+  .stack-dot.violet { background: var(--violet); }
+  .stack-dot.orange { background: var(--orange); }
+
+  /* COST TABLE */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .cost-table th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .cost-table th:first-child { border-radius: 8px 0 0 0; }
+  .cost-table th:last-child { border-radius: 0 8px 0 0; }
+  .cost-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .cost-table tr:last-child td { border-bottom: none; font-weight: 700; background: var(--light); }
+  .cost-table .free { color: #059669; font-weight: 600; }
+
+  /* RULES BOX */
+  .rules-box {
+    background: linear-gradient(135deg, #0A0F1E 0%, #111827 100%);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .rules-box h3 {
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .rule-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .rule-icon {
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--green);
+  }
+  .rule-text {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+  .rule-text strong { color: rgba(255,255,255,0.9); }
+
+  /* PROGRESS TRACKER */
+  .progress-tracker {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .progress-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+  }
+  .progress-steps {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .progress-step {
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  .progress-step::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    right: -50%;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .progress-step:last-child::after { display: none; }
+  .step-circle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--light);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 0 auto 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-circle.done { background: var(--navy); border-color: var(--navy); color: var(--blue); }
+  .step-circle.active { background: var(--blue); border-color: var(--blue); color: var(--navy); }
+  .step-name {
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .site-header { padding: 1.5rem 1rem 1.5rem; }
+    .container { padding: 1.5rem 1rem 3rem; }
+    .phase-nav { padding: 0 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="header-badge">Claude Code Build Spec · v1.0</div>
+  <h1><span>Robotomated</span>.com</h1>
+  <p>The robotics intelligence platform. Your complete Claude Code build sequence — paste each prompt in order, in a fresh Claude Code session.</p>
+  <div class="header-meta">
+    <div class="header-meta-item"><span class="dot"></span> <strong>15 prompts</strong> across 3 phases</div>
+    <div class="header-meta-item"><strong>~$200/mo</strong> infrastructure cost</div>
+    <div class="header-meta-item"><strong>Day 90</strong> target: first revenue</div>
+    <div class="header-meta-item"><strong>Bootstrap</strong> friendly build path</div>
+  </div>
+</div>
+
+<nav class="phase-nav">
+  <a href="#setup" class="active">Setup</a>
+  <a href="#phase1">Phase 1 · Foundation</a>
+  <a href="#phase2">Phase 2 · Content + AI</a>
+  <a href="#phase3">Phase 3 · Commerce</a>
+  <a href="#stack">Tech Stack</a>
+  <a href="#costs">Costs</a>
+  <a href="#rules">Ground Rules</a>
+</nav>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <div style="margin: 2rem 0 2.5rem;">
+    <div class="overview-grid">
+      <div class="ov-card"><div class="val">15</div><div class="lbl">Total Prompts</div></div>
+      <div class="ov-card"><div class="val">90</div><div class="lbl">Days to Revenue</div></div>
+      <div class="ov-card"><div class="val">$0</div><div class="lbl">Infra Cost Month 1</div></div>
+      <div class="ov-card"><div class="val">5K+</div><div class="lbl">Robots at Launch</div></div>
+      <div class="ov-card"><div class="val">3</div><div class="lbl">Revenue Streams</div></div>
+    </div>
+
+    <div class="progress-tracker">
+      <div class="progress-label">Build Phases</div>
+      <div class="progress-steps">
+        <div class="progress-step">
+          <div class="step-circle active">1</div>
+          <div class="step-name">Foundation<br>Days 1–30</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">2</div>
+          <div class="step-name">Content + AI<br>Days 31–60</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">3</div>
+          <div class="step-name">Commerce<br>Days 61–90</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">4</div>
+          <div class="step-name">First Revenue<br>Day 90+</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">5</div>
+          <div class="step-name">Seed Raise<br>Month 12</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETUP PROMPT -->
+  <div id="setup" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">SETUP</span>
+      <span class="phase-title">Before You Open Claude Code</span>
+    </div>
+
+    <div class="rules-box">
+      <h3>How to use this document</h3>
+      <div class="rule-item">
+        <span class="rule-icon">→</span>
+        <div class="rule-text"><strong>Each numbered prompt is a separate Claude Code session.</strong> Start a new session for each major prompt. Don't chain everything into one massive session — Claude Code works best with focused, scoped tasks.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">→</span>
+        <div class="rule-text"><strong>Copy the prompt exactly.</strong> Every word is deliberate. The tech stack, naming conventions, and constraints are specified to prevent Claude Code from making bad choices.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">→</span>
+        <div class="rule-text"><strong>Review before moving to the next prompt.</strong> Each prompt builds on the previous. If something breaks or looks wrong, fix it before proceeding. Don't stack broken code.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">→</span>
+        <div class="rule-text"><strong>Commit to GitHub after every prompt.</strong> Small commits. If a prompt breaks something you can always roll back. This is your safety net.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">→</span>
+        <div class="rule-text"><strong>Deploy to Vercel after Prompt 2.</strong> Your site should be live at robotomated.com by end of Day 3. Then every subsequent build deploys automatically.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">0</div>
+        <div class="prompt-info">
+          <div class="prompt-title">One-time accounts to create before anything else</div>
+          <div class="prompt-desc">These are the services you need. All have free tiers that cover your entire bootstrapped phase.</div>
+        </div>
+        <span class="priority-badge p0">NOW</span>
+      </div>
+      <div class="prompt-tags">
+        <span class="tag">github.com — free</span>
+        <span class="tag">vercel.com — free</span>
+        <span class="tag">supabase.com — free</span>
+        <span class="tag">anthropic.com/api — pay as you go</span>
+        <span class="tag">cloudflare.com — free</span>
+        <span class="tag">resend.com — free (3K emails/mo)</span>
+        <span class="tag">posthog.com — free analytics</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PHASE 1 -->
+  <div id="phase1" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 1</span>
+      <span class="phase-title">Foundation — The Platform Skeleton</span>
+      <span class="phase-timeline">Days 1–30</span>
+    </div>
+
+    <!-- PROMPT 1 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">1</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Monorepo + Project Scaffold</div>
+          <div class="prompt-desc">Sets up the entire project structure, all dependencies, and configuration files. Run this first in an empty directory.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 1</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt · paste exactly</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p1')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p1">Create a Next.js 15 project for <span class="str">Robotomated.com</span> — a robotics intelligence platform.
+
+<span class="cm">// Tech stack requirements:</span>
+<span class="kw">Framework:</span> Next.js 15 App Router, TypeScript strict mode
+<span class="kw">Styling:</span> Tailwind CSS v4, no component library yet
+<span class="kw">Database:</span> Supabase (PostgreSQL) via @supabase/supabase-js
+<span class="kw">State:</span> Zustand for client state, TanStack Query for server state
+<span class="kw">Deploy:</span> Vercel (include vercel.json)
+<span class="kw">Testing:</span> Vitest for unit tests, Playwright for E2E
+
+<span class="cm">// Brand design tokens to add to globals.css:</span>
+Primary: #0A0F1E (deep navy)
+Accent: #00C2FF (electric blue)  
+Accent2: #7B2FFF (violet)
+Green: #00E5A0
+Orange: #FF6B35
+Font: Space Grotesk (Google Fonts)
+Mono: JetBrains Mono
+
+<span class="cm">// Create this folder structure:</span>
+app/ (routes)
+  (marketing)/ — homepage, about, landing pages
+  (platform)/ — robots, reviews, advisor, learn, market
+  api/ — all API routes
+components/
+  ui/ — reusable primitives
+  layout/ — header, footer, sidebar
+  robots/ — robot-specific components
+  advisor/ — AI chat components
+lib/
+  supabase/ — db client + types
+  ai/ — Claude API helpers
+  utils/ — shared utilities
+types/ — TypeScript interfaces
+
+Include: .env.example with all required env vars, ESLint config, a README with setup instructions, and a basic layout with header (logo + nav links: Explore, Reviews, Advisor, Learn, Marketplace) and footer.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Full project scaffold, runs locally with `npm run dev`, deploys to Vercel. Site shows a header and blank homepage at robotomated.com.</div>
+      </div>
+      <div class="prompt-tags">
+        <span class="tag">Next.js 15</span><span class="tag">TypeScript</span><span class="tag">Tailwind v4</span><span class="tag">Supabase</span><span class="tag">Zustand</span>
+      </div>
+    </div>
+
+    <!-- PROMPT 2 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">2</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Supabase Database Schema</div>
+          <div class="prompt-desc">Creates all core database tables, relationships, indexes, and row-level security policies. Run this against your Supabase project.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 2</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p2')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p2">Create the complete Supabase database schema for Robotomated.com. Generate a single migration SQL file at supabase/migrations/001_initial_schema.sql
+
+<span class="cm">// Tables to create:</span>
+
+<span class="kw">robot_categories</span> (id, slug, name, parent_id, description, icon_name, display_order, created_at)
+
+<span class="kw">manufacturers</span> (id, slug, name, country, founded_year, website, logo_url, verified, created_at)
+
+<span class="kw">robots</span> (id, slug, name, manufacturer_id, category_id, model_number, year_released, price_msrp, price_current, description_short, description_long, specs JSONB, images JSONB, robo_score DECIMAL, score_breakdown JSONB, affiliate_url, amazon_asin, status [active/discontinued/coming_soon], created_at, updated_at)
+
+<span class="kw">reviews</span> (id, robot_id, reviewer_id, review_type [expert/community/video], title, body, robo_score, score_breakdown JSONB, pros JSONB, cons JSONB, verdict, verified_purchase, published_at, created_at)
+
+<span class="kw">users</span> (id, email, name, avatar_url, persona_type, preferences JSONB, subscription_tier [free/pro/enterprise], created_at)
+
+<span class="kw">advisor_conversations</span> (id, user_id, session_id, messages JSONB, use_case, budget_min, budget_max, recommendations JSONB, created_at)
+
+<span class="kw">price_history</span> (id, robot_id, retailer, price, currency, recorded_at)
+
+<span class="kw">newsletter_subscribers</span> (id, email, source, confirmed, created_at)
+
+<span class="cm">// Also create:</span>
+- Proper foreign key relationships
+- Indexes on slug, manufacturer_id, category_id, status columns
+- Row Level Security policies (public read on robots/reviews/categories, authenticated write)
+- A seed file at supabase/seed.sql with 5 categories and 20 sample robots with realistic specs
+- TypeScript types file at lib/supabase/types.ts matching the schema</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Full schema in Supabase, TypeScript types auto-generated, seed data with sample robots visible in Supabase dashboard.</div>
+      </div>
+      <div class="prompt-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">RLS</span><span class="tag">TypeScript types</span>
+      </div>
+    </div>
+
+    <!-- PROMPT 3 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">3</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Homepage</div>
+          <div class="prompt-desc">The main landing page. First impression for every visitor. Should communicate the platform instantly.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 3–5</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p3')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p3">Build the Robotomated.com homepage at app/(marketing)/page.tsx
+
+<span class="cm">// Sections to include in order:</span>
+
+<span class="kw">1. Hero</span>
+- Headline: "The Intelligence Layer for the Robotics Era"
+- Subheadline: "Find, compare, and buy the right robot for your home, business, or facility — guided by AI."
+- Two CTAs: "Start with AI Advisor" (primary, blue) and "Browse All Robots" (secondary, outlined)
+- Background: deep navy with subtle grid texture (CSS only, no images)
+- Show 3 floating robot category cards animating in
+
+<span class="kw">2. Category Grid</span>
+- Fetch from robot_categories table
+- 6–8 category cards with icon, name, robot count
+- Each links to /explore/[category-slug]
+- Hover state: blue border glow
+
+<span class="kw">3. Featured Reviews Strip</span>
+- Horizontal scroll on mobile, grid on desktop
+- Pull top 3 robots by robo_score from database
+- Show: robot name, manufacturer, robo_score badge, short description, "Read Review" link
+
+<span class="kw">4. AI Advisor CTA Banner</span>
+- Dark navy card spanning full width
+- Headline: "Not sure where to start?"
+- Body: "Answer 3 questions. Get your perfect robot match."
+- CTA button links to /advisor
+- Animated typewriter showing sample use cases
+
+<span class="kw">5. "How It Works" — 3 steps</span>
+Discover → Compare → Get Guided
+
+<span class="kw">6. Newsletter signup</span>
+- Email input + "Get the Weekly RoboReport" button
+- Saves to newsletter_subscribers table via API route
+- Confirm message on success
+
+Use Space Grotesk font, the navy/blue brand palette. Mobile-first responsive. No placeholder images — use CSS shapes/icons only for now.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Polished homepage live at robotomated.com with real data from Supabase, working newsletter capture, and all 6 sections rendering correctly on mobile and desktop.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 4 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">4</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Robot Browse + Search System</div>
+          <div class="prompt-desc">The core discovery experience. How users find robots. This is your most-visited page type after the homepage.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 6–10</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p4')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p4">Build the robot browse and search system for Robotomated.com.
+
+<span class="kw">Pages to create:</span>
+- app/(platform)/explore/page.tsx — all robots browse
+- app/(platform)/explore/[category]/page.tsx — category filtered
+- app/(platform)/explore/[category]/[slug]/page.tsx — robot detail page
+
+<span class="kw">Browse page features:</span>
+- Search bar (client-side filtering with Supabase full-text search)
+- Sidebar filters: Category, Manufacturer, Price range (slider), RoboScore minimum, Status
+- Sort options: Top Rated, Newest, Price Low→High, Price High→Low
+- Results grid: robot card with image placeholder, name, manufacturer, price, RoboScore badge, short description
+- URL state for all filters (shareable filtered URLs)
+- Pagination (12 per page)
+- "Compare" checkbox on each card (max 3 at once), sticky compare bar appears when 2+ selected
+
+<span class="kw">Robot detail page sections:</span>
+1. Hero: Robot name, manufacturer, price, RoboScore (large, colored ring), key specs strip, affiliate buy button
+2. Score Breakdown: Visual breakdown of all 8 RoboScore dimensions as horizontal bars
+3. Specs Table: All specs from the specs JSONB field, formatted by category
+4. Expert Review: Full review text with pros/cons card
+5. Community Reviews: List of user reviews with star distribution
+6. Price History: Simple line chart (use recharts) showing price over time
+7. Similar Robots: 3 cards linking to comparable robots in same category
+8. AI Advisor CTA: "Not sure if this is right for you? Ask our AI."
+
+<span class="kw">RoboScore badge component:</span>
+- Score out of 10, color: red (&lt;5), yellow (5-7), green (&gt;7), blue (9-10)
+- Reusable component used across all cards and detail pages</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Fully functional browse/search, category pages, and robot detail pages. Users can find and explore robots end-to-end. Compare tool works.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 5 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">5</div>
+        <div class="prompt-info">
+          <div class="prompt-title">SEO Infrastructure + Programmatic Pages</div>
+          <div class="prompt-desc">The machine that will drive 80% of your traffic. Gets you ranking in Google before you have a marketing budget.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 11–14</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p5')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p5">Build the SEO infrastructure for Robotomated.com.
+
+<span class="kw">1. Metadata system:</span>
+- Dynamic generateMetadata() for every page type
+- OpenGraph tags for all robot and review pages
+- Canonical URLs, robots.txt, sitemap.xml (dynamic, generated from database)
+- JSON-LD structured data: Product schema for robots, Review schema for reviews, Organization schema for site
+
+<span class="kw">2. Programmatic page templates (SEO-optimized):</span>
+Create the following page templates that generate one page per item from the database:
+- /robots/[manufacturer] — "Best [Manufacturer] Robots" pages (e.g. "Best iRobot Robots 2026")
+- /compare/[slug-vs-slug] — "Robot A vs Robot B" comparison pages
+- /best/[category] — "Best [Category] Robots 2026" guide pages  
+- /guides/[topic] — Educational guide pages (manual content via MDX)
+
+Each programmatic page should:
+- Have a unique, SEO-optimized H1 using the dynamic params
+- Pull real data from Supabase
+- Include a FAQ section (use an FAQ component with JSON-LD FAQ schema)
+- Have internal links to related robots, categories, and comparison pages
+- Include a Last Updated date
+
+<span class="kw">3. Internal linking system:</span>
+- "Related Robots" widget used on all robot pages
+- Breadcrumb navigation (with BreadcrumbList JSON-LD) on all nested pages
+- Category hub pages with links to all robots and guides in that category
+
+<span class="kw">4. robots.txt:</span>
+Allow all, point to sitemap at /sitemap.xml
+
+Make sure all pages use Next.js generateStaticParams for static generation at build time.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Google can index every robot, category, and comparison page. Structured data passes Google's Rich Results Test. Sitemap submitted. This is your SEO foundation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PHASE 2 -->
+  <div id="phase2" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 2</span>
+      <span class="phase-title">Content Engine + AI Advisor</span>
+      <span class="phase-timeline">Days 31–60</span>
+    </div>
+
+    <!-- PROMPT 6 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">6</div>
+        <div class="prompt-info">
+          <div class="prompt-title">RoboLearn Education Hub</div>
+          <div class="prompt-desc">Your content moat. Tutorials, guides, and education that bring people in and keep them engaged. Drives SEO and newsletter growth.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 31–36</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p6')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p6">Build the RoboLearn education hub for Robotomated.com at /learn
+
+<span class="kw">Content system:</span>
+- Use MDX for all articles and guides (stored in content/learn/ directory)
+- Article schema: title, slug, category, audience [beginner/enthusiast/professional/developer], industry tags, description, readTime, publishedAt, updatedAt, author
+- Parse and render MDX with next-mdx-remote
+- Syntax highlighting for code blocks (shiki)
+
+<span class="kw">Pages:</span>
+- /learn — Hub with featured articles, category filter tabs, search
+- /learn/[category] — Category page (e.g. /learn/getting-started, /learn/warehouse, /learn/construction)
+- /learn/[category]/[slug] — Article page with table of contents, progress indicator, related articles
+
+<span class="kw">Article page features:</span>
+- Sticky table of contents sidebar (desktop)
+- Reading progress bar at top
+- "Was this helpful?" thumbs up/down (saves to Supabase)
+- Related robots panel — pull robots related to the article topic
+- Share buttons (Twitter/X, LinkedIn, copy link)
+- Newsletter CTA at end of every article
+- Author card with bio
+
+<span class="kw">Create 5 starter articles as real MDX files:</span>
+1. content/learn/getting-started/what-is-a-robot.mdx — "What Is a Robot? A Plain-English Guide for 2026"
+2. content/learn/getting-started/how-to-choose-your-first-robot.mdx
+3. content/learn/warehouse/best-robots-for-small-warehouses.mdx
+4. content/learn/construction/robots-in-construction-2026.mdx
+5. content/learn/home/robot-vacuum-vs-robot-mop.mdx
+
+Each article should be 600–1000 words of real, useful content — not placeholder lorem ipsum.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Live education hub with 5 real articles. Content system that lets you add new articles by dropping MDX files. Foundation for your SEO content engine.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 7 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">7</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Review System + RoboScore Framework</div>
+          <div class="prompt-desc">Your trust layer. The thing that makes Robotomated credible and defensible against competitors.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 37–42</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p7')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p7">Build the review system and RoboScore framework for Robotomated.com.
+
+<span class="kw">RoboScore system:</span>
+The RoboScore is a 0–10 score calculated from 8 dimensions. Build:
+- A /methodology page explaining the scoring system publicly
+- Score calculation logic in lib/scoring/roboscore.ts
+- Dimensions: Performance (25%), Reliability (20%), Ease of Use (15%), Intelligence (15%), Value (10%), Ecosystem (8%), Safety (5%), Design (2%)
+- Visual score breakdown component showing weighted bars
+
+<span class="kw">Expert review admin flow:</span>
+Build a simple admin page at /admin/reviews/new (protected by Supabase auth, admin role only):
+- Form: robot selector, score inputs for all 8 dimensions (auto-calculates final score), pros list, cons list, verdict text, full review body (rich text with @tailwindcss/typography)
+- Preview before publish
+- Saves to reviews table with review_type = 'expert'
+
+<span class="kw">Community review flow:</span>
+On each robot detail page, logged-in users can submit a community review:
+- 1–5 star rating (maps to 0–10 RoboScore)
+- Required: owned_verified (checkbox), pros, cons, body (min 50 words)
+- Moderation queue before publishing
+- "Verified Purchase" badge if they confirm they own the robot
+
+<span class="kw">Review pages:</span>
+- /reviews — "Latest Reviews" feed with filter by category
+- Reviews embedded on robot detail pages (already built in Prompt 4 — wire it up now)
+- Review aggregate score shows weighted average of expert + community scores
+
+<span class="kw">Review display components:</span>
+- ExpertReviewCard — prominent, full-width, editorial design
+- CommunityReviewCard — compact, shows rating, verified badge, pros/cons
+- ScoreBreakdownChart — horizontal bar chart for all 8 dimensions
+- ProConsList — styled pros (green checkmarks) and cons (red x marks)</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Full review submission and display system. Admin can publish expert reviews. Community can submit reviews. RoboScore visible on all robot pages. Methodology page live.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 8 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">8</div>
+        <div class="prompt-info">
+          <div class="prompt-title">AI Advisor — Claude Integration</div>
+          <div class="prompt-desc">The centerpiece feature. Conversational AI that helps any user find the right robot. Powered by Claude.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 43–52</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p8')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p8">Build the AI Advisor for Robotomated.com at /advisor — powered by Claude claude-sonnet-4-20250514.
+
+<span class="kw">API route: app/api/advisor/route.ts</span>
+- POST endpoint accepting: messages array, user preferences, session_id
+- Calls Anthropic API with streaming (use stream: true)
+- Returns streaming text response
+- Saves conversation to advisor_conversations table on completion
+- Rate limit: 10 requests per session (use Supabase to track)
+
+<span class="kw">System prompt (use exactly this):</span>
+"You are the Robotomated AI Advisor — the world's most helpful robotics purchase guide. You have access to a comprehensive database of robots across every category.
+
+Your goal: help the user find the perfect robot for their specific situation.
+
+Always do this in this order:
+1. First ask: What do you want a robot to help you with? (if not already clear)
+2. Then ask: What is your approximate budget? 
+3. Ask ONE clarifying question about their specific situation (space size, technical skill, primary goal)
+4. Return exactly 3 robot recommendations with: robot name, why it fits their needs, RoboScore, price, and a direct link to /robots/[slug]
+5. Offer to compare any two in more detail
+
+Rules:
+- Never recommend more than 3 robots in one response
+- Always include price and RoboScore
+- If budget is under $200, say so honestly and only show options in that range
+- Be direct and concise — users want answers, not essays
+- If you don't know something, say so"
+
+<span class="kw">Advisor UI at /advisor:</span>
+- Full-page chat interface, dark navy theme
+- Message bubbles: user (right, blue) and AI (left, white on dark)
+- Streaming text rendering (characters appear as they stream)
+- Suggested starter prompts as clickable chips: "I want to automate my warehouse", "Best home robot for a family", "Robots for a small restaurant", "What robot vacuum should I buy?"
+- Robot recommendation cards render as special UI cards inline in chat (not plain text) — show robot image placeholder, name, score badge, price, and "View Full Details" button
+- Conversation history saved per session
+- "Start Over" button clears conversation
+- Mobile: full screen. Desktop: centered 700px max-width
+
+<span class="kw">Also build:</span>
+- A floating "Ask AI" button on every robot detail page that opens the advisor pre-loaded with "Tell me about [robot name] — is it right for me?"</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Fully working AI advisor with streaming responses, robot recommendation cards, conversation saving, and floating entry point from all robot pages. This is your biggest differentiator.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 9 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">9</div>
+        <div class="prompt-info">
+          <div class="prompt-title">User Auth + Accounts</div>
+          <div class="prompt-desc">Supabase Auth handles the heavy lifting. Keep it simple — email magic link only at launch.</div>
+        </div>
+        <span class="priority-badge p1">P1 · Day 53–56</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p9')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p9">Add user authentication and account features to Robotomated.com using Supabase Auth.
+
+<span class="kw">Auth method:</span> Magic link (email only) — no passwords, no OAuth for now. Simplest possible auth.
+
+<span class="kw">Pages:</span>
+- /login — email input, "Send Magic Link" button, success message
+- /account — user profile, saved robots, review history, advisor history
+- /account/saved — grid of saved/bookmarked robots
+- Redirect to /account after successful login
+
+<span class="kw">Features to add throughout the app:</span>
+- "Save Robot" bookmark icon on every robot card and detail page (heart icon, saves to user_saved_robots table — create this table)
+- "Write a Review" button on robot pages (requires auth)
+- Auth state in header: "Sign In" link when logged out, avatar + "Account" dropdown when logged in
+
+<span class="kw">Account page:</span>
+- Display name and email
+- Saved robots grid (links back to robot pages)
+- Recent advisor conversations with "Continue" link
+- Reviews submitted
+
+Keep it minimal and clean. No social features yet. Focus on the utility: save robots, see history. Use Supabase middleware for route protection on /account/* routes.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Users can sign in via magic link, save robots, and see their advisor history. Auth flows work on mobile. Foundation for Pro subscriptions later.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PHASE 3 -->
+  <div id="phase3" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">PHASE 3</span>
+      <span class="phase-title">Commerce + First Revenue</span>
+      <span class="phase-timeline">Days 61–90</span>
+    </div>
+
+    <!-- PROMPT 10 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">10</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Affiliate Commerce Layer</div>
+          <div class="prompt-desc">Your first and fastest revenue stream. Zero inventory risk. Every robot page becomes a revenue opportunity.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 61–65</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p10')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p10">Build the affiliate commerce system for Robotomated.com.
+
+<span class="kw">Price comparison widget on every robot detail page:</span>
+- Shows current prices from multiple retailers (Amazon, Best Buy, manufacturer direct, B&H)
+- Prices pulled from the price_history table (populated by our scraper later)
+- "Best Price" badge on lowest price
+- Each retailer row: logo placeholder, price, "Buy at [Retailer]" button with affiliate link
+- Affiliate links tracked via /go/[robot-slug]/[retailer] redirect route
+- Tracks clicks in affiliate_clicks table (robot_id, retailer, user_id if logged in, session_id, timestamp)
+
+<span class="kw">Affiliate redirect system:</span>
+- app/go/[slug]/[retailer]/route.ts
+- Logs the click with metadata
+- Appends affiliate tag to destination URL (pulled from robots.affiliate_url)
+- 301 redirect to retailer
+
+<span class="kw">Affiliate disclosure:</span>
+- Global disclosure banner (dismissable, saves to localStorage): "Robotomated earns a commission on purchases made through our links at no extra cost to you."
+- Also shown on every robot detail page below the price widget
+
+<span class="kw">Best Price finder page: /best-price/[robot-slug]</span>
+- Full-page price comparison showing all available retailers
+- Price history chart (recharts line chart)
+- Price drop alert signup (email, saves to price_alerts table — create this)
+- "We'll email you when the price drops below $X" — sends via Resend
+
+<span class="kw">Affiliate networks to support:</span>
+Amazon Associates, Impact Radius (Best Buy, B&H), and direct manufacturer programs. Store tags in environment variables.
+
+Add an affiliate_clicks analytics view to the /admin dashboard showing clicks by robot, retailer, and date.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Every robot detail page has a working price comparison widget. Affiliate clicks are tracked. Price alerts capture emails. You can earn commission from day one of launch.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 11 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">11</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Robot Data Ingestion Pipeline</div>
+          <div class="prompt-desc">The engine that keeps your database populated and prices current. Scales your content without manual work.</div>
+        </div>
+        <span class="priority-badge p1">P1 · Day 66–72</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p11')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p11">Build the robot data ingestion pipeline for Robotomated.com.
+
+<span class="kw">1. Admin data entry interface at /admin/robots/new and /admin/robots/[id]/edit:</span>
+A comprehensive form for manually adding/editing robots:
+- All fields from the robots table
+- Specs editor: key-value pair UI that saves to specs JSONB (allow adding custom spec fields)
+- Image URL inputs (up to 10 images)
+- Affiliate link fields per retailer
+- RoboScore manual input with breakdown
+- Preview how the robot page will look before publishing
+- Status toggle: draft / active / discontinued
+
+<span class="kw">2. Bulk CSV import:</span>
+- /admin/robots/import — CSV upload
+- Download CSV template button
+- Map CSV columns to database fields
+- Validation step before import (show errors)
+- Import up to 100 robots at once
+
+<span class="kw">3. Price monitoring script at scripts/update-prices.ts:</span>
+- Reads all robots with amazon_asin
+- Fetches current prices via Amazon Product Advertising API (stub the API call — add TODO comment for when API access is approved)
+- Updates price_history table with new entries
+- Designed to run as a Vercel Cron Job daily at 6am UTC
+- Add vercel.json cron configuration for this
+
+<span class="kw">4. Manufacturer portal at /portal:</span>
+Simple page where manufacturers can submit their robot for listing:
+- Form: company name, contact email, robot name, model, specs upload (JSON or CSV), product URL
+- Saves to manufacturer_submissions table (create this)
+- Sends confirmation email via Resend
+- Admin gets notified of new submission
+
+Goal: get to 500+ robots in the database within 30 days of this going live using the admin UI and CSV import.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> You can add robots manually, bulk import via CSV, and have price updates running automatically. Database can scale to 5,000+ robots without engineering work.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 12 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">12</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Pro Subscription (Stripe)</div>
+          <div class="prompt-desc">Your first recurring revenue stream. $49/mo. Unlocks advanced features for power users.</div>
+        </div>
+        <span class="priority-badge p1">P1 · Day 73–78</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p12')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p12">Add Robotomated Pro subscription using Stripe.
+
+<span class="kw">Stripe setup:</span>
+- One product: "Robotomated Pro" at $49/month
+- Stripe Checkout for payment (no custom payment form — use Stripe hosted page)
+- Webhook handler at /api/webhooks/stripe for: checkout.session.completed, customer.subscription.deleted, customer.subscription.updated
+- On successful subscription: update users.subscription_tier to 'pro' in Supabase
+
+<span class="kw">Pro features to gate (use a isPro() check throughout):</span>
+- Unlimited AI advisor conversations (free tier: 5/month)
+- Price drop alerts (free: 3 robots, pro: unlimited)
+- Advanced comparison tool (free: 2 robots, pro: up to 5)
+- Ad-free experience (free tier shows one non-intrusive text ad per page)
+- Access to "Pro Insights" section on robot pages — extended specs, reliability data, enterprise context
+
+<span class="kw">Pricing page at /pro:</span>
+- Clean comparison: Free vs Pro
+- Features list with checkmarks
+- "Start Free Trial" CTA (7-day free trial via Stripe)
+- FAQ section: Can I cancel anytime? What happens when I cancel?
+- Testimonial placeholders (to fill in later)
+
+<span class="kw">Account billing page at /account/billing:</span>
+- Current plan, next billing date
+- "Manage Subscription" button (Stripe Customer Portal link)
+- Invoice history
+
+<span class="kw">Upgrade prompts:</span>
+- When a free user hits an AI advisor limit: show upgrade modal
+- When they try to add a 4th price alert: show upgrade prompt inline
+- Keep these non-aggressive — one clear offer, easy to dismiss</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Working Stripe subscription. Users can upgrade to Pro, manage billing, and access gated features. Your first MRR stream is live.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 13 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">13</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Analytics + Admin Dashboard</div>
+          <div class="prompt-desc">You can't improve what you don't measure. Know your numbers from day one.</div>
+        </div>
+        <span class="priority-badge p1">P1 · Day 79–83</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p13')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p13">Build the analytics setup and internal admin dashboard for Robotomated.com.
+
+<span class="kw">PostHog analytics (add to all pages):</span>
+- Initialize PostHog with NEXT_PUBLIC_POSTHOG_KEY env var
+- Track custom events:
+  - robot_viewed (robot_id, category, source)
+  - advisor_started, advisor_completed (use_case, recommendations_shown)
+  - affiliate_click (robot_id, retailer, price)
+  - review_submitted (robot_id, score, type)
+  - pro_upgrade_clicked, pro_subscribed
+  - search_performed (query, results_count, filters_applied)
+- Respect user privacy — no tracking for EU users without consent (add simple cookie banner)
+
+<span class="kw">Admin dashboard at /admin (Supabase auth, admin role only):</span>
+Build a clean internal dashboard with these data panels:
+
+Overview cards (today vs yesterday):
+- Total visitors, new users, affiliate clicks, estimated revenue
+
+Charts (use recharts):
+- Traffic by page (table: top 20 pages by views)
+- Affiliate clicks by robot (bar chart, top 10)
+- New subscribers by day (line chart, last 30 days)
+- Advisor conversations by day
+
+Content status:
+- Robot count by status (active/draft/discontinued)
+- Reviews pending moderation (list with approve/reject actions)
+- Manufacturer portal submissions pending review
+
+Quick actions:
+- Add new robot button
+- Publish pending review buttons inline
+- Export email list button (CSV download from newsletter_subscribers)
+
+<span class="kw">Simple revenue tracker:</span>
+Manual entry form for logging monthly affiliate commissions received (can't pull this automatically until affiliate accounts are set up). Stores in revenue_entries table. Shows running MRR estimate on the dashboard.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Full visibility into traffic, affiliate clicks, user behavior, and revenue. You can see exactly what's working and make data-driven decisions from launch day.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 14 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">14</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Performance + Launch Checklist</div>
+          <div class="prompt-desc">Production hardening before you start driving traffic. One slow page or broken link kills your first impression.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 84–88</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p14')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p14">Perform a full production readiness audit and fix all issues for Robotomated.com.
+
+<span class="kw">Performance (target: 90+ Lighthouse score on all pages):</span>
+- Add next/image for all images with proper width/height and priority flags
+- Implement loading skeletons for all data-fetched components
+- Add React Suspense boundaries around all async components
+- Ensure all robot list pages use pagination (never load more than 24 robots at once)
+- Add Redis caching via Upstash for: category list (1hr TTL), top robots by score (30min TTL), manufacturer list (1hr TTL)
+- Verify no layout shift (CLS) on any page
+
+<span class="kw">Error handling:</span>
+- Add error.tsx and not-found.tsx for all route segments
+- API routes: consistent error response format { error: string, code: string }
+- Database query errors: graceful fallbacks (show cached data or friendly error)
+- AI advisor: handle API timeout (30s max), show "Please try again" message
+
+<span class="kw">Security:</span>
+- Verify all /admin/* routes require admin role
+- Rate limiting on /api/advisor (already done) and /api/reviews/submit (5/day per user)
+- Content Security Policy headers in next.config.ts
+- Sanitize all user-submitted review content before storing
+
+<span class="kw">Launch checklist to verify and output as a markdown file LAUNCH_CHECKLIST.md:</span>
+- All env vars documented in .env.example
+- Affiliate links working and tracked on top 20 robots
+- Email newsletter signup working end-to-end
+- AI advisor working with real Claude API key
+- Sitemap accessible at /sitemap.xml
+- robots.txt correct
+- Google Search Console verified (output instructions)
+- PostHog tracking events firing
+- Stripe webhooks configured for production
+- Error monitoring set up (add Sentry with NEXT_PUBLIC_SENTRY_DSN)
+
+Run `next build` and verify zero TypeScript errors and zero build warnings.</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> Production-grade platform. 90+ Lighthouse scores. Zero known errors. Complete launch checklist verified. Ready to drive traffic on Day 90.</div>
+      </div>
+    </div>
+
+    <!-- PROMPT 15 -->
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-num">15</div>
+        <div class="prompt-info">
+          <div class="prompt-title">Day 90 Launch Push</div>
+          <div class="prompt-desc">The distribution sprint. This is how you get your first 10,000 visitors. Execute within 48 hours of launch.</div>
+        </div>
+        <span class="priority-badge p0">P0 · Day 89–90</span>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-box-header">
+          <span class="prompt-box-label">claude code prompt</span>
+          <button class="copy-btn" onclick="copyPrompt(this, 'p15')">Copy</button>
+        </div>
+        <div class="prompt-text" id="p15">Create the launch assets and submission templates for Robotomated.com launch day.
+
+<span class="kw">1. Product Hunt submission copy (output as launch/producthunt.md):</span>
+- Tagline (60 chars max)
+- Description (260 chars)
+- First comment (founder story, 200 words)
+- 5 bullet points of key features
+
+<span class="kw">2. Reddit posts (output as launch/reddit_posts.md):</span>
+Write authentic, value-first posts (not promotional) for:
+- r/robotics — "We built a free tool to compare every consumer robot — here's what we found"
+- r/homeautomation — focus on home robots
+- r/artificial — focus on the AI advisor angle
+- r/Entrepreneur — founder story, build in public angle
+Each post: 150-200 words, genuine, links to Robotomated.com at the end naturally
+
+<span class="kw">3. Hacker News "Show HN" post (output as launch/hackernews.md):</span>
+- Title: "Show HN: Robotomated – AI-powered robot discovery and review platform"
+- Body: technical details about the AI advisor, stack (Next.js, Supabase, Claude API), approach to building it
+
+<span class="kw">4. LinkedIn launch post (output as launch/linkedin.md):</span>
+- Founder perspective, 300 words
+- Target audience: operations managers, facility managers, tech enthusiasts
+- Focus on the problem we solve for businesses
+
+<span class="kw">5. Email to first 100 newsletter subscribers (output as launch/launch_email.md):</span>
+- Subject line options (3 variants for A/B test)
+- Email body: what we built, why, what to try first
+- CTA: Try the AI Advisor
+- PS: ask for feedback and referrals
+
+<span class="kw">6. Google Search Console setup (output step-by-step instructions):</span>
+- How to verify ownership via Vercel
+- How to submit sitemap
+- What to monitor in first 30 days</div>
+      </div>
+      <div class="outcome-box">
+        <span class="outcome-icon">✓</span>
+        <div class="outcome-text"><strong>Expected outcome:</strong> All launch distribution assets ready to execute. Post to all channels within 48 hours of launch. Target: 5,000 unique visitors in first week.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- TECH STACK -->
+  <div id="stack" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">STACK</span>
+      <span class="phase-title">Full Technology Reference</span>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-card-label">Frontend</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot"></span>Next.js 15 App Router</div>
+          <div class="stack-item"><span class="stack-dot"></span>TypeScript strict</div>
+          <div class="stack-item"><span class="stack-dot"></span>Tailwind CSS v4</div>
+          <div class="stack-item"><span class="stack-dot"></span>Zustand</div>
+          <div class="stack-item"><span class="stack-dot"></span>TanStack Query</div>
+          <div class="stack-item"><span class="stack-dot"></span>Recharts</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-label">Backend + DB</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot green"></span>Supabase (Postgres)</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Supabase Auth</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Supabase RLS</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Upstash Redis</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Next.js API Routes</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-label">AI Layer</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot violet"></span>Claude claude-sonnet-4-20250514</div>
+          <div class="stack-item"><span class="stack-dot violet"></span>Anthropic SDK</div>
+          <div class="stack-item"><span class="stack-dot violet"></span>Streaming responses</div>
+          <div class="stack-item"><span class="stack-dot violet"></span>Tool use (Phase 2+)</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-label">Commerce</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot orange"></span>Stripe subscriptions</div>
+          <div class="stack-item"><span class="stack-dot orange"></span>Amazon Associates</div>
+          <div class="stack-item"><span class="stack-dot orange"></span>Impact Radius</div>
+          <div class="stack-item"><span class="stack-dot orange"></span>Resend (email)</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-label">Infra + Deploy</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot"></span>Vercel (hosting)</div>
+          <div class="stack-item"><span class="stack-dot"></span>Vercel Cron Jobs</div>
+          <div class="stack-item"><span class="stack-dot"></span>Cloudflare (DNS)</div>
+          <div class="stack-item"><span class="stack-dot"></span>GitHub Actions (CI)</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-label">Analytics + Monitoring</div>
+        <div class="stack-card-items">
+          <div class="stack-item"><span class="stack-dot green"></span>PostHog</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Sentry</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Vercel Analytics</div>
+          <div class="stack-item"><span class="stack-dot green"></span>Google Search Console</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COSTS -->
+  <div id="costs" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">COSTS</span>
+      <span class="phase-title">Monthly Infrastructure Budget</span>
+    </div>
+    <table class="cost-table">
+      <thead>
+        <tr><th>Service</th><th>What It Does</th><th>Free Tier</th><th>Monthly Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vercel</td><td>Hosting, deployments, CDN, cron</td><td>Hobby plan covers launch</td><td class="free">$0</td></tr>
+        <tr><td>Supabase</td><td>Database, auth, storage</td><td>500MB DB, 50K MAU</td><td class="free">$0</td></tr>
+        <tr><td>Cloudflare</td><td>DNS, DDoS protection</td><td>Free plan sufficient</td><td class="free">$0</td></tr>
+        <tr><td>PostHog</td><td>Product analytics</td><td>1M events/mo free</td><td class="free">$0</td></tr>
+        <tr><td>Resend</td><td>Transactional email</td><td>3,000 emails/mo free</td><td class="free">$0</td></tr>
+        <tr><td>Upstash Redis</td><td>Caching layer</td><td>10K commands/day free</td><td class="free">$0</td></tr>
+        <tr><td>Sentry</td><td>Error monitoring</td><td>5K errors/mo free</td><td class="free">$0</td></tr>
+        <tr><td>Anthropic API</td><td>Claude AI advisor</td><td>Pay as you go</td><td>~$150/mo</td></tr>
+        <tr><td>Stripe</td><td>Subscriptions</td><td>2.9% + 30¢ per transaction</td><td>~$0 until revenue</td></tr>
+        <tr><td colspan="3" style="text-align:right; font-weight:700; color:#0A0F1E;">Total Monthly Burn (bootstrapped)</td><td style="color:#059669; font-weight:700;">~$150/mo</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 0.8rem; color: var(--muted); margin-top: -1rem;">Your $10K budget gives you 60+ months of runway at this burn rate. Upgrade to Vercel Pro ($20/mo) and Supabase Pro ($25/mo) when you hit their free tier limits — roughly at 50K monthly active users.</p>
+  </div>
+
+  <!-- RULES -->
+  <div id="rules" class="phase-section">
+    <div class="phase-header">
+      <span class="phase-num">RULES</span>
+      <span class="phase-title">Non-Negotiable Ground Rules</span>
+    </div>
+    <div class="rules-box">
+      <h3>These protect the business long-term</h3>
+      <div class="rule-item">
+        <span class="rule-icon">1</span>
+        <div class="rule-text"><strong>Never pay to influence a RoboScore.</strong> The entire platform's value depends on editorial independence. If manufacturers offer money to improve scores, the answer is always no. Sponsored placement (clearly labeled) is fine. Score manipulation is not.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">2</span>
+        <div class="rule-text"><strong>Commit to GitHub after every prompt.</strong> Small commits. Descriptive messages. If something breaks you need to be able to roll back fast.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">3</span>
+        <div class="rule-text"><strong>Ship early, imperfect is fine.</strong> The homepage doesn't need to be perfect. The advisor doesn't need every feature. Get it live, get real users, let real feedback drive what you build next.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">4</span>
+        <div class="rule-text"><strong>Publish before you're ready.</strong> The first 5 reviews don't need to be your best work. The SEO clock starts when the page is indexed — not when you think it's perfect.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">5</span>
+        <div class="rule-text"><strong>Every API key goes in .env, never in code.</strong> Anthropic key, Supabase keys, Stripe keys. If you accidentally commit a key, rotate it immediately.</div>
+      </div>
+      <div class="rule-item">
+        <span class="rule-icon">6</span>
+        <div class="rule-text"><strong>When Claude Code gets stuck, break it smaller.</strong> If a prompt produces broken code, don't try to fix it in the same session. Start fresh, scope it narrower, and rebuild that piece.</div>
+      </div>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--muted); text-align: center; margin-top: 1rem;">Robotomated.com · Build Spec v1.0 · March 2026 · Confidential</p>
+  </div>
+
+</div>
+
+<script>
+function copyPrompt(btn, id) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+document.querySelectorAll('.phase-nav a').forEach(a => {
+  a.addEventListener('click', function() {
+    document.querySelectorAll('.phase-nav a').forEach(x => x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      document.querySelectorAll('.phase-nav a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + id) a.classList.add('active');
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+['setup','phase1','phase2','phase3','stack','costs','rules'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+</script>
+</body>
+</html>
