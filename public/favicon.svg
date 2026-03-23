@@ -1,0 +1,16 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="#12100E"/>
+  <!-- Robot arm base -->
+  <rect x="16" y="36" width="16" height="4" rx="2" fill="#F5F0E6"/>
+  <!-- Arm vertical segment -->
+  <rect x="22" y="14" width="4" height="24" rx="2" fill="#F5F0E6"/>
+  <!-- Joint circle -->
+  <circle cx="24" cy="14" r="5" fill="#12100E" stroke="#F5F0E6" stroke-width="2"/>
+  <!-- Gold center dot -->
+  <circle cx="24" cy="14" r="2" fill="#FFB400"/>
+  <!-- Upper arm segment (angled) -->
+  <line x1="24" y1="9" x2="34" y2="4" stroke="#F5F0E6" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Gripper fingers -->
+  <line x1="34" y1="4" x2="40" y2="1" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/>
+  <line x1="34" y1="4" x2="40" y2="7" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/>
+</svg>
