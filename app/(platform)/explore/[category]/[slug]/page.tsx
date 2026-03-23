@@ -10,6 +10,7 @@ import { ExpertReviewCard } from "@/components/reviews/expert-review-card";
 import { CommunityReviewCard } from "@/components/reviews/community-review-card";
 import { CommunityReviewForm } from "@/components/reviews/community-review-form";
 import { ScoreBreakdownChart } from "@/components/reviews/score-breakdown-chart";
+import { AskAiButton } from "@/components/advisor/ask-ai-button";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 
 // ---------------------------------------------------------------------------
@@ -170,6 +171,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
   return (
     <div>
+      <AskAiButton robotName={robot.name} />
       <ProductSchema
         name={robot.name}
         slug={robot.slug}
