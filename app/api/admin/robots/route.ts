@@ -1,6 +1,56 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const perPage = 20;
+  const search = searchParams.get("search") || "";
+  const status = searchParams.get("status") || "";
+
+  const supabase = createServerClient();
+
+  let query = supabase
+    .from("robots")
+    .select("id, slug, name, robo_score, price_current, status, manufacturer_id, category_id, updated_at, manufacturers(name), robot_categories(name)", { count: "exact" });
+
+  if (search) {
+    query = query.or(`name.ilike.%${search}%,slug.ilike.%${search}%`);
+  }
+  if (status) {
+    query = query.eq("status", status as "active" | "discontinued" | "coming_soon");
+  }
+
+  query = query.order("updated_at", { ascending: false });
+
+  const from = (page - 1) * perPage;
+  query = query.range(from, from + perPage - 1);
+
+  const { data, count, error } = await query;
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({
+    robots: (data || []).map((r: Record<string, unknown>) => ({
+      id: r.id,
+      slug: r.slug,
+      name: r.name,
+      robo_score: r.robo_score,
+      price_current: r.price_current,
+      status: r.status,
+      manufacturer_name: (r.manufacturers as { name: string } | null)?.name || "",
+      category_name: (r.robot_categories as { name: string } | null)?.name || "",
+      updated_at: r.updated_at,
+    })),
+    total: count || 0,
+    page,
+    perPage,
+    totalPages: Math.ceil((count || 0) / perPage),
+  });
+}
+
 export async function POST(request: NextRequest) {
   const data = await request.json();
   const supabase = createServerClient();
