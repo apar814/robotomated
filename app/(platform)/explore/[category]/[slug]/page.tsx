@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
-import { RoboScoreRing, RoboScoreBadge, ScoreBar } from "@/components/ui/robo-score";
+import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
 import { PriceChart } from "@/components/robots/price-chart";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { ProductSchema, ReviewSchema } from "@/components/seo/json-ld";
+import { ExpertReviewCard } from "@/components/reviews/expert-review-card";
+import { CommunityReviewCard } from "@/components/reviews/community-review-card";
+import { CommunityReviewForm } from "@/components/reviews/community-review-form";
+import { ScoreBreakdownChart } from "@/components/reviews/score-breakdown-chart";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 
 // ---------------------------------------------------------------------------
@@ -42,6 +46,7 @@ interface ReviewRow {
   title: string;
   body: string;
   robo_score: number | null;
+  score_breakdown: RoboScoreBreakdown | null;
   pros: string[];
   cons: string[];
   verdict: string | null;
@@ -66,20 +71,6 @@ interface SimilarRobot {
   manufacturers: { name: string } | null;
   robot_categories: { slug: string } | null;
 }
-
-// ---------------------------------------------------------------------------
-// Dimension config
-// ---------------------------------------------------------------------------
-const DIMENSIONS: { key: keyof RoboScoreBreakdown; label: string; weight: string }[] = [
-  { key: "performance", label: "Performance", weight: "25%" },
-  { key: "reliability", label: "Reliability", weight: "20%" },
-  { key: "ease_of_use", label: "Ease of Use", weight: "15%" },
-  { key: "intelligence", label: "Intelligence", weight: "15%" },
-  { key: "value", label: "Value", weight: "10%" },
-  { key: "ecosystem", label: "Ecosystem", weight: "8%" },
-  { key: "safety", label: "Safety", weight: "5%" },
-  { key: "design", label: "Design", weight: "2%" },
-];
 
 // ---------------------------------------------------------------------------
 // Props
@@ -123,7 +114,7 @@ export default async function RobotDetailPage({ params }: Props) {
       .returns<RobotDetail>(),
     supabase
       .from("reviews")
-      .select("id, review_type, title, body, robo_score, pros, cons, verdict, verified_purchase, published_at, users(name)")
+      .select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
       .eq("robot_id", slug) // We'll fix this below
       .not("published_at", "is", null)
       .order("published_at", { ascending: false })
@@ -141,7 +132,7 @@ export default async function RobotDetailPage({ params }: Props) {
   // Fetch reviews using the actual robot ID
   const { data: reviews } = await supabase
     .from("reviews")
-    .select("id, review_type, title, body, robo_score, pros, cons, verdict, verified_purchase, published_at, users(name)")
+    .select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
     .eq("robot_id", robot.id)
     .not("published_at", "is", null)
     .order("published_at", { ascending: false })
@@ -294,14 +285,12 @@ export default async function RobotDetailPage({ params }: Props) {
         <section className="border-b border-border px-4 py-12">
           <div className="mx-auto max-w-6xl">
             <h2 className="mb-6 text-xl font-bold">RoboScore Breakdown</h2>
-            <div className="max-w-lg space-y-3">
-              {DIMENSIONS.map(({ key, label, weight }) => (
-                <ScoreBar key={key} label={label} score={breakdown[key]} weight={weight} />
-              ))}
+            <div className="max-w-lg">
+              <ScoreBreakdownChart breakdown={breakdown} />
             </div>
             <p className="mt-4 text-xs text-muted">
               Scores are 0–100 per dimension. Weights reflect importance in the overall RoboScore.{" "}
-              <Link href="/learn/methodology" className="text-blue hover:underline">Read our methodology</Link>.
+              <Link href="/methodology" className="text-blue hover:underline">Read our methodology</Link>.
             </p>
           </div>
         </section>
@@ -333,50 +322,16 @@ export default async function RobotDetailPage({ params }: Props) {
         <section className="border-b border-border px-4 py-12">
           <div className="mx-auto max-w-6xl">
             <h2 className="mb-6 text-xl font-bold">Expert Review</h2>
-            <div className="rounded-xl border border-border bg-navy-light p-6">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg font-semibold">{expertReview.title}</h3>
-                {expertReview.robo_score != null && <RoboScoreBadge score={expertReview.robo_score} />}
-              </div>
-              <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-muted">
-                {expertReview.body}
-              </p>
-
-              {/* Pros / Cons */}
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {(expertReview.pros as string[])?.length > 0 && (
-                  <div className="rounded-lg border border-green/20 bg-green/5 p-4">
-                    <h4 className="mb-2 text-sm font-semibold text-green">Pros</h4>
-                    <ul className="space-y-1">
-                      {(expertReview.pros as string[]).map((p, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-muted">
-                          <span className="mt-0.5 text-green">+</span> {p}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {(expertReview.cons as string[])?.length > 0 && (
-                  <div className="rounded-lg border border-orange/20 bg-orange/5 p-4">
-                    <h4 className="mb-2 text-sm font-semibold text-orange">Cons</h4>
-                    <ul className="space-y-1">
-                      {(expertReview.cons as string[]).map((c, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-muted">
-                          <span className="mt-0.5 text-orange">−</span> {c}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              {expertReview.verdict && (
-                <div className="mt-4 border-t border-border pt-4">
-                  <h4 className="text-sm font-semibold">Verdict</h4>
-                  <p className="mt-1 text-sm text-muted">{expertReview.verdict}</p>
-                </div>
-              )}
-            </div>
+            <ExpertReviewCard
+              title={expertReview.title}
+              body={expertReview.body}
+              roboScore={expertReview.robo_score}
+              scoreBreakdown={expertReview.score_breakdown as RoboScoreBreakdown | null}
+              pros={expertReview.pros as string[]}
+              cons={expertReview.cons as string[]}
+              verdict={expertReview.verdict}
+              publishedAt={expertReview.published_at}
+            />
           </div>
         </section>
       )}
@@ -385,34 +340,24 @@ export default async function RobotDetailPage({ params }: Props) {
       <section className="border-b border-border px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <h2 className="mb-6 text-xl font-bold">Community Reviews</h2>
-          {communityReviews.length === 0 ? (
-            <div className="rounded-xl border border-border bg-navy-light p-8 text-center">
-              <p className="text-muted">No community reviews yet.</p>
-              <p className="mt-1 text-sm text-muted">Be the first to review this robot.</p>
-            </div>
-          ) : (
-            <div className="space-y-4">
+          {communityReviews.length > 0 && (
+            <div className="mb-6 space-y-4">
               {communityReviews.map((review) => (
-                <div key={review.id} className="rounded-xl border border-border bg-navy-light p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="font-semibold">{review.title}</h4>
-                      <p className="mt-0.5 text-xs text-muted">
-                        by {(review.users as { name: string | null } | null)?.name || "Anonymous"}
-                        {review.verified_purchase && (
-                          <span className="ml-2 rounded-full bg-green/10 px-2 py-0.5 text-[10px] font-medium text-green">
-                            Verified
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                    {review.robo_score != null && <RoboScoreBadge score={review.robo_score} />}
-                  </div>
-                  <p className="mt-3 text-sm text-muted">{review.body}</p>
-                </div>
+                <CommunityReviewCard
+                  key={review.id}
+                  title={review.title}
+                  body={review.body}
+                  roboScore={review.robo_score}
+                  pros={review.pros as string[]}
+                  cons={review.cons as string[]}
+                  verifiedPurchase={review.verified_purchase}
+                  authorName={(review.users as { name: string | null } | null)?.name || null}
+                  publishedAt={review.published_at}
+                />
               ))}
             </div>
           )}
+          <CommunityReviewForm robotId={robot.id} robotName={robot.name} />
         </div>
       </section>
 
