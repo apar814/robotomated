@@ -124,103 +124,108 @@
 }
 
 /* ── Hero "The Placement" animation ── */
-@keyframes hero-arm-descend {
-  0%  { transform: translateY(-130px); }
-  10% { transform: translateY(-130px); }
-  50% { transform: translateY(-12px); }
-  62% { transform: translateY(0px); }
-  72% { transform: translateY(0px); }
-  100% { transform: translateY(-130px); }
+/* The O: starts above (translateY -120) at opacity 0, descends with arm, stays, fades before loop */
+@keyframes o-placement {
+  0%    { transform: translateY(-120px); opacity: 0; }
+  10%   { transform: translateY(-120px); opacity: 0.65; }
+  55%   { transform: translateY(-8px); opacity: 0.65; }
+  70%   { transform: translateY(0px); opacity: 0.65; }
+  88%   { transform: translateY(0px); opacity: 0.65; }
+  95%   { transform: translateY(0px); opacity: 0; }
+  100%  { transform: translateY(-120px); opacity: 0; }
 }
 
-@keyframes hero-gripper-action {
-  0%  { transform: scaleX(1.25); }
-  12% { transform: scaleX(0.82); }
-  68% { transform: scaleX(0.82); }
-  74% { transform: scaleX(1.25); }
-  100% { transform: scaleX(1.25); }
+/* The arm: descends with O, holds, retracts */
+@keyframes arm-movement {
+  0%    { transform: translateY(-120px); }
+  10%   { transform: translateY(-120px); }
+  55%   { transform: translateY(-8px); }
+  70%   { transform: translateY(0px); }
+  75%   { transform: translateY(0px); }
+  90%   { transform: translateY(-120px); }
+  100%  { transform: translateY(-120px); }
 }
 
-@keyframes hero-o-appear {
-  0%  { opacity: 0; transform: translateY(-130px); }
-  10% { opacity: 0; transform: translateY(-130px); }
-  12% { opacity: 0.65; transform: translateY(-130px); }
-  50% { opacity: 0.65; transform: translateY(-12px); }
-  62% { opacity: 0.65; transform: translateY(0px); }
-  66% { opacity: 0.85; transform: translateY(0px); }
-  72% { opacity: 0.65; transform: translateY(0px); }
-  90% { opacity: 0.65; transform: translateY(0px); }
-  96% { opacity: 0; transform: translateY(0px); }
-  100% { opacity: 0; transform: translateY(0px); }
+/* Gripper: open, close, hold, release */
+@keyframes gripper-action {
+  0%    { transform: scaleX(1.3); }
+  12%   { transform: scaleX(0.8); }
+  70%   { transform: scaleX(0.8); }
+  73%   { transform: scaleX(1.3); }
+  100%  { transform: scaleX(1.3); }
 }
 
-@keyframes hero-gap-pulse {
-  0%  { r: 4; opacity: 0.2; }
-  10% { r: 12; opacity: 0.15; }
-  12% { r: 4; opacity: 0; }
-  96% { r: 4; opacity: 0; }
-  100% { r: 4; opacity: 0.2; }
+/* Gap glow: pulses before O arrives, disappears once arm descends */
+@keyframes gap-glow {
+  0%    { opacity: 0.25; }
+  5%    { opacity: 0.15; }
+  10%   { opacity: 0; }
+  95%   { opacity: 0; }
+  100%  { opacity: 0.25; }
 }
 
-@keyframes hero-circuit-reveal {
-  0%  { opacity: 0; }
-  62% { opacity: 0; }
-  68% { opacity: 0.5; }
-  90% { opacity: 0.5; }
-  96% { opacity: 0; }
-  100% { opacity: 0; }
+/* MATED text: dim initially, brightens when O is placed */
+@keyframes mated-brighten {
+  0%    { opacity: 0.4; }
+  70%   { opacity: 0.4; }
+  76%   { opacity: 0.95; }
+  88%   { opacity: 0.95; }
+  95%   { opacity: 0.4; }
+  100%  { opacity: 0.4; }
 }
 
-@keyframes hero-connect-zip {
-  0%  { stroke-dashoffset: 38; opacity: 0; }
-  64% { stroke-dashoffset: 38; opacity: 0; }
-  70% { stroke-dashoffset: 0; opacity: 0.4; }
-  90% { stroke-dashoffset: 0; opacity: 0.4; }
-  96% { stroke-dashoffset: 0; opacity: 0; }
-  100% { stroke-dashoffset: 38; opacity: 0; }
+/* Circuit crosshair inside O: hidden until placed */
+@keyframes circuit-reveal {
+  0%    { opacity: 0; }
+  72%   { opacity: 0; }
+  78%   { opacity: 0.5; }
+  88%   { opacity: 0.5; }
+  95%   { opacity: 0; }
+  100%  { opacity: 0; }
 }
 
-@keyframes hero-place-pulse {
-  0%  { r: 3; opacity: 0; }
-  62% { r: 3; opacity: 0; }
-  65% { r: 22; opacity: 0.25; }
-  72% { r: 40; opacity: 0; }
-  100% { r: 40; opacity: 0; }
+/* Connection lines: zip from O to ROBOT and MATED */
+@keyframes connect-zip {
+  0%    { stroke-dashoffset: 38; opacity: 0; }
+  72%   { stroke-dashoffset: 38; opacity: 0; }
+  78%   { stroke-dashoffset: 0; opacity: 0.4; }
+  88%   { stroke-dashoffset: 0; opacity: 0.4; }
+  95%   { stroke-dashoffset: 0; opacity: 0; }
+  100%  { stroke-dashoffset: 38; opacity: 0; }
 }
 
-@keyframes hero-text-right-dim {
-  0%  { opacity: 0.4; }
-  62% { opacity: 0.4; }
-  68% { opacity: 0.95; }
-  90% { opacity: 0.95; }
-  96% { opacity: 0.4; }
-  100% { opacity: 0.4; }
+/* Gold pulse ring at moment of placement */
+@keyframes place-pulse {
+  0%    { r: 3; opacity: 0; }
+  70%   { r: 3; opacity: 0; }
+  74%   { r: 22; opacity: 0.3; }
+  82%   { r: 40; opacity: 0; }
+  100%  { r: 40; opacity: 0; }
 }
 
-.hero-arm-assembly {
-  animation: hero-arm-descend 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
+.hero-o-placement {
+  animation: o-placement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
 }
-.hero-gripper {
-  animation: hero-gripper-action 5s ease-in-out infinite;
-  transform-origin: 282px 106px;
+.hero-arm-move {
+  animation: arm-movement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
 }
-.hero-o-group {
-  animation: hero-o-appear 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
+.hero-gripper-action {
+  animation: gripper-action 5s ease-in-out infinite;
 }
 .hero-gap-pulse {
-  animation: hero-gap-pulse 5s ease-in-out infinite;
+  animation: gap-glow 5s ease-in-out infinite;
 }
 .hero-text-right {
-  animation: hero-text-right-dim 5s ease-in-out infinite;
+  animation: mated-brighten 5s ease-in-out infinite;
 }
-.hero-circuit-h, .hero-circuit-v, .hero-circuit-dot {
-  animation: hero-circuit-reveal 5s ease-in-out infinite;
+.hero-circuit-lines {
+  animation: circuit-reveal 5s ease-in-out infinite;
 }
 .hero-connect-left, .hero-connect-right {
-  animation: hero-connect-zip 5s ease-in-out infinite;
+  animation: connect-zip 5s ease-in-out infinite;
 }
 .hero-place-pulse {
-  animation: hero-place-pulse 5s ease-in-out infinite;
+  animation: place-pulse 5s ease-in-out infinite;
 }
 
 /* ── Core animations ── */
@@ -282,8 +287,8 @@
   .animate-arm-base, .animate-arm-mid, .animate-gripper,
   .animate-float-slow, .animate-float-medium, .animate-float-fast,
   .animate-scan, .animate-scroll,
-  .hero-arm-assembly, .hero-gripper, .hero-o-group, .hero-gap-pulse,
-  .hero-text-right, .hero-circuit-h, .hero-circuit-v, .hero-circuit-dot,
+  .hero-o-placement, .hero-arm-move, .hero-gripper-action, .hero-gap-pulse,
+  .hero-text-right, .hero-circuit-lines,
   .hero-connect-left, .hero-connect-right, .hero-place-pulse {
     animation: none !important;
   }
