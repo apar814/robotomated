@@ -4,7 +4,7 @@ const footerSections = [
   {
     title: "Platform",
     links: [
-      { href: "/robots", label: "Explore Robots" },
+      { href: "/explore", label: "Explore Robots" },
       { href: "/reviews", label: "Reviews" },
       { href: "/advisor", label: "AI Advisor" },
       { href: "/learn", label: "Learn" },
@@ -12,18 +12,21 @@ const footerSections = [
     ],
   },
   {
-    title: "Company",
+    title: "Guides",
     links: [
-      { href: "/about", label: "About" },
-      { href: "/methodology", label: "Scoring Methodology" },
-      { href: "/contact", label: "Contact" },
+      { href: "/best/consumer", label: "Best Consumer Robots" },
+      { href: "/best/warehouse", label: "Best Warehouse Robots" },
+      { href: "/best/manufacturing", label: "Best Manufacturing Robots" },
+      { href: "/guides/how-roboscore-works", label: "How RoboScore Works" },
     ],
   },
   {
-    title: "Legal",
+    title: "Company",
     links: [
-      { href: "/privacy", label: "Privacy Policy" },
-      { href: "/terms", label: "Terms of Service" },
+      { href: "/about", label: "About" },
+      { href: "/guides/how-roboscore-works", label: "Methodology" },
+      { href: "/contact", label: "Contact" },
+      { href: "/sitemap.xml", label: "Sitemap" },
     ],
   },
 ] as const;

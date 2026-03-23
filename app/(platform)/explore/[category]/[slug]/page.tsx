@@ -4,6 +4,8 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 import { RoboScoreRing, RoboScoreBadge, ScoreBar } from "@/components/ui/robo-score";
 import { PriceChart } from "@/components/robots/price-chart";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { ProductSchema, ReviewSchema } from "@/components/seo/json-ld";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 
 // ---------------------------------------------------------------------------
@@ -177,16 +179,38 @@ export default async function RobotDetailPage({ params }: Props) {
 
   return (
     <div>
+      <ProductSchema
+        name={robot.name}
+        slug={robot.slug}
+        description={robot.description_short || ""}
+        manufacturer={mfr?.name || ""}
+        price={robot.price_current}
+        score={robot.robo_score}
+        categorySlug={categorySlug}
+        model={robot.model_number}
+        status={robot.status}
+      />
+      {expertReview && (
+        <ReviewSchema
+          robotName={robot.name}
+          reviewTitle={expertReview.title}
+          reviewBody={expertReview.body.slice(0, 200)}
+          author="Robotomated Editorial"
+          score={expertReview.robo_score}
+          publishedAt={expertReview.published_at}
+        />
+      )}
+
       {/* ── Hero ── */}
       <section className="border-b border-border px-4 py-12">
         <div className="mx-auto max-w-6xl">
-          {/* Breadcrumb */}
-          <div className="mb-6 flex items-center gap-2 text-sm text-muted">
-            <Link href="/explore" className="hover:text-foreground">Explore</Link>
-            <span>/</span>
-            <Link href={`/explore/${categorySlug}`} className="hover:text-foreground">{cat?.name}</Link>
-            <span>/</span>
-            <span className="text-foreground">{robot.name}</span>
+          <div className="mb-6">
+            <Breadcrumbs items={[
+              { name: "Home", href: "/" },
+              { name: "Explore", href: "/explore" },
+              { name: cat?.name || "Category", href: `/explore/${categorySlug}` },
+              { name: robot.name, href: `/explore/${categorySlug}/${robot.slug}` },
+            ]} />
           </div>
 
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
