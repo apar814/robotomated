@@ -5,6 +5,8 @@ import { cached } from "@/lib/cache/redis";
 import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { NewsletterForm } from "@/components/home/newsletter-form";
+import { TrustedBy } from "@/components/home/trusted-by";
+import { HeroAnimation } from "@/components/home/hero-animation";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -17,13 +19,13 @@ interface FeaturedRobot {
 
 const categoryImages: Record<string, string> = {
   warehouse: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop",
-  manufacturing: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=500&h=300&fit=crop",
-  consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=300&fit=crop",
-  medical: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=300&fit=crop",
-  healthcare: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=500&h=300&fit=crop",
+  manufacturing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=300&fit=crop",
+  consumer: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
+  medical: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=500&h=300&fit=crop",
+  healthcare: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&h=300&fit=crop",
   construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
   agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&h=300&fit=crop",
-  delivery: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&h=300&fit=crop",
+  delivery: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&h=300&fit=crop",
   drone: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=300&fit=crop",
   software: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
 };
@@ -63,11 +65,17 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* ── HERO: Search-first marketplace ── */}
-      <section className="bg-mesh bg-dots relative overflow-hidden px-4 pb-16 pt-20 sm:pt-28">
+      <section className="bg-mesh bg-dots relative overflow-hidden px-4 pb-16 pt-20 sm:pt-24">
         <div className="pointer-events-none absolute -left-60 top-20 h-96 w-96 rounded-full bg-blue opacity-[0.05] blur-[120px]" />
         <div className="pointer-events-none absolute -right-60 top-40 h-96 w-96 rounded-full bg-violet opacity-[0.05] blur-[120px]" />
 
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+        {/* Robot arm — hidden on mobile, shown on desktop right side */}
+        <div className="hidden lg:order-2 lg:block lg:flex-1">
+          <HeroAnimation />
+        </div>
+
+        <div className="text-center lg:order-1 lg:max-w-xl lg:text-left">
           <ScrollReveal>
             <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Find the Right Robot
@@ -105,7 +113,11 @@ export default async function HomePage() {
             </p>
           </ScrollReveal>
         </div>
+        </div>
       </section>
+
+      {/* ── TRUSTED BY ── */}
+      <TrustedBy />
 
       {/* ── TRENDING ROBOTS ── */}
       <section className="border-y border-white/[0.06] px-4 py-14">

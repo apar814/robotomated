@@ -7,6 +7,8 @@ import { OrganizationSchema } from "@/components/seo/json-ld";
 import { AffiliateDisclosureBanner } from "@/components/commerce/affiliate-disclosure";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { CookieBanner } from "@/components/analytics/cookie-banner";
+import { CursorGlow } from "@/components/ui/cursor-glow";
+import { CommandPalette } from "@/components/ui/command-palette";
 import "./globals.css";
 
 const syne = Syne({
@@ -64,9 +66,11 @@ export default function RootLayout({
           <PostHogProvider>
             <AffiliateDisclosureBanner />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 animate-fade-in">{children}</main>
             <Footer />
             <CookieBanner />
+            <CursorGlow />
+            <CommandPalette />
           </PostHogProvider>
         </Providers>
       </body>

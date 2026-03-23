@@ -15,5 +15,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ data: data || [] });
   }
 
+  if (type === "manufacturers-full") {
+    const { data } = await supabase.from("manufacturers").select("id, slug, name, logo_url, website").order("name");
+    return NextResponse.json({ data: data || [] });
+  }
+
   return NextResponse.json({ data: [] });
 }

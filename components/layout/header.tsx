@@ -5,23 +5,16 @@ import { useState, useRef, useEffect } from "react";
 import { UserMenu } from "@/components/auth/user-menu";
 
 const categories = [
-  { slug: "manufacturing", name: "Manufacturing & Cobots" },
-  { slug: "warehouse", name: "Warehouse & Logistics" },
-  { slug: "consumer", name: "Consumer & Home" },
-  { slug: "medical", name: "Medical & Healthcare" },
-  { slug: "construction", name: "Construction" },
-  { slug: "agricultural", name: "Agricultural" },
-  { slug: "delivery", name: "Delivery & Last-Mile" },
-  { slug: "drone", name: "Drones & Aerial" },
-  { slug: "software", name: "Software & Infrastructure" },
+  { slug: "manufacturing", name: "Cobots & Industrial", count: "24" },
+  { slug: "warehouse", name: "Warehouse", count: "15" },
+  { slug: "consumer", name: "Consumer & Home", count: "19" },
+  { slug: "medical", name: "Medical", count: "12" },
+  { slug: "construction", name: "Construction", count: "8" },
+  { slug: "agricultural", name: "Agricultural", count: "4" },
+  { slug: "delivery", name: "Delivery", count: "7" },
+  { slug: "drone", name: "Drones", count: "4" },
+  { slug: "software", name: "Software", count: "2" },
 ];
-
-const navLinks = [
-  { href: "/explore", label: "Browse Robots" },
-  { href: "/manufacturers", label: "Brands" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/learn", label: "Learn" },
-] as const;
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,106 +29,82 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [catOpen]);
 
+  // Trigger CommandPalette via custom event
+  function openSearch() {
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-navy/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-display text-lg font-bold tracking-tight text-foreground">
-            <span className="text-glow">R</span>obo<span className="text-blue">tomated</span>
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-0.5 lg:flex">
-          {/* Categories dropdown */}
-          <div ref={catRef} className="relative">
-            <button
-              onClick={() => setCatOpen(!catOpen)}
-              className="group flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
-            >
-              Categories
-              <svg className={`h-3 w-3 transition-transform ${catOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {catOpen && (
-              <div className="absolute left-0 top-10 z-50 w-64 rounded-xl border border-white/[0.08] bg-navy-light/95 py-2 shadow-xl backdrop-blur-xl">
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.slug}
-                    href={`/explore/${cat.slug}`}
-                    onClick={() => setCatOpen(false)}
-                    className="block px-4 py-2 text-sm text-muted transition-colors hover:bg-white/[0.04] hover:text-foreground"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="group relative rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
-            >
-              {label}
-              <span className="absolute inset-x-3 -bottom-px h-px origin-left scale-x-0 bg-blue transition-transform group-hover:scale-x-100" />
-            </Link>
-          ))}
-          <Link
-            href="/advisor"
-            className="ml-1 rounded-lg bg-blue/10 px-3.5 py-1.5 text-sm font-semibold text-blue transition-all hover:bg-blue/20"
-          >
-            Robot Advisor
+    <>
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-navy/60 backdrop-blur-xl">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-display text-lg font-bold tracking-tight">
+              <span className="text-glow">R</span>obo<span className="text-blue">tomated</span>
+            </span>
           </Link>
-        </nav>
 
-        {/* Auth + Mobile toggle */}
-        <div className="flex items-center gap-3">
-          <UserMenu />
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-muted hover:text-foreground lg:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          <nav className="hidden items-center gap-0.5 lg:flex">
+            <div ref={catRef} className="relative">
+              <button onClick={() => setCatOpen(!catOpen)} className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white/50 transition-colors hover:text-white">
+                Browse Robots
+                <svg className={`h-3 w-3 transition-transform ${catOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              {catOpen && (
+                <div className="glass-card absolute left-1/2 top-12 z-50 w-[480px] -translate-x-1/2 p-4 shadow-2xl">
+                  <div className="grid grid-cols-3 gap-1">
+                    {categories.map((cat) => (
+                      <Link key={cat.slug} href={`/explore/${cat.slug}`} onClick={() => setCatOpen(false)} className="group rounded-xl p-2.5 transition-all hover:bg-white/[0.04]">
+                        <p className="text-xs font-medium text-white/80 group-hover:text-blue">{cat.name}</p>
+                        <p className="text-[10px] text-white/30">{cat.count} robots</p>
+                      </Link>
+                    ))}
+                  </div>
+                  <Link href="/explore" onClick={() => setCatOpen(false)} className="mt-3 block border-t border-white/[0.06] pt-3 text-center text-xs font-medium text-blue hover:underline">
+                    View All 95+ Robots &rarr;
+                  </Link>
+                </div>
               )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="glass border-t border-white/[0.06] px-4 pb-4 pt-2 lg:hidden">
-          <p className="px-3 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-widest text-muted/50">Categories</p>
-          <div className="mb-2 grid grid-cols-2 gap-1">
-            {categories.map((cat) => (
-              <Link key={cat.slug} href={`/explore/${cat.slug}`} onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2 text-xs text-muted hover:bg-white/[0.04] hover:text-foreground">
-                {cat.name.split(" ")[0]}
-              </Link>
-            ))}
-          </div>
-          <div className="border-t border-white/[0.06] pt-2">
-            {navLinks.map(({ href, label }) => (
-              <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted hover:bg-white/[0.04] hover:text-foreground">
-                {label}
-              </Link>
-            ))}
-            <Link href="/advisor" onClick={() => setMobileOpen(false)} className="mt-1 block rounded-lg bg-blue/10 px-3 py-2.5 text-sm font-semibold text-blue">
+            </div>
+            <Link href="/manufacturers" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Brands</Link>
+            <Link href="/reviews" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Reviews</Link>
+            <Link href="/learn" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Learn</Link>
+            <Link href="/advisor" className="ml-1 rounded-lg bg-blue/10 px-3.5 py-1.5 text-sm font-semibold text-blue hover:bg-blue/20 hover:shadow-[0_0_20px_rgba(0,194,255,0.1)]">
               Robot Advisor
             </Link>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <button onClick={openSearch} className="flex items-center gap-2 rounded-lg border border-white/[0.06] px-3 py-1.5 text-xs text-white/30 hover:border-white/[0.12] hover:text-white/50">
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+              <span className="hidden sm:inline">Search</span>
+              <kbd className="hidden rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] sm:inline">&#8984;K</kbd>
+            </button>
+            <UserMenu />
+            <button type="button" className="rounded-lg p-2 text-white/40 hover:text-white lg:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                {mobileOpen ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />}
+              </svg>
+            </button>
           </div>
-        </nav>
-      )}
-    </header>
+        </div>
+
+        {mobileOpen && (
+          <nav className="glass border-t border-white/[0.06] px-4 pb-4 pt-2 lg:hidden">
+            <div className="mb-2 grid grid-cols-3 gap-1">
+              {categories.slice(0, 6).map((cat) => (
+                <Link key={cat.slug} href={`/explore/${cat.slug}`} onClick={() => setMobileOpen(false)} className="rounded-lg px-2 py-2 text-center text-[11px] text-white/50 hover:bg-white/[0.04] hover:text-white">{cat.name.split(" ")[0]}</Link>
+              ))}
+            </div>
+            <div className="border-t border-white/[0.06] pt-2">
+              <Link href="/explore" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-sm text-white/50 hover:text-white">Browse All</Link>
+              <Link href="/manufacturers" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-sm text-white/50 hover:text-white">Brands</Link>
+              <Link href="/advisor" onClick={() => setMobileOpen(false)} className="mt-1 block rounded-lg bg-blue/10 px-3 py-2.5 text-sm font-semibold text-blue">Robot Advisor</Link>
+            </div>
+          </nav>
+        )}
+      </header>
+      <div className="h-14" />
+    </>
   );
 }

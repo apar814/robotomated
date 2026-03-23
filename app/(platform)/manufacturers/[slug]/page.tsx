@@ -5,10 +5,11 @@ import Image from "next/image";
 import { createServerClient } from "@/lib/supabase/server";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { CompanyLogo } from "@/components/ui/company-logo";
 
 interface MfrDetail {
   id: string; slug: string; name: string;
-  country: string | null; founded_year: number | null; website: string | null;
+  country: string | null; founded_year: number | null; website: string | null; logo_url: string | null;
 }
 
 interface MfrRobot {
@@ -64,7 +65,10 @@ export default async function ManufacturerDetailPage({ params }: Props) {
 
           <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h1 className="font-display text-3xl font-bold">{mfr.name}</h1>
+              <div className="mb-3 flex items-center gap-4">
+                <CompanyLogo logoUrl={mfr.logo_url} name={mfr.name} size={48} />
+                <h1 className="font-display text-3xl font-bold">{mfr.name}</h1>
+              </div>
               <p className="mt-2 text-sm text-muted">
                 {mfr.country && <span>HQ: {mfr.country}</span>}
                 {mfr.founded_year && <span> &middot; Founded {mfr.founded_year}</span>}
