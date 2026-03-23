@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { RobotCardInline, parseRobotCards } from "@/components/advisor/robot-card-inline";
+import { UpgradeModal } from "@/components/pro/upgrade-prompt";
 import { cn } from "@/lib/utils/cn";
 
 interface ChatMessage {
@@ -26,6 +27,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   const [streaming, setStreaming] = useState(false);
   const [sessionId, setSessionId] = useState(() => generateSessionId());
   const [error, setError] = useState("");
+  const [showUpgrade, setShowUpgrade] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const initialSent = useRef(false);
@@ -73,8 +75,11 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
 
       if (!res.ok) {
         const data = await res.json();
+        if (data.upgrade) {
+          setShowUpgrade(true);
+        }
         setError(data.error || "Something went wrong");
-        setMessages(newMessages); // Remove empty assistant message
+        setMessages(newMessages);
         setStreaming(false);
         return;
       }
@@ -147,6 +152,13 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
 
   return (
     <div className="flex h-full flex-col">
+      {showUpgrade && (
+        <UpgradeModal
+          feature="You've reached your monthly limit"
+          description="Free users get 5 AI Advisor conversations per month. Upgrade to Pro for unlimited conversations, price alerts, and more."
+          onClose={() => setShowUpgrade(false)}
+        />
+      )}
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="mx-auto max-w-[700px]">

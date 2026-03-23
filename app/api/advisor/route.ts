@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { anthropic, ADVISOR_MODEL, ADVISOR_SYSTEM_PROMPT } from "@/lib/ai/claude";
 import { createServerClient } from "@/lib/supabase/server";
+import { createServerClient as createSSRClient } from "@supabase/ssr";
+import { isPro, getMonthlyConversationCount, PRO_LIMITS } from "@/lib/stripe/pro";
 
 const MAX_REQUESTS_PER_SESSION = 10;
 
@@ -22,7 +24,33 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  // Rate limit check
+  // Check monthly conversation limit for free users
+  const authSupabase = createSSRClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return request.cookies.getAll(); },
+        setAll() {},
+      },
+    }
+  );
+  const { data: { user } } = await authSupabase.auth.getUser();
+
+  if (user) {
+    const userIsPro = await isPro(user.id);
+    if (!userIsPro) {
+      const monthlyCount = await getMonthlyConversationCount(user.id);
+      if (monthlyCount >= PRO_LIMITS.free.advisorConversationsPerMonth) {
+        return new Response(
+          JSON.stringify({ error: "Monthly conversation limit reached. Upgrade to Pro for unlimited conversations.", upgrade: true }),
+          { status: 429, headers: { "Content-Type": "application/json" } }
+        );
+      }
+    }
+  }
+
+  // Rate limit check per session
   const supabase = createServerClient();
   const { data: existing } = await supabase
     .from("advisor_conversations")

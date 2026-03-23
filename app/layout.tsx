@@ -5,6 +5,8 @@ import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
 import { OrganizationSchema } from "@/components/seo/json-ld";
 import { AffiliateDisclosureBanner } from "@/components/commerce/affiliate-disclosure";
+import { PostHogProvider } from "@/components/analytics/posthog-provider";
+import { CookieBanner } from "@/components/analytics/cookie-banner";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,10 +55,13 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
         <Providers>
-          <AffiliateDisclosureBanner />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <PostHogProvider>
+            <AffiliateDisclosureBanner />
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <CookieBanner />
+          </PostHogProvider>
         </Providers>
       </body>
     </html>

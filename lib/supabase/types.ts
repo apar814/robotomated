@@ -258,6 +258,9 @@ export interface Database {
           persona_type: string | null;
           preferences: Json;
           subscription_tier: "free" | "pro" | "enterprise";
+          stripe_customer_id: string | null;
+          stripe_subscription_id: string | null;
+          subscription_ends_at: string | null;
           created_at: string;
         };
         Insert: {
@@ -268,6 +271,9 @@ export interface Database {
           persona_type?: string | null;
           preferences?: Json;
           subscription_tier?: "free" | "pro" | "enterprise";
+          stripe_customer_id?: string | null;
+          stripe_subscription_id?: string | null;
+          subscription_ends_at?: string | null;
           created_at?: string;
         };
         Update: {
@@ -278,6 +284,9 @@ export interface Database {
           persona_type?: string | null;
           preferences?: Json;
           subscription_tier?: "free" | "pro" | "enterprise";
+          stripe_customer_id?: string | null;
+          stripe_subscription_id?: string | null;
+          subscription_ends_at?: string | null;
           created_at?: string;
         };
         Relationships: [];
@@ -511,6 +520,33 @@ export interface Database {
           notes?: string | null;
           status?: string;
           reviewed_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      revenue_entries: {
+        Row: {
+          id: string;
+          month: string;
+          source: string;
+          amount: number;
+          notes: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          month: string;
+          source: string;
+          amount: number;
+          notes?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          month?: string;
+          source?: string;
+          amount?: number;
+          notes?: string | null;
           created_at?: string;
         };
         Relationships: [];

@@ -88,6 +88,13 @@ export function UserMenu() {
           >
             Saved Robots
           </Link>
+          <Link
+            href="/account/billing"
+            onClick={() => setOpen(false)}
+            className="block px-4 py-2 text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
+          >
+            Billing
+          </Link>
           <button
             onClick={handleSignOut}
             className="block w-full border-t border-border px-4 py-2 text-left text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
