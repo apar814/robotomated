@@ -11,6 +11,7 @@ import { CommunityReviewCard } from "@/components/reviews/community-review-card"
 import { CommunityReviewForm } from "@/components/reviews/community-review-form";
 import { ScoreBreakdownChart } from "@/components/reviews/score-breakdown-chart";
 import { AskAiButton } from "@/components/advisor/ask-ai-button";
+import { SaveRobotButton } from "@/components/auth/save-robot-button";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 
 // ---------------------------------------------------------------------------
@@ -221,7 +222,10 @@ export default async function RobotDetailPage({ params }: Props) {
             <div className="flex-1">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm text-muted">{mfr?.name}</p>
+                  <div className="flex items-center gap-3">
+                    <p className="text-sm text-muted">{mfr?.name}</p>
+                    <SaveRobotButton robotId={robot.id} />
+                  </div>
                   <h1 className="text-3xl font-bold sm:text-4xl">{robot.name}</h1>
                   {robot.model_number && (
                     <p className="mt-1 font-mono text-xs text-muted">Model: {robot.model_number}</p>

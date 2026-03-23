@@ -361,6 +361,42 @@ export interface Database {
           }
         ];
       };
+      user_saved_robots: {
+        Row: {
+          id: string;
+          user_id: string;
+          robot_id: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          robot_id: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          robot_id?: string;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_saved_robots_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "user_saved_robots_robot_id_fkey";
+            columns: ["robot_id"];
+            isOneToOne: false;
+            referencedRelation: "robots";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       newsletter_subscribers: {
         Row: {
           id: string;

@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { UserMenu } from "@/components/auth/user-menu";
 
 const navLinks = [
   { href: "/explore", label: "Explore" },
   { href: "/reviews", label: "Reviews" },
   { href: "/advisor", label: "Advisor" },
   { href: "/learn", label: "Learn" },
-  { href: "/market", label: "Marketplace" },
 ] as const;
 
 export function Header() {
@@ -37,35 +37,30 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-lg p-2 text-muted hover:text-foreground md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
+        {/* Auth + Mobile toggle */}
+        <div className="flex items-center gap-3">
+          <UserMenu />
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-muted hover:text-foreground md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
-            {mobileOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            )}
-          </svg>
-        </button>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+            >
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile nav */}
