@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <span className="font-display text-lg font-bold tracking-tight">
-              <span className="text-glow">R</span>obo<span className="text-blue">tomated</span>
+              ROBOT<span className="opacity-65">O</span><span className="opacity-45">MATED</span>
             </span>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
               Find, compare, and buy the right robot for any job.

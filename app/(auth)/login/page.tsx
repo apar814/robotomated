@@ -68,7 +68,7 @@ function LoginForm() {
     <div className="mx-auto max-w-md px-4 py-20">
       <div className="text-center">
         <Link href="/" className="text-2xl font-bold tracking-tight">
-          robo<span className="text-blue">tomated</span>
+          ROBOT<span className="opacity-65">O</span><span className="opacity-45">MATED</span>
         </Link>
         <h1 className="mt-6 text-xl font-bold">Sign in to your account</h1>
         <p className="mt-2 text-sm text-muted">

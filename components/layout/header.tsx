@@ -40,7 +40,7 @@ export function Header() {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-lg font-bold tracking-tight">
-              <span className="text-glow">R</span>obo<span className="text-blue">tomated</span>
+              ROBOT<span className="opacity-65">O</span><span className="opacity-45">MATED</span>
             </span>
           </Link>
 
