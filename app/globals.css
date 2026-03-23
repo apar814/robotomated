@@ -124,6 +124,18 @@
 .animate-scroll { animation: scroll 40s linear infinite; }
 .animate-scroll:hover { animation-play-state: paused; }
 
+/* ── News ticker vertical scroll ── */
+@keyframes ticker-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.news-ticker {
+  animation: ticker-scroll 40s linear infinite;
+}
+.news-ticker:hover {
+  animation-play-state: paused;
+}
+
 /* ── Page transition ── */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
@@ -308,7 +320,8 @@
   .animate-scan, .animate-scroll,
   .hero-bridge-o, .hero-arm-move, .hero-gripper-action, .hero-gap-pulse,
   .hero-text-right, .hero-circuit-lines,
-  .hero-connect-left, .hero-connect-right, .hero-place-pulse {
+  .hero-connect-left, .hero-connect-right, .hero-place-pulse,
+  .news-ticker {
     animation: none !important;
   }
 }

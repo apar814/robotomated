@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import { TrustedBy } from "@/components/home/trusted-by";
 import { HeroAnimation } from "@/components/home/hero-animation";
+import { NewsTicker } from "@/components/home/news-ticker";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -69,10 +70,13 @@ export default async function HomePage() {
         <div className="pointer-events-none absolute -left-60 top-20 h-96 w-96 rounded-full bg-blue opacity-[0.05] blur-[120px]" />
         <div className="pointer-events-none absolute -right-60 top-40 h-96 w-96 rounded-full bg-violet opacity-[0.05] blur-[120px]" />
 
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
-        {/* Robot arm — hidden on mobile, shown on desktop right side */}
-        <div className="hidden lg:order-2 lg:block lg:flex-1">
-          <HeroAnimation />
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-8">
+        {/* Right side: wordmark + news ticker — hidden on mobile */}
+        <div className="hidden gap-6 lg:order-2 lg:flex lg:flex-1 lg:flex-col xl:flex-row xl:items-start">
+          <div className="flex-1">
+            <HeroAnimation />
+          </div>
+          <NewsTicker />
         </div>
 
         <div className="text-center lg:order-1 lg:max-w-xl lg:text-left">
