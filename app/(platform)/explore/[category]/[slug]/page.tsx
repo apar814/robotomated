@@ -4,6 +4,8 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
 import { PriceChart } from "@/components/robots/price-chart";
+import { PriceComparison } from "@/components/commerce/price-comparison";
+import { AffiliateDisclosureInline } from "@/components/commerce/affiliate-disclosure";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { ProductSchema, ReviewSchema } from "@/components/seo/json-ld";
 import { ExpertReviewCard } from "@/components/reviews/expert-review-card";
@@ -364,6 +366,25 @@ export default async function RobotDetailPage({ params }: Props) {
             </div>
           )}
           <CommunityReviewForm robotId={robot.id} robotName={robot.name} />
+        </div>
+      </section>
+
+      {/* ── Where to Buy ── */}
+      <section className="border-b border-border px-4 py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex items-center justify-between">
+            <h2 className="mb-6 text-xl font-bold">Where to Buy</h2>
+            <Link href={`/best-price/${robot.slug}`} className="mb-6 text-sm text-blue hover:underline">
+              Full price comparison &rarr;
+            </Link>
+          </div>
+          <PriceComparison
+            robotSlug={robot.slug}
+            prices={(priceHistory || []).map((p) => ({ retailer: p.retailer, price: p.price, currency: "USD" }))}
+            affiliateUrl={robot.affiliate_url}
+            manufacturerWebsite={mfr?.website || null}
+          />
+          <AffiliateDisclosureInline />
         </div>
       </section>
 

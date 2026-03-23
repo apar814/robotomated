@@ -397,6 +397,82 @@ export interface Database {
           }
         ];
       };
+      affiliate_clicks: {
+        Row: {
+          id: string;
+          robot_id: string;
+          retailer: string;
+          user_id: string | null;
+          session_id: string | null;
+          referrer: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          robot_id: string;
+          retailer: string;
+          user_id?: string | null;
+          session_id?: string | null;
+          referrer?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          robot_id?: string;
+          retailer?: string;
+          user_id?: string | null;
+          session_id?: string | null;
+          referrer?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "affiliate_clicks_robot_id_fkey";
+            columns: ["robot_id"];
+            isOneToOne: false;
+            referencedRelation: "robots";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      price_alerts: {
+        Row: {
+          id: string;
+          robot_id: string;
+          email: string;
+          target_price: number;
+          active: boolean;
+          triggered_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          robot_id: string;
+          email: string;
+          target_price: number;
+          active?: boolean;
+          triggered_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          robot_id?: string;
+          email?: string;
+          target_price?: number;
+          active?: boolean;
+          triggered_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "price_alerts_robot_id_fkey";
+            columns: ["robot_id"];
+            isOneToOne: false;
+            referencedRelation: "robots";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       newsletter_subscribers: {
         Row: {
           id: string;
