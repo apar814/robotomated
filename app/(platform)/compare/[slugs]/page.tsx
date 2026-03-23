@@ -36,7 +36,12 @@ function parseSlugs(slugs: string): [string, string] | null {
   return [parts[0], parts[1]];
 }
 
+// ISR: regenerate every hour, render on-demand for uncached comparisons
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
+  // Only pre-render top 5 robot comparisons (10 combos) to reduce build memory
   const supabase = createServerClient();
   const { data } = await supabase
     .from("robots")
@@ -44,7 +49,7 @@ export async function generateStaticParams() {
     .eq("status", "active")
     .not("robo_score", "is", null)
     .order("robo_score", { ascending: false, nullsFirst: false })
-    .limit(10)
+    .limit(5)
     .returns<{ slug: string; robo_score: number }[]>();
 
   const robots = data || [];

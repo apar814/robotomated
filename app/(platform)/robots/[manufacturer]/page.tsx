@@ -30,11 +30,20 @@ interface MfrRobot {
   robot_categories: { slug: string; name: string } | null;
 }
 
+// ISR: regenerate every hour, render on-demand for uncached pages
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 interface Props { params: Promise<{ manufacturer: string }> }
 
 export async function generateStaticParams() {
+  // Only pre-render top manufacturers at build time to reduce memory usage
   const supabase = createServerClient();
-  const { data } = await supabase.from("manufacturers").select("slug").returns<{ slug: string }[]>();
+  const { data: robots } = await supabase.from("robots").select("manufacturer_id").eq("status", "active");
+  const counts: Record<string, number> = {};
+  (robots || []).forEach((r) => { counts[r.manufacturer_id] = (counts[r.manufacturer_id] || 0) + 1; });
+  const topIds = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([id]) => id);
+  const { data } = await supabase.from("manufacturers").select("slug").in("id", topIds).returns<{ slug: string }[]>();
   return (data || []).map((m) => ({ manufacturer: m.slug }));
 }
 
