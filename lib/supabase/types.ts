@@ -473,6 +473,48 @@ export interface Database {
           }
         ];
       };
+      manufacturer_submissions: {
+        Row: {
+          id: string;
+          company_name: string;
+          contact_email: string;
+          robot_name: string;
+          model_number: string | null;
+          product_url: string | null;
+          specs: Json;
+          notes: string | null;
+          status: string;
+          reviewed_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          company_name: string;
+          contact_email: string;
+          robot_name: string;
+          model_number?: string | null;
+          product_url?: string | null;
+          specs?: Json;
+          notes?: string | null;
+          status?: string;
+          reviewed_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company_name?: string;
+          contact_email?: string;
+          robot_name?: string;
+          model_number?: string | null;
+          product_url?: string | null;
+          specs?: Json;
+          notes?: string | null;
+          status?: string;
+          reviewed_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       newsletter_subscribers: {
         Row: {
           id: string;
