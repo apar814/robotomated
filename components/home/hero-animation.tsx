@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
  * "The Placement" — A robotic arm descends carrying the bridge "O"
  * and places it into the gap in ROBOT_MATED, completing the wordmark.
  *
- * Bug fixes:
- * - viewBox widened to 660px so all 11 letters fit
- * - Single O element (not two), starts above at opacity 0, descends with arm
- * - fontSize reduced to 44 with tighter spacing to fit in viewBox
+ * Fix: uses a single <text> element for "ROBOTOMATED" so the browser
+ * handles character spacing correctly. The 6th letter "O" is a <tspan>
+ * that starts dim and brightens when the arm places it.
  */
 export function HeroAnimation() {
   const [reduced, setReduced] = useState(false);
@@ -26,14 +25,12 @@ export function HeroAnimation() {
     );
   }
 
-  // Letter metrics: fontSize=44, Syne font ~26px per char with letterSpacing=2 → ~28px
-  // ROBOT = 5 chars @ x=60 → ends at ~60 + 5*28 = 200
-  // Bridge O at x=200 → ends at ~228
-  // MATED = 5 chars starting at x=228
   const fontSize = 44;
-  const oX = 200; // x position of the bridge O — immediately after ROBOT
   const oY = 150; // baseline y
-  const oCenterY = 135; // vertical center of the O for circuits/pulses
+  const oCenterY = 135;
+  // Approximate center of the 6th char for arm positioning
+  // 5 chars before O, each ~28px → O center ≈ 60 + 5*28 + 14 = 214
+  const armX = 214;
 
   return (
     <div className="relative flex h-[400px] w-full max-w-[600px] items-center justify-center overflow-hidden">
@@ -47,8 +44,7 @@ export function HeroAnimation() {
           </linearGradient>
         </defs>
 
-        {/* ── STATIC WORDMARK PARTS ── */}
-        {/* "ROBOT" — always full opacity */}
+        {/* ── SINGLE WORDMARK — browser handles all letter spacing ── */}
         <text
           x="60" y={oY}
           fill="#F5F0E6"
@@ -57,70 +53,44 @@ export function HeroAnimation() {
           fontWeight="800"
           letterSpacing="2"
         >
-          ROBOT
+          ROBOT<tspan className="hero-bridge-o">O</tspan><tspan className="hero-text-right">MATED</tspan>
         </text>
 
-        {/* "MATED" — starts dim, brightens on O placement */}
-        <text
-          x="228" y={oY}
-          className="hero-text-right"
-          fill="#F5F0E6"
-          fontSize={fontSize}
-          fontFamily="var(--font-display), system-ui"
-          fontWeight="800"
-          letterSpacing="2"
-        >
-          MATED
-        </text>
+        {/* Gap glow pulse — pulses before O arrives */}
+        <circle cx={armX} cy={oCenterY} r="3" fill="#C8A84E" className="hero-gap-pulse" />
 
-        {/* Gap glow pulse — pulses in the gap before O arrives */}
-        <circle cx={oX + 14} cy={oCenterY} r="3" fill="#C8A84E" className="hero-gap-pulse" />
-
-        {/* ── THE BRIDGE O — single element, animated from above into position ── */}
-        {/* This is the ONLY O. It starts at translateY(-120) opacity 0, descends, and stays. */}
-        <g className="hero-o-placement" style={{ transformOrigin: `${oX + 14}px ${oY}px` }}>
-          <text
-            x={oX} y={oY}
-            fill="#F5F0E6"
-            fontSize={fontSize}
-            fontFamily="var(--font-display), system-ui"
-            fontWeight="800"
-          >
-            O
-          </text>
-          {/* Circuit crosshair inside the O — appears on placement */}
-          <line x1={oX + 4} y1={oCenterY} x2={oX + 24} y2={oCenterY} stroke="#C8A84E" strokeWidth="0.8" className="hero-circuit-lines" />
-          <line x1={oX + 14} y1={oCenterY - 12} x2={oX + 14} y2={oCenterY + 12} stroke="#C8A84E" strokeWidth="0.8" className="hero-circuit-lines" />
-          <circle cx={oX + 14} cy={oCenterY} r="1.5" fill="#C8A84E" className="hero-circuit-lines" />
-        </g>
+        {/* Circuit crosshair — appears on placement */}
+        <line x1={armX - 10} y1={oCenterY} x2={armX + 10} y2={oCenterY} stroke="#C8A84E" strokeWidth="0.8" className="hero-circuit-lines" />
+        <line x1={armX} y1={oCenterY - 12} x2={armX} y2={oCenterY + 12} stroke="#C8A84E" strokeWidth="0.8" className="hero-circuit-lines" />
+        <circle cx={armX} cy={oCenterY} r="1.5" fill="#C8A84E" className="hero-circuit-lines" />
 
         {/* Gold connection lines — zip on placement */}
-        <line x1="170" y1={oCenterY} x2={oX + 2} y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-left" strokeDasharray="34" strokeDashoffset="34" />
-        <line x1={oX + 26} y1={oCenterY} x2="260" y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-right" strokeDasharray="34" strokeDashoffset="34" />
+        <line x1={armX - 40} y1={oCenterY} x2={armX - 12} y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-left" strokeDasharray="30" strokeDashoffset="30" />
+        <line x1={armX + 12} y1={oCenterY} x2={armX + 40} y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-right" strokeDasharray="30" strokeDashoffset="30" />
 
         {/* Gold pulse ring on placement */}
-        <circle cx={oX + 14} cy={oCenterY} fill="none" stroke="#C8A84E" strokeWidth="1" className="hero-place-pulse" r="3" opacity="0" />
+        <circle cx={armX} cy={oCenterY} fill="none" stroke="#C8A84E" strokeWidth="1" className="hero-place-pulse" r="3" opacity="0" />
 
-        {/* ── ROBOTIC ARM — descends with the O, retracts after ── */}
-        <g className="hero-arm-move" style={{ transformOrigin: `${oX + 14}px 0px` }}>
+        {/* ── ROBOTIC ARM — descends, holds, retracts ── */}
+        <g className="hero-arm-move" style={{ transformOrigin: `${armX}px 0px` }}>
           {/* Shoulder mount */}
-          <rect x={oX + 6} y="-10" width="16" height="20" rx="3" fill="#1A2235" stroke="#C8A84E" strokeWidth="0.5" opacity="0.6" />
+          <rect x={armX - 8} y="-10" width="16" height="20" rx="3" fill="#1A2235" stroke="#C8A84E" strokeWidth="0.5" opacity="0.6" />
           {/* Upper arm */}
-          <rect x={oX + 10} y="8" width="8" height="50" rx="4" fill="url(#armGrad)" />
-          <line x1={oX + 14} y1="12" x2={oX + 14} y2="54" stroke="#C8A84E" strokeWidth="0.6" opacity="0.3" />
+          <rect x={armX - 4} y="8" width="8" height="50" rx="4" fill="url(#armGrad)" />
+          <line x1={armX} y1="12" x2={armX} y2="54" stroke="#C8A84E" strokeWidth="0.6" opacity="0.3" />
           {/* Elbow joint */}
-          <circle cx={oX + 14} cy="58" r="6" fill="#1A2235" stroke="#F5F0E6" strokeWidth="1" opacity="0.8" />
-          <circle cx={oX + 14} cy="58" r="2" fill="#C8A84E" opacity="0.6" />
+          <circle cx={armX} cy="58" r="6" fill="#1A2235" stroke="#F5F0E6" strokeWidth="1" opacity="0.8" />
+          <circle cx={armX} cy="58" r="2" fill="#C8A84E" opacity="0.6" />
           {/* Forearm */}
-          <rect x={oX + 10} y="62" width="8" height="40" rx="4" fill="url(#armGrad)" />
-          <line x1={oX + 14} y1="66" x2={oX + 14} y2="98" stroke="#C8A84E" strokeWidth="0.6" opacity="0.3" />
+          <rect x={armX - 4} y="62" width="8" height="40" rx="4" fill="url(#armGrad)" />
+          <line x1={armX} y1="66" x2={armX} y2="98" stroke="#C8A84E" strokeWidth="0.6" opacity="0.3" />
           {/* Wrist */}
-          <circle cx={oX + 14} cy="102" r="5" fill="#1A2235" stroke="#F5F0E6" strokeWidth="1" opacity="0.8" />
-          <circle cx={oX + 14} cy="102" r="1.5" fill="#C8A84E" opacity="0.6" />
+          <circle cx={armX} cy="102" r="5" fill="#1A2235" stroke="#F5F0E6" strokeWidth="1" opacity="0.8" />
+          <circle cx={armX} cy="102" r="1.5" fill="#C8A84E" opacity="0.6" />
           {/* Gripper */}
-          <g className="hero-gripper-action" style={{ transformOrigin: `${oX + 14}px 106px` }}>
-            <path d={`M${oX + 9},106 L${oX + 3},118 L${oX + 6},120 L${oX + 12},108`} fill="url(#armGrad)" stroke="#F5F0E6" strokeWidth="0.3" opacity="0.8" />
-            <path d={`M${oX + 19},106 L${oX + 25},118 L${oX + 22},120 L${oX + 16},108`} fill="url(#armGrad)" stroke="#F5F0E6" strokeWidth="0.3" opacity="0.8" />
+          <g className="hero-gripper-action" style={{ transformOrigin: `${armX}px 106px` }}>
+            <path d={`M${armX - 5},106 L${armX - 11},118 L${armX - 8},120 L${armX - 2},108`} fill="url(#armGrad)" stroke="#F5F0E6" strokeWidth="0.3" opacity="0.8" />
+            <path d={`M${armX + 5},106 L${armX + 11},118 L${armX + 8},120 L${armX + 2},108`} fill="url(#armGrad)" stroke="#F5F0E6" strokeWidth="0.3" opacity="0.8" />
           </g>
         </g>
 
@@ -137,17 +107,8 @@ function StaticWordmark() {
   return (
     <svg viewBox="0 0 660 200" className="w-full max-w-[500px]" xmlns="http://www.w3.org/2000/svg">
       <text x="60" y="130" fill="#F5F0E6" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800" letterSpacing="2">
-        ROBOT
+        ROBOTOMATED
       </text>
-      <text x="200" y="130" fill="#F5F0E6" opacity="0.65" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800">
-        O
-      </text>
-      <text x="228" y="130" fill="#F5F0E6" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800" letterSpacing="2">
-        MATED
-      </text>
-      <line x1="204" y1="115" x2="224" y2="115" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
-      <line x1="214" y1="103" x2="214" y2="127" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
-      <circle cx="214" cy="115" r="1.5" fill="#C8A84E" opacity="0.4" />
     </svg>
   );
 }

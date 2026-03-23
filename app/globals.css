@@ -144,15 +144,14 @@
 }
 
 /* ── Hero "The Placement" animation ── */
-/* The O: starts above (translateY -120) at opacity 0, descends with arm, stays, fades before loop */
-@keyframes o-placement {
-  0%    { transform: translateY(-120px); opacity: 0; }
-  10%   { transform: translateY(-120px); opacity: 0.7; }
-  55%   { transform: translateY(-8px); opacity: 0.85; }
-  70%   { transform: translateY(0px); opacity: 1; }
-  88%   { transform: translateY(0px); opacity: 1; }
-  95%   { transform: translateY(0px); opacity: 0; }
-  100%  { transform: translateY(-120px); opacity: 0; }
+/* Bridge O (tspan): starts dim, brightens when arm places it */
+@keyframes bridge-o-reveal {
+  0%    { opacity: 0.15; }
+  65%   { opacity: 0.15; }
+  75%   { opacity: 1; }
+  88%   { opacity: 1; }
+  95%   { opacity: 0.15; }
+  100%  { opacity: 0.15; }
 }
 
 /* The arm: descends with O, holds, retracts */
@@ -206,12 +205,12 @@
 
 /* Connection lines: zip from O to ROBOT and MATED */
 @keyframes connect-zip {
-  0%    { stroke-dashoffset: 34; opacity: 0; }
-  72%   { stroke-dashoffset: 34; opacity: 0; }
+  0%    { stroke-dashoffset: 30; opacity: 0; }
+  72%   { stroke-dashoffset: 30; opacity: 0; }
   78%   { stroke-dashoffset: 0; opacity: 0.4; }
   88%   { stroke-dashoffset: 0; opacity: 0.4; }
   95%   { stroke-dashoffset: 0; opacity: 0; }
-  100%  { stroke-dashoffset: 34; opacity: 0; }
+  100%  { stroke-dashoffset: 30; opacity: 0; }
 }
 
 /* Gold pulse ring at moment of placement */
@@ -223,8 +222,8 @@
   100%  { r: 40; opacity: 0; }
 }
 
-.hero-o-placement {
-  animation: o-placement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
+.hero-bridge-o {
+  animation: bridge-o-reveal 5s ease-in-out infinite;
 }
 .hero-arm-move {
   animation: arm-movement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
@@ -307,7 +306,7 @@
   .animate-arm-base, .animate-arm-mid, .animate-gripper,
   .animate-float-slow, .animate-float-medium, .animate-float-fast,
   .animate-scan, .animate-scroll,
-  .hero-o-placement, .hero-arm-move, .hero-gripper-action, .hero-gap-pulse,
+  .hero-bridge-o, .hero-arm-move, .hero-gripper-action, .hero-gap-pulse,
   .hero-text-right, .hero-circuit-lines,
   .hero-connect-left, .hero-connect-right, .hero-place-pulse {
     animation: none !important;
