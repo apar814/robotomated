@@ -1,6 +1,7 @@
 // Re-export all types from the canonical source in lib/supabase/types.ts
 export type {
   Database,
+  Json,
   Robot,
   Review,
   RoboScoreBreakdown,
