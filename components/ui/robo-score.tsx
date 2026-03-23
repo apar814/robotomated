@@ -44,7 +44,7 @@ export function RoboScoreRing({ score, size = 120 }: { score: number; size?: num
           fill="none"
           stroke="currentColor"
           strokeWidth={5}
-          className="text-white/[0.04]"
+          className="text-black/[0.06]"
         />
         <circle
           cx={size / 2}
@@ -75,7 +75,7 @@ export function ScoreBar({ label, score, weight }: { label: string; score: numbe
   return (
     <div className="flex items-center gap-3">
       <div className="w-24 shrink-0 text-right text-xs text-muted">{label}</div>
-      <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.04]">
+      <div className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-black/[0.06]">
         <div
           className={cn("absolute inset-y-0 left-0 rounded-full transition-[width] duration-700 ease-out", c.bg)}
           style={{ width: `${score}%`, opacity: 0.85 }}

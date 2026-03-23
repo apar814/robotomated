@@ -2,10 +2,10 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Core — Aether-inspired deep dark palette */
+  /* Core — Light palette for main content, dark sections override */
   --color-navy: #050A15;
-  --color-navy-light: #0A0F1E;
-  --color-navy-lighter: #0D1321;
+  --color-navy-light: #FFFFFF;
+  --color-navy-lighter: #F3F2EF;
   --color-blue: #00C2FF;
   --color-blue-dim: #00C2FF33;
   --color-violet: #7B2FFF;
@@ -19,14 +19,14 @@
   --color-cyan-glow: #00F5FF;
   --color-plasma: #BF5AF2;
   --color-ice: #E0F7FF;
-  --color-steel: #1A2235;
+  --color-steel: #E8E6E1;
   --color-carbon: #060B16;
 
-  /* Semantic */
-  --color-background: #050A15;
-  --color-foreground: rgba(255, 255, 255, 0.95);
-  --color-muted: rgba(255, 255, 255, 0.45);
-  --color-border: rgba(255, 255, 255, 0.08);
+  /* Semantic — light body, dark header/hero/footer */
+  --color-background: #FAF9F6;
+  --color-foreground: #14171F;
+  --color-muted: rgba(107, 114, 128, 1);
+  --color-border: rgba(0, 0, 0, 0.08);
 
   /* Fonts */
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
@@ -34,36 +34,56 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-/* ── Glass card system ── */
+/* ── Card system ── */
 .glass {
-  background: rgba(10, 15, 30, 0.6);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .glass-hover:hover {
-  border-color: rgba(0, 194, 255, 0.2);
-  box-shadow: 0 0 30px rgba(0, 194, 255, 0.05);
+  border-color: rgba(0, 194, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 194, 255, 0.08);
 }
 
 .glass-card {
-  background: rgba(10, 15, 30, 0.6);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
+  border-color: rgba(0, 194, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 194, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Dark section cards (hero, header, footer) */
+.dark-section .glass {
+  background: rgba(10, 15, 30, 0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark-section .glass-hover:hover {
   border-color: rgba(0, 194, 255, 0.2);
   box-shadow: 0 0 30px rgba(0, 194, 255, 0.05);
-  transform: translateY(-2px);
 }
 
 /* ── Background patterns ── */
 .bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dark section patterns */
+.dark-section .bg-grid,
+.dark-section.bg-grid {
   background-image:
     linear-gradient(rgba(0, 194, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 194, 255, 0.02) 1px, transparent 1px);
@@ -116,7 +136,7 @@
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0,194,255,0.03) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,194,255,0.02) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
@@ -127,10 +147,10 @@
 /* The O: starts above (translateY -120) at opacity 0, descends with arm, stays, fades before loop */
 @keyframes o-placement {
   0%    { transform: translateY(-120px); opacity: 0; }
-  10%   { transform: translateY(-120px); opacity: 0.65; }
-  55%   { transform: translateY(-8px); opacity: 0.65; }
-  70%   { transform: translateY(0px); opacity: 0.65; }
-  88%   { transform: translateY(0px); opacity: 0.65; }
+  10%   { transform: translateY(-120px); opacity: 0.7; }
+  55%   { transform: translateY(-8px); opacity: 0.85; }
+  70%   { transform: translateY(0px); opacity: 1; }
+  88%   { transform: translateY(0px); opacity: 1; }
   95%   { transform: translateY(0px); opacity: 0; }
   100%  { transform: translateY(-120px); opacity: 0; }
 }
@@ -186,12 +206,12 @@
 
 /* Connection lines: zip from O to ROBOT and MATED */
 @keyframes connect-zip {
-  0%    { stroke-dashoffset: 38; opacity: 0; }
-  72%   { stroke-dashoffset: 38; opacity: 0; }
+  0%    { stroke-dashoffset: 34; opacity: 0; }
+  72%   { stroke-dashoffset: 34; opacity: 0; }
   78%   { stroke-dashoffset: 0; opacity: 0.4; }
   88%   { stroke-dashoffset: 0; opacity: 0.4; }
   95%   { stroke-dashoffset: 0; opacity: 0; }
-  100%  { stroke-dashoffset: 38; opacity: 0; }
+  100%  { stroke-dashoffset: 34; opacity: 0; }
 }
 
 /* Gold pulse ring at moment of placement */
@@ -295,7 +315,7 @@
 }
 
 @layer base {
-  html { color-scheme: dark; }
+  html { color-scheme: light; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -303,4 +323,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* Dark sections: header, hero, footer */
+.dark-section {
+  background-color: #050A15;
+  color: rgba(255, 255, 255, 0.95);
+  --color-foreground: rgba(255, 255, 255, 0.95);
+  --color-muted: rgba(255, 255, 255, 0.45);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-navy-light: #0A0F1E;
+  --color-navy-lighter: #0D1321;
+  --color-steel: #1A2235;
 }

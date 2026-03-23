@@ -36,7 +36,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-navy/60 backdrop-blur-xl">
+      <header className="dark-section fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-navy/60 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-lg font-bold tracking-tight">
@@ -51,7 +51,7 @@ export function Header() {
                 <svg className={`h-3 w-3 transition-transform ${catOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </button>
               {catOpen && (
-                <div className="glass-card absolute left-1/2 top-12 z-50 w-[480px] -translate-x-1/2 p-4 shadow-2xl">
+                <div className="absolute left-1/2 top-12 z-50 w-[480px] -translate-x-1/2 rounded-2xl border border-white/[0.06] bg-[#0A0F1E] p-4 shadow-2xl backdrop-blur-xl">
                   <div className="grid grid-cols-3 gap-1">
                     {categories.map((cat) => (
                       <Link key={cat.slug} href={`/explore/${cat.slug}`} onClick={() => setCatOpen(false)} className="group rounded-xl p-2.5 transition-all hover:bg-white/[0.04]">
@@ -90,7 +90,7 @@ export function Header() {
         </div>
 
         {mobileOpen && (
-          <nav className="glass border-t border-white/[0.06] px-4 pb-4 pt-2 lg:hidden">
+          <nav className="border-t border-white/[0.06] bg-[#0A0F1E] px-4 pb-4 pt-2 lg:hidden">
             <div className="mb-2 grid grid-cols-3 gap-1">
               {categories.slice(0, 6).map((cat) => (
                 <Link key={cat.slug} href={`/explore/${cat.slug}`} onClick={() => setMobileOpen(false)} className="rounded-lg px-2 py-2 text-center text-[11px] text-white/50 hover:bg-white/[0.04] hover:text-white">{cat.name.split(" ")[0]}</Link>

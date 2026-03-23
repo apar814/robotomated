@@ -26,11 +26,12 @@ export function HeroAnimation() {
     );
   }
 
-  // Letter metrics: fontSize=44, each char ~30px wide, total ~330px for 11 chars
-  // ROBOT = 5 chars @ x=60, MATED = 5 chars starting after the O gap
-  // O gap center: ~210px from "ROBOT" end
+  // Letter metrics: fontSize=44, Syne font ~26px per char with letterSpacing=2 → ~28px
+  // ROBOT = 5 chars @ x=60 → ends at ~60 + 5*28 = 200
+  // Bridge O at x=200 → ends at ~228
+  // MATED = 5 chars starting at x=228
   const fontSize = 44;
-  const oX = 206; // x position of the bridge O in the wordmark
+  const oX = 200; // x position of the bridge O — immediately after ROBOT
   const oY = 150; // baseline y
   const oCenterY = 135; // vertical center of the O for circuits/pulses
 
@@ -61,7 +62,7 @@ export function HeroAnimation() {
 
         {/* "MATED" — starts dim, brightens on O placement */}
         <text
-          x="240" y={oY}
+          x="228" y={oY}
           className="hero-text-right"
           fill="#F5F0E6"
           fontSize={fontSize}
@@ -94,8 +95,8 @@ export function HeroAnimation() {
         </g>
 
         {/* Gold connection lines — zip on placement */}
-        <line x1="170" y1={oCenterY} x2={oX + 2} y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-left" strokeDasharray="38" strokeDashoffset="38" />
-        <line x1={oX + 26} y1={oCenterY} x2="270" y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-right" strokeDasharray="38" strokeDashoffset="38" />
+        <line x1="170" y1={oCenterY} x2={oX + 2} y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-left" strokeDasharray="34" strokeDashoffset="34" />
+        <line x1={oX + 26} y1={oCenterY} x2="260" y2={oCenterY} stroke="#C8A84E" strokeWidth="1" className="hero-connect-right" strokeDasharray="34" strokeDashoffset="34" />
 
         {/* Gold pulse ring on placement */}
         <circle cx={oX + 14} cy={oCenterY} fill="none" stroke="#C8A84E" strokeWidth="1" className="hero-place-pulse" r="3" opacity="0" />
@@ -138,15 +139,15 @@ function StaticWordmark() {
       <text x="60" y="130" fill="#F5F0E6" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800" letterSpacing="2">
         ROBOT
       </text>
-      <text x="206" y="130" fill="#F5F0E6" opacity="0.65" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800">
+      <text x="200" y="130" fill="#F5F0E6" opacity="0.65" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800">
         O
       </text>
-      <text x="240" y="130" fill="#F5F0E6" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800" letterSpacing="2">
+      <text x="228" y="130" fill="#F5F0E6" fontSize="44" fontFamily="var(--font-display), system-ui" fontWeight="800" letterSpacing="2">
         MATED
       </text>
-      <line x1="210" y1="115" x2="230" y2="115" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
-      <line x1="220" y1="103" x2="220" y2="127" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
-      <circle cx="220" cy="115" r="1.5" fill="#C8A84E" opacity="0.4" />
+      <line x1="204" y1="115" x2="224" y2="115" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
+      <line x1="214" y1="103" x2="214" y2="127" stroke="#C8A84E" strokeWidth="0.8" opacity="0.3" />
+      <circle cx="214" cy="115" r="1.5" fill="#C8A84E" opacity="0.4" />
     </svg>
   );
 }

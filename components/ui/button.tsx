@@ -4,9 +4,9 @@ import type { ButtonHTMLAttributes } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-blue text-navy hover:opacity-90",
-  secondary: "border border-border text-foreground hover:bg-navy-lighter",
-  ghost: "text-muted hover:text-foreground hover:bg-navy-lighter",
+  primary: "bg-blue text-white hover:opacity-90",
+  secondary: "border border-border text-foreground hover:bg-neutral-100",
+  ghost: "text-muted hover:text-foreground hover:bg-neutral-100",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
