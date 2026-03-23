@@ -2,10 +2,10 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Brand Colors */
+  /* Core Brand */
   --color-navy: #0A0F1E;
-  --color-navy-light: #141B2D;
-  --color-navy-lighter: #1E2A3E;
+  --color-navy-light: #111827;
+  --color-navy-lighter: #1A2235;
   --color-blue: #00C2FF;
   --color-blue-dim: #00C2FF33;
   --color-violet: #7B2FFF;
@@ -15,17 +15,89 @@
   --color-orange: #FF6B35;
   --color-orange-dim: #FF6B3533;
 
+  /* Futuristic additions */
+  --color-cyan-glow: #00F5FF;
+  --color-plasma: #BF5AF2;
+  --color-ice: #E0F7FF;
+  --color-steel: #2A3344;
+  --color-carbon: #0D1320;
+
   /* Semantic */
   --color-background: #0A0F1E;
   --color-foreground: #F0F2F5;
   --color-muted: #8892A4;
-  --color-border: #1E2A3E;
+  --color-border: #1A2235;
 
   /* Fonts */
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(17, 24, 39, 0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 194, 255, 0.1);
+}
+
+.glass-hover:hover {
+  border-color: rgba(0, 194, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 194, 255, 0.08);
+}
+
+/* ── Background patterns ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 194, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 194, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-mesh {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(123, 47, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(0, 229, 160, 0.05) 0%, transparent 50%);
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(0, 194, 255, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ── Text effects ── */
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 194, 255, 0.3), 0 0 40px rgba(0, 194, 255, 0.1);
+}
+
+/* ── HUD corners ── */
+.hud-corners {
+  position: relative;
+}
+.hud-corners::before,
+.hud-corners::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(0, 194, 255, 0.4);
+  border-style: solid;
+  pointer-events: none;
+}
+.hud-corners::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.hud-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* ── Animations ── */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -33,6 +105,57 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { border-color: rgba(0, 194, 255, 0.2); }
+  50% { border-color: rgba(0, 194, 255, 0.5); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.04), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes score-fill {
+  from { stroke-dashoffset: var(--circumference); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-shimmer,
+  .animate-fade-up {
+    animation: none;
+  }
+  .scan-line::after {
+    animation: none;
+  }
 }
 
 @layer base {

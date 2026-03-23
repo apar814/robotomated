@@ -7,12 +7,15 @@ interface RobotResult {
   name: string;
   robo_score: number | null;
   price_current: number | null;
+  price_msrp: number | null;
   description_short: string | null;
   status: string;
   category_id: string;
   manufacturer_id: string;
   year_released: number | null;
-  robot_categories: { slug: string } | null;
+  images: { url: string; alt: string }[] | null;
+  specs: Record<string, unknown> | null;
+  robot_categories: { slug: string; name: string } | null;
   manufacturers: { name: string } | null;
 }
 
@@ -33,7 +36,7 @@ export async function GET(request: NextRequest) {
 
   let query = supabase
     .from("robots")
-    .select("id, slug, name, robo_score, price_current, description_short, status, category_id, manufacturer_id, year_released, robot_categories(slug), manufacturers(name)", { count: "exact" });
+    .select("id, slug, name, robo_score, price_current, price_msrp, description_short, status, category_id, manufacturer_id, year_released, images, specs, robot_categories(slug, name), manufacturers(name)", { count: "exact" });
 
   if (search) {
     query = query.or(`name.ilike.%${search}%,description_short.ilike.%${search}%,model_number.ilike.%${search}%`);
@@ -94,17 +97,25 @@ export async function GET(request: NextRequest) {
     filtered = filtered.filter((r) => r.robot_categories !== null);
   }
 
-  const robots = filtered.map((r) => ({
-    id: r.id,
-    slug: r.slug,
-    name: r.name,
-    robo_score: r.robo_score,
-    price_current: r.price_current,
-    description_short: r.description_short,
-    status: r.status,
-    category_slug: (r.robot_categories as { slug: string } | null)?.slug || "",
-    manufacturer_name: (r.manufacturers as { name: string } | null)?.name || "",
-  }));
+  const robots = filtered.map((r) => {
+    const cat = r.robot_categories as { slug: string; name: string } | null;
+    return {
+      id: r.id,
+      slug: r.slug,
+      name: r.name,
+      robo_score: r.robo_score,
+      price_current: r.price_current,
+      price_msrp: (r as { price_msrp?: number | null }).price_msrp ?? null,
+      description_short: r.description_short,
+      status: r.status,
+      year_released: r.year_released,
+      category_slug: cat?.slug || "",
+      category_name: cat?.name || "",
+      manufacturer_name: (r.manufacturers as { name: string } | null)?.name || "",
+      image_url: Array.isArray(r.images) && r.images.length > 0 ? (r.images as { url: string }[])[0]?.url : null,
+      specs: r.specs || null,
+    };
+  });
 
   return NextResponse.json({
     robots,

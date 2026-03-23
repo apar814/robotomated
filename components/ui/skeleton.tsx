@@ -2,15 +2,15 @@ import { cn } from "@/lib/utils/cn";
 
 export function Skeleton({ className }: { className?: string }) {
   return (
-    <div className={cn("animate-pulse rounded-lg bg-navy-lighter", className)} />
+    <div className={cn("animate-shimmer rounded-lg bg-white/[0.03]", className)} />
   );
 }
 
 export function RobotCardSkeleton() {
   return (
-    <div className="rounded-xl border border-border bg-navy-light p-5">
-      <Skeleton className="mb-4 h-40 w-full rounded-t-xl" />
-      <Skeleton className="mb-2 h-3 w-16" />
+    <div className="glass rounded-xl p-5">
+      <Skeleton className="mb-4 h-40 w-full rounded-lg" />
+      <Skeleton className="mb-2 h-2 w-16" />
       <Skeleton className="mb-2 h-5 w-3/4" />
       <Skeleton className="mb-3 h-3 w-full" />
       <Skeleton className="h-3 w-2/3" />
@@ -20,8 +20,8 @@ export function RobotCardSkeleton() {
 
 export function ArticleCardSkeleton() {
   return (
-    <div className="rounded-xl border border-border bg-navy-light p-5">
-      <Skeleton className="mb-3 h-3 w-20" />
+    <div className="glass rounded-xl p-5">
+      <Skeleton className="mb-3 h-2 w-20" />
       <Skeleton className="mb-2 h-5 w-full" />
       <Skeleton className="mb-2 h-3 w-full" />
       <Skeleton className="h-3 w-1/2" />

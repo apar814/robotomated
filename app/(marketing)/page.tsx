@@ -1,232 +1,247 @@
 import Link from "next/link";
+import Image from "next/image";
 import { createServerClient } from "@/lib/supabase/server";
+import { cached } from "@/lib/cache/redis";
+import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { NewsletterForm } from "@/components/home/newsletter-form";
-import { Typewriter } from "@/components/home/typewriter";
-import { CategoryGrid } from "@/components/home/category-grid";
-import { FeaturedRobots } from "@/components/home/featured-robots";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
-  id: string;
-  slug: string;
-  name: string;
-  robo_score: number | null;
-  description_short: string | null;
-  images: unknown;
+  id: string; slug: string; name: string;
+  robo_score: number | null; price_current: number | null; price_msrp: number | null;
+  description_short: string | null; images: unknown; year_released: number | null;
   manufacturers: { name: string } | null;
+  robot_categories: { slug: string; name: string } | null;
 }
 
-async function getCategories() {
+const categoryImages: Record<string, string> = {
+  warehouse: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop",
+  manufacturing: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=500&h=300&fit=crop",
+  consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=300&fit=crop",
+  medical: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=300&fit=crop",
+  healthcare: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=500&h=300&fit=crop",
+  construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
+  agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&h=300&fit=crop",
+  delivery: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&h=300&fit=crop",
+  drone: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=300&fit=crop",
+  software: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
+};
+
+async function getData() {
   const supabase = createServerClient();
-  const { data: categories } = await supabase
-    .from("robot_categories")
-    .select("*")
-    .order("display_order")
-    .returns<RobotCategory[]>();
 
-  if (!categories) return [];
-
-  const { data: robots } = await supabase
-    .from("robots")
-    .select("category_id")
-    .returns<{ category_id: string }[]>();
-
-  const counts: Record<string, number> = {};
-  robots?.forEach((r) => {
-    counts[r.category_id] = (counts[r.category_id] || 0) + 1;
+  const categories = await cached<(RobotCategory & { robot_count: number })[]>("home:cats:v2", 3600, async () => {
+    const { data: cats } = await supabase.from("robot_categories").select("*").order("display_order").returns<RobotCategory[]>();
+    const { data: robots } = await supabase.from("robots").select("category_id").returns<{ category_id: string }[]>();
+    const counts: Record<string, number> = {};
+    robots?.forEach((r) => { counts[r.category_id] = (counts[r.category_id] || 0) + 1; });
+    return (cats || []).map((c) => ({ ...c, robot_count: counts[c.id] || 0 }));
   });
 
-  return categories.map((c) => ({
-    ...c,
-    robot_count: counts[c.id] || 0,
-  }));
+  const trending = await cached<FeaturedRobot[]>("home:trending", 1800, async () => {
+    const { data } = await supabase
+      .from("robots").select("id,slug,name,robo_score,price_current,price_msrp,description_short,images,year_released,manufacturers(name),robot_categories(slug,name)")
+      .eq("status", "active").not("robo_score", "is", null)
+      .order("robo_score", { ascending: false }).limit(8).returns<FeaturedRobot[]>();
+    return data || [];
+  });
+
+  const totalRobots = categories.reduce((s, c) => s + c.robot_count, 0);
+
+  return { categories, trending, totalRobots };
 }
 
-async function getFeaturedRobots() {
-  const supabase = createServerClient();
-  const { data } = await supabase
-    .from("robots")
-    .select("id, slug, name, manufacturer_id, robo_score, description_short, images, manufacturers(name)")
-    .eq("status", "active")
-    .not("robo_score", "is", null)
-    .order("robo_score", { ascending: false })
-    .limit(3)
-    .returns<FeaturedRobot[]>();
-
-  return data || [];
+function formatPrice(price: number): string {
+  if (price >= 1000000) return `$${(price / 1000000).toFixed(1)}M`;
+  return `$${price.toLocaleString()}`;
 }
 
 export default async function HomePage() {
-  const [categories, featuredRobots] = await Promise.all([
-    getCategories(),
-    getFeaturedRobots(),
-  ]);
+  const { categories, trending, totalRobots } = await getData();
 
   return (
-    <div className="flex flex-col items-center">
-      {/* ── Hero ── */}
-      <section className="relative flex w-full flex-col items-center overflow-hidden px-4 pb-24 pt-24 text-center sm:pt-32">
-        {/* Grid texture background */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(0,194,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        {/* Gradient orbs */}
-        <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-blue opacity-[0.07] blur-[100px]" />
-        <div className="pointer-events-none absolute -right-40 top-40 h-80 w-80 rounded-full bg-violet opacity-[0.07] blur-[100px]" />
+    <div className="flex flex-col">
+      {/* ── HERO: Search-first marketplace ── */}
+      <section className="bg-mesh bg-dots relative overflow-hidden px-4 pb-16 pt-20 sm:pt-28">
+        <div className="pointer-events-none absolute -left-60 top-20 h-96 w-96 rounded-full bg-blue opacity-[0.05] blur-[120px]" />
+        <div className="pointer-events-none absolute -right-60 top-40 h-96 w-96 rounded-full bg-violet opacity-[0.05] blur-[120px]" />
 
-        <h1 className="relative max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-          The Intelligence Layer for the{" "}
-          <span className="bg-gradient-to-r from-blue to-violet bg-clip-text text-transparent">
-            Robotics Era
-          </span>
-        </h1>
-        <p className="relative mt-6 max-w-2xl text-lg text-muted">
-          Find, compare, and buy the right robot for your home, business, or
-          facility — guided by AI.
-        </p>
-        <div className="relative mt-10 flex flex-col gap-4 sm:flex-row">
-          <Link
-            href="/advisor"
-            className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
-          >
-            Start with AI Advisor
-          </Link>
-          <Link
-            href="/robots"
-            className="rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-navy-lighter"
-          >
-            Browse All Robots
-          </Link>
-        </div>
+        <div className="mx-auto max-w-4xl text-center">
+          <ScrollReveal>
+            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Find the Right Robot
+            </h1>
+            <p className="mt-4 text-lg text-muted">
+              Compare {totalRobots}+ robots across {categories.length} categories. Real specs. Transparent scores. Best prices.
+            </p>
+          </ScrollReveal>
 
-        {/* Floating category cards */}
-        <div className="relative mt-16 flex gap-4 sm:gap-6">
-          {["Warehouse", "Healthcare", "Consumer"].map((label, i) => (
-            <div
-              key={label}
-              className="animate-float rounded-xl border border-border bg-navy-light/80 px-5 py-4 backdrop-blur-sm"
-              style={{ animationDelay: `${i * 0.3}s` }}
-            >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10">
-                <div className="h-5 w-5 rounded-sm bg-blue/60" />
-              </div>
-              <p className="text-sm font-medium">{label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Category Grid ── */}
-      <section className="w-full border-t border-border px-4 py-20">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-4 text-center text-2xl font-bold sm:text-3xl">
-            Explore by Category
-          </h2>
-          <p className="mb-12 text-center text-muted">
-            From factory floors to living rooms — find the robots that matter.
-          </p>
-          <CategoryGrid categories={categories} />
-        </div>
-      </section>
-
-      {/* ── Featured Reviews Strip ── */}
-      <section className="w-full border-t border-border px-4 py-20">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-4 text-center text-2xl font-bold sm:text-3xl">
-            Top-Rated Robots
-          </h2>
-          <p className="mb-12 text-center text-muted">
-            The highest-scoring robots across our transparent RoboScore system.
-          </p>
-          <FeaturedRobots robots={featuredRobots} />
-        </div>
-      </section>
-
-      {/* ── AI Advisor CTA ── */}
-      <section className="w-full px-4 py-10">
-        <div className="mx-auto max-w-6xl rounded-2xl border border-border bg-navy-light p-8 sm:p-12">
-          <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl">
-              <h2 className="text-2xl font-bold sm:text-3xl">
-                Not sure where to start?
-              </h2>
-              <p className="mt-3 text-muted">
-                Answer 3 questions. Get your perfect robot match.
-              </p>
-              <div className="mt-4 min-h-[2rem] text-sm">
-                <Typewriter />
-              </div>
-            </div>
-            <Link
-              href="/advisor"
-              className="shrink-0 rounded-lg bg-gradient-to-r from-blue to-violet px-8 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              Launch AI Advisor
+          {/* Search bar */}
+          <ScrollReveal delay={150}>
+            <Link href="/explore" className="mx-auto mt-8 flex max-w-2xl items-center gap-3 rounded-2xl border border-white/[0.08] bg-navy-light/80 px-5 py-4 text-left backdrop-blur-sm transition-all hover:border-blue/30 hover:shadow-[0_0_30px_rgba(0,194,255,0.06)]">
+              <svg className="h-5 w-5 shrink-0 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+              </svg>
+              <span className="text-sm text-muted">Search {totalRobots}+ robots across {categories.length} categories...</span>
             </Link>
+          </ScrollReveal>
+
+          {/* Category pills */}
+          <ScrollReveal delay={250}>
+            <div className="mt-6 flex flex-wrap justify-center gap-2">
+              {categories.map((cat) => (
+                <Link key={cat.id} href={`/explore/${cat.slug}`} className="rounded-full border border-white/[0.08] px-4 py-2 text-xs font-medium text-muted transition-all hover:border-blue/30 hover:text-foreground">
+                  {cat.name.split(" ")[0]}
+                </Link>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Popular searches */}
+          <ScrollReveal delay={350}>
+            <p className="mt-5 text-xs text-muted/50">
+              Popular: <Link href="/explore/consumer/unitree-g1-basic" className="text-muted/70 hover:text-blue">Unitree G1</Link> &middot; <Link href="/explore/medical/davinci-5" className="text-muted/70 hover:text-blue">da Vinci 5</Link> &middot; <Link href="/explore/manufacturing/ur20-v2" className="text-muted/70 hover:text-blue">UR20</Link> &middot; <Link href="/explore/consumer/roborock-s8-maxv-ultra-v2" className="text-muted/70 hover:text-blue">Roborock S8 MaxV</Link>
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── TRENDING ROBOTS ── */}
+      <section className="border-y border-white/[0.06] px-4 py-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="font-display text-xl font-bold">Trending Robots</h2>
+            <Link href="/explore" className="text-sm text-blue hover:underline">View All &rarr;</Link>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0">
+            {trending.slice(0, 8).map((robot, i) => {
+              const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
+              const cat = (robot.robot_categories as { slug: string; name: string } | null);
+              const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
+              const hasDiscount = robot.price_msrp && robot.price_current && robot.price_msrp > robot.price_current;
+              return (
+                <ScrollReveal key={robot.id} delay={i * 50}>
+                  <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group block min-w-[240px] rounded-xl transition-all hover:-translate-y-1 sm:min-w-0">
+                    <div className="relative h-36 overflow-hidden rounded-t-xl">
+                      {imgs[0]?.url ? (
+                        <Image src={imgs[0].url} alt={robot.name} fill sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter"><span className="text-2xl opacity-20">&#129302;</span></div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+                    </div>
+                    <div className="p-3">
+                      <p className="text-[10px] text-muted/50">{mfr}</p>
+                      <h3 className="text-sm font-semibold leading-tight transition-colors group-hover:text-blue">{robot.name}</h3>
+                      <div className="mt-2 flex items-center justify-between">
+                        {robot.price_current != null ? (
+                          <span className="font-mono text-sm font-bold text-green">{formatPrice(robot.price_current)}</span>
+                        ) : (
+                          <span className="text-xs text-orange">Request Quote</span>
+                        )}
+                        {robot.robo_score != null && robot.robo_score > 0 && <RoboScoreBadge score={robot.robo_score} />}
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── How It Works ── */}
-      <section className="w-full border-t border-border px-4 py-20">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-12 text-center text-2xl font-bold sm:text-3xl">
-            How It Works
-          </h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                step: "01",
-                title: "Discover",
-                desc: "Browse categories, search by use case, or let our AI advisor guide you to the right robots.",
-                color: "text-blue",
-                border: "border-blue/20",
-              },
-              {
-                step: "02",
-                title: "Compare",
-                desc: "Side-by-side specs, transparent RoboScores, expert reviews — everything you need to decide.",
-                color: "text-violet",
-                border: "border-violet/20",
-              },
-              {
-                step: "03",
-                title: "Get Guided",
-                desc: "Personalized recommendations, pricing alerts, and a clear path from research to purchase.",
-                color: "text-green",
-                border: "border-green/20",
-              },
-            ].map(({ step, title, desc, color, border }) => (
-              <div
-                key={step}
-                className={`rounded-xl border ${border} bg-navy-light p-6`}
-              >
-                <span className={`font-mono text-xs ${color}`}>{step}</span>
-                <h3 className={`mt-2 text-lg font-semibold ${color}`}>
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm text-muted">{desc}</p>
-              </div>
+      {/* ── SHOP BY CATEGORY ── */}
+      <section className="bg-grid px-4 py-14">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <h2 className="mb-8 font-display text-xl font-bold">Shop by Category</h2>
+          </ScrollReveal>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.filter(c => c.robot_count > 0).map((cat, i) => (
+              <ScrollReveal key={cat.id} delay={i * 60}>
+                <Link href={`/explore/${cat.slug}`} className="group relative block h-48 overflow-hidden rounded-xl">
+                  <Image src={categoryImages[cat.slug] || categoryImages.consumer} alt={cat.name} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <h3 className="font-display text-lg font-bold">{cat.name}</h3>
+                    <p className="mt-1 text-xs text-muted">{cat.robot_count} robots &middot; Explore &rarr;</p>
+                  </div>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Newsletter ── */}
-      <section className="w-full border-t border-border px-4 py-20">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl">Stay in the Loop</h2>
-          <p className="mb-8 mt-3 text-muted">
-            Weekly insights on robotics trends, new reviews, and the best deals.
-          </p>
-          <div className="relative">
-            <NewsletterForm />
+      {/* ── TOP RATED ── */}
+      <section className="border-y border-white/[0.06] px-4 py-14">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <h2 className="mb-8 font-display text-xl font-bold">Top Rated</h2>
+          </ScrollReveal>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {trending.slice(0, 3).map((robot, i) => {
+              const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
+              const cat = (robot.robot_categories as { slug: string } | null);
+              const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
+              return (
+                <ScrollReveal key={robot.id} delay={i * 100}>
+                  <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group flex gap-4 rounded-xl p-5 transition-all hover:-translate-y-1">
+                    <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg">
+                      {imgs[0]?.url ? (
+                        <Image src={imgs[0].url} alt={robot.name} fill sizes="96px" className="object-cover" />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter"><span className="opacity-20">&#129302;</span></div>
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="font-semibold leading-tight transition-colors group-hover:text-blue">{robot.name}</h3>
+                          <p className="text-xs text-muted/60">{mfr}</p>
+                        </div>
+                        {robot.robo_score != null && <RoboScoreRing score={robot.robo_score} size={48} />}
+                      </div>
+                      <p className="mt-1 line-clamp-2 text-xs text-muted/70">{robot.description_short}</p>
+                      {robot.price_current != null && (
+                        <p className="mt-2 font-mono text-sm font-bold text-green">{formatPrice(robot.price_current)}</p>
+                      )}
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              );
+            })}
           </div>
+        </div>
+      </section>
+
+      {/* ── COMPARE CTA ── */}
+      <section className="bg-mesh px-4 py-14">
+        <div className="mx-auto max-w-4xl text-center">
+          <ScrollReveal>
+            <h2 className="font-display text-2xl font-bold">Not sure which robot?</h2>
+            <p className="mt-3 text-muted">Compare specs, scores, and prices side-by-side. Or let our AI Advisor match you.</p>
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/explore" className="rounded-xl bg-blue px-8 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90">
+                Compare Robots
+              </Link>
+              <Link href="/advisor" className="glass glass-hover rounded-xl px-8 py-3 text-sm font-semibold text-foreground">
+                AI Advisor
+              </Link>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── Newsletter (minimal) ── */}
+      <section className="border-t border-white/[0.06] px-4 py-14">
+        <div className="mx-auto max-w-xl text-center">
+          <ScrollReveal>
+            <h2 className="font-display text-lg font-bold">Weekly Robot Deals & Reviews</h2>
+            <p className="mb-6 mt-2 text-sm text-muted">The best prices and new robot reviews, delivered weekly.</p>
+            <div className="relative"><NewsletterForm /></div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
