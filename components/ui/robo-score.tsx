@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils/cn";
 
 function getScoreColor(score: number) {
-  if (score >= 90) return { text: "text-blue", bg: "bg-blue", border: "border-blue/30", ring: "stroke-blue", glow: "shadow-[0_0_20px_rgba(0,194,255,0.3)]" };
-  if (score >= 70) return { text: "text-green", bg: "bg-green", border: "border-green/30", ring: "stroke-green", glow: "shadow-[0_0_20px_rgba(0,229,160,0.3)]" };
-  if (score >= 50) return { text: "text-orange", bg: "bg-orange", border: "border-orange/30", ring: "stroke-orange", glow: "shadow-[0_0_20px_rgba(255,107,53,0.3)]" };
+  if (score >= 90) return { text: "text-green", bg: "bg-green", border: "border-green/30", ring: "stroke-green", glow: "shadow-[0_0_20px_rgba(0,229,160,0.3)]" };
+  if (score >= 70) return { text: "text-amber-400", bg: "bg-amber-400", border: "border-amber-400/30", ring: "stroke-amber-400", glow: "shadow-[0_0_20px_rgba(251,191,36,0.3)]" };
+  if (score >= 50) return { text: "text-orange", bg: "bg-orange", border: "border-orange/30", ring: "stroke-orange", glow: "" };
   return { text: "text-red-400", bg: "bg-red-400", border: "border-red-400/30", ring: "stroke-red-400", glow: "" };
 }
 
@@ -12,10 +12,10 @@ export function RoboScoreBadge({ score, className }: { score: number; className?
   const c = getScoreColor(score);
   return (
     <span
+      title="RoboScore — click to see breakdown"
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-xs font-semibold",
+        "inline-flex cursor-help items-center rounded-full border px-2.5 py-0.5 font-mono text-xs font-semibold",
         c.text, c.border, `${c.bg}/10`,
-        score >= 90 && "animate-pulse",
         className
       )}
     >
@@ -33,7 +33,8 @@ export function RoboScoreRing({ score, size = 120 }: { score: number; size?: num
 
   return (
     <div
-      className={cn("relative inline-flex items-center justify-center rounded-full", c.glow)}
+      title="RoboScore — click to see breakdown"
+      className={cn("relative inline-flex cursor-help items-center justify-center rounded-full", c.glow)}
       style={{ width: size, height: size }}
     >
       <svg width={size} height={size} className="-rotate-90">
@@ -56,7 +57,6 @@ export function RoboScoreRing({ score, size = 120 }: { score: number; size?: num
           strokeDasharray={circumference}
           strokeDashoffset={circumference - progress}
           className={cn(c.ring, "transition-[stroke-dashoffset] duration-1000 ease-out")}
-          style={{ "--circumference": circumference } as React.CSSProperties}
         />
       </svg>
       <div className="absolute flex flex-col items-center">
