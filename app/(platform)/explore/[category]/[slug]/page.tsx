@@ -133,8 +133,11 @@ export default async function RobotDetailPage({ params }: Props) {
       <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} score={robot.robo_score} categorySlug={categorySlug} model={robot.model_number} status={robot.status} />
       {expertReview && <ReviewSchema robotName={robot.name} reviewTitle={expertReview.title} reviewBody={expertReview.body.slice(0, 200)} author="Robotomated Editorial" score={expertReview.robo_score} publishedAt={expertReview.published_at} />}
 
+      {/* ── STICKY SECTION NAV ── */}
+      <SectionNav robotName={robot.name} hasApps={apps.length > 0} hasBreakdown={!!breakdown} hasReview={!!expertReview} hasSimilar={similar.length > 0} hasBuyerData={hasBuyerData} />
+
       {/* ── 1. HERO ── */}
-      <section className="border-b border-white/[0.06] px-4 py-12">
+      <section id="overview" className="scroll-mt-24 border-b border-border px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Browse", href: "/explore" }, { name: cat?.name || "Category", href: `/explore/${categorySlug}` }, { name: robot.name, href: `/explore/${categorySlug}/${robot.slug}` }]} />
 
@@ -204,7 +207,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 2. ROI CALCULATOR ── */}
       {hasBuyerData && (
-        <Section title="ROI & Cost Analysis">
+        <Section title="ROI & Cost Analysis" id="roi">
           <div className="grid gap-6 lg:grid-cols-2">
             <RoiCalculator price={robot.price_current} priceLeaseMonthly={b.price_lease_monthly as number | null} priceType={b.price_type as string | null} integrationCost={b.integration_cost_estimate as number | null} trainingCost={b.training_cost as number | null} annualMaintenance={b.annual_maintenance_cost as number | null} laborReplacedFte={b.labor_replaced_fte as number | null} powerConsumptionWatts={b.power_consumption_watts as number | null} robotName={robot.name} />
             <TcoBreakdown price={robot.price_current} priceType={b.price_type as string | null} priceLeaseMonthly={b.price_lease_monthly as number | null} integrationCost={b.integration_cost_estimate as number | null} trainingCost={b.training_cost as number | null} annualMaintenance={b.annual_maintenance_cost as number | null} warrantyYears={b.warranty_years as number | null} expectedLifespan={b.expected_lifespan_years as number | null} spareParts={b.spare_parts_availability as string | null} powerConsumptionWatts={b.power_consumption_watts as number | null} trainingRequired={b.training_required as string | null} financingNotes={b.financing_notes as string | null} />
@@ -214,7 +217,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 3. APPLICATIONS ── */}
       {apps.length > 0 && (
-        <Section title="Applications & Use Cases">
+        <Section title="Applications & Use Cases" id="applications">
           <div className="grid gap-4 sm:grid-cols-2">
             {apps.map((app) => (
               <div key={app.id} className="glass rounded-xl p-5">
@@ -253,7 +256,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 4. SCORE BREAKDOWN ── */}
       {breakdown && (
-        <Section title="RoboScore Breakdown">
+        <Section title="RoboScore Breakdown" id="score">
           <div className="max-w-lg">
             <ScoreBreakdownChart breakdown={breakdown} />
           </div>
@@ -310,7 +313,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 7. FULL SPECS ── */}
       {Object.keys(specs).length > 0 && (
-        <Section title="Full Specifications">
+        <Section title="Full Specifications" id="specs">
           <div className="overflow-hidden rounded-xl border border-white/[0.06]">
             <table className="w-full text-sm">
               <tbody>
@@ -359,7 +362,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 9. EXPERT REVIEW ── */}
       {expertReview && (
-        <Section title="Expert Review">
+        <Section title="Expert Review" id="reviews">
           <ExpertReviewCard title={expertReview.title} body={expertReview.body} roboScore={expertReview.robo_score} scoreBreakdown={expertReview.score_breakdown as RoboScoreBreakdown | null} pros={expertReview.pros as string[]} cons={expertReview.cons as string[]} verdict={expertReview.verdict} publishedAt={expertReview.published_at} />
         </Section>
       )}
@@ -377,7 +380,7 @@ export default async function RobotDetailPage({ params }: Props) {
       </Section>
 
       {/* ── 11. WHERE TO BUY + PRICE HISTORY ── */}
-      <Section title="Where to Buy">
+      <Section title="Where to Buy" id="buy">
         <PriceComparison robotSlug={robot.slug} prices={(priceHistory || []).map((p) => ({ retailer: p.retailer, price: p.price, currency: "USD" }))} affiliateUrl={robot.affiliate_url} manufacturerWebsite={mfr?.website || null} />
         <AffiliateDisclosureInline />
       </Section>
@@ -388,7 +391,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 12. SIMILAR ROBOTS ── */}
       {similar.length > 0 && (
-        <Section title="Similar Robots">
+        <Section title="Similar Robots" id="similar">
           <div className="grid gap-4 sm:grid-cols-3">
             {similar.map((s) => {
               const sCatSlug = (s.robot_categories as { slug: string } | null)?.slug || categorySlug;
@@ -431,14 +434,41 @@ export default async function RobotDetailPage({ params }: Props) {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, id }: { title: string; children: React.ReactNode; id?: string }) {
   return (
-    <section className="border-b border-white/[0.06] px-4 py-12">
+    <section id={id} className="scroll-mt-24 border-b border-border px-4 py-12">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-6 font-display text-xl font-bold">{title}</h2>
+        <h2 className="mb-6 font-display text-xl font-bold text-foreground">{title}</h2>
         {children}
       </div>
     </section>
+  );
+}
+
+function SectionNav({ robotName, hasApps, hasBreakdown, hasReview, hasSimilar, hasBuyerData }: {
+  robotName: string; hasApps: boolean; hasBreakdown: boolean; hasReview: boolean; hasSimilar: boolean; hasBuyerData: boolean;
+}) {
+  const sections = [
+    { id: "overview", label: "Overview" },
+    ...(hasBuyerData ? [{ id: "roi", label: "Cost & ROI" }] : []),
+    ...(hasApps ? [{ id: "applications", label: "Applications" }] : []),
+    ...(hasBreakdown ? [{ id: "score", label: "Score" }] : []),
+    { id: "specs", label: "Specs" },
+    ...(hasReview ? [{ id: "reviews", label: "Reviews" }] : []),
+    { id: "buy", label: "Where to Buy" },
+    ...(hasSimilar ? [{ id: "similar", label: "Alternatives" }] : []),
+  ];
+  return (
+    <nav className="sticky top-[57px] z-20 hidden border-b border-border bg-white/95 backdrop-blur-sm md:block">
+      <div className="mx-auto flex max-w-6xl items-center gap-0 overflow-x-auto px-6">
+        {sections.map((s) => (
+          <a key={s.id} href={`#${s.id}`}
+            className="whitespace-nowrap border-b-2 border-transparent px-4 py-3.5 text-xs text-neutral-500 transition-colors hover:border-blue hover:text-foreground">
+            {s.label}
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }
 

@@ -19,16 +19,16 @@ interface FeaturedRobot {
 }
 
 const categoryImages: Record<string, string> = {
-  warehouse: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop",
-  manufacturing: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=300&fit=crop",
-  consumer: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
-  medical: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=500&h=300&fit=crop",
-  healthcare: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500&h=300&fit=crop",
-  construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=300&fit=crop",
-  agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&h=300&fit=crop",
-  delivery: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=500&h=300&fit=crop",
-  drone: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=300&fit=crop",
-  software: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=300&fit=crop",
+  warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
+  manufacturing: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80",
+  consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  medical: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+  healthcare: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+  construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+  agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
+  delivery: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+  drone: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&q=80",
+  software: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
 };
 
 async function getData() {
@@ -248,12 +248,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── Newsletter (minimal) ── */}
+      {/* ── Newsletter ── */}
       <section className="border-t border-border px-4 py-14">
         <div className="mx-auto max-w-xl text-center">
           <ScrollReveal>
-            <h2 className="font-display text-lg font-bold text-foreground">Weekly Robot Deals & Reviews</h2>
-            <p className="mb-6 mt-2 text-sm text-neutral-500">The best prices and new robot reviews, delivered weekly.</p>
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Free weekly newsletter</p>
+            <h2 className="font-display text-xl font-bold text-foreground">Weekly Robot News, Deals & Reviews</h2>
+            <p className="mb-2 mt-2 text-sm leading-relaxed text-neutral-500">New robot launches, expert reviews, price drops, and industry news — curated for buyers, operators, and robotics professionals.</p>
+            <div className="mb-6 flex items-center justify-center gap-6 text-xs text-neutral-400">
+              <span className="flex items-center gap-1.5"><span className="text-green">&#10003;</span> No spam, ever</span>
+              <span className="flex items-center gap-1.5"><span className="text-green">&#10003;</span> Unsubscribe any time</span>
+            </div>
             <div className="relative"><NewsletterForm /></div>
           </ScrollReveal>
         </div>
