@@ -34,6 +34,7 @@ interface RobotCardProps {
 }
 
 export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisabled }: RobotCardProps) {
+  const hasRealImage = robot.image_url && !robot.image_url.includes("unsplash.com");
   const isNew = robot.year_released && robot.year_released >= 2024;
   const hasDiscount = robot.price_msrp && robot.price_current && robot.price_msrp > robot.price_current;
   const specs = robot.specs as Record<string, unknown> | null;
@@ -73,17 +74,18 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
       {/* Image */}
       <Link href={`/explore/${robot.category_slug}/${robot.slug}`} className="block">
         <div className="relative h-44 overflow-hidden rounded-t-xl bg-neutral-100">
-          {robot.image_url ? (
+          {hasRealImage ? (
             <Image
-              src={robot.image_url}
+              src={robot.image_url!}
               alt={robot.name}
               fill
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-neutral-100">
-              <span className="text-3xl opacity-20">&#129302;</span>
+            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-4 text-center">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-300">{robot.manufacturer_name}</span>
+              <span className="mt-1 text-sm font-semibold text-neutral-400">{robot.name}</span>
             </div>
           )}
 

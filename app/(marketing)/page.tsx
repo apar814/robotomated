@@ -136,14 +136,18 @@ export default async function HomePage() {
               const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
               const cat = (robot.robot_categories as { slug: string; name: string } | null);
               const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
+              const realImg = imgs[0]?.url && !imgs[0].url.includes("unsplash.com") ? imgs[0].url : null;
               return (
                 <ScrollReveal key={robot.id} delay={i * 50}>
                   <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group block min-w-[240px] rounded-xl transition-all hover:-translate-y-1 sm:min-w-0">
                     <div className="relative h-36 overflow-hidden rounded-t-xl bg-neutral-100">
-                      {imgs[0]?.url ? (
-                        <Image src={imgs[0].url} alt={robot.name} fill sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      {realImg ? (
+                        <Image src={realImg} alt={robot.name} fill sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-neutral-100"><span className="text-2xl opacity-20">&#129302;</span></div>
+                        <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-3 text-center">
+                          <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-300">{mfr}</span>
+                          <span className="mt-1 text-sm font-semibold text-neutral-400">{robot.name}</span>
+                        </div>
                       )}
                     </div>
                     <div className="p-3">
@@ -203,14 +207,18 @@ export default async function HomePage() {
               const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
               const cat = (robot.robot_categories as { slug: string } | null);
               const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
+              const realImg2 = imgs[0]?.url && !imgs[0].url.includes("unsplash.com") ? imgs[0].url : null;
               return (
                 <ScrollReveal key={robot.id} delay={i * 100}>
                   <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group flex gap-4 rounded-xl p-5 transition-all hover:-translate-y-1">
                     <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-neutral-100">
-                      {imgs[0]?.url ? (
-                        <Image src={imgs[0].url} alt={robot.name} fill sizes="96px" className="object-cover" />
+                      {realImg2 ? (
+                        <Image src={realImg2} alt={robot.name} fill sizes="96px" className="object-cover" />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-neutral-100"><span className="opacity-20">&#129302;</span></div>
+                        <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-2 text-center">
+                          <span className="text-[9px] font-medium uppercase tracking-wider text-neutral-300">{mfr}</span>
+                          <span className="mt-0.5 text-[11px] font-semibold text-neutral-400">{robot.name}</span>
+                        </div>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
