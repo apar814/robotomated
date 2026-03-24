@@ -248,48 +248,75 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
 
           {/* Results */}
           <div className="min-w-0 flex-1">
-            {loading && <p className="mb-4 text-sm text-neutral-400">Loading...</p>}
+            {loading && (
+              <div className="flex flex-col items-center py-20 text-center">
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-blue" />
+                <p className="mt-4 text-sm text-neutral-400">Loading robots...</p>
+              </div>
+            )}
 
             {!loading && robots.length === 0 && (
-              <div className="flex flex-col items-center py-20 text-center">
-                <p className="text-lg font-semibold">No robots found</p>
-                <p className="mt-2 text-sm text-neutral-500">Try adjusting your filters or search terms.</p>
-                {hasFilters && (
-                  <button onClick={clearFilters} className="mt-4 text-sm text-blue hover:underline">Clear all filters</button>
+              <div className="flex flex-col items-center rounded-xl border border-border bg-white px-6 py-16 text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-100">
+                  <svg className="h-7 w-7 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                  </svg>
+                </div>
+                {hasFilters ? (
+                  <>
+                    <p className="mt-4 text-lg font-semibold text-foreground">No robots match your filters</p>
+                    <p className="mt-1 max-w-sm text-sm text-neutral-500">Try broadening your search, removing a filter, or checking a different category.</p>
+                    <button onClick={clearFilters} className="mt-5 rounded-lg bg-blue px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+                      Clear all filters
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <p className="mt-4 text-lg font-semibold text-foreground">No robots in this category yet</p>
+                    <p className="mt-1 max-w-sm text-sm text-neutral-500">We&apos;re actively adding robots to every category. Check back soon or browse all robots.</p>
+                    <Link href="/explore" className="mt-5 rounded-lg bg-blue px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
+                      Browse all robots
+                    </Link>
+                  </>
                 )}
               </div>
             )}
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {robots.map((robot) => (
-                <RobotCard
-                  key={robot.id}
-                  robot={robot}
-                  compareSelected={compareIds.includes(robot.id)}
-                  onCompareToggle={toggleCompare}
-                  compareDisabled={compareIds.length >= 3}
-                />
-              ))}
-            </div>
+            {!loading && robots.length > 0 && (
+              <>
+                <p className="mb-4 text-sm text-neutral-400">{total} robot{total === 1 ? "" : "s"} found</p>
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {robots.map((robot) => (
+                    <RobotCard
+                      key={robot.id}
+                      robot={robot}
+                      compareSelected={compareIds.includes(robot.id)}
+                      onCompareToggle={toggleCompare}
+                      compareDisabled={compareIds.length >= 3}
+                    />
+                  ))}
+                </div>
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="mt-8 flex items-center justify-center gap-2">
-                <Button variant="secondary" disabled={page <= 1} onClick={() => handlePage(page - 1)} className="text-xs">Previous</Button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <button
-                    key={p}
-                    onClick={() => handlePage(p)}
-                    className={cn(
-                      "h-8 w-8 rounded-lg text-xs font-medium transition-colors",
-                      p === page ? "bg-blue text-white" : "text-neutral-400 hover:bg-neutral-100 hover:text-foreground"
-                    )}
-                  >
-                    {p}
-                  </button>
-                ))}
-                <Button variant="secondary" disabled={page >= totalPages} onClick={() => handlePage(page + 1)} className="text-xs">Next</Button>
-              </div>
+                {/* Pagination — only when there are results and multiple pages */}
+                {totalPages > 1 && (
+                  <div className="mt-8 flex items-center justify-center gap-2">
+                    <Button variant="secondary" disabled={page <= 1} onClick={() => handlePage(page - 1)} className="text-xs">Previous</Button>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                      <button
+                        key={p}
+                        onClick={() => handlePage(p)}
+                        className={cn(
+                          "h-8 w-8 rounded-lg text-xs font-medium transition-colors",
+                          p === page ? "bg-blue text-white" : "text-neutral-400 hover:bg-neutral-100 hover:text-foreground"
+                        )}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                    <Button variant="secondary" disabled={page >= totalPages} onClick={() => handlePage(page + 1)} className="text-xs">Next</Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
