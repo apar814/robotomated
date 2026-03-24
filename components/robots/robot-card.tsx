@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 import { cn } from "@/lib/utils/cn";
 
@@ -75,12 +75,13 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
       <Link href={`/explore/${robot.category_slug}/${robot.slug}`} className="block">
         <div className="relative h-44 overflow-hidden rounded-t-xl bg-neutral-100">
           {hasRealImage ? (
-            <Image
+            <SafeImage
               src={robot.image_url!}
               alt={robot.name}
-              fill
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
+              fallbackLabel={robot.manufacturer_name}
+              fallbackSublabel={robot.name}
             />
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-4 text-center">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { createServerClient } from "@/lib/supabase/server";
 import { cached } from "@/lib/cache/redis";
 import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
@@ -142,7 +143,7 @@ export default async function HomePage() {
                   <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group block min-w-[240px] rounded-xl transition-all hover:-translate-y-1 sm:min-w-0">
                     <div className="relative h-36 overflow-hidden rounded-t-xl bg-neutral-100">
                       {realImg ? (
-                        <Image src={realImg} alt={robot.name} fill sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <SafeImage src={realImg} alt={robot.name} sizes="25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" fallbackLabel={mfr} fallbackSublabel={robot.name} />
                       ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-3 text-center">
                           <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-300">{mfr}</span>
@@ -213,7 +214,7 @@ export default async function HomePage() {
                   <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="glass glass-hover group flex gap-4 rounded-xl p-5 transition-all hover:-translate-y-1">
                     <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-neutral-100">
                       {realImg2 ? (
-                        <Image src={realImg2} alt={robot.name} fill sizes="96px" className="object-cover" />
+                        <SafeImage src={realImg2} alt={robot.name} sizes="96px" className="object-cover" fallbackLabel={mfr} fallbackSublabel={robot.name} />
                       ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-2 text-center">
                           <span className="text-[9px] font-medium uppercase tracking-wider text-neutral-300">{mfr}</span>

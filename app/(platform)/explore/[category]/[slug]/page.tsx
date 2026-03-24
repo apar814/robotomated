@@ -20,6 +20,7 @@ import { CompanyLogo } from "@/components/ui/company-logo";
 import { RoiCalculator } from "@/components/robots/roi-calculator";
 import { TcoBreakdown } from "@/components/robots/tco-breakdown";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
+import { SafeImage } from "@/components/ui/safe-image";
 import { cn } from "@/lib/utils/cn";
 
 // ---------------------------------------------------------------------------
@@ -144,7 +145,7 @@ export default async function RobotDetailPage({ params }: Props) {
           <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
             <div className="relative h-64 w-full overflow-hidden rounded-xl lg:h-80 lg:w-96 lg:shrink-0">
               {robotImages.length > 0 ? (
-                <Image src={robotImages[0].url} alt={robotImages[0].alt || robot.name} fill sizes="(max-width:1024px) 100vw, 384px" className="object-cover" priority />
+                <SafeImage src={robotImages[0].url} alt={robotImages[0].alt || robot.name} sizes="(max-width:1024px) 100vw, 384px" className="object-cover" priority fallbackLabel={mfr?.name} fallbackSublabel={robot.name} />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter"><span className="text-4xl opacity-20">&#129302;</span></div>
               )}
@@ -400,7 +401,7 @@ export default async function RobotDetailPage({ params }: Props) {
               return (
                 <Link key={s.id} href={`/explore/${sCatSlug}/${s.slug}`} className="glass glass-hover group rounded-xl transition-all hover:-translate-y-1">
                   <div className="relative h-32 overflow-hidden rounded-t-xl">
-                    {sImgs[0]?.url ? <Image src={sImgs[0].url} alt={s.name} fill sizes="33vw" className="object-cover" /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter"><span className="opacity-20">&#129302;</span></div>}
+                    {sImgs[0]?.url ? <SafeImage src={sImgs[0].url} alt={s.name} sizes="33vw" className="object-cover" fallbackLabel={sMfr} fallbackSublabel={s.name} /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100"><span className="opacity-20">&#129302;</span></div>}
                   </div>
                   <div className="p-4">
                     <p className="text-[10px] text-muted/60">{sMfr}</p>
