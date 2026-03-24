@@ -8,6 +8,8 @@ import { NewsletterForm } from "@/components/home/newsletter-form";
 import { TrustedBy } from "@/components/home/trusted-by";
 import { HeroAnimation } from "@/components/home/hero-animation";
 import { NewsTicker } from "@/components/home/news-ticker";
+import { NewsSection } from "@/components/news/news-section";
+import { NEWS_ARTICLES } from "@/lib/data/news";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -164,6 +166,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── INDUSTRY PULSE — news section ── */}
+      <NewsSection articles={NEWS_ARTICLES} />
 
       {/* ── SHOP BY CATEGORY ── */}
       <section className="px-4 py-14">
