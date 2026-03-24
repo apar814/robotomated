@@ -17,6 +17,7 @@ interface FeaturedRobot {
   id: string; slug: string; name: string;
   robo_score: number | null; price_current: number | null; price_msrp: number | null;
   description_short: string | null; images: unknown; year_released: number | null;
+  manufacturer_id: string; category_id: string;
   manufacturers: { name: string } | null;
   robot_categories: { slug: string; name: string } | null;
 }
@@ -44,12 +45,38 @@ async function getData() {
     return (cats || []).map((c) => ({ ...c, robot_count: counts[c.id] || 0 }));
   });
 
-  const trending = await cached<FeaturedRobot[]>("home:trending", 1800, async () => {
+  const trending = await cached<FeaturedRobot[]>("home:trending:v2", 1800, async () => {
+    // Fetch top 30 by score, then deduplicate: max 1 per manufacturer, diverse categories
     const { data } = await supabase
-      .from("robots").select("id,slug,name,robo_score,price_current,price_msrp,description_short,images,year_released,manufacturers(name),robot_categories(slug,name)")
+      .from("robots").select("id,slug,name,robo_score,price_current,price_msrp,description_short,images,year_released,manufacturer_id,category_id,manufacturers(name),robot_categories(slug,name)")
       .eq("status", "active").not("robo_score", "is", null)
-      .order("robo_score", { ascending: false }).limit(8).returns<FeaturedRobot[]>();
-    return data || [];
+      .order("robo_score", { ascending: false }).limit(30).returns<FeaturedRobot[]>();
+
+    const pool = data || [];
+    const picked: FeaturedRobot[] = [];
+    const usedMfrs = new Set<string>();
+    const usedCats = new Set<string>();
+
+    // Pass 1: pick the best robot from each category (diversity first)
+    for (const r of pool) {
+      if (picked.length >= 8) break;
+      if (usedMfrs.has(r.manufacturer_id)) continue;
+      if (usedCats.has(r.category_id)) continue;
+      picked.push(r);
+      usedMfrs.add(r.manufacturer_id);
+      usedCats.add(r.category_id);
+    }
+
+    // Pass 2: fill remaining slots with best-scored, still 1-per-manufacturer
+    for (const r of pool) {
+      if (picked.length >= 8) break;
+      if (usedMfrs.has(r.manufacturer_id)) continue;
+      if (picked.some(p => p.id === r.id)) continue;
+      picked.push(r);
+      usedMfrs.add(r.manufacturer_id);
+    }
+
+    return picked;
   });
 
   const totalRobots = categories.reduce((s, c) => s + c.robot_count, 0);
