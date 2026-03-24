@@ -42,8 +42,15 @@ export async function GET(request: NextRequest) {
     query = query.or(`name.ilike.%${search}%,description_short.ilike.%${search}%,model_number.ilike.%${search}%`);
   }
   if (category) {
-    // category param is a slug — need to look up by joining
-    query = query.eq("robot_categories.slug", category);
+    // Look up category_id from slug, then filter directly on robots table
+    const { data: catRow } = await supabase
+      .from("robot_categories")
+      .select("id")
+      .eq("slug", category)
+      .single();
+    if (catRow) {
+      query = query.eq("category_id", catRow.id);
+    }
   }
   if (manufacturer) {
     query = query.eq("manufacturer_id", manufacturer);
@@ -89,15 +96,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  // When filtering by category slug via the join, Supabase inner-filters
-  // the join but still returns all robots. Filter out robots where
-  // the join returned null (category didn't match).
-  let filtered = data || [];
-  if (category) {
-    filtered = filtered.filter((r) => r.robot_categories !== null);
-  }
-
-  const robots = filtered.map((r) => {
+  const robots = (data || []).map((r) => {
     const cat = r.robot_categories as { slug: string; name: string } | null;
     return {
       id: r.id,
