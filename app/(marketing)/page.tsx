@@ -25,7 +25,6 @@ const categoryImages: Record<string, string> = {
   manufacturing: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80",
   consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
   medical: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
-  healthcare: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
   construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
   agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
   delivery: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
