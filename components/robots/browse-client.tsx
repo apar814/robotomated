@@ -141,7 +141,8 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
     );
   }
 
-  const hasFilters = !!(search || category || manufacturer || priceMin || priceMax || scoreMin || status);
+  // Don't count the initialCategory (URL-based category page) as an active filter
+  const hasFilters = !!(search || (!initialCategory && category) || manufacturer || priceMin || priceMax || scoreMin || status);
 
   return (
     <div>
