@@ -9,6 +9,7 @@ import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { CookieBanner } from "@/components/analytics/cookie-banner";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { CommandPalette } from "@/components/ui/command-palette";
+import { CompareBar } from "@/components/compare/compare-bar";
 import "./globals.css";
 
 const syne = Syne({
@@ -75,6 +76,7 @@ export default function RootLayout({
             <CookieBanner />
             <CursorGlow />
             <CommandPalette />
+            <CompareBar />
           </PostHogProvider>
         </Providers>
       </body>

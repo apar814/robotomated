@@ -19,6 +19,7 @@ import { RoiCalculatorStandalone } from "@/components/robots/roi-calculator-stan
 import { DIMENSIONS } from "@/lib/scoring/roboscore";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 import { SafeImage } from "@/components/ui/safe-image";
+import { AddToCompareButton } from "@/components/compare/add-to-compare-button";
 import { cn } from "@/lib/utils/cn";
 
 const YEAR = new Date().getFullYear();
@@ -203,6 +204,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 <Link href="/advisor" className="rounded-lg border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-blue">
                   Ask AI Advisor
                 </Link>
+                <AddToCompareButton slug={robot.slug} />
               </div>
             </div>
           </div>
