@@ -16,10 +16,10 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
   const [price, setPrice] = useState(robotPrice || 50000);
 
   const annualLaborSaved = workers * wage * 8 * shifts * 250;
-  const monthlyLaborSaved = annualLaborSaved / 12;
+  const monthlyLaborSaved = Math.round(annualLaborSaved / 12);
   const paybackMonths = annualLaborSaved > 0 ? Math.ceil(price / (annualLaborSaved / 12)) : 0;
-  const threeYearROI = annualLaborSaved > 0 ? Math.round(((annualLaborSaved * 3 - price) / price) * 100) : 0;
-  const fiveYearSavings = annualLaborSaved * 5 - price;
+  const threeYearROI = price > 0 ? Math.round(((annualLaborSaved * 3 - price) / price) * 100) : 0;
+  const fiveYearSavings = Math.round(annualLaborSaved * 5 - price);
 
   const shareRoi = useCallback(() => {
     const params = new URLSearchParams({ w: String(workers), h: String(wage), s: String(shifts), p: String(price) });
@@ -44,9 +44,9 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
         {/* Outputs */}
         <div className="space-y-4">
           <OutputCard label="Monthly labor savings" value={`$${monthlyLaborSaved.toLocaleString()}`} color="text-green" />
-          <OutputCard label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "—"} color={paybackMonths <= 18 ? "text-green" : paybackMonths <= 36 ? "text-amber-500" : "text-orange"} />
-          <OutputCard label="3-year net ROI" value={threeYearROI > 0 ? `${threeYearROI}%` : "—"} color="text-blue" />
-          <OutputCard label="5-year total savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : "—"} color="text-foreground" />
+          <OutputCard label="Payback period" value={fmtPayback(paybackMonths)} color={paybackMonths <= 18 ? "text-green" : paybackMonths <= 36 ? "text-amber-500" : "text-orange"} />
+          <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-blue" : "text-orange"} />
+          <OutputCard label="5-year total savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-foreground" : "text-orange"} />
 
           <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-border py-2 text-xs font-medium text-neutral-500 transition-colors hover:border-blue hover:text-blue">
             Share your ROI calculation
@@ -55,6 +55,16 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
       </div>
     </div>
   );
+}
+
+function fmtPayback(months: number): string {
+  if (months <= 0) return "—";
+  if (months > 360) return "Not viable at this scale";
+  if (months > 60) {
+    const years = Math.round(months / 12);
+    return `~${years} year${years > 1 ? "s" : ""}`;
+  }
+  return `${months} months`;
 }
 
 function SliderInput({ label, value, min, max, step, onChange, prefix = "", suffix = "", fmt = false }: {
