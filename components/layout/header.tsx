@@ -36,7 +36,7 @@ export function Header() {
 
   return (
     <>
-      <header className="dark-section fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-navy/60 backdrop-blur-xl">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-[rgba(10,15,30,0.92)] backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <span className="font-display text-lg font-bold tracking-tight">

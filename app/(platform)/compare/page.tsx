@@ -40,7 +40,7 @@ function specVal(specs: Record<string, unknown> | null, key: string): string {
 
 export default function ComparePageWrapper() {
   return (
-    <Suspense fallback={<div className="py-20 text-center text-neutral-400">Loading comparison...</div>}>
+    <Suspense fallback={<div className="py-20 text-center text-white/30">Loading comparison...</div>}>
       <ComparePageInner />
     </Suspense>
   );
@@ -128,7 +128,7 @@ function ComparePageInner() {
       <div className="border-b border-border px-4 py-8">
         <div className="mx-auto max-w-6xl">
           <h1 className="font-display text-3xl font-bold text-foreground">Compare Robots</h1>
-          <p className="mt-1 text-neutral-500">Side-by-side comparison of specs, scores, and pricing</p>
+          <p className="mt-1 text-white/35">Side-by-side comparison of specs, scores, and pricing</p>
         </div>
       </div>
 
@@ -136,31 +136,31 @@ function ComparePageInner() {
         {/* Robot selection header */}
         <div className="mb-8 grid gap-4" style={{ gridTemplateColumns: `repeat(${Math.max(slugs.length + (slugs.length < 3 ? 1 : 0), 1)}, minmax(240px, 1fr))` }}>
           {robots.map((r) => (
-            <div key={r.slug} className="relative rounded-xl border border-border bg-white p-4">
-              <button onClick={() => removeRobot(r.slug)} className="absolute right-2 top-2 rounded-full bg-neutral-100 p-1 text-neutral-400 hover:bg-neutral-200 hover:text-foreground" aria-label="Remove">
+            <div key={r.slug} className="relative rounded-xl border border-border bg-white/[0.03] p-4">
+              <button onClick={() => removeRobot(r.slug)} className="absolute right-2 top-2 rounded-full bg-white/[0.03] p-1 text-white/30 hover:bg-white/[0.08] hover:text-foreground" aria-label="Remove">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
-              <div className="relative mb-3 h-32 overflow-hidden rounded-lg bg-neutral-100">
+              <div className="relative mb-3 h-32 overflow-hidden rounded-lg bg-white/[0.03]">
                 {r.image_url && !r.image_url.includes("unsplash") ? (
                   <SafeImage src={r.image_url} alt={r.name} sizes="280px" className="object-cover" fallbackLabel={r.manufacturer_name} fallbackSublabel={r.name} />
                 ) : (
                   <div className="flex h-full flex-col items-center justify-center text-center">
-                    <span className="text-[10px] text-neutral-300">{r.manufacturer_name}</span>
-                    <span className="text-xs font-semibold text-neutral-400">{r.name}</span>
+                    <span className="text-[10px] text-white/20">{r.manufacturer_name}</span>
+                    <span className="text-xs font-semibold text-white/30">{r.name}</span>
                   </div>
                 )}
               </div>
-              <p className="text-[10px] text-neutral-400">{r.manufacturer_name}</p>
+              <p className="text-[10px] text-white/30">{r.manufacturer_name}</p>
               <h3 className="font-semibold text-foreground">{r.name}</h3>
               <div className="mt-2 flex items-center justify-between">
                 {r.price_current != null ? (
                   <span className="font-mono text-sm font-bold text-green">{fmtPrice(r.price_current)}</span>
                 ) : (
-                  <span className="text-xs text-neutral-400">Contact for pricing</span>
+                  <span className="text-xs text-white/30">Contact for pricing</span>
                 )}
                 {r.robo_score != null && <RoboScoreBadge score={r.robo_score} />}
               </div>
-              <Link href={`/explore/${r.category_slug}/${r.slug}`} className="mt-3 block w-full rounded-lg border border-border py-1.5 text-center text-xs text-neutral-500 hover:border-blue hover:text-blue">
+              <Link href={`/explore/${r.category_slug}/${r.slug}`} className="mt-3 block w-full rounded-lg border border-border py-1.5 text-center text-xs text-white/35 hover:border-blue hover:text-blue">
                 View details →
               </Link>
             </div>
@@ -168,14 +168,14 @@ function ComparePageInner() {
 
           {/* Add robot slot */}
           {slugs.length < 3 && (
-            <div className="rounded-xl border-2 border-dashed border-neutral-200 p-4">
-              <p className="mb-3 text-xs font-medium text-neutral-400">Add robot {slugs.length + 1} of 3</p>
+            <div className="rounded-xl border-2 border-dashed border-white/[0.10] p-4">
+              <p className="mb-3 text-xs font-medium text-white/30">Add robot {slugs.length + 1} of 3</p>
               <RobotSearch onSelect={addRobot} excludeSlugs={slugs} />
             </div>
           )}
         </div>
 
-        {loading && <p className="py-12 text-center text-neutral-400">Loading comparison...</p>}
+        {loading && <p className="py-12 text-center text-white/30">Loading comparison...</p>}
 
         {!loading && robots.length >= 2 && (
           <>
@@ -183,10 +183,10 @@ function ComparePageInner() {
             <div className="mb-6 flex items-center justify-between">
               <h2 className="font-display text-lg font-bold text-foreground">Comparison</h2>
               <div className="flex gap-2">
-                <button onClick={shareComparison} className="rounded-lg border border-border px-3 py-1.5 text-xs text-neutral-500 hover:border-blue hover:text-blue">
+                <button onClick={shareComparison} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-blue hover:text-blue">
                   Share comparison
                 </button>
-                <button onClick={() => window.print()} className="rounded-lg border border-border px-3 py-1.5 text-xs text-neutral-500 hover:border-blue hover:text-blue">
+                <button onClick={() => window.print()} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-blue hover:text-blue">
                   Export PDF
                 </button>
               </div>
@@ -199,11 +199,11 @@ function ComparePageInner() {
                 if (bestScore && r.slug === bestScore.slug) labels.push("Highest rated");
                 if (bestPrice && r.slug === bestPrice.slug && robots.length > 1) labels.push("Best price");
                 return (
-                  <div key={r.slug} className={cn("rounded-lg border p-3 text-center text-xs", labels.length > 0 ? "border-green/30 bg-green/5" : "border-border bg-neutral-50")}>
+                  <div key={r.slug} className={cn("rounded-lg border p-3 text-center text-xs", labels.length > 0 ? "border-green/30 bg-green/5" : "border-border bg-white/[0.03]")}>
                     {labels.length > 0 ? (
                       <span className="font-semibold text-green">{labels.join(" · ")}</span>
                     ) : (
-                      <span className="text-neutral-400">—</span>
+                      <span className="text-white/30">—</span>
                     )}
                   </div>
                 );
@@ -215,9 +215,9 @@ function ComparePageInner() {
               <table className="w-full min-w-[600px] text-sm">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-neutral-400 sm:w-40">Spec</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/30 sm:w-40">Spec</th>
                     {robots.map((r) => (
-                      <th key={r.slug} className="px-4 py-3 text-left text-xs font-medium text-neutral-600">{r.name}</th>
+                      <th key={r.slug} className="px-4 py-3 text-left text-xs font-medium text-white/45">{r.name}</th>
                     ))}
                   </tr>
                 </thead>
@@ -230,7 +230,7 @@ function ComparePageInner() {
 
                   {/* Section header */}
                   {keySpecKeys.length > 0 && (
-                    <tr><td colSpan={robots.length + 1} className="border-b border-border bg-neutral-50 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">Key Specifications</td></tr>
+                    <tr><td colSpan={robots.length + 1} className="border-b border-border bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/30">Key Specifications</td></tr>
                   )}
                   {keySpecKeys.map((key) => (
                     <CompareRow key={key} label={fmtKey(key)} robots={robots} getValue={(r) => specVal(r.specs, key)} highlightBest={isNumericSpec(key)} />
@@ -238,7 +238,7 @@ function ComparePageInner() {
 
                   {/* Other specs */}
                   {otherSpecKeys.length > 0 && (
-                    <tr><td colSpan={robots.length + 1} className="border-b border-border bg-neutral-50 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">Additional Specifications</td></tr>
+                    <tr><td colSpan={robots.length + 1} className="border-b border-border bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/30">Additional Specifications</td></tr>
                   )}
                   {otherSpecKeys.map((key) => (
                     <CompareRow key={key} label={fmtKey(key)} robots={robots} getValue={(r) => specVal(r.specs, key)} />
@@ -255,19 +255,19 @@ function ComparePageInner() {
                   const annualSavings = 25 * 8 * 250 * 2; // $25/hr, 8hrs, 250 days, 2 workers
                   const payback = r.price_current ? Math.ceil(r.price_current / (annualSavings / 12)) : null;
                   return (
-                    <div key={r.slug} className="rounded-lg border border-border bg-white p-4">
+                    <div key={r.slug} className="rounded-lg border border-border bg-white/[0.03] p-4">
                       <p className="text-xs font-medium text-foreground">{r.name}</p>
                       <div className="mt-3 space-y-2">
                         <div className="flex justify-between text-xs">
-                          <span className="text-neutral-400">Est. payback</span>
+                          <span className="text-white/30">Est. payback</span>
                           <span className="font-mono font-medium">{payback ? `${payback} months` : "N/A"}</span>
                         </div>
                         <div className="flex justify-between text-xs">
-                          <span className="text-neutral-400">Monthly savings</span>
+                          <span className="text-white/30">Monthly savings</span>
                           <span className="font-mono font-medium text-green">${Math.round(annualSavings / 12).toLocaleString()}</span>
                         </div>
                         <div className="flex justify-between text-xs">
-                          <span className="text-neutral-400">3-year ROI</span>
+                          <span className="text-white/30">3-year ROI</span>
                           <span className="font-mono font-medium">
                             {r.price_current ? `${Math.round(((annualSavings * 3 - r.price_current) / r.price_current) * 100)}%` : "N/A"}
                           </span>
@@ -282,14 +282,14 @@ function ComparePageInner() {
         )}
 
         {!loading && robots.length < 2 && slugs.length < 2 && (
-          <div className="rounded-xl border border-border bg-white px-6 py-16 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-neutral-100">
-              <svg className="h-7 w-7 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="rounded-xl border border-border bg-white/[0.03] px-6 py-16 text-center">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/[0.03]">
+              <svg className="h-7 w-7 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
               </svg>
             </div>
             <p className="mt-4 text-lg font-semibold text-foreground">Add at least 2 robots to compare</p>
-            <p className="mt-1 text-sm text-neutral-500">Search for robots above to start a side-by-side comparison.</p>
+            <p className="mt-1 text-sm text-white/35">Search for robots above to start a side-by-side comparison.</p>
           </div>
         )}
       </div>
@@ -306,7 +306,7 @@ function CompareRow({ label, robots, getValue, bestSlug, highlightBest }: {
 }) {
   return (
     <tr className="border-b border-border">
-      <td className="px-4 py-2.5 text-xs font-medium text-neutral-500">{label}</td>
+      <td className="px-4 py-2.5 text-xs font-medium text-white/35">{label}</td>
       {robots.map((r) => {
         const val = getValue(r);
         const isBest = bestSlug === r.slug || (highlightBest && isBestNumeric(robots, r, getValue));

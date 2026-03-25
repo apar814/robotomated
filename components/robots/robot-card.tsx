@@ -73,7 +73,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
 
       {/* Image */}
       <Link href={`/explore/${robot.category_slug}/${robot.slug}`} className="block">
-        <div className="relative h-44 overflow-hidden rounded-t-xl bg-neutral-100">
+        <div className="relative h-44 overflow-hidden rounded-t-xl bg-white/[0.03]">
           {hasRealImage ? (
             <SafeImage
               src={robot.image_url!}
@@ -84,9 +84,9 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
               fallbackSublabel={robot.name}
             />
           ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-4 text-center">
-              <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-300">{robot.manufacturer_name}</span>
-              <span className="mt-1 text-sm font-semibold text-neutral-400">{robot.name}</span>
+            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] px-4 text-center">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-white/20">{robot.manufacturer_name}</span>
+              <span className="mt-1 text-sm font-semibold text-white/30">{robot.name}</span>
             </div>
           )}
 
@@ -114,14 +114,14 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
         <Link href={`/explore/${robot.category_slug}/${robot.slug}`}>
           <h3 className="font-semibold leading-tight text-foreground transition-colors group-hover:text-blue">{robot.name}</h3>
         </Link>
-        <p className="mt-0.5 text-xs text-neutral-400">by {robot.manufacturer_name}</p>
+        <p className="mt-0.5 text-xs text-white/30">by {robot.manufacturer_name}</p>
 
         {/* Key specs grid */}
         {specEntries.length > 0 && (
-          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 rounded-lg bg-neutral-50 px-3 py-2">
+          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 rounded-lg bg-white/[0.03] px-3 py-2">
             {specEntries.slice(0, 4).map(({ label, value }) => (
               <div key={label}>
-                <p className="text-[10px] uppercase tracking-wide text-neutral-400">{label}</p>
+                <p className="text-[10px] uppercase tracking-wide text-white/30">{label}</p>
                 <p className="text-xs font-medium text-foreground">{value}</p>
               </div>
             ))}
@@ -135,11 +135,11 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
               <>
                 <span className="font-mono text-base font-bold text-green">{formatPrice(robot.price_current)}</span>
                 {hasDiscount && (
-                  <span className="font-mono text-xs text-neutral-400 line-through">{formatPrice(robot.price_msrp!)}</span>
+                  <span className="font-mono text-xs text-white/30 line-through">{formatPrice(robot.price_msrp!)}</span>
                 )}
               </>
             ) : robot.status === "coming_soon" ? (
-              <span className="text-sm text-neutral-400">Coming Soon</span>
+              <span className="text-sm text-white/30">Coming Soon</span>
             ) : (
               <span className="text-sm text-orange">Request Quote</span>
             )}

@@ -4,9 +4,9 @@ import type { ButtonHTMLAttributes } from "react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-blue text-white hover:opacity-90",
-  secondary: "border border-border text-foreground hover:bg-neutral-100",
-  ghost: "text-muted hover:text-foreground hover:bg-neutral-100",
+  primary: "bg-blue text-[#0A0F1E] font-bold hover:opacity-88 active:scale-[0.98]",
+  secondary: "border border-white/[0.12] bg-white/[0.05] text-white/80 font-semibold hover:bg-white/[0.08] hover:border-white/[0.18]",
+  ghost: "text-white/50 hover:text-white hover:bg-white/[0.05]",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,7 +21,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-50",
+        "inline-flex items-center justify-center rounded-[10px] px-6 py-2.5 text-sm transition-all disabled:opacity-50",
         variants[variant],
         className
       )}

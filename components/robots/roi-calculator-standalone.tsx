@@ -28,9 +28,9 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
   }, [workers, wage, shifts, price, robotSlug]);
 
   return (
-    <div className="rounded-xl border border-border bg-white p-6">
+    <div className="rounded-xl border border-border bg-white/[0.03] p-6">
       <h3 className="mb-1 font-display text-lg font-bold text-foreground">ROI Calculator</h3>
-      <p className="mb-6 text-xs text-neutral-400">Estimate your return on investing in {robotName}</p>
+      <p className="mb-6 text-xs text-white/30">Estimate your return on investing in {robotName}</p>
 
       <div className="grid gap-6 sm:grid-cols-2">
         {/* Inputs */}
@@ -48,7 +48,7 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
           <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-blue" : "text-orange"} />
           <OutputCard label="5-year total savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-foreground" : "text-orange"} />
 
-          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-border py-2 text-xs font-medium text-neutral-500 transition-colors hover:border-blue hover:text-blue">
+          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-border py-2 text-xs font-medium text-white/35 transition-colors hover:border-blue hover:text-blue">
             Share your ROI calculation
           </button>
         </div>
@@ -74,7 +74,7 @@ function SliderInput({ label, value, min, max, step, onChange, prefix = "", suff
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between">
-        <label className="text-xs font-medium text-neutral-500">{label}</label>
+        <label className="text-xs font-medium text-white/35">{label}</label>
         <span className="font-mono text-sm font-semibold text-foreground">{prefix}{fmt ? value.toLocaleString() : value}{suffix}</span>
       </div>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))}
@@ -85,8 +85,8 @@ function SliderInput({ label, value, min, max, step, onChange, prefix = "", suff
 
 function OutputCard({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <div className="rounded-lg bg-neutral-50 px-4 py-3">
-      <p className="text-[10px] font-medium uppercase tracking-wider text-neutral-400">{label}</p>
+    <div className="rounded-lg bg-white/[0.04] px-4 py-3">
+      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">{label}</p>
       <p className={cn("mt-0.5 font-mono text-xl font-bold", color)}>{value}</p>
     </div>
   );

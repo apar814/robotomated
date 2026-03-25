@@ -164,7 +164,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
         {/* Search bar */}
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative flex-1 sm:max-w-md">
-            <svg className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
             <input
@@ -172,12 +172,12 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
               placeholder="Search robots, manufacturers, specs..."
               value={search}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full rounded-lg border border-border bg-white py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-neutral-400 focus:border-blue focus:outline-none"
+              className="w-full rounded-lg border border-border bg-white/[0.03] py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-white/30 focus:border-blue focus:outline-none"
             />
           </div>
           <button
             onClick={() => setFiltersOpen(!filtersOpen)}
-            className="rounded-lg border border-border px-3 py-2 text-sm text-neutral-500 hover:text-foreground lg:hidden"
+            className="rounded-lg border border-border px-3 py-2 text-sm text-white/35 hover:text-foreground lg:hidden"
           >
             Filters {hasFilters ? "●" : ""}
           </button>
@@ -209,11 +209,11 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
               <div className="flex items-center gap-2">
                 <input type="number" placeholder="Min" value={priceMin}
                   onChange={(e) => applyFilter("priceMin", e.target.value)}
-                  className="w-full rounded border border-border bg-white px-2 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none" />
-                <span className="text-neutral-400">–</span>
+                  className="w-full rounded border border-border bg-white/[0.03] px-2 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none" />
+                <span className="text-white/30">–</span>
                 <input type="number" placeholder="Max" value={priceMax}
                   onChange={(e) => applyFilter("priceMax", e.target.value)}
-                  className="w-full rounded border border-border bg-white px-2 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none" />
+                  className="w-full rounded border border-border bg-white/[0.03] px-2 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none" />
               </div>
             </FilterSection>
 
@@ -221,7 +221,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
               <input type="range" min={0} max={100} step={5} value={scoreMin || 0}
                 onChange={(e) => applyFilter("scoreMin", e.target.value === "0" ? "" : e.target.value)}
                 className="w-full accent-blue" />
-              <div className="flex justify-between text-[10px] text-neutral-400">
+              <div className="flex justify-between text-[10px] text-white/30">
                 <span>0</span>
                 <span className="font-mono text-foreground">{scoreMin || "Any"}</span>
                 <span>100</span>
@@ -240,7 +240,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
             </FilterSection>
 
             {hasFilters && (
-              <button onClick={clearFilters} className="text-xs text-neutral-400 hover:text-foreground">
+              <button onClick={clearFilters} className="text-xs text-white/30 hover:text-foreground">
                 Clear all filters
               </button>
             )}
@@ -251,13 +251,13 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
             {loading && (
               <div className="flex flex-col items-center py-20 text-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-200 border-t-blue" />
-                <p className="mt-4 text-sm text-neutral-400">Loading robots...</p>
+                <p className="mt-4 text-sm text-white/30">Loading robots...</p>
               </div>
             )}
 
             {!loading && robots.length === 0 && (
-              <div className="flex flex-col items-center rounded-xl border border-border bg-white px-6 py-16 text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-100">
+              <div className="flex flex-col items-center rounded-xl border border-border bg-white/[0.03] px-6 py-16 text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/[0.05]">
                   <svg className="h-7 w-7 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                   </svg>
@@ -265,7 +265,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
                 {hasFilters ? (
                   <>
                     <p className="mt-4 text-lg font-semibold text-foreground">No robots match your filters</p>
-                    <p className="mt-1 max-w-sm text-sm text-neutral-500">Try broadening your search, removing a filter, or checking a different category.</p>
+                    <p className="mt-1 max-w-sm text-sm text-white/35">Try broadening your search, removing a filter, or checking a different category.</p>
                     <button onClick={clearFilters} className="mt-5 rounded-lg bg-blue px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
                       Clear all filters
                     </button>
@@ -273,7 +273,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
                 ) : (
                   <>
                     <p className="mt-4 text-lg font-semibold text-foreground">No robots in this category yet</p>
-                    <p className="mt-1 max-w-sm text-sm text-neutral-500">We&apos;re actively adding robots to every category. Check back soon or browse all robots.</p>
+                    <p className="mt-1 max-w-sm text-sm text-white/35">We&apos;re actively adding robots to every category. Check back soon or browse all robots.</p>
                     <Link href="/explore" className="mt-5 rounded-lg bg-blue px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">
                       Browse all robots
                     </Link>
@@ -284,7 +284,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
 
             {!loading && robots.length > 0 && (
               <>
-                <p className="mb-4 text-sm text-neutral-400">{total} robot{total === 1 ? "" : "s"} found</p>
+                <p className="mb-4 text-sm text-white/30">{total} robot{total === 1 ? "" : "s"} found</p>
                 <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                   {robots.map((robot) => (
                     <RobotCard
@@ -307,7 +307,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
                         onClick={() => handlePage(p)}
                         className={cn(
                           "h-8 w-8 rounded-lg text-xs font-medium transition-colors",
-                          p === page ? "bg-blue text-white" : "text-neutral-400 hover:bg-neutral-100 hover:text-foreground"
+                          p === page ? "bg-blue text-white" : "text-white/30 hover:bg-white/[0.05] hover:text-foreground"
                         )}
                       >
                         {p}
@@ -323,11 +323,11 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
 
         {/* Compare bar */}
         {compareIds.length >= 2 && (
-          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-white/95 px-4 py-3 shadow-lg backdrop-blur-md">
+          <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-navy/95 px-4 py-3 shadow-lg backdrop-blur-md">
             <div className="mx-auto flex max-w-7xl items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-foreground">{compareIds.length} robots selected</span>
-                <button onClick={() => setCompareIds([])} className="text-xs text-neutral-400 hover:text-foreground">Clear</button>
+                <button onClick={() => setCompareIds([])} className="text-xs text-white/30 hover:text-foreground">Clear</button>
               </div>
               <Link href={`/explore/compare?ids=${compareIds.join(",")}`}
                 className="rounded-lg bg-blue px-6 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90">
@@ -344,7 +344,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">{title}</h4>
+      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/30">{title}</h4>
       <div className="space-y-1">{children}</div>
     </div>
   );
@@ -356,7 +356,7 @@ function FilterButton({ label, active, onClick }: { label: string; active: boole
       onClick={onClick}
       className={cn(
         "block w-full rounded-md px-2.5 py-1.5 text-left text-xs transition-colors",
-        active ? "bg-blue/10 font-medium text-blue" : "text-neutral-500 hover:bg-neutral-100 hover:text-foreground"
+        active ? "bg-blue/10 font-medium text-blue" : "text-white/35 hover:bg-white/[0.05] hover:text-foreground"
       )}
     >
       {label}

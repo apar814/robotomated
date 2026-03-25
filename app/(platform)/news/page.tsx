@@ -32,15 +32,15 @@ function ArticleCard({ article }: { article: NewsArticle }) {
       <div className="flex flex-1 flex-col gap-2.5 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-[11px] text-neutral-400">{relativeTime(article.publishedAt)}</span>
+          <span className="text-[11px] text-white/30">{relativeTime(article.publishedAt)}</span>
         </div>
         <h3 className="line-clamp-3 text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-blue">
           {article.title}
         </h3>
-        <p className="line-clamp-3 flex-1 text-xs leading-relaxed text-neutral-500">{article.summary}</p>
+        <p className="line-clamp-3 flex-1 text-xs leading-relaxed text-white/35">{article.summary}</p>
         <div className="mt-auto flex items-center justify-between border-t border-border pt-2">
-          <span className="text-xs font-medium text-neutral-500">{article.source}</span>
-          <span className="text-[11px] text-neutral-400 transition-colors group-hover:text-blue">Read →</span>
+          <span className="text-xs font-medium text-white/35">{article.source}</span>
+          <span className="text-[11px] text-white/30 transition-colors group-hover:text-blue">Read →</span>
         </div>
       </div>
     </a>
@@ -67,30 +67,30 @@ export default function NewsPage() {
       <div className="border-b border-border px-6 py-8">
         <div className="mx-auto max-w-7xl">
           <h1 className="font-display text-3xl font-bold text-foreground">Industry Pulse</h1>
-          <p className="mt-1 text-neutral-500">Robotics news, funding rounds, acquisitions, and product launches — curated daily.</p>
+          <p className="mt-1 text-white/35">Robotics news, funding rounds, acquisitions, and product launches — curated daily.</p>
         </div>
       </div>
 
       {/* Filter bar */}
-      <div className="sticky top-[57px] z-20 border-b border-border bg-white/95 backdrop-blur-sm">
+      <div className="sticky top-[57px] z-20 border-b border-border bg-navy/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-6 py-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-neutral-400">Category</span>
+            <span className="text-xs text-white/30">Category</span>
             {["All", ...NEWS_CATEGORIES].map(cat => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
-                  activeCategory === cat ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-neutral-500 hover:border-neutral-300"
+                  activeCategory === cat ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-white/35 hover:border-white/[0.15]"
                 )}>
                 {cat}
               </button>
             ))}
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
-            <span className="text-xs text-neutral-400">Source</span>
+            <span className="text-xs text-white/30">Source</span>
             {sources.map(src => (
               <button key={src} onClick={() => setActiveSource(src)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
-                  activeSource === src ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-neutral-500 hover:border-neutral-300"
+                  activeSource === src ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-white/35 hover:border-white/[0.15]"
                 )}>
                 {src}
               </button>
@@ -139,7 +139,7 @@ export default function NewsPage() {
         {filtered.length === 0 && (
           <div className="py-20 text-center">
             <p className="text-lg font-semibold">No articles match</p>
-            <p className="mt-2 text-sm text-neutral-500">Try a different category or source filter.</p>
+            <p className="mt-2 text-sm text-white/35">Try a different category or source filter.</p>
           </div>
         )}
       </div>

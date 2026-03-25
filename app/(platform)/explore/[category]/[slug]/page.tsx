@@ -135,7 +135,7 @@ export default async function RobotDetailPage({ params }: Props) {
             { id: "buy", label: "Pricing" },
             ...(similar.length > 0 ? [{ id: "similar", label: "Alternatives" }] : []),
           ].map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="whitespace-nowrap border-b-2 border-transparent px-4 py-3.5 text-xs text-neutral-500 transition-colors hover:border-green hover:text-foreground">{s.label}</a>
+            <a key={s.id} href={`#${s.id}`} className="whitespace-nowrap border-b-2 border-transparent px-4 py-3.5 text-xs text-white/35 transition-colors hover:border-green hover:text-foreground">{s.label}</a>
           ))}
         </div>
       </nav>
@@ -147,13 +147,13 @@ export default async function RobotDetailPage({ params }: Props) {
 
           <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
             {/* Hero image */}
-            <div className="relative h-64 w-full overflow-hidden rounded-xl bg-neutral-100 lg:h-80 lg:w-[420px] lg:shrink-0">
+            <div className="relative h-64 w-full overflow-hidden rounded-xl bg-white/[0.03] lg:h-80 lg:w-[420px] lg:shrink-0">
               {robotImages.length > 0 && robotImages[0].url && !robotImages[0].url.includes("unsplash") ? (
                 <SafeImage src={robotImages[0].url} alt={robotImages[0].alt || robot.name} sizes="(max-width:1024px) 100vw, 420px" className="object-cover" priority fallbackLabel={mfr?.name} fallbackSublabel={robot.name} />
               ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-6 text-center">
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-neutral-300">{mfr?.name}</span>
-                  <span className="mt-2 text-lg font-bold text-neutral-400">{robot.name}</span>
+                <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] px-6 text-center">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-white/20">{mfr?.name}</span>
+                  <span className="mt-2 text-lg font-bold text-white/30">{robot.name}</span>
                 </div>
               )}
             </div>
@@ -164,7 +164,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 <div>
                   <div className="flex items-center gap-3">
                     <CompanyLogo logoUrl={(mfr as unknown as Record<string, unknown>)?.logo_url as string | null} name={mfr?.name || ""} height={28} />
-                    <Link href={`/manufacturers/${mfr?.slug}`} className="text-sm text-neutral-500 hover:text-blue">{mfr?.name}</Link>
+                    <Link href={`/manufacturers/${mfr?.slug}`} className="text-sm text-white/35 hover:text-blue">{mfr?.name}</Link>
                     <SaveRobotButton robotId={robot.id} />
                   </div>
                   <h1 className="mt-1 font-display text-3xl font-bold text-foreground sm:text-4xl">{robot.name}</h1>
@@ -176,7 +176,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 )}
               </div>
 
-              <p className="mt-3 leading-relaxed text-neutral-600">{robot.description_short}</p>
+              <p className="mt-3 leading-relaxed text-white/45">{robot.description_short}</p>
 
               {/* Stat pills */}
               <div className="mt-4 flex flex-wrap gap-2">
@@ -201,7 +201,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     Get Quote from {mfr.name}
                   </a>
                 ) : null}
-                <Link href="/advisor" className="rounded-lg border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-blue">
+                <Link href="/advisor" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-5 py-2.5 text-sm font-semibold text-white/80 transition-colors hover:border-white/[0.18]">
                   Ask AI Advisor
                 </Link>
                 <AddToCompareButton slug={robot.slug} />
@@ -241,9 +241,9 @@ export default async function RobotDetailPage({ params }: Props) {
                 );
               })}
             </div>
-            <div className="rounded-xl border border-border bg-neutral-50 p-5">
+            <div className="rounded-xl border border-border bg-white/[0.03] p-5">
               <RoboScoreRing score={robot.robo_score!} size={100} />
-              <p className="mt-4 text-xs leading-relaxed text-neutral-500">
+              <p className="mt-4 text-xs leading-relaxed text-white/35">
                 RoboScore is a weighted composite of 8 dimensions, independently evaluated by the Robotomated editorial team.
               </p>
               <Link href="/methodology" className="mt-3 block text-xs text-blue hover:underline">Read our scoring methodology →</Link>
@@ -258,13 +258,13 @@ export default async function RobotDetailPage({ params }: Props) {
           <div className="space-y-6">
             {specGroups.map(([group, entries]) => (
               <div key={group}>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">{group}</h3>
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/30">{group}</h3>
                 <div className="overflow-hidden rounded-lg border border-border">
                   <table className="w-full text-sm">
                     <tbody>
                       {entries.map(([key, value], i) => (
-                        <tr key={key} className={i % 2 === 0 ? "bg-white" : "bg-neutral-50/60"}>
-                          <td className="px-4 py-2.5 font-medium text-neutral-500 sm:w-48">{fmtKey(key)}</td>
+                        <tr key={key} className={i % 2 === 0 ? "bg-white" : "bg-white/[0.03]"}>
+                          <td className="px-4 py-2.5 font-medium text-white/35 sm:w-48">{fmtKey(key)}</td>
                           <td className="px-4 py-2.5 font-mono text-foreground">{fmtVal(value)}</td>
                         </tr>
                       ))}
@@ -302,15 +302,15 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ══ SECTION 8 — PRICING + WHERE TO BUY ══ */}
       <Section title="Pricing & Where to Buy" id="buy">
-        <div className="mb-6 rounded-xl border border-border bg-white p-6">
+        <div className="mb-6 rounded-xl border border-border bg-white/[0.03] p-6">
           <div className="flex flex-wrap items-baseline gap-3">
             <PriceDisplay price={robot.price_current} status={robot.status} size="lg" />
             {robot.price_msrp != null && robot.price_current != null && robot.price_msrp > robot.price_current && (
-              <span className="font-mono text-sm text-neutral-400 line-through">${robot.price_msrp.toLocaleString()}</span>
+              <span className="font-mono text-sm text-white/30 line-through">${robot.price_msrp.toLocaleString()}</span>
             )}
           </div>
           {robot.price_current != null && robot.price_current > 50000 && (
-            <p className="mt-2 text-xs text-neutral-500">Financing typically available through manufacturer or equipment leasing partners.</p>
+            <p className="mt-2 text-xs text-white/35">Financing typically available through manufacturer or equipment leasing partners.</p>
           )}
           <div className="mt-4 flex flex-wrap gap-3">
             {robot.affiliate_url ? (
@@ -345,20 +345,20 @@ export default async function RobotDetailPage({ params }: Props) {
               const realImg = sImgs[0]?.url && !sImgs[0].url.includes("unsplash") ? sImgs[0].url : null;
               const label = i === 0 ? "Best alternative" : i === 1 ? "Also consider" : "Budget option";
               return (
-                <Link key={s.id} href={`/explore/${sCatSlug}/${s.slug}`} className="group overflow-hidden rounded-xl border border-border bg-white transition-all hover:-translate-y-1 hover:border-blue/30 hover:shadow-md">
-                  <div className="relative h-32 bg-neutral-100">
+                <Link key={s.id} href={`/explore/${sCatSlug}/${s.slug}`} className="group overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-blue/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+                  <div className="relative h-32 bg-white/[0.03]">
                     {realImg ? (
                       <SafeImage src={realImg} alt={s.name} sizes="33vw" className="object-cover" fallbackLabel={sMfr} fallbackSublabel={s.name} />
                     ) : (
-                      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 text-center">
-                        <span className="text-[10px] text-neutral-300">{sMfr}</span>
-                        <span className="text-xs font-semibold text-neutral-400">{s.name}</span>
+                      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] text-center">
+                        <span className="text-[10px] text-white/20">{sMfr}</span>
+                        <span className="text-xs font-semibold text-white/30">{s.name}</span>
                       </div>
                     )}
-                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-neutral-600 backdrop-blur-sm">{label}</span>
+                    <span className="absolute left-3 top-3 rounded-full bg-navy/80 px-2 py-0.5 text-[10px] font-medium text-white/60 backdrop-blur-sm">{label}</span>
                   </div>
                   <div className="p-4">
-                    <p className="text-[10px] text-neutral-400">{sMfr}</p>
+                    <p className="text-[10px] text-white/30">{sMfr}</p>
                     <h3 className="font-semibold text-foreground transition-colors group-hover:text-blue">{s.name}</h3>
                     <div className="mt-2 flex items-center justify-between">
                       <PriceDisplay price={s.price_current} size="sm" />
@@ -375,9 +375,9 @@ export default async function RobotDetailPage({ params }: Props) {
       {/* ══ AI ADVISOR CTA ══ */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-2xl border border-border bg-gradient-to-br from-white to-neutral-50 p-8 text-center sm:p-12">
+          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-blue/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
             <h2 className="font-display text-2xl font-bold text-foreground">Not sure if {robot.name} is right for you?</h2>
-            <p className="mt-3 text-neutral-500">Our AI Advisor compares this robot with alternatives for your specific use case, budget, and team.</p>
+            <p className="mt-3 text-white/35">Our AI Advisor compares this robot with alternatives for your specific use case, budget, and team.</p>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link href="/advisor" className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Ask Robot Advisor</Link>
               <Link href="/explore" className="rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground hover:border-blue">Browse All Robots</Link>
@@ -397,7 +397,7 @@ function Section({ title, children, id, subtitle }: { title: string; children: R
     <section id={id} className="scroll-mt-24 border-b border-border px-4 py-10">
       <div className="mx-auto max-w-6xl">
         <h2 className="font-display text-xl font-bold text-foreground">{title}</h2>
-        {subtitle && <p className="mb-6 mt-1 text-sm text-neutral-500">{subtitle}</p>}
+        {subtitle && <p className="mb-6 mt-1 text-sm text-white/35">{subtitle}</p>}
         {!subtitle && <div className="mb-6" />}
         {children}
       </div>
@@ -407,8 +407,8 @@ function Section({ title, children, id, subtitle }: { title: string; children: R
 
 function StatPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border bg-neutral-50 px-3 py-1.5">
-      <span className="text-[10px] text-neutral-400">{label} </span>
+    <div className="rounded-lg border border-border bg-white/[0.03] px-3 py-1.5">
+      <span className="text-[10px] text-white/30">{label} </span>
       <span className="font-mono text-xs font-semibold text-foreground">{value}</span>
     </div>
   );
@@ -416,10 +416,10 @@ function StatPill({ label, value }: { label: string; value: string }) {
 
 function ImpactCard({ icon, title, description }: { icon: string; title: string; description: string }) {
   return (
-    <div className="rounded-xl border border-border bg-white p-5">
+    <div className="rounded-xl border border-border bg-white/[0.03] p-5">
       <span className="text-2xl">{icon}</span>
       <h3 className="mt-2 text-sm font-semibold text-foreground">{title}</h3>
-      <p className="mt-1 text-xs leading-relaxed text-neutral-500">{description}</p>
+      <p className="mt-1 text-xs leading-relaxed text-white/35">{description}</p>
     </div>
   );
 }

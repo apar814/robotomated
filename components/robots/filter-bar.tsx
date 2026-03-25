@@ -48,11 +48,11 @@ export function FilterBar({
   const scoreNum = scoreMin ? parseInt(scoreMin) : 0;
 
   return (
-    <div className="sticky top-[57px] z-20 border-b border-border bg-white/95 backdrop-blur-sm">
+    <div className="sticky top-[57px] z-20 border-b border-border bg-navy/95 backdrop-blur-sm">
       <div className="flex flex-wrap items-center gap-4 px-4 py-3 sm:px-6">
         {/* Price presets */}
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-400">Price</span>
+          <span className="text-[10px] font-medium uppercase tracking-wider text-white/30">Price</span>
           <div className="flex gap-1.5">
             {PRICE_PRESETS.map(({ label, max }) => (
               <button
@@ -62,7 +62,7 @@ export function FilterBar({
                   "rounded-full border px-3 py-1 text-xs transition-all",
                   priceMax === max
                     ? "border-blue bg-blue/10 font-medium text-blue"
-                    : "border-border text-neutral-500 hover:border-neutral-300"
+                    : "border-border text-white/35 hover:border-white/[0.12]"
                 )}
               >
                 {label}
@@ -76,7 +76,7 @@ export function FilterBar({
 
         {/* Min score */}
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-medium uppercase tracking-wider text-neutral-400">Min Score</span>
+          <span className="text-[10px] font-medium uppercase tracking-wider text-white/30">Min Score</span>
           <div className="flex gap-1">
             {[60, 70, 80, 90].map((n) => (
               <button
@@ -86,7 +86,7 @@ export function FilterBar({
                   "rounded-full border px-2.5 py-1 font-mono text-xs transition-all",
                   scoreNum === n
                     ? "border-blue bg-blue/10 font-medium text-blue"
-                    : "border-border text-neutral-500 hover:border-neutral-300"
+                    : "border-border text-white/35 hover:border-white/[0.12]"
                 )}
               >
                 {n}+
@@ -98,15 +98,15 @@ export function FilterBar({
         {/* Right side */}
         <div className="ml-auto flex items-center gap-3">
           {hasFilters && (
-            <button onClick={onClear} className="text-xs text-neutral-400 underline underline-offset-2 hover:text-foreground">
+            <button onClick={onClear} className="text-xs text-white/30 underline underline-offset-2 hover:text-foreground">
               Clear filters
             </button>
           )}
-          <span className="text-xs text-neutral-400">{totalCount} robots</span>
+          <span className="text-xs text-white/30">{totalCount} robots</span>
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
-            className="cursor-pointer rounded-lg border border-border bg-white px-2.5 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none"
+            className="cursor-pointer rounded-lg border border-border bg-white/[0.04] px-2.5 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none"
           >
             <option value="score_desc">Top Rated</option>
             <option value="price_asc">Price: Low → High</option>

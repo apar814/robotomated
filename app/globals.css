@@ -2,88 +2,110 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Core — Light palette for main content, dark sections override */
-  --color-navy: #050A15;
-  --color-navy-light: #FFFFFF;
-  --color-navy-lighter: #F3F2EF;
-  --color-blue: #00C2FF;
-  --color-blue-dim: #00C2FF33;
-  --color-violet: #7B2FFF;
-  --color-violet-dim: #7B2FF33;
-  --color-green: #00E68A;
-  --color-green-dim: #00E68A33;
-  --color-orange: #FFB800;
-  --color-orange-dim: #FFB80033;
+  /* ── Background layers (darkest → lightest) ── */
+  --color-navy: #0A0F1E;
+  --color-navy-light: #0F1628;
+  --color-navy-lighter: #141C33;
+  --color-steel: #1A2340;
+  --color-carbon: #060A15;
 
-  /* Futuristic */
+  /* ── Brand accents ── */
+  --color-blue: #00C2FF;
+  --color-blue-dim: rgba(0, 194, 255, 0.12);
+  --color-violet: #7B2FFF;
+  --color-violet-dim: rgba(123, 47, 255, 0.12);
+  --color-green: #00E5A0;
+  --color-green-dim: rgba(0, 229, 160, 0.12);
+  --color-orange: #FFB700;
+  --color-orange-dim: rgba(255, 183, 0, 0.12);
   --color-cyan-glow: #00F5FF;
   --color-plasma: #BF5AF2;
-  --color-ice: #E0F7FF;
-  --color-steel: #E8E6E1;
-  --color-carbon: #060B16;
 
-  /* Semantic — light body, dark header/hero/footer */
-  --color-background: #FAF9F6;
-  --color-foreground: #14171F;
-  --color-muted: rgba(107, 114, 128, 1);
-  --color-border: rgba(0, 0, 0, 0.08);
+  /* ── Semantic ── */
+  --color-background: #0A0F1E;
+  --color-foreground: #FFFFFF;
+  --color-muted: rgba(255, 255, 255, 0.35);
+  --color-border: rgba(255, 255, 255, 0.07);
 
-  /* Fonts */
+  /* ── Fonts ── */
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-/* ── Card system ── */
+/* ═══════════════════════════════════════
+   GLASS CARD SYSTEM
+   ═══════════════════════════════════════ */
 .glass {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+}
+
+.glass-hover {
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .glass-hover:hover {
-  border-color: rgba(0, 194, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 194, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 194, 255, 0.20);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .glass-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 16px;
-  transition: all 0.3s ease;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 194, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 194, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 194, 255, 0.20);
   transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* Dark section cards (hero, header, footer) */
-.dark-section .glass {
-  background: rgba(10, 15, 30, 0.6);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+/* ═══════════════════════════════════════
+   SECTION LABEL (dot + uppercase text)
+   ═══════════════════════════════════════ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00C2FF;
+  margin-bottom: 10px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.section-label.green { color: #00E5A0; }
+.section-label.violet { color: #7B2FFF; }
+
+/* ═══════════════════════════════════════
+   GRADIENT TEXT
+   ═══════════════════════════════════════ */
+.gradient-text {
+  background: linear-gradient(135deg, #00C2FF 0%, #7B2FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.dark-section .glass-hover:hover {
-  border-color: rgba(0, 194, 255, 0.2);
-  box-shadow: 0 0 30px rgba(0, 194, 255, 0.05);
-}
-
-/* ── Background patterns ── */
+/* ═══════════════════════════════════════
+   BACKGROUND PATTERNS
+   ═══════════════════════════════════════ */
 .bg-grid {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* Dark section patterns */
-.dark-section .bg-grid,
-.dark-section.bg-grid {
   background-image:
     linear-gradient(rgba(0, 194, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 194, 255, 0.02) 1px, transparent 1px);
@@ -98,16 +120,20 @@
 }
 
 .bg-dots {
-  background-image: radial-gradient(rgba(0, 194, 255, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 194, 255, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* ── Text effects ── */
+/* ═══════════════════════════════════════
+   TEXT EFFECTS
+   ═══════════════════════════════════════ */
 .text-glow {
   text-shadow: 0 0 20px rgba(0, 194, 255, 0.3), 0 0 40px rgba(0, 194, 255, 0.1);
 }
 
-/* ── HUD corners ── */
+/* ═══════════════════════════════════════
+   HUD CORNERS
+   ═══════════════════════════════════════ */
 .hud-corners { position: relative; }
 .hud-corners::before, .hud-corners::after {
   content: ''; position: absolute; width: 20px; height: 20px;
@@ -116,7 +142,9 @@
 .hud-corners::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
 .hud-corners::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-/* ── Logo strip marquee ── */
+/* ═══════════════════════════════════════
+   MARQUEE / SCROLL ANIMATIONS
+   ═══════════════════════════════════════ */
 @keyframes logo-marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-33.333%); }
@@ -125,15 +153,13 @@
   animation: logo-marquee 50s linear infinite;
   will-change: transform;
 }
-.logo-strip:hover {
-  animation-play-state: paused;
-}
-/* Soft fade on edges */
+.logo-strip:hover { animation-play-state: paused; }
+
 .logo-strip-mask {
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
-/* Legacy alias for any remaining .animate-scroll usage */
+
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -141,39 +167,45 @@
 .animate-scroll { animation: scroll 40s linear infinite; }
 .animate-scroll:hover { animation-play-state: paused; }
 
-/* ── News ticker vertical scroll ── */
 @keyframes ticker-scroll {
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); }
 }
-.news-ticker {
-  animation: ticker-scroll 40s linear infinite;
-}
-.news-ticker:hover {
-  animation-play-state: paused;
-}
+.news-ticker { animation: ticker-scroll 40s linear infinite; }
+.news-ticker:hover { animation-play-state: paused; }
 
-/* ── Page transition ── */
+/* ═══════════════════════════════════════
+   PAGE TRANSITIONS
+   ═══════════════════════════════════════ */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in { animation: fade-in 0.4s ease-out; }
 
-/* ── Cursor glow ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
+
+/* ═══════════════════════════════════════
+   CURSOR GLOW
+   ═══════════════════════════════════════ */
 .cursor-glow {
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0,194,255,0.02) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,194,255,0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
   transition: left 0.3s ease, top 0.3s ease;
 }
 
-/* ── Hero "The Placement" animation ── */
-/* Bridge O (tspan): starts dim, brightens when arm places it */
+/* ═══════════════════════════════════════
+   HERO WORDMARK ANIMATION
+   ═══════════════════════════════════════ */
 @keyframes bridge-o-reveal {
   0%    { opacity: 0.15; }
   65%   { opacity: 0.15; }
@@ -183,7 +215,6 @@
   100%  { opacity: 0.15; }
 }
 
-/* The arm: descends with O, holds, retracts */
 @keyframes arm-movement {
   0%    { transform: translateY(-120px); }
   10%   { transform: translateY(-120px); }
@@ -194,7 +225,6 @@
   100%  { transform: translateY(-120px); }
 }
 
-/* Gripper: open, close, hold, release */
 @keyframes gripper-action {
   0%    { transform: scaleX(1.3); }
   12%   { transform: scaleX(0.8); }
@@ -203,7 +233,6 @@
   100%  { transform: scaleX(1.3); }
 }
 
-/* Gap glow: pulses before O arrives, disappears once arm descends */
 @keyframes gap-glow {
   0%    { opacity: 0.25; }
   5%    { opacity: 0.15; }
@@ -212,7 +241,6 @@
   100%  { opacity: 0.25; }
 }
 
-/* MATED text: dim initially, brightens when O is placed */
 @keyframes mated-brighten {
   0%    { opacity: 0.4; }
   70%   { opacity: 0.4; }
@@ -222,7 +250,6 @@
   100%  { opacity: 0.4; }
 }
 
-/* Circuit crosshair inside O: hidden until placed */
 @keyframes circuit-reveal {
   0%    { opacity: 0; }
   72%   { opacity: 0; }
@@ -232,7 +259,6 @@
   100%  { opacity: 0; }
 }
 
-/* Connection lines: zip from O to ROBOT and MATED */
 @keyframes connect-zip {
   0%    { stroke-dashoffset: 30; opacity: 0; }
   72%   { stroke-dashoffset: 30; opacity: 0; }
@@ -242,7 +268,6 @@
   100%  { stroke-dashoffset: 30; opacity: 0; }
 }
 
-/* Gold pulse ring at moment of placement */
 @keyframes place-pulse {
   0%    { r: 3; opacity: 0; }
   70%   { r: 3; opacity: 0; }
@@ -251,75 +276,29 @@
   100%  { r: 40; opacity: 0; }
 }
 
-.hero-bridge-o {
-  animation: bridge-o-reveal 5s ease-in-out infinite;
-}
-.hero-arm-move {
-  animation: arm-movement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
-}
-.hero-gripper-action {
-  animation: gripper-action 5s ease-in-out infinite;
-}
-.hero-gap-pulse {
-  animation: gap-glow 5s ease-in-out infinite;
-}
-.hero-text-right {
-  animation: mated-brighten 5s ease-in-out infinite;
-}
-.hero-circuit-lines {
-  animation: circuit-reveal 5s ease-in-out infinite;
-}
-.hero-connect-left, .hero-connect-right {
-  animation: connect-zip 5s ease-in-out infinite;
-}
-.hero-place-pulse {
-  animation: place-pulse 5s ease-in-out infinite;
-}
+.hero-bridge-o { animation: bridge-o-reveal 5s ease-in-out infinite; }
+.hero-arm-move { animation: arm-movement 5s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite; }
+.hero-gripper-action { animation: gripper-action 5s ease-in-out infinite; }
+.hero-gap-pulse { animation: gap-glow 5s ease-in-out infinite; }
+.hero-text-right { animation: mated-brighten 5s ease-in-out infinite; }
+.hero-circuit-lines { animation: circuit-reveal 5s ease-in-out infinite; }
+.hero-connect-left, .hero-connect-right { animation: connect-zip 5s ease-in-out infinite; }
+.hero-place-pulse { animation: place-pulse 5s ease-in-out infinite; }
 
-/* ── Core animations ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+/* ═══════════════════════════════════════
+   MISC ANIMATIONS
+   ═══════════════════════════════════════ */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .animate-float { animation: float 3s ease-in-out infinite; }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.03), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.animate-shimmer { background: linear-gradient(90deg, transparent, rgba(0,194,255,0.03), transparent); background-size: 200% 100%; animation: shimmer 2s infinite; }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
-
-/* ── Robot arm animations ── */
-@keyframes arm-base-sway {
-  0%, 100% { transform: rotate(-5deg); }
-  50% { transform: rotate(5deg); }
-}
-@keyframes arm-mid-sway {
-  0%, 100% { transform: rotate(8deg); }
-  50% { transform: rotate(-8deg); }
-}
-@keyframes gripper-open-close {
-  0%, 100% { transform: scaleX(1); }
-  50% { transform: scaleX(0.85); }
-}
-@keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@keyframes scan-line {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(500px); }
-}
+@keyframes arm-base-sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes arm-mid-sway { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-8deg); } }
+@keyframes gripper-open-close { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(0.85); } }
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes scan-line { 0% { transform: translateY(0); } 100% { transform: translateY(500px); } }
 
 .animate-arm-base { animation: arm-base-sway 6s ease-in-out infinite; }
 .animate-arm-mid { animation: arm-mid-sway 4s ease-in-out infinite; }
@@ -329,7 +308,9 @@
 .animate-float-fast { animation: float-y 3s ease-in-out infinite; }
 .animate-scan { animation: scan-line 4s linear infinite; opacity: 0.3; }
 
-/* ── Reduced motion ── */
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in, .animate-float, .animate-shimmer, .animate-fade-up,
   .animate-arm-base, .animate-arm-mid, .animate-gripper,
@@ -338,30 +319,29 @@
   .hero-bridge-o, .hero-arm-move, .hero-gripper-action, .hero-gap-pulse,
   .hero-text-right, .hero-circuit-lines,
   .hero-connect-left, .hero-connect-right, .hero-place-pulse,
-  .news-ticker {
+  .news-ticker, .logo-strip {
     animation: none !important;
   }
 }
 
+/* ═══════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════ */
 @layer base {
-  html { color-scheme: light; }
+  html { color-scheme: dark; }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #0A0F1E;
+    color: #FFFFFF;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Dark sections: header, hero, footer */
-.dark-section {
-  background-color: #050A15;
-  color: rgba(255, 255, 255, 0.95);
-  --color-foreground: rgba(255, 255, 255, 0.95);
-  --color-muted: rgba(255, 255, 255, 0.45);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-navy-light: #0A0F1E;
-  --color-navy-lighter: #0D1321;
-  --color-steel: #1A2235;
-}
+/* ═══════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0F1E; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.20); }
