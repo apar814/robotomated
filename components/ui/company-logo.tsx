@@ -17,13 +17,14 @@ export function CompanyLogo({ logoUrl, name, height = 28, maxWidth = 120, classN
 
   const src = logoUrl && !error ? logoUrl : null;
 
+  // Initials fallback — used when no logo URL or image fails to load
   if (!src) {
     const initials = name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
     const colorIndex = name.charCodeAt(0) % COLORS.length;
     return (
       <div
         className={`flex items-center justify-center rounded-full font-bold text-white ${className}`}
-        style={{ width: height, height, backgroundColor: COLORS[colorIndex], fontSize: height * 0.35 }}
+        style={{ width: height, height, backgroundColor: COLORS[colorIndex], fontSize: height * 0.35, flexShrink: 0 }}
       >
         {initials}
       </div>
@@ -31,13 +32,15 @@ export function CompanyLogo({ logoUrl, name, height = 28, maxWidth = 120, classN
   }
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={`${name} logo`}
       onError={() => setError(true)}
       className={`object-contain ${className}`}
-      style={{ height, width: "auto", maxWidth }}
-      loading="lazy"
+      style={{ height, width: "auto", maxWidth, flexShrink: 0 }}
+      crossOrigin="anonymous"
+      referrerPolicy="no-referrer"
     />
   );
 }
