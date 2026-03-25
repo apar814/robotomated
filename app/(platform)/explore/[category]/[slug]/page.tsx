@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { createServerClient } from "@/lib/supabase/server";
-import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
+import { RoboScoreRing, RoboScoreBadge, ScoreBar } from "@/components/ui/robo-score";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceChart } from "@/components/robots/price-chart";
 import { PriceComparison } from "@/components/commerce/price-comparison";
@@ -13,15 +12,16 @@ import { ProductSchema, ReviewSchema } from "@/components/seo/json-ld";
 import { ExpertReviewCard } from "@/components/reviews/expert-review-card";
 import { CommunityReviewCard } from "@/components/reviews/community-review-card";
 import { CommunityReviewForm } from "@/components/reviews/community-review-form";
-import { ScoreBreakdownChart } from "@/components/reviews/score-breakdown-chart";
 import { AskAiButton } from "@/components/advisor/ask-ai-button";
 import { SaveRobotButton } from "@/components/auth/save-robot-button";
 import { CompanyLogo } from "@/components/ui/company-logo";
-import { RoiCalculator } from "@/components/robots/roi-calculator";
-import { TcoBreakdown } from "@/components/robots/tco-breakdown";
+import { RoiCalculatorStandalone } from "@/components/robots/roi-calculator-standalone";
+import { DIMENSIONS } from "@/lib/scoring/roboscore";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 import { SafeImage } from "@/components/ui/safe-image";
 import { cn } from "@/lib/utils/cn";
+
+const YEAR = new Date().getFullYear();
 
 // ---------------------------------------------------------------------------
 // Types
@@ -57,48 +57,38 @@ interface SimilarRobot {
   robot_categories: { slug: string } | null;
 }
 
-interface ApplicationRow {
-  id: string; application_name: string; industry: string;
-  task_description: string | null; time_savings_percent: number | null;
-  cost_savings_percent: number | null; labor_savings_description: string | null;
-  cycle_time_seconds: number | null; deployment_time_days: number | null;
-  difficulty: string | null; real_world_example: string | null;
-}
-
-interface FinancingRow {
-  id: string; provider: string; type: string; monthly_payment: number | null;
-  term_months: number | null; down_payment_percent: number | null;
-  includes_maintenance: boolean; includes_support: boolean; notes: string | null;
-}
-
 interface Props { params: Promise<{ category: string; slug: string }> }
 
+// ---------------------------------------------------------------------------
+// Metadata
+// ---------------------------------------------------------------------------
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const supabase = createServerClient();
-  const { data } = await supabase.from("robots").select("name, description_short, manufacturers(name)")
-    .eq("slug", slug).single().returns<{ name: string; description_short: string | null; manufacturers: { name: string } }>();
+  const { data } = await supabase.from("robots").select("name, description_short, robo_score, price_current, manufacturers(name)")
+    .eq("slug", slug).single().returns<{ name: string; description_short: string | null; robo_score: number | null; price_current: number | null; manufacturers: { name: string } }>();
   if (!data) return { title: "Robot Not Found" };
+  const priceStr = data.price_current ? `$${data.price_current.toLocaleString()}` : "Contact for pricing";
+  const scoreStr = data.robo_score ? `RoboScore ${data.robo_score.toFixed(1)}/100` : "";
   return {
-    title: `${data.name} by ${data.manufacturers?.name} — Review, Specs & Pricing`,
-    description: data.description_short || `Detailed review, specs, ROI calculator, and pricing for ${data.name}.`,
+    title: `${data.name} Review & ROI Calculator (${YEAR}) | Robotomated`,
+    description: `${data.name} by ${data.manufacturers?.name} — ${scoreStr}. ${priceStr}. ${data.description_short || "Expert review, specs, ROI calculator, and pricing."}`,
   };
 }
 
+// ---------------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------------
 export default async function RobotDetailPage({ params }: Props) {
   const { category: categorySlug, slug } = await params;
   const supabase = createServerClient();
 
-  const [robotRes] = await Promise.all([
-    supabase.from("robots").select("*, manufacturers(name, slug, country, website), robot_categories(name, slug)")
-      .eq("slug", slug).single().returns<RobotDetail>(),
-  ]);
-
-  const robot = robotRes.data;
+  const { data: robot } = await supabase.from("robots")
+    .select("*, manufacturers(name, slug, country, website), robot_categories(name, slug)")
+    .eq("slug", slug).single().returns<RobotDetail>();
   if (!robot) notFound();
 
-  // Parallel fetches using robot.id
-  const [{ data: reviews }, { data: priceHistory }, { data: similarData }, { data: applications }, { data: financing }] = await Promise.all([
+  const [{ data: reviews }, { data: priceHistory }, { data: similarData }] = await Promise.all([
     supabase.from("reviews").select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
       .eq("robot_id", robot.id).not("published_at", "is", null).order("published_at", { ascending: false }).returns<ReviewRow[]>(),
     supabase.from("price_history").select("recorded_at, price, retailer")
@@ -106,8 +96,6 @@ export default async function RobotDetailPage({ params }: Props) {
     supabase.from("robots").select("id, slug, name, robo_score, price_current, description_short, images, manufacturers(name), robot_categories(slug)")
       .eq("category_id", robot.category_id).neq("id", robot.id).eq("status", "active")
       .order("robo_score", { ascending: false, nullsFirst: false }).limit(3).returns<SimilarRobot[]>(),
-    supabase.from("robot_applications").select("*").eq("robot_id", robot.id).returns<ApplicationRow[]>(),
-    supabase.from("financing_options").select("*").eq("robot_id", robot.id).returns<FinancingRow[]>(),
   ]);
 
   const breakdown = robot.score_breakdown as RoboScoreBreakdown | null;
@@ -115,260 +103,190 @@ export default async function RobotDetailPage({ params }: Props) {
   const robotImages = (Array.isArray(robot.images) ? robot.images : []) as { url: string; alt: string }[];
   const mfr = robot.manufacturers;
   const cat = robot.robot_categories;
-  const expertReview = (reviews || []).find((r) => r.review_type === "expert");
+  const expertReviews = (reviews || []).filter((r) => r.review_type === "expert");
   const communityReviews = (reviews || []).filter((r) => r.review_type === "community");
   const similar = similarData || [];
-  const apps = applications || [];
-  const fins = financing || [];
-  const keySpecs = Object.entries(specs).slice(0, 6);
-
-  // Buyer fields — cast through unknown since select("*") returns extra columns
   const b = robot as unknown as Record<string, unknown>;
-  const hasBuyerData = !!(b.labor_replaced_fte || b.annual_maintenance_cost || b.training_required);
-  const hasPower = !!(b.power_source || b.battery_runtime_hrs || b.power_consumption_watts);
-  const hasSafety = (Array.isArray(b.certifications) && b.certifications.length > 0) || (Array.isArray(b.safety_features) && b.safety_features.length > 0);
+
+  // Spec grouping
+  const specGroups = groupSpecs(specs);
+
+  function fmtPrice(p: number): string {
+    if (p >= 1000000) return `$${(p / 1000000).toFixed(1)}M`;
+    return `$${p.toLocaleString()}`;
+  }
 
   return (
     <div>
       <AskAiButton robotName={robot.name} />
       <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} score={robot.robo_score} categorySlug={categorySlug} model={robot.model_number} status={robot.status} />
-      {expertReview && <ReviewSchema robotName={robot.name} reviewTitle={expertReview.title} reviewBody={expertReview.body.slice(0, 200)} author="Robotomated Editorial" score={expertReview.robo_score} publishedAt={expertReview.published_at} />}
+      {expertReviews[0] && <ReviewSchema robotName={robot.name} reviewTitle={expertReviews[0].title} reviewBody={expertReviews[0].body.slice(0, 200)} author="Robotomated Editorial" score={expertReviews[0].robo_score} publishedAt={expertReviews[0].published_at} />}
 
-      {/* ── STICKY SECTION NAV ── */}
-      <SectionNav robotName={robot.name} hasApps={apps.length > 0} hasBreakdown={!!breakdown} hasReview={!!expertReview} hasSimilar={similar.length > 0} hasBuyerData={hasBuyerData} />
+      {/* ── STICKY NAV ── */}
+      <nav className="sticky top-[57px] z-20 hidden border-b border-border bg-white/95 backdrop-blur-sm md:block">
+        <div className="mx-auto flex max-w-6xl items-center gap-0 overflow-x-auto px-6">
+          {[
+            { id: "overview", label: "Overview" },
+            { id: "roi", label: "ROI Calculator" },
+            ...(breakdown ? [{ id: "score", label: "RoboScore" }] : []),
+            { id: "specs", label: "Specs" },
+            ...(expertReviews.length > 0 ? [{ id: "reviews", label: "Reviews" }] : []),
+            { id: "buy", label: "Pricing" },
+            ...(similar.length > 0 ? [{ id: "similar", label: "Alternatives" }] : []),
+          ].map((s) => (
+            <a key={s.id} href={`#${s.id}`} className="whitespace-nowrap border-b-2 border-transparent px-4 py-3.5 text-xs text-neutral-500 transition-colors hover:border-green hover:text-foreground">{s.label}</a>
+          ))}
+        </div>
+      </nav>
 
-      {/* ── 1. HERO ── */}
-      <section id="overview" className="scroll-mt-24 border-b border-border px-4 py-12">
+      {/* ══ SECTION 1 — HERO ══ */}
+      <section id="overview" className="scroll-mt-24 border-b border-border px-4 py-10">
         <div className="mx-auto max-w-6xl">
-          <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Browse", href: "/explore" }, { name: cat?.name || "Category", href: `/explore/${categorySlug}` }, { name: robot.name, href: `/explore/${categorySlug}/${robot.slug}` }]} />
+          <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Browse", href: "/explore" }, { name: cat?.name || "", href: `/explore/${categorySlug}` }, { name: robot.name, href: `/explore/${categorySlug}/${robot.slug}` }]} />
 
           <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
-            <div className="relative h-64 w-full overflow-hidden rounded-xl lg:h-80 lg:w-96 lg:shrink-0">
-              {robotImages.length > 0 ? (
-                <SafeImage src={robotImages[0].url} alt={robotImages[0].alt || robot.name} sizes="(max-width:1024px) 100vw, 384px" className="object-cover" priority fallbackLabel={mfr?.name} fallbackSublabel={robot.name} />
+            {/* Hero image */}
+            <div className="relative h-64 w-full overflow-hidden rounded-xl bg-neutral-100 lg:h-80 lg:w-[420px] lg:shrink-0">
+              {robotImages.length > 0 && robotImages[0].url && !robotImages[0].url.includes("unsplash") ? (
+                <SafeImage src={robotImages[0].url} alt={robotImages[0].alt || robot.name} sizes="(max-width:1024px) 100vw, 420px" className="object-cover" priority fallbackLabel={mfr?.name} fallbackSublabel={robot.name} />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter"><span className="text-4xl opacity-20">&#129302;</span></div>
+                <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 px-6 text-center">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-neutral-300">{mfr?.name}</span>
+                  <span className="mt-2 text-lg font-bold text-neutral-400">{robot.name}</span>
+                </div>
               )}
             </div>
 
+            {/* Hero content */}
             <div className="flex-1">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-3">
                     <CompanyLogo logoUrl={(mfr as unknown as Record<string, unknown>)?.logo_url as string | null} name={mfr?.name || ""} height={28} />
-                    <Link href={`/manufacturers/${mfr?.slug}`} className="text-sm text-muted hover:text-blue">{mfr?.name}</Link>
+                    <Link href={`/manufacturers/${mfr?.slug}`} className="text-sm text-neutral-500 hover:text-blue">{mfr?.name}</Link>
                     <SaveRobotButton robotId={robot.id} />
                   </div>
-                  <h1 className="font-display text-3xl font-bold sm:text-4xl">{robot.name}</h1>
-                  {robot.model_number && <p className="mt-1 font-mono text-xs text-muted/60">Model: {robot.model_number}</p>}
+                  <h1 className="mt-1 font-display text-3xl font-bold text-foreground sm:text-4xl">{robot.name}</h1>
                 </div>
-                {robot.robo_score != null && robot.robo_score > 0 && <RoboScoreRing score={robot.robo_score} />}
+                {robot.robo_score != null && robot.robo_score > 0 && (
+                  <a href="#score" className="shrink-0">
+                    <RoboScoreRing score={robot.robo_score} size={80} />
+                  </a>
+                )}
               </div>
 
-              <p className="mt-4 leading-relaxed text-muted">{robot.description_short}</p>
+              <p className="mt-3 leading-relaxed text-neutral-600">{robot.description_short}</p>
 
-              {/* Price */}
-              <div className="mt-5">
-                <PriceDisplay price={robot.price_current} status={robot.status} size="lg" />
-                {robot.price_msrp != null && robot.price_current != null && robot.price_msrp > robot.price_current && (
-                  <span className="ml-3 font-mono text-sm text-muted line-through">${robot.price_msrp.toLocaleString()}</span>
+              {/* Stat pills */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {robot.price_current != null && (
+                  <StatPill label="Price" value={fmtPrice(robot.price_current)} />
                 )}
-                {b.price_lease_monthly ? (
-                  <p className="mt-1 text-sm text-muted">or from <span className="font-mono font-semibold text-blue">${(b.price_lease_monthly as number).toLocaleString()}/mo</span> lease</p>
-                ) : null}
+                {specs.payload_kg != null && <StatPill label="Payload" value={`${String(specs.payload_kg)}kg`} />}
+                {specs.reach_mm != null && <StatPill label="Reach" value={`${String(specs.reach_mm)}mm`} />}
+                {specs.battery_hrs != null && <StatPill label="Battery" value={`${String(specs.battery_hrs)}h`} />}
+                {specs.suction_pa != null && <StatPill label="Suction" value={`${Number(specs.suction_pa).toLocaleString()}Pa`} />}
+                {specs.max_speed != null && <StatPill label="Speed" value={String(specs.max_speed)} />}
               </div>
 
               {/* CTAs */}
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <Link href={`/best-price/${robot.slug}`} className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-navy transition-opacity hover:opacity-90">Where to Buy</Link>
-                <Link href="/explore" className="rounded-lg border border-white/[0.1] px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-white/[0.04]">Compare</Link>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                {robot.affiliate_url ? (
+                  <a href={robot.affiliate_url} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+                    Get Quote
+                  </a>
+                ) : mfr?.website ? (
+                  <a href={mfr.website} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+                    Get Quote from {mfr.name}
+                  </a>
+                ) : null}
+                <Link href="/advisor" className="rounded-lg border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-blue">
+                  Ask AI Advisor
+                </Link>
               </div>
-
-              {mfr?.website && (
-                <a href={mfr.website} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm text-blue hover:underline">
-                  Visit {mfr.name} Official Site <ExtIcon />
-                </a>
-              )}
-
-              {/* Key specs */}
-              {keySpecs.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {keySpecs.map(([key, value]) => (
-                    <div key={key} className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-3 py-1.5">
-                      <span className="text-[10px] text-muted/60">{fmtKey(key)} </span>
-                      <span className="font-mono text-xs font-semibold">{fmtVal(value)}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 2. ROI CALCULATOR ── */}
-      {hasBuyerData && (
-        <Section title="ROI & Cost Analysis" id="roi">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <RoiCalculator price={robot.price_current} priceLeaseMonthly={b.price_lease_monthly as number | null} priceType={b.price_type as string | null} integrationCost={b.integration_cost_estimate as number | null} trainingCost={b.training_cost as number | null} annualMaintenance={b.annual_maintenance_cost as number | null} laborReplacedFte={b.labor_replaced_fte as number | null} powerConsumptionWatts={b.power_consumption_watts as number | null} robotName={robot.name} />
-            <TcoBreakdown price={robot.price_current} priceType={b.price_type as string | null} priceLeaseMonthly={b.price_lease_monthly as number | null} integrationCost={b.integration_cost_estimate as number | null} trainingCost={b.training_cost as number | null} annualMaintenance={b.annual_maintenance_cost as number | null} warrantyYears={b.warranty_years as number | null} expectedLifespan={b.expected_lifespan_years as number | null} spareParts={b.spare_parts_availability as string | null} powerConsumptionWatts={b.power_consumption_watts as number | null} trainingRequired={b.training_required as string | null} financingNotes={b.financing_notes as string | null} />
+      {/* ══ SECTION 2 — BUSINESS IMPACT ══ */}
+      {robot.price_current != null && (
+        <section className="border-b border-border px-4 py-10">
+          <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-3">
+            <ImpactCard icon="&#128101;" title="Workers augmented" description={specs.payload_kg != null ? `Handles tasks requiring up to ${String(specs.payload_kg)}kg lifting capacity` : `Automates repetitive ${cat?.name?.toLowerCase() || "operational"} tasks`} />
+            <ImpactCard icon="&#9201;" title="Time saved per day" description={specs.battery_hrs != null ? `Operates up to ${String(specs.battery_hrs)} hours per charge with minimal downtime` : "Runs continuously during operational shifts without breaks"} />
+            <ImpactCard icon="&#128200;" title="Est. payback period" description={robot.price_current! < 5000 ? "Typically under 6 months for consumer applications" : robot.price_current! < 50000 ? "Typically 12-24 months at standard utilization" : "Typically 18-36 months depending on utilization and labor costs"} />
           </div>
-        </Section>
+        </section>
       )}
 
-      {/* ── 3. APPLICATIONS ── */}
-      {apps.length > 0 && (
-        <Section title="Applications & Use Cases" id="applications">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {apps.map((app) => (
-              <div key={app.id} className="glass rounded-xl p-5">
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <h3 className="font-semibold">{app.application_name}</h3>
-                    <p className="text-xs text-muted/60">{app.industry}</p>
-                  </div>
-                  {app.difficulty && (
-                    <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-medium",
-                      app.difficulty === "easy" ? "bg-green/10 text-green" :
-                      app.difficulty === "medium" || app.difficulty === "basic" ? "bg-blue/10 text-blue" :
-                      "bg-orange/10 text-orange"
-                    )}>{app.difficulty}</span>
-                  )}
-                </div>
-                {app.task_description && <p className="mt-2 text-xs leading-relaxed text-muted/80">{app.task_description}</p>}
-                <div className="mt-3 flex flex-wrap gap-3">
-                  {app.time_savings_percent && <Stat label="Time Saved" value={`${app.time_savings_percent}%`} color="text-green" />}
-                  {app.cost_savings_percent && <Stat label="Cost Saved" value={`${app.cost_savings_percent}%`} color="text-green" />}
-                  {app.deployment_time_days != null && <Stat label="Deploy" value={`${app.deployment_time_days}d`} color="text-blue" />}
-                  {app.cycle_time_seconds && <Stat label="Cycle" value={`${app.cycle_time_seconds}s`} color="text-muted" />}
-                </div>
-                {app.labor_savings_description && <p className="mt-2 text-[11px] text-muted/70">{app.labor_savings_description}</p>}
-                {app.real_world_example && (
-                  <div className="mt-3 rounded-lg border border-blue/10 bg-blue/5 px-3 py-2">
-                    <p className="text-[10px] font-medium text-blue">Real-world deployment</p>
-                    <p className="mt-0.5 text-[11px] text-muted">{app.real_world_example}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </Section>
-      )}
+      {/* ══ SECTION 3 — ROI CALCULATOR ══ */}
+      <Section title="ROI Calculator" id="roi" subtitle="Estimate your return based on your operation's specifics">
+        <RoiCalculatorStandalone robotName={robot.name} robotPrice={robot.price_current} robotSlug={`${categorySlug}/${robot.slug}`} />
+      </Section>
 
-      {/* ── 4. SCORE BREAKDOWN ── */}
+      {/* ══ SECTION 4 — ROBOSCORE BREAKDOWN ══ */}
       {breakdown && (
-        <Section title="RoboScore Breakdown" id="score">
-          <div className="max-w-lg">
-            <ScoreBreakdownChart breakdown={breakdown} />
-          </div>
-          <p className="mt-4 text-xs text-muted">
-            <Link href="/methodology" className="text-blue hover:underline">Read our scoring methodology</Link>
-          </p>
-        </Section>
-      )}
-
-      {/* ── 5. POWER & BATTERY ── */}
-      {hasPower && (
-        <Section title="Power & Operation">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {!!b.power_source && <InfoCard label="Power Source" value={String(b.power_source).replace(/^\w/, c => c.toUpperCase())} />}
-            {!!b.battery_runtime_hrs && <InfoCard label="Runtime" value={`${b.battery_runtime_hrs} hours`} />}
-            {!!b.charge_time_hrs && <InfoCard label="Charge Time" value={`${b.charge_time_hrs} hours`} />}
-            {!!b.hot_swap_battery && <InfoCard label="Hot-Swap Battery" value="Yes" color="text-green" />}
-            {!!b.power_consumption_watts && <InfoCard label="Power Draw" value={`${b.power_consumption_watts}W`} />}
-            {!!b.operating_voltage && <InfoCard label="Voltage" value={String(b.operating_voltage)} />}
-            {!!b.operating_environment && <InfoCard label="Environment" value={String(b.operating_environment).replace(/^\w/, c => c.toUpperCase())} />}
-            {!!b.temperature_range && <InfoCard label="Temp Range" value={String(b.temperature_range)} />}
-            {!!b.noise_level_db && <InfoCard label="Noise Level" value={`${b.noise_level_db} dB`} />}
-          </div>
-        </Section>
-      )}
-
-      {/* ── 6. FINANCING ── */}
-      {fins.length > 0 && (
-        <Section title="Financing Options">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {fins.map((f) => (
-              <div key={f.id} className="glass rounded-xl p-5">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-semibold">{f.provider}</h3>
-                    <span className="rounded-full bg-white/[0.04] px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted">{f.type}</span>
+        <Section title="RoboScore Breakdown" id="score" subtitle={`How ${robot.name} scores across 8 evaluation dimensions`}>
+          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+            <div className="space-y-3">
+              {DIMENSIONS.map((dim) => {
+                const score = breakdown[dim.key];
+                return (
+                  <div key={dim.key}>
+                    <ScoreBar label={dim.label} score={score} weight={`${Math.round(dim.weight * 100)}%`} />
                   </div>
-                  {f.monthly_payment && (
-                    <span className="font-mono text-lg font-bold text-green">${f.monthly_payment.toLocaleString()}<span className="text-xs font-normal text-muted">/mo</span></span>
-                  )}
+                );
+              })}
+            </div>
+            <div className="rounded-xl border border-border bg-neutral-50 p-5">
+              <RoboScoreRing score={robot.robo_score!} size={100} />
+              <p className="mt-4 text-xs leading-relaxed text-neutral-500">
+                RoboScore is a weighted composite of 8 dimensions, independently evaluated by the Robotomated editorial team.
+              </p>
+              <Link href="/methodology" className="mt-3 block text-xs text-blue hover:underline">Read our scoring methodology →</Link>
+            </div>
+          </div>
+        </Section>
+      )}
+
+      {/* ══ SECTION 5 — FULL SPECS ══ */}
+      {Object.keys(specs).length > 0 && (
+        <Section title="Technical Specifications" id="specs">
+          <div className="space-y-6">
+            {specGroups.map(([group, entries]) => (
+              <div key={group}>
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-400">{group}</h3>
+                <div className="overflow-hidden rounded-lg border border-border">
+                  <table className="w-full text-sm">
+                    <tbody>
+                      {entries.map(([key, value], i) => (
+                        <tr key={key} className={i % 2 === 0 ? "bg-white" : "bg-neutral-50/60"}>
+                          <td className="px-4 py-2.5 font-medium text-neutral-500 sm:w-48">{fmtKey(key)}</td>
+                          <td className="px-4 py-2.5 font-mono text-foreground">{fmtVal(value)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                {f.term_months != null && f.term_months > 0 && <p className="mt-2 text-xs text-muted">{f.term_months}-month term{f.down_payment_percent ? ` · ${f.down_payment_percent}% down` : ""}</p>}
-                {f.term_months === 0 && <p className="mt-2 text-xs text-muted">Month-to-month · Cancel anytime</p>}
-                <div className="mt-2 flex gap-3 text-[10px]">
-                  {f.includes_maintenance && <span className="text-green">Maintenance included</span>}
-                  {f.includes_support && <span className="text-green">Support included</span>}
-                </div>
-                {f.notes && <p className="mt-2 text-[11px] text-muted/70">{f.notes}</p>}
               </div>
             ))}
           </div>
         </Section>
       )}
 
-      {/* ── 7. FULL SPECS ── */}
-      {Object.keys(specs).length > 0 && (
-        <Section title="Full Specifications" id="specs">
-          <div className="overflow-hidden rounded-xl border border-white/[0.06]">
-            <table className="w-full text-sm">
-              <tbody>
-                {Object.entries(specs).map(([key, value], i) => (
-                  <tr key={key} className={i % 2 === 0 ? "bg-white/[0.01]" : "bg-white/[0.03]"}>
-                    <td className="px-4 py-3 font-medium text-muted">{fmtKey(key)}</td>
-                    <td className="px-4 py-3 font-mono">{fmtVal(value)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {/* ══ SECTION 6 — EXPERT REVIEWS ══ */}
+      {expertReviews.length > 0 && (
+        <Section title="Expert Reviews" id="reviews" subtitle={`What independent reviewers say about the ${robot.name}`}>
+          <div className="space-y-4">
+            {expertReviews.map((review) => (
+              <ExpertReviewCard key={review.id} title={review.title} body={review.body} roboScore={review.robo_score} scoreBreakdown={review.score_breakdown as RoboScoreBreakdown | null} pros={review.pros as string[]} cons={review.cons as string[]} verdict={review.verdict} publishedAt={review.published_at} />
+            ))}
           </div>
         </Section>
       )}
 
-      {/* ── 8. SAFETY & CERTIFICATIONS ── */}
-      {hasSafety && (
-        <Section title="Safety & Certifications">
-          <div className="grid gap-6 sm:grid-cols-2">
-            {Array.isArray(b.certifications) && b.certifications.length > 0 && (
-              <div>
-                <h3 className="mb-3 text-sm font-semibold text-muted">Certifications</h3>
-                <div className="flex flex-wrap gap-2">
-                  {(b.certifications as string[]).map((cert) => (
-                    <span key={cert} className="rounded-full border border-green/20 bg-green/5 px-3 py-1 text-xs font-medium text-green">{cert}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {Array.isArray(b.safety_features) && b.safety_features.length > 0 && (
-              <div>
-                <h3 className="mb-3 text-sm font-semibold text-muted">Safety Features</h3>
-                <ul className="space-y-1.5">
-                  {(b.safety_features as string[]).map((feat) => (
-                    <li key={feat} className="flex items-center gap-2 text-xs text-muted/80">
-                      <svg className="h-3.5 w-3.5 shrink-0 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </Section>
-      )}
-
-      {/* ── 9. EXPERT REVIEW ── */}
-      {expertReview && (
-        <Section title="Expert Review" id="reviews">
-          <ExpertReviewCard title={expertReview.title} body={expertReview.body} roboScore={expertReview.robo_score} scoreBreakdown={expertReview.score_breakdown as RoboScoreBreakdown | null} pros={expertReview.pros as string[]} cons={expertReview.cons as string[]} verdict={expertReview.verdict} publishedAt={expertReview.published_at} />
-        </Section>
-      )}
-
-      {/* ── 10. COMMUNITY REVIEWS ── */}
+      {/* ══ SECTION 7 — COMMUNITY REVIEWS ══ */}
       <Section title="Community Reviews">
         {communityReviews.length > 0 && (
           <div className="mb-6 space-y-4">
@@ -380,32 +298,66 @@ export default async function RobotDetailPage({ params }: Props) {
         <CommunityReviewForm robotId={robot.id} robotName={robot.name} />
       </Section>
 
-      {/* ── 11. WHERE TO BUY + PRICE HISTORY ── */}
-      <Section title="Where to Buy" id="buy">
+      {/* ══ SECTION 8 — PRICING + WHERE TO BUY ══ */}
+      <Section title="Pricing & Where to Buy" id="buy">
+        <div className="mb-6 rounded-xl border border-border bg-white p-6">
+          <div className="flex flex-wrap items-baseline gap-3">
+            <PriceDisplay price={robot.price_current} status={robot.status} size="lg" />
+            {robot.price_msrp != null && robot.price_current != null && robot.price_msrp > robot.price_current && (
+              <span className="font-mono text-sm text-neutral-400 line-through">${robot.price_msrp.toLocaleString()}</span>
+            )}
+          </div>
+          {robot.price_current != null && robot.price_current > 50000 && (
+            <p className="mt-2 text-xs text-neutral-500">Financing typically available through manufacturer or equipment leasing partners.</p>
+          )}
+          <div className="mt-4 flex flex-wrap gap-3">
+            {robot.affiliate_url ? (
+              <a href={robot.affiliate_url} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-white hover:opacity-90">
+                Request Quote from {mfr?.name}
+              </a>
+            ) : mfr?.website ? (
+              <a href={mfr.website} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-green px-6 py-2.5 text-sm font-semibold text-white hover:opacity-90">
+                Visit {mfr.name}
+              </a>
+            ) : null}
+          </div>
+        </div>
         <PriceComparison robotSlug={robot.slug} prices={(priceHistory || []).map((p) => ({ retailer: p.retailer, price: p.price, currency: "USD" }))} affiliateUrl={robot.affiliate_url} manufacturerWebsite={mfr?.website || null} />
         <AffiliateDisclosureInline />
+        {(priceHistory || []).length > 0 && (
+          <div className="mt-8">
+            <h3 className="mb-4 text-sm font-semibold text-foreground">Price History</h3>
+            <PriceChart data={priceHistory || []} />
+          </div>
+        )}
       </Section>
 
-      <Section title="Price History">
-        <PriceChart data={priceHistory || []} />
-      </Section>
-
-      {/* ── 12. SIMILAR ROBOTS ── */}
+      {/* ══ SECTION 9 — SIMILAR ROBOTS ══ */}
       {similar.length > 0 && (
-        <Section title="Similar Robots" id="similar">
+        <Section title="Alternatives to Consider" id="similar" subtitle={`Other ${cat?.name || ""} robots to evaluate`}>
           <div className="grid gap-4 sm:grid-cols-3">
-            {similar.map((s) => {
+            {similar.map((s, i) => {
               const sCatSlug = (s.robot_categories as { slug: string } | null)?.slug || categorySlug;
               const sMfr = (s.manufacturers as { name: string } | null)?.name || "";
               const sImgs = (Array.isArray(s.images) ? s.images : []) as { url: string }[];
+              const realImg = sImgs[0]?.url && !sImgs[0].url.includes("unsplash") ? sImgs[0].url : null;
+              const label = i === 0 ? "Best alternative" : i === 1 ? "Also consider" : "Budget option";
               return (
-                <Link key={s.id} href={`/explore/${sCatSlug}/${s.slug}`} className="glass glass-hover group rounded-xl transition-all hover:-translate-y-1">
-                  <div className="relative h-32 overflow-hidden rounded-t-xl">
-                    {sImgs[0]?.url ? <SafeImage src={sImgs[0].url} alt={s.name} sizes="33vw" className="object-cover" fallbackLabel={sMfr} fallbackSublabel={s.name} /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100"><span className="opacity-20">&#129302;</span></div>}
+                <Link key={s.id} href={`/explore/${sCatSlug}/${s.slug}`} className="group overflow-hidden rounded-xl border border-border bg-white transition-all hover:-translate-y-1 hover:border-blue/30 hover:shadow-md">
+                  <div className="relative h-32 bg-neutral-100">
+                    {realImg ? (
+                      <SafeImage src={realImg} alt={s.name} sizes="33vw" className="object-cover" fallbackLabel={sMfr} fallbackSublabel={s.name} />
+                    ) : (
+                      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 text-center">
+                        <span className="text-[10px] text-neutral-300">{sMfr}</span>
+                        <span className="text-xs font-semibold text-neutral-400">{s.name}</span>
+                      </div>
+                    )}
+                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-neutral-600 backdrop-blur-sm">{label}</span>
                   </div>
                   <div className="p-4">
-                    <p className="text-[10px] text-muted/60">{sMfr}</p>
-                    <h3 className="font-semibold transition-colors group-hover:text-blue">{s.name}</h3>
+                    <p className="text-[10px] text-neutral-400">{sMfr}</p>
+                    <h3 className="font-semibold text-foreground transition-colors group-hover:text-blue">{s.name}</h3>
                     <div className="mt-2 flex items-center justify-between">
                       <PriceDisplay price={s.price_current} size="sm" />
                       {s.robo_score != null && s.robo_score > 0 && <RoboScoreBadge score={s.robo_score} />}
@@ -418,13 +370,16 @@ export default async function RobotDetailPage({ params }: Props) {
         </Section>
       )}
 
-      {/* ── AI ADVISOR CTA ── */}
+      {/* ══ AI ADVISOR CTA ══ */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
-          <div className="glass rounded-2xl p-8 text-center sm:p-12">
-            <h2 className="font-display text-2xl font-bold">Not sure if this is right for you?</h2>
-            <p className="mt-3 text-muted">Our Robot Advisor can compare {robot.name} with alternatives for your specific needs.</p>
-            <Link href="/advisor" className="mt-6 inline-block rounded-lg bg-gradient-to-r from-blue to-violet px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Ask Robot Advisor</Link>
+          <div className="rounded-2xl border border-border bg-gradient-to-br from-white to-neutral-50 p-8 text-center sm:p-12">
+            <h2 className="font-display text-2xl font-bold text-foreground">Not sure if {robot.name} is right for you?</h2>
+            <p className="mt-3 text-neutral-500">Our AI Advisor compares this robot with alternatives for your specific use case, budget, and team.</p>
+            <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <Link href="/advisor" className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Ask Robot Advisor</Link>
+              <Link href="/explore" className="rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground hover:border-blue">Browse All Robots</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -433,66 +388,76 @@ export default async function RobotDetailPage({ params }: Props) {
 }
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Helper components
 // ---------------------------------------------------------------------------
-function Section({ title, children, id }: { title: string; children: React.ReactNode; id?: string }) {
+function Section({ title, children, id, subtitle }: { title: string; children: React.ReactNode; id?: string; subtitle?: string }) {
   return (
-    <section id={id} className="scroll-mt-24 border-b border-border px-4 py-12">
+    <section id={id} className="scroll-mt-24 border-b border-border px-4 py-10">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-6 font-display text-xl font-bold text-foreground">{title}</h2>
+        <h2 className="font-display text-xl font-bold text-foreground">{title}</h2>
+        {subtitle && <p className="mb-6 mt-1 text-sm text-neutral-500">{subtitle}</p>}
+        {!subtitle && <div className="mb-6" />}
         {children}
       </div>
     </section>
   );
 }
 
-function SectionNav({ robotName, hasApps, hasBreakdown, hasReview, hasSimilar, hasBuyerData }: {
-  robotName: string; hasApps: boolean; hasBreakdown: boolean; hasReview: boolean; hasSimilar: boolean; hasBuyerData: boolean;
-}) {
-  const sections = [
-    { id: "overview", label: "Overview" },
-    ...(hasBuyerData ? [{ id: "roi", label: "Cost & ROI" }] : []),
-    ...(hasApps ? [{ id: "applications", label: "Applications" }] : []),
-    ...(hasBreakdown ? [{ id: "score", label: "Score" }] : []),
-    { id: "specs", label: "Specs" },
-    ...(hasReview ? [{ id: "reviews", label: "Reviews" }] : []),
-    { id: "buy", label: "Where to Buy" },
-    ...(hasSimilar ? [{ id: "similar", label: "Alternatives" }] : []),
-  ];
+function StatPill({ label, value }: { label: string; value: string }) {
   return (
-    <nav className="sticky top-[57px] z-20 hidden border-b border-border bg-white/95 backdrop-blur-sm md:block">
-      <div className="mx-auto flex max-w-6xl items-center gap-0 overflow-x-auto px-6">
-        {sections.map((s) => (
-          <a key={s.id} href={`#${s.id}`}
-            className="whitespace-nowrap border-b-2 border-transparent px-4 py-3.5 text-xs text-neutral-500 transition-colors hover:border-blue hover:text-foreground">
-            {s.label}
-          </a>
-        ))}
-      </div>
-    </nav>
-  );
-}
-
-function InfoCard({ label, value, color }: { label: string; value: string; color?: string }) {
-  return (
-    <div className="glass rounded-lg p-3">
-      <p className="text-[10px] text-muted/60">{label}</p>
-      <p className={cn("font-mono text-sm font-semibold", color || "text-foreground")}>{value}</p>
+    <div className="rounded-lg border border-border bg-neutral-50 px-3 py-1.5">
+      <span className="text-[10px] text-neutral-400">{label} </span>
+      <span className="font-mono text-xs font-semibold text-foreground">{value}</span>
     </div>
   );
 }
 
-function Stat({ label, value, color }: { label: string; value: string; color: string }) {
+function ImpactCard({ icon, title, description }: { icon: string; title: string; description: string }) {
   return (
-    <div>
-      <span className={cn("font-mono text-sm font-bold", color)}>{value}</span>
-      <span className="ml-1 text-[10px] text-muted/50">{label}</span>
+    <div className="rounded-xl border border-border bg-white p-5">
+      <span className="text-2xl">{icon}</span>
+      <h3 className="mt-2 text-sm font-semibold text-foreground">{title}</h3>
+      <p className="mt-1 text-xs leading-relaxed text-neutral-500">{description}</p>
     </div>
   );
 }
 
-function ExtIcon() {
-  return <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>;
+// ---------------------------------------------------------------------------
+// Spec grouping
+// ---------------------------------------------------------------------------
+const SPEC_GROUPS: Record<string, string[]> = {
+  "Physical": ["weight_kg", "height_mm", "width_mm", "depth_mm", "reach_mm", "footprint", "ip_rating", "mounting"],
+  "Performance": ["payload_kg", "max_speed", "repeatability", "dof", "cycle_time", "suction_pa", "battery_hrs", "charge_time_hrs"],
+  "Intelligence": ["navigation", "sensors", "vision", "ai_capabilities", "autonomy_level", "obstacle_avoidance"],
+  "Connectivity": ["communication", "protocols", "wifi", "bluetooth", "api", "ros_compatible"],
+  "Safety": ["collaborative", "safety_functions", "certifications", "emergency_stop", "force_limiting"],
+};
+
+function groupSpecs(specs: Record<string, unknown>): [string, [string, unknown][]][] {
+  const used = new Set<string>();
+  const groups: [string, [string, unknown][]][] = [];
+
+  for (const [group, keys] of Object.entries(SPEC_GROUPS)) {
+    const entries: [string, unknown][] = [];
+    for (const key of keys) {
+      if (specs[key] != null && specs[key] !== "" && specs[key] !== false) {
+        entries.push([key, specs[key]]);
+        used.add(key);
+      }
+    }
+    if (entries.length > 0) groups.push([group, entries]);
+  }
+
+  // Remaining ungrouped specs
+  const other: [string, unknown][] = [];
+  for (const [key, value] of Object.entries(specs)) {
+    if (!used.has(key) && value != null && value !== "" && value !== false) {
+      other.push([key, value]);
+    }
+  }
+  if (other.length > 0) groups.push(["Other", other]);
+
+  return groups;
 }
 
 function fmtKey(key: string): string {
