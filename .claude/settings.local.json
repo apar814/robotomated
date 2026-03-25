@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npx vitest:*)",
       "Bash(npx next:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(grep:*)"
     ]
   }
 }
