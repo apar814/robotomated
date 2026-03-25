@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="relative border-t border-white/[0.05] bg-carbon">
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" />
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <span className="font-display text-lg font-bold tracking-tight">
@@ -56,6 +56,18 @@ export function Footer() {
                 </li>
               ))}
               <li><Link href="/manufacturers" className="text-sm text-blue hover:underline">All Brands &rarr;</Link></li>
+            </ul>
+          </div>
+
+          {/* Industries */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted">Industries</h3>
+            <ul className="mt-4 space-y-2">
+              <li><Link href="/industries/warehouse-robotics" className="text-sm text-muted/60 hover:text-foreground">Warehouse</Link></li>
+              <li><Link href="/industries/medical-robotics" className="text-sm text-muted/60 hover:text-foreground">Medical</Link></li>
+              <li><Link href="/industries/manufacturing-robotics" className="text-sm text-muted/60 hover:text-foreground">Manufacturing</Link></li>
+              <li><Link href="/industries/agricultural-robotics" className="text-sm text-muted/60 hover:text-foreground">Agricultural</Link></li>
+              <li><Link href="/tools/tco-calculator" className="text-sm text-muted/60 hover:text-foreground">TCO Calculator</Link></li>
             </ul>
           </div>
 

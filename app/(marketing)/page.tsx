@@ -26,12 +26,12 @@ const categoryImages: Record<string, string> = {
   warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
   manufacturing: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80",
   consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  medical: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+  medical: "https://images.unsplash.com/photo-1530497610245-b489b1aedd74?w=800&q=80",
   construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
   agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
   delivery: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
   drone: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&q=80",
-  software: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80",
+  software: "",
 };
 
 async function getData() {
@@ -93,7 +93,7 @@ export default async function HomePage() {
     <div className="dark-section flex flex-col bg-[#0A0F1E]">
 
       {/* ══ HERO ══ */}
-      <section className="relative overflow-hidden px-4 pb-20 pt-24 sm:pt-28">
+      <section className="relative overflow-hidden px-4 pb-20 pt-12 sm:pt-16">
         {/* Ambient glows */}
         <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-blue opacity-[0.04] blur-[150px]" />
         <div className="pointer-events-none absolute -right-40 top-60 h-[500px] w-[500px] rounded-full bg-violet opacity-[0.04] blur-[150px]" />
@@ -224,7 +224,11 @@ export default async function HomePage() {
             {categories.filter(c => c.robot_count > 0).map((cat, i) => (
               <ScrollReveal key={cat.id} delay={i * 60}>
                 <Link href={`/explore/${cat.slug}`} className="group relative block h-48 overflow-hidden rounded-xl border border-white/[0.06]">
-                  <Image src={categoryImages[cat.slug] || categoryImages.consumer} alt={cat.name} fill sizes="33vw" className="object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
+                  {categoryImages[cat.slug] ? (
+                    <Image src={categoryImages[cat.slug]} alt={cat.name} fill sizes="33vw" className="object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0F1628] to-[#141C33]" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/40 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <h3 className="font-display text-lg font-bold text-white">{cat.name}</h3>

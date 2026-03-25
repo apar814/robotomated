@@ -67,6 +67,7 @@ export function Header() {
               )}
             </div>
             <Link href="/manufacturers" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Brands</Link>
+            <Link href="/industries/warehouse-robotics" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Industries</Link>
             <Link href="/reviews" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Reviews</Link>
             <Link href="/learn" className="rounded-lg px-3 py-2 text-sm font-medium text-white/50 hover:text-white">Learn</Link>
             <Link href="/advisor" className="ml-1 rounded-lg bg-blue/10 px-3.5 py-1.5 text-sm font-semibold text-blue hover:bg-blue/20 hover:shadow-[0_0_20px_rgba(0,194,255,0.1)]">
