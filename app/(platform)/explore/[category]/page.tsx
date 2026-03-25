@@ -6,7 +6,7 @@ import { BrowseClient } from "@/components/robots/browse-client";
 import Link from "next/link";
 
 interface Category { id: string; slug: string; name: string; description: string | null }
-interface Mfr { id: string; name: string }
+interface Mfr { id: string; name: string; robot_count?: number }
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -30,15 +30,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-async function getFilterData() {
-  const supabase = createServerClient();
-  const [{ data: cats }, { data: mfrs }] = await Promise.all([
-    supabase.from("robot_categories").select("id, slug, name").order("display_order").returns<Category[]>(),
-    supabase.from("manufacturers").select("id, name").order("name").returns<Mfr[]>(),
-  ]);
-  return { categories: cats || [], manufacturers: mfrs || [] };
-}
-
 export default async function CategoryPage({ params }: Props) {
   const { category: slug } = await params;
   const supabase = createServerClient();
@@ -52,7 +43,38 @@ export default async function CategoryPage({ params }: Props) {
 
   if (!cat) notFound();
 
-  const { categories, manufacturers } = await getFilterData();
+  // Get all categories for the filter sidebar
+  const { data: cats } = await supabase
+    .from("robot_categories")
+    .select("id, slug, name")
+    .order("display_order")
+    .returns<Category[]>();
+
+  // Get only manufacturers that have active robots in this category, with count
+  const { data: robotMfrs } = await supabase
+    .from("robots")
+    .select("manufacturer_id, manufacturers(id, name)")
+    .eq("category_id", cat.id)
+    .eq("status", "active")
+    .returns<{ manufacturer_id: string; manufacturers: { id: string; name: string } | null }[]>();
+
+  // Aggregate by manufacturer and count
+  const mfrMap = new Map<string, { id: string; name: string; count: number }>();
+  for (const r of (robotMfrs || [])) {
+    const m = r.manufacturers;
+    if (!m) continue;
+    const existing = mfrMap.get(m.id);
+    if (existing) {
+      existing.count++;
+    } else {
+      mfrMap.set(m.id, { id: m.id, name: m.name, count: 1 });
+    }
+  }
+
+  // Sort by count descending
+  const manufacturers: Mfr[] = Array.from(mfrMap.values())
+    .sort((a, b) => b.count - a.count)
+    .map(m => ({ id: m.id, name: m.name, robot_count: m.count }));
 
   return (
     <div>
@@ -71,7 +93,7 @@ export default async function CategoryPage({ params }: Props) {
       </div>
       <Suspense fallback={<div className="py-20 text-center text-muted">Loading robots...</div>}>
         <BrowseClient
-          categories={categories}
+          categories={cats || []}
           manufacturers={manufacturers}
           initialCategory={slug}
         />

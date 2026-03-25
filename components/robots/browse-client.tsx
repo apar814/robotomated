@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
 
 interface Category { id: string; slug: string; name: string }
-interface Manufacturer { id: string; name: string }
+interface Manufacturer { id: string; name: string; robot_count?: number }
 
 interface BrowseClientProps {
   categories: Category[];
@@ -200,8 +200,12 @@ export function BrowseClient({ categories, manufacturers, initialCategory }: Bro
 
             <FilterSection title="Manufacturer">
               {manufacturers.map((m) => (
-                <FilterButton key={m.id} label={m.name} active={manufacturer === m.id}
-                  onClick={() => applyFilter("manufacturer", manufacturer === m.id ? "" : m.id)} />
+                <FilterButton
+                  key={m.id}
+                  label={m.robot_count ? `${m.name} (${m.robot_count})` : m.name}
+                  active={manufacturer === m.id}
+                  onClick={() => applyFilter("manufacturer", manufacturer === m.id ? "" : m.id)}
+                />
               ))}
             </FilterSection>
 
