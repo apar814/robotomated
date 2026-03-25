@@ -18,7 +18,7 @@ export default function AdminManufacturersPage() {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {mfrs.map(m => (
           <Link key={m.id} href={`/admin/manufacturers/${m.slug}`} className="glass-card flex items-center gap-3 p-4">
-            <CompanyLogo logoUrl={m.logo_url} name={m.name} size={40} />
+            <CompanyLogo logoUrl={m.logo_url} name={m.name} height={40} />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium">{m.name}</p>
               <p className="text-[10px] text-white/30">{m.logo_url ? "Logo set" : "No logo — using initials"}</p>

@@ -1,19 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 interface CompanyLogoProps {
   logoUrl?: string | null;
-  domain?: string;
   name: string;
-  size?: number;
+  height?: number;
+  maxWidth?: number;
   className?: string;
 }
 
 const COLORS = ["#FFB400", "#059669", "#0066FF", "#E63946", "#8B5CF6", "#00C2FF", "#F97316", "#10B981"];
 
-export function CompanyLogo({ logoUrl, domain, name, size = 40, className = "" }: CompanyLogoProps) {
+export function CompanyLogo({ logoUrl, name, height = 28, maxWidth = 120, className = "" }: CompanyLogoProps) {
   const [error, setError] = useState(false);
 
   const src = logoUrl && !error ? logoUrl : null;
@@ -24,7 +23,7 @@ export function CompanyLogo({ logoUrl, domain, name, size = 40, className = "" }
     return (
       <div
         className={`flex items-center justify-center rounded-full font-bold text-white ${className}`}
-        style={{ width: size, height: size, backgroundColor: COLORS[colorIndex], fontSize: size * 0.35 }}
+        style={{ width: height, height, backgroundColor: COLORS[colorIndex], fontSize: height * 0.35 }}
       >
         {initials}
       </div>
@@ -32,14 +31,13 @@ export function CompanyLogo({ logoUrl, domain, name, size = 40, className = "" }
   }
 
   return (
-    <Image
+    <img
       src={src}
       alt={`${name} logo`}
-      width={size}
-      height={size}
-      className={`rounded-lg object-contain ${className}`}
       onError={() => setError(true)}
-      unoptimized
+      className={`object-contain ${className}`}
+      style={{ height, width: "auto", maxWidth }}
+      loading="lazy"
     />
   );
 }

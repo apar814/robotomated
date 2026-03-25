@@ -155,7 +155,7 @@ export default async function RobotDetailPage({ params }: Props) {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <CompanyLogo logoUrl={(mfr as unknown as Record<string, unknown>)?.logo_url as string | null} name={mfr?.name || ""} size={28} />
+                    <CompanyLogo logoUrl={(mfr as unknown as Record<string, unknown>)?.logo_url as string | null} name={mfr?.name || ""} height={28} />
                     <Link href={`/manufacturers/${mfr?.slug}`} className="text-sm text-muted hover:text-blue">{mfr?.name}</Link>
                     <SaveRobotButton robotId={robot.id} />
                   </div>

@@ -54,7 +54,7 @@ export default async function ManufacturersPage() {
               <div key={m.id} className="glass glass-hover rounded-xl p-5 transition-all hover:-translate-y-1">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <CompanyLogo logoUrl={m.logo_url} name={m.name} size={36} />
+                    <CompanyLogo logoUrl={m.logo_url} name={m.name} height={36} />
                     <div>
                     <Link href={`/manufacturers/${m.slug}`}>
                       <h3 className="font-semibold hover:text-blue">{m.name}</h3>

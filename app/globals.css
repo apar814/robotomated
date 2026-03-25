@@ -116,7 +116,24 @@
 .hud-corners::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
 .hud-corners::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-/* ── Logo scroll ── */
+/* ── Logo strip marquee ── */
+@keyframes logo-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.logo-strip {
+  animation: logo-marquee 50s linear infinite;
+  will-change: transform;
+}
+.logo-strip:hover {
+  animation-play-state: paused;
+}
+/* Soft fade on edges */
+.logo-strip-mask {
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+/* Legacy alias for any remaining .animate-scroll usage */
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

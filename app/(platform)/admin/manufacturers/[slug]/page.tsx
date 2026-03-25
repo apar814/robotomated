@@ -42,10 +42,10 @@ export default function AdminManufacturerLogoPage() {
 
       <div className="mt-6 flex gap-6">
         <div className="glass-card flex items-center justify-center p-6" style={{ background: "#0A0F1E" }}>
-          <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} size={64} />
+          <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} height={64} />
         </div>
         <div className="glass-card flex items-center justify-center p-6" style={{ background: "#F5F5F5" }}>
-          <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} size={64} />
+          <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} height={64} />
         </div>
       </div>
       <p className="mt-2 text-[10px] text-white/20">Preview on dark and light backgrounds</p>
