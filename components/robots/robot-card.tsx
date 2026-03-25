@@ -79,14 +79,15 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
               src={robot.image_url!}
               alt={robot.name}
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
               fallbackLabel={robot.manufacturer_name}
               fallbackSublabel={robot.name}
             />
           ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] px-4 text-center">
-              <span className="text-[10px] font-medium uppercase tracking-wider text-white/20">{robot.manufacturer_name}</span>
-              <span className="mt-1 text-sm font-semibold text-white/30">{robot.name}</span>
+            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-4 text-center">
+              <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
+              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{robot.manufacturer_name}</span>
+              <span className="mt-0.5 text-sm font-semibold text-white/45">{robot.name}</span>
             </div>
           )}
 

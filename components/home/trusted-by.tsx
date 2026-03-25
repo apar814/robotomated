@@ -1,11 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CompanyLogo } from "@/components/ui/company-logo";
 
 interface Manufacturer {
   name: string;
   logo_url: string | null;
+  website: string | null;
+}
+
+function getDomain(website: string | null): string | null {
+  if (!website) return null;
+  try {
+    return new URL(website.startsWith("http") ? website : `https://${website}`).hostname.replace("www.", "");
+  } catch {
+    return null;
+  }
 }
 
 export function TrustedBy() {
@@ -28,7 +37,6 @@ export function TrustedBy() {
     );
   }
 
-  // Triple the list for seamless loop on wide screens
   const items = [...companies, ...companies, ...companies];
 
   return (
@@ -38,20 +46,32 @@ export function TrustedBy() {
       </p>
       <div className="logo-strip-mask relative overflow-hidden">
         <div className="logo-strip flex items-center gap-10 px-4">
-          {items.map((company, i) => (
-            <div
-              key={`${company.name}-${i}`}
-              className="group flex h-[28px] flex-shrink-0 items-center"
-            >
-              <CompanyLogo
-                name={company.name}
-                logoUrl={company.logo_url}
-                height={28}
-                maxWidth={120}
-                className="grayscale opacity-50 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
-              />
-            </div>
-          ))}
+          {items.map((company, i) => {
+            const domain = getDomain(company.website);
+            const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null;
+            return (
+              <div key={`${company.name}-${i}`} className="group flex flex-shrink-0 items-center gap-2.5">
+                {faviconUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={faviconUrl}
+                    alt={company.name}
+                    width={24}
+                    height={24}
+                    className="rounded-full border border-white/[0.08] bg-white/[0.06] opacity-40 transition-all duration-300 group-hover:opacity-90"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/[0.06] text-[9px] font-bold text-white/30">
+                    {company.name.charAt(0)}
+                  </div>
+                )}
+                <span className="whitespace-nowrap text-xs text-white/25 transition-colors duration-300 group-hover:text-white/60">
+                  {company.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -23,6 +23,8 @@ export function HeroMosaic({ robots }: { robots: MosaicRobot[] }) {
 
   return (
     <div className="relative mx-auto grid h-[360px] w-full max-w-[480px] grid-cols-2 gap-3 p-4">
+      {/* Radial glow behind mosaic */}
+      <div className="pointer-events-none absolute inset-0 -z-10 m-auto h-[300px] w-[300px] rounded-full bg-blue opacity-[0.08] blur-[100px]" />
       {items.map((robot, i) => {
         const hasImage = robot.image_url && !robot.image_url.includes("unsplash");
         return (

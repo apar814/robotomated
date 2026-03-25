@@ -41,27 +41,23 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       href={article.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] transition-all hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
+      className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 transition-all hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
     >
-      <div className="flex h-48 items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
-        <div className="px-8 text-center">
-          <div className="mb-2 text-4xl">{emoji}</div>
+      <div>
+        <div className="mb-3 flex flex-wrap items-center gap-2">
           <SourceBadge source={article.source} />
-        </div>
-      </div>
-      <div className="p-5">
-        <div className="mb-2 flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-xs text-white/30">{article.category}</span>
-          <span className="text-xs text-white/15">·</span>
-          <span className="text-xs text-white/30">{relativeTime(article.publishedAt)}</span>
+          <span className="text-xs text-white/20">{relativeTime(article.publishedAt)}</span>
         </div>
-        <h3 className="mb-2 text-base font-semibold leading-snug text-white/90 transition-colors group-hover:text-blue">
+        <h3 className="mb-3 text-xl font-bold leading-snug text-white/90 transition-colors group-hover:text-blue">
           {article.title}
         </h3>
-        <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-white/35">
+        <p className="line-clamp-4 text-sm leading-relaxed text-white/40">
           {article.summary}
         </p>
+      </div>
+      <div className="mt-4 flex items-center justify-between border-t border-white/[0.05] pt-4">
+        <span className="text-[11px] text-white/25">{article.category}</span>
         <span className="text-xs font-medium text-blue group-hover:underline">Read article →</span>
       </div>
     </a>
@@ -113,7 +109,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
   const secondary = rest.slice(0, 5);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="mb-8 flex items-baseline justify-between">
         <div>
           <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>

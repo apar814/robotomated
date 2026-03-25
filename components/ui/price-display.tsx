@@ -21,11 +21,11 @@ const sizeClasses = {
 
 export function PriceDisplay({ price, status, size = "md", className }: PriceDisplayProps) {
   if (status === "coming_soon") {
-    return <span className={cn("font-medium text-muted", sizeClasses[size], className)}>Coming Soon</span>;
+    return <span className={cn("font-medium text-white/35", sizeClasses[size], className)}>Coming Soon</span>;
   }
 
   if (price == null) {
-    return <span className={cn("font-medium text-orange", sizeClasses[size], className)}>Request Quote</span>;
+    return <span className={cn("text-[11px] font-medium text-white/40", className)}>Request Quote</span>;
   }
 
   return (

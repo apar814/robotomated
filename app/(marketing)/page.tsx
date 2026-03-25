@@ -161,7 +161,7 @@ export default async function HomePage() {
       <TrustedBy />
 
       {/* ══ TRENDING ROBOTS ══ */}
-      <section className="px-4 py-16">
+      <section className="px-4 py-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex items-center justify-between">
             <div>
@@ -181,11 +181,12 @@ export default async function HomePage() {
                   <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="group block min-w-[240px] overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)] sm:min-w-0">
                     <div className="relative h-36 overflow-hidden bg-[#0D1321]">
                       {realImg ? (
-                        <SafeImage src={realImg} alt={robot.name} sizes="25vw" className="object-cover opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" fallbackLabel={mfr} fallbackSublabel={robot.name} />
+                        <SafeImage src={realImg} alt={robot.name} sizes="25vw" className="object-cover object-[center_20%] opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" fallbackLabel={mfr} fallbackSublabel={robot.name} />
                       ) : (
-                        <div className="flex h-full w-full flex-col items-center justify-center px-3 text-center">
-                          <span className="text-[10px] font-medium uppercase tracking-wider text-white/15">{mfr}</span>
-                          <span className="mt-1 text-sm font-semibold text-white/25">{robot.name}</span>
+                        <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-3 text-center">
+                          <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
+                          <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{mfr}</span>
+                          <span className="mt-0.5 text-sm font-semibold text-white/45">{robot.name}</span>
                         </div>
                       )}
                     </div>

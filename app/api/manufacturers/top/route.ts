@@ -26,7 +26,7 @@ export async function GET() {
 
   const { data: manufacturers } = await supabase
     .from("manufacturers")
-    .select("name, logo_url")
+    .select("name, logo_url, website")
     .in("id", topIds);
 
   return NextResponse.json({ manufacturers: manufacturers || [] });
