@@ -7,7 +7,7 @@ import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import { TrustedBy } from "@/components/home/trusted-by";
-import { HeroAnimation } from "@/components/home/hero-animation";
+import { HeroMosaic } from "@/components/home/hero-mosaic";
 import { NewsTicker } from "@/components/home/news-ticker";
 import { NewsSection } from "@/components/news/news-section";
 import { NEWS_ARTICLES } from "@/lib/data/news";
@@ -100,9 +100,23 @@ export default async function HomePage() {
         <div className="pointer-events-none absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-green opacity-[0.02] blur-[120px]" />
 
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-start lg:gap-12">
-          {/* Right: wordmark + ticker */}
+          {/* Right: robot mosaic + ticker */}
           <div className="hidden gap-6 lg:order-2 lg:flex lg:flex-1 lg:flex-col xl:flex-row xl:items-start">
-            <div className="flex-1"><HeroAnimation /></div>
+            <div className="flex-1">
+              <HeroMosaic robots={trending.slice(0, 4).map(r => {
+                const imgs = Array.isArray(r.images) ? r.images as { url: string }[] : [];
+                const realImg = imgs[0]?.url && !imgs[0].url.includes("unsplash") ? imgs[0].url : null;
+                const cat = r.robot_categories as { slug: string; name: string } | null;
+                return {
+                  slug: r.slug,
+                  name: r.name,
+                  robo_score: r.robo_score,
+                  image_url: realImg,
+                  manufacturer_name: (r.manufacturers as { name: string } | null)?.name || "",
+                  category_slug: cat?.slug || "all",
+                };
+              })} />
+            </div>
             <NewsTicker />
           </div>
 
