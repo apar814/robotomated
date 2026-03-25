@@ -16,7 +16,7 @@ function TagPill({ label, color }: { label: string; color: string }) {
   return (
     <span
       className="inline-block rounded px-2 py-0.5 text-xs font-medium"
-      style={{ background: color + "15", color, border: `0.5px solid ${color}30` }}
+      style={{ background: color + "20", color, border: `0.5px solid ${color}30` }}
     >
       {label}
     </span>
@@ -27,9 +27,9 @@ function SourceBadge({ source }: { source: string }) {
   const colors: Record<string, string> = {
     "Engadget": "#00a86b",
     "TechCrunch": "#e8632c",
-    "The Robot Report": "#1a56a8",
-    "Crunchbase": "#0288d1",
-    "StartUs Insights": "#7c3aed",
+    "The Robot Report": "#4da6ff",
+    "Crunchbase": "#22d3ee",
+    "StartUs Insights": "#a78bfa",
   };
   return <span className="text-xs font-medium" style={{ color: colors[source] || "#6b7280" }}>{source}</span>;
 }
@@ -41,9 +41,9 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       href={article.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-blue/30 hover:shadow-md"
+      className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] transition-all hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
     >
-      <div className="flex h-48 items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
+      <div className="flex h-48 items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
         <div className="px-8 text-center">
           <div className="mb-2 text-4xl">{emoji}</div>
           <SourceBadge source={article.source} />
@@ -52,14 +52,14 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       <div className="p-5">
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-xs text-neutral-400">{article.category}</span>
-          <span className="text-xs text-neutral-300">·</span>
-          <span className="text-xs text-neutral-400">{relativeTime(article.publishedAt)}</span>
+          <span className="text-xs text-white/30">{article.category}</span>
+          <span className="text-xs text-white/15">·</span>
+          <span className="text-xs text-white/30">{relativeTime(article.publishedAt)}</span>
         </div>
-        <h3 className="mb-2 text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-blue">
+        <h3 className="mb-2 text-base font-semibold leading-snug text-white/90 transition-colors group-hover:text-blue">
           {article.title}
         </h3>
-        <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-neutral-500">
+        <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-white/35">
           {article.summary}
         </p>
         <span className="text-xs font-medium text-blue group-hover:underline">Read article →</span>
@@ -74,22 +74,22 @@ function ArticleRow({ article }: { article: NewsArticle }) {
       href={article.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 rounded-lg border-b border-neutral-100 px-2 py-3 transition-colors last:border-0 hover:bg-neutral-50"
+      className="group flex items-start gap-3 rounded-lg border-b border-white/[0.04] px-2 py-3 transition-colors last:border-0 hover:bg-white/[0.03]"
     >
       <div className="mt-1 min-h-[36px] w-1 shrink-0 self-stretch rounded-full" style={{ background: article.tagColor }} />
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-[11px] text-neutral-400">{relativeTime(article.publishedAt)}</span>
+          <span className="text-[11px] text-white/25">{relativeTime(article.publishedAt)}</span>
         </div>
-        <p className="line-clamp-2 text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-blue">
+        <p className="line-clamp-2 text-sm font-medium leading-snug text-white/80 transition-colors group-hover:text-blue">
           {article.title}
         </p>
         <div className="mt-1">
           <SourceBadge source={article.source} />
         </div>
       </div>
-      <span className="mt-2 shrink-0 text-sm text-neutral-300 transition-colors group-hover:text-blue">→</span>
+      <span className="mt-2 shrink-0 text-sm text-white/15 transition-colors group-hover:text-blue">→</span>
     </a>
   );
 }
@@ -99,11 +99,11 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
     return (
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="mb-6">
-          <h2 className="font-display text-xl font-bold text-foreground">Industry Pulse</h2>
-          <p className="mt-0.5 text-sm text-neutral-500">Latest robotics news, funding, and moves</p>
+          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
-        <div className="rounded-xl border border-border bg-white p-8 text-center">
-          <p className="text-sm text-neutral-400">News feed loading — check back shortly.</p>
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 text-center">
+          <p className="text-sm text-white/25">News feed loading — check back shortly.</p>
         </div>
       </section>
     );
@@ -113,19 +113,19 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
   const secondary = rest.slice(0, 5);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-      <div className="mb-6 flex items-baseline justify-between">
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div className="mb-8 flex items-baseline justify-between">
         <div>
-          <h2 className="font-display text-xl font-bold text-foreground">Industry Pulse</h2>
-          <p className="mt-0.5 text-sm text-neutral-500">Latest robotics news, funding, and moves</p>
+          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
         <Link href="/news" className="text-sm text-blue hover:underline">All news →</Link>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
         <HeroArticle article={featured} />
-        <div className="rounded-xl border border-border bg-white p-4">
-          <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wide text-neutral-400">Recent news</p>
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
+          <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wide text-white/20">Recent</p>
           {secondary.map((a) => <ArticleRow key={a.id} article={a} />)}
           <Link href="/news" className="mt-3 block text-center text-xs text-blue hover:underline">View all news →</Link>
         </div>

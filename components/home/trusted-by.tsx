@@ -20,8 +20,8 @@ export function TrustedBy() {
 
   if (companies.length === 0) {
     return (
-      <section className="border-y border-border/50 bg-[#F3F2EF] py-8">
-        <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-400">
+      <section className="border-y border-white/[0.04] bg-white/[0.02] py-8">
+        <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-white/20">
           Featuring robots from leading manufacturers
         </p>
       </section>
@@ -32,8 +32,8 @@ export function TrustedBy() {
   const items = [...companies, ...companies, ...companies];
 
   return (
-    <section className="border-y border-border/50 bg-[#F3F2EF] py-6">
-      <p className="mb-5 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-400">
+    <section className="border-y border-white/[0.04] bg-white/[0.02] py-6">
+      <p className="mb-5 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-white/20">
         Featuring robots from leading manufacturers
       </p>
       <div className="logo-strip-mask relative overflow-hidden">
