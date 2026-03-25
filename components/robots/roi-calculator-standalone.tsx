@@ -28,11 +28,8 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
   }, [workers, wage, shifts, price, robotSlug]);
 
   return (
-    <div className="rounded-xl border border-border bg-white/[0.03] p-6">
-      <h3 className="mb-1 font-display text-lg font-bold text-foreground">ROI Calculator</h3>
-      <p className="mb-6 text-xs text-white/30">Estimate your return on investing in {robotName}</p>
-
-      <div className="grid gap-6 sm:grid-cols-2">
+    <div className="rounded-2xl border border-blue/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(0,194,255,0.05)] backdrop-blur-sm sm:p-8">
+      <div className="grid gap-8 sm:grid-cols-2">
         {/* Inputs */}
         <div className="space-y-5">
           <SliderInput label="Workers replaced" value={workers} min={1} max={20} step={1} onChange={setWorkers} suffix="" />
@@ -43,12 +40,16 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
 
         {/* Outputs */}
         <div className="space-y-4">
-          <OutputCard label="Monthly labor savings" value={`$${monthlyLaborSaved.toLocaleString()}`} color="text-green" />
-          <OutputCard label="Payback period" value={fmtPayback(paybackMonths)} color={paybackMonths <= 18 ? "text-green" : paybackMonths <= 36 ? "text-amber-500" : "text-orange"} />
-          <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-blue" : "text-orange"} />
-          <OutputCard label="5-year total savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-foreground" : "text-orange"} />
+          <div className="grid grid-cols-2 gap-3">
+            <OutputCard label="Monthly savings" value={`$${monthlyLaborSaved.toLocaleString()}`} color="text-green" large />
+            <OutputCard label="Payback period" value={fmtPayback(paybackMonths)} color={paybackMonths <= 18 ? "text-green" : paybackMonths <= 36 ? "text-amber-500" : "text-orange"} large />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-green" : "text-orange"} />
+            <OutputCard label="5-year savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-green" : "text-orange"} />
+          </div>
 
-          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-border py-2 text-xs font-medium text-white/35 transition-colors hover:border-blue hover:text-blue">
+          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-2.5 text-xs font-medium text-white/40 transition-colors hover:border-blue/30 hover:text-blue">
             Share your ROI calculation
           </button>
         </div>
@@ -59,12 +60,12 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
 
 function fmtPayback(months: number): string {
   if (months <= 0) return "—";
-  if (months > 360) return "Not viable at this scale";
+  if (months > 360) return "N/A";
   if (months > 60) {
     const years = Math.round(months / 12);
-    return `~${years} year${years > 1 ? "s" : ""}`;
+    return `~${years}yr`;
   }
-  return `${months} months`;
+  return `${months}mo`;
 }
 
 function SliderInput({ label, value, min, max, step, onChange, prefix = "", suffix = "", fmt = false }: {
@@ -74,20 +75,20 @@ function SliderInput({ label, value, min, max, step, onChange, prefix = "", suff
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between">
-        <label className="text-xs font-medium text-white/35">{label}</label>
-        <span className="font-mono text-sm font-semibold text-foreground">{prefix}{fmt ? value.toLocaleString() : value}{suffix}</span>
+        <label className="text-[11px] uppercase tracking-wider text-white/40">{label}</label>
+        <span className="font-mono text-sm font-bold text-white">{prefix}{fmt ? value.toLocaleString() : value}{suffix}</span>
       </div>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-green" />
+        className="w-full accent-blue" />
     </div>
   );
 }
 
-function OutputCard({ label, value, color }: { label: string; value: string; color: string }) {
+function OutputCard({ label, value, color, large }: { label: string; value: string; color: string; large?: boolean }) {
   return (
-    <div className="rounded-lg bg-white/[0.04] px-4 py-3">
-      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">{label}</p>
-      <p className={cn("mt-0.5 font-mono text-xl font-bold", color)}>{value}</p>
+    <div className="rounded-xl bg-white/[0.04] px-4 py-4">
+      <p className="text-[10px] font-medium uppercase tracking-widest text-white/30">{label}</p>
+      <p className={cn("mt-1 font-mono font-bold", large ? "text-[clamp(24px,3vw,40px)]" : "text-xl", color)}>{value}</p>
     </div>
   );
 }
