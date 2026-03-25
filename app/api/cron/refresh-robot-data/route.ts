@@ -78,6 +78,36 @@ export async function GET(request: NextRequest) {
       .not("price_current", "is", null).eq("status", "active");
     log.push(`Prices: ${count || 0} robots eligible for monitoring`);
 
+    // 4. Image health check — flag external images that have broken
+    const isSupabaseUrl = (url: string) => url.includes("supabase.co/storage");
+    const { data: imgRobots } = await supabase
+      .from("robots").select("id, slug, name, images, manufacturers(name)")
+      .eq("status", "active").not("images", "is", null).limit(100);
+
+    let brokenImages = 0;
+    for (const robot of (imgRobots || []).slice(0, 30)) {
+      const imgs = (Array.isArray(robot.images) ? robot.images : []) as { url: string }[];
+      const url = imgs[0]?.url;
+      if (!url || isSupabaseUrl(url) || url.includes("unsplash")) continue;
+
+      try {
+        const res = await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(8000) });
+        const ct = res.headers.get("content-type") || "";
+        if (!res.ok || !ct.startsWith("image/")) {
+          brokenImages++;
+          log.push(`Broken image: ${robot.name} (${res.status} ${ct.substring(0, 20)})`);
+        }
+      } catch {
+        brokenImages++;
+        log.push(`Broken image: ${robot.name} (timeout/error)`);
+      }
+    }
+    if (brokenImages > 0) {
+      log.push(`Images: ${brokenImages} broken external images detected — run fix-all-images.ts`);
+    } else {
+      log.push(`Images: all checked images healthy`);
+    }
+
   } catch (err) {
     log.push(`Fatal: ${err instanceof Error ? err.message : "unknown"}`);
   }
