@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase/server";
+import { getAllIndustrySlugs } from "@/lib/data/industry-types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://robotomated.com";
 
-interface SlugRow { slug: string; updated_at?: string; created_at?: string }
 interface CatRow { slug: string; created_at: string }
 interface MfrRow { slug: string; created_at: string }
 interface RobotWithCat { slug: string; updated_at: string; robot_categories: { slug: string } | null }
@@ -28,8 +28,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE_URL}/explore`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE_URL}/compare`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/reviews`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/learn`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+    { url: `${BASE_URL}/methodology`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/tools/tco-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/manufacturers`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/news`, lastModified: new Date(), changeFrequency: "daily", priority: 0.6 },
   ];
 
   const categoryPages: MetadataRoute.Sitemap = categories.map((c) => ({
@@ -88,12 +93,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // Industry landing pages
+  const industryPages: MetadataRoute.Sitemap = getAllIndustrySlugs().map((slug) => ({
+    url: `${BASE_URL}/industries/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     ...staticPages,
     ...categoryPages,
     ...robotPages,
     ...bestPages,
     ...manufacturerPages,
+    ...industryPages,
     ...comparePages,
   ];
 }
