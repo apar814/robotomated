@@ -85,7 +85,7 @@ export function PriceComparison({ robotSlug, prices, affiliateUrl, manufacturerW
               )}
 
               <Link
-                href={`/go/${robotSlug}/${entry.retailer}`}
+                href={`/api/out/${robotSlug}?ref=price-comparison&pos=${entry.retailer}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(

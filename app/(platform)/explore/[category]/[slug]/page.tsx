@@ -227,12 +227,8 @@ export default async function RobotDetailPage({ params }: Props) {
 
           {/* CTAs */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            {robot.affiliate_url ? (
-              <a href={robot.affiliate_url} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
-                Get Quote
-              </a>
-            ) : mfr?.website ? (
-              <a href={mfr.website} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+            {(robot.affiliate_url || mfr?.website) ? (
+              <a href={`/api/out/${robot.slug}?ref=product-page&pos=hero-cta`} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
                 Get Quote
               </a>
             ) : null}
@@ -502,13 +498,9 @@ export default async function RobotDetailPage({ params }: Props) {
                 <p className="mt-2 text-xs text-white/35">Financing typically available through manufacturer or equipment leasing partners.</p>
               )}
               <div className="mt-4 flex flex-wrap gap-3">
-                {robot.affiliate_url ? (
-                  <a href={robot.affiliate_url} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white hover:opacity-90">
-                    Request Quote from {mfr?.name}
-                  </a>
-                ) : mfr?.website ? (
-                  <a href={mfr.website} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white hover:opacity-90">
-                    Visit {mfr.name}
+                {(robot.affiliate_url || mfr?.website) ? (
+                  <a href={`/api/out/${robot.slug}?ref=product-page&pos=pricing-section`} target="_blank" rel="sponsored noopener noreferrer" className="rounded-lg bg-blue px-7 py-3 text-sm font-semibold text-white hover:opacity-90">
+                    {robot.affiliate_url ? `Request Quote from ${mfr?.name}` : `Visit ${mfr?.name}`}
                   </a>
                 ) : null}
               </div>
