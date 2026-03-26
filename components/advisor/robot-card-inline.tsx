@@ -19,11 +19,11 @@ export function RobotCardInline({ robot }: { robot: RobotRecommendation }) {
           <img
             src={robot.image_url}
             alt={robot.name}
-            className="h-12 w-12 shrink-0 rounded-lg bg-navy-light object-cover"
+            className="h-14 w-14 shrink-0 rounded-lg bg-navy-light object-cover"
           />
         ) : (
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-navy-light">
-            <svg viewBox="0 0 24 24" className="h-6 w-6 text-muted/40" fill="none" stroke="currentColor" strokeWidth={1}>
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-navy-light">
+            <svg viewBox="0 0 24 24" className="h-7 w-7 text-muted/40" fill="none" stroke="currentColor" strokeWidth={1}>
               <rect x="4" y="4" width="16" height="12" rx="2" />
               <circle cx="9" cy="10" r="1.5" />
               <circle cx="15" cy="10" r="1.5" />
@@ -56,7 +56,7 @@ export function RobotCardInline({ robot }: { robot: RobotRecommendation }) {
 
 /**
  * Parse robot recommendation blocks from message text.
- * Format: :::robot{"name":"...","slug":"...","score":87.5,"price":29500,"reason":"..."}:::
+ * Format: :::robot{"name":"...","slug":"...","category":"...","score":87.5,"price":29500,"reason":"..."}:::
  */
 export function parseRobotCards(text: string): { segments: Array<{ type: "text" | "robot"; content: string; robot?: RobotRecommendation }> } {
   const segments: Array<{ type: "text" | "robot"; content: string; robot?: RobotRecommendation }> = [];
@@ -65,7 +65,6 @@ export function parseRobotCards(text: string): { segments: Array<{ type: "text" 
   let match;
 
   while ((match = regex.exec(text)) !== null) {
-    // Text before this match
     if (match.index > lastIndex) {
       segments.push({ type: "text", content: text.slice(lastIndex, match.index) });
     }
@@ -80,7 +79,6 @@ export function parseRobotCards(text: string): { segments: Array<{ type: "text" 
     lastIndex = match.index + match[0].length;
   }
 
-  // Remaining text
   if (lastIndex < text.length) {
     segments.push({ type: "text", content: text.slice(lastIndex) });
   }

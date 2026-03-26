@@ -1,9 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { RobotCardInline, parseRobotCards } from "@/components/advisor/robot-card-inline";
+import { RobotCardInline, parseRobotCards, type RobotRecommendation } from "@/components/advisor/robot-card-inline";
 import { UpgradeModal } from "@/components/pro/upgrade-prompt";
 import { cn } from "@/lib/utils/cn";
+
+interface RobotLookupResult {
+  slug: string;
+  name: string;
+  score: number | null;
+  price: number | null;
+  category: string;
+  image_url: string | null;
+}
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -57,6 +66,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   const [error, setError] = useState("");
   const [showUpgrade, setShowUpgrade] = useState(false);
   const [restored, setRestored] = useState(false);
+  const [enrichedRobots, setEnrichedRobots] = useState<Record<string, RobotLookupResult>>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const initialSent = useRef(false);
@@ -68,8 +78,14 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
       if (saved.length > 0) {
         setMessages(saved);
         setRestored(true);
+        // Enrich any robot cards from restored messages
+        const assistantMsgs = saved.filter((m) => m.role === "assistant");
+        for (const msg of assistantMsgs) {
+          enrichRobotCards(msg.content);
+        }
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessage]);
 
   // Persist messages to localStorage on change
@@ -167,12 +183,45 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           }
         }
       }
+      // Enrich robot cards with images from DB
+      enrichRobotCards(accumulated);
     } catch {
       setError("Failed to connect. Please try again.");
       setMessages(newMessages);
     }
 
     setStreaming(false);
+  }
+
+  async function enrichRobotCards(text: string) {
+    const { segments } = parseRobotCards(text);
+    const slugs = segments
+      .filter((s) => s.type === "robot" && s.robot?.slug)
+      .map((s) => s.robot!.slug)
+      .slice(0, 3);
+
+    if (slugs.length === 0) return;
+
+    // Skip slugs we already have
+    const needed = slugs.filter((s) => !enrichedRobots[s]);
+    if (needed.length === 0) return;
+
+    try {
+      const res = await fetch(`/api/robots/lookup?slugs=${needed.join(",")}`);
+      if (!res.ok) return;
+      const { robots } = await res.json() as { robots: RobotLookupResult[] };
+      if (!robots?.length) return;
+
+      setEnrichedRobots((prev) => {
+        const next = { ...prev };
+        for (const r of robots) {
+          next[r.slug] = r;
+        }
+        return next;
+      });
+    } catch {
+      // Non-critical — cards still render with AI-provided data
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -265,7 +314,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 )}
               >
                 {msg.role === "assistant" ? (
-                  <MessageContent content={msg.content} />
+                  <MessageContent content={msg.content} enriched={enrichedRobots} />
                 ) : (
                   <p className="whitespace-pre-wrap">{msg.content}</p>
                 )}
@@ -323,15 +372,23 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   );
 }
 
-/** Render message content with inline robot cards */
-function MessageContent({ content }: { content: string }) {
+/** Render message content with inline robot cards, enriched with DB data */
+function MessageContent({ content, enriched }: { content: string; enriched: Record<string, RobotLookupResult> }) {
   const { segments } = parseRobotCards(content);
 
   return (
     <div>
       {segments.map((seg, i) => {
         if (seg.type === "robot" && seg.robot) {
-          return <RobotCardInline key={i} robot={seg.robot} />;
+          const dbData = enriched[seg.robot.slug];
+          const merged: RobotRecommendation = {
+            ...seg.robot,
+            image_url: dbData?.image_url || seg.robot.image_url,
+            category: dbData?.category || seg.robot.category,
+            score: dbData?.score ?? seg.robot.score,
+            price: dbData?.price ?? seg.robot.price,
+          };
+          return <RobotCardInline key={i} robot={merged} />;
         }
         return (
           <span key={i} className="whitespace-pre-wrap">
