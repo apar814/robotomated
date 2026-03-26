@@ -23,6 +23,7 @@ import { SafeImage } from "@/components/ui/safe-image";
 import { AddToCompareButton } from "@/components/compare/add-to-compare-button";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
+import { PriceAlertForm } from "@/components/commerce/price-alert-form";
 import { SPEC_ICON_MAP } from "@/components/robots/spec-icon";
 
 const YEAR = new Date().getFullYear();
@@ -510,6 +511,9 @@ export default async function RobotDetailPage({ params }: Props) {
             <PriceComparison robotSlug={robot.slug} prices={(priceHistory || []).map((p) => ({ retailer: p.retailer, price: p.price, currency: "USD" }))} affiliateUrl={robot.affiliate_url} manufacturerWebsite={mfr?.website || null} />
           </div>
           <AffiliateDisclosureInline />
+          <RevealOnScroll delay={1} className="mt-6">
+            <PriceAlertForm robotId={robot.id} robotName={robot.name} currentPrice={robot.price_current} />
+          </RevealOnScroll>
           {(priceHistory || []).length > 0 && (
             <RevealOnScroll className="mt-8">
               <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-widest text-white/30">Price History</h3>
