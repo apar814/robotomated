@@ -42,6 +42,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       target="_blank"
       rel="noopener noreferrer"
       className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 transition-all hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
+      style={{ maxHeight: 320 }}
     >
       <div>
         <div className="mb-3 flex flex-wrap items-center gap-2">

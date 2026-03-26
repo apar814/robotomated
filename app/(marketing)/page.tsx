@@ -93,7 +93,7 @@ export default async function HomePage() {
     <div className="dark-section flex flex-col bg-[#0A0F1E]">
 
       {/* ══ HERO ══ */}
-      <section className="relative overflow-hidden px-4 pb-20 pt-12 sm:pt-16">
+      <section className="relative overflow-hidden px-4 pb-20 pt-6 sm:pt-8">
         {/* Ambient glows */}
         <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-blue opacity-[0.04] blur-[150px]" />
         <div className="pointer-events-none absolute -right-40 top-60 h-[500px] w-[500px] rounded-full bg-violet opacity-[0.04] blur-[150px]" />
@@ -197,7 +197,7 @@ export default async function HomePage() {
                         {robot.price_current != null ? (
                           <span className="font-mono text-sm font-bold text-green">{formatPrice(robot.price_current)}</span>
                         ) : (
-                          <span className="text-xs text-orange">Request Quote</span>
+                          <span className="text-[12px]" style={{ color: "rgba(255,255,255,0.35)" }}>Request Quote</span>
                         )}
                         {robot.robo_score != null && robot.robo_score > 0 && <RoboScoreBadge score={robot.robo_score} />}
                       </div>
