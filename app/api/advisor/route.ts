@@ -91,8 +91,10 @@ export async function POST(request: NextRequest) {
   const robotContext = (robots || [])
     .map((r) => {
       const mfr = (r.manufacturers as { name: string } | null)?.name || "";
-      const cat = (r.robot_categories as { name: string; slug: string } | null)?.name || "";
-      return `- ${r.name} by ${mfr} | Category: ${cat} | RoboScore: ${r.robo_score ?? "N/A"}/100 | Price: ${r.price_current != null ? `$${r.price_current.toLocaleString()}` : "Contact"} | Slug: ${r.slug} | ${r.description_short || ""}`;
+      const catObj = r.robot_categories as { name: string; slug: string } | null;
+      const cat = catObj?.name || "";
+      const catSlug = catObj?.slug || "all";
+      return `- ${r.name} by ${mfr} | Category: ${cat} | CategorySlug: ${catSlug} | RoboScore: ${r.robo_score ?? "N/A"}/100 | Price: ${r.price_current != null ? `$${r.price_current.toLocaleString()}` : "Contact"} | Slug: ${r.slug} | ${r.description_short || ""}`;
     })
     .join("\n");
 
