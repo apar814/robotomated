@@ -21,6 +21,10 @@
     {
       "path": "/api/cron/refresh-robot-data",
       "schedule": "0 3 * * 0"
+    },
+    {
+      "path": "/api/cron/weekly-digest",
+      "schedule": "0 12 * * 1"
     }
   ]
 }

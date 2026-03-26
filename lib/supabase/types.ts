@@ -556,6 +556,8 @@ export interface Database {
           id: string;
           email: string;
           source: string | null;
+          industry_preference: string | null;
+          unsubscribe_token: string;
           confirmed: boolean;
           created_at: string;
         };
@@ -563,6 +565,8 @@ export interface Database {
           id?: string;
           email: string;
           source?: string | null;
+          industry_preference?: string | null;
+          unsubscribe_token?: string;
           confirmed?: boolean;
           created_at?: string;
         };
@@ -570,6 +574,8 @@ export interface Database {
           id?: string;
           email?: string;
           source?: string | null;
+          industry_preference?: string | null;
+          unsubscribe_token?: string;
           confirmed?: boolean;
           created_at?: string;
         };

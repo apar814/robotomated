@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 
-// Keep the original endpoint working for backward compatibility
 export async function POST(request: NextRequest) {
   const { email, industry } = await request.json();
 
@@ -23,13 +22,14 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     if (error.code === "23505") {
+      // Already subscribed — update industry preference if provided
       if (industry) {
         await supabase
           .from("newsletter_subscribers")
           .update({ industry_preference: industry })
           .eq("email", email.toLowerCase().trim());
       }
-      return NextResponse.json({ message: "Already subscribed!" });
+      return NextResponse.json({ message: "You're already subscribed! Preference updated." });
     }
     return NextResponse.json(
       { error: "Something went wrong" },
