@@ -10,12 +10,40 @@ interface ChatMessage {
   content: string;
 }
 
+const STORAGE_KEY = "robotomated-advisor-history";
+const MAX_STORED_MESSAGES = 20;
+
 const STARTER_PROMPTS = [
-  "I want to automate my warehouse",
-  "Best home robot for a family",
-  "Robots for a small restaurant",
-  "What robot vacuum should I buy?",
+  { label: "Best warehouse robot under $50K", icon: "warehouse" },
+  { label: "Surgical robot alternatives to da Vinci", icon: "medical" },
+  { label: "Fastest ROI for manufacturing automation", icon: "manufacturing" },
+  { label: "Consumer robot with highest RoboScore", icon: "consumer" },
+  { label: "Best agricultural drone under $20K", icon: "agricultural" },
+  { label: "Cobots for small manufacturing teams", icon: "cobot" },
 ];
+
+function loadSavedMessages(): ChatMessage[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return [];
+    const parsed = JSON.parse(saved) as ChatMessage[];
+    return Array.isArray(parsed) ? parsed.slice(-MAX_STORED_MESSAGES) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveMessages(messages: ChatMessage[]) {
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(messages.slice(-MAX_STORED_MESSAGES))
+    );
+  } catch {
+    // localStorage full or unavailable
+  }
+}
 
 function generateSessionId() {
   return `session_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
@@ -28,9 +56,28 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   const [sessionId, setSessionId] = useState(() => generateSessionId());
   const [error, setError] = useState("");
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [restored, setRestored] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const initialSent = useRef(false);
+
+  // Restore conversation from localStorage on mount
+  useEffect(() => {
+    if (!initialMessage) {
+      const saved = loadSavedMessages();
+      if (saved.length > 0) {
+        setMessages(saved);
+        setRestored(true);
+      }
+    }
+  }, [initialMessage]);
+
+  // Persist messages to localStorage on change
+  useEffect(() => {
+    if (messages.length > 0 && !streaming) {
+      saveMessages(messages);
+    }
+  }, [messages, streaming]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -120,7 +167,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           }
         }
       }
-    } catch (err) {
+    } catch {
       setError("Failed to connect. Please try again.");
       setMessages(newMessages);
     }
@@ -144,7 +191,9 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
     setMessages([]);
     setSessionId(generateSessionId());
     setError("");
+    setRestored(false);
     initialSent.current = false;
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
     inputRef.current?.focus();
   }
 
@@ -177,17 +226,27 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               <p className="mt-2 max-w-md text-sm text-muted">
                 Tell me what you need and I&apos;ll recommend the perfect robot. I know every robot in our database.
               </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-2">
+              <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {STARTER_PROMPTS.map((prompt) => (
                   <button
-                    key={prompt}
-                    onClick={() => sendMessage(prompt)}
-                    className="rounded-full border border-border bg-navy-light px-4 py-2.5 text-sm text-muted transition-all hover:border-blue/30 hover:text-foreground"
+                    key={prompt.label}
+                    onClick={() => sendMessage(prompt.label)}
+                    className="group flex items-center gap-3 rounded-xl border border-border bg-navy-light px-4 py-3 text-left text-sm text-muted transition-all hover:border-blue/30 hover:bg-navy-lighter hover:text-foreground"
                   >
-                    {prompt}
+                    <PromptIcon type={prompt.icon} />
+                    <span>{prompt.label}</span>
                   </button>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Restored conversation notice */}
+          {restored && messages.length > 0 && (
+            <div className="mb-4 text-center">
+              <span className="inline-block rounded-full bg-navy-light px-3 py-1 text-xs text-muted">
+                Restored previous conversation
+              </span>
             </div>
           )}
 
@@ -254,7 +313,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           {messages.length > 0 && (
             <div className="mt-2 text-center">
               <button onClick={startOver} className="text-xs text-muted hover:text-foreground">
-                Start Over
+                Start over
               </button>
             </div>
           )}
@@ -282,4 +341,49 @@ function MessageContent({ content }: { content: string }) {
       })}
     </div>
   );
+}
+
+/** Small icon for prompt chips */
+function PromptIcon({ type }: { type: string }) {
+  const cls = "h-5 w-5 shrink-0 text-blue/60 group-hover:text-blue transition-colors";
+  switch (type) {
+    case "warehouse":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path d="M3 21V8l9-5 9 5v13" /><rect x="7" y="13" width="4" height="8" /><rect x="13" y="13" width="4" height="8" />
+        </svg>
+      );
+    case "medical":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path d="M12 2v20M2 12h20" strokeLinecap="round" />
+        </svg>
+      );
+    case "manufacturing":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path d="M4 20h16M6 20V10l4 3V7l4 3V4l4 3v13" />
+        </svg>
+      );
+    case "consumer":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <rect x="4" y="4" width="16" height="12" rx="2" /><circle cx="9" cy="10" r="1.5" /><circle cx="15" cy="10" r="1.5" /><path d="M8 20h8 M10 16v4 M14 16v4" />
+        </svg>
+      );
+    case "agricultural":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path d="M12 22c4-4 8-7 8-12a8 8 0 10-16 0c0 5 4 8 8 12z" /><path d="M12 12V6M9 9h6" />
+        </svg>
+      );
+    case "cobot":
+      return (
+        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 }
