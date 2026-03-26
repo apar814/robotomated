@@ -6,10 +6,13 @@ import { createServerClient } from "@/lib/supabase/server";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { CompanyLogo } from "@/components/ui/company-logo";
+import { JsonLd } from "@/components/seo/json-ld";
 
 interface MfrDetail {
   id: string; slug: string; name: string;
-  country: string | null; founded_year: number | null; website: string | null; logo_url: string | null;
+  country: string | null; founded_year: number | null;
+  website: string | null; logo_url: string | null;
+  description: string | null;
 }
 
 interface MfrRobot {
@@ -25,11 +28,12 @@ interface Props { params: Promise<{ slug: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const supabase = createServerClient();
-  const { data } = await supabase.from("manufacturers").select("name, website").eq("slug", slug).single().returns<{ name: string; website: string | null }>();
+  const { data } = await supabase.from("manufacturers").select("name, website, description").eq("slug", slug).single().returns<{ name: string; website: string | null; description: string | null }>();
   if (!data) return { title: "Manufacturer Not Found" };
   return {
-    title: `${data.name} Robots — All Products & Pricing`,
-    description: `Browse all ${data.name} robots with specs, RoboScores, and pricing. Visit ${data.website || "their website"} for more.`,
+    title: `${data.name} Robots — All Products, RoboScores & Pricing`,
+    description: data.description || `Browse all ${data.name} robots with independent RoboScores, specs, and pricing. Compare models and find the right one.`,
+    alternates: { canonical: `/manufacturers/${slug}` },
   };
 }
 
@@ -53,8 +57,33 @@ export default async function ManufacturerDetailPage({ params }: Props) {
   const maxPrice = priceRange.length > 0 ? Math.max(...priceRange) : null;
   const categories = [...new Set(allRobots.map(r => (r.robot_categories as { name: string } | null)?.name).filter(Boolean))];
 
+  // Calculate average RoboScore
+  const scoredRobots = allRobots.filter(r => r.robo_score != null && r.robo_score > 0);
+  const avgScore = scoredRobots.length > 0
+    ? Math.round(scoredRobots.reduce((sum, r) => sum + r.robo_score!, 0) / scoredRobots.length * 10) / 10
+    : null;
+
+  // Best robot = first in list (already sorted by robo_score desc)
+  const bestRobot = scoredRobots[0] || null;
+  const bestRobotCat = bestRobot ? (bestRobot.robot_categories as { slug: string; name: string } | null)?.slug || "all" : "";
+  const bestRobotImgs = bestRobot && Array.isArray(bestRobot.images) ? bestRobot.images as { url: string }[] : [];
+
+  // Schema.org Organization markup
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: mfr.name,
+    url: mfr.website || `https://robotomated.com/manufacturers/${slug}`,
+    ...(mfr.logo_url && { logo: mfr.logo_url }),
+    ...(mfr.country && { address: { "@type": "PostalAddress", addressCountry: mfr.country } }),
+    ...(mfr.founded_year && { foundingDate: `${mfr.founded_year}` }),
+  };
+
   return (
     <div>
+      <JsonLd data={orgSchema} />
+
+      {/* Header */}
       <section className="border-b border-white/[0.06] px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[
@@ -69,11 +98,26 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                 <CompanyLogo logoUrl={mfr.logo_url} name={mfr.name} height={48} />
                 <h1 className="font-display text-3xl font-bold">{mfr.name}</h1>
               </div>
-              <p className="mt-2 text-sm text-muted">
+
+              {/* Stats row */}
+              <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-muted">
                 {mfr.country && <span>HQ: {mfr.country}</span>}
-                {mfr.founded_year && <span> &middot; Founded {mfr.founded_year}</span>}
-                <span> &middot; {allRobots.length} robots listed</span>
-              </p>
+                {mfr.founded_year && <span>Founded {mfr.founded_year}</span>}
+                <span>{allRobots.length} robots listed</span>
+                {avgScore != null && (
+                  <span className="flex items-center gap-1.5">
+                    Avg RoboScore: <RoboScoreBadge score={avgScore} />
+                  </span>
+                )}
+              </div>
+
+              {/* Description */}
+              {mfr.description && (
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+                  {mfr.description}
+                </p>
+              )}
+
               {categories.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {categories.map(c => (
@@ -105,8 +149,50 @@ export default async function ManufacturerDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Best Robot Highlight */}
+      {bestRobot && (
+        <section className="border-b border-white/[0.06] px-4 py-8">
+          <div className="mx-auto max-w-6xl">
+            <Link
+              href={`/explore/${bestRobotCat}/${bestRobot.slug}`}
+              className="group flex flex-col gap-6 rounded-2xl border border-blue/20 bg-gradient-to-r from-blue/5 to-violet/5 p-6 transition-all hover:border-blue/40 sm:flex-row sm:items-center"
+            >
+              <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-xl">
+                {bestRobotImgs[0]?.url ? (
+                  <Image src={bestRobotImgs[0].url} alt={bestRobot.name} fill sizes="128px" className="object-cover" />
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-steel to-navy-lighter">
+                    <span className="text-3xl opacity-20">&#129302;</span>
+                  </div>
+                )}
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-semibold uppercase tracking-wider text-blue">
+                  Best from {mfr.name}
+                </p>
+                <h2 className="mt-1 text-xl font-bold transition-colors group-hover:text-blue">
+                  {bestRobot.name}
+                </h2>
+                <p className="mt-1 text-sm text-muted">{bestRobot.description_short}</p>
+                <div className="mt-3 flex items-center gap-4">
+                  {bestRobot.robo_score != null && <RoboScoreBadge score={bestRobot.robo_score} />}
+                  {bestRobot.price_current != null && (
+                    <span className="font-mono text-sm font-bold text-green">${bestRobot.price_current.toLocaleString()}</span>
+                  )}
+                  <span className="ml-auto text-xs font-semibold text-blue group-hover:underline">
+                    View Details &rarr;
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* All Robots Grid */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
+          <h2 className="mb-6 text-xl font-bold">All {mfr.name} Robots</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {allRobots.map((robot) => {
               const cat = robot.robot_categories as { slug: string; name: string } | null;

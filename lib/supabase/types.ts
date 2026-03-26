@@ -72,6 +72,7 @@ export interface Database {
           founded_year: number | null;
           website: string | null;
           logo_url: string | null;
+          description: string | null;
           verified: boolean;
           created_at: string;
         };
@@ -83,6 +84,7 @@ export interface Database {
           founded_year?: number | null;
           website?: string | null;
           logo_url?: string | null;
+          description?: string | null;
           verified?: boolean;
           created_at?: string;
         };
@@ -94,6 +96,7 @@ export interface Database {
           founded_year?: number | null;
           website?: string | null;
           logo_url?: string | null;
+          description?: string | null;
           verified?: boolean;
           created_at?: string;
         };
