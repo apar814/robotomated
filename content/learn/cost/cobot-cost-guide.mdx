@@ -1,0 +1,172 @@
+---
+title: "Cobot Costs in 2026: From $25K Entry-Level to $80K Premium"
+slug: cobot-cost-guide
+category: cost
+audience: intermediate
+industry:
+  - manufacturing
+description: "A detailed breakdown of collaborative robot costs in 2026. Covers UR series pricing, FANUC, ABB, payload-based pricing tiers, end-effector costs, integration costs, and training expenses."
+readTime: 9
+publishedAt: "2026-03-27"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: true
+robotSlugs:
+  - universal-robots-ur5e
+  - universal-robots-ur10e
+  - fanuc-crx-10ia
+---
+
+Cobots are the most accessible entry point into industrial robotics. A functional cobot cell can cost less than one year of a manufacturing worker's fully loaded salary — and unlike the worker, it runs three shifts without overtime. But the arm itself is only part of the cost, and confusing "robot price" with "deployment cost" leads to budget surprises.
+
+This guide breaks down every cost component so you can build an accurate budget before talking to vendors.
+
+## Cobot Arm Pricing by Vendor and Payload
+
+Cobot pricing correlates strongly with payload capacity. Here's where the major vendors land in 2026.
+
+### Universal Robots (Market Leader — ~50% Global Share)
+
+| Model | Payload | Reach | Approximate Price |
+|-------|---------|-------|-------------------|
+| UR3e | 3 kg | 500 mm | $25,000-$28,000 |
+| [UR5e](/explore/manufacturing/universal-robots-ur5e) | 5 kg | 850 mm | $32,000-$38,000 |
+| [UR10e](/explore/manufacturing/universal-robots-ur10e) | 12.5 kg | 1,300 mm | $45,000-$52,000 |
+| UR16e | 16 kg | 900 mm | $48,000-$55,000 |
+| UR20 | 20 kg | 1,750 mm | $58,000-$68,000 |
+| UR30 | 30 kg | 1,300 mm | $62,000-$72,000 |
+
+Universal Robots pricing is the most predictable in the market. Their distribution through authorized integrators means pricing is relatively consistent, though volume discounts (3+ units) can reduce per-unit cost by 5-10%.
+
+### FANUC (Industrial Giant, Growing Cobot Portfolio)
+
+| Model | Payload | Reach | Approximate Price |
+|-------|---------|-------|-------------------|
+| CRX-5iA | 5 kg | 994 mm | $28,000-$35,000 |
+| [CRX-10iA](/explore/manufacturing/fanuc-crx-10ia) | 10 kg | 1,249 mm | $38,000-$45,000 |
+| CRX-10iA/L | 10 kg | 1,418 mm | $42,000-$48,000 |
+| CRX-20iA/L | 20 kg | 1,418 mm | $52,000-$62,000 |
+| CRX-25iA | 25 kg | 1,889 mm | $58,000-$68,000 |
+
+FANUC commands a slight premium over UR for comparable payloads, justified by their reputation for reliability (MTBF exceeding 35,000 hours) and the strength of their service network. For operations already running FANUC industrial robots, the shared programming environment adds significant value.
+
+### ABB (Precision and Speed)
+
+| Model | Payload | Reach | Approximate Price |
+|-------|---------|-------|-------------------|
+| GoFa CRB 15000 | 5 kg | 950 mm | $30,000-$38,000 |
+| SWIFTI CRB 1100 | 4 kg | 580 mm | $25,000-$32,000 |
+| SWIFTI CRB 11000 | 7 kg | 1,300 mm | $45,000-$55,000 |
+
+ABB positions their cobots for precision applications and higher-speed operation. The SWIFTI line operates faster than typical cobots (up to 6.2 m/s for CRB 1100) while maintaining collaborative safety through integrated safety sensors.
+
+### Doosan Robotics (Value Alternative)
+
+| Model | Payload | Reach | Approximate Price |
+|-------|---------|-------|-------------------|
+| M0609 | 6 kg | 900 mm | $22,000-$28,000 |
+| M1013 | 10 kg | 1,300 mm | $32,000-$40,000 |
+| H2515 | 25 kg | 1,500 mm | $52,000-$60,000 |
+
+Doosan offers competitive pricing with good specifications. Their growing integrator network makes them a viable option for cost-sensitive deployments, particularly in the 10-25 kg payload range.
+
+## End-Effector Costs
+
+The end-effector (gripper, tool, sensor) is the interface between the cobot and the work. Don't underestimate this cost.
+
+**Parallel grippers: $1,500-$5,000**
+Two-finger grippers for rigid parts. Electric (OnRobot RG2/RG6) or pneumatic (Schunk). Choose electric for flexibility and ease of use; pneumatic for higher grip force.
+
+**Vacuum grippers: $1,000-$4,000**
+For flat, smooth surfaces. Single cup ($1,000-$1,500) to multi-cup arrays ($2,000-$4,000). Require compressed air supply or integrated vacuum pump.
+
+**Adaptive/soft grippers: $3,000-$8,000**
+Robotiq 2F-85/2F-140, OnRobot 3FG15. Handle variable part geometries without changeover. Higher cost but essential for high-mix applications.
+
+**Force/torque sensors: $3,000-$8,000**
+OnRobot HEX-E/HEX-H, ATI Axia series. Required for assembly, polishing, and insertion tasks. Usually mounted between the cobot wrist and the gripper.
+
+**Vision systems: $3,000-$20,000**
+2D vision ($3,000-$6,000) for part location and inspection. 3D vision ($8,000-$20,000) for bin picking and complex orientation. Includes camera, software license, and integration.
+
+**Welding torches: $5,000-$15,000**
+Complete welding end-effector including torch, wire feeder interface, and safety system. Cost depends on welding process (MIG, TIG) and integration complexity.
+
+**Screwdriving systems: $4,000-$12,000**
+Electric or pneumatic screwdriver with automatic feeder. OnRobot and Atlas Copco offer cobot-specific systems.
+
+## Integration and Deployment Costs
+
+This is where budgets go wrong. Integration costs often equal or exceed the arm cost.
+
+**Simple deployment (pick-and-place, basic machine tending): $10,000-$25,000**
+- Integrator programming and commissioning: $5,000-$12,000
+- Custom fixturing: $3,000-$8,000
+- Safety assessment: $2,000-$5,000
+- Total cell cost (arm + end-effector + integration): $45,000-$75,000
+
+**Medium deployment (vision-guided, multi-station): $25,000-$50,000**
+- Integrator programming: $10,000-$20,000
+- Vision system integration: $5,000-$15,000
+- Custom fixturing (multiple stations): $5,000-$15,000
+- Safety assessment and safety devices: $5,000-$10,000
+- Total cell cost: $70,000-$130,000
+
+**Complex deployment (multi-robot, process control, ERP integration): $50,000-$100,000+**
+- Systems engineering and programming: $20,000-$40,000
+- Multi-robot coordination: $10,000-$20,000
+- PLC/ERP integration: $10,000-$25,000
+- Safety assessment and safeguarding: $10,000-$20,000
+- Total cell cost: $120,000-$250,000
+
+**Can I skip the integrator?** For very simple applications (single pick-and-place, consistent parts, no vision), some technically capable teams deploy cobots in-house. This saves $10,000-$30,000 in integration fees but adds 2-4 weeks of internal labor. For anything involving vision, force control, or process integration, use an integrator.
+
+## Training Costs
+
+**Operator training: $500-$1,500 per person (1-3 days)**
+Basic operation, safety procedures, program selection, and first-line troubleshooting. Usually included for 2-4 people with cobot purchase.
+
+**Programmer training: $2,000-$5,000 per person (3-5 days)**
+Program creation and modification, coordinate systems, I/O configuration, and basic debugging. Vendor-led courses at training centers.
+
+**Maintenance technician training: $3,000-$8,000 per person (3-5 days)**
+Preventive maintenance procedures, mechanical and electrical troubleshooting, replacement procedures, and calibration. Vendor certification programs.
+
+**Annual training budget for 5-10 cobot cells: $5,000-$15,000**
+Covers refresher training, new employee onboarding, and advanced skills development.
+
+## Annual Operating Costs
+
+**Maintenance and spare parts: $2,000-$5,000 per cobot/year**
+Cobots are remarkably low-maintenance. Joint grease changes every 12,000-20,000 hours. Cable and harness inspection quarterly. End-effector maintenance varies by type. Service contracts from vendors run $3,000-$8,000/year and include parts and on-site support.
+
+**Software and licenses: $500-$3,000 per cobot/year**
+Some vendors (Universal Robots) include lifetime software updates. Others charge annual license fees for advanced features (force control packages, vision integration modules, analytics dashboards).
+
+**Energy: $200-$600 per cobot/year**
+Cobots draw 200-500W during operation. At $0.12/kWh running two shifts (4,000 hours/year), annual energy cost is $100-$240. Add climate control costs if the cobot operates in a temperature-sensitive environment.
+
+Use our [TCO Calculator](/tools/tco-calculator) to model total costs for your application, or compare cobots in our [cobot guide](/learn/manufacturing/cobot-guide-2026).
+
+## Frequently Asked Questions
+
+### What's the minimum budget for a cobot deployment?
+
+A minimal but functional cobot cell — entry-level arm, basic gripper, simple fixturing, and self-integration — can be deployed for $35,000-$45,000. This suits straightforward pick-and-place with consistent part presentation. For a professionally integrated cell with vision and proper safety assessment, budget $60,000-$90,000 minimum.
+
+### Is it worth buying a used or refurbished cobot?
+
+Used cobots from authorized dealers (like those in Universal Robots' certified pre-owned program) can save 20-40% on hardware cost. Verify: remaining warranty, joint hours logged (target under 15,000 hours), software version compatibility, and availability of spare parts for that generation. Avoid buying used from non-authorized sources — you lose warranty coverage and may get hardware with undisclosed issues.
+
+### How does cobot cost compare to a human worker?
+
+A fully loaded manufacturing worker (wages, benefits, taxes, workers' comp) costs $50,000-$85,000 per year for a single shift. A cobot cell at $70,000-$100,000 deployed cost with $5,000-$8,000 annual operating cost runs three shifts — equivalent to $25,000-$36,000 per shift per year. Payback against one single-shift worker: 12-18 months. Against a two-shift position: 8-12 months.
+
+### Do cobots hold their resale value?
+
+Current-generation cobots (Universal Robots e-Series, FANUC CRX) retain 40-60% of purchase value after 3 years and 20-35% after 5 years, based on secondary market data. Resale value is highest for standard configurations with low hours. Custom integrations (specific end-effectors, unique programming) don't add resale value — the next buyer will redo the integration.
+
+### What's the ROI timeline for a cobot investment?
+
+Typical payback period: 12-24 months for single-shift applications, 8-14 months for multi-shift. This assumes the cobot displaces at least 0.5 FTE (full-time equivalent) of labor. Applications with additional quality, safety, or throughput benefits see faster payback. Applications with long changeover times or low utilization see slower payback. Model conservatively — use 75% of expected utilization for first-year ROI estimates.

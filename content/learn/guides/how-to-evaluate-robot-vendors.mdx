@@ -1,0 +1,165 @@
+---
+title: "How to Evaluate Robot Vendors: A Procurement Framework"
+slug: how-to-evaluate-robot-vendors
+category: guides
+audience: advanced
+industry:
+  - general
+description: "A structured procurement framework for evaluating robot vendors. Covers financial stability assessment, support network evaluation, reference checks, pilot negotiation, contract terms, and exit strategy."
+readTime: 10
+publishedAt: "2026-03-27"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: true
+robotSlugs:
+  - universal-robots-ur5e
+  - boston-dynamics-stretch
+  - locus-origin
+---
+
+The robotics industry has over 3,000 companies globally, and roughly 15% of robotics startups fail within their first five years. When your operation depends on a vendor's continued existence, their financial health matters as much as their robot's specifications. Yet most buyers spend 90% of their evaluation time on hardware and 10% on the vendor behind it.
+
+This framework flips that ratio where it matters.
+
+## Financial Stability Assessment
+
+A robot is a 5-10 year commitment. Your vendor needs to survive at least that long.
+
+**For public companies (FANUC, ABB, Intuitive Surgical, Stryker):** Review quarterly earnings, revenue growth, and robotics segment margin. These vendors aren't going anywhere — the risk is product line discontinuation, not company failure. Check annual reports for R&D spending as a percentage of revenue (healthy: 8-15%).
+
+**For venture-backed startups:** Request their most recent funding round details. Key metrics: total capital raised, months of runway at current burn rate, revenue trajectory, and path to profitability. A company that raised $50M in Series C but burns $8M/month has six months of runway — that's a risk. Ask directly: "At current burn rate, how many months of runway do you have?" Evasive answers are themselves an answer.
+
+**Warning signs:**
+- Leadership departures (CTO, VP Engineering) within the last 12 months
+- Layoffs exceeding 15% of headcount
+- Pivot from hardware to "platform" or "data" — often signals hardware economics aren't working
+- Acquisition rumors — acquisitions can mean product discontinuation
+- Unusual discounting or aggressive RaaS terms — may signal desperation for revenue
+
+**Mitigation strategies:** Negotiate source code escrow for critical software. Ensure data export rights in your contract. For critical deployments, require a maintenance bond or establish a service agreement with a third-party integrator who can support the hardware independently.
+
+## Support Network Evaluation
+
+The support experience after purchase matters more than the sales experience before it.
+
+**Geographic coverage:** Where are the vendor's service technicians located relative to your facilities? For critical operations, target 4-hour on-site response time. Map service center locations and ask for guaranteed response times by geography — not just averages.
+
+**Support tiers:** Understand what's included in standard support vs. premium support. Key distinctions:
+- Phone/remote support hours (24/7 vs. business hours)
+- On-site response time (4 hours vs. next business day)
+- Parts availability (depot stock vs. ship-from-factory)
+- Software update frequency and testing requirements
+- Dedicated account manager vs. general support queue
+
+**Escalation paths:** How does a critical failure get handled? Ask the vendor to walk you through their severity classification (Sev 1/2/3), escalation procedures, and executive escalation process. If they can't articulate this clearly, their support organization isn't mature enough for enterprise deployments.
+
+**Support metrics to request:**
+- Average resolution time for critical issues (target: under 8 hours)
+- First-call resolution rate (target: over 60%)
+- Customer satisfaction score (target: over 85%)
+- Average time to dispatch on-site technician
+- Spare parts fill rate (percentage of parts available for immediate shipment)
+
+## Reference Check Framework
+
+Vendor-provided references are curated. You need independent verification.
+
+**Request a complete customer list** — not cherry-picked references. If the vendor refuses, ask for all customers in your industry vertical and geographic region. Some will refuse this too (citing customer privacy), but push for at least 5-10 references beyond the 2-3 they volunteer.
+
+**Reference check questions (ask the customer, not the vendor):**
+
+*Deployment experience:*
+- How long from purchase order to fully operational? Was it within the quoted timeline?
+- What surprised you during deployment that the vendor didn't warn you about?
+- If you could do it over, what would you do differently?
+
+*Ongoing support:*
+- How often does the robot go down, and how long does recovery take?
+- Rate the vendor's support responsiveness on a 1-10 scale.
+- Have you ever escalated a support issue to executive level? What happened?
+
+*Financial:*
+- What was the total cost of ownership versus what the vendor initially quoted?
+- Were there unexpected costs? What were they?
+- Would you buy from this vendor again?
+
+*The killer question:*
+- "If this vendor went out of business tomorrow, how would you cope?"
+
+Their answer reveals how dependent they are — and how exposed you'd be.
+
+## Pilot Program Negotiation
+
+A pilot tests the robot in your actual environment, not a demo room. Negotiate it properly.
+
+**Pilot structure:**
+- Duration: 60-90 days minimum (30 days is too short to capture edge cases)
+- Scope: test the primary use case plus at least one secondary use case
+- Success criteria: define specific, measurable targets before the pilot starts (throughput, uptime, error rate, integration milestones)
+- Staffing: the vendor should provide an on-site applications engineer for at least the first 2 weeks
+
+**Pilot pricing models:**
+- Paid pilot (best): you pay 10-25% of purchase price; this amount applies toward the purchase. Paid pilots get better vendor attention.
+- Free pilot (caution): the vendor is desperate or confident. Either way, define who pays for shipping, installation, connectivity, and support during the pilot. "Free" pilots often have $10K-$20K in hidden costs.
+- Rental (practical): monthly rental at market rates, with purchase credit. Cleanest structure for both parties.
+
+**Data from the pilot:** Insist on access to all performance data — uptime logs, error logs, throughput metrics, connectivity events. This data is your negotiating leverage for the purchase contract and your baseline for post-deployment SLA enforcement.
+
+**Exit criteria:** Define clear conditions under which the pilot fails and you walk away with no further obligation. If the robot fails to meet 80% of primary success criteria, the pilot is a failure regardless of what the sales team says.
+
+## Contract Terms That Protect You
+
+Robot purchase contracts favor vendors by default. Here's what to negotiate.
+
+**Pricing protection:** Lock in per-unit pricing for fleet expansion within 24 months. Volume discount tiers should be explicit. If you're buying RaaS, cap annual price increases (CPI-linked, max 5%).
+
+**Uptime SLAs:** Define uptime as a percentage of scheduled operating hours (not calendar hours). Target 95% for AMRs, 98% for surgical robots. Include financial penalties for SLA misses — typically service credits equal to 2-3x the prorated downtime cost.
+
+**Software terms:** Clarify what happens if the vendor changes their software model. Can they move from perpetual license to subscription mid-contract? Are updates mandatory or optional? Who bears the cost of testing updates against your integration?
+
+**Data rights:** You own your operational data. The contract should state this explicitly. The vendor may retain rights to anonymized, aggregated data for product improvement — that's reasonable. But your specific operational data (routes, throughput, inventory, personnel) is yours.
+
+**Termination and exit:** What happens if you need to switch vendors? Can you operate the robots without the vendor's cloud services? What's the contract buyout formula? Is hardware transferable to a new owner?
+
+**Warranty:** Standard robot warranties are 12-24 months. Negotiate for 24 months. Clarify warranty scope — does it cover parts and labor, or just parts? What voids the warranty (third-party modifications, uncertified parts, environmental conditions)?
+
+## Exit Strategy Planning
+
+Every vendor relationship should have an exit plan. Not because you expect to leave, but because planning for it reveals dependencies.
+
+**Vendor lock-in risks:**
+- Proprietary communication protocols that prevent multi-vendor fleets
+- Cloud-dependent operations that stop if the vendor's servers go down
+- Custom integrations that only the vendor can maintain
+- Proprietary end-effectors or accessories with no third-party alternatives
+
+**Mitigation:**
+- Prefer vendors with open APIs and standard protocols (ROS 2, OPC UA, REST APIs)
+- Ensure local operation capability without cloud connectivity
+- Document all integrations and ensure your team (or a third-party integrator) can maintain them
+- Stock critical spare parts independently
+
+Use our [Robot Finder](/tools/robot-finder) to compare vendors across these dimensions, or talk to our [AI Advisor](/advisor) for vendor recommendations tailored to your requirements.
+
+## Frequently Asked Questions
+
+### How do I check if a robot startup is financially healthy?
+
+For private companies, direct inquiry is your best tool. Ask about total funding raised, current burn rate, revenue growth rate, and customer count trajectory. Cross-reference with Crunchbase or PitchBook data. Check Glassdoor for employee reviews mentioning layoffs or financial concerns. Ask for bank references or a D&B report if the purchase exceeds $500K.
+
+### What should a robot vendor's support SLA include?
+
+At minimum: defined severity levels with response time guarantees (Sev 1: 2-4 hours, Sev 2: 8 hours, Sev 3: next business day), on-site response time for hardware failures, spare parts availability guarantee, software update schedule, and financial penalties for SLA misses. Premium SLAs add 24/7 phone support, dedicated account management, and preventive maintenance visits.
+
+### How many vendor references should I check?
+
+Check at least 5 references, and ensure they include: one customer in your industry, one at similar scale, one who has been a customer for 2+ years, and at least one reference you sourced independently (not provided by the vendor). If the vendor's total customer count is under 20, check at least 30% of their install base.
+
+### Should I choose a large corporation or a startup for my robot vendor?
+
+Large corporations (FANUC, ABB, Siemens) offer stability, global support networks, and proven reliability — but they move slowly, charge premiums, and may prioritize larger customers. Startups offer innovation, flexibility, and competitive pricing — but carry financial risk, have smaller support networks, and may pivot or fail. For mission-critical operations, lean toward established vendors. For competitive advantage and latest technology, startups can be worth the risk with proper mitigation.
+
+### What's the most common vendor selection mistake?
+
+Selecting based on demo performance rather than real-world deployment evidence. Demos are controlled environments — your facility is not. The most reliable predictor of deployment success is reference checks with customers running similar applications at similar scale. Second most common: ignoring total cost of ownership in favor of unit price.

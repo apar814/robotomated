@@ -1,0 +1,143 @@
+---
+title: "How to Buy a Cobot for Manufacturing: Selection & Integration Guide"
+slug: how-to-buy-a-cobot-manufacturing
+category: guides
+audience: intermediate
+industry:
+  - manufacturing
+description: "A practical guide to selecting and deploying collaborative robots in manufacturing. Covers payload and reach requirements, safety standards, cell design, programming, and ROI calculation."
+readTime: 10
+publishedAt: "2026-03-27"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: true
+robotSlugs:
+  - universal-robots-ur5e
+  - universal-robots-ur10e
+  - fanuc-crx-10ia
+---
+
+Collaborative robots — cobots — have crossed from niche curiosity to mainstream manufacturing tool. The global cobot market hit $2.2 billion in 2025, growing at 25% annually, and for good reason: a cobot cell can be deployed in days, reprogrammed in hours, and redeployed to new tasks as production needs change. But buying one still requires careful analysis.
+
+This guide covers the technical, financial, and organizational decisions that separate successful cobot deployments from expensive shelfware.
+
+## Define Your Application Requirements
+
+Every cobot purchase starts with three numbers: payload, reach, and cycle time.
+
+**Payload** is the maximum weight the cobot can handle, including the end-effector (gripper, tool, sensor). If your part weighs 3 kg and your gripper weighs 1.5 kg, you need at least 4.5 kg payload — and you should buy 20% above your requirement for margin. The [Universal Robots UR5e](/explore/manufacturing/universal-robots-ur5e) handles 5 kg, suitable for light assembly and machine tending. The [UR10e](/explore/manufacturing/universal-robots-ur10e) handles 12.5 kg for heavier parts. The [FANUC CRX-10iA](/explore/manufacturing/fanuc-crx-10ia) offers 10 kg in a compact footprint.
+
+**Reach** determines the cobot's working envelope. A 850mm reach arm can serve a small assembly station. A 1,300mm reach arm can tend two machines side by side. Map your workstation layout and measure actual required reaches — including the positions the end-effector needs to reach for part pickup, placement, and any intermediate positions.
+
+**Cycle time** determines whether a cobot can meet your production throughput. Cobots are slower than industrial robots — typical speeds of 1-2 m/s versus 5-8 m/s for industrial arms. For a pick-and-place task, a cobot might cycle at 8-12 seconds versus 3-5 seconds for an industrial robot. If your takt time is 6 seconds, a single cobot won't cut it.
+
+Common cobot applications and their typical requirements:
+
+| Application | Payload | Reach | Cycle Time |
+|-------------|---------|-------|------------|
+| Machine tending | 5-10 kg | 850-1300 mm | 15-30 sec |
+| Pick and place | 3-16 kg | 500-1300 mm | 8-15 sec |
+| Palletizing | 10-25 kg | 1100-1800 mm | 10-20 sec |
+| Assembly | 3-5 kg | 500-850 mm | 10-30 sec |
+| Welding | 5-10 kg | 850-1300 mm | Varies |
+| Quality inspection | 1-3 kg | 850-1300 mm | 5-15 sec |
+
+## Understand Safety Standards
+
+Cobots can work alongside humans without cages — but only if they comply with ISO 10218 (robot safety) and ISO/TS 15066 (collaborative robot safety). These aren't optional guidelines; they're the standards your insurance carrier and OSHA will expect you to follow.
+
+ISO/TS 15066 defines four collaborative modes:
+
+1. **Safety-rated monitored stop:** The robot stops when a human enters the workspace. Simple but limits throughput.
+2. **Hand guiding:** A human physically moves the robot. Used mainly for programming.
+3. **Speed and separation monitoring:** The robot slows as humans approach. Requires external sensors (safety scanners, light curtains).
+4. **Power and force limiting:** The robot's motors limit contact force to safe levels. This is how most cobots operate — they're inherently force-limited.
+
+The critical spec is **transient contact force** — the maximum force during an unexpected collision. ISO/TS 15066 defines limits by body region (29 body areas, each with a different threshold). For the chest, the limit is 140 N transient force. For the skull, it's 130 N. Your cobot's speed, payload, and end-effector geometry all affect contact force.
+
+**Don't skip the risk assessment.** Every cobot deployment requires a documented risk assessment per ISO 12100. This evaluates the specific application — not just the robot — including the end-effector, the parts being handled, pinch points, and worker interaction patterns.
+
+## Choose Your Programming Method
+
+Programming complexity determines how quickly you can deploy and redeploy the cobot.
+
+**Teach pendant:** The traditional method. You physically guide the robot through waypoints using a handheld controller. All major cobots support this. It works, but it's slow for complex tasks and requires training.
+
+**Hand guiding / free-drive:** You grab the cobot arm and physically move it through the desired path. The robot records the positions. Fast and intuitive for simple pick-and-place tasks. The UR e-Series and FANUC CRX both support this natively.
+
+**No-code visual programming:** Drag-and-drop programming on a tablet interface. FANUC's CRX lineup offers this, and Universal Robots has it through URCaps ecosystem add-ons. Best for operators who need to modify programs without engineering support.
+
+**Offline simulation:** You program the robot in simulation software (RoboDK, Visual Components) and deploy to the physical robot. Essential for complex tasks and for minimizing downtime during programming.
+
+Choose based on who will program the robot. If it's a dedicated robot technician, teach pendant and offline simulation work fine. If operators need to adjust programs on the floor, hand guiding and no-code tools are worth the premium.
+
+## Design the Workcell
+
+The cobot is 40% of the solution. The workcell — end-effector, fixturing, part presentation, safety devices — is the other 60%.
+
+**End-effectors:** Budget $2,000-$15,000 for grippers, welding torches, or inspection cameras. Vacuum grippers handle flat objects. Parallel grippers handle rigid parts. Adaptive grippers (Robotiq, OnRobot) handle variable geometries. Match the gripper to your part mix — not just one part.
+
+**Part presentation:** How do parts arrive at the cobot? Conveyors, gravity feeders, bin picking with vision, or manual staging? Consistent part presentation is the single biggest factor in cobot reliability. If parts arrive inconsistently, you'll need a vision system ($5K-$20K) to locate them.
+
+**Fixturing:** Custom fixtures hold parts during processing. Budget $3,000-$10,000 for machined fixtures per product variant. If you run high-mix production, invest in flexible fixturing systems.
+
+**Safety devices:** Even force-limited cobots may need additional safety measures depending on the application. Safety scanners ($2K-$5K each) can define zones that slow or stop the robot. Light curtains protect specific entry points.
+
+## Calculate ROI Accurately
+
+Cobot ROI calculations fail when they only count labor savings. Build a complete model.
+
+**Direct savings:**
+- Labor cost displaced: annual hours x loaded labor rate ($25-$45/hr in US manufacturing)
+- Quality improvement: cost of scrap, rework, and returns reduced
+- Throughput increase: additional units produced per shift
+
+**Indirect savings:**
+- Ergonomic injury reduction: workers' comp claims average $42,000 per lost-time incident
+- Reduced turnover: replacing a manufacturing worker costs $5,000-$15,000 in hiring and training
+- Extended operations: cobots enable lights-out or third-shift production without full staffing
+
+**Total investment:**
+- Cobot hardware: $25,000-$80,000
+- End-effector: $2,000-$15,000
+- Integration (cell design, programming, commissioning): $10,000-$50,000
+- Training: $3,000-$8,000
+- Annual maintenance: $2,000-$5,000
+
+A typical cobot cell costs $50,000-$120,000 fully integrated and pays back in 12-24 months when displacing one full-time position on a two-shift operation. Use our [TCO Calculator](/tools/tco-calculator) to model your specific scenario.
+
+## Vendor Selection and Next Steps
+
+Narrow to 2-3 vendors and request application-specific demonstrations — not generic demos. Bring your actual parts to the demo. Ask for customer references in your industry and your application type.
+
+Key differentiators between major cobot vendors:
+
+- **Universal Robots:** Largest ecosystem (URCaps), biggest installed base, most integrator partners. Best for flexibility and third-party component availability.
+- **FANUC:** Best for shops already running FANUC industrial robots — shared programming environment and support network. Industry-leading reliability (35,000+ hour MTBF).
+- **ABB:** Strong in high-precision applications and multi-robot cell coordination. GoFa and SWIFTI lines cover different speed/payload ranges.
+- **Doosan Robotics:** Competitive pricing, wide payload range (1-25 kg across 6 models). Growing integrator network.
+
+Compare cobots in our [cobot guide](/learn/manufacturing/cobot-guide-2026) or browse [manufacturing robots](/explore/manufacturing) in our database.
+
+## Frequently Asked Questions
+
+### How much does a cobot cost?
+
+Entry-level cobots start at $25,000 for the arm alone (Universal Robots UR3e, Doosan M0609). Mid-range models like the UR10e and FANUC CRX-10iA run $45,000-$55,000. Heavy-payload cobots (20+ kg) cost $60,000-$80,000. Fully integrated cells — including end-effector, fixturing, safety devices, programming, and commissioning — typically cost $50,000-$120,000.
+
+### Can I deploy a cobot without a systems integrator?
+
+Yes, for simple applications. If you're doing straightforward pick-and-place with consistent part presentation, a technically capable team can deploy a cobot in-house using the vendor's training resources. For anything involving vision systems, complex motion paths, multi-robot coordination, or custom fixturing, use an integrator. The $15,000-$40,000 integration fee saves months of trial-and-error.
+
+### Do cobots really not need safety cages?
+
+Cobots are designed to operate without traditional safety cages, but "cage-free" doesn't mean "safety-free." You still need a risk assessment per ISO 12100, and some applications — particularly those involving sharp end-effectors, high-speed motions, or hazardous materials — may still require safety barriers. The risk assessment determines what's needed, not the marketing brochure.
+
+### How long does it take to program a cobot for a new task?
+
+Simple pick-and-place programs can be created in 1-4 hours using hand guiding or teach pendant. Complex tasks with conditional logic, vision integration, and force control take 1-3 days. Complete workcell changeovers (new program, new end-effector, new fixturing) take 2-5 days. High-mix shops should budget for this changeover time in their capacity planning.
+
+### What maintenance does a cobot require?
+
+Cobots are low-maintenance by design. Typical requirements include: annual calibration check, joint grease replacement every 12,000-20,000 hours (roughly every 5-8 years for single-shift operations), and periodic cable inspection. Annual maintenance costs run $2,000-$5,000. Most vendors offer service contracts at $3,000-$8,000 per year including parts and on-site support.

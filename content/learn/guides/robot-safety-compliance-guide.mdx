@@ -1,0 +1,117 @@
+---
+title: "Robot Safety & Compliance: What Every Buyer Must Know"
+slug: robot-safety-compliance-guide
+category: guides
+audience: intermediate
+industry:
+  - general
+description: "A comprehensive guide to robot safety standards and compliance requirements. Covers ISO 10218, ISO/TS 15066, CE marking, OSHA requirements, risk assessment methodology, and safety zone design."
+readTime: 10
+publishedAt: "2026-03-27"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: true
+robotSlugs:
+  - universal-robots-ur5e
+  - fanuc-crx-10ia
+  - boston-dynamics-spot
+---
+
+A robot that injures a worker doesn't just hurt a person — it halts production, triggers OSHA investigations, exposes the company to litigation, and sets back your entire automation program. Safety compliance isn't overhead. It's the foundation that makes everything else possible.
+
+This guide covers what buyers, operations leaders, and safety managers need to understand about robot safety standards, risk assessment, and compliance requirements.
+
+## The Standards Landscape
+
+Robot safety is governed by a hierarchy of international standards, regional regulations, and industry-specific requirements. Here are the ones that matter.
+
+**ISO 10218-1:2024 (Robot Safety):** Defines safety requirements for the robot itself — things the manufacturer must build in. Covers emergency stop functionality, speed limiting, force limiting, protective stop, and safety-rated control functions. If you're buying a robot, it should be certified to ISO 10218-1. If it's not, ask why.
+
+**ISO 10218-2:2024 (Robot System Safety):** Defines safety requirements for the robot system — the complete installation including the robot, end-effector, workpiece, and safeguarding. This is your responsibility as the buyer/integrator, not the manufacturer's. It requires a risk assessment of the complete application, not just the robot in isolation.
+
+**ISO/TS 15066:2016 (Collaborative Robot Safety):** The critical standard for cobots. Defines the four collaborative operation modes (safety-rated monitored stop, hand guiding, speed and separation monitoring, power and force limiting) and specifies maximum allowable contact forces for 29 body regions. If you're buying a cobot and plan to operate it without safety cages, this standard governs your deployment.
+
+**IEC 62443 (Industrial Cybersecurity):** Increasingly relevant as robots connect to networks. Covers security requirements for industrial automation systems. A hacked robot is a safety hazard — cybersecurity is now a safety concern.
+
+**ANSI/RIA R15.06 (US-specific):** The American national standard for industrial robot safety. Largely harmonized with ISO 10218 but includes US-specific requirements. If you're deploying in the United States, compliance with R15.06 is expected.
+
+## Regulatory Requirements by Region
+
+**United States:** OSHA's General Duty Clause requires employers to provide a workplace free from recognized hazards. OSHA doesn't mandate specific robot safety standards, but adherence to ANSI/RIA R15.06 and ISO 10218 is the established way to demonstrate compliance. If an incident occurs and you haven't followed these standards, OSHA will cite you. OSHA fines for serious violations start at $16,131 per instance (2026 rates) and can reach $161,323 for willful violations.
+
+**European Union:** CE marking is mandatory. Robots must comply with the Machinery Directive (2006/42/EC, being replaced by the new Machinery Regulation effective 2027), the Low Voltage Directive, and the EMC Directive. The manufacturer provides a Declaration of Conformity. As the system integrator, you're responsible for CE marking the complete installation — which requires your own risk assessment and Declaration of Conformity.
+
+**United Kingdom:** UKCA marking post-Brexit, with requirements largely mirroring CE requirements. Check the current mutual recognition status — it changes frequently.
+
+**China, Japan, South Korea:** Each has national standards that largely reference or harmonize with ISO 10218 but include regional additions. If you're deploying internationally, work with local compliance consultants.
+
+## Risk Assessment: The Core Requirement
+
+Every robot installation requires a documented risk assessment. This isn't optional — it's the central requirement of ISO 10218-2 and ANSI/RIA R15.06. Insurance carriers, OSHA inspectors, and (if something goes wrong) plaintiff attorneys will all ask for it.
+
+**Risk assessment methodology (per ISO 12100):**
+
+**Step 1: Define the limits.** Document the robot system's intended use, space limits (reach, travel area), time limits (operating schedule), and any foreseeable misuse. A robot designed for machine tending that an operator repurposes for a different task creates an unassessed risk.
+
+**Step 2: Identify hazards.** Walk through every phase of the robot's lifecycle: installation, setup, programming, normal operation, maintenance, cleaning, troubleshooting, and decommissioning. For each phase, identify mechanical hazards (crushing, shearing, impact), electrical hazards, thermal hazards, and ergonomic hazards.
+
+**Step 3: Estimate and evaluate risk.** For each hazard, estimate the severity of potential harm (minor, serious, fatal) and the probability of occurrence (considering exposure frequency, probability of the hazardous event, and possibility of avoidance). Use a risk matrix to classify each hazard as low, medium, or high risk.
+
+**Step 4: Reduce risk.** Apply the hierarchy of controls:
+1. **Inherent design** (eliminate the hazard — best)
+2. **Safeguarding** (guards, light curtains, safety scanners)
+3. **Complementary measures** (training, warnings, PPE — least effective)
+
+**Step 5: Document.** The risk assessment must be a living document, updated when the application changes, when incidents occur, or when new information about hazards becomes available.
+
+## Safety Zone Design
+
+Physical space design is where safety standards meet facility reality.
+
+**Restricted zones:** Areas where only the robot operates. Physical barriers (fences, hard guards) or safety-rated devices (light curtains, safety laser scanners) prevent human entry during robot operation. Required for traditional industrial robots operating at full speed.
+
+**Collaborative zones:** Areas where humans and cobots share space. ISO/TS 15066 governs these zones. The cobot must operate within force/speed limits that ensure contact forces stay below injury thresholds. Zone dimensions depend on the robot's stopping distance and the approach speed of workers.
+
+**Human-only zones:** Areas within the robot's reach but designated for human-only activities (part loading, quality inspection). The robot must stop or retreat when a human enters. Safety-rated area scanners define these zones dynamically.
+
+**Key design parameters:**
+- **Minimum safety distance** (ISO 13855): calculated based on robot stopping time and human approach speed (1,600 mm/s walking, 2,000 mm/s reaching). A robot with a 300ms stopping time needs a minimum safety distance of 480mm from the detection zone edge.
+- **Stopping time:** Measured, not estimated. Vendors provide maximum stopping time specs, but you should verify with your specific payload and end-effector installed.
+- **Floor markings:** Necessary but not sufficient. Paint or tape delineates zones visually but doesn't physically prevent entry. Always pair markings with active safety devices.
+
+## Common Safety Mistakes
+
+**Mistake 1: Assuming "cobot" means "safe."** A cobot operating within ISO/TS 15066 force limits is safe for collaborative operation — but only if the risk assessment confirms it for your specific application. A cobot holding a sharp tool, moving above a worker's head, or handling hazardous materials may not be safe even within force limits.
+
+**Mistake 2: Disabling safety features for productivity.** Safety-rated speed limits, force limits, and reduced-mode operation exist for a reason. Disabling them to increase throughput voids your compliance, voids the manufacturer's warranty, and exposes you to unlimited liability. If throughput is inadequate with safety features engaged, redesign the cell — don't bypass safety.
+
+**Mistake 3: Conducting the risk assessment once and filing it away.** The risk assessment must be updated when: the application changes (new end-effector, new part, new workflow), the operating environment changes (new equipment nearby, modified layout), an incident or near-miss occurs, or at least annually as a periodic review.
+
+**Mistake 4: Ignoring maintenance-mode hazards.** Most robot injuries occur during setup, programming, and maintenance — not during normal operation. Your risk assessment must cover these phases. Lockout/tagout procedures, maintenance access protocols, and teach-mode safety requirements are critical.
+
+**Mistake 5: Skipping validation after changes.** Software updates, parameter changes, and end-effector swaps can alter robot behavior. Re-validate safety system function after any change — not just major ones.
+
+For related guidance, see our [cobot buying guide](/learn/guides/how-to-buy-a-cobot-manufacturing) or browse [manufacturing robots](/explore/manufacturing) in our database.
+
+## Frequently Asked Questions
+
+### Who is responsible for robot safety — the manufacturer or the buyer?
+
+Both, but for different things. The manufacturer is responsible for building a safe robot per ISO 10218-1 (inherent safety features, safety-rated control systems, documentation). The buyer/integrator is responsible for the safe installation per ISO 10218-2 — including the risk assessment, safeguarding, safety zone design, and operator training. If you use a systems integrator, they share this responsibility with you. Ultimately, the employer has the legal obligation to provide a safe workplace.
+
+### Do I need a safety consultant for robot deployment?
+
+For traditional industrial robots (caged, high-speed): strongly recommended unless you have in-house safety engineering expertise. For cobots in simple applications: the vendor's application engineering team may be sufficient for the risk assessment, but have it reviewed by someone independent of the sale. For any deployment where workers will be in the robot's reach during operation: yes, engage a qualified safety consultant certified in robot safety (TUV, RIA-certified robot integrator).
+
+### What are the force limits for collaborative robots under ISO/TS 15066?
+
+ISO/TS 15066 defines maximum transient contact force and quasi-static clamping force for 29 body regions. Examples: skull (130N transient), chest (140N transient), hand/fingers (140N transient), abdomen (110N transient). These limits assume a specific contact area and duration. The actual safe operating speed for your cobot depends on its mass, payload, end-effector geometry, and the body region most likely to be contacted.
+
+### How often should safety systems be inspected?
+
+Safety-rated devices (e-stops, light curtains, safety scanners, safety PLCs) should be function-tested at least monthly per most standards. Full performance verification (response time, detection capability, stopping distance measurement) should be conducted annually or after any modification. Document all inspections. Many organizations integrate safety system checks into their PM schedule — see our [maintenance planning guide](/learn/guides/robot-maintenance-planning-guide).
+
+### What happens if OSHA investigates a robot incident at my facility?
+
+OSHA will request your risk assessment, training records, maintenance logs, and safety system inspection records. They will verify that your installation complies with applicable standards (ANSI/RIA R15.06). If documentation is incomplete or non-compliant, expect citations regardless of whether the robot caused the injury. Penalties for serious violations start at $16,131 per instance. Willful violations can reach $161,323 and trigger criminal referral in cases involving fatalities.
