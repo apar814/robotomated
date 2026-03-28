@@ -1,0 +1,158 @@
+---
+title: "Amazon Proteus vs Locus Origin: Warehouse AMR Comparison 2026"
+slug: amazon-proteus-vs-locus-origin
+category: vs
+audience: professional
+industry:
+  - warehouse
+  - logistics
+  - e-commerce
+description: "Head-to-head comparison of Amazon Proteus and Locus Origin autonomous mobile robots. Throughput, navigation, fleet management, pricing models, and deployment requirements analyzed for warehouse operations."
+readTime: 10
+publishedAt: "2026-03-12"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: false
+robotSlugs:
+  - amazon-proteus
+  - locus-origin
+---
+
+Amazon Proteus and Locus Origin represent two different visions for warehouse automation. One was built inside the world's largest logistics operation and is now available to external customers. The other was purpose-built for third-party warehouses and has over 2 billion units picked across 300+ facilities. Both are collaborative AMRs designed to work alongside human workers — but their design philosophies, pricing, and ideal deployment scenarios differ in important ways.
+
+Here is everything you need to know before choosing between them.
+
+## Quick Comparison
+
+| Specification | Amazon Proteus | Locus Origin |
+|--------------|---------------|--------------|
+| **Price** | Lease/RaaS (Amazon terms) | RaaS (~$1,500/mo) |
+| **Max Payload** | ~600 lbs (cart-based) | 70 lbs (on-robot) |
+| **Navigation** | Computer vision + LiDAR | LiDAR + multi-sensor |
+| **Max Speed** | ~1.5 m/s | ~1.2 m/s |
+| **Battery Life** | 8+ hours | 8-10 hours |
+| **Fleet Management** | Amazon Robotics platform | Locus Fleet Management |
+| **Collaboration Model** | Autonomous transport | Human-directed picking |
+| **Integration** | Amazon ecosystem | Open WMS integration |
+| **Deployments** | Amazon FCs + select 3PLs | 300+ third-party facilities |
+
+The numbers suggest similar capabilities, but the real differences lie in operational philosophy, ecosystem integration, and who each robot is designed to serve.
+
+## Hardware and Navigation
+
+### Build and Mobility
+
+[Amazon Proteus](/explore/warehouse/amazon-proteus) is Amazon's first fully autonomous warehouse robot designed to operate in shared spaces with human workers. Unlike the caged Kiva/Robin systems that require dedicated zones, Proteus navigates freely through warehouse floors using advanced computer vision and sensor fusion. Its design prioritizes cart-based transport — Proteus slides under GoCart shelving units and moves them autonomously between stations.
+
+[Locus Origin](/explore/warehouse/locus-origin) uses a different form factor. Rather than moving shelving, Origin drives to pick locations and presents bins to human pickers. Workers grab items and place them in the robot's integrated bins, then Origin routes to the next location or to a packing station. The robot handles the walking; humans handle the picking.
+
+**Winner:** Proteus for heavy transport. Origin for collaborative picking workflows.
+
+### Navigation Intelligence
+
+Proteus benefits from Amazon's massive investment in computer vision. Its perception system uses deep learning trained on data from millions of hours of real warehouse operations across Amazon's fulfillment network. The system excels at predicting human movement patterns, navigating around obstacles, and adapting to the chaotic, constantly shifting environment of a high-volume fulfillment center.
+
+Locus Origin uses a multi-sensor LiDAR-based navigation system refined across 300+ deployments. Its fleet management software creates optimized pick paths that reduce worker walking by 50-80%. Origin's navigation is particularly good at multi-robot coordination — fleets of 50+ robots operating simultaneously in the same facility without conflicts.
+
+**Winner:** Proteus for raw perception capability. Origin for fleet-level optimization.
+
+## Software and Integration
+
+### Warehouse Management System Compatibility
+
+This is where the choice becomes most consequential. Proteus operates within the Amazon Robotics ecosystem. While Amazon has made it available to external customers, integration is tightest with Amazon's own WMS and fulfillment platforms. Third-party WMS integration is possible but requires Amazon's professional services team and typically longer implementation timelines.
+
+Locus Origin was built from day one for third-party warehouses. It integrates with all major WMS platforms — Manhattan Associates, Blue Yonder, SAP EWM, Korber, and others — through standardized APIs. Most deployments go live in 4-8 weeks, including integration, mapping, and training. This interoperability is a core competitive advantage.
+
+**Winner:** Origin for WMS flexibility. Proteus for Amazon ecosystem customers.
+
+### Fleet Management and Analytics
+
+Proteus Fleet Manager draws on Amazon's operational expertise. The dashboard provides real-time visibility into robot utilization, throughput metrics, and predictive maintenance alerts. Amazon's algorithms optimize robot routing based on order priority, delivery deadlines, and facility-wide traffic patterns — the same logic that powers Amazon's own fulfillment operations.
+
+Locus Fleet Management delivers similar capabilities with stronger third-party customization. The Locus Dashboard shows units-per-hour per worker (a metric warehouse managers live by), robot utilization rates, heat maps of facility activity, and labor planning tools. Locus claims customers see 2-3x productivity improvements measured by this dashboard.
+
+**Winner:** Tie — both platforms deliver enterprise-grade fleet management.
+
+## Operational Performance
+
+### Throughput and Productivity
+
+Amazon claims Proteus enables 25-30% throughput improvements in transport-heavy workflows by eliminating the time workers spend pushing carts between locations. In Amazon's own fulfillment centers, Proteus handles the equivalent of what would require dozens of manual cart pushers.
+
+Locus publishes more specific numbers: a 2-3x improvement in units-per-hour for picking operations, with some deployments reporting 4x gains during peak season. With over 2 billion units picked, Locus has substantial data backing these claims. The key metric — worker walking reduction of 50-80% — translates directly to faster pick rates and reduced fatigue.
+
+**Winner:** Origin for picking productivity data. Proteus for transport-heavy operations.
+
+### Scalability
+
+Both platforms handle fleet scaling, but Locus has a significant advantage in speed of deployment. Adding robots to an existing Locus fleet takes days, not weeks. The RaaS model means no capital approval required — you call Locus, and more robots arrive. During peak season, many customers scale from 30 to 80+ robots and back again.
+
+Proteus scaling is tied to Amazon's deployment process, which is more structured. This is appropriate for Amazon's own operations but can create longer lead times for external customers. Amazon is working to streamline this for third-party deployments, but Locus's 7+ years of optimizing rapid deployment gives it a clear edge here.
+
+**Winner:** Origin for deployment speed and seasonal flexibility.
+
+## Pricing and Total Cost of Ownership
+
+### Business Model
+
+Both robots are primarily available through RaaS or lease models, eliminating upfront capital expenditure.
+
+Locus pricing is transparent: approximately $1,500 per robot per month, with volume discounts for larger fleets. This includes the robot, software, fleet management, maintenance, and support. At a typical 3PL running two shifts, the cost per unit picked adds roughly $0.02-0.05 — well below the labor cost of manual picking.
+
+Amazon Proteus pricing is negotiated per deployment and typically tied to broader Amazon logistics partnerships. External customers should expect pricing competitive with Locus, though exact figures are not publicly disclosed. The total value proposition may be stronger for companies already using Amazon fulfillment services, where Proteus integrates into existing infrastructure.
+
+**Winner:** Origin for pricing transparency. Proteus for Amazon ecosystem value.
+
+### Five-Year TCO Analysis
+
+For a mid-size 3PL operating a 200,000 sq ft facility with 30 AMRs:
+
+- **Locus Origin:** ~$2.7M over 5 years (30 robots x $1,500/mo x 60 months), including all maintenance and support
+- **Amazon Proteus:** Estimated $2.5-3.5M depending on negotiated terms and integration scope
+- **Manual labor equivalent:** $4.5-6M for equivalent throughput (factoring in turnover, training, benefits)
+
+Both platforms deliver 40-60% cost savings versus manual labor over five years. Use our [TCO Calculator](/tools/tco-calculator) to model your specific scenario.
+
+## Who Should Choose Which
+
+**Choose Amazon Proteus if:**
+- You are already operating within Amazon's fulfillment ecosystem
+- Your primary bottleneck is material transport between zones
+- You value Amazon's operational expertise and long-term platform investment
+- You want integration with Amazon's broader logistics AI
+
+**Choose Locus Origin if:**
+- You operate third-party warehouses with existing WMS infrastructure
+- Your primary bottleneck is order picking productivity
+- You need rapid deployment and seasonal scaling flexibility
+- You want transparent pricing and proven multi-client deployments
+
+## The Verdict
+
+For most third-party warehouses, **Locus Origin is the safer choice** in 2026. Its WMS flexibility, transparent pricing, proven track record across 300+ facilities, and rapid deployment model make it the more accessible platform. Origin is the robot that made warehouse AMRs mainstream.
+
+Amazon Proteus is the more interesting long-term bet. Amazon's AI capabilities, manufacturing scale, and logistics expertise mean Proteus could evolve rapidly. For Amazon ecosystem customers, the integration benefits are substantial. Watch this space closely — Amazon's track record of entering a market and eventually dominating it is hard to bet against.
+
+## Frequently Asked Questions
+
+### Can Amazon Proteus be used outside of Amazon warehouses?
+
+Yes. Amazon began offering Proteus to external customers in 2025 as part of its Amazon Robotics commercial program. However, deployment requires working with Amazon's professional services team, and integration is optimized for Amazon-compatible systems. Third-party 3PLs and brands can access Proteus, but the process is more involved than deploying a Locus fleet.
+
+### How quickly can Locus Origin be deployed in a new warehouse?
+
+Locus typically completes new deployments in 4-8 weeks from contract signing to go-live. This includes facility mapping, WMS integration, worker training, and fleet optimization. For facilities using common WMS platforms with standard workflows, deployment can be as fast as 3 weeks. Adding robots to existing deployments takes 2-3 days.
+
+### Do these robots require changes to warehouse infrastructure?
+
+Neither robot requires structural modifications. Both navigate using onboard sensors, not floor-embedded guides. You need reliable WiFi coverage throughout the facility and designated charging stations. Locus Origin requires approximately 3 sq ft per charging dock. Proteus needs similar charging infrastructure plus clearance for GoCart compatibility.
+
+### What happens when an AMR encounters a problem it cannot solve?
+
+Both platforms have error-handling protocols. Locus Origin will stop safely, alert the fleet management system, and reroute other robots around it while a worker resolves the issue. Proteus follows similar safety protocols with additional escalation to Amazon's remote monitoring team for complex situations. In both cases, the rest of the fleet continues operating.
+
+### Can these AMRs handle seasonal demand spikes?
+
+This is where the RaaS model excels. Locus customers routinely scale fleets by 50-100% during peak season (Black Friday, holiday shipping, etc.) and scale back after. You pay only for the robots you are using. Amazon Proteus offers similar scaling, though lead times for adding capacity may be longer for external customers.

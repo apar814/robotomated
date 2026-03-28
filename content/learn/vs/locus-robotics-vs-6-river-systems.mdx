@@ -1,0 +1,149 @@
+---
+title: "Locus Robotics vs 6 River Systems — Warehouse AMR Comparison 2026"
+slug: locus-robotics-vs-6-river-systems
+category: vs
+audience: professional
+industry:
+  - warehouse
+  - logistics
+  - e-commerce
+description: "A detailed comparison of Locus Robotics and 6 River Systems for warehouse order picking. Locus Origin vs Chuck compared on throughput, pricing, software, deployment, and ecosystem integration."
+readTime: 10
+publishedAt: "2026-03-21"
+updatedAt: "2026-03-27"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: false
+robotSlugs:
+  - locus-origin
+  - 6-river-systems-chuck
+---
+
+If you are evaluating collaborative AMRs for warehouse order picking, your shortlist almost certainly includes Locus Robotics and 6 River Systems. These two companies have emerged as the dominant platforms for AMR-assisted picking — the workflow where robots navigate between pick locations while human workers grab items and place them on the robot.
+
+Both platforms deliver significant productivity improvements. Both have proven at scale. But they are architecturally different in ways that matter depending on your operation's specific characteristics. This comparison cuts through the marketing to help you understand which platform fits your facility, your team, and your business model.
+
+## Company Background
+
+**Locus Robotics** was founded in 2014 by the team behind Quiet Logistics, an e-commerce fulfillment company. They built robots to solve their own fulfillment challenges, then spun off the robotics division into a separate company. This operator-first DNA shows in the product — Locus designs for the warehouse floor, not the trade show booth.
+
+**6 River Systems** was founded in 2015 by former Kiva Systems engineers — the team that built the robots Amazon acquired in 2012 for $775 million. 6RS was acquired by Shopify in 2019, then later transitioned to Ocado Group. The Kiva heritage shows in the software sophistication, while the Shopify/Ocado backing provides deep commerce ecosystem integration.
+
+## Head-to-Head Specifications
+
+| Specification | Locus Origin | 6 River Systems Chuck |
+|---------------|-------------|----------------------|
+| **Robot Type** | Collaborative AMR | Collaborative AMR |
+| **Payload Capacity** | 70 lbs (32 kg) | 80 lbs (36 kg) |
+| **Navigation** | LiDAR + cameras | LiDAR + cameras |
+| **Battery Life** | 10-12 hours | 8-10 hours |
+| **Charging Time** | ~1 hour (swap available) | ~2 hours |
+| **Max Speed** | 1.8 m/s | 1.5 m/s |
+| **Worker Interface** | Touchscreen + LED indicators | Touchscreen + LED indicators |
+| **Fleet Size Supported** | 500+ per facility | 200+ per facility |
+| **Pricing Model** | RaaS (Robot-as-a-Service) | Lease model |
+| **Typical Monthly Cost** | ~$1,500/robot/month | Varies (lease terms) |
+| **Heavy Payload Option** | Locus Vector (600 lbs) | None (standard Chuck only) |
+| **RoboScore** | 85.4 | 83.6 |
+
+## Software and Fleet Intelligence
+
+### Locus: LocusOne Platform
+
+The LocusOne platform manages the entire warehouse AMR operation — task allocation, fleet routing, worker assignment, and performance analytics. Its strength is scale: LocusOne can orchestrate 500+ robots in a single facility, dynamically rebalancing workloads as order volumes fluctuate throughout the day.
+
+LocusOne's predictive algorithms analyze order patterns and pre-position robots near high-demand pick areas before orders arrive. During peak periods (Black Friday, holiday season), the system automatically adjusts fleet allocation across zones based on real-time demand. Locus reports that this predictive positioning improves throughput by 15-20% compared to reactive routing.
+
+The analytics dashboard provides granular visibility into picker productivity, robot utilization, zone throughput, and bottleneck identification. Warehouse managers can identify underperforming zones and adjust staffing or inventory placement based on data rather than intuition.
+
+### 6 River Systems: Chuck OS
+
+Chuck's operating system takes a different architectural approach: it optimizes at the path level. Rather than assigning robots to zones and tasks, Chuck OS continuously calculates the optimal pick path for each robot — considering current inventory locations, order priorities, congestion patterns, and even individual worker pace — then recalculates every few seconds as conditions change.
+
+This continuous path optimization is where Chuck's Kiva Systems heritage shines. The path optimization engine is the result of a decade of algorithm development, and it shows in real-world results: 6RS reports 30-40% reduction in travel time per pick compared to paper-based or RF-directed picking.
+
+Chuck's integration with the Shopify and Ocado ecosystems provides direct data flow between the commerce platform and the warehouse floor. For Shopify merchants, this means order prioritization happens automatically — VIP customers, expedited shipping, and time-sensitive orders are surfaced to the robot fleet without manual intervention.
+
+## Throughput and Performance
+
+Both platforms significantly improve picking productivity, but the magnitude depends on your baseline and facility characteristics:
+
+**Locus Origin:**
+- Typical improvement: 2-3x picks per hour per worker
+- Headline numbers: facilities report 150-250% productivity increases
+- Scale advantage: maintains performance even at 500+ robot fleets
+- Best throughput in large, high-density facilities with many pick locations
+
+**6 River Systems Chuck:**
+- Typical improvement: 2-3x picks per hour per worker
+- Headline numbers: facilities report 200-300% productivity increases in travel-heavy layouts
+- Path optimization advantage: greatest impact in facilities where travel time dominates
+- Best throughput in facilities with long aisles and high travel-to-pick ratios
+
+The reported performance differences are largely attributable to different baseline facilities and measurement methodologies rather than a genuine performance gap between the platforms. In controlled comparisons, throughput is comparable.
+
+## Pricing and Business Model
+
+### Locus: Robot-as-a-Service (RaaS)
+
+Locus pioneered the RaaS model for warehouse AMRs. You pay approximately $1,500 per robot per month — this covers the hardware, software, maintenance, upgrades, and support. There is no upfront capital expenditure, and you can scale your fleet up or down as seasonal demand shifts.
+
+The RaaS model is transformative for mid-market warehouses. A 10-robot fleet costs $15,000/month — the equivalent of 1-2 full-time warehouse workers. Since the fleet typically replaces the equivalent of 20-30 workers in terms of throughput, the math is overwhelmingly favorable.
+
+### 6 River Systems: Lease Model
+
+6RS operates on a lease model with terms typically ranging from 24-48 months. Monthly costs are comparable to Locus on a per-robot basis, but the structure is less flexible — scaling down mid-lease is more difficult than adjusting a RaaS contract. The upside of the lease model is potentially lower total cost over the lease term for facilities with stable, predictable demand.
+
+For facilities in the Shopify/Ocado ecosystem, integrated pricing packages may offer additional value through bundled commerce and fulfillment services.
+
+## Deployment and Integration
+
+### Locus deployment
+
+Locus claims the fastest deployment in the industry — some facilities go from first robot to live picking within 48 hours. A typical full deployment (facility mapping, WMS integration, worker training, workflow optimization) takes 2-4 weeks. Locus robots map the facility autonomously during an initial walkthrough and adapt to layout changes without reprogramming.
+
+WMS integration is available pre-built for Manhattan Associates, Blue Yonder, SAP EWM, Oracle, and others. Custom WMS integration via REST API typically takes 1-2 weeks.
+
+### 6RS deployment
+
+6RS deployment timelines average 4-6 weeks, reflecting deeper software integration and more extensive path optimization configuration. The additional time is spent tuning the path optimization engine to your specific facility layout, inventory profile, and order characteristics — work that pays off in higher sustained performance.
+
+For Shopify merchants, deployment is streamlined through native integration with Shopify Fulfillment Network. The commerce-to-warehouse data flow is pre-built, reducing a significant integration burden.
+
+## When to Choose Locus
+
+- **You need maximum flexibility:** RaaS pricing and rapid deployment mean you can scale up for peak season and scale down afterward
+- **You handle heavy items:** The [Locus Vector](/explore/warehouse/locus-vector) (600 lbs) extends the platform to heavy payloads — no competitor matches this in the collaborative AMR space
+- **You operate very large facilities:** LocusOne's 500+ robot fleet management is proven at scales that few competitors can match
+- **You want the fastest deployment:** 48-hour pilot capability gets you results this week, not next month
+- **You use multiple WMS platforms:** Broad pre-built WMS integrations reduce integration risk
+
+## When to Choose 6 River Systems
+
+- **You are in the Shopify/Ocado ecosystem:** Native integration provides direct commerce-to-warehouse data flow
+- **Travel time is your primary bottleneck:** Chuck's continuous path optimization delivers the greatest improvements in facilities where workers spend significant time walking between picks
+- **You value software sophistication:** Chuck OS's real-time path recalculation is the most advanced in the category
+- **You prefer lease economics:** For stable-demand operations, lease terms may offer lower total cost than RaaS
+- **Your facility has complex, multi-level layouts:** Chuck's path optimization handles complex facility geometries particularly well
+
+## Frequently Asked Questions
+
+### Can I switch from 6 River Systems to Locus Robotics (or vice versa)?
+
+Yes, but it requires a full transition — the platforms are not interoperable. The robots, software, and WMS integrations are different. A transition typically takes 4-8 weeks and involves remapping the facility, reconfiguring WMS integrations, and retraining workers on the new interface. RaaS contracts (Locus) offer more flexibility for transitions than long-term leases (6RS).
+
+### How do the [Locus Origin](/explore/warehouse/locus-origin) and [Chuck](/explore/warehouse/6-river-systems-chuck) handle peak season scaling?
+
+Locus's RaaS model allows you to add robots for peak season and return them afterward — typical peak deployments add 30-50% more robots during holiday season. 6RS supports temporary fleet expansion through lease amendments, though the terms are generally less flexible than RaaS. Both platforms can integrate additional robots into an existing fleet within 1-2 days.
+
+### Which platform has better worker satisfaction?
+
+Both platforms receive positive worker feedback because they eliminate the most physically demanding aspect of the job — walking 12+ miles per shift. Locus and 6RS both report that workers prefer robot-assisted picking over manual methods after the first shift. The interfaces are similar (touchscreen displays with visual pick instructions), and neither platform has a clear worker satisfaction advantage. The key factor is change management — how the deployment is communicated and introduced to the workforce.
+
+### Can these AMRs work in multi-temperature environments?
+
+Both platforms operate in ambient and refrigerated (above 36°F / 2°C) environments. Neither is rated for freezer operations below 0°F. For facilities with multiple temperature zones, robots can transit between zones as long as they do not remain in cold environments for extended periods. Batteries and electronics perform best in ambient conditions.
+
+### What happens when the software or network goes down?
+
+Both platforms include offline fallback modes. If WiFi connectivity drops, robots continue executing their current task assignment using onboard navigation (LiDAR does not require WiFi). Fleet optimization pauses until connectivity is restored, but individual robots remain operational. For extended outages, both platforms support manual mode where robots follow worker-directed commands rather than fleet-optimized routing. Critical operations should maintain redundant WiFi infrastructure to minimize downtime risk.
