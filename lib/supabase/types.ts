@@ -584,6 +584,75 @@ export interface Database {
         };
         Relationships: [];
       };
+      news_items: {
+        Row: {
+          id: string;
+          title: string;
+          url: string;
+          source: string;
+          summary: string | null;
+          category: string | null;
+          image_url: string | null;
+          published_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          url: string;
+          source: string;
+          summary?: string | null;
+          category?: string | null;
+          image_url?: string | null;
+          published_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          title?: string;
+          url?: string;
+          source?: string;
+          summary?: string | null;
+          category?: string | null;
+          image_url?: string | null;
+          published_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      funding_rounds: {
+        Row: {
+          id: string;
+          company: string;
+          amount: string | null;
+          round: string | null;
+          date: string | null;
+          investors: string | null;
+          source_url: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          company: string;
+          amount?: string | null;
+          round?: string | null;
+          date?: string | null;
+          investors?: string | null;
+          source_url?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          company?: string;
+          amount?: string | null;
+          round?: string | null;
+          date?: string | null;
+          investors?: string | null;
+          source_url?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
