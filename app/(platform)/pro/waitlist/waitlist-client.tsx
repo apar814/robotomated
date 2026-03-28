@@ -13,7 +13,7 @@ const FEATURES = [
 ];
 
 function FeatureIcon({ name }: { name: string }) {
-  const cls = "h-5 w-5 text-blue";
+  const cls = "h-5 w-5 text-electric-blue";
   switch (name) {
     case "bell": return <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>;
     case "chart": return <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>;
@@ -77,7 +77,7 @@ export function ProWaitlistClient() {
             <span className="font-mono text-4xl font-bold text-foreground">$29</span>
             <span className="text-muted">/month</span>
           </div>
-          <p className="mt-2 text-sm text-green font-semibold">
+          <p className="mt-2 text-sm text-lime font-semibold">
             Waitlist gets 40% off forever &rarr; $17/month
           </p>
         </div>
@@ -87,15 +87,15 @@ export function ProWaitlistClient() {
       <section className="px-4 pb-12">
         <div className="mx-auto max-w-md">
           {status === "success" ? (
-            <div className="rounded-xl border border-green/20 bg-green/5 p-8 text-center">
-              <p className="text-lg font-bold text-green">You&apos;re on the list!</p>
+            <div className="rounded-md border border-lime/20 bg-lime/5 p-8 text-center">
+              <p className="text-lg font-bold text-lime">You&apos;re on the list!</p>
               {position && (
                 <p className="mt-2 text-3xl font-mono font-bold text-foreground">#{position}</p>
               )}
               <p className="mt-2 text-sm text-muted">
                 We&apos;ll email you when Pro launches. Your 40% lifetime discount is locked in.
               </p>
-              <Link href="/" className="mt-4 inline-block text-sm text-blue hover:underline">
+              <Link href="/" className="mt-4 inline-block text-sm text-electric-blue hover:underline">
                 Back to Robotomated
               </Link>
             </div>
@@ -107,12 +107,12 @@ export function ProWaitlistClient() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-white/25 focus:border-violet focus:outline-none sm:rounded-r-none"
+                className="flex-1 rounded-md border border-border bg-transparent px-5 py-4 text-sm text-white placeholder:text-white/25 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="rounded-lg bg-gradient-to-r from-violet to-blue px-8 py-4 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 sm:rounded-l-none"
+                className="rounded-md bg-electric-blue px-8 py-4 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 sm:rounded-l-none"
               >
                 {status === "loading" ? "Joining..." : "Join Waitlist"}
               </button>
@@ -123,12 +123,12 @@ export function ProWaitlistClient() {
       </section>
 
       {/* Feature comparison */}
-      <section className="border-t border-white/[0.06] px-4 py-16">
+      <section className="border-t border-border px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center text-xl font-bold">Free vs. Pro</h2>
           <div className="mt-8 space-y-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="flex items-start gap-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-5">
+              <div key={f.title} className="flex items-start gap-4 rounded-md border border-border bg-white/[0.02] p-5">
                 <div className="mt-0.5 shrink-0">
                   <FeatureIcon name={f.icon} />
                 </div>

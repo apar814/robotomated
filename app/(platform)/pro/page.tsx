@@ -53,7 +53,7 @@ function ProPageContent() {
   return (
     <div>
       {canceled && (
-        <div className="border-b border-border bg-navy-light px-4 py-3 text-center text-sm text-muted">
+        <div className="border-b border-border bg-obsidian-2 px-4 py-3 text-center text-sm text-muted">
           Checkout canceled. No charges were made.
         </div>
       )}
@@ -75,7 +75,7 @@ function ProPageContent() {
               <span className="text-5xl font-bold">$49</span>
               <span className="text-muted">/month</span>
             </div>
-            <p className="text-sm text-green">7-day free trial included</p>
+            <p className="text-sm text-lime">7-day free trial included</p>
           </div>
           <Button onClick={handleCheckout} disabled={loading} className="mt-6 px-8 py-3 text-base">
             {loading ? "Loading..." : "Start Free Trial"}
@@ -87,18 +87,18 @@ function ProPageContent() {
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-8 text-center text-2xl font-bold">Free vs Pro</h2>
-          <div className="overflow-hidden rounded-xl border border-border">
+          <div className="overflow-hidden rounded-md border border-border">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-navy-lighter">
+                <tr className="bg-obsidian-3">
                   <th className="px-5 py-3 text-left font-medium text-muted">Feature</th>
                   <th className="px-5 py-3 text-center font-medium text-muted">Free</th>
-                  <th className="px-5 py-3 text-center font-medium text-blue">Pro</th>
+                  <th className="px-5 py-3 text-center font-medium text-electric-blue">Pro</th>
                 </tr>
               </thead>
               <tbody>
                 {features.map((f, i) => (
-                  <tr key={f.name} className={i % 2 === 0 ? "bg-navy-light" : "bg-navy-lighter"}>
+                  <tr key={f.name} className={i % 2 === 0 ? "bg-obsidian-2" : "bg-obsidian-3"}>
                     <td className="px-5 py-3 font-medium">{f.name}</td>
                     <td className="px-5 py-3 text-center">
                       <FeatureValue value={f.free} />
@@ -131,7 +131,7 @@ function ProPageContent() {
               { name: "Coming soon", role: "Home Automation Enthusiast", quote: "Testimonial placeholder — real reviews will appear here after launch." },
               { name: "Coming soon", role: "Robotics Engineer", quote: "Testimonial placeholder — we'll feature real Pro user stories here." },
             ].map((t, i) => (
-              <div key={i} className="rounded-xl border border-border bg-navy-light p-5">
+              <div key={i} className="obsidian-card p-5">
                 <p className="text-sm italic text-muted">&ldquo;{t.quote}&rdquo;</p>
                 <div className="mt-3">
                   <p className="text-xs font-semibold">{t.name}</p>
@@ -156,7 +156,7 @@ function ProPageContent() {
 function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }) {
   if (value === true) {
     return (
-      <svg className={cn("mx-auto h-5 w-5", pro ? "text-blue" : "text-green")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <svg className={cn("mx-auto h-5 w-5", pro ? "text-electric-blue" : "text-lime")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>
     );
@@ -164,7 +164,7 @@ function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }
   if (value === false) {
     return <span className="text-muted">—</span>;
   }
-  return <span className={cn("text-xs", pro ? "font-semibold text-blue" : "text-muted")}>{value}</span>;
+  return <span className={cn("text-xs", pro ? "font-semibold text-electric-blue" : "text-muted")}>{value}</span>;
 }
 
 export default function ProPage() {

@@ -48,7 +48,7 @@ export function FilterBar({
   const scoreNum = scoreMin ? parseInt(scoreMin) : 0;
 
   return (
-    <div className="sticky top-[57px] z-20 border-b border-border bg-navy/95 backdrop-blur-sm">
+    <div className="sticky top-[57px] z-20 border-b border-border bg-obsidian/95 backdrop-blur-sm">
       <div className="flex flex-wrap items-center gap-4 px-4 py-3 sm:px-6">
         {/* Price presets */}
         <div className="flex items-center gap-2">
@@ -61,7 +61,7 @@ export function FilterBar({
                 className={cn(
                   "rounded-full border px-3 py-1 text-xs transition-all",
                   priceMax === max
-                    ? "border-blue bg-blue/10 font-medium text-blue"
+                    ? "border-electric-blue bg-electric-blue-dim font-medium text-electric-blue"
                     : "border-border text-white/35 hover:border-white/[0.12]"
                 )}
               >
@@ -85,7 +85,7 @@ export function FilterBar({
                 className={cn(
                   "rounded-full border px-2.5 py-1 font-mono text-xs transition-all",
                   scoreNum === n
-                    ? "border-blue bg-blue/10 font-medium text-blue"
+                    ? "border-electric-blue bg-electric-blue-dim font-medium text-electric-blue"
                     : "border-border text-white/35 hover:border-white/[0.12]"
                 )}
               >
@@ -106,7 +106,7 @@ export function FilterBar({
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
-            className="cursor-pointer rounded-lg border border-border bg-white/[0.04] px-2.5 py-1.5 text-xs text-foreground focus:border-blue focus:outline-none"
+            className="cursor-pointer rounded-md border border-border bg-transparent px-2.5 py-1.5 text-xs text-foreground focus:border-electric-blue focus:outline-none"
           >
             <option value="score_desc">Top Rated</option>
             <option value="price_asc">Price: Low → High</option>
