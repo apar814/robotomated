@@ -4,7 +4,7 @@ export const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-export const ADVISOR_MODEL = "claude-sonnet-4-20250514";
+export const ADVISOR_MODEL = "claude-sonnet-4-6-20250514";
 
 export const ADVISOR_SYSTEM_PROMPT = `You are the Robotomated AI Advisor — the world's most helpful robotics purchase guide. You have access to a comprehensive database of robots across every category.
 

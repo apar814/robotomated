@@ -146,8 +146,10 @@ export async function POST(request: NextRequest) {
             });
         }
       } catch (err) {
+        const message = err instanceof Error ? err.message : "Stream error";
+        console.error("[advisor] Stream error:", message);
         controller.enqueue(
-          encoder.encode(`data: ${JSON.stringify({ error: "Stream error" })}\n\n`)
+          encoder.encode(`data: ${JSON.stringify({ error: message })}\n\n`)
         );
         controller.close();
       }
