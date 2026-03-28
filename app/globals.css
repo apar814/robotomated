@@ -399,6 +399,8 @@ body::before {
 /* ═══════════════════════════════════════
    MISC ANIMATIONS
    ═══════════════════════════════════════ */
+@keyframes float-up { 0% { transform: translateY(0); opacity: 0.15; } 50% { opacity: 0.08; } 100% { transform: translateY(-60vh); opacity: 0; } }
+
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .animate-float { animation: float 3s ease-in-out infinite; }
 

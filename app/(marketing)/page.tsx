@@ -1,15 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
-import { SafeImage } from "@/components/ui/safe-image";
 import { createServerClient } from "@/lib/supabase/server";
 import { cached } from "@/lib/cache/redis";
-import { RoboScoreRing, RoboScoreBadge } from "@/components/ui/robo-score";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { RoboScoreBadge } from "@/components/ui/robo-score";
+import { TrustBar } from "@/components/ui/trust-bar";
+import { SocialProofStrip } from "@/components/ui/social-proof-strip";
+import { AdvisorCtaStrip } from "@/components/ui/advisor-cta-strip";
+import { DataTicker } from "@/components/layout/data-ticker";
+import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
+import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
-import { TrustedBy } from "@/components/home/trusted-by";
-import { HeroMosaic } from "@/components/home/hero-mosaic";
-import { NewsTicker } from "@/components/home/news-ticker";
-import { NewsSection } from "@/components/news/news-section";
 import { NEWS_ARTICLES } from "@/lib/data/news";
 import type { RobotCategory } from "@/lib/supabase/types";
 
@@ -21,18 +20,6 @@ interface FeaturedRobot {
   manufacturers: { name: string } | null;
   robot_categories: { slug: string; name: string } | null;
 }
-
-const categoryImages: Record<string, string> = {
-  warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
-  manufacturing: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80",
-  consumer: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  medical: "https://images.unsplash.com/photo-1530497610245-b489b1aedd74?w=800&q=80",
-  construction: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-  agricultural: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80",
-  delivery: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
-  drone: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&q=80",
-  software: "",
-};
 
 async function getData() {
   const supabase = createServerClient();
@@ -86,225 +73,384 @@ function formatPrice(price: number): string {
   return `$${price.toLocaleString()}`;
 }
 
+/* ── Floating particle positions ── */
+const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
+  left: `${(i * 5.3 + 2.7) % 100}%`,
+  delay: `${(i * 1.3) % 8}s`,
+  duration: `${16 + (i % 11)}s`,
+}));
+
 export default async function HomePage() {
   const { categories, trending, totalRobots } = await getData();
 
+  const topNews = NEWS_ARTICLES.slice(0, 3);
+
   return (
-    <div className="dark-section flex flex-col bg-[#0A0F1E]">
+    <div className="flex flex-col" style={{ background: "#080808" }}>
 
-      {/* ══ HERO ══ */}
-      <section className="relative overflow-hidden px-4 pb-20 pt-6 sm:pt-8">
+      {/* ══════════════════════════════════════════
+          1. HERO
+          ══════════════════════════════════════════ */}
+      <section className="relative max-h-[60vh] overflow-hidden px-6 py-12 sm:py-16 lg:py-20">
         {/* Ambient glows */}
-        <div className="pointer-events-none absolute -left-40 top-10 h-[500px] w-[500px] rounded-full bg-blue opacity-[0.04] blur-[150px]" />
-        <div className="pointer-events-none absolute -right-40 top-60 h-[500px] w-[500px] rounded-full bg-violet opacity-[0.04] blur-[150px]" />
-        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-green opacity-[0.02] blur-[120px]" />
+        <div
+          className="pointer-events-none absolute -right-40 -top-20 h-[500px] w-[500px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(14,165,233,0.025), transparent 70%)" }}
+        />
+        <div
+          className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(200,255,0,0.012), transparent 70%)" }}
+        />
 
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 lg:flex-row lg:items-start lg:gap-12">
-          {/* Right: robot mosaic + ticker */}
-          <div className="hidden gap-6 lg:order-2 lg:flex lg:flex-1 lg:flex-col xl:flex-row xl:items-start">
-            <div className="flex-1">
-              <HeroMosaic robots={trending.slice(0, 4).map(r => {
-                const imgs = Array.isArray(r.images) ? r.images as { url: string }[] : [];
-                const realImg = imgs[0]?.url && !imgs[0].url.includes("unsplash") ? imgs[0].url : null;
-                const cat = r.robot_categories as { slug: string; name: string } | null;
-                return {
-                  slug: r.slug,
-                  name: r.name,
-                  robo_score: r.robo_score,
-                  image_url: realImg,
-                  manufacturer_name: (r.manufacturers as { name: string } | null)?.name || "",
-                  category_slug: cat?.slug || "all",
-                };
-              })} />
-            </div>
-            <NewsTicker />
+        {/* Floating data particles */}
+        {PARTICLES.map((p, i) => (
+          <div
+            key={i}
+            className="pointer-events-none absolute h-[2px] w-[2px] rounded-full"
+            style={{
+              background: "#0EA5E9",
+              opacity: 0.15,
+              left: p.left,
+              bottom: "-4px",
+              animation: `float-up ${p.duration} linear ${p.delay} infinite`,
+            }}
+          />
+        ))}
+
+        {/* Content */}
+        <div className="mx-auto max-w-7xl">
+          {/* Tagline */}
+          <div className="flex items-center gap-3">
+            <div className="h-px w-3 bg-electric-blue" />
+            <span className="font-mono text-[10px] uppercase tracking-widest text-electric-blue">
+              Robotics Intelligence Platform
+            </span>
           </div>
 
-          {/* Left: headline + search */}
-          <div className="text-center lg:order-1 lg:max-w-xl lg:text-left">
-            <ScrollReveal>
-              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-blue">The Robotics Intelligence Platform</p>
-              <h1 className="font-display text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Find the <span className="bg-gradient-to-r from-blue to-cyan-glow bg-clip-text text-transparent">Right Robot</span>
-              </h1>
-              <p className="mt-5 text-lg leading-relaxed text-white/40">
-                Compare {totalRobots}+ robots across {categories.length} categories. Real specs. Transparent scores. Best prices.
-              </p>
-            </ScrollReveal>
+          {/* Headline */}
+          <h1
+            className="mt-5 font-display text-[40px] font-bold leading-[1.05] sm:text-[56px] lg:text-[72px]"
+            style={{ letterSpacing: "-0.05em", color: "#E8E8E8" }}
+          >
+            The Intelligence Layer<br />
+            for{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(90deg, #0EA5E9, #C8FF00)" }}
+            >
+              Robotics
+            </span>
+          </h1>
 
-            {/* Search bar */}
-            <ScrollReveal delay={150}>
-              <Link href="/explore" className="mx-auto mt-8 flex max-w-2xl items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.03] px-5 py-4 text-left backdrop-blur-sm transition-all hover:border-blue/30 hover:bg-white/[0.05] hover:shadow-[0_0_40px_rgba(0,194,255,0.06)]">
-                <svg className="h-5 w-5 shrink-0 text-blue/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-                </svg>
-                <span className="text-sm text-white/35">Search {totalRobots}+ robots...</span>
-                <kbd className="ml-auto hidden rounded bg-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-white/20 sm:inline">&#8984;K</kbd>
+          {/* System status line */}
+          <p className="mt-5 font-mono text-[12px] text-tertiary">
+            MONITORING{" "}
+            <span className="font-semibold text-data">[<HeroCounter target={totalRobots} />]</span>
+            {" "}ROBOTS{" "}
+            <span className="text-ghost">//</span>{" "}
+            <span className="font-semibold text-data">167</span> MANUFACTURERS{" "}
+            <span className="text-ghost">//</span>{" "}
+            <span className="font-semibold text-data">$103B</span> MARKET{" "}
+            <span className="text-ghost">//</span>{" "}
+            UPDATED TODAY
+          </p>
+
+          {/* CTAs */}
+          <div className="mt-6 flex items-center gap-3">
+            <Link
+              href="/explore"
+              className="rounded-[4px] bg-electric-blue px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-black transition-shadow hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+            >
+              EXPLORE ROBOTS
+            </Link>
+            <Link
+              href="/advisor"
+              className="rounded-[4px] border border-border px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+            >
+              ASK THE ADVISOR
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          2. TRUST BAR
+          ══════════════════════════════════════════ */}
+      <TrustBar />
+
+      {/* ══════════════════════════════════════════
+          3. SOCIAL PROOF
+          ══════════════════════════════════════════ */}
+      <SocialProofStrip />
+
+      {/* ══════════════════════════════════════════
+          4. DATA TICKER
+          ══════════════════════════════════════════ */}
+      <DataTicker />
+
+      {/* ══════════════════════════════════════════
+          5. FEATURED ROBOTS
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Section label */}
+          <div className="mb-5 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              Trending This Week
+            </span>
+          </div>
+
+          {/* Search bar */}
+          <Link
+            href="/explore"
+            className="flex items-center gap-3 rounded-[4px] border border-border bg-transparent px-4 py-3 transition-colors hover:border-border-active"
+          >
+            <svg className="h-4 w-4 shrink-0 text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
+            </svg>
+            <span className="flex-1 font-mono text-xs text-tertiary">
+              Search {totalRobots} robots by name, manufacturer, use case, or spec...
+            </span>
+            <kbd className="hidden rounded-[2px] border border-border bg-obsidian-surface px-2 py-0.5 font-mono text-[10px] text-ghost sm:inline">
+              &#8984;K
+            </kbd>
+          </Link>
+
+          {/* Category filter pills */}
+          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+            {categories.filter(c => c.robot_count > 0).map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/explore/${cat.slug}`}
+                className="shrink-0"
+              >
+                <SectorCode code={SECTOR_CODES[cat.slug] || cat.slug.slice(0, 3).toUpperCase()} />
               </Link>
-            </ScrollReveal>
-
-            {/* Category pills */}
-            <ScrollReveal delay={250}>
-              <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
-                {categories.map((cat) => (
-                  <Link key={cat.id} href={`/explore/${cat.slug}`} className="rounded-full border border-white/[0.06] px-4 py-1.5 text-xs font-medium text-white/35 transition-all hover:border-blue/30 hover:text-white/80">
-                    {cat.name.split(" ")[0]}
-                  </Link>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ BRAND STRIP ══ */}
-      <TrustedBy />
-
-      {/* ══ TRENDING ROBOTS ══ */}
-      <section className="px-4 py-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 flex items-center justify-between">
-            <div>
-              <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Trending Robots</p>
-              <h2 className="font-display text-2xl font-bold text-white">Top Rated This Month</h2>
-            </div>
-            <Link href="/explore" className="text-sm text-blue hover:underline">View All →</Link>
-          </div>
-          <div className="flex gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-4 sm:overflow-visible sm:pb-0">
-            {trending.slice(0, 8).map((robot, i) => {
-              const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
-              const cat = (robot.robot_categories as { slug: string; name: string } | null);
-              const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
-              const realImg = imgs[0]?.url && !imgs[0].url.includes("unsplash.com") ? imgs[0].url : null;
-              return (
-                <ScrollReveal key={robot.id} delay={i * 50}>
-                  <Link href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="group block min-w-[240px] overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)] sm:min-w-0">
-                    <div className="relative h-36 overflow-hidden bg-[#0D1321]">
-                      {realImg ? (
-                        <SafeImage src={realImg} alt={robot.name} sizes="25vw" className="object-cover object-[center_20%] opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100" fallbackLabel={mfr} fallbackSublabel={robot.name} />
-                      ) : (
-                        <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-3 text-center">
-                          <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
-                          <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{mfr}</span>
-                          <span className="mt-0.5 text-sm font-semibold text-white/45">{robot.name}</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-3.5">
-                      <p className="text-[10px] text-white/30">{mfr}</p>
-                      <h3 className="text-sm font-semibold leading-tight text-white/90 transition-colors group-hover:text-blue">{robot.name}</h3>
-                      <div className="mt-2 flex items-center justify-between">
-                        {robot.price_current != null ? (
-                          <span className="font-mono text-sm font-bold text-green">{formatPrice(robot.price_current)}</span>
-                        ) : (
-                          <span className="text-[12px]" style={{ color: "rgba(255,255,255,0.35)" }}>Request Quote</span>
-                        )}
-                        {robot.robo_score != null && robot.robo_score > 0 && <RoboScoreBadge score={robot.robo_score} />}
-                      </div>
-                    </div>
-                  </Link>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ INDUSTRY PULSE ══ */}
-      <NewsSection articles={NEWS_ARTICLES} />
-
-      {/* ══ SHOP BY CATEGORY ══ */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <ScrollReveal>
-            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Categories</p>
-            <h2 className="mb-8 font-display text-2xl font-bold text-white">Shop by Category</h2>
-          </ScrollReveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.filter(c => c.robot_count > 0).map((cat, i) => (
-              <ScrollReveal key={cat.id} delay={i * 60}>
-                <Link href={`/explore/${cat.slug}`} className="group relative block h-48 overflow-hidden rounded-xl border border-white/[0.06]">
-                  {categoryImages[cat.slug] ? (
-                    <Image src={categoryImages[cat.slug]} alt={cat.name} fill sizes="33vw" className="object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0F1628] to-[#141C33]" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/40 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <h3 className="font-display text-lg font-bold text-white">{cat.name}</h3>
-                    <p className="mt-1 text-xs text-white/50">{cat.robot_count} robots · Explore →</p>
-                  </div>
-                </Link>
-              </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ══ WHY ROBOTOMATED ══ */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <ScrollReveal>
-            <p className="mb-1 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Why Robotomated</p>
-            <h2 className="mb-10 text-center font-display text-2xl font-bold text-white">The Intelligence Layer for Robotics</h2>
-          </ScrollReveal>
-          <div className="grid gap-6 sm:grid-cols-3">
-            <ScrollReveal delay={0}>
-              <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all hover:border-blue/20 hover:shadow-[0_0_30px_rgba(0,194,255,0.04)]">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10"><span className="text-lg text-blue">&#9733;</span></div>
-                <h3 className="mb-2 font-display text-base font-bold text-white">Transparent Scoring</h3>
-                <p className="text-sm leading-relaxed text-white/40">RoboScore rates every robot on 8 dimensions with public methodology. No pay-to-play. No black boxes.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all hover:border-green/20 hover:shadow-[0_0_30px_rgba(0,229,160,0.04)]">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-green/10"><span className="text-lg text-green">&#128200;</span></div>
-                <h3 className="mb-2 font-display text-base font-bold text-white">ROI Calculator</h3>
-                <p className="text-sm leading-relaxed text-white/40">Every robot page includes a live ROI calculator. Know your payback period before you buy.</p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all hover:border-violet/20 hover:shadow-[0_0_30px_rgba(123,47,255,0.04)]">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-violet/10"><span className="text-lg text-violet">&#129302;</span></div>
-                <h3 className="mb-2 font-display text-base font-bold text-white">AI Advisor</h3>
-                <p className="text-sm leading-relaxed text-white/40">Describe your use case. Our AI matches you to the right robot based on specs, budget, and industry.</p>
-              </div>
-            </ScrollReveal>
+          {/* Robot grid */}
+          <div className="mt-6 overflow-hidden rounded-lg bg-border-subtle">
+            <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+              {trending.slice(0, 6).map((robot) => {
+                const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
+                const cat = robot.robot_categories as { slug: string; name: string } | null;
+                const sectorCode = SECTOR_CODES[cat?.slug || ""] || (cat?.slug || "").slice(0, 3).toUpperCase();
+                return (
+                  <Link
+                    key={robot.id}
+                    href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
+                    className="group block bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-semibold text-primary">{robot.name}</p>
+                        <div className="mt-1 flex items-center gap-2">
+                          <span className="text-[10px] text-tertiary">{mfr}</span>
+                          <SectorCode code={sectorCode} />
+                        </div>
+                      </div>
+                      {robot.robo_score != null && robot.robo_score > 0 && (
+                        <RoboScoreBadge score={robot.robo_score} />
+                      )}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      {robot.price_current != null ? (
+                        <span className="font-mono text-sm font-bold text-lime">
+                          {formatPrice(robot.price_current)}
+                        </span>
+                      ) : (
+                        <span className="font-mono text-sm text-tertiary">RFQ</span>
+                      )}
+                      <span className="text-[11px] text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
+                        View Analysis &rarr;
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ══ COMPARE CTA ══ */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl font-bold text-white">Not sure which robot?</h2>
-            <p className="mt-3 text-white/40">Compare specs, scores, and prices side-by-side. Or let our AI Advisor match you.</p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/compare" className="rounded-xl bg-blue px-8 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(0,194,255,0.2)] transition-all hover:shadow-[0_0_30px_rgba(0,194,255,0.3)]">
-                Compare Robots
-              </Link>
-              <Link href="/advisor" className="rounded-xl border border-white/[0.1] bg-white/[0.03] px-8 py-3 text-sm font-semibold text-white transition-all hover:border-violet/30 hover:shadow-[0_0_20px_rgba(123,47,255,0.1)]">
-                AI Advisor
-              </Link>
+      {/* ══════════════════════════════════════════
+          6. AI ADVISOR CTA
+          ══════════════════════════════════════════ */}
+      <AdvisorCtaStrip />
+
+      {/* ══════════════════════════════════════════
+          7. MARKET INTELLIGENCE
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-5 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              Market Intelligence
+            </span>
+          </div>
+
+          <div className="overflow-hidden rounded-lg bg-border-subtle">
+            <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">
+              <div className="bg-obsidian-surface p-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Total Market Size</p>
+                <p className="mt-2 font-mono text-2xl font-bold text-data">$103B</p>
+                <p className="mt-1 text-xs text-tertiary">Global robotics 2026</p>
+              </div>
+              <div className="bg-obsidian-surface p-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Fastest Growing</p>
+                <p className="mt-2 font-mono text-2xl font-bold text-lime">Humanoid +847%</p>
+                <p className="mt-1 text-xs text-tertiary">YoY segment growth</p>
+              </div>
+              <div className="bg-obsidian-surface p-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Most Evaluated</p>
+                <p className="mt-2 font-mono text-2xl font-bold text-data">Warehouse AMRs</p>
+                <p className="mt-1 text-xs text-tertiary">By enterprise buyers</p>
+              </div>
+              <div className="bg-obsidian-surface p-4">
+                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Avg RoboScore</p>
+                <p className="mt-2 font-mono text-2xl font-bold text-lime">74.2</p>
+                <p className="mt-1 text-xs text-tertiary">+1.3 vs Q4 2025</p>
+              </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* ══ NEWSLETTER ══ */}
-      <section className="border-t border-white/[0.06] px-4 py-16">
-        <div className="mx-auto max-w-xl text-center">
-          <ScrollReveal>
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Free weekly newsletter</p>
-            <h2 className="font-display text-xl font-bold text-white">Weekly Robot News, Deals & Reviews</h2>
-            <p className="mb-2 mt-2 text-sm leading-relaxed text-white/35">New robot launches, expert reviews, price drops, and industry news — curated for buyers, operators, and robotics professionals.</p>
-            <div className="mb-6 flex items-center justify-center gap-6 text-xs text-white/25">
-              <span className="flex items-center gap-1.5"><span className="text-green">&#10003;</span> No spam, ever</span>
-              <span className="flex items-center gap-1.5"><span className="text-green">&#10003;</span> Unsubscribe any time</span>
+      {/* ══════════════════════════════════════════
+          8. SECTOR BROWSE
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-5 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              Browse by Sector
+            </span>
+          </div>
+
+          <div className="overflow-hidden rounded-lg bg-border-subtle">
+            <div className="grid grid-cols-2 gap-px sm:grid-cols-3 lg:grid-cols-4">
+              {categories.filter(c => c.robot_count > 0).map((cat) => {
+                const code = SECTOR_CODES[cat.slug] || cat.slug.slice(0, 3).toUpperCase();
+                return (
+                  <Link
+                    key={cat.id}
+                    href={`/explore/${cat.slug}`}
+                    className="group block bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
+                  >
+                    <SectorCode code={code} />
+                    <p className="mt-2 text-sm font-medium text-primary">{cat.name}</p>
+                    <div className="mt-1 flex items-baseline gap-1">
+                      <span className="font-mono text-lg font-bold text-data">{cat.robot_count}</span>
+                      <span className="text-[10px] text-ghost">robots</span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
-            <div className="relative"><NewsletterForm /></div>
-          </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          9. LATEST INTELLIGENCE
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-5 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              Latest Intelligence
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {/* Column 1: Latest News */}
+            <div>
+              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+                Latest News
+              </p>
+              <div className="space-y-3">
+                {topNews.map((article) => (
+                  <div key={article.id} className="border-b border-border-subtle pb-3">
+                    <p className="text-sm text-secondary">{article.title}</p>
+                    <p className="mt-1 font-mono text-[10px] text-ghost">{article.publishedAt}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Column 2: Learn */}
+            <div>
+              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+                Learn
+              </p>
+              <div className="space-y-3">
+                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
+                  <p className="text-sm text-secondary">How to evaluate warehouse AMRs</p>
+                  <p className="mt-1 font-mono text-[10px] text-ghost">Guide</p>
+                </Link>
+                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
+                  <p className="text-sm text-secondary">ROI calculator methodology explained</p>
+                  <p className="mt-1 font-mono text-[10px] text-ghost">Methodology</p>
+                </Link>
+                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
+                  <p className="text-sm text-secondary">Cobot vs industrial robot: decision guide</p>
+                  <p className="mt-1 font-mono text-[10px] text-ghost">Comparison</p>
+                </Link>
+              </div>
+            </div>
+
+            {/* Column 3: Price Movements */}
+            <div>
+              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+                Price Movements
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                  <span className="text-sm text-secondary">Boston Dynamics Spot</span>
+                  <span className="font-mono text-[11px] font-semibold text-lime">&darr;12%</span>
+                </div>
+                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                  <span className="text-sm text-secondary">Universal Robots UR20</span>
+                  <span className="font-mono text-[11px] font-semibold text-lime">&darr;5%</span>
+                </div>
+                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                  <span className="text-sm text-secondary">Agility Robotics Digit</span>
+                  <span className="font-mono text-[11px] font-semibold text-magenta">&uarr;8%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          10. NEWSLETTER
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-10" style={{ borderTop: "1px solid #1A1A1A" }}>
+        <div className="mx-auto max-w-xl">
+          <div className="mb-4 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              The Robotomated Brief
+            </span>
+          </div>
+          <p className="mb-4 text-sm text-tertiary">
+            Weekly robotics intelligence for operators and buyers
+          </p>
+          <NewsletterForm />
+          <div className="mt-4 flex items-center gap-6 text-[10px] text-ghost">
+            <span className="flex items-center gap-1.5">
+              <span className="text-lime">&#10003;</span> No spam
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-lime">&#10003;</span> Unsubscribe anytime
+            </span>
+          </div>
         </div>
       </section>
     </div>
