@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Syne, Outfit, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/layout/header";
+import { StatusBar } from "@/components/layout/status-bar";
 import { Footer } from "@/components/layout/footer";
 import { Providers } from "./providers";
 import { OrganizationSchema } from "@/components/seo/json-ld";
@@ -12,13 +13,13 @@ import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
 import "./globals.css";
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
 
-const outfit = Outfit({
+const spaceGroteskSans = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -63,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${spaceGroteskSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
@@ -71,6 +72,7 @@ export default function RootLayout({
           <PostHogProvider>
             <AffiliateDisclosureBanner />
             <Header />
+            <StatusBar />
             <main className="flex-1 animate-fade-in">{children}</main>
             <Footer />
             <CookieBanner />

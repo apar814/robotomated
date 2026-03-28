@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SafeImage } from "@/components/ui/safe-image";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
+import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { cn } from "@/lib/utils/cn";
 
 export interface RobotCardData {
@@ -26,6 +27,19 @@ function formatPrice(price: number): string {
   return `$${price}`;
 }
 
+function getKeySpec(specs: Record<string, unknown> | null): { label: string; value: string } | null {
+  if (!specs) return null;
+  if (specs.payload_kg) return { label: "PAYLOAD", value: `${specs.payload_kg}KG` };
+  if (specs.reach_mm) return { label: "REACH", value: `${specs.reach_mm}MM` };
+  if (specs.battery_hrs) return { label: "RANGE", value: `${specs.battery_hrs}H` };
+  if (specs.max_speed) return { label: "SPEED", value: String(specs.max_speed).toUpperCase() };
+  if (specs.dof) return { label: "DOF", value: `${specs.dof}` };
+  if (specs.weight_kg) return { label: "WEIGHT", value: `${specs.weight_kg}KG` };
+  if (specs.suction_pa) return { label: "SUCTION", value: `${Number(specs.suction_pa).toLocaleString()}PA` };
+  if (specs.ip_rating) return { label: "PROTECTION", value: String(specs.ip_rating) };
+  return null;
+}
+
 interface RobotCardProps {
   robot: RobotCardData;
   compareSelected?: boolean;
@@ -35,25 +49,12 @@ interface RobotCardProps {
 
 export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisabled }: RobotCardProps) {
   const hasRealImage = robot.image_url && !robot.image_url.includes("unsplash.com");
-  const isNew = robot.year_released && robot.year_released >= 2024;
-  const hasDiscount = robot.price_msrp && robot.price_current && robot.price_msrp > robot.price_current;
   const specs = robot.specs as Record<string, unknown> | null;
-
-  // Extract key buyer specs
-  const specEntries: { label: string; value: string }[] = [];
-  if (specs) {
-    if (specs.payload_kg) specEntries.push({ label: "Payload", value: `${specs.payload_kg}kg` });
-    if (specs.reach_mm) specEntries.push({ label: "Reach", value: `${specs.reach_mm}mm` });
-    if (specs.dof) specEntries.push({ label: "DOF", value: `${specs.dof}` });
-    if (specs.ip_rating) specEntries.push({ label: "Protection", value: String(specs.ip_rating) });
-    if (specs.battery_hrs) specEntries.push({ label: "Battery", value: `${specs.battery_hrs}h` });
-    if (specs.suction_pa) specEntries.push({ label: "Suction", value: `${Number(specs.suction_pa).toLocaleString()}Pa` });
-    if (specs.weight_kg) specEntries.push({ label: "Weight", value: `${specs.weight_kg}kg` });
-    if (specs.max_speed) specEntries.push({ label: "Speed", value: String(specs.max_speed) });
-  }
+  const keySpec = getKeySpec(specs);
+  const sectorCode = SECTOR_CODES[robot.category_slug];
 
   return (
-    <div className="glass glass-hover group relative flex flex-col rounded-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="obsidian-card group flex flex-col overflow-hidden">
       {/* Compare checkbox */}
       {onCompareToggle && (
         <label
@@ -73,7 +74,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
 
       {/* Image */}
       <Link href={`/explore/${robot.category_slug}/${robot.slug}`} className="block">
-        <div className="relative h-44 overflow-hidden rounded-t-xl bg-white/[0.03]">
+        <div className="relative h-44 overflow-hidden bg-white/[0.03]">
           {hasRealImage ? (
             <SafeImage
               src={robot.image_url!}
@@ -90,67 +91,62 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
               <span className="mt-0.5 text-sm font-semibold text-white/45">{robot.name}</span>
             </div>
           )}
-
-          {/* Score badge */}
-          {robot.robo_score != null && robot.robo_score > 0 && (
-            <div className="absolute right-3 top-3">
-              <RoboScoreBadge score={robot.robo_score} />
-            </div>
-          )}
-
-          {/* New badge */}
-          {isNew && !onCompareToggle && (
-            <span className="absolute right-3 top-3 rounded-full bg-blue px-2 py-0.5 text-[10px] font-bold text-white">NEW</span>
-          )}
-
-          {/* Category */}
-          <span className="absolute bottom-3 left-3 rounded-full bg-black/50 px-2.5 py-0.5 text-[10px] font-medium text-white/80 backdrop-blur-sm">
-            {robot.category_name || robot.category_slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
-          </span>
         </div>
       </Link>
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-4">
+        {/* 1. Robot name */}
         <Link href={`/explore/${robot.category_slug}/${robot.slug}`}>
-          <h3 className="font-semibold leading-tight text-foreground transition-colors group-hover:text-blue">{robot.name}</h3>
+          <h3 className="font-display text-sm font-semibold leading-tight text-primary transition-colors group-hover:text-electric-blue">
+            {robot.name}
+          </h3>
         </Link>
-        <p className="mt-0.5 text-xs text-white/30">by {robot.manufacturer_name}</p>
 
-        {/* Key specs grid */}
-        {specEntries.length > 0 && (
-          <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 rounded-lg bg-white/[0.03] px-3 py-2">
-            {specEntries.slice(0, 4).map(({ label, value }) => (
-              <div key={label}>
-                <p className="text-[10px] uppercase tracking-wide text-white/30">{label}</p>
-                <p className="text-xs font-medium text-foreground">{value}</p>
-              </div>
-            ))}
+        {/* 2. Manufacturer + sector code */}
+        <div className="mt-1 flex items-center gap-2">
+          <span className="text-[10px] text-tertiary">
+            {robot.manufacturer_name}
+          </span>
+          {sectorCode && <SectorCode code={sectorCode} />}
+        </div>
+
+        {/* 3. RoboScore */}
+        {robot.robo_score != null && robot.robo_score > 0 && (
+          <div className="mt-3">
+            <RoboScoreBadge score={robot.robo_score} />
           </div>
         )}
 
-        {/* Price + CTA */}
-        <div className="mt-auto pt-3">
-          <div className="flex items-baseline gap-2">
-            {robot.price_current != null ? (
-              <>
-                <span className="font-mono text-base font-bold text-green">{formatPrice(robot.price_current)}</span>
-                {hasDiscount && (
-                  <span className="font-mono text-xs text-white/30 line-through">{formatPrice(robot.price_msrp!)}</span>
-                )}
-              </>
-            ) : robot.status === "coming_soon" ? (
-              <span className="text-sm text-white/30">Coming Soon</span>
-            ) : (
-              <span className="text-sm text-orange">Request Quote</span>
-            )}
-          </div>
+        {/* 4. Price */}
+        <div className="mt-2">
+          {robot.price_current != null ? (
+            <span className="font-mono text-sm font-bold text-lime">
+              {formatPrice(robot.price_current)}
+            </span>
+          ) : (
+            <span className="font-mono text-sm font-bold text-tertiary">
+              RFQ
+            </span>
+          )}
+        </div>
 
+        {/* 5. Key spec */}
+        {keySpec && (
+          <div className="mt-1.5">
+            <span className="font-mono text-[10px] uppercase text-tertiary">
+              {keySpec.label} {keySpec.value}
+            </span>
+          </div>
+        )}
+
+        {/* 6. CTA */}
+        <div className="mt-auto pt-3">
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className="mt-2 block w-full rounded-lg border border-border py-2 text-center text-xs font-medium text-foreground transition-colors hover:border-blue/30 hover:text-blue"
+            className="text-[11px] font-medium text-electric-blue transition-colors hover:text-electric-blue/80"
           >
-            View Details →
+            View Analysis →
           </Link>
         </div>
       </div>
