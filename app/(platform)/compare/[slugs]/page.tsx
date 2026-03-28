@@ -26,6 +26,14 @@ interface CompareRobot {
   category_id: string;
   manufacturers: { name: string } | null;
   robot_categories: { slug: string; name: string } | null;
+  // Buyer intelligence fields
+  vendor_health_score: number | null;
+  maintenance_annual_pct: number | null;
+  maintenance_annual_cost_low: number | null;
+  maintenance_annual_cost_high: number | null;
+  support_model: string | null;
+  support_response_hours: number | null;
+  safety_certifications: string[] | null;
 }
 
 interface Props { params: Promise<{ slugs: string }> }
@@ -103,10 +111,10 @@ export default async function ComparePage({ params }: Props) {
   const supabase = createServerClient();
   const [{ data: robotA }, { data: robotB }] = await Promise.all([
     supabase.from("robots")
-      .select("id, slug, name, price_current, price_msrp, robo_score, score_breakdown, description_short, specs, status, category_id, manufacturers(name), robot_categories(slug, name)")
+      .select("id, slug, name, price_current, price_msrp, robo_score, score_breakdown, description_short, specs, status, category_id, vendor_health_score, maintenance_annual_pct, maintenance_annual_cost_low, maintenance_annual_cost_high, support_model, support_response_hours, safety_certifications, manufacturers(name), robot_categories(slug, name)")
       .eq("slug", parsed[0]).single().returns<CompareRobot>(),
     supabase.from("robots")
-      .select("id, slug, name, price_current, price_msrp, robo_score, score_breakdown, description_short, specs, status, category_id, manufacturers(name), robot_categories(slug, name)")
+      .select("id, slug, name, price_current, price_msrp, robo_score, score_breakdown, description_short, specs, status, category_id, vendor_health_score, maintenance_annual_pct, maintenance_annual_cost_low, maintenance_annual_cost_high, support_model, support_response_hours, safety_certifications, manufacturers(name), robot_categories(slug, name)")
       .eq("slug", parsed[1]).single().returns<CompareRobot>(),
   ]);
 
@@ -230,6 +238,121 @@ export default async function ComparePage({ params }: Props) {
                     <td className="px-4 py-3 font-mono">{formatVal(specsB[key])}</td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Buyer Intelligence Comparison */}
+      <section className="border-b border-border px-4 py-12">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-6 text-xl font-bold">Buyer Intelligence</h2>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-navy-lighter">
+                  <th className="px-4 py-3 text-left font-medium text-muted">Metric</th>
+                  <th className="px-4 py-3 text-left font-medium text-blue">{robotA.name}</th>
+                  <th className="px-4 py-3 text-left font-medium text-violet">{robotB.name}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-navy-light">
+                  <td className="px-4 py-3 font-medium text-muted">Vendor Health Score</td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotA.vendor_health_score != null ? (
+                      <span className={cn(robotA.vendor_health_score >= 70 ? "text-green" : robotA.vendor_health_score >= 50 ? "text-orange" : "text-muted")}>
+                        {robotA.vendor_health_score}/100
+                      </span>
+                    ) : "—"}
+                  </td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotB.vendor_health_score != null ? (
+                      <span className={cn(robotB.vendor_health_score >= 70 ? "text-green" : robotB.vendor_health_score >= 50 ? "text-orange" : "text-muted")}>
+                        {robotB.vendor_health_score}/100
+                      </span>
+                    ) : "—"}
+                  </td>
+                </tr>
+                <tr className="bg-navy-lighter">
+                  <td className="px-4 py-3 font-medium text-muted">5-Year TCO Estimate</td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotA.price_current != null ? (
+                      `$${(robotA.price_current + (robotA.maintenance_annual_cost_low != null ? robotA.maintenance_annual_cost_low * 5 : robotA.price_current * (robotA.maintenance_annual_pct ?? 0.08) * 5)).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
+                    ) : "—"}
+                  </td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotB.price_current != null ? (
+                      `$${(robotB.price_current + (robotB.maintenance_annual_cost_low != null ? robotB.maintenance_annual_cost_low * 5 : robotB.price_current * (robotB.maintenance_annual_pct ?? 0.08) * 5)).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
+                    ) : "—"}
+                  </td>
+                </tr>
+                <tr className="bg-navy-light">
+                  <td className="px-4 py-3 font-medium text-muted">Annual Maintenance</td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotA.maintenance_annual_cost_low != null && robotA.maintenance_annual_cost_high != null
+                      ? `$${robotA.maintenance_annual_cost_low.toLocaleString()} – $${robotA.maintenance_annual_cost_high.toLocaleString()}`
+                      : robotA.maintenance_annual_pct != null && robotA.price_current != null
+                        ? `~$${Math.round(robotA.price_current * robotA.maintenance_annual_pct).toLocaleString()}/yr`
+                        : "—"}
+                  </td>
+                  <td className="px-4 py-3 font-mono">
+                    {robotB.maintenance_annual_cost_low != null && robotB.maintenance_annual_cost_high != null
+                      ? `$${robotB.maintenance_annual_cost_low.toLocaleString()} – $${robotB.maintenance_annual_cost_high.toLocaleString()}`
+                      : robotB.maintenance_annual_pct != null && robotB.price_current != null
+                        ? `~$${Math.round(robotB.price_current * robotB.maintenance_annual_pct).toLocaleString()}/yr`
+                        : "—"}
+                  </td>
+                </tr>
+                <tr className="bg-navy-lighter">
+                  <td className="px-4 py-3 font-medium text-muted">Support Model</td>
+                  <td className="px-4 py-3">
+                    {robotA.support_model ? (
+                      <span className="inline-block rounded border border-blue/20 bg-blue/5 px-2 py-0.5 font-mono text-xs text-blue">
+                        {robotA.support_model}
+                      </span>
+                    ) : "—"}
+                    {robotA.support_response_hours != null && (
+                      <span className="ml-2 text-xs text-muted">{robotA.support_response_hours}hr SLA</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3">
+                    {robotB.support_model ? (
+                      <span className="inline-block rounded border border-violet/20 bg-violet/5 px-2 py-0.5 font-mono text-xs text-violet">
+                        {robotB.support_model}
+                      </span>
+                    ) : "—"}
+                    {robotB.support_response_hours != null && (
+                      <span className="ml-2 text-xs text-muted">{robotB.support_response_hours}hr SLA</span>
+                    )}
+                  </td>
+                </tr>
+                <tr className="bg-navy-light">
+                  <td className="px-4 py-3 font-medium text-muted">Safety Certifications</td>
+                  <td className="px-4 py-3">
+                    {robotA.safety_certifications && robotA.safety_certifications.length > 0 ? (
+                      <div className="flex flex-wrap gap-1">
+                        {robotA.safety_certifications.map((cert) => (
+                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[10px] text-green">
+                            {cert}
+                          </span>
+                        ))}
+                      </div>
+                    ) : "—"}
+                  </td>
+                  <td className="px-4 py-3">
+                    {robotB.safety_certifications && robotB.safety_certifications.length > 0 ? (
+                      <div className="flex flex-wrap gap-1">
+                        {robotB.safety_certifications.map((cert) => (
+                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[10px] text-green">
+                            {cert}
+                          </span>
+                        ))}
+                      </div>
+                    ) : "—"}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

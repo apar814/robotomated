@@ -1,232 +1,793 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ReferenceLine } from "recharts";
+import { useState, useCallback, useMemo, useEffect } from "react";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 import { cn } from "@/lib/utils/cn";
 
-export function TcoCalculatorClient() {
-  // ─── Robot Inputs ───
-  const [purchasePrice, setPurchasePrice] = useState(75000);
-  const [installPercent, setInstallPercent] = useState(20);
-  const [maintenancePercent, setMaintenancePercent] = useState(10);
-  const [trainingCost, setTrainingCost] = useState(3000);
-  const [operators, setOperators] = useState(2);
-  const [wattsUsage, setWattsUsage] = useState(500);
-  const [hoursPerDay, setHoursPerDay] = useState(16);
-  const [electricityRate, setElectricityRate] = useState(0.12);
-  const [downtimePercent, setDowntimePercent] = useState(5);
-  const [softwareFee, setSoftwareFee] = useState(200);
+interface RobotOption {
+  id: string;
+  slug: string;
+  name: string;
+  price_current: number | null;
+  manufacturer_name: string;
+}
 
-  // ─── Human Inputs ───
-  const [workersReplaced, setWorkersReplaced] = useState(3);
+interface SelectedRobot {
+  id: string;
+  name: string;
+  purchasePrice: number;
+  annualMaintenance: number;
+  installationCost: number;
+}
+
+const COLORS = ["#0EA5E9", "#6366F1", "#C8FF00"];
+
+export function TcoCalculatorClient() {
+  // ─── Robot Search ───
+  const [searchTerm, setSearchTerm] = useState("");
+  const [robotOptions, setRobotOptions] = useState<RobotOption[]>([]);
+  const [selectedRobots, setSelectedRobots] = useState<SelectedRobot[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
+
+  // ─── Labor Inputs ───
   const [hourlyWage, setHourlyWage] = useState(22);
-  const [overheadMultiplier] = useState(1.3);
-  const [turnoverCost, setTurnoverCost] = useState(4000);
-  const [shifts, setShifts] = useState(2);
+  const [shiftsPerDay, setShiftsPerDay] = useState(2);
+  const [workersReplaced, setWorkersReplaced] = useState(3);
+
+  // ─── Financing ───
+  const [financeMode, setFinanceMode] = useState<"purchase" | "lease">("purchase");
+  const [monthlyLease, setMonthlyLease] = useState(2500);
+
+  // ─── Email ───
+  const [email, setEmail] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  // Fetch robots on search
+  useEffect(() => {
+    if (!searchTerm || searchTerm.length < 2) {
+      setRobotOptions([]);
+      return;
+    }
+    const timeout = setTimeout(async () => {
+      setSearchLoading(true);
+      try {
+        const res = await fetch(`/api/robots?search=${encodeURIComponent(searchTerm)}&page=1`);
+        const data = await res.json();
+        setRobotOptions(
+          (data.robots || []).map((r: { id: string; slug: string; name: string; price_current: number | null; manufacturer_name: string }) => ({
+            id: r.id,
+            slug: r.slug,
+            name: r.name,
+            price_current: r.price_current,
+            manufacturer_name: r.manufacturer_name,
+          })),
+        );
+        setShowDropdown(true);
+      } catch {
+        setRobotOptions([]);
+      }
+      setSearchLoading(false);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [searchTerm]);
+
+  function addRobot(robot: RobotOption) {
+    if (selectedRobots.length >= 3) return;
+    if (selectedRobots.find((r) => r.id === robot.id)) return;
+    const price = robot.price_current ?? 50000;
+    setSelectedRobots([
+      ...selectedRobots,
+      {
+        id: robot.id,
+        name: robot.name,
+        purchasePrice: price,
+        annualMaintenance: Math.round(price * 0.1),
+        installationCost: Math.round(price * 0.2),
+      },
+    ]);
+    setSearchTerm("");
+    setShowDropdown(false);
+  }
+
+  function removeRobot(id: string) {
+    setSelectedRobots(selectedRobots.filter((r) => r.id !== id));
+  }
+
+  function updateRobot(id: string, field: keyof SelectedRobot, value: number) {
+    setSelectedRobots(
+      selectedRobots.map((r) => (r.id === id ? { ...r, [field]: value } : r)),
+    );
+  }
 
   // ─── Calculations ───
   const calculations = useMemo(() => {
-    const installCost = purchasePrice * (installPercent / 100);
-    const annualMaintenance = purchasePrice * (maintenancePercent / 100);
-    const totalTraining = trainingCost * operators;
-    const annualEnergy = (wattsUsage / 1000) * hoursPerDay * 365 * electricityRate;
-    const annualDowntime = purchasePrice * (downtimePercent / 100) * 0.3; // 30% of downtime-adjusted value
-    const annualSoftware = softwareFee * 12;
-
-    // Robot year-by-year cumulative cost
-    const robotCosts: number[] = [];
-    for (let year = 1; year <= 5; year++) {
-      const prev = year === 1 ? 0 : robotCosts[year - 2];
-      const yearCost = year === 1
-        ? purchasePrice + installCost + totalTraining + annualMaintenance + annualEnergy + annualDowntime + annualSoftware
-        : annualMaintenance + annualEnergy + annualDowntime + annualSoftware;
-      robotCosts.push(prev + yearCost);
-    }
-
-    // Human year-by-year cumulative cost
+    const overheadMultiplier = 1.3;
+    const turnoverRate = 0.3;
+    const turnoverCost = 4000;
     const fullyLoaded = hourlyWage * overheadMultiplier;
-    const annualLaborPerWorker = fullyLoaded * 8 * shifts * 250;
+    const annualLaborPerWorker = fullyLoaded * 8 * shiftsPerDay * 250;
     const annualLabor = annualLaborPerWorker * workersReplaced;
-    const annualTurnover = turnoverCost * workersReplaced * 0.3; // 30% turnover rate
+    const annualTurnover = turnoverCost * workersReplaced * turnoverRate;
 
+    // Human cumulative
     const humanCosts: number[] = [];
-    for (let year = 1; year <= 5; year++) {
-      const prev = year === 1 ? 0 : humanCosts[year - 2];
+    for (let y = 1; y <= 5; y++) {
+      const prev = y === 1 ? 0 : humanCosts[y - 2];
       humanCosts.push(prev + annualLabor + annualTurnover);
     }
 
+    // Per-robot calculations
+    const robotCalcs = selectedRobots.map((robot) => {
+      const costs: number[] = [];
+      for (let y = 1; y <= 5; y++) {
+        const prev = y === 1 ? 0 : costs[y - 2];
+        let yearCost: number;
+        if (financeMode === "lease") {
+          yearCost = y === 1
+            ? robot.installationCost + monthlyLease * 12 + robot.annualMaintenance
+            : monthlyLease * 12 + robot.annualMaintenance;
+        } else {
+          yearCost = y === 1
+            ? robot.purchasePrice + robot.installationCost + robot.annualMaintenance
+            : robot.annualMaintenance;
+        }
+        costs.push(prev + yearCost);
+      }
+
+      // Break-even
+      let breakEvenMonths: number | null = null;
+      for (let i = 0; i < 5; i++) {
+        if (costs[i] <= humanCosts[i]) {
+          if (i === 0) {
+            breakEvenMonths = Math.round(12 * (costs[0] / (humanCosts[0] || 1)));
+          } else {
+            const prevDiff = costs[i - 1] - humanCosts[i - 1];
+            const currDiff = costs[i] - humanCosts[i];
+            const yearFrac = i + prevDiff / (prevDiff - currDiff);
+            breakEvenMonths = Math.round(yearFrac * 12);
+          }
+          break;
+        }
+      }
+
+      const fiveYearSavings = humanCosts[4] - costs[4];
+      const roi = costs[4] > 0 ? Math.round((fiveYearSavings / costs[4]) * 100) : 0;
+      const monthlySavingsAfterPayback =
+        fiveYearSavings > 0 ? Math.round(fiveYearSavings / 60) : 0;
+
+      return {
+        name: robot.name,
+        costs,
+        fiveYearTotal: costs[4],
+        fiveYearSavings,
+        breakEvenMonths,
+        roi,
+        monthlySavingsAfterPayback,
+      };
+    });
+
     // Chart data
     const chartData = [
-      { year: "Year 0", robot: 0, human: 0 },
-      ...robotCosts.map((cost, i) => ({
-        year: `Year ${i + 1}`,
-        robot: Math.round(cost),
-        human: Math.round(humanCosts[i]),
+      {
+        year: "Year 0",
+        human: 0,
+        ...Object.fromEntries(robotCalcs.map((r, i) => [`robot${i}`, 0])),
+      },
+      ...[1, 2, 3, 4, 5].map((y) => ({
+        year: `Year ${y}`,
+        human: Math.round(humanCosts[y - 1]),
+        ...Object.fromEntries(
+          robotCalcs.map((r, i) => [`robot${i}`, Math.round(r.costs[y - 1])]),
+        ),
       })),
     ];
 
-    // Break-even point (interpolated)
-    let breakEvenYear: number | null = null;
-    for (let i = 0; i < 5; i++) {
-      if (robotCosts[i] <= humanCosts[i] && (i === 0 || robotCosts[i - 1] > humanCosts[i - 1])) {
-        if (i === 0) {
-          breakEvenYear = 1;
-        } else {
-          const prevDiff = robotCosts[i - 1] - humanCosts[i - 1];
-          const currDiff = robotCosts[i] - humanCosts[i];
-          breakEvenYear = i + prevDiff / (prevDiff - currDiff);
-        }
-        break;
-      }
-    }
-
-    const fiveYearSavings = humanCosts[4] - robotCosts[4];
-    const fiveYearRobotTotal = robotCosts[4];
-    const fiveYearHumanTotal = humanCosts[4];
-
-    return { chartData, breakEvenYear, fiveYearSavings, fiveYearRobotTotal, fiveYearHumanTotal, robotCosts, humanCosts };
-  }, [purchasePrice, installPercent, maintenancePercent, trainingCost, operators, wattsUsage, hoursPerDay, electricityRate, downtimePercent, softwareFee, workersReplaced, hourlyWage, overheadMultiplier, turnoverCost, shifts]);
+    return { humanCosts, robotCalcs, chartData, annualLabor, annualTurnover };
+  }, [selectedRobots, hourlyWage, shiftsPerDay, workersReplaced, financeMode, monthlyLease]);
 
   // ─── Share ───
   const shareAnalysis = useCallback(() => {
-    const params = new URLSearchParams({
-      pp: String(purchasePrice), ip: String(installPercent), mp: String(maintenancePercent),
-      tc: String(trainingCost), op: String(operators), w: String(wattsUsage),
-      hd: String(hoursPerDay), er: String(electricityRate), dp: String(downtimePercent),
-      sf: String(softwareFee), wr: String(workersReplaced), hw: String(hourlyWage),
-      to: String(turnoverCost), sh: String(shifts),
-    });
-    const url = `${window.location.origin}/tools/tco-calculator?${params}`;
-    navigator.clipboard.writeText(url).then(() => alert("Analysis URL copied to clipboard!"));
-  }, [purchasePrice, installPercent, maintenancePercent, trainingCost, operators, wattsUsage, hoursPerDay, electricityRate, downtimePercent, softwareFee, workersReplaced, hourlyWage, turnoverCost, shifts]);
+    const url = window.location.href;
+    navigator.clipboard
+      .writeText(url)
+      .then(() => alert("URL copied to clipboard!"))
+      .catch(() => {});
+  }, []);
 
-  const { chartData, breakEvenYear, fiveYearSavings } = calculations;
+  // ─── Email ───
+  async function handleEmailSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    setEmailStatus("loading");
+    try {
+      await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "tco_report" }),
+      });
+      setEmailStatus("success");
+    } catch {
+      setEmailStatus("error");
+    }
+  }
+
+  const { robotCalcs, chartData } = calculations;
 
   return (
     <div className="space-y-8">
-      {/* Input sections */}
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* Robot costs */}
-        <div className="rounded-2xl border border-blue/20 bg-white/[0.03] p-6">
-          <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-bold text-white">
-            <svg className="h-5 w-5 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>
-            Robot Costs
-          </h3>
-          <div className="space-y-4">
-            <Slider label="Purchase price" value={purchasePrice} min={5000} max={2000000} step={5000} onChange={setPurchasePrice} prefix="$" fmt />
-            <Slider label="Installation & integration" value={installPercent} min={5} max={50} step={1} onChange={setInstallPercent} suffix="% of purchase" />
-            <Slider label="Annual maintenance" value={maintenancePercent} min={3} max={20} step={1} onChange={setMaintenancePercent} suffix="% of purchase" />
-            <Slider label="Training cost per operator" value={trainingCost} min={500} max={10000} step={500} onChange={setTrainingCost} prefix="$" fmt />
-            <Slider label="Number of operators" value={operators} min={1} max={10} step={1} onChange={setOperators} />
-            <Slider label="Power consumption (watts)" value={wattsUsage} min={50} max={5000} step={50} onChange={setWattsUsage} suffix="W" fmt />
-            <Slider label="Operating hours per day" value={hoursPerDay} min={4} max={24} step={1} onChange={setHoursPerDay} suffix="hrs" />
-            <Slider label="Electricity rate" value={electricityRate} min={0.05} max={0.40} step={0.01} onChange={setElectricityRate} prefix="$" suffix="/kWh" />
-            <Slider label="Estimated downtime" value={downtimePercent} min={1} max={20} step={1} onChange={setDowntimePercent} suffix="%" />
-            <Slider label="Software/subscription fee" value={softwareFee} min={0} max={2000} step={50} onChange={setSoftwareFee} prefix="$" suffix="/mo" />
-          </div>
+      {/* Robot Selector */}
+      <div className="rounded-md border border-border bg-obsidian-surface p-6">
+        <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-text-ghost">
+          Select Robots to Compare (up to 3)
+        </h3>
+        <div className="relative">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={() => searchTerm.length >= 2 && setShowDropdown(true)}
+            placeholder="Search robots by name..."
+            className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+            disabled={selectedRobots.length >= 3}
+          />
+          {searchLoading && (
+            <div className="absolute right-3 top-3 h-4 w-4 animate-spin rounded-full border-2 border-electric-blue border-t-transparent" />
+          )}
+          {showDropdown && robotOptions.length > 0 && (
+            <div className="absolute left-0 top-full z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-md border border-border bg-obsidian-elevated shadow-xl">
+              {robotOptions.map((robot) => (
+                <button
+                  key={robot.id}
+                  onClick={() => addRobot(robot)}
+                  className="flex w-full items-center justify-between px-4 py-2.5 text-left text-sm text-text-primary transition-colors hover:bg-obsidian-hover"
+                >
+                  <span>
+                    {robot.name}{" "}
+                    <span className="text-text-tertiary">
+                      — {robot.manufacturer_name}
+                    </span>
+                  </span>
+                  {robot.price_current != null && (
+                    <span className="font-mono text-xs text-lime">
+                      ${robot.price_current.toLocaleString()}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Human labor costs */}
-        <div className="rounded-2xl border border-green/20 bg-white/[0.03] p-6">
-          <h3 className="mb-6 flex items-center gap-2 font-display text-lg font-bold text-white">
-            <svg className="h-5 w-5 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+        {/* Selected robots */}
+        {selectedRobots.length > 0 && (
+          <div className="mt-4 space-y-3">
+            {selectedRobots.map((robot, i) => (
+              <div
+                key={robot.id}
+                className="rounded-md border border-border bg-obsidian p-4"
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <span
+                      className="inline-block h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: COLORS[i] }}
+                    />
+                    <span className="text-sm font-semibold text-text-primary">
+                      {robot.name}
+                    </span>
+                  </span>
+                  <button
+                    onClick={() => removeRobot(robot.id)}
+                    className="text-xs text-text-ghost transition-colors hover:text-magenta"
+                  >
+                    Remove
+                  </button>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <NumberInput
+                    label="Purchase Price"
+                    value={robot.purchasePrice}
+                    onChange={(v) => updateRobot(robot.id, "purchasePrice", v)}
+                    prefix="$"
+                  />
+                  <NumberInput
+                    label="Annual Maintenance"
+                    value={robot.annualMaintenance}
+                    onChange={(v) => updateRobot(robot.id, "annualMaintenance", v)}
+                    prefix="$"
+                  />
+                  <NumberInput
+                    label="Installation Cost"
+                    value={robot.installationCost}
+                    onChange={(v) => updateRobot(robot.id, "installationCost", v)}
+                    prefix="$"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Input Grid */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Labor comparison */}
+        <div className="rounded-md border border-border bg-obsidian-surface p-6">
+          <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-text-ghost">
             Human Labor Costs
           </h3>
           <div className="space-y-4">
-            <Slider label="Workers replaced" value={workersReplaced} min={1} max={50} step={1} onChange={setWorkersReplaced} />
-            <Slider label="Hourly wage" value={hourlyWage} min={12} max={75} step={1} onChange={setHourlyWage} prefix="$" suffix="/hr" />
-            <div className="rounded-lg bg-white/[0.03] px-4 py-2.5">
-              <p className="text-[10px] uppercase tracking-wider text-white/30">Fully-loaded cost (1.3x)</p>
-              <p className="font-mono text-sm font-bold text-white">${(hourlyWage * 1.3).toFixed(2)}/hr</p>
+            <Slider
+              label="Hourly Wage"
+              value={hourlyWage}
+              min={12}
+              max={75}
+              step={1}
+              onChange={setHourlyWage}
+              prefix="$"
+              suffix="/hr"
+            />
+            <div className="rounded-md bg-obsidian px-4 py-2.5">
+              <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                Fully-loaded cost (1.3x)
+              </p>
+              <p className="font-mono text-sm font-bold text-text-data">
+                ${(hourlyWage * 1.3).toFixed(2)}/hr
+              </p>
             </div>
-            <Slider label="Annual turnover cost" value={turnoverCost} min={1000} max={10000} step={500} onChange={setTurnoverCost} prefix="$" suffix="/worker" fmt />
-            <Slider label="Shifts per day" value={shifts} min={1} max={3} step={1} onChange={setShifts} />
+            <Slider
+              label="Shifts per day"
+              value={shiftsPerDay}
+              min={1}
+              max={3}
+              step={1}
+              onChange={setShiftsPerDay}
+            />
+            <Slider
+              label="Workers replaced"
+              value={workersReplaced}
+              min={1}
+              max={50}
+              step={1}
+              onChange={setWorkersReplaced}
+            />
           </div>
+        </div>
+
+        {/* Financing */}
+        <div className="rounded-md border border-border bg-obsidian-surface p-6">
+          <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-text-ghost">
+            Financing Model
+          </h3>
+          <div className="mb-4 flex gap-2">
+            <button
+              onClick={() => setFinanceMode("purchase")}
+              className={cn(
+                "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
+                financeMode === "purchase"
+                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  : "border-border text-text-tertiary hover:text-text-secondary",
+              )}
+            >
+              Purchase
+            </button>
+            <button
+              onClick={() => setFinanceMode("lease")}
+              className={cn(
+                "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
+                financeMode === "lease"
+                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  : "border-border text-text-tertiary hover:text-text-secondary",
+              )}
+            >
+              Lease / RaaS
+            </button>
+          </div>
+          {financeMode === "lease" && (
+            <Slider
+              label="Monthly lease payment"
+              value={monthlyLease}
+              min={500}
+              max={20000}
+              step={100}
+              onChange={setMonthlyLease}
+              prefix="$"
+              suffix="/mo"
+              fmt
+            />
+          )}
+          {financeMode === "purchase" && (
+            <p className="text-sm text-text-tertiary">
+              Using individual robot purchase prices above. Adjust per robot as needed.
+            </p>
+          )}
         </div>
       </div>
 
       {/* Results */}
-      <div className="rounded-2xl border border-white/[0.1] bg-white/[0.03] p-6 sm:p-8">
-        <h3 className="mb-6 font-display text-xl font-bold text-white">5-Year Cost Comparison</h3>
+      {selectedRobots.length > 0 && (
+        <div className="rounded-md border border-border bg-obsidian-surface p-6 sm:p-8">
+          <h3 className="mb-6 font-mono text-xs uppercase tracking-wider text-text-ghost">
+            5-Year Cost Comparison
+          </h3>
 
-        {/* Chart */}
-        <div className="h-72 w-full sm:h-96">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData} margin={{ top: 10, right: 10, bottom: 5, left: 15 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1E2A3E" />
-              <XAxis dataKey="year" tick={{ fontSize: 11, fill: "#8892A4" }} tickLine={false} axisLine={false} />
-              <YAxis
-                tick={{ fontSize: 11, fill: "#8892A4" }}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={(v: number) => v >= 1000000 ? `$${(v / 1000000).toFixed(1)}M` : `$${(v / 1000).toFixed(0)}K`}
-              />
-              <Tooltip
-                contentStyle={{ backgroundColor: "#141B2D", border: "1px solid #1E2A3E", borderRadius: "8px", fontSize: "12px", color: "#F0F2F5" }}
-                formatter={(value) => [`$${Number(value).toLocaleString()}`, ""]}
-                labelFormatter={(label) => String(label)}
-              />
-              {breakEvenYear != null && breakEvenYear <= 5 && (
-                <ReferenceLine x={`Year ${Math.ceil(breakEvenYear)}`} stroke="#00E5A0" strokeDasharray="5 5" label={{ value: "Break-even", position: "top", fill: "#00E5A0", fontSize: 11 }} />
-              )}
-              <Line type="monotone" dataKey="robot" name="robot" stroke="#00C2FF" strokeWidth={2.5} dot={{ fill: "#00C2FF", r: 4 }} activeDot={{ r: 6 }} />
-              <Line type="monotone" dataKey="human" name="human" stroke="#00E5A0" strokeWidth={2.5} dot={{ fill: "#00E5A0", r: 4 }} activeDot={{ r: 6 }} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Legend */}
-        <div className="mt-4 flex items-center justify-center gap-6 text-xs text-white/50">
-          <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-blue" /> Robot TCO</span>
-          <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-green" /> Human Labor</span>
-        </div>
-
-        {/* Summary stats */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl bg-white/[0.04] px-5 py-4 text-center">
-            <p className="text-[10px] font-medium uppercase tracking-widest text-white/30">5-Year Savings</p>
-            <p className={cn("mt-1 font-mono text-3xl font-bold", fiveYearSavings > 0 ? "text-green" : "text-orange")}>
-              {fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : `-$${Math.abs(fiveYearSavings).toLocaleString()}`}
-            </p>
+          {/* Year-by-year table */}
+          <div className="mb-8 overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-2 pr-4 text-left font-mono text-[10px] uppercase tracking-wider text-text-ghost" />
+                  {[1, 2, 3, 4, 5].map((y) => (
+                    <th
+                      key={y}
+                      className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-wider text-text-ghost"
+                    >
+                      Year {y}
+                    </th>
+                  ))}
+                  <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-wider text-text-secondary">
+                    Total
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {robotCalcs.map((rc, i) => (
+                  <tr key={i} className="border-b border-border/50">
+                    <td className="py-2 pr-4 text-text-secondary">
+                      <span className="flex items-center gap-2">
+                        <span
+                          className="inline-block h-2 w-2 rounded-full"
+                          style={{ backgroundColor: COLORS[i] }}
+                        />
+                        {rc.name.length > 20 ? rc.name.slice(0, 18) + "..." : rc.name}
+                      </span>
+                    </td>
+                    {rc.costs.map((c, y) => {
+                      const yearCost = y === 0 ? c : c - rc.costs[y - 1];
+                      return (
+                        <td
+                          key={y}
+                          className="px-3 py-2 text-right font-mono text-text-data"
+                        >
+                          ${yearCost.toLocaleString()}
+                        </td>
+                      );
+                    })}
+                    <td className="px-3 py-2 text-right font-mono font-bold text-text-data">
+                      ${rc.fiveYearTotal.toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+                <tr className="border-b border-border/50">
+                  <td className="py-2 pr-4 text-text-secondary">
+                    <span className="flex items-center gap-2">
+                      <span className="inline-block h-2 w-2 rounded-full bg-lime" />
+                      Human Labor
+                    </span>
+                  </td>
+                  {calculations.humanCosts.map((c, y) => {
+                    const yearCost = y === 0 ? c : c - calculations.humanCosts[y - 1];
+                    return (
+                      <td
+                        key={y}
+                        className="px-3 py-2 text-right font-mono text-text-data"
+                      >
+                        ${yearCost.toLocaleString()}
+                      </td>
+                    );
+                  })}
+                  <td className="px-3 py-2 text-right font-mono font-bold text-text-data">
+                    ${calculations.humanCosts[4].toLocaleString()}
+                  </td>
+                </tr>
+                {robotCalcs.map((rc, i) => (
+                  <tr key={`savings-${i}`} className={i === robotCalcs.length - 1 ? "" : "border-b border-border/50"}>
+                    <td className="py-2 pr-4 text-xs text-text-tertiary">
+                      Savings ({rc.name.length > 15 ? rc.name.slice(0, 13) + "..." : rc.name})
+                    </td>
+                    {rc.costs.map((c, y) => {
+                      const robotYear = y === 0 ? c : c - rc.costs[y - 1];
+                      const humanYear =
+                        y === 0
+                          ? calculations.humanCosts[0]
+                          : calculations.humanCosts[y] - calculations.humanCosts[y - 1];
+                      const saving = humanYear - robotYear;
+                      return (
+                        <td
+                          key={y}
+                          className={cn(
+                            "px-3 py-2 text-right font-mono text-sm",
+                            saving > 0 ? "text-lime" : "text-magenta",
+                          )}
+                        >
+                          {saving > 0 ? "+" : ""}${saving.toLocaleString()}
+                        </td>
+                      );
+                    })}
+                    <td
+                      className={cn(
+                        "px-3 py-2 text-right font-mono font-bold",
+                        rc.fiveYearSavings > 0 ? "text-lime" : "text-magenta",
+                      )}
+                    >
+                      {rc.fiveYearSavings > 0 ? "+" : ""}$
+                      {rc.fiveYearSavings.toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="rounded-xl bg-white/[0.04] px-5 py-4 text-center">
-            <p className="text-[10px] font-medium uppercase tracking-widest text-white/30">Break-Even Point</p>
-            <p className="mt-1 font-mono text-3xl font-bold text-white">
-              {breakEvenYear != null && breakEvenYear <= 5 ? `${breakEvenYear.toFixed(1)} yr` : "> 5 yr"}
-            </p>
-          </div>
-          <div className="rounded-xl bg-white/[0.04] px-5 py-4 text-center">
-            <p className="text-[10px] font-medium uppercase tracking-widest text-white/30">5-Year Robot TCO</p>
-            <p className="mt-1 font-mono text-3xl font-bold text-blue">
-              ${calculations.fiveYearRobotTotal.toLocaleString()}
-            </p>
-          </div>
-        </div>
 
-        {/* Share button */}
-        <div className="mt-6 text-center">
-          <button onClick={shareAnalysis} className="rounded-lg border border-white/[0.07] bg-white/[0.03] px-6 py-2.5 text-sm font-medium text-white/50 transition-colors hover:border-blue/30 hover:text-blue">
-            Share this analysis
-          </button>
+          {/* Chart */}
+          <div className="h-72 w-full sm:h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={chartData}
+                margin={{ top: 10, right: 10, bottom: 5, left: 15 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#1A1A1A" />
+                <XAxis
+                  dataKey="year"
+                  tick={{ fontSize: 11, fill: "#555555" }}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  tick={{ fontSize: 11, fill: "#555555" }}
+                  tickLine={false}
+                  axisLine={false}
+                  tickFormatter={(v: number) =>
+                    v >= 1000000
+                      ? `$${(v / 1000000).toFixed(1)}M`
+                      : `$${(v / 1000).toFixed(0)}K`
+                  }
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#0C0C0C",
+                    border: "1px solid #1A1A1A",
+                    borderRadius: "6px",
+                    fontSize: "12px",
+                    color: "#E8E8E8",
+                    fontFamily: "JetBrains Mono, monospace",
+                  }}
+                  formatter={(value) => [`$${Number(value).toLocaleString()}`, ""]}
+                  labelFormatter={(label) => String(label)}
+                />
+                {robotCalcs.map((rc, i) => (
+                  <Line
+                    key={i}
+                    type="monotone"
+                    dataKey={`robot${i}`}
+                    name={rc.name}
+                    stroke={COLORS[i]}
+                    strokeWidth={2}
+                    dot={{ fill: COLORS[i], r: 3 }}
+                  />
+                ))}
+                <Line
+                  type="monotone"
+                  dataKey="human"
+                  name="Human Labor"
+                  stroke="#C8FF00"
+                  strokeWidth={2}
+                  dot={{ fill: "#C8FF00", r: 3 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-text-tertiary">
+            {robotCalcs.map((rc, i) => (
+              <span key={i} className="flex items-center gap-2">
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: COLORS[i] }}
+                />
+                {rc.name}
+              </span>
+            ))}
+            <span className="flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-lime" />
+              Human Labor
+            </span>
+          </div>
+
+          {/* Summary stats */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {robotCalcs.map((rc, i) => (
+              <div key={i} className="space-y-3">
+                <p
+                  className="font-mono text-[10px] uppercase tracking-wider"
+                  style={{ color: COLORS[i] }}
+                >
+                  {rc.name}
+                </p>
+                <div className="rounded-md bg-obsidian px-4 py-3 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                    Payback Period
+                  </p>
+                  <p className="mt-1 font-mono text-2xl font-bold text-lime">
+                    {rc.breakEvenMonths != null && rc.breakEvenMonths <= 60
+                      ? `${rc.breakEvenMonths}mo`
+                      : "> 5yr"}
+                  </p>
+                </div>
+                <div className="rounded-md bg-obsidian px-4 py-3 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                    5-Year ROI
+                  </p>
+                  <p
+                    className={cn(
+                      "mt-1 font-mono text-2xl font-bold",
+                      rc.roi > 0 ? "text-lime" : "text-magenta",
+                    )}
+                  >
+                    {rc.roi}%
+                  </p>
+                </div>
+                <div className="rounded-md bg-obsidian px-4 py-3 text-center">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                    Monthly Savings
+                  </p>
+                  <p className="mt-1 font-mono text-lg font-bold text-text-data">
+                    ${rc.monthlySavingsAfterPayback.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={shareAnalysis}
+              className="rounded-md border border-border px-6 py-2.5 text-sm font-medium text-text-tertiary transition-colors hover:border-electric-blue/30 hover:text-electric-blue"
+            >
+              Share this analysis
+            </button>
+          </div>
         </div>
+      )}
+
+      {selectedRobots.length === 0 && (
+        <div className="rounded-md border border-border bg-obsidian-surface p-8 text-center">
+          <p className="font-mono text-sm text-text-tertiary">
+            Search and select up to 3 robots above to begin your TCO comparison.
+          </p>
+        </div>
+      )}
+
+      {/* Email gate */}
+      <div className="rounded-md border border-border bg-obsidian-surface p-6 text-center">
+        <p className="font-mono text-xs uppercase tracking-wider text-text-ghost">
+          Export Full Report
+        </p>
+        <p className="mt-2 text-sm text-text-secondary">
+          Get a detailed TCO report with financing scenarios and ROI projections.
+        </p>
+        {emailStatus === "success" ? (
+          <p className="mt-4 font-mono text-sm text-lime">Report sent to your inbox.</p>
+        ) : (
+          <form
+            onSubmit={handleEmailSubmit}
+            className="mt-4 flex items-center justify-center gap-2"
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@company.com"
+              className="w-64 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={emailStatus === "loading"}
+              className="rounded-md bg-electric-blue px-4 py-2 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90 disabled:opacity-50"
+            >
+              {emailStatus === "loading" ? "..." : "Export"}
+            </button>
+          </form>
+        )}
+        {emailStatus === "error" && (
+          <p className="mt-2 font-mono text-xs text-magenta">Something went wrong.</p>
+        )}
       </div>
     </div>
   );
 }
 
-// ─── Slider ───
-function Slider({ label, value, min, max, step, onChange, prefix = "", suffix = "", fmt = false }: {
-  label: string; value: number; min: number; max: number; step: number;
-  onChange: (v: number) => void; prefix?: string; suffix?: string; fmt?: boolean;
+/* ── Slider ── */
+function Slider({
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+  prefix = "",
+  suffix = "",
+  fmt = false,
+}: {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  prefix?: string;
+  suffix?: string;
+  fmt?: boolean;
 }) {
-  const display = fmt ? value.toLocaleString() : (Number.isInteger(step) ? String(value) : value.toFixed(2));
+  const display = fmt
+    ? value.toLocaleString()
+    : Number.isInteger(step)
+      ? String(value)
+      : value.toFixed(2);
   return (
     <div>
       <div className="mb-1 flex items-center justify-between">
-        <label className="text-[11px] uppercase tracking-wider text-white/40">{label}</label>
-        <span className="font-mono text-sm font-bold text-white">{prefix}{display}{suffix}</span>
+        <label className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          {label}
+        </label>
+        <span className="font-mono text-sm font-bold text-text-data">
+          {prefix}
+          {display}
+          {suffix}
+        </span>
       </div>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-blue" />
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full accent-electric-blue"
+      />
+    </div>
+  );
+}
+
+/* ── Number Input ── */
+function NumberInput({
+  label,
+  value,
+  onChange,
+  prefix = "",
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  prefix?: string;
+}) {
+  return (
+    <div>
+      <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        {label}
+      </label>
+      <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2 focus-within:border-electric-blue">
+        {prefix && (
+          <span className="mr-1 font-mono text-sm text-text-tertiary">{prefix}</span>
+        )}
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value) || 0)}
+          className="w-full bg-transparent font-mono text-sm text-text-data outline-none"
+        />
+      </div>
     </div>
   );
 }
