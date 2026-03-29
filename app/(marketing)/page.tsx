@@ -10,6 +10,7 @@ import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import { NEWS_ARTICLES } from "@/lib/data/news";
+import { RecentlyFunded } from "@/components/home/recently-funded";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -318,6 +319,11 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          7.5 RECENTLY FUNDED
+          ══════════════════════════════════════════ */}
+      <RecentlyFunded />
 
       {/* ══════════════════════════════════════════
           8. SECTOR BROWSE
