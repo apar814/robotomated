@@ -11,6 +11,7 @@ import { JsonLd, FaqSchema } from "@/components/seo/json-ld";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { IndustryRoiCalculator } from "@/components/industries/industry-roi-calculator";
 import { IndustryTypeFilter } from "@/components/industries/industry-type-filter";
+import { IndustryNewsletterCta } from "@/components/industries/industry-newsletter-cta";
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -35,6 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: industry.metaTitle,
     description: industry.metaDescription,
+    openGraph: {
+      title: industry.metaTitle,
+      description: industry.metaDescription,
+      url: `https://robotomated.com/industries/${slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -52,18 +59,20 @@ export default async function IndustryPage({ params }: Props) {
     .eq("slug", industry.categorySlug)
     .single();
 
-  if (!category) notFound();
+  // Allow page to render even without matching DB category (new verticals may not have categories yet)
+  const catSlug = category?.slug || industry.categorySlug;
 
-  // Get all robots in this category
-  const { data: robots } = await supabase
-    .from("robots")
-    .select("id, slug, name, description_short, description_long, price_current, robo_score, specs, images, manufacturers(name, slug), robot_categories(slug)")
-    .eq("category_id", category.id)
-    .eq("status", "active")
-    .order("robo_score", { ascending: false, nullsFirst: false })
-    .returns<IndustryRobot[]>();
-
-  const allRobots = robots || [];
+  let allRobots: IndustryRobot[] = [];
+  if (category) {
+    const { data: robots } = await supabase
+      .from("robots")
+      .select("id, slug, name, description_short, description_long, price_current, robo_score, specs, images, manufacturers(name, slug), robot_categories(slug)")
+      .eq("category_id", category.id)
+      .eq("status", "active")
+      .order("robo_score", { ascending: false, nullsFirst: false })
+      .returns<IndustryRobot[]>();
+    allRobots = robots || [];
+  }
 
   // Classify each robot into a type
   const robotsByType: Record<string, IndustryRobot[]> = {};
@@ -76,7 +85,6 @@ export default async function IndustryPage({ params }: Props) {
     if (robotsByType[typeId]) {
       robotsByType[typeId].push(robot);
     } else {
-      // If type not found, add to first type
       const firstType = industry.types[0]?.id;
       if (firstType && robotsByType[firstType]) {
         robotsByType[firstType].push(robot);
@@ -90,8 +98,6 @@ export default async function IndustryPage({ params }: Props) {
     typeCounts[typeId] = typeRobots.length;
   }
 
-  const catSlug = category.slug;
-
   return (
     <div>
       {/* Schema.org */}
@@ -103,29 +109,31 @@ export default async function IndustryPage({ params }: Props) {
         url: `https://robotomated.com/industries/${slug}`,
         publisher: { "@type": "Organization", name: "Robotomated" },
         datePublished: "2026-01-15",
-        dateModified: "2026-03-25",
+        dateModified: "2026-03-29",
       }} />
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: `${industry.name} Robots`,
-        numberOfItems: allRobots.length,
-        itemListElement: allRobots.slice(0, 10).map((r, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          name: r.name,
-          url: `https://robotomated.com/explore/${catSlug}/${r.slug}`,
-        })),
-      }} />
+      {allRobots.length > 0 && (
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: `${industry.name} Robots`,
+          numberOfItems: allRobots.length,
+          itemListElement: allRobots.slice(0, 10).map((r, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: r.name,
+            url: `https://robotomated.com/explore/${catSlug}/${r.slug}`,
+          })),
+        }} />
+      )}
       <FaqSchema items={industry.faqs} />
 
-      {/* ── HERO ── */}
+      {/* -- HERO -- */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-16 pt-12">
         <div className="absolute inset-0 bg-mesh opacity-50" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <Breadcrumbs items={[
             { name: "Home", href: "/" },
-            { name: "Industries", href: "/industries/warehouse-robotics" },
+            { name: "Industries", href: "/industries" },
             { name: industry.name, href: `/industries/${slug}` },
           ]} />
           <h1 className="mt-6 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl">
@@ -148,45 +156,56 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── TYPE NAVIGATION (client component for filtering) ── */}
-      <IndustryTypeFilter
-        types={industry.types}
-        typeCounts={typeCounts}
-      />
+      {/* -- TYPE NAVIGATION (client component for filtering) -- */}
+      {allRobots.length > 0 && (
+        <IndustryTypeFilter
+          types={industry.types}
+          typeCounts={typeCounts}
+        />
+      )}
 
-      {/* ── ROBOT SECTIONS (SSR — all types, visible by default) ── */}
-      <div id="robot-sections" className="bg-[#0A0F1E]">
-        {industry.types.map((type) => {
-          const typeRobots = robotsByType[type.id] || [];
-          if (typeRobots.length === 0) return null;
-          return (
-            <section key={type.id} id={`type-${type.id}`} className="scroll-mt-32 border-t border-white/[0.05] px-4 py-16">
-              <div className="mx-auto max-w-6xl">
-                <RevealOnScroll>
-                  <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">{type.label}</h2>
-                  <p className="mt-1 text-sm text-white/50">{type.description}</p>
-                </RevealOnScroll>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {typeRobots.slice(0, 6).map((robot, i) => (
-                    <RevealOnScroll key={robot.id} delay={Math.min(i, 2) as 0 | 1 | 2}>
-                      <RobotCard robot={robot} categorySlug={catSlug} />
-                    </RevealOnScroll>
-                  ))}
-                </div>
-                {typeRobots.length > 6 && (
-                  <div className="mt-6">
-                    <Link href={`/explore/${catSlug}`} className="text-sm text-blue hover:underline">
-                      View all {typeRobots.length} {type.label.toLowerCase()} robots →
-                    </Link>
+      {/* -- ROBOT SECTIONS (SSR) -- */}
+      {allRobots.length > 0 ? (
+        <div id="robot-sections" className="bg-[#0A0F1E]">
+          {industry.types.map((type) => {
+            const typeRobots = robotsByType[type.id] || [];
+            if (typeRobots.length === 0) return null;
+            return (
+              <section key={type.id} id={`type-${type.id}`} className="scroll-mt-32 border-t border-white/[0.05] px-4 py-16">
+                <div className="mx-auto max-w-6xl">
+                  <RevealOnScroll>
+                    <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">{type.label}</h2>
+                    <p className="mt-1 text-sm text-white/50">{type.description}</p>
+                  </RevealOnScroll>
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {typeRobots.slice(0, 6).map((robot, i) => (
+                      <RevealOnScroll key={robot.id} delay={Math.min(i, 2) as 0 | 1 | 2}>
+                        <RobotCard robot={robot} categorySlug={catSlug} />
+                      </RevealOnScroll>
+                    ))}
                   </div>
-                )}
-              </div>
-            </section>
-          );
-        })}
-      </div>
+                  {typeRobots.length > 6 && (
+                    <div className="mt-6">
+                      <Link href={`/explore/${catSlug}`} className="text-sm text-blue hover:underline">
+                        View all {typeRobots.length} {type.label.toLowerCase()} robots &rarr;
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      ) : (
+        <section className="bg-[#0A0F1E] px-4 py-16">
+          <div className="mx-auto max-w-6xl text-center">
+            <p className="text-lg text-white/40">Robot listings for {industry.name.toLowerCase()} are coming soon.</p>
+            <p className="mt-2 text-sm text-white/30">Subscribe below to be notified when we add robots for this industry.</p>
+          </div>
+        </section>
+      )}
 
-      {/* ── ROI CALCULATOR ── */}
+      {/* -- ROI CALCULATOR -- */}
       <section id="roi" className="scroll-mt-24 bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
@@ -204,7 +223,7 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── BUYER GUIDE ── */}
+      {/* -- BUYER GUIDE -- */}
       <section className="bg-[#0A0F1E] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
@@ -231,7 +250,87 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* -- COMPLIANCE & REGULATIONS -- */}
+      <section className="bg-[#0F1628] px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <RevealOnScroll>
+            <span className="section-label">Compliance</span>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">
+              Regulations & certifications
+            </h2>
+            <p className="mt-2 max-w-lg text-base leading-[1.7] text-white/[0.65]">
+              Key compliance requirements for {industry.name.toLowerCase()} deployments.
+            </p>
+          </RevealOnScroll>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {industry.compliance.map((item, i) => (
+              <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
+                <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+                  <div className="flex items-start gap-3">
+                    <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${item.required ? "bg-blue/20 text-blue" : "bg-white/10 text-white/40"}`}>
+                      {item.required ? "\u2713" : "\u25CB"}
+                    </span>
+                    <div>
+                      <h3 className="font-semibold text-white">{item.name}</h3>
+                      <span className={`mt-0.5 inline-block text-[10px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/30"}`}>
+                        {item.required ? "Required" : "Recommended"}
+                      </span>
+                      <p className="mt-1.5 text-sm leading-[1.7] text-white/50">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* -- CASE STUDIES -- */}
+      <section className="bg-[#0A0F1E] px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <RevealOnScroll>
+            <span className="section-label">Case Studies</span>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">
+              Real-world deployments
+            </h2>
+            <p className="mt-2 max-w-lg text-base leading-[1.7] text-white/[0.65]">
+              How leading organizations are deploying {industry.name.toLowerCase()}.
+            </p>
+          </RevealOnScroll>
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {industry.caseStudies.map((cs, i) => (
+              <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
+                <div className="flex h-full flex-col rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
+                  <div className="mb-4">
+                    <p className="text-[10px] font-medium uppercase tracking-widest text-blue">{cs.industry}</p>
+                    <h3 className="mt-1 font-display text-lg font-bold text-white">{cs.company}</h3>
+                  </div>
+                  <div className="mb-4 space-y-2">
+                    <div>
+                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">Challenge</p>
+                      <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.challenge}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">Solution</p>
+                      <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.solution}</p>
+                    </div>
+                  </div>
+                  <div className="mt-auto grid grid-cols-3 gap-2 border-t border-white/[0.05] pt-4">
+                    {cs.metrics.map((m) => (
+                      <div key={m.label} className="text-center">
+                        <p className="font-mono text-sm font-bold text-green">{m.value}</p>
+                        <p className="mt-0.5 text-[9px] uppercase tracking-wider text-white/30">{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* -- FAQ -- */}
       <section id="faq" className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
@@ -258,13 +357,26 @@ export default async function IndustryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* -- NEWSLETTER CTA -- */}
       <section className="bg-[#0A0F1E] px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <RevealOnScroll>
+            <IndustryNewsletterCta industryLabel={industry.newsletterLabel} />
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* -- CTA -- */}
+      <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-blue/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
               <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">{industry.ctaText}</h2>
-              <p className="mt-3 text-base text-white/60">Browse all {allRobots.length} robots in {industry.name.toLowerCase()} with specs, scores, and pricing.</p>
+              <p className="mt-3 text-base text-white/60">
+                {allRobots.length > 0
+                  ? `Browse all ${allRobots.length} robots in ${industry.name.toLowerCase()} with specs, scores, and pricing.`
+                  : `Explore ${industry.name.toLowerCase()} — new robots added regularly.`}
+              </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Link href={`/explore/${catSlug}`} className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Browse {industry.name}</Link>
                 <Link href="/advisor" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-3 text-sm font-semibold text-white/80 hover:border-white/20">Ask AI Advisor</Link>
@@ -277,7 +389,7 @@ export default async function IndustryPage({ params }: Props) {
   );
 }
 
-// ─── Robot Card ───
+// --- Robot Card ---
 function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug: string }) {
   const imgs = (Array.isArray(robot.images) ? robot.images : []) as { url: string; alt: string }[];
   const realImg = imgs[0]?.url && !imgs[0].url.includes("unsplash") ? imgs[0].url : null;

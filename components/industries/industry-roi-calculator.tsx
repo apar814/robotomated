@@ -4,14 +4,19 @@ import { useState } from "react";
 import { cn } from "@/lib/utils/cn";
 
 interface Props {
-  type: "warehouse" | "medical" | "manufacturing" | "agricultural";
+  type: "warehouse" | "medical" | "manufacturing" | "agricultural" | "construction" | "delivery" | "security" | "hospitality" | "eldercare";
 }
 
 export function IndustryRoiCalculator({ type }: Props) {
   if (type === "warehouse") return <WarehouseCalculator />;
   if (type === "medical") return <MedicalCalculator />;
   if (type === "manufacturing") return <ManufacturingCalculator />;
-  return <AgriculturalCalculator />;
+  if (type === "agricultural") return <AgriculturalCalculator />;
+  if (type === "construction") return <ConstructionCalculator />;
+  if (type === "delivery") return <DeliveryCalculator />;
+  if (type === "security") return <SecurityCalculator />;
+  if (type === "hospitality") return <HospitalityCalculator />;
+  return <EldercareCalculator />;
 }
 
 function WarehouseCalculator() {
@@ -41,7 +46,7 @@ function WarehouseCalculator() {
           <Output label="Est. annual savings" value={`$${annualSavings.toLocaleString()}`} large />
           <Output label="Recommended system" value={recommendedType} />
           <Output label="Estimated investment" value={`$${estimatedInvestment.toLocaleString()}`} />
-          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "—"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
         </div>
       </div>
     </CalcCard>
@@ -102,7 +107,7 @@ function ManufacturingCalculator() {
         <div className="space-y-3">
           <Output label="Annual productivity gain" value={`$${effectiveSavings.toLocaleString()}`} large />
           <Output label="Total cell cost (est.)" value={`$${(robotCost * 2).toLocaleString()}`} />
-          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "—"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
         </div>
       </div>
     </CalcCard>
@@ -143,7 +148,174 @@ function AgriculturalCalculator() {
   );
 }
 
-// ─── Shared components ───
+function ConstructionCalculator() {
+  const [projectValue, setProjectValue] = useState(5000000);
+  const [crewSize, setCrewSize] = useState(30);
+  const [avgWage, setAvgWage] = useState(35);
+  const [projectMonths, setProjectMonths] = useState(12);
+
+  const totalLaborCost = crewSize * avgWage * 8 * 22 * projectMonths;
+  const productivityGain = 0.25;
+  const laborSavings = Math.round(totalLaborCost * productivityGain);
+  const reworkReduction = Math.round(projectValue * 0.02); // 2% rework savings
+  const totalSavings = laborSavings + reworkReduction;
+  const robotInvestment = crewSize < 20 ? 150000 : crewSize < 50 ? 400000 : 800000;
+  const paybackMonths = totalSavings > 0 ? Math.ceil(robotInvestment / (totalSavings / projectMonths)) : 0;
+
+  return (
+    <CalcCard>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-5">
+          <Slider label="Project value" value={projectValue} min={500000} max={50000000} step={500000} onChange={setProjectValue} prefix="$" fmt />
+          <Slider label="Crew size" value={crewSize} min={5} max={200} step={1} onChange={setCrewSize} />
+          <Slider label="Avg hourly wage" value={avgWage} min={20} max={80} step={1} onChange={setAvgWage} prefix="$" suffix="/hr" />
+          <Slider label="Project duration (months)" value={projectMonths} min={1} max={36} step={1} onChange={setProjectMonths} />
+        </div>
+        <div className="space-y-3">
+          <Output label="Labor productivity savings" value={`$${laborSavings.toLocaleString()}`} large />
+          <Output label="Rework cost savings" value={`$${reworkReduction.toLocaleString()}`} />
+          <Output label="Total project savings" value={`$${totalSavings.toLocaleString()}`} color="text-green" />
+          <Output label="Equipment investment" value={`$${robotInvestment.toLocaleString()}`} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+        </div>
+      </div>
+    </CalcCard>
+  );
+}
+
+function DeliveryCalculator() {
+  const [dailyDeliveries, setDailyDeliveries] = useState(100);
+  const [humanCostPerDelivery, setHumanCostPerDelivery] = useState(10);
+  const [robotCount, setRobotCount] = useState(5);
+  const [operatingDays, setOperatingDays] = useState(300);
+
+  const annualHumanCost = dailyDeliveries * humanCostPerDelivery * operatingDays;
+  const robotCostPerDelivery = 2.5;
+  const annualRobotOpCost = dailyDeliveries * robotCostPerDelivery * operatingDays;
+  const annualSavings = annualHumanCost - annualRobotOpCost;
+  const fleetInvestment = robotCount * 25000;
+  const paybackMonths = annualSavings > 0 ? Math.ceil(fleetInvestment / (annualSavings / 12)) : 0;
+
+  return (
+    <CalcCard>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-5">
+          <Slider label="Daily deliveries" value={dailyDeliveries} min={20} max={1000} step={10} onChange={setDailyDeliveries} fmt />
+          <Slider label="Current cost per delivery" value={humanCostPerDelivery} min={3} max={20} step={1} onChange={setHumanCostPerDelivery} prefix="$" />
+          <Slider label="Robot fleet size" value={robotCount} min={1} max={50} step={1} onChange={setRobotCount} />
+          <Slider label="Operating days per year" value={operatingDays} min={200} max={365} step={5} onChange={setOperatingDays} />
+        </div>
+        <div className="space-y-3">
+          <Output label="Annual delivery savings" value={`$${annualSavings.toLocaleString()}`} large />
+          <Output label="Fleet investment" value={`$${fleetInvestment.toLocaleString()}`} />
+          <Output label="Robot cost per delivery" value={`$${robotCostPerDelivery.toFixed(2)}`} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+        </div>
+      </div>
+    </CalcCard>
+  );
+}
+
+function SecurityCalculator() {
+  const [guardShifts, setGuardShifts] = useState(3);
+  const [guardHourlyRate, setGuardHourlyRate] = useState(25);
+  const [facilitySize, setFacilitySize] = useState(100000);
+
+  const annualGuardCost = guardShifts * guardHourlyRate * 8 * 365;
+  const robotRaasPerHour = 8;
+  const annualRobotCost = robotRaasPerHour * 24 * 365; // 24/7 coverage
+  const annualSavings = annualGuardCost - annualRobotCost;
+  const coverageMultiplier = facilitySize < 50000 ? "2x" : facilitySize < 200000 ? "3x" : "5x";
+
+  return (
+    <CalcCard>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-5">
+          <Slider label="Guard shifts per day" value={guardShifts} min={1} max={6} step={1} onChange={setGuardShifts} />
+          <Slider label="Guard hourly rate" value={guardHourlyRate} min={15} max={50} step={1} onChange={setGuardHourlyRate} prefix="$" suffix="/hr" />
+          <Slider label="Facility size (sq ft)" value={facilitySize} min={10000} max={1000000} step={10000} onChange={setFacilitySize} fmt />
+        </div>
+        <div className="space-y-3">
+          <Output label="Annual guard cost" value={`$${annualGuardCost.toLocaleString()}`} />
+          <Output label="Annual robot cost (RaaS)" value={`$${annualRobotCost.toLocaleString()}`} />
+          <Output label="Annual savings" value={`$${Math.max(0, annualSavings).toLocaleString()}`} large color="text-green" />
+          <Output label="Coverage improvement" value={coverageMultiplier} />
+        </div>
+      </div>
+    </CalcCard>
+  );
+}
+
+function HospitalityCalculator() {
+  const [rooms, setRooms] = useState(200);
+  const [deliveriesPerDay, setDeliveriesPerDay] = useState(40);
+  const [staffHourlyRate, setStaffHourlyRate] = useState(18);
+
+  const minutesPerDelivery = 12; // avg human time per room delivery
+  const annualDeliveries = deliveriesPerDay * 365;
+  const annualStaffHours = (annualDeliveries * minutesPerDelivery) / 60;
+  const annualStaffCost = annualStaffHours * staffHourlyRate;
+  const robotsNeeded = Math.ceil(deliveriesPerDay / 40);
+  const robotInvestment = robotsNeeded * 25000;
+  const annualRobotMaintenance = robotsNeeded * 3000;
+  const annualSavings = annualStaffCost - annualRobotMaintenance;
+  const paybackMonths = annualSavings > 0 ? Math.ceil(robotInvestment / (annualSavings / 12)) : 0;
+
+  return (
+    <CalcCard>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-5">
+          <Slider label="Hotel rooms" value={rooms} min={50} max={1000} step={10} onChange={setRooms} fmt />
+          <Slider label="Room deliveries per day" value={deliveriesPerDay} min={10} max={200} step={5} onChange={setDeliveriesPerDay} />
+          <Slider label="Staff hourly rate" value={staffHourlyRate} min={12} max={40} step={1} onChange={setStaffHourlyRate} prefix="$" suffix="/hr" />
+        </div>
+        <div className="space-y-3">
+          <Output label="Annual delivery labor cost" value={`$${Math.round(annualStaffCost).toLocaleString()}`} />
+          <Output label="Robots needed" value={`${robotsNeeded}`} />
+          <Output label="Annual savings" value={`$${Math.round(annualSavings).toLocaleString()}`} large color="text-green" />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 12 ? "text-green" : "text-amber-400"} />
+        </div>
+      </div>
+    </CalcCard>
+  );
+}
+
+function EldercareCalculator() {
+  const [residents, setResidents] = useState(100);
+  const [staffPerResident, setStaffPerResident] = useState(0.5);
+  const [staffHourlyRate, setStaffHourlyRate] = useState(20);
+
+  const totalStaff = Math.round(residents * staffPerResident);
+  const monitoringHoursPerDay = 2; // hours per staff member on monitoring tasks
+  const annualMonitoringCost = totalStaff * monitoringHoursPerDay * staffHourlyRate * 365;
+  const robotEfficiency = 0.6; // 60% of monitoring tasks automated
+  const annualSavings = Math.round(annualMonitoringCost * robotEfficiency);
+  const fallCostAvoidance = Math.round(residents * 0.3 * 35000 * 0.5); // 30% fall rate, $35K avg cost, 50% reduction
+  const totalBenefit = annualSavings + fallCostAvoidance;
+  const systemCost = residents < 50 ? 75000 : residents < 200 ? 200000 : 500000;
+  const paybackMonths = totalBenefit > 0 ? Math.ceil(systemCost / (totalBenefit / 12)) : 0;
+
+  return (
+    <CalcCard>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="space-y-5">
+          <Slider label="Number of residents" value={residents} min={10} max={500} step={5} onChange={setResidents} fmt />
+          <Slider label="Staff-to-resident ratio" value={staffPerResident} min={0.2} max={1.0} step={0.1} onChange={setStaffPerResident} />
+          <Slider label="Staff hourly rate" value={staffHourlyRate} min={12} max={40} step={1} onChange={setStaffHourlyRate} prefix="$" suffix="/hr" />
+        </div>
+        <div className="space-y-3">
+          <Output label="Monitoring labor savings" value={`$${annualSavings.toLocaleString()}`} />
+          <Output label="Fall cost avoidance" value={`$${fallCostAvoidance.toLocaleString()}`} />
+          <Output label="Total annual benefit" value={`$${totalBenefit.toLocaleString()}`} large color="text-green" />
+          <Output label="System investment" value={`$${systemCost.toLocaleString()}`} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+        </div>
+      </div>
+    </CalcCard>
+  );
+}
+
+// --- Shared components ---
 function CalcCard({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-blue/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(0,194,255,0.05)] backdrop-blur-sm sm:p-8">
