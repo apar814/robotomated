@@ -23,7 +23,7 @@ export function StatusBar() {
   const seconds = String(elapsed % 60).padStart(2, "0");
 
   return (
-    <div className="sticky top-12 z-40 flex h-[26px] items-center justify-between border-b border-border-subtle bg-[#050505] px-6 font-mono text-[10px]">
+    <div className="sticky top-12 z-40 flex h-[30px] items-center justify-between border-b border-border-subtle bg-[#050505] px-6 font-mono text-[13px]">
       {/* Left side — desktop */}
       <div className="hidden items-center gap-5 md:flex">
         {/* ACTIVE indicator */}

@@ -2,10 +2,8 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 import { cached } from "@/lib/cache/redis";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
-import { TrustBar } from "@/components/ui/trust-bar";
 import { SocialProofStrip } from "@/components/ui/social-proof-strip";
 import { AdvisorCtaStrip } from "@/components/ui/advisor-cta-strip";
-import { DataTicker } from "@/components/layout/data-ticker";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
@@ -74,13 +72,6 @@ function formatPrice(price: number): string {
   return `$${price.toLocaleString()}`;
 }
 
-/* ── Floating particle positions ── */
-const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
-  left: `${(i * 5.3 + 2.7) % 100}%`,
-  delay: `${(i * 1.3) % 8}s`,
-  duration: `${16 + (i % 11)}s`,
-}));
-
 export default async function HomePage() {
   const { categories, trending, totalRobots } = await getData();
 
@@ -90,114 +81,157 @@ export default async function HomePage() {
     <div className="flex flex-col" style={{ background: "#080808" }}>
 
       {/* ══════════════════════════════════════════
-          1. HERO
+          1. HERO — Clear value proposition
           ══════════════════════════════════════════ */}
-      <section className="relative max-h-[60vh] overflow-hidden px-6 py-12 sm:py-16 lg:py-20">
+      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
         {/* Ambient glows */}
         <div
           className="pointer-events-none absolute -right-40 -top-20 h-[500px] w-[500px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(14,165,233,0.025), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(14,165,233,0.03), transparent 70%)" }}
         />
         <div
           className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(200,255,0,0.012), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(200,255,0,0.015), transparent 70%)" }}
         />
-
-        {/* Floating data particles */}
-        {PARTICLES.map((p, i) => (
-          <div
-            key={i}
-            className="pointer-events-none absolute h-[2px] w-[2px] rounded-full"
-            style={{
-              background: "#0EA5E9",
-              opacity: 0.15,
-              left: p.left,
-              bottom: "-4px",
-              animation: `float-up ${p.duration} linear ${p.delay} infinite`,
-            }}
-          />
-        ))}
 
         {/* Content */}
         <div className="mx-auto max-w-7xl">
           {/* Tagline */}
           <div className="flex items-center gap-3">
-            <div className="h-px w-3 bg-electric-blue" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-electric-blue">
+            <div className="h-px w-4 bg-electric-blue" />
+            <span className="font-mono text-[13px] uppercase tracking-widest text-electric-blue">
               Robotics Intelligence Platform
             </span>
           </div>
 
           {/* Headline */}
           <h1
-            className="mt-5 font-display text-[40px] font-bold leading-[1.05] sm:text-[56px] lg:text-[72px]"
-            style={{ letterSpacing: "-0.05em", color: "#E8E8E8" }}
+            className="mt-6 font-display text-[36px] font-bold leading-[1.08] sm:text-[52px] lg:text-[68px]"
+            style={{ letterSpacing: "-0.04em", color: "#E8E8E8" }}
           >
-            The Intelligence Layer<br />
+            Find the Right Robot<br />
             for{" "}
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(90deg, #0EA5E9, #C8FF00)" }}
             >
-              Robotics
+              Your Business
             </span>
           </h1>
 
-          {/* System status line */}
-          <p className="mt-5 font-mono text-[12px] text-tertiary">
-            MONITORING{" "}
-            <span className="font-semibold text-data">[<HeroCounter target={totalRobots} />]</span>
-            {" "}ROBOTS{" "}
-            <span className="text-ghost">//</span>{" "}
-            <span className="font-semibold text-data">167</span> MANUFACTURERS{" "}
-            <span className="text-ghost">//</span>{" "}
-            <span className="font-semibold text-data">$103B</span> MARKET{" "}
-            <span className="text-ghost">//</span>{" "}
-            UPDATED TODAY
+          {/* Subheadline */}
+          <p className="mt-6 max-w-2xl text-lg leading-[1.7] text-secondary sm:text-xl">
+            Independent research, verified specs, and real ROI data on {totalRobots}+ robots
+            across every industry. No manufacturer bias. Just the intelligence you need to buy smart.
           </p>
 
           {/* CTAs */}
-          <div className="mt-6 flex items-center gap-3">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               href="/explore"
-              className="rounded-[4px] bg-electric-blue px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-black transition-shadow hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-blue px-8 py-4 text-base font-bold tracking-wide text-black transition-shadow hover:shadow-[0_0_24px_rgba(14,165,233,0.35)]"
             >
-              EXPLORE ROBOTS
+              Start Your Robot Search
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
             <Link
               href="/advisor"
-              className="rounded-[4px] border border-border px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-8 py-4 text-base font-bold text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
-              ASK THE ADVISOR
+              Talk to the AI Advisor
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          2. TRUST BAR
+          2. TRUST BAR — Static, clean stats
           ══════════════════════════════════════════ */}
-      <TrustBar />
+      <section className="border-y border-border px-6 py-5">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[14px] font-bold text-data"><HeroCounter target={totalRobots} />+</span>
+            <span className="text-[14px] text-tertiary">Robots Tracked</span>
+          </div>
+          <span className="hidden text-border sm:block">|</span>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[14px] font-bold text-data">167</span>
+            <span className="text-[14px] text-tertiary">Manufacturers</span>
+          </div>
+          <span className="hidden text-border sm:block">|</span>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[14px] font-bold text-data">$103B</span>
+            <span className="text-[14px] text-tertiary">Market Monitored</span>
+          </div>
+          <span className="hidden text-border sm:block">|</span>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[14px] font-bold text-lime">Updated Weekly</span>
+          </div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════════
-          3. SOCIAL PROOF
+          3. HOW IT WORKS — 3-step strip
+          ══════════════════════════════════════════ */}
+      <section className="bg-obsidian-2 px-6 py-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric-blue/10 font-mono text-lg font-bold text-electric-blue">
+                1
+              </div>
+              <div>
+                <p className="text-base font-bold text-primary">Search</p>
+                <p className="mt-1 text-[15px] leading-[1.7] text-tertiary">
+                  Browse {totalRobots}+ robots by industry, use case, and budget. Filter by specs that matter.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric-blue/10 font-mono text-lg font-bold text-electric-blue">
+                2
+              </div>
+              <div>
+                <p className="text-base font-bold text-primary">Compare</p>
+                <p className="mt-1 text-[15px] leading-[1.7] text-tertiary">
+                  Side-by-side specs, RoboScores, and 5-year TCO analysis. No black boxes.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric-blue/10 font-mono text-lg font-bold text-electric-blue">
+                3
+              </div>
+              <div>
+                <p className="text-base font-bold text-primary">Decide</p>
+                <p className="mt-1 text-[15px] leading-[1.7] text-tertiary">
+                  Download the buyer{"'"}s checklist and get personalized guidance from our AI advisor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          4. SOCIAL PROOF
           ══════════════════════════════════════════ */}
       <SocialProofStrip />
 
       {/* ══════════════════════════════════════════
-          4. DATA TICKER
-          ══════════════════════════════════════════ */}
-      <DataTicker />
-
-      {/* ══════════════════════════════════════════
           5. FEATURED ROBOTS
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-8">
+      <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           {/* Section label */}
-          <div className="mb-5 flex items-center gap-2">
+          <div className="mb-6 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
               Trending This Week
             </span>
           </div>
@@ -205,21 +239,21 @@ export default async function HomePage() {
           {/* Search bar */}
           <Link
             href="/explore"
-            className="flex items-center gap-3 rounded-[4px] border border-border bg-transparent px-4 py-3 transition-colors hover:border-border-active"
+            className="flex items-center gap-3 rounded-lg border border-border bg-transparent px-5 py-4 transition-colors hover:border-border-active"
           >
-            <svg className="h-4 w-4 shrink-0 text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 shrink-0 text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
-            <span className="flex-1 font-mono text-xs text-tertiary">
+            <span className="flex-1 text-[15px] text-tertiary">
               Search {totalRobots} robots by name, manufacturer, use case, or spec...
             </span>
-            <kbd className="hidden rounded-[2px] border border-border bg-obsidian-surface px-2 py-0.5 font-mono text-[10px] text-ghost sm:inline">
+            <kbd className="hidden rounded border border-border bg-obsidian-surface px-2 py-0.5 font-mono text-[13px] text-ghost sm:inline">
               &#8984;K
             </kbd>
           </Link>
 
           {/* Category filter pills */}
-          <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+          <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
             {categories.filter(c => c.robot_count > 0).map((cat) => (
               <Link
                 key={cat.id}
@@ -232,7 +266,7 @@ export default async function HomePage() {
           </div>
 
           {/* Robot grid */}
-          <div className="mt-6 overflow-hidden rounded-lg bg-border-subtle">
+          <div className="mt-8 overflow-hidden rounded-lg bg-border-subtle">
             <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
               {trending.slice(0, 6).map((robot) => {
                 const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
@@ -242,13 +276,13 @@ export default async function HomePage() {
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="group block bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
+                    className="group block bg-obsidian-surface p-5 transition-colors hover:bg-obsidian-hover"
                   >
                     <div className="flex items-start justify-between">
                       <div className="min-w-0 flex-1">
-                        <p className="text-sm font-semibold text-primary">{robot.name}</p>
-                        <div className="mt-1 flex items-center gap-2">
-                          <span className="text-[10px] text-tertiary">{mfr}</span>
+                        <p className="text-lg font-bold text-primary">{robot.name}</p>
+                        <div className="mt-1.5 flex items-center gap-2">
+                          <span className="text-[13px] text-tertiary">{mfr}</span>
                           <SectorCode code={sectorCode} />
                         </div>
                       </div>
@@ -256,15 +290,15 @@ export default async function HomePage() {
                         <RoboScoreBadge score={robot.robo_score} />
                       )}
                     </div>
-                    <div className="mt-3 flex items-center justify-between">
+                    <div className="mt-4 flex items-center justify-between">
                       {robot.price_current != null ? (
-                        <span className="font-mono text-sm font-bold text-lime">
+                        <span className="font-mono text-base font-bold text-lime">
                           {formatPrice(robot.price_current)}
                         </span>
                       ) : (
-                        <span className="font-mono text-sm text-tertiary">RFQ</span>
+                        <span className="font-mono text-base text-tertiary">RFQ</span>
                       )}
-                      <span className="text-[11px] text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
+                      <span className="text-[13px] text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
                         View Analysis &rarr;
                       </span>
                     </div>
@@ -284,36 +318,36 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           7. MARKET INTELLIGENCE
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-8">
+      <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-5 flex items-center gap-2">
+          <div className="mb-6 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
               Market Intelligence
             </span>
           </div>
 
           <div className="overflow-hidden rounded-lg bg-border-subtle">
             <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4">
-              <div className="bg-obsidian-surface p-4">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Total Market Size</p>
+              <div className="bg-obsidian-surface p-5">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-ghost">Total Market Size</p>
                 <p className="mt-2 font-mono text-2xl font-bold text-data">$103B</p>
-                <p className="mt-1 text-xs text-tertiary">Global robotics 2026</p>
+                <p className="mt-1 text-[14px] text-tertiary">Global robotics 2026</p>
               </div>
-              <div className="bg-obsidian-surface p-4">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Fastest Growing</p>
+              <div className="bg-obsidian-surface p-5">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-ghost">Fastest Growing</p>
                 <p className="mt-2 font-mono text-2xl font-bold text-lime">Humanoid +847%</p>
-                <p className="mt-1 text-xs text-tertiary">YoY segment growth</p>
+                <p className="mt-1 text-[14px] text-tertiary">YoY segment growth</p>
               </div>
-              <div className="bg-obsidian-surface p-4">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Most Evaluated</p>
+              <div className="bg-obsidian-surface p-5">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-ghost">Most Evaluated</p>
                 <p className="mt-2 font-mono text-2xl font-bold text-data">Warehouse AMRs</p>
-                <p className="mt-1 text-xs text-tertiary">By enterprise buyers</p>
+                <p className="mt-1 text-[14px] text-tertiary">By enterprise buyers</p>
               </div>
-              <div className="bg-obsidian-surface p-4">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Avg RoboScore</p>
+              <div className="bg-obsidian-surface p-5">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-ghost">Avg RoboScore</p>
                 <p className="mt-2 font-mono text-2xl font-bold text-lime">74.2</p>
-                <p className="mt-1 text-xs text-tertiary">+1.3 vs Q4 2025</p>
+                <p className="mt-1 text-[14px] text-tertiary">+1.3 vs Q4 2025</p>
               </div>
             </div>
           </div>
@@ -328,11 +362,11 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           8. SECTOR BROWSE
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-8">
+      <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-5 flex items-center gap-2">
+          <div className="mb-6 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
               Browse by Sector
             </span>
           </div>
@@ -345,13 +379,13 @@ export default async function HomePage() {
                   <Link
                     key={cat.id}
                     href={`/explore/${cat.slug}`}
-                    className="group block bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
+                    className="group block bg-obsidian-surface p-5 transition-colors hover:bg-obsidian-hover"
                   >
                     <SectorCode code={code} />
-                    <p className="mt-2 text-sm font-medium text-primary">{cat.name}</p>
+                    <p className="mt-2 text-base font-semibold text-primary">{cat.name}</p>
                     <div className="mt-1 flex items-baseline gap-1">
-                      <span className="font-mono text-lg font-bold text-data">{cat.robot_count}</span>
-                      <span className="text-[10px] text-ghost">robots</span>
+                      <span className="font-mono text-xl font-bold text-data">{cat.robot_count}</span>
+                      <span className="text-[13px] text-ghost">robots</span>
                     </div>
                   </Link>
                 );
@@ -364,26 +398,26 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           9. LATEST INTELLIGENCE
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-8">
+      <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-5 flex items-center gap-2">
+          <div className="mb-6 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
               Latest Intelligence
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* Column 1: Latest News */}
             <div>
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+              <p className="mb-4 font-mono text-[13px] font-bold uppercase tracking-widest text-secondary">
                 Latest News
               </p>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {topNews.map((article) => (
-                  <div key={article.id} className="border-b border-border-subtle pb-3">
-                    <p className="text-sm text-secondary">{article.title}</p>
-                    <p className="mt-1 font-mono text-[10px] text-ghost">{article.publishedAt}</p>
+                  <div key={article.id} className="border-b border-border-subtle pb-4">
+                    <p className="text-[15px] leading-[1.7] text-secondary">{article.title}</p>
+                    <p className="mt-1 font-mono text-[13px] text-ghost">{article.publishedAt}</p>
                   </div>
                 ))}
               </div>
@@ -391,42 +425,42 @@ export default async function HomePage() {
 
             {/* Column 2: Learn */}
             <div>
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+              <p className="mb-4 font-mono text-[13px] font-bold uppercase tracking-widest text-secondary">
                 Learn
               </p>
-              <div className="space-y-3">
-                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
-                  <p className="text-sm text-secondary">How to evaluate warehouse AMRs</p>
-                  <p className="mt-1 font-mono text-[10px] text-ghost">Guide</p>
+              <div className="space-y-4">
+                <Link href="/learn" className="block border-b border-border-subtle pb-4 transition-colors hover:text-electric-blue">
+                  <p className="text-[15px] leading-[1.7] text-secondary">How to evaluate warehouse AMRs</p>
+                  <p className="mt-1 font-mono text-[13px] text-ghost">Guide</p>
                 </Link>
-                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
-                  <p className="text-sm text-secondary">ROI calculator methodology explained</p>
-                  <p className="mt-1 font-mono text-[10px] text-ghost">Methodology</p>
+                <Link href="/learn" className="block border-b border-border-subtle pb-4 transition-colors hover:text-electric-blue">
+                  <p className="text-[15px] leading-[1.7] text-secondary">ROI calculator methodology explained</p>
+                  <p className="mt-1 font-mono text-[13px] text-ghost">Methodology</p>
                 </Link>
-                <Link href="/learn" className="block border-b border-border-subtle pb-3 transition-colors hover:text-electric-blue">
-                  <p className="text-sm text-secondary">Cobot vs industrial robot: decision guide</p>
-                  <p className="mt-1 font-mono text-[10px] text-ghost">Comparison</p>
+                <Link href="/learn" className="block border-b border-border-subtle pb-4 transition-colors hover:text-electric-blue">
+                  <p className="text-[15px] leading-[1.7] text-secondary">Cobot vs industrial robot: decision guide</p>
+                  <p className="mt-1 font-mono text-[13px] text-ghost">Comparison</p>
                 </Link>
               </div>
             </div>
 
             {/* Column 3: Price Movements */}
             <div>
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-secondary">
+              <p className="mb-4 font-mono text-[13px] font-bold uppercase tracking-widest text-secondary">
                 Price Movements
               </p>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                  <span className="text-sm text-secondary">Boston Dynamics Spot</span>
-                  <span className="font-mono text-[11px] font-semibold text-lime">&darr;12%</span>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+                  <span className="text-[15px] text-secondary">Boston Dynamics Spot</span>
+                  <span className="font-mono text-[14px] font-semibold text-lime">&darr;12%</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                  <span className="text-sm text-secondary">Universal Robots UR20</span>
-                  <span className="font-mono text-[11px] font-semibold text-lime">&darr;5%</span>
+                <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+                  <span className="text-[15px] text-secondary">Universal Robots UR20</span>
+                  <span className="font-mono text-[14px] font-semibold text-lime">&darr;5%</span>
                 </div>
-                <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                  <span className="text-sm text-secondary">Agility Robotics Digit</span>
-                  <span className="font-mono text-[11px] font-semibold text-magenta">&uarr;8%</span>
+                <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+                  <span className="text-[15px] text-secondary">Agility Robotics Digit</span>
+                  <span className="font-mono text-[14px] font-semibold text-magenta">&uarr;8%</span>
                 </div>
               </div>
             </div>
@@ -437,19 +471,19 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           10. NEWSLETTER
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-10" style={{ borderTop: "1px solid #1A1A1A" }}>
+      <section className="px-6 py-20" style={{ borderTop: "1px solid #1A1A1A" }}>
         <div className="mx-auto max-w-xl">
-          <div className="mb-4 flex items-center gap-2">
+          <div className="mb-5 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
               The Robotomated Brief
             </span>
           </div>
-          <p className="mb-4 text-sm text-tertiary">
-            Weekly robotics intelligence for operators and buyers
+          <p className="mb-5 text-base leading-[1.7] text-tertiary">
+            Weekly robotics intelligence for operators and buyers.
           </p>
           <NewsletterForm />
-          <div className="mt-4 flex items-center gap-6 text-[10px] text-ghost">
+          <div className="mt-5 flex items-center gap-6 text-[13px] text-ghost">
             <span className="flex items-center gap-1.5">
               <span className="text-lime">&#10003;</span> No spam
             </span>

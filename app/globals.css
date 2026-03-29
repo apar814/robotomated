@@ -63,6 +63,20 @@
 }
 
 /* ═══════════════════════════════════════
+   BASE TYPOGRAPHY — readability first
+   ═══════════════════════════════════════ */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* ═══════════════════════════════════════
    SCANLINE OVERLAY
    ═══════════════════════════════════════ */
 body::before {
