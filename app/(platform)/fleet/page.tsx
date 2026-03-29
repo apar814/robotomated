@@ -51,49 +51,50 @@ export default async function FleetPage() {
       ]);
 
     if (dbAssets && dbAssets.length > 0) {
-      assets = dbAssets.map((a) => ({
-        id: a.id,
-        custom_name: a.custom_name || "",
-        robot_name: (a as Record<string, unknown>).robots
-          ? ((a as Record<string, unknown>).robots as { name: string }).name
-          : "Unknown Robot",
-        serial_number: a.serial_number || "",
-        purchase_date: a.purchase_date || "",
-        purchase_price: a.purchase_price || 0,
-        site_location: a.site_location || "",
-        department: a.department || "",
-        status: a.status,
-        notes: a.notes,
-        created_at: a.created_at,
+      assets = dbAssets.map((a: Record<string, unknown>) => {
+        const robotJoin = a.robots as { name: string } | null;
+        return {
+          id: a.id as string,
+          custom_name: (a.custom_name as string) || "",
+          robot_name: robotJoin?.name || "Unknown Robot",
+          serial_number: (a.serial_number as string) || "",
+          purchase_date: (a.purchase_date as string) || "",
+          purchase_price: (a.purchase_price as number) || 0,
+          site_location: (a.site_location as string) || "",
+          department: (a.department as string) || "",
+          status: a.status as "active" | "maintenance" | "offline" | "decommissioned",
+          notes: a.notes as string | null,
+          created_at: a.created_at as string,
+        };
+      });
+
+      logs = (dbLogs || []).map((l: Record<string, unknown>) => ({
+        id: l.id as string,
+        asset_id: l.asset_id as string,
+        log_date: l.log_date as string,
+        maintenance_type: l.maintenance_type as "routine" | "repair" | "emergency" | "upgrade",
+        description: (l.description as string) || "",
+        technician: (l.technician as string) || "",
+        cost: (l.cost as number) || 0,
+        downtime_hours: (l.downtime_hours as number) || 0,
+        parts_replaced: (l.parts_replaced as string[]) || [],
+        next_service_date: l.next_service_date as string | null,
       }));
 
-      logs = (dbLogs || []).map((l) => ({
-        id: l.id,
-        asset_id: l.asset_id,
-        log_date: l.log_date,
-        maintenance_type: l.maintenance_type,
-        description: l.description || "",
-        technician: l.technician || "",
-        cost: l.cost || 0,
-        downtime_hours: l.downtime_hours || 0,
-        parts_replaced: l.parts_replaced || [],
-        next_service_date: l.next_service_date,
-      }));
-
-      schedules = (dbSchedules || []).map((s) => ({
-        id: s.id,
-        asset_id: s.asset_id,
-        schedule_name: s.schedule_name,
-        interval_type: s.interval_type,
-        interval_value: s.interval_value,
-        task_description: s.task_description || "",
-        estimated_hours: s.estimated_hours || 0,
-        estimated_cost: s.estimated_cost || 0,
-        requires_professional: s.requires_professional,
-        last_completed: s.last_completed,
-        next_due: s.next_due,
-        alert_days_before: s.alert_days_before,
-        is_active: s.is_active,
+      schedules = (dbSchedules || []).map((s: Record<string, unknown>) => ({
+        id: s.id as string,
+        asset_id: s.asset_id as string,
+        schedule_name: s.schedule_name as string,
+        interval_type: s.interval_type as "daily" | "weekly" | "monthly" | "quarterly" | "annual" | "hours-based",
+        interval_value: s.interval_value as number,
+        task_description: (s.task_description as string) || "",
+        estimated_hours: (s.estimated_hours as number) || 0,
+        estimated_cost: (s.estimated_cost as number) || 0,
+        requires_professional: s.requires_professional as boolean,
+        last_completed: s.last_completed as string | null,
+        next_due: s.next_due as string | null,
+        alert_days_before: s.alert_days_before as number,
+        is_active: s.is_active as boolean,
       }));
     }
     // If user has no assets, fall back to demo data

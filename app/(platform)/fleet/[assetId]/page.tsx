@@ -74,20 +74,20 @@ export default async function AssetDetailPage({
       logs = DEMO_MAINTENANCE_LOGS.filter((l) => l.asset_id === assetId);
       schedules = DEMO_SCHEDULES.filter((s) => s.asset_id === assetId);
     } else {
+      const dbAny = dbAsset as Record<string, unknown>;
+      const robotJoin = dbAny.robots as { name: string } | null;
       asset = {
-        id: dbAsset.id,
-        custom_name: dbAsset.custom_name || "",
-        robot_name: (dbAsset as Record<string, unknown>).robots
-          ? ((dbAsset as Record<string, unknown>).robots as { name: string }).name
-          : "Unknown Robot",
-        serial_number: dbAsset.serial_number || "",
-        purchase_date: dbAsset.purchase_date || "",
-        purchase_price: dbAsset.purchase_price || 0,
-        site_location: dbAsset.site_location || "",
-        department: dbAsset.department || "",
-        status: dbAsset.status,
-        notes: dbAsset.notes,
-        created_at: dbAsset.created_at,
+        id: dbAny.id as string,
+        custom_name: (dbAny.custom_name as string) || "",
+        robot_name: robotJoin?.name || "Unknown Robot",
+        serial_number: (dbAny.serial_number as string) || "",
+        purchase_date: (dbAny.purchase_date as string) || "",
+        purchase_price: (dbAny.purchase_price as number) || 0,
+        site_location: (dbAny.site_location as string) || "",
+        department: (dbAny.department as string) || "",
+        status: dbAny.status as "active" | "maintenance" | "offline" | "decommissioned",
+        notes: dbAny.notes as string | null,
+        created_at: dbAny.created_at as string,
       };
 
       const [{ data: dbLogs }, { data: dbSchedules }] = await Promise.all([
@@ -103,33 +103,33 @@ export default async function AssetDetailPage({
           .order("next_due", { ascending: true }),
       ]);
 
-      logs = (dbLogs || []).map((l) => ({
-        id: l.id,
-        asset_id: l.asset_id,
-        log_date: l.log_date,
-        maintenance_type: l.maintenance_type,
-        description: l.description || "",
-        technician: l.technician || "",
-        cost: l.cost || 0,
-        downtime_hours: l.downtime_hours || 0,
-        parts_replaced: l.parts_replaced || [],
-        next_service_date: l.next_service_date,
+      logs = (dbLogs || []).map((l: Record<string, unknown>) => ({
+        id: l.id as string,
+        asset_id: l.asset_id as string,
+        log_date: l.log_date as string,
+        maintenance_type: l.maintenance_type as "routine" | "repair" | "emergency" | "upgrade",
+        description: (l.description as string) || "",
+        technician: (l.technician as string) || "",
+        cost: (l.cost as number) || 0,
+        downtime_hours: (l.downtime_hours as number) || 0,
+        parts_replaced: (l.parts_replaced as string[]) || [],
+        next_service_date: l.next_service_date as string | null,
       }));
 
-      schedules = (dbSchedules || []).map((s) => ({
-        id: s.id,
-        asset_id: s.asset_id,
-        schedule_name: s.schedule_name,
-        interval_type: s.interval_type,
-        interval_value: s.interval_value,
-        task_description: s.task_description || "",
-        estimated_hours: s.estimated_hours || 0,
-        estimated_cost: s.estimated_cost || 0,
-        requires_professional: s.requires_professional,
-        last_completed: s.last_completed,
-        next_due: s.next_due,
-        alert_days_before: s.alert_days_before,
-        is_active: s.is_active,
+      schedules = (dbSchedules || []).map((s: Record<string, unknown>) => ({
+        id: s.id as string,
+        asset_id: s.asset_id as string,
+        schedule_name: s.schedule_name as string,
+        interval_type: s.interval_type as "daily" | "weekly" | "monthly" | "quarterly" | "annual" | "hours-based",
+        interval_value: s.interval_value as number,
+        task_description: (s.task_description as string) || "",
+        estimated_hours: (s.estimated_hours as number) || 0,
+        estimated_cost: (s.estimated_cost as number) || 0,
+        requires_professional: s.requires_professional as boolean,
+        last_completed: s.last_completed as string | null,
+        next_due: s.next_due as string | null,
+        alert_days_before: s.alert_days_before as number,
+        is_active: s.is_active as boolean,
       }));
     }
   }

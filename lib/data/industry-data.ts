@@ -7,16 +7,19 @@
  * the full robot-classification machinery.
  */
 
-export {
-  INDUSTRIES,
-  getAllIndustries,
-  getAllIndustrySlugs,
-  getIndustry,
-  type IndustryConfig,
-  type RobotType,
-  type CaseStudy,
-  type ComplianceItem,
+import {
+  INDUSTRIES as _INDUSTRIES,
+  getAllIndustries as _getAllIndustries,
+  getAllIndustrySlugs as _getAllIndustrySlugs,
+  getIndustry as _getIndustry,
 } from "./industry-types";
+
+export { type IndustryConfig, type RobotType, type CaseStudy, type ComplianceItem } from "./industry-types";
+
+export const INDUSTRIES = _INDUSTRIES;
+export const getAllIndustries = _getAllIndustries;
+export const getAllIndustrySlugs = _getAllIndustrySlugs;
+export const getIndustry = _getIndustry;
 
 /** All industry slugs in display order */
 export const INDUSTRY_SLUGS = [
@@ -45,8 +48,7 @@ export interface IndustrySummary {
 }
 
 export function getIndustrySummaries(): IndustrySummary[] {
-  // Use the re-exported INDUSTRIES from above
-  const allIndustries = getAllIndustries();
+  const allIndustries = Object.values(_INDUSTRIES);
 
   return allIndustries.map((ind) => ({
     slug: ind.slug,
