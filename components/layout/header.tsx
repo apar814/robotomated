@@ -20,7 +20,7 @@ const navLinks = [
   { href: "/explore", label: "Explore" },
   { href: "/compare", label: "Compare" },
   { href: "/reviews", label: "Reviews" },
-  { href: "/industries/warehouse-robotics", label: "Industries" },
+  { href: "/industries", label: "Industries" },
   { href: "/learn", label: "Learn" },
   { href: "/market-intel", label: "Market Intel" },
 ];
