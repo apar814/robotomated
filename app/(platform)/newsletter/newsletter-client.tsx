@@ -67,7 +67,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
           {/* Stats */}
           <div className="mt-8 flex justify-center gap-8 text-center">
             <div>
-              <p className="font-mono text-2xl font-bold text-blue">305+</p>
+              <p className="font-mono text-2xl font-bold text-blue">464+</p>
               <p className="text-xs text-muted">Robots Tracked</p>
             </div>
             <div>
@@ -119,7 +119,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
             {[
               { icon: "📊", title: "Market Moves", desc: "Funding rounds, acquisitions, and IPOs in robotics" },
               { icon: "🤖", title: "New Robots", desc: "First look at every robot added to our database" },
-              { icon: "💰", title: "Price Drops", desc: "Weekly price movements across 305+ robots" },
+              { icon: "💰", title: "Price Drops", desc: "Weekly price movements across 464+ robots" },
               { icon: "📈", title: "Industry Intel", desc: "Trends, analysis, and what operators need to know" },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-center">

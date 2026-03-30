@@ -285,7 +285,7 @@ export function RobotFinderQuiz() {
       <div className="flex flex-col items-center py-16">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-electric-blue border-t-transparent" />
         <p className="mt-4 font-mono text-sm text-text-tertiary">
-          Analyzing 305+ robots...
+          Analyzing 464+ robots...
         </p>
       </div>
     );

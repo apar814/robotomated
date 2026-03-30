@@ -14,7 +14,7 @@ export function AdvisorCtaStrip() {
           Not sure which robot fits your operation?
         </h2>
         <p className="mt-2 text-[13px] text-tertiary">
-          Our AI advisor narrows 305 robots down to your top 3 in 5 questions.
+          Our AI advisor narrows 464 robots down to your top 3 in 5 questions.
         </p>
         <Link
           href="/advisor"

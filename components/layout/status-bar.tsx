@@ -34,7 +34,7 @@ export function StatusBar() {
 
         <span className="flex items-center gap-1.5">
           <span className="text-text-tertiary">ROBOTS</span>
-          <span className="font-semibold text-text-data">305</span>
+          <span className="font-semibold text-text-data">464</span>
         </span>
 
         <span className="flex items-center gap-1.5">
@@ -58,7 +58,7 @@ export function StatusBar() {
 
       {/* Mobile */}
       <div className="flex items-center text-text-tertiary md:hidden">
-        <span className="font-semibold text-text-data">305</span>
+        <span className="font-semibold text-text-data">464</span>
         <span className="mx-1">ROBOTS</span>
         <span className="mx-1 text-text-ghost">//</span>
         <span className="font-semibold text-text-data">$103B</span>

@@ -4,10 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 
 const FEATURES = [
-  { icon: "bell", title: "Unlimited Price Drop Alerts", desc: "Free tier: 3 alerts. Pro: unlimited across all 305+ robots. Never miss a deal.", free: "3 alerts", pro: "Unlimited" },
+  { icon: "bell", title: "Unlimited Price Drop Alerts", desc: "Free tier: 3 alerts. Pro: unlimited across all 464+ robots. Never miss a deal.", free: "3 alerts", pro: "Unlimited" },
   { icon: "chart", title: "Weekly Market Reports (PDF)", desc: "Downloadable market intelligence reports covering funding, trends, and analysis.", free: "None", pro: "Weekly PDF" },
   { icon: "lightning", title: "Funding Round Alerts", desc: "Get notified when companies in your tracked categories raise funding.", free: "None", pro: "Real-time" },
-  { icon: "code", title: "Robot Database API Access", desc: "Programmatic access to our 305+ robot database. JSON API with full specs and scoring.", free: "None", pro: "Full API" },
+  { icon: "code", title: "Robot Database API Access", desc: "Programmatic access to our 464+ robot database. JSON API with full specs and scoring.", free: "None", pro: "Full API" },
   { icon: "star", title: "Early Access to New Tools", desc: "Be first to use new tools like the Robot Finder Quiz, ROI calculators, and comparison features.", free: "Standard", pro: "Early access" },
   { icon: "message", title: "Priority Advisor Responses", desc: "Skip the queue. Your AI Advisor conversations get priority processing and longer responses.", free: "5/month", pro: "Unlimited + priority" },
 ];

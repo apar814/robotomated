@@ -101,7 +101,7 @@ export function Header() {
                     onClick={() => setCatOpen(false)}
                     className="mt-3 block border-t border-border pt-3 text-center text-xs font-medium text-electric-blue hover:underline"
                   >
-                    View All 305 Robots &rarr;
+                    View All 464 Robots &rarr;
                   </Link>
                 </div>
               )}
@@ -136,7 +136,7 @@ export function Header() {
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
-              <span className="hidden font-sans text-xs sm:inline">Search 305 robots...</span>
+              <span className="hidden font-sans text-xs sm:inline">Search 464 robots...</span>
               <kbd className="hidden rounded-[2px] border border-border-subtle bg-white/[0.03] px-1.5 py-0.5 font-mono text-[9px] sm:inline">
                 &#8984;K
               </kbd>
