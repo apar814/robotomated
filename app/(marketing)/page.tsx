@@ -10,6 +10,7 @@ import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import { GuidedEntry } from "@/components/home/guided-entry";
 import { RobotFinderCtaStrip } from "@/components/ui/robot-finder-cta";
+import { CapabilityMap } from "@/components/home/capability-map";
 import { NEWS_ARTICLES } from "@/lib/data/news";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import type { RobotCategory } from "@/lib/supabase/types";
@@ -227,6 +228,11 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          3.5. ROBOTICS CAPABILITY MAP
+          ══════════════════════════════════════════ */}
+      <CapabilityMap />
 
       {/* ══════════════════════════════════════════
           4. SOCIAL PROOF
