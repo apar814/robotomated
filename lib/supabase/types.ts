@@ -516,6 +516,54 @@ export interface Database {
           }
         ];
       };
+      email_sends: {
+        Row: {
+          id: string;
+          recipient_email: string;
+          template_id: string;
+          sent_at: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          recipient_email: string;
+          template_id: string;
+          sent_at?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          recipient_email?: string;
+          template_id?: string;
+          sent_at?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      careers_interest: {
+        Row: {
+          id: string;
+          email: string;
+          type: string;
+          role_interest: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          email: string;
+          type: string;
+          role_interest?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          type?: string;
+          role_interest?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       price_alerts: {
         Row: {
           id: string;

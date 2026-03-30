@@ -24,6 +24,7 @@ const navLinks = [
   { href: "/industries", label: "Industries" },
   { href: "/learn", label: "Learn" },
   { href: "/market", label: "Market Intel" },
+  { href: "/careers", label: "Workforce" },
 ];
 
 export function Header() {
