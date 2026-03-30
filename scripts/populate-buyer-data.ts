@@ -17,31 +17,31 @@ const supabase = createClient(
 
 async function updateRobot(slug: string, data: Record<string, unknown>) {
   const { error } = await supabase.from("robots").update(data).eq("slug", slug);
-  if (error) console.error(`  ❌ ${slug}: ${error.message}`);
-  else console.log(`  ✅ ${slug}`);
+  if (error) console.error(`  [ERR] ${slug}: ${error.message}`);
+  else console.log(`  [OK] ${slug}`);
 }
 
 async function insertApplication(robotSlug: string, app: Record<string, unknown>) {
   const { data: robot } = await supabase.from("robots").select("id").eq("slug", robotSlug).single();
-  if (!robot) { console.error(`  ❌ App: robot ${robotSlug} not found`); return; }
+  if (!robot) { console.error(`  [ERR] App: robot ${robotSlug} not found`); return; }
   const { error } = await supabase.from("robot_applications").insert({ ...app, robot_id: robot.id });
-  if (error) console.error(`  ❌ App ${robotSlug}/${app.application_name}: ${error.message}`);
-  else console.log(`  ✅ App: ${robotSlug} → ${app.application_name}`);
+  if (error) console.error(`  [ERR] App ${robotSlug}/${app.application_name}: ${error.message}`);
+  else console.log(`  [OK] App: ${robotSlug} → ${app.application_name}`);
 }
 
 async function insertFinancing(robotSlug: string, opt: Record<string, unknown>) {
   const { data: robot } = await supabase.from("robots").select("id").eq("slug", robotSlug).single();
-  if (!robot) { console.error(`  ❌ Fin: robot ${robotSlug} not found`); return; }
+  if (!robot) { console.error(`  [ERR] Fin: robot ${robotSlug} not found`); return; }
   const { error } = await supabase.from("financing_options").insert({ ...opt, robot_id: robot.id });
-  if (error && !error.message.includes("duplicate")) console.error(`  ❌ Fin ${robotSlug}/${opt.provider}: ${error.message}`);
-  else console.log(`  ✅ Fin: ${robotSlug} → ${opt.provider}`);
+  if (error && !error.message.includes("duplicate")) console.error(`  [ERR] Fin ${robotSlug}/${opt.provider}: ${error.message}`);
+  else console.log(`  [OK] Fin: ${robotSlug} → ${opt.provider}`);
 }
 
 async function main() {
-  console.log("🤖 Populating Buyer Intelligence Data\n");
+  console.log("[BOT] Populating Buyer Intelligence Data\n");
 
   // ── COBOTS ──
-  console.log("📦 Cobots...");
+  console.log("[PKG] Cobots...");
   await updateRobot("ur5e-v2", {
     price_type: "purchase", financing_available: true,
     financing_notes: "Lease from $850/mo through UR Financial Services. Also available through LEAF Commercial Capital.",
@@ -145,7 +145,7 @@ async function main() {
   });
 
   // ── HUMANOIDS ──
-  console.log("🤖 Humanoids...");
+  console.log("[BOT] Humanoids...");
   await updateRobot("unitree-g1-basic", {
     price_type: "purchase", financing_available: false,
     financing_notes: "Purchase only. Spare batteries ~$800 each. 6-8 week replacement parts from China.",
@@ -208,7 +208,7 @@ async function main() {
   });
 
   // ── CONSUMER ──
-  console.log("🏠 Consumer...");
+  console.log("[HOME] Consumer...");
   await updateRobot("roborock-s8-maxv-ultra-v2", {
     price_type: "purchase", financing_available: true,
     financing_notes: "Amazon monthly payments. Affirm/Klarna financing at checkout.",
@@ -250,7 +250,7 @@ async function main() {
   });
 
   // ── WAREHOUSE ──
-  console.log("📦 Warehouse...");
+  console.log("[PKG] Warehouse...");
   await updateRobot("boston-dynamics-stretch-v2", {
     price_type: "contact", financing_available: true,
     financing_notes: "Lease and purchase options. Enterprise volume discounts.",
@@ -289,7 +289,7 @@ async function main() {
   });
 
   // ── MEDICAL ──
-  console.log("🏥 Medical...");
+  console.log("[MED] Medical...");
   await updateRobot("davinci-5", {
     price_type: "purchase", financing_available: true,
     financing_notes: "Capital purchase, operating lease, and usage-based pricing. Per-procedure instrument costs ~$1,500-3,000.",
@@ -316,7 +316,7 @@ async function main() {
   });
 
   // ── SPOT ──
-  console.log("🐕 Spot...");
+  console.log("[PET] Spot...");
   await updateRobot("boston-dynamics-spot", {
     price_type: "purchase", financing_available: true,
     financing_notes: "Direct purchase. Enterprise leasing available. Volume discounts for fleet.",
@@ -332,7 +332,7 @@ async function main() {
   });
 
   // ── AGRICULTURAL ──
-  console.log("🌾 Agricultural...");
+  console.log("[AGRI] Agricultural...");
   await updateRobot("dji-agras-t50", {
     price_type: "purchase", financing_available: true,
     financing_notes: "DJI Agriculture dealers. Farm credit financing. Payback in 1-2 growing seasons.",
@@ -347,7 +347,7 @@ async function main() {
   });
 
   // ── DRONES ──
-  console.log("🛩️ Drones...");
+  console.log("[DRONE] Drones...");
   await updateRobot("dji-mavic-3-pro", {
     price_type: "purchase", financing_available: true, financing_notes: "Available with payment plans at major retailers.",
     power_source: "battery", battery_runtime_hrs: 0.72, annual_maintenance_cost: 200,
@@ -366,7 +366,7 @@ async function main() {
   });
 
   // ── APPLICATIONS ──
-  console.log("\n📋 Applications...");
+  console.log("\n[LIST] Applications...");
 
   // Clear existing applications to avoid duplicates
   await supabase.from("robot_applications").delete().neq("id", "00000000-0000-0000-0000-000000000000");
@@ -403,7 +403,7 @@ async function main() {
   await insertApplication("figure-02", { application_name: "Automotive Part Loading", industry: "Manufacturing", task_description: "Picking sheet metal parts from racks and placing into welding fixtures.", time_savings_percent: 40, cost_savings_percent: 30, labor_savings_description: "Replaces 1 associate per fixture loading station", cycle_time_seconds: 84, deployment_time_days: 180, difficulty: "expert", real_world_example: "BMW Spartanburg: 90K+ parts loaded, 30K+ BMW X3 vehicles produced." });
 
   // ── FINANCING OPTIONS ──
-  console.log("\n💰 Financing options...");
+  console.log("\n[FIN] Financing options...");
 
   // Clear existing to avoid duplicates
   await supabase.from("financing_options").delete().neq("id", "00000000-0000-0000-0000-000000000000");
@@ -418,7 +418,7 @@ async function main() {
   await insertFinancing("roomba-j9-plus", { provider: "Amazon Monthly Payments", type: "loan", monthly_payment: 67, term_months: 12, down_payment_percent: 0, includes_maintenance: false, includes_support: false, notes: "0% interest over 12 months on eligible accounts." });
   await insertFinancing("roomba-j9-plus", { provider: "iRobot Select", type: "raas", monthly_payment: 30, term_months: 0, down_payment_percent: 0, includes_maintenance: true, includes_support: true, notes: "Subscribe: $29.99/mo includes robot and accessories. Cancel anytime." });
 
-  console.log("\n✅ Buyer intelligence population complete!");
+  console.log("\n[OK] Buyer intelligence population complete!");
 }
 
 main().catch(console.error);

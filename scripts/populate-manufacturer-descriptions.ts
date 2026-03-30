@@ -45,10 +45,10 @@ async function main() {
       .eq("slug", slug);
 
     if (error) {
-      console.error(`  ❌ ${slug}: ${error.message}`);
+      console.error(`  [ERR] ${slug}: ${error.message}`);
     } else {
       updated++;
-      console.log(`  ✅ ${slug}`);
+      console.log(`  [OK] ${slug}`);
     }
   }
 

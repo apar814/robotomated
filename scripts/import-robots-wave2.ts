@@ -298,10 +298,10 @@ async function main() {
   const { data: cats } = await supabase.from("robot_categories").select("id, slug");
   const catMap = new Map<string, string>();
   for (const c of cats || []) catMap.set(c.slug, c.id);
-  console.log(`📂 Categories loaded: ${catMap.size}\n`);
+  console.log(`[DIR] Categories loaded: ${catMap.size}\n`);
 
   // 2. Upsert manufacturers
-  console.log("🏭 Upserting manufacturers...");
+  console.log("[MFR] Upserting manufacturers...");
   const mfrMap = new Map<string, string>();
   let mfrsCreated = 0;
 
@@ -318,17 +318,17 @@ async function main() {
     }).select("id").single();
 
     if (error) {
-      console.error(`  ❌ ${mfr.slug}: ${error.message}`);
+      console.error(`  [ERR] ${mfr.slug}: ${error.message}`);
       continue;
     }
     mfrMap.set(mfr.slug, created!.id);
     mfrsCreated++;
-    console.log(`  ✅ Created: ${mfr.name}`);
+    console.log(`  [OK] Created: ${mfr.name}`);
   }
   console.log(`  Manufacturers: ${mfrsCreated} created\n`);
 
   // 3. Insert robots
-  console.log("🤖 Importing robots...");
+  console.log("[BOT] Importing robots...");
   let inserted = 0, skipped = 0, errored = 0;
 
   for (const r of robots) {
@@ -337,8 +337,8 @@ async function main() {
 
     const mfrId = mfrMap.get(r.mfr);
     const catId = catMap.get(r.cat);
-    if (!mfrId) { console.error(`  ❌ ${r.slug}: manufacturer "${r.mfr}" not found`); errored++; continue; }
-    if (!catId) { console.error(`  ❌ ${r.slug}: category "${r.cat}" not found`); errored++; continue; }
+    if (!mfrId) { console.error(`  [ERR] ${r.slug}: manufacturer "${r.mfr}" not found`); errored++; continue; }
+    if (!catId) { console.error(`  [ERR] ${r.slug}: category "${r.cat}" not found`); errored++; continue; }
 
     const images = getImage(r.cat);
 
@@ -359,16 +359,16 @@ async function main() {
     });
 
     if (error) {
-      console.error(`  ❌ ${r.slug}: ${error.message}`);
+      console.error(`  [ERR] ${r.slug}: ${error.message}`);
       errored++;
     } else {
       inserted++;
-      console.log(`  ✅ ${r.name} (${r.cat}) — RoboScore: ${r.score}`);
+      console.log(`  [OK] ${r.name} (${r.cat}) — RoboScore: ${r.score}`);
     }
   }
 
   console.log(`\n${"═".repeat(50)}`);
-  console.log(`📊 Wave 2 Import Summary`);
+  console.log(`[STATS] Wave 2 Import Summary`);
   console.log(`${"═".repeat(50)}`);
   console.log(`  Manufacturers: ${mfrsCreated} new`);
   console.log(`  Robots:        ${inserted} inserted, ${skipped} skipped, ${errored} errors`);

@@ -61,7 +61,7 @@ const categoryImages: Record<string, string[]> = {
 };
 
 async function fixImages() {
-  console.log("🖼️ Fixing robot images...\n");
+  console.log("[IMG] Fixing robot images...\n");
   let totalUpdated = 0;
 
   for (const [categorySlug, images] of Object.entries(categoryImages)) {
@@ -87,11 +87,11 @@ async function fixImages() {
         .update({ images: [{ url: imageUrl, alt: `${categorySlug} robot` }] })
         .eq("id", robots[i].id);
     }
-    console.log(`  ✅ ${categorySlug}: ${robots.length} robots updated (${images.length} images rotated)`);
+    console.log(`  [OK] ${categorySlug}: ${robots.length} robots updated (${images.length} images rotated)`);
     totalUpdated += robots.length;
   }
 
-  console.log(`\n✅ Done: ${totalUpdated} robots updated with verified images`);
+  console.log(`\n[OK] Done: ${totalUpdated} robots updated with verified images`);
 }
 
 fixImages();

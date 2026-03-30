@@ -105,7 +105,7 @@ async function main() {
     console.log(`[${targets.indexOf(target) + 1}/6] ${target.name}...`);
 
     if (target.urls.length === 0) {
-      console.log("    ⏭️  No URLs to try — skipping");
+      console.log("    [SKIP]  No URLs to try — skipping");
       continue;
     }
 
@@ -142,7 +142,7 @@ async function main() {
           continue;
         }
 
-        console.log(`✅ (${Math.round(buf.length / 1024)}KB)`);
+        console.log(`[OK] (${Math.round(buf.length / 1024)}KB)`);
         success = true;
         fixed++;
         break;
@@ -152,7 +152,7 @@ async function main() {
     }
 
     if (!success) {
-      console.log("    ❌ Could not fix this image");
+      console.log("    [ERR] Could not fix this image");
     }
   }
 

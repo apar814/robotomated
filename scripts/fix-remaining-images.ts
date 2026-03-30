@@ -79,7 +79,7 @@ async function tryUpload(robot: Robot, imageUrl: string): Promise<boolean> {
     if (error) { console.log(`    Upload error: ${error.message}`); return false; }
     const { data: publicUrl } = supabase.storage.from("robot-images").getPublicUrl(storagePath);
     await supabase.from("robots").update({ images: [{ url: publicUrl.publicUrl, alt: robot.name }] }).eq("id", robot.id);
-    console.log(`    ✓ Uploaded (${(buf.length / 1024).toFixed(0)}KB)`);
+    console.log(`    [OK] Uploaded (${(buf.length / 1024).toFixed(0)}KB)`);
     return true;
   } catch { return false; }
 }
@@ -171,7 +171,7 @@ async function main() {
     const robot = needsFix[i];
     console.log(`[${i + 1}/${needsFix.length}] ${robot.name}...`);
     const ok = await fixRobot(robot);
-    if (ok) fixed++; else { failed++; console.log(`    ✗ No image found`); }
+    if (ok) fixed++; else { failed++; console.log(`    [ERR] No image found`); }
     await delay(3000);
   }
 

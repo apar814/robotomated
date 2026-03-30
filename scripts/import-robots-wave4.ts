@@ -247,7 +247,7 @@ async function main() {
   const { data: cats } = await supabase.from("robot_categories").select("id, slug");
   const catMap = new Map<string, string>();
   for (const c of cats || []) catMap.set(c.slug, c.id);
-  console.log(`📂 Categories: ${catMap.size}\n`);
+  console.log(`[DIR] Categories: ${catMap.size}\n`);
 
   // 2. Load + create manufacturers
   const { data: existingMfrs } = await supabase.from("manufacturers").select("id, slug");
@@ -261,11 +261,11 @@ async function main() {
       slug: mfr.slug, name: mfr.name, country: mfr.country,
       founded_year: mfr.founded_year, website: mfr.website, verified: true,
     }).select("id").single();
-    if (error) { console.error(`  ❌ Mfr ${mfr.slug}: ${error.message}`); continue; }
+    if (error) { console.error(`  [ERR] Mfr ${mfr.slug}: ${error.message}`); continue; }
     mfrMap.set(mfr.slug, data!.id);
     mfrsCreated++;
   }
-  console.log(`🏭 Manufacturers: ${mfrsCreated} new, ${mfrMap.size} total\n`);
+  console.log(`[MFR] Manufacturers: ${mfrsCreated} new, ${mfrMap.size} total\n`);
 
   // 3. Insert robots
   let inserted = 0, skipped = 0, errored = 0;
@@ -275,8 +275,8 @@ async function main() {
 
     const mfrId = mfrMap.get(r.mfr);
     const catId = catMap.get(r.cat);
-    if (!mfrId) { console.error(`  ❌ ${r.slug}: mfr "${r.mfr}" not found`); errored++; continue; }
-    if (!catId) { console.error(`  ❌ ${r.slug}: cat "${r.cat}" not found`); errored++; continue; }
+    if (!mfrId) { console.error(`  [ERR] ${r.slug}: mfr "${r.mfr}" not found`); errored++; continue; }
+    if (!catId) { console.error(`  [ERR] ${r.slug}: cat "${r.cat}" not found`); errored++; continue; }
 
     const { error } = await supabase.from("robots").insert({
       slug: r.slug, name: r.name, manufacturer_id: mfrId, category_id: catId,
@@ -288,7 +288,7 @@ async function main() {
       affiliate_url: null,
     });
 
-    if (error) { console.error(`  ❌ ${r.slug}: ${error.message}`); errored++; }
+    if (error) { console.error(`  [ERR] ${r.slug}: ${error.message}`); errored++; }
     else {
       inserted++;
       if (inserted % 10 === 0) process.stdout.write(`  ${inserted} inserted...\n`);
@@ -299,7 +299,7 @@ async function main() {
   const { count } = await supabase.from("robots").select("*", { count: "exact", head: true });
 
   console.log(`\n${"═".repeat(50)}`);
-  console.log(`📊 Wave 4 Import Summary`);
+  console.log(`[STATS] Wave 4 Import Summary`);
   console.log(`${"═".repeat(50)}`);
   console.log(`  Manufacturers: ${mfrsCreated} new`);
   console.log(`  Robots:        ${inserted} inserted, ${skipped} skipped, ${errored} errors`);

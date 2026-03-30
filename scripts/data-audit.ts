@@ -162,7 +162,7 @@ async function auditA_Completeness(robots: AuditRobot[]) {
 
     if (score < 7) {
       criticalIssues++;
-      console.log(`  ⚠ ${r.name}: ${score}/13 — missing: ${missing.join(", ")}`);
+      console.log(`  [WARN] ${r.name}: ${score}/13 — missing: ${missing.join(", ")}`);
     }
   }
   console.log(`  Audited ${robots.length} robots. ${completenessRows.filter(r => r.score < 7).length} need attention.`);
@@ -240,7 +240,7 @@ async function auditE_ScoreConsistency(robots: AuditRobot[]) {
       inconsistent++;
       criticalIssues++;
       scoreCorrections.push({ name: r.name, old: r.robo_score, new_: calculated });
-      console.log(`  ⚠ ${r.name}: stored=${r.robo_score}, calculated=${calculated}, diff=${diff.toFixed(1)}`);
+      console.log(`  [WARN] ${r.name}: stored=${r.robo_score}, calculated=${calculated}, diff=${diff.toFixed(1)}`);
     }
   }
 
@@ -255,21 +255,21 @@ async function auditF_URLs(robots: AuditRobot[], manufacturers: AuditManufacture
   const robotDupes = robotSlugs.filter((s, i) => robotSlugs.indexOf(s) !== i);
   if (robotDupes.length > 0) {
     criticalIssues++;
-    console.log(`  ⚠ Duplicate robot slugs: ${robotDupes.join(", ")}`);
+    console.log(`  [WARN] Duplicate robot slugs: ${robotDupes.join(", ")}`);
   }
 
   // Check for null/empty slugs
   const nullSlugs = robots.filter(r => !r.slug || r.slug.trim() === "");
   if (nullSlugs.length > 0) {
     criticalIssues++;
-    console.log(`  ⚠ ${nullSlugs.length} robots with null/empty slugs`);
+    console.log(`  [WARN] ${nullSlugs.length} robots with null/empty slugs`);
   }
 
   // Check slug format
   const badSlugs = robots.filter(r => r.slug && (r.slug !== r.slug.toLowerCase() || /[^a-z0-9-]/.test(r.slug)));
   if (badSlugs.length > 0) {
     criticalIssues++;
-    console.log(`  ⚠ ${badSlugs.length} robots with bad slug format: ${badSlugs.map(r => `${r.name} (${r.slug})`).join(", ")}`);
+    console.log(`  [WARN] ${badSlugs.length} robots with bad slug format: ${badSlugs.map(r => `${r.name} (${r.slug})`).join(", ")}`);
   }
 
   // Manufacturer slugs
@@ -277,12 +277,12 @@ async function auditF_URLs(robots: AuditRobot[], manufacturers: AuditManufacture
   const mfrDupes = mfrSlugs.filter((s, i) => mfrSlugs.indexOf(s) !== i);
   if (mfrDupes.length > 0) {
     criticalIssues++;
-    console.log(`  ⚠ Duplicate manufacturer slugs: ${mfrDupes.join(", ")}`);
+    console.log(`  [WARN] Duplicate manufacturer slugs: ${mfrDupes.join(", ")}`);
   }
 
   const badMfrSlugs = manufacturers.filter(m => m.slug && (m.slug !== m.slug.toLowerCase() || /[^a-z0-9-]/.test(m.slug)));
   if (badMfrSlugs.length > 0) {
-    console.log(`  ⚠ ${badMfrSlugs.length} manufacturers with bad slug format`);
+    console.log(`  [WARN] ${badMfrSlugs.length} manufacturers with bad slug format`);
   }
 
   console.log(`  Slug checks complete. ${robotDupes.length} dupes, ${nullSlugs.length} null, ${badSlugs.length} format issues.`);
@@ -307,7 +307,7 @@ async function auditH_Categories(categories: AuditCategory[], robots: AuditRobot
     categoryStats.push({ name: cat.name, count: catRobots.length, status, top3 });
 
     if (catRobots.length < 5) {
-      console.log(`  ⚠ ${cat.name}: only ${catRobots.length} active robots`);
+      console.log(`  [WARN] ${cat.name}: only ${catRobots.length} active robots`);
     }
   }
 
@@ -375,7 +375,7 @@ async function auditJ_APIEndpoints() {
   apiResults.push({ endpoint: "manufacturers/top", status: topMfrs && topMfrs.length > 0 ? "OK" : "EMPTY", data: `${topMfrs?.length || 0} with logos` });
 
   for (const r of apiResults) {
-    console.log(`  ${r.status === "OK" ? "✓" : "✗"} ${r.endpoint}: ${r.data}`);
+    console.log(`  ${r.status === "OK" ? "[OK]" : "[ERR]"} ${r.endpoint}: ${r.data}`);
   }
 }
 
@@ -398,9 +398,9 @@ async function fixD_ScoreInconsistencies(robots: AuditRobot[]) {
     if (!error) {
       issuesFixed++;
       changes.push(`Corrected RoboScore for ${correction.name}: ${correction.old} → ${correction.new_}`);
-      console.log(`  ✓ ${correction.name}: ${correction.old} → ${correction.new_}`);
+      console.log(`  [OK] ${correction.name}: ${correction.old} → ${correction.new_}`);
     } else {
-      console.log(`  ✗ ${correction.name}: ${error.message}`);
+      console.log(`  [ERR] ${correction.name}: ${error.message}`);
       manualReview.push(`Failed to fix score for ${correction.name}: ${error.message}`);
     }
   }
@@ -424,7 +424,7 @@ async function fixE_Slugs(robots: AuditRobot[], manufacturers: AuditManufacturer
     if (!error) {
       issuesFixed++;
       changes.push(`Fixed slug for ${r.name}: ${r.slug} → ${newSlug}`);
-      console.log(`  ✓ ${r.name}: ${r.slug} → ${newSlug}`);
+      console.log(`  [OK] ${r.name}: ${r.slug} → ${newSlug}`);
     }
   }
 
@@ -442,7 +442,7 @@ async function fixE_Slugs(robots: AuditRobot[], manufacturers: AuditManufacturer
     if (!error) {
       issuesFixed++;
       changes.push(`Fixed manufacturer slug for ${m.name}: ${m.slug} → ${newSlug}`);
-      console.log(`  ✓ ${m.name}: ${m.slug} → ${newSlug}`);
+      console.log(`  [OK] ${m.name}: ${m.slug} → ${newSlug}`);
     }
   }
 }
@@ -455,12 +455,12 @@ async function fixG_MissingLinks(robots: AuditRobot[]) {
 
   for (const r of nullCat) {
     manualReview.push(`Robot "${r.name}" has no category_id — needs manual assignment`);
-    console.log(`  ⚠ ${r.name}: no category — needs manual review`);
+    console.log(`  [WARN] ${r.name}: no category — needs manual review`);
   }
 
   for (const r of nullMfr) {
     manualReview.push(`Robot "${r.name}" has no manufacturer_id — needs manual assignment`);
-    console.log(`  ⚠ ${r.name}: no manufacturer — needs manual review`);
+    console.log(`  [WARN] ${r.name}: no manufacturer — needs manual review`);
   }
 }
 
@@ -580,7 +580,7 @@ async function fixA_BrokenImages(robots: AuditRobot[]) {
       imageResults.fixed++;
       issuesFixed++;
       changes.push(`Fixed image for ${r.name}`);
-      console.log(`    ✓ Uploaded to Supabase Storage`);
+      console.log(`    [OK] Uploaded to Supabase Storage`);
     } catch (err) {
       console.log(`    ERR: ${err instanceof Error ? err.message : String(err)}`);
       imageResults.unfixable++;
@@ -676,7 +676,7 @@ async function fixB_MissingDescriptions(robots: AuditRobot[]) {
         await supabase.from("robots").update(updates).eq("id", r.id);
         issuesFixed++;
         changes.push(`Added description for ${r.name}: ${Object.keys(updates).join(", ")}`);
-        console.log(`    ✓ Updated: ${Object.keys(updates).join(", ")}`);
+        console.log(`    [OK] Updated: ${Object.keys(updates).join(", ")}`);
       } else {
         console.log(`    SKIP: extracted text too short`);
       }
@@ -749,7 +749,7 @@ async function fixC_MissingSpecs(robots: AuditRobot[]) {
         issuesFixed++;
         specChanges.push({ name: r.name, added: addedCount, fields: Object.keys(newSpecs).join(", ") });
         changes.push(`Added ${addedCount} specs for ${r.name}`);
-        console.log(`    ✓ Added ${addedCount} fields`);
+        console.log(`    [OK] Added ${addedCount} fields`);
       } else {
         console.log(`    SKIP: no new specs found`);
       }
@@ -787,7 +787,7 @@ async function fixManufacturerLogos(manufacturers: AuditManufacturer[]) {
         issuesFixed++;
         logoResults.fixed++;
         changes.push(`Fixed logo for ${m.name} (Google Favicon)`);
-        console.log(`  ✓ ${m.name}: set Google Favicon`);
+        console.log(`  [OK] ${m.name}: set Google Favicon`);
       }
     } else {
       manualReview.push(`Could not fix logo for ${m.name} — manual upload needed`);

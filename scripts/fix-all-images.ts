@@ -351,7 +351,7 @@ async function tryUpload(robot: AuditRobot, imageUrl: string): Promise<boolean> 
       images: [{ url: publicUrl.publicUrl, alt: robot.name }],
     }).eq("id", robot.id);
 
-    console.log(`    ✓ Uploaded to Supabase Storage (${(buf.length / 1024).toFixed(0)}KB)`);
+    console.log(`    [OK] Uploaded to Supabase Storage (${(buf.length / 1024).toFixed(0)}KB)`);
     return true;
   } catch {
     return false;
@@ -419,7 +419,7 @@ async function main() {
       fixed++;
     } else {
       failed++;
-      console.log(`    ✗ No image found after all strategies`);
+      console.log(`    [ERR] No image found after all strategies`);
     }
 
     await delay(3000);

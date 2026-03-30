@@ -154,7 +154,7 @@ async function uploadToStorage(slug: string, name: string, buf: Buffer, sourceUr
     return false;
   }
 
-  console.log(`    ✅ Uploaded (${Math.round(buf.length / 1024)}KB) → ${publicUrl.slice(0, 80)}`);
+  console.log(`    [OK] Uploaded (${Math.round(buf.length / 1024)}KB) → ${publicUrl.slice(0, 80)}`);
   return true;
 }
 
@@ -168,7 +168,7 @@ async function main() {
     if (success) {
       fixed++;
     } else {
-      console.log("    ❌ Could not find suitable image");
+      console.log("    [ERR] Could not find suitable image");
     }
     await delay(2000);
   }

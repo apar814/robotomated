@@ -62,7 +62,7 @@ async function fetchAmazonPrice(asin: string): Promise<number | null> {
 }
 
 async function main() {
-  console.log("🤖 Robotomated Price Update Script");
+  console.log("[BOT] Robotomated Price Update Script");
   console.log("===================================");
   console.log(`Time: ${new Date().toISOString()}\n`);
 

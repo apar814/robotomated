@@ -123,7 +123,7 @@ Return JSON with these exact fields:
     // Extract JSON from response (handle potential markdown wrapping)
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      console.error(`  ⚠️ ${robot.slug}: No JSON in response`);
+      console.error(`  [WARN] ${robot.slug}: No JSON in response`);
       return null;
     }
 
@@ -143,13 +143,13 @@ Return JSON with these exact fields:
     return data;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error(`  ❌ ${robot.slug}: AI error — ${msg}`);
+    console.error(`  [ERR] ${robot.slug}: AI error — ${msg}`);
     return null;
   }
 }
 
 async function main() {
-  console.log("🤖 Populating Buyer Intelligence (AI Estimation)\n");
+  console.log("[BOT] Populating Buyer Intelligence (AI Estimation)\n");
 
   // Fetch robots that don't have buyer intelligence data yet
   const { data: robots, error } = await supabase
@@ -172,7 +172,7 @@ async function main() {
   console.log(`Found ${robots.length} robots needing buyer intelligence data.\n`);
 
   if (robots.length === 0) {
-    console.log("✅ All robots already have buyer intelligence data.");
+    console.log("[OK] All robots already have buyer intelligence data.");
     return;
   }
 
@@ -199,10 +199,10 @@ async function main() {
           .eq("id", robot.id);
 
         if (updateError) {
-          console.error(`  ❌ ${robot.slug}: DB update failed — ${updateError.message}`);
+          console.error(`  [ERR] ${robot.slug}: DB update failed — ${updateError.message}`);
           failed++;
         } else {
-          console.log(`  ✅ ${robot.slug} (${robot.robot_categories?.slug || "?"}) — health: ${data.vendor_health_score}/10, maint: $${data.maintenance_annual_cost_low}-${data.maintenance_annual_cost_high}/yr`);
+          console.log(`  [OK] ${robot.slug} (${robot.robot_categories?.slug || "?"}) — health: ${data.vendor_health_score}/10, maint: $${data.maintenance_annual_cost_low}-${data.maintenance_annual_cost_high}/yr`);
           completed++;
         }
       })
@@ -215,8 +215,8 @@ async function main() {
   }
 
   console.log(`\n═══════════════════════════════════`);
-  console.log(`✅ Complete: ${completed}/${robots.length}`);
-  console.log(`❌ Failed: ${failed}/${robots.length}`);
+  console.log(`[OK] Complete: ${completed}/${robots.length}`);
+  console.log(`[ERR] Failed: ${failed}/${robots.length}`);
   console.log(`═══════════════════════════════════`);
 }
 

@@ -244,14 +244,14 @@ const robots: RobotData[] = [
 
 // ── Main ──
 async function main() {
-  console.log("🤖 Robotomated Import Script\n");
+  console.log("[BOT] Robotomated Import Script\n");
 
   let mfrsCreated = 0, mfrsExisted = 0;
   let catsCreated = 0, catsExisted = 0;
   let robotsInserted = 0, robotsSkipped = 0, robotsErrored = 0;
 
   // 1. Ensure categories exist
-  console.log("📁 Ensuring categories...");
+  console.log("[DIR] Ensuring categories...");
   const catMap = new Map<string, string>();
   for (const cat of categories) {
     const { data: existing } = await supabase.from("robot_categories").select("id").eq("slug", cat.slug).single();
@@ -260,16 +260,16 @@ async function main() {
       catsExisted++;
     } else {
       const { data: created, error } = await supabase.from("robot_categories").insert(cat).select("id").single();
-      if (error) { console.error(`  ❌ Category ${cat.slug}: ${error.message}`); continue; }
+      if (error) { console.error(`  [ERR] Category ${cat.slug}: ${error.message}`); continue; }
       catMap.set(cat.slug, created!.id);
       catsCreated++;
-      console.log(`  ✅ Created category: ${cat.name}`);
+      console.log(`  [OK] Created category: ${cat.name}`);
     }
   }
   console.log(`  Categories: ${catsCreated} created, ${catsExisted} existed\n`);
 
   // 2. Ensure manufacturers exist
-  console.log("🏭 Ensuring manufacturers...");
+  console.log("[MFR] Ensuring manufacturers...");
   const mfrMap = new Map<string, string>();
   for (const mfr of manufacturers) {
     const { data: existing } = await supabase.from("manufacturers").select("id").eq("slug", mfr.slug).single();
@@ -281,16 +281,16 @@ async function main() {
         slug: mfr.slug, name: mfr.name, country: mfr.country,
         founded_year: mfr.founded_year, website: mfr.website, verified: true,
       }).select("id").single();
-      if (error) { console.error(`  ❌ Manufacturer ${mfr.slug}: ${error.message}`); continue; }
+      if (error) { console.error(`  [ERR] Manufacturer ${mfr.slug}: ${error.message}`); continue; }
       mfrMap.set(mfr.slug, created!.id);
       mfrsCreated++;
-      console.log(`  ✅ Created: ${mfr.name}`);
+      console.log(`  [OK] Created: ${mfr.name}`);
     }
   }
   console.log(`  Manufacturers: ${mfrsCreated} created, ${mfrsExisted} existed\n`);
 
   // 3. Insert robots
-  console.log("🤖 Importing robots...");
+  console.log("[BOT] Importing robots...");
   for (const r of robots) {
     // Check exists
     const { data: existing } = await supabase.from("robots").select("id").eq("slug", r.slug).single();
@@ -298,8 +298,8 @@ async function main() {
 
     const mfrId = mfrMap.get(r.mfr);
     const catId = catMap.get(r.cat);
-    if (!mfrId) { console.error(`  ❌ ${r.slug}: manufacturer "${r.mfr}" not found`); robotsErrored++; continue; }
-    if (!catId) { console.error(`  ❌ ${r.slug}: category "${r.cat}" not found`); robotsErrored++; continue; }
+    if (!mfrId) { console.error(`  [ERR] ${r.slug}: manufacturer "${r.mfr}" not found`); robotsErrored++; continue; }
+    if (!catId) { console.error(`  [ERR] ${r.slug}: category "${r.cat}" not found`); robotsErrored++; continue; }
 
     const images = getNextImage(r.cat);
 
@@ -320,7 +320,7 @@ async function main() {
     });
 
     if (error) {
-      console.error(`  ❌ ${r.slug}: ${error.message}`);
+      console.error(`  [ERR] ${r.slug}: ${error.message}`);
       robotsErrored++;
     } else {
       robotsInserted++;
@@ -328,7 +328,7 @@ async function main() {
   }
 
   console.log(`\n${"=".repeat(50)}`);
-  console.log(`📊 Import Summary`);
+  console.log(`[STATS] Import Summary`);
   console.log(`${"=".repeat(50)}`);
   console.log(`  Categories:    ${catsCreated} created, ${catsExisted} existed`);
   console.log(`  Manufacturers: ${mfrsCreated} created, ${mfrsExisted} existed`);

@@ -83,7 +83,7 @@ async function main() {
   console.log(`Missing affiliate_url: ${missing.length}\n`);
 
   if (missing.length === 0) {
-    console.log("✅ All robots have affiliate URLs!");
+    console.log("[OK] All robots have affiliate URLs!");
     return;
   }
 
@@ -107,14 +107,14 @@ async function main() {
         .eq("id", r.id);
 
       if (updateErr) {
-        console.log(`❌ DB error: ${updateErr.message}`);
+        console.log(`[ERR] DB error: ${updateErr.message}`);
         failed++;
       } else {
-        console.log(`✅ ${url.slice(0, 80)}`);
+        console.log(`[OK] ${url.slice(0, 80)}`);
         filled++;
       }
     } else {
-      console.log("❌ No URL found");
+      console.log("[ERR] No URL found");
       failed++;
     }
 
@@ -123,7 +123,7 @@ async function main() {
   }
 
   console.log(`\n${"═".repeat(50)}`);
-  console.log(`📊 Affiliate Link Audit Results`);
+  console.log(`[STATS] Affiliate Link Audit Results`);
   console.log(`${"═".repeat(50)}`);
   console.log(`  Total robots:     ${total}`);
   console.log(`  Already had URL:  ${existing}`);

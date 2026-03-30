@@ -140,34 +140,34 @@ function resolveUrl(url: string, base: string): string {
 }
 
 async function main() {
-  console.log("🤖 Robotomated Image Scraper\n");
+  console.log("[BOT] Robotomated Image Scraper\n");
 
   // Create storage buckets
   await supabase.storage.createBucket("logos", { public: true }).catch(() => {});
   await supabase.storage.createBucket("robot-images", { public: true }).catch(() => {});
 
   // ── LOGOS ──
-  console.log("🏭 Scraping manufacturer logos...");
+  console.log("[MFR] Scraping manufacturer logos...");
   const { data: mfrs } = await supabase.from("manufacturers").select("id, slug, name, website, logo_url").order("name");
   let logoSuccess = 0, logoFail = 0;
 
   for (const mfr of (mfrs || []).filter(m => m.website && !m.logo_url)) {
     await delay(1000);
     const html = await fetchHtml(mfr.website);
-    if (!html) { console.log(`  ❌ ${mfr.name}: fetch failed`); logoFail++; continue; }
+    if (!html) { console.log(`  [ERR] ${mfr.name}: fetch failed`); logoFail++; continue; }
 
     const logoUrl = extractLogoUrl(html, mfr.website);
-    if (!logoUrl) { console.log(`  ❌ ${mfr.name}: no logo found in HTML`); logoFail++; continue; }
+    if (!logoUrl) { console.log(`  [ERR] ${mfr.name}: no logo found in HTML`); logoFail++; continue; }
 
     // Update logo_url directly (hotlink from manufacturer site)
     await supabase.from("manufacturers").update({ logo_url: logoUrl }).eq("id", mfr.id);
-    console.log(`  ✅ ${mfr.name}: ${logoUrl.substring(0, 80)}...`);
+    console.log(`  [OK] ${mfr.name}: ${logoUrl.substring(0, 80)}...`);
     logoSuccess++;
   }
   console.log(`  Logos: ${logoSuccess} found, ${logoFail} failed, ${(mfrs || []).filter(m => m.logo_url).length} already set\n`);
 
   // ── PRODUCT IMAGES ──
-  console.log("📸 Scraping robot product images...");
+  console.log("[IMG] Scraping robot product images...");
   let imgSuccess = 0, imgFail = 0;
 
   for (const [slug, pageUrl] of Object.entries(robotProductPages)) {
@@ -175,30 +175,30 @@ async function main() {
 
     // Check if robot already has a non-Unsplash image
     const { data: robot } = await supabase.from("robots").select("id, images").eq("slug", slug).single();
-    if (!robot) { console.log(`  ⏭ ${slug}: not in DB`); continue; }
+    if (!robot) { console.log(`  [SKIP] ${slug}: not in DB`); continue; }
 
     const currentImages = (robot.images || []) as { url: string }[];
     if (currentImages.length > 0 && !currentImages[0].url.includes("unsplash.com")) {
-      console.log(`  ⏭ ${slug}: already has non-Unsplash image`);
+      console.log(`  [SKIP] ${slug}: already has non-Unsplash image`);
       continue;
     }
 
     const html = await fetchHtml(pageUrl);
-    if (!html) { console.log(`  ❌ ${slug}: fetch failed (${pageUrl})`); imgFail++; continue; }
+    if (!html) { console.log(`  [ERR] ${slug}: fetch failed (${pageUrl})`); imgFail++; continue; }
 
     const imageUrl = extractImageUrl(html, pageUrl);
-    if (!imageUrl) { console.log(`  ❌ ${slug}: no product image found`); imgFail++; continue; }
+    if (!imageUrl) { console.log(`  [ERR] ${slug}: no product image found`); imgFail++; continue; }
 
     // Update robot images
     await supabase.from("robots").update({
       images: [{ url: imageUrl, alt: `${slug} product photo` }]
     }).eq("id", robot.id);
-    console.log(`  ✅ ${slug}: ${imageUrl.substring(0, 80)}...`);
+    console.log(`  [OK] ${slug}: ${imageUrl.substring(0, 80)}...`);
     imgSuccess++;
   }
 
   console.log(`\n${"=".repeat(50)}`);
-  console.log(`📊 Scraping Summary`);
+  console.log(`[STATS] Scraping Summary`);
   console.log(`${"=".repeat(50)}`);
   console.log(`  Logos:  ${logoSuccess} scraped, ${logoFail} failed`);
   console.log(`  Images: ${imgSuccess} scraped, ${imgFail} failed`);

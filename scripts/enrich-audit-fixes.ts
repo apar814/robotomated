@@ -163,7 +163,7 @@ async function main() {
         await supabase.from("robots").update(updates).eq("id", r.id);
         issuesFixed++;
         changes.push(`Added description for ${r.name}: ${Object.keys(updates).join(", ")}`);
-        console.log(`  ✓ Updated: ${Object.keys(updates).join(", ")}`);
+        console.log(`  [OK] Updated: ${Object.keys(updates).join(", ")}`);
       } else {
         console.log(`  SKIP: couldn't extract good descriptions`);
       }
@@ -229,7 +229,7 @@ async function main() {
         await supabase.from("robots").update({ specs: merged as Record<string, unknown> }).eq("id", r.id);
         issuesFixed++;
         changes.push(`Added ${addedCount} specs for ${r.name}: ${Object.keys(newSpecs).join(", ")}`);
-        console.log(`  ✓ Added ${addedCount} fields: ${Object.keys(newSpecs).join(", ")}`);
+        console.log(`  [OK] Added ${addedCount} fields: ${Object.keys(newSpecs).join(", ")}`);
       } else {
         console.log(`  SKIP: no new specs extracted`);
       }
@@ -332,7 +332,7 @@ async function main() {
 
       issuesFixed++;
       changes.push(`Fixed image for ${r.name}`);
-      console.log(`  ✓ Uploaded to Supabase Storage`);
+      console.log(`  [OK] Uploaded to Supabase Storage`);
     } catch (err) {
       console.log(`  ERR: ${err instanceof Error ? err.message : String(err)}`);
     }
