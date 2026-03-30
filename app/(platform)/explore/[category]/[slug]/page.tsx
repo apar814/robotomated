@@ -20,6 +20,8 @@ import { AddToCompareButton } from "@/components/compare/add-to-compare-button";
 import { PriceAlertForm } from "@/components/commerce/price-alert-form";
 import { RobotFinderSidebarCta } from "@/components/ui/robot-finder-cta";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
+import { ShareButtons } from "@/components/robots/share-buttons";
+import { DownloadReport } from "@/components/robots/download-report";
 import { QuickVerdictBar } from "@/components/robots/quick-verdict-bar";
 import { TcoSummaryCard } from "@/components/robots/tco-summary-card";
 import { VendorHealthCard } from "@/components/robots/vendor-health-card";
@@ -106,6 +108,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${data.name} Review & ROI Calculator (${YEAR}) | Robotomated`,
     description: `${data.name} by ${data.manufacturers?.name} — ${scoreStr}. ${priceStr}. ${data.description_short || "Expert review, specs, ROI calculator, and pricing."}`,
+    openGraph: {
+      title: `${data.name} — ${scoreStr || "RoboScore Pending"} | Robotomated`,
+      description: `${data.name} by ${data.manufacturers?.name}. ${priceStr}. ${data.description_short || "Expert review, specs, ROI calculator, and pricing."}`,
+      images: [`/api/og/robot/${slug}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [`/api/og/robot/${slug}`],
+    },
   };
 }
 
@@ -258,6 +269,28 @@ export default async function RobotDetailPage({ params }: Props) {
               </a>
               <AddToCompareButton slug={robot.slug} />
               <SaveRobotButton robotId={robot.id} />
+            </div>
+
+            {/* Share & Download */}
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <ShareButtons
+                robotName={robot.name}
+                robotScore={robot.robo_score}
+                robotUrl={`/explore/${categorySlug}/${robot.slug}`}
+              />
+              <DownloadReport
+                robot={{
+                  name: robot.name,
+                  manufacturer: mfr?.name || "Unknown",
+                  roboScore: robot.robo_score,
+                  scoreBreakdown: breakdown as Record<string, number> | null,
+                  priceCurrent: robot.price_current,
+                  specs: specs,
+                  maintenanceCostLow: robot.maintenance_annual_cost_low,
+                  maintenanceCostHigh: robot.maintenance_annual_cost_high,
+                  warrantyMonths: robot.warranty_months,
+                }}
+              />
             </div>
           </div>
 
