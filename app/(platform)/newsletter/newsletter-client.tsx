@@ -89,8 +89,48 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
   return (
     <div>
       {/* Hero — split layout */}
-      <section className="px-4 py-20">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[3fr_2fr]">
+      <section className="relative overflow-hidden px-4 py-20">
+        {/* Abstract circuit / data-node network background */}
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <radialGradient id="nl-glow" cx="30%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="#00C2FF" stopOpacity="0.06" />
+              <stop offset="100%" stopColor="#0A0F1E" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#nl-glow)" />
+          {/* Grid lines */}
+          <line x1="10%" y1="0" x2="10%" y2="100%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="30%" y1="0" x2="30%" y2="100%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#00C2FF" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="70%" y1="0" x2="70%" y2="100%" stroke="#7B2FFF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="90%" y1="0" x2="90%" y2="100%" stroke="#7B2FFF" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="0" y1="25%" x2="100%" y2="25%" stroke="#00C2FF" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="0" y1="75%" x2="100%" y2="75%" stroke="#7B2FFF" strokeOpacity="0.03" strokeWidth="1" />
+          {/* Data nodes */}
+          <circle cx="10%" cy="25%" r="3" fill="#00C2FF" opacity="0.15" />
+          <circle cx="30%" cy="50%" r="4" fill="#00C2FF" opacity="0.12" />
+          <circle cx="50%" cy="25%" r="2.5" fill="#7B2FFF" opacity="0.15" />
+          <circle cx="70%" cy="75%" r="3" fill="#7B2FFF" opacity="0.12" />
+          <circle cx="90%" cy="50%" r="3.5" fill="#00C2FF" opacity="0.10" />
+          <circle cx="30%" cy="75%" r="2" fill="#00E5A0" opacity="0.12" />
+          <circle cx="70%" cy="25%" r="2.5" fill="#00E5A0" opacity="0.10" />
+          {/* Connection lines between nodes */}
+          <line x1="10%" y1="25%" x2="30%" y2="50%" stroke="#00C2FF" strokeOpacity="0.06" strokeWidth="1" />
+          <line x1="30%" y1="50%" x2="50%" y2="25%" stroke="#00C2FF" strokeOpacity="0.05" strokeWidth="1" />
+          <line x1="50%" y1="25%" x2="70%" y2="25%" stroke="#7B2FFF" strokeOpacity="0.05" strokeWidth="1" />
+          <line x1="70%" y1="25%" x2="90%" y2="50%" stroke="#7B2FFF" strokeOpacity="0.06" strokeWidth="1" />
+          <line x1="90%" y1="50%" x2="70%" y2="75%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="70%" y1="75%" x2="30%" y2="75%" stroke="#00E5A0" strokeOpacity="0.05" strokeWidth="1" />
+          <line x1="30%" y1="75%" x2="30%" y2="50%" stroke="#00E5A0" strokeOpacity="0.04" strokeWidth="1" />
+        </svg>
+        <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[3fr_2fr]">
           {/* Left: copy + form */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-blue">Every Monday at 7am</p>
