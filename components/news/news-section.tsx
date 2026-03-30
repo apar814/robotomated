@@ -35,7 +35,6 @@ function SourceBadge({ source }: { source: string }) {
 }
 
 function HeroArticle({ article }: { article: NewsArticle }) {
-  const emoji = article.category === "Funding" ? "💰" : article.category.includes("Acquisition") ? "🤝" : article.category === "Manufacturing" ? "🏭" : "🤖";
   return (
     <a
       href={article.sourceUrl}

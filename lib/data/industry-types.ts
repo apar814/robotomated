@@ -28,7 +28,7 @@ export interface IndustryConfig {
   categorySlug: string;
   name: string;
   shortDescription: string;
-  icon: string; // emoji fallback
+  icon: string; // icon identifier for IndustryIcon component
   heroImage: string; // real photo URL for hub page cards
   metaTitle: string;
   metaDescription: string;
@@ -52,7 +52,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "warehouse",
     name: "Warehouse Robotics",
     shortDescription: "AMRs, AGVs, picking systems, and autonomous forklifts for warehouse and logistics automation.",
-    icon: "\u{1F4E6}",
+    icon: "grid",
     heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=600&fit=crop",
     metaTitle: "Best Warehouse Robots 2026 — Compare Systems by Use Case | Robotomated",
     metaDescription: "Compare 15+ warehouse robots across 5 use cases: picking, pallet transport, inventory, sorting, loading. Real specs, verified ROI data, and interactive calculator.",
@@ -141,7 +141,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "medical",
     name: "Medical Robotics",
     shortDescription: "Surgical systems, rehabilitation robots, hospital logistics, and disinfection automation for healthcare.",
-    icon: "\u{1F3E5}",
+    icon: "cross",
     heroImage: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=1200&h=600&fit=crop",
     metaTitle: "Best Medical & Surgical Robots 2026 — Compare Systems | Robotomated",
     metaDescription: "Compare leading medical robots of 2026: surgical systems, rehabilitation, hospital logistics. Real specs, clinical evidence, and ROI analysis for healthcare facilities.",
@@ -230,7 +230,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "manufacturing",
     name: "Manufacturing Robotics",
     shortDescription: "Cobots, industrial arms, welding systems, and quality inspection robots for production facilities.",
-    icon: "\u{1F3ED}",
+    icon: "gear",
     heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=600&fit=crop",
     metaTitle: "Best Manufacturing Robots 2026 — Compare 20+ Cobots & Arms | Robotomated",
     metaDescription: "Compare 20+ manufacturing robots: collaborative cobots, industrial arms, welding systems. Real specs, payload data, and ROI calculators for production facilities.",
@@ -319,7 +319,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "agricultural",
     name: "Agricultural Robotics",
     shortDescription: "Crop spraying drones, autonomous tractors, weeding robots, and precision farming systems.",
-    icon: "\u{1F33E}",
+    icon: "leaf",
     heroImage: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&h=600&fit=crop",
     metaTitle: "Best Agricultural Robots 2026 — Farming Automation | Robotomated",
     metaDescription: "Compare agricultural robots: crop spraying drones, weeding robots, harvesting systems. Real field data, specs, and ROI calculators for farms and agribusinesses.",
@@ -406,7 +406,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "construction",
     name: "Construction Robotics",
     shortDescription: "Bricklaying robots, autonomous excavators, site survey drones, and 3D concrete printing systems.",
-    icon: "\u{1F3D7}\u{FE0F}",
+    icon: "building",
     heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop",
     metaTitle: "Best Construction Robots 2026 — Autonomous Equipment & Drones | Robotomated",
     metaDescription: "Compare construction robots: bricklaying, autonomous excavators, site survey drones, 3D printing. Real project data, safety specs, and ROI calculators for contractors.",
@@ -495,7 +495,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "delivery",
     name: "Delivery Robotics",
     shortDescription: "Autonomous delivery vehicles, sidewalk robots, and drone delivery systems for last-mile logistics.",
-    icon: "\u{1F6F5}",
+    icon: "package",
     heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=600&fit=crop",
     metaTitle: "Best Delivery Robots 2026 — Last-Mile Autonomous Vehicles | Robotomated",
     metaDescription: "Compare delivery robots and autonomous vehicles for last-mile logistics: sidewalk robots, delivery drones, autonomous vans. Specs, regulations, and ROI data.",
@@ -582,7 +582,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "security",
     name: "Security & Surveillance Robotics",
     shortDescription: "Autonomous patrol robots, surveillance drones, and perimeter monitoring systems for facility security.",
-    icon: "\u{1F6E1}\u{FE0F}",
+    icon: "shield",
     heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1200&h=600&fit=crop",
     metaTitle: "Best Security Robots 2026 — Autonomous Patrol & Surveillance | Robotomated",
     metaDescription: "Compare security robots: autonomous patrol units, surveillance drones, perimeter monitors. Real specs, deployment data, and ROI analysis for facility security teams.",
@@ -669,7 +669,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "hospitality",
     name: "Hospitality Robotics",
     shortDescription: "Room service robots, restaurant automation, cleaning robots, and concierge systems for hotels and restaurants.",
-    icon: "\u{1F3E8}",
+    icon: "utensils",
     heroImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=600&fit=crop",
     metaTitle: "Best Hospitality Robots 2026 — Hotels, Restaurants & Service | Robotomated",
     metaDescription: "Compare hospitality robots for hotels and restaurants: room service delivery, kitchen automation, cleaning, concierge. Real deployment data and ROI analysis.",
@@ -756,7 +756,7 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     categorySlug: "eldercare",
     name: "Eldercare Robotics",
     shortDescription: "Companion robots, fall detection systems, medication dispensing, and mobility assistance for senior care.",
-    icon: "\u{1F9D3}",
+    icon: "heart",
     heroImage: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1200&h=600&fit=crop",
     metaTitle: "Best Eldercare Robots 2026 — Companion, Mobility & Care Robots | Robotomated",
     metaDescription: "Compare eldercare robots: companion robots, fall detection, medication dispensing, mobility assistance. Real clinical data, safety specs, and buyer guides for care facilities.",
