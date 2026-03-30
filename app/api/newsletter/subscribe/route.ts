@@ -18,7 +18,7 @@ function buildWelcomeEmail(): string {
     </p>
     <ul style="line-height:2;font-size:14px;padding-left:20px;margin:0 0 16px;">
       <li><strong style="color:#00C2FF;">Market Moves</strong> — Funding rounds, acquisitions, IPOs</li>
-      <li><strong style="color:#00E5A0;">New Robots</strong> — Every robot added to our 464+ database</li>
+      <li><strong style="color:#00E5A0;">New Robots</strong> — Every robot added to our database</li>
       <li><strong style="color:#7B2FFF;">Price Drops</strong> — Weekly price movements you should know about</li>
       <li><strong style="color:#FF6B35;">Industry Intel</strong> — Trends, analysis, what operators need to know</li>
     </ul>
@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
       }
       return NextResponse.json({ message: "You're already subscribed! Preference updated." });
     }
+    console.error("Newsletter subscribe error:", error.message, error.code);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

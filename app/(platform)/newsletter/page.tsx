@@ -4,7 +4,7 @@ import { NewsletterPageClient } from "./newsletter-client";
 
 export const metadata: Metadata = {
   title: "The Robotomated Brief — Weekly Robotics Intelligence",
-  description: "Weekly robotics intelligence for operators, buyers, and builders. 464+ robots tracked, market funding data, price movements, and industry analysis delivered every Monday.",
+  description: "Weekly robotics intelligence for operators, buyers, and builders. Hundreds of robots tracked, market funding data, price movements, and industry analysis delivered every Monday.",
   alternates: { canonical: "/newsletter" },
 };
 

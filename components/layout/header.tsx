@@ -3,17 +3,18 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { UserMenu } from "@/components/auth/user-menu";
+import { useSiteStats } from "@/lib/context/site-stats";
 
 const categories = [
-  { slug: "manufacturing", name: "Cobots & Industrial", count: "24" },
-  { slug: "warehouse", name: "Warehouse", count: "15" },
-  { slug: "consumer", name: "Consumer & Home", count: "19" },
-  { slug: "medical", name: "Medical", count: "12" },
-  { slug: "construction", name: "Construction", count: "8" },
-  { slug: "agricultural", name: "Agricultural", count: "4" },
-  { slug: "delivery", name: "Delivery", count: "7" },
-  { slug: "drone", name: "Drones", count: "4" },
-  { slug: "software", name: "Software", count: "2" },
+  { slug: "manufacturing", name: "Cobots & Industrial" },
+  { slug: "warehouse", name: "Warehouse" },
+  { slug: "consumer", name: "Consumer & Home" },
+  { slug: "medical", name: "Medical" },
+  { slug: "construction", name: "Construction" },
+  { slug: "agricultural", name: "Agricultural" },
+  { slug: "delivery", name: "Delivery" },
+  { slug: "drone", name: "Drones" },
+  { slug: "software", name: "Software" },
 ];
 
 const navLinks = [
@@ -22,10 +23,11 @@ const navLinks = [
   { href: "/reviews", label: "Reviews" },
   { href: "/industries", label: "Industries" },
   { href: "/learn", label: "Learn" },
-  { href: "/market-intel", label: "Market Intel" },
+  { href: "/market", label: "Market Intel" },
 ];
 
 export function Header() {
+  const { robotCount } = useSiteStats();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
   const catRef = useRef<HTMLDivElement>(null);
@@ -92,7 +94,7 @@ export function Header() {
                         <p className="text-xs font-medium text-text-secondary group-hover:text-electric-blue">
                           {cat.name}
                         </p>
-                        <p className="text-[10px] text-text-tertiary">{cat.count} robots</p>
+                        <p className="text-[10px] text-text-tertiary">Browse &rarr;</p>
                       </Link>
                     ))}
                   </div>
@@ -101,7 +103,7 @@ export function Header() {
                     onClick={() => setCatOpen(false)}
                     className="mt-3 block border-t border-border pt-3 text-center text-xs font-medium text-electric-blue hover:underline"
                   >
-                    View All 464 Robots &rarr;
+                    View All {robotCount} Robots &rarr;
                   </Link>
                 </div>
               )}
@@ -136,7 +138,7 @@ export function Header() {
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
-              <span className="hidden font-sans text-xs sm:inline">Search 464 robots...</span>
+              <span className="hidden font-sans text-xs sm:inline">Search {robotCount} robots...</span>
               <kbd className="hidden rounded-[2px] border border-border-subtle bg-white/[0.03] px-1.5 py-0.5 font-mono text-[9px] sm:inline">
                 &#8984;K
               </kbd>

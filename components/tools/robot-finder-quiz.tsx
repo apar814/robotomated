@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
+import { useSiteStats } from "@/lib/context/site-stats";
 
 /* ── Industry → Use Case mapping ── */
 const INDUSTRY_OPTIONS: { value: string; label: string; code: string }[] = [
@@ -137,6 +138,7 @@ const INDUSTRY_TO_CATEGORY: Record<string, string> = {
 };
 
 export function RobotFinderQuiz() {
+  const { robotCount } = useSiteStats();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Partial<Answers>>({});
   const [results, setResults] = useState<RobotResult[] | null>(null);
@@ -285,7 +287,7 @@ export function RobotFinderQuiz() {
       <div className="flex flex-col items-center py-16">
         <div className="h-8 w-8 animate-spin rounded-full border-2 border-electric-blue border-t-transparent" />
         <p className="mt-4 font-mono text-sm text-text-tertiary">
-          Analyzing 464+ robots...
+          Analyzing {robotCount}+ robots...
         </p>
       </div>
     );

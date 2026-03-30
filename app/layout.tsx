@@ -11,6 +11,8 @@ import { CookieBanner } from "@/components/analytics/cookie-banner";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
+import { SiteStatsProvider } from "@/lib/context/site-stats";
+import { getSiteStats } from "@/lib/data/site-stats";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -56,11 +58,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const stats = await getSiteStats();
+
   return (
     <html
       lang="en"
@@ -69,6 +73,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
         <Providers>
+          <SiteStatsProvider stats={stats}>
           <PostHogProvider>
             <AffiliateDisclosureBanner />
             <Header />
@@ -80,6 +85,7 @@ export default function RootLayout({
             <CommandPalette />
             <CompareBar />
           </PostHogProvider>
+          </SiteStatsProvider>
         </Providers>
       </body>
     </html>

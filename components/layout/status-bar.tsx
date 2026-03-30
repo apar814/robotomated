@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSiteStats } from "@/lib/context/site-stats";
 
 export function StatusBar() {
+  const { robotCount, manufacturerCount, categoryCount } = useSiteStats();
   const [elapsed, setElapsed] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -34,17 +36,17 @@ export function StatusBar() {
 
         <span className="flex items-center gap-1.5">
           <span className="text-text-tertiary">ROBOTS</span>
-          <span className="font-semibold text-text-data">464</span>
+          <span className="font-semibold text-text-data">{robotCount}</span>
         </span>
 
         <span className="flex items-center gap-1.5">
           <span className="text-text-tertiary">MANUFACTURERS</span>
-          <span className="font-semibold text-text-data">167</span>
+          <span className="font-semibold text-text-data">{manufacturerCount}</span>
         </span>
 
         <span className="flex items-center gap-1.5">
           <span className="text-text-tertiary">MARKETS</span>
-          <span className="font-semibold text-text-data">15</span>
+          <span className="font-semibold text-text-data">{categoryCount}</span>
         </span>
       </div>
 
@@ -58,7 +60,7 @@ export function StatusBar() {
 
       {/* Mobile */}
       <div className="flex items-center text-text-tertiary md:hidden">
-        <span className="font-semibold text-text-data">464</span>
+        <span className="font-semibold text-text-data">{robotCount}</span>
         <span className="mx-1">ROBOTS</span>
         <span className="mx-1 text-text-ghost">//</span>
         <span className="font-semibold text-text-data">$103B</span>

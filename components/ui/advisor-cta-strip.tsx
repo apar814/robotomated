@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useSiteStats } from "@/lib/context/site-stats";
 
 export function AdvisorCtaStrip() {
+  const { robotCount } = useSiteStats();
   return (
     <div
       className="w-full px-6 py-10"
@@ -14,7 +18,7 @@ export function AdvisorCtaStrip() {
           Not sure which robot fits your operation?
         </h2>
         <p className="mt-2 text-[13px] text-tertiary">
-          Our AI advisor narrows 464 robots down to your top 3 in 5 questions.
+          Our AI advisor narrows {robotCount}+ robots down to your top 3 in 5 questions.
         </p>
         <Link
           href="/advisor"

@@ -31,6 +31,10 @@ async function getData() {
     return (cats || []).map((c) => ({ ...c, robot_count: counts[c.id] || 0 }));
   });
 
+  const { count: manufacturerCount } = await supabase
+    .from("manufacturers")
+    .select("id", { count: "exact", head: true });
+
   const trending = await cached<FeaturedRobot[]>("home:trending:v2", 1800, async () => {
     const { data } = await supabase
       .from("robots").select("id,slug,name,robo_score,price_current,price_msrp,description_short,images,year_released,manufacturer_id,category_id,manufacturers(name),robot_categories(slug,name)")
@@ -64,7 +68,7 @@ async function getData() {
 
   const totalRobots = categories.reduce((s, c) => s + c.robot_count, 0);
 
-  return { categories, trending, totalRobots };
+  return { categories, trending, totalRobots, manufacturerCount: manufacturerCount || 0 };
 }
 
 function formatPrice(price: number): string {
@@ -73,7 +77,7 @@ function formatPrice(price: number): string {
 }
 
 export default async function HomePage() {
-  const { categories, trending, totalRobots } = await getData();
+  const { categories, trending, totalRobots, manufacturerCount } = await getData();
 
   const topNews = NEWS_ARTICLES.slice(0, 3);
 
@@ -160,7 +164,7 @@ export default async function HomePage() {
           </div>
           <span className="hidden text-border sm:block">|</span>
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[14px] font-bold text-data">167</span>
+            <span className="font-mono text-[14px] font-bold text-data">{manufacturerCount}</span>
             <span className="text-[14px] text-tertiary">Manufacturers</span>
           </div>
           <span className="hidden text-border sm:block">|</span>
