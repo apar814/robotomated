@@ -1,5 +1,5 @@
 ---
-title: "Robot Integration with WMS & ERP Systems: A Technical Guide"
+title: "How Do I Integrate Robots with My WMS or ERP System?"
 slug: robot-integration-guide-wms-erp
 category: guides
 audience: advanced
@@ -18,6 +18,8 @@ robotSlugs:
   - boston-dynamics-stretch
   - 6-river-systems-chuck
 ---
+
+> **Quick Answer:** Integrate robots with your WMS or ERP using one of three patterns: direct API integration (simplest, 4-8 weeks with pre-built connectors), middleware platforms like MuleSoft or SVT Robotics ($5K-$30K/month, best for multi-vendor fleets), or event-driven message queues (most scalable for 100+ robot deployments). Integration timelines range from 4-8 weeks with pre-built connectors to 12-20 weeks for legacy WMS systems without modern APIs.
 
 The robot works in the demo. It works in the pilot. Then you connect it to your WMS, and everything breaks. Integration failures are the leading cause of delayed robot deployments — not because the technology is bad, but because the integration was underestimated, under-planned, and under-tested.
 
@@ -129,22 +131,31 @@ Every integration deployment needs a rollback plan — a documented, tested proc
 
 ## Frequently Asked Questions
 
-### How long does robot-WMS integration typically take?
+### Q: How long does robot-WMS integration typically take?
 
 For pre-built connectors (robot vendor has certified integration with your WMS): 4-8 weeks. For custom API integration: 8-16 weeks. For legacy WMS systems without modern APIs: 12-20 weeks. These timelines include development, testing, and UAT. Add 2-4 weeks for unexpected issues — integration projects almost always hit at least one.
 
-### What's the biggest integration risk?
+### Q: What's the biggest integration risk?
 
 Inventory data consistency. When a physical robot moves inventory and the WMS updates don't sync properly — due to timing, failed messages, or logic errors — you get phantom inventory (system shows stock that doesn't exist) and mislocated inventory (stock in a different location than the system shows). Both destroy pick accuracy. Mitigate with real-time sync, idempotent operations, and regular cycle count reconciliation.
 
-### Do I need to upgrade my network for robot integration?
+### Q: Do I need to upgrade my network for robot integration?
 
 Probably. Robot fleets generate constant network traffic — telemetry, task communication, and map updates. A typical AMR fleet of 30 robots needs 50-150 Mbps of dedicated wireless bandwidth with sub-50ms latency. If your warehouse WiFi was designed for handheld scanners, it likely needs an upgrade. Budget $30,000-$80,000 for a wireless refresh in a 200,000 sq ft facility.
 
-### Should integration be handled by the robot vendor, a systems integrator, or in-house?
+### Q: Should integration be handled by the robot vendor, a systems integrator, or in-house?
 
 Robot vendor-led integration works best for single-vendor deployments where the vendor has a pre-built connector for your WMS. Systems integrators work best for multi-vendor fleets or complex enterprise environments (multiple WMS instances, ERP integration, custom workflows). In-house integration requires strong software engineering capabilities and deep WMS knowledge — viable for large enterprises with dedicated IT/OT teams, but not recommended for first deployments.
 
-### What happens to the integration if I switch WMS platforms?
+### Q: What happens to the integration if I switch WMS platforms?
 
 You rebuild it. WMS migrations are already complex — adding robot integration to the migration scope increases risk. Plan the WMS migration first, stabilize, then reconnect the robot integration. If you used a middleware pattern (Pattern 2), the robot side of the integration may not need changes — only the WMS connector needs rebuilding. This is a major advantage of middleware-based architectures.
+
+## Sources
+
+- MHI Annual Industry Report 2025 — warehouse automation integration trends and middleware adoption data
+- Gartner Magic Quadrant for Warehouse Management Systems 2025 — WMS platform API capabilities and integration maturity
+- SVT Robotics — robotics middleware platform documentation and integration benchmarks
+- SAP S/4HANA Robot Framework Interface (RFI) — EWM robot integration architecture specifications
+- Cisco Industrial Wireless Design Guide — warehouse WiFi requirements for AMR fleet connectivity
+- ARC Advisory Group, Warehouse Automation Study 2025 — integration timeline and cost benchmarks across 200+ deployments

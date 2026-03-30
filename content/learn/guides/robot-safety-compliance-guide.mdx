@@ -1,5 +1,5 @@
 ---
-title: "Robot Safety & Compliance: What Every Buyer Must Know"
+title: "What Safety Standards and Compliance Do Robots Need?"
 slug: robot-safety-compliance-guide
 category: guides
 audience: intermediate
@@ -17,6 +17,8 @@ robotSlugs:
   - fanuc-crx-10ia
   - boston-dynamics-spot
 ---
+
+> **Quick Answer:** Robots need compliance with ISO 10218 (industrial robot safety), ISO/TS 15066 (collaborative robot force limits), and ANSI/RIA R15.06 (US-specific requirements). Every installation requires a documented risk assessment per ISO 12100, and in the US, OSHA's General Duty Clause mandates a hazard-free workplace with fines starting at $16,131 per serious violation. In the EU, CE marking under the Machinery Directive is mandatory.
 
 A robot that injures a worker doesn't just hurt a person — it halts production, triggers OSHA investigations, exposes the company to litigation, and sets back your entire automation program. Safety compliance isn't overhead. It's the foundation that makes everything else possible.
 
@@ -96,22 +98,31 @@ For related guidance, see our [cobot buying guide](/learn/guides/how-to-buy-a-co
 
 ## Frequently Asked Questions
 
-### Who is responsible for robot safety — the manufacturer or the buyer?
+### Q: Who is responsible for robot safety — the manufacturer or the buyer?
 
 Both, but for different things. The manufacturer is responsible for building a safe robot per ISO 10218-1 (inherent safety features, safety-rated control systems, documentation). The buyer/integrator is responsible for the safe installation per ISO 10218-2 — including the risk assessment, safeguarding, safety zone design, and operator training. If you use a systems integrator, they share this responsibility with you. Ultimately, the employer has the legal obligation to provide a safe workplace.
 
-### Do I need a safety consultant for robot deployment?
+### Q: Do I need a safety consultant for robot deployment?
 
 For traditional industrial robots (caged, high-speed): strongly recommended unless you have in-house safety engineering expertise. For cobots in simple applications: the vendor's application engineering team may be sufficient for the risk assessment, but have it reviewed by someone independent of the sale. For any deployment where workers will be in the robot's reach during operation: yes, engage a qualified safety consultant certified in robot safety (TUV, RIA-certified robot integrator).
 
-### What are the force limits for collaborative robots under ISO/TS 15066?
+### Q: What are the force limits for collaborative robots under ISO/TS 15066?
 
 ISO/TS 15066 defines maximum transient contact force and quasi-static clamping force for 29 body regions. Examples: skull (130N transient), chest (140N transient), hand/fingers (140N transient), abdomen (110N transient). These limits assume a specific contact area and duration. The actual safe operating speed for your cobot depends on its mass, payload, end-effector geometry, and the body region most likely to be contacted.
 
-### How often should safety systems be inspected?
+### Q: How often should safety systems be inspected?
 
 Safety-rated devices (e-stops, light curtains, safety scanners, safety PLCs) should be function-tested at least monthly per most standards. Full performance verification (response time, detection capability, stopping distance measurement) should be conducted annually or after any modification. Document all inspections. Many organizations integrate safety system checks into their PM schedule — see our [maintenance planning guide](/learn/guides/robot-maintenance-planning-guide).
 
-### What happens if OSHA investigates a robot incident at my facility?
+### Q: What happens if OSHA investigates a robot incident at my facility?
 
 OSHA will request your risk assessment, training records, maintenance logs, and safety system inspection records. They will verify that your installation complies with applicable standards (ANSI/RIA R15.06). If documentation is incomplete or non-compliant, expect citations regardless of whether the robot caused the injury. Penalties for serious violations start at $16,131 per instance. Willful violations can reach $161,323 and trigger criminal referral in cases involving fatalities.
+
+## Sources
+
+- ISO 10218-1:2024 and ISO 10218-2:2024 — International Organization for Standardization, industrial robot safety requirements
+- ISO/TS 15066:2016 — Collaborative robot safety, maximum allowable contact force specifications
+- OSHA General Duty Clause (Section 5(a)(1)) — US workplace safety enforcement and penalty schedules
+- ANSI/RIA R15.06-2012 (R2017) — Robotics Industries Association, US national standard for industrial robot safety
+- European Commission Machinery Directive 2006/42/EC — CE marking and conformity requirements for robotic systems
+- IEC 62443 — Industrial cybersecurity standards for networked automation systems
