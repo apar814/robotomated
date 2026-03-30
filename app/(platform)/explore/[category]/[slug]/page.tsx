@@ -18,6 +18,7 @@ import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 import { SafeImage } from "@/components/ui/safe-image";
 import { AddToCompareButton } from "@/components/compare/add-to-compare-button";
 import { PriceAlertForm } from "@/components/commerce/price-alert-form";
+import { RobotFinderSidebarCta } from "@/components/ui/robot-finder-cta";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { QuickVerdictBar } from "@/components/robots/quick-verdict-bar";
 import { TcoSummaryCard } from "@/components/robots/tco-summary-card";
@@ -674,6 +675,8 @@ export default async function RobotDetailPage({ params }: Props) {
                   )}
                 </div>
               )}
+              {/* Robot Finder CTA */}
+              <RobotFinderSidebarCta categorySlug={cat?.slug} />
             </div>
           </div>
         </div>

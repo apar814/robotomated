@@ -12,6 +12,7 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { IndustryRoiCalculator } from "@/components/industries/industry-roi-calculator";
 import { IndustryTypeFilter } from "@/components/industries/industry-type-filter";
 import { IndustryNewsletterCta } from "@/components/industries/industry-newsletter-cta";
+import { RobotFinderInlineLink } from "@/components/ui/robot-finder-cta";
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -142,6 +143,9 @@ export default async function IndustryPage({ params }: Props) {
           <p className="mt-3 max-w-xl text-lg leading-relaxed text-white/60">
             {industry.heroSubtitle.replace("[N]", String(allRobots.length))}
           </p>
+          <div className="mt-4">
+            <RobotFinderInlineLink industry={industry.categorySlug} />
+          </div>
 
           {/* Market stats */}
           <div className="mt-8 flex flex-wrap gap-4">

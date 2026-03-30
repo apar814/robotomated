@@ -9,6 +9,7 @@ import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import { GuidedEntry } from "@/components/home/guided-entry";
+import { RobotFinderCtaStrip } from "@/components/ui/robot-finder-cta";
 import { NEWS_ARTICLES } from "@/lib/data/news";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import type { RobotCategory } from "@/lib/supabase/types";
@@ -175,7 +176,12 @@ export default async function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          2.5. GUIDED ENTRY — 3-question intake
+          2.5. ROBOT FINDER CTA
+          ══════════════════════════════════════════ */}
+      <RobotFinderCtaStrip />
+
+      {/* ══════════════════════════════════════════
+          2.6. GUIDED ENTRY — 3-question intake
           ══════════════════════════════════════════ */}
       <GuidedEntry />
 
