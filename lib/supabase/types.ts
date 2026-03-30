@@ -147,6 +147,7 @@ export interface Database {
           vendor_funding_total: string | null;
           vendor_employees_range: string | null;
           vendor_health_score: number | null;
+          youtube_url: string | null;
         };
         Insert: {
           id?: string;
@@ -192,6 +193,7 @@ export interface Database {
           vendor_funding_total?: string | null;
           vendor_employees_range?: string | null;
           vendor_health_score?: number | null;
+          youtube_url?: string | null;
         };
         Update: {
           id?: string;
@@ -237,6 +239,7 @@ export interface Database {
           vendor_funding_total?: string | null;
           vendor_employees_range?: string | null;
           vendor_health_score?: number | null;
+          youtube_url?: string | null;
         };
         Relationships: [
           {

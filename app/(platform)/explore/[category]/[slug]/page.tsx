@@ -28,6 +28,7 @@ import { DeploymentGuide } from "@/components/robots/deployment-guide";
 import { MaintenanceGuide } from "@/components/robots/maintenance-guide";
 import { TrainingSection } from "@/components/robots/training-section";
 import { BuyersChecklist } from "@/components/robots/buyers-checklist";
+import { VideoEmbed } from "@/components/robots/video-embed";
 
 const YEAR = new Date().getFullYear();
 
@@ -68,6 +69,7 @@ interface RobotDetail {
   vendor_funding_total: string | null;
   vendor_employees_range: string | null;
   vendor_health_score: number | null;
+  youtube_url: string | null;
 }
 
 interface ReviewRow {
@@ -286,6 +288,16 @@ export default async function RobotDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── VIDEO EMBED ── */}
+      {robot.youtube_url && (
+        <section className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
+          <div className="section-label mb-3">
+            <span className="font-mono text-[9px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
+          </div>
+          <VideoEmbed youtubeUrl={robot.youtube_url} robotName={robot.name} />
+        </section>
+      )}
 
       {/* ── 3. QUICK VERDICT BAR ── */}
       <div className="mx-auto max-w-6xl px-4 lg:px-6">
