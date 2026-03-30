@@ -58,19 +58,12 @@ export async function POST(request: NextRequest) {
     .from("newsletter_subscribers")
     .insert({
       email: cleanEmail,
-      industry_preference: industry || null,
       source: source || "newsletter-page",
     });
 
   if (error) {
     if (error.code === "23505") {
-      if (industry) {
-        await supabase
-          .from("newsletter_subscribers")
-          .update({ industry_preference: industry })
-          .eq("email", cleanEmail);
-      }
-      return NextResponse.json({ message: "You're already subscribed! Preference updated." });
+      return NextResponse.json({ message: "You're already subscribed!" });
     }
     console.error("Newsletter subscribe error:", error.message, error.code);
     return NextResponse.json(
@@ -79,13 +72,24 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Update industry preference separately (column may not exist yet)
+  if (industry) {
+    supabase
+      .from("newsletter_subscribers")
+      .update({ industry_preference: industry })
+      .eq("email", cleanEmail)
+      .then(() => {});
+  }
+
   // Send welcome email (fire-and-forget)
-  resend.emails.send({
-    from: EMAIL_FROM,
-    to: cleanEmail,
-    subject: "You're in. Your robotics edge starts now.",
-    html: buildWelcomeEmail(),
-  }).catch(() => {}); // Don't fail the subscription if email fails
+  Promise.resolve(
+    resend.emails.send({
+      from: EMAIL_FROM,
+      to: cleanEmail,
+      subject: "You're in. Your robotics edge starts now.",
+      html: buildWelcomeEmail(),
+    })
+  ).catch(() => {});
 
   return NextResponse.json({
     message: "Welcome aboard! Check your inbox for a confirmation email. First brief arrives Monday.",
