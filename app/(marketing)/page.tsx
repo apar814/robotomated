@@ -3,10 +3,12 @@ import { createServerClient } from "@/lib/supabase/server";
 import { cached } from "@/lib/cache/redis";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 import { SocialProofStrip } from "@/components/ui/social-proof-strip";
+import { HeroNetworkSvg } from "@/components/ui/hero-network-svg";
 import { AdvisorCtaStrip } from "@/components/ui/advisor-cta-strip";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
+import { GuidedEntry } from "@/components/home/guided-entry";
 import { NEWS_ARTICLES } from "@/lib/data/news";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import type { RobotCategory } from "@/lib/supabase/types";
@@ -88,15 +90,8 @@ export default async function HomePage() {
           1. HERO — Clear value proposition
           ══════════════════════════════════════════ */}
       <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
-        {/* Ambient glows */}
-        <div
-          className="pointer-events-none absolute -right-40 -top-20 h-[500px] w-[500px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(14,165,233,0.03), transparent 70%)" }}
-        />
-        <div
-          className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(200,255,0,0.015), transparent 70%)" }}
-        />
+        {/* Network background illustration */}
+        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
 
         {/* Content */}
         <div className="mx-auto max-w-7xl">
@@ -178,6 +173,11 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          2.5. GUIDED ENTRY — 3-question intake
+          ══════════════════════════════════════════ */}
+      <GuidedEntry />
 
       {/* ══════════════════════════════════════════
           3. HOW IT WORKS — 3-step strip
@@ -489,10 +489,10 @@ export default async function HomePage() {
           <NewsletterForm />
           <div className="mt-5 flex items-center gap-6 text-[13px] text-ghost">
             <span className="flex items-center gap-1.5">
-              <span className="text-lime">&#10003;</span> No spam
+              <span className="h-1.5 w-1.5 rounded-full bg-electric-blue inline-block" /> No spam
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="text-lime">&#10003;</span> Unsubscribe anytime
+              <span className="h-1.5 w-1.5 rounded-full bg-electric-blue inline-block" /> Unsubscribe anytime
             </span>
           </div>
         </div>
