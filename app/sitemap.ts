@@ -1,12 +1,26 @@
 import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 import { getAllIndustrySlugs } from "@/lib/data/industry-types";
+import * as fs from "fs";
+import * as path from "path";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://robotomated.com";
 
 interface CatRow { slug: string; created_at: string }
 interface MfrRow { slug: string; created_at: string }
 interface RobotWithCat { slug: string; updated_at: string; robot_categories: { slug: string } | null }
+
+/** Scan a content directory for MDX files and return slugs */
+function getMdxSlugs(dir: string): string[] {
+  try {
+    const fullPath = path.join(process.cwd(), dir);
+    return fs.readdirSync(fullPath)
+      .filter(f => f.endsWith(".mdx"))
+      .map(f => f.replace(/\.mdx$/, ""));
+  } catch {
+    return [];
+  }
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages always included regardless of DB state
@@ -21,6 +35,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/manufacturers`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/news`, lastModified: new Date(), changeFrequency: "daily", priority: 0.6 },
     { url: `${BASE_URL}/advisor`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/careers`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/newsletter`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/case-studies`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
   ];
 
   // Industry pages (static data, no DB needed)
@@ -103,6 +120,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // Learn content — scan all subdirectories for MDX articles
+  const learnDirs = [
+    "problems", "guides", "cost", "vs", "warehouse", "medical",
+    "manufacturing", "market", "agricultural", "construction",
+    "delivery", "getting-started", "home", "hospitality",
+    "inspection", "retail", "security",
+  ];
+  const learnPages: MetadataRoute.Sitemap = learnDirs.flatMap(dir =>
+    getMdxSlugs(`content/learn/${dir}`).map(slug => ({
+      url: `${BASE_URL}/learn/${dir}/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }))
+  );
+
+  // Case study slugs
+  const caseStudySlugs = getMdxSlugs("content/case-studies").length > 0
+    ? getMdxSlugs("content/case-studies")
+    : getMdxSlugs("content/guides");
+  const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map(slug => ({
+    url: `${BASE_URL}/case-studies/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   return [
     ...staticPages,
     ...categoryPages,
@@ -111,5 +155,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...manufacturerPages,
     ...industryPages,
     ...comparePages,
+    ...learnPages,
+    ...caseStudyPages,
   ];
 }

@@ -1,0 +1,146 @@
+---
+title: "How to Size Your Warehouse Robot Fleet: Formulas and Methodology"
+slug: warehouse-robot-fleet-sizing
+category: warehouse
+audience: intermediate
+industry:
+  - warehouse
+  - logistics
+description: "How to calculate the right number of warehouse robots. Fleet sizing formulas for AMRs, pick rate modeling, peak demand planning, and ROI."
+readTime: 8
+publishedAt: "2026-03-30"
+updatedAt: "2026-03-30"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: false
+---
+
+Deploying too few robots creates bottlenecks that negate the investment. Deploying too many wastes capital on idle units and congests aisles. Fleet sizing is the single most consequential decision in a warehouse robot deployment, yet many operations get it wrong because they rely on vendor estimates rather than their own operational data.
+
+This guide provides the formulas, methodology, and adjustment factors to size your AMR fleet correctly from the start.
+
+## The Core Formula
+
+The fundamental fleet sizing equation for warehouse AMRs is straightforward:
+
+**Robots Required = (Peak Hourly Task Volume x Average Task Duration) / (Available Minutes per Hour x Target Utilization)**
+
+Each variable requires careful measurement:
+
+**Peak hourly task volume** is the maximum number of transport tasks (picks, replenishments, putaways) your facility must handle in any single hour. This is not your daily average divided by operating hours. Peak hours in most fulfillment centers run 1.5-2.5x the daily average. Use your WMS data to identify the actual peak, typically mid-morning on the highest-volume day of the week.
+
+**Average task duration** is the time from task assignment to task completion, including travel to the pick location, dwell time at the pick station, travel to the drop location, and dwell time at the drop station. Measure this in minutes.
+
+**Available minutes per hour** accounts for charging. If your robots operate on a 50-minute run / 10-minute charge cycle, available minutes equal 50. If they run 90 minutes and charge for 15, available minutes equal approximately 51.4 per hour (90/105 x 60).
+
+**Target utilization** is the percentage of available time a robot spends on productive tasks versus idle, repositioning, or queuing. Industry benchmarks range from 70-85%. Using 100% leaves no buffer for congestion or unexpected demand.
+
+## Worked Example
+
+Consider a 120,000 square-foot e-commerce fulfillment center with the following profile:
+
+| Parameter | Value |
+|-----------|-------|
+| Daily order volume | 8,000 orders |
+| Average lines per order | 2.5 |
+| Daily pick tasks | 20,000 |
+| Operating hours | 16 (two shifts) |
+| Average hourly tasks | 1,250 |
+| Peak hour multiplier | 1.8x |
+| Peak hourly tasks | 2,250 |
+| Average task duration | 3.2 minutes |
+| Robot runtime per charge | 8 hours |
+| Charge time | 1.5 hours |
+| Available minutes per hour | 50.5 |
+| Target utilization | 80% |
+
+**Robots Required = (2,250 x 3.2) / (50.5 x 0.80) = 7,200 / 40.4 = 178.2**
+
+This facility needs approximately 18 AMRs (rounding up) for the collaborative picking model where robots and humans work together, with robots carrying totes between zones and pick stations.
+
+However, this baseline number requires several adjustments.
+
+## Adjustment Factors
+
+### Aisle Congestion Factor
+
+As robot density increases, aisle congestion causes slowdowns. Robots must yield to each other, reroute around traffic, and wait at intersections. The congestion factor varies by facility layout but follows a general pattern:
+
+| Robots per 10,000 sq ft | Congestion Factor |
+|--------------------------|-------------------|
+| 1-2 | 1.00 (no impact) |
+| 3-4 | 1.05-1.10 |
+| 5-7 | 1.10-1.20 |
+| 8+ | 1.20-1.40 |
+
+For the example above (18 robots in 120,000 square feet = 1.5 per 10,000 square feet), congestion is negligible. A denser deployment of 40 robots in 50,000 square feet (8 per 10,000 square feet) would require a 20-40% fleet increase to compensate for congestion-induced slowdowns.
+
+**Adjusted robot count = Base count x Congestion factor**
+
+### Charging Fleet Overhead
+
+At any given moment, a percentage of your fleet is charging. The charging overhead depends on your battery technology and charging strategy.
+
+| Charging Strategy | Fleet Overhead |
+|-------------------|---------------|
+| Opportunity charging (robots charge during idle moments) | 10-15% |
+| Scheduled rotation (dedicated charging windows) | 15-20% |
+| Battery swap (manual or automated) | 5-8% |
+
+For opportunity charging with 12% overhead: **18 robots x 1.12 = 20.2, round to 21 robots.**
+
+### Maintenance and Downtime Buffer
+
+Even with high reliability, some percentage of robots will be offline for maintenance, software updates, or repairs at any time. Industry data shows 3-5% planned downtime for well-maintained AMR fleets.
+
+**21 robots x 1.05 = 22.1, round to 23 robots.**
+
+### Seasonal Demand Buffer
+
+If your peak season volume exceeds your normal peak by more than 20%, you have two options: oversize the fleet for year-round readiness, or plan for seasonal rental/RaaS scaling.
+
+For permanent fleet sizing to handle a 40% seasonal peak: **23 robots x 1.40 = 32.2, round to 33 robots.** This means 10 robots sit idle during non-peak periods, a capital efficiency concern that RaaS models address by allowing seasonal fleet scaling.
+
+## Fleet Sizing by Robot Type
+
+Different robot types require different sizing approaches because their task profiles differ.
+
+### Collaborative Picking AMRs (Locus, 6 River Systems)
+
+These robots travel to pick locations, present the tote to the worker, then travel to the next location or a packing station. The bottleneck is travel time, which depends on facility layout and zone design.
+
+**Key metric:** Picks per robot per hour. Typical range: 20-35 picks/robot/hour for collaborative models. Divide your peak hourly pick demand by this rate, then apply adjustment factors.
+
+### Goods-to-Person Robots (AutoStore, Exotec)
+
+G2P systems are sized by workstation throughput rather than individual robot count. The vendor's simulation tools model the specific grid or rack configuration to determine how many robots are needed to keep each workstation supplied.
+
+**Key metric:** Totes per workstation per hour. Typical: 200-400 totes/hour. Determine the number of workstations needed to meet throughput, then let the vendor's simulation determine the robot count (typically 3-8 robots per workstation depending on the system).
+
+### Autonomous Forklifts (OTTO, Jungheinrich)
+
+Forklift AMRs handle pallet-level movement. Their task duration is longer (5-15 minutes per task) but the task volume is lower.
+
+**Key metric:** Pallet moves per hour. Typical autonomous forklift throughput: 6-12 pallets/hour depending on travel distance. Divide peak pallet move demand by this rate and apply standard adjustment factors.
+
+## Common Sizing Mistakes
+
+**Using average demand instead of peak demand.** Fleets sized for averages fail during peaks. Always size for peak plus a buffer, or plan explicit peak-scaling mechanisms.
+
+**Ignoring facility layout impact on travel time.** Two 100,000 square-foot warehouses can have very different average travel times based on aisle width, racking height, pick zone layout, and the location of drop-off points. Measure actual travel times in your facility, not vendor benchmarks from other operations.
+
+**Assuming linear scaling.** Doubling the fleet does not double throughput due to congestion effects. The relationship is sublinear above certain density thresholds. Vendors with fleet simulation tools (Locus Robotics, MiR, OTTO Motors) can model this for your specific layout.
+
+**Forgetting about replenishment and putaway.** Pick-focused sizing often ignores that the same robots handle replenishment from receiving to storage and putaway tasks. Add these task volumes to your total demand before calculating.
+
+## Validation Approach
+
+Before committing to a fleet purchase, validate your sizing through a phased deployment:
+
+**Phase 1 (weeks 1-4):** Deploy 30-50% of the calculated fleet. Measure actual task durations, utilization rates, and congestion patterns.
+
+**Phase 2 (weeks 5-8):** Add robots to reach 70-80% of the calculated fleet. Verify that throughput scales as expected and identify congestion hotspots.
+
+**Phase 3 (weeks 9-12):** Deploy the full fleet. Fine-tune zone assignments, charging schedules, and traffic patterns.
+
+This phased approach costs 2-3 months of suboptimal performance but prevents the expensive mistake of deploying the wrong fleet size. Most AMR vendors support phased deployment, and RaaS models make it financially painless to scale up or down based on measured results rather than projections.

@@ -1,0 +1,86 @@
+---
+title: "How to Buy a Delivery Robot: Sidewalk, Indoor, and Fleet Operations"
+slug: how-to-buy-a-delivery-robot
+category: guides
+audience: intermediate
+industry:
+  - delivery
+  - retail
+  - hospitality
+description: "Complete buying guide for delivery robots in 2026. Covers Starship, Serve, Kiwibot, sidewalk vs indoor, fleet management, and regulatory requirements."
+readTime: 9
+publishedAt: "2026-03-30"
+updatedAt: "2026-03-30"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: false
+---
+
+Delivery robots have graduated from pilot programs to scaled commercial operations. Starship Technologies alone has completed over 6 million autonomous deliveries. University campuses, corporate parks, hospital systems, and dense urban neighborhoods now rely on robotic delivery for food, packages, and medical supplies. The economics are compelling: per-delivery costs drop from $8-12 with human couriers to $1.50-3.00 with robots at scale.
+
+But buying or leasing delivery robots is not like buying delivery vans. The operating model, regulatory landscape, and fleet management requirements are fundamentally different. This guide breaks down what you need to know before deploying.
+
+## Sidewalk vs. Indoor: Two Different Markets
+
+The delivery robot market splits cleanly into two segments, and the technology, regulations, and economics differ substantially between them.
+
+**Sidewalk delivery robots** operate on public sidewalks and pedestrian paths. They carry 10-25 kg payloads across distances of 1-5 km. Starship Technologies, Serve Robotics, and Kiwibot dominate this segment. These robots must comply with local pedestrian device ordinances, which vary dramatically by jurisdiction. They navigate around pedestrians, cross streets, and handle weather. Remote human operators monitor the fleet and intervene when robots encounter situations they cannot resolve autonomously.
+
+**Indoor delivery robots** operate in controlled environments: hospitals, hotels, corporate offices, and large retail stores. They carry meals, medications, linens, packages, and documents. Relay Robotics, Bear Robotics, and Pudu Robotics lead the indoor segment. These robots use elevators via building API integrations, navigate hallways and lobbies, and deliver to specific rooms or desks. No public right-of-way regulations apply, but they must integrate with building access systems.
+
+Choosing the wrong category wastes your investment. A sidewalk robot cannot navigate hospital corridors efficiently, and an indoor robot cannot handle curb cuts and crosswalks. Define your delivery environment before engaging vendors.
+
+## Key Vendors and Platform Comparison
+
+| Vendor | Environment | Payload | Range | Speed | Deployment Model | Approximate Cost |
+|--------|-------------|---------|-------|-------|-----------------|-----------------|
+| Starship Technologies | Sidewalk | 10 kg | 6 km | 6 km/h | Fleet service | $3-$6 per delivery |
+| Serve Robotics | Sidewalk | 11 kg | 8 km | 5.5 km/h | Fleet service | $4-$7 per delivery |
+| Kiwibot | Sidewalk | 10 kg | 3 km | 5 km/h | Lease/purchase | $2,500-$3,500/mo per unit |
+| Relay Robotics | Indoor | 11 kg | N/A | 3 km/h | Lease | $2,000-$3,500/mo per unit |
+| Bear Robotics | Indoor | 40 kg | N/A | 4 km/h | Purchase/lease | $15,000-$25,000 purchase |
+| Pudu Robotics | Indoor | 30 kg | N/A | 4 km/h | Purchase/lease | $12,000-$22,000 purchase |
+
+Starship and Serve operate primarily as fleet service providers. You do not buy their robots; you contract for delivery services. They deploy, manage, and maintain the fleet. Your cost is per delivery or a monthly minimum. This is the simplest model for sidewalk delivery but gives you the least control.
+
+Kiwibot offers more flexible deployment options, including leases that let you operate the robots yourself. This works for campus environments where you want branded robots integrated into your own logistics operations.
+
+For indoor delivery, Bear Robotics and Pudu Robotics sell robots outright, which makes sense for hotels and restaurants deploying 2-5 units. Relay Robotics uses a lease model with managed software and is popular in hospitals and corporate offices.
+
+## Fleet Management and Operations
+
+A single delivery robot is a demo. A fleet of delivery robots is a logistics operation. The fleet management layer matters as much as the hardware.
+
+**Dispatch and routing:** The fleet management platform assigns deliveries to robots based on location, battery level, current route, and estimated completion time. Starship and Serve handle this entirely on their platform. If you operate Kiwibot, Bear, or Pudu robots yourself, you need either the vendor's fleet management software or a third-party platform. Evaluate the dispatch algorithm's intelligence: does it optimize for speed, battery conservation, or delivery density?
+
+**Remote monitoring and teleoperation:** Every delivery robot fleet requires human oversight. When a robot encounters an obstacle it cannot navigate, a locked door, or a confused pedestrian, a remote operator takes control. Staff this function at a ratio of 1 operator per 10-20 robots for sidewalk fleets, or 1 per 15-30 for indoor fleets. Some vendors include remote operations in their service; others require you to staff it.
+
+**Charging and maintenance:** Delivery robots need regular charging. Sidewalk robots typically return to a base station; indoor robots dock at charging stations placed throughout the building. Plan for 2-4 hours of charging per 8-10 hours of operation. Maintenance requirements include wheel replacement every 3-6 months for sidewalk robots, sensor cleaning, and software updates. Budget $200-$500 per robot per month for maintenance on self-operated fleets.
+
+**Delivery handoff:** How does the recipient get their delivery? Compartment-based robots like Starship use a locking lid that opens via app notification. Indoor robots like Relay stop at a designated location and alert the recipient by phone. The handoff experience directly affects customer satisfaction. Test it during your pilot with actual end users, not just your operations team.
+
+## Regulatory Requirements
+
+Delivery robot regulations are a patchwork and evolving rapidly. Getting this wrong can shut down your operation overnight.
+
+**Municipal sidewalk ordinances:** Over 20 US states have passed personal delivery device (PDD) legislation as of 2026, but individual cities often add their own restrictions. Common requirements include maximum weight (typically 55-120 lbs loaded), maximum speed (typically 6-10 mph on sidewalks), yield-to-pedestrian rules, and operating hour restrictions. Some cities require per-robot registration fees ($50-$500 annually).
+
+**University and campus deployments:** Private property deployments avoid most public right-of-way regulations but may require ADA compliance assessment to ensure robots do not obstruct accessible pathways. Work with your campus accessibility office before deploying.
+
+**Indoor deployments:** Generally unregulated at the government level but must comply with fire code (robots cannot block egress paths), ADA accessibility, and building management policies. Hospital deployments may require infection control review if robots enter clinical areas.
+
+**Insurance:** Carry general liability insurance that explicitly covers autonomous device operation. Standard commercial liability policies may exclude autonomous vehicles. Expect to pay $2,000-$8,000 annually per fleet for appropriate coverage, depending on fleet size and deployment environment.
+
+Before deploying in any jurisdiction, engage a local attorney familiar with autonomous device regulation. The cost of legal review ($2,000-$5,000) is trivial compared to the cost of a cease-and-desist order after you have deployed a fleet.
+
+## Building the Business Case
+
+The financial case for delivery robots depends entirely on your delivery volume and labor costs.
+
+**Sidewalk delivery economics:** Human last-mile delivery costs $8-12 per delivery in most US markets when you account for wages, vehicle costs, and overhead. Robotic delivery at scale costs $1.50-3.00 per delivery. At 100 deliveries per day, a robot fleet saves $500-$900 daily in delivery costs. Payback on the fleet investment, including setup and the first year of operations, typically occurs within 8-14 months.
+
+**Indoor delivery economics:** A hospital delivery robot handling 30-50 deliveries per day displaces the equivalent of 1.5-2.0 FTE in transport staff. At $45,000-$55,000 fully loaded cost per FTE, a robot leased at $3,000 per month pays for itself within 4-6 months. Hotels see similar economics for room service and amenity delivery.
+
+**Volume thresholds:** Delivery robots do not make financial sense below approximately 20-30 deliveries per day per robot. If your volume is lower, you are paying for an expensive machine that sits idle most of the day. Ensure your demand analysis accounts for time-of-day peaks, not just daily averages.
+
+Start with a 90-day pilot using 3-5 robots in your highest-volume delivery zone. Measure per-delivery cost, delivery completion rate (target above 95%), customer satisfaction scores, and operational overhead. Use these metrics to build the expansion case. Delivery robotics works at scale; the pilot proves whether your specific operation is ready for it.

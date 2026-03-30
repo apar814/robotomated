@@ -1,0 +1,102 @@
+---
+title: "Goods-to-Person Systems Guide: AutoStore, Exotec, and HAI Robotics"
+slug: goods-to-person-systems-guide
+category: warehouse
+audience: intermediate
+industry:
+  - warehouse
+  - logistics
+description: "Guide to goods-to-person warehouse systems. Compare AutoStore, Exotec, and HAI Robotics on density, throughput, ROI, and deployment."
+readTime: 8
+publishedAt: "2026-03-30"
+updatedAt: "2026-03-30"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team covers robotics technology, helping people find, understand, and deploy the right robots for their needs."
+featured: false
+---
+
+Goods-to-person (G2P) systems invert the traditional warehouse model. Instead of workers walking to shelves, which consumes 50-70% of a picker's time, the inventory travels to the worker. The result is a 3-5x productivity increase and up to 75% reduction in warehouse footprint. In 2026, G2P technology has matured from an innovation for mega-retailers into a practical solution for mid-size fulfillment operations handling 5,000 or more orders per day.
+
+This guide compares the three dominant G2P architectures and the vendors leading each, so you can evaluate which system fits your operation.
+
+## G2P Architecture Types
+
+Three distinct approaches dominate the market, each with fundamentally different trade-offs.
+
+**Cube storage** systems like AutoStore stack bins in a dense grid. Robots ride on top of the grid, reaching down to retrieve bins from the stack. This approach maximizes storage density but requires digging through stacked bins to reach lower items.
+
+**Rack-climbing shuttle** systems like Exotec Skypod use robots that travel horizontally along racks and vertically up rack faces to retrieve totes. This provides direct access to every storage location without the digging penalty of cube storage.
+
+**Mobile rack** systems like HAI Robotics HAIPICK use tall, autonomous robots that navigate aisles and extend mechanisms to pull totes from standard racking. This approach retrofits into existing rack infrastructure with minimal structural modification.
+
+## System Comparison
+
+| Feature | AutoStore | Exotec Skypod | HAI Robotics HAIPICK |
+|---------|-----------|---------------|---------------------|
+| **Architecture** | Cube storage grid | Rack-climbing shuttles | Mobile aisle robots |
+| **Storage Density** | 4x traditional racking | 2-3x traditional racking | 1.5-2x traditional racking |
+| **Throughput per Robot** | 30-40 bins/hour | 400+ totes/hour | 100-120 totes/hour |
+| **Max Retrieval Height** | 5.4 m (16 bins deep) | 12 m | 10 m |
+| **Bin/Tote Size** | Proprietary bins (up to 449x649 mm) | Standard totes (600x400 mm) | Standard totes (varied) |
+| **Infrastructure Required** | Aluminum grid + port stations | Steel racking + rail system | Standard or existing racking |
+| **Deployment Time** | 3-6 months | 4-8 months | 2-4 months |
+| **Starting Investment** | $1.5M-$3M (small system) | $2M-$5M | $800K-$2M |
+| **Scalability** | Add bins and robots to grid | Add racks, rails, and robots | Add robots to existing aisles |
+
+Each system serves a different operational profile. The choice depends on your available space, SKU characteristics, throughput requirements, and budget.
+
+## AutoStore: Maximum Density
+
+AutoStore is the market leader in cube storage, with over 1,250 systems installed across 49 countries. The system stores inventory in standardized bins stacked up to 16 deep inside an aluminum grid. Robots (called R5 or B1 models) travel on top of the grid on a rail system, lowering a gripper to extract specific bins and deliver them to workstations called ports.
+
+**Strengths.** Storage density is unmatched. AutoStore can store the same inventory in 25% of the space required by traditional shelving. For facilities paying $8-$15 per square foot in annual lease costs, this density translates to $200,000-$500,000 in annual rent savings for a 50,000-bin system. The system operates with 99.7% uptime, and individual robot failures do not halt the system because other robots compensate automatically.
+
+**Limitations.** The primary constraint is dig depth. Retrieving a bin at the bottom of a 16-bin stack requires the robot to first move all bins above it, a process that takes 2-5 minutes for deeply buried items. This makes AutoStore best suited for SKU profiles where 80% of picks come from 20% of SKUs, as the system naturally keeps fast-moving items near the top.
+
+Bin sizes are proprietary, limiting the maximum item dimensions to approximately 449 x 649 mm. Products larger than the bin do not fit, requiring a parallel storage and picking system for oversized items.
+
+**Ideal for:** E-commerce fulfillment with small to medium items, pharmaceutical distribution, spare parts operations, and any facility where floor space is expensive or constrained.
+
+## Exotec Skypod: Speed and Direct Access
+
+Exotec has emerged as AutoStore's primary challenger with a fundamentally different approach. Skypod robots are three-dimensional movers: they travel along the floor, climb rack faces vertically, and retrieve totes from any location in the racking system without needing to move other inventory out of the way.
+
+**Strengths.** Every storage location is directly accessible, eliminating the dig-depth penalty. A single Skypod robot handles up to 400 totes per hour, roughly 10x the throughput of a single AutoStore robot. The system supports rack heights up to 12 meters, enabling efficient use of vertical space in high-ceiling warehouses. Standard 600x400 mm totes are used, avoiding proprietary container lock-in.
+
+Exotec's system also handles heavy items better than AutoStore. Totes can weigh up to 30 kg, versus AutoStore's 30 kg maximum bin weight (including the bin itself, leaving roughly 23-25 kg for product).
+
+**Limitations.** The racking and rail infrastructure requires significant structural engineering and installation time. Deployment typically takes 4-8 months, and the system requires a clean, level floor with precise tolerances. The starting investment is higher than AutoStore for comparable storage volumes, though the throughput-per-dollar ratio can be more favorable at high volumes.
+
+**Ideal for:** High-throughput fulfillment centers, grocery and food distribution (where tote weight matters), operations requiring direct access to every SKU, and facilities with tall ceilings.
+
+## HAI Robotics HAIPICK: Retrofit Flexibility
+
+HAI Robotics takes a different approach by deploying tall, autonomous mobile robots that navigate standard warehouse aisles and retrieve totes from conventional racking. The HAIPICK A42 model stands up to 4.2 meters tall and extends a telescoping mechanism to pull totes from shelves up to 10 meters high using an attached mast and lifting platform.
+
+**Strengths.** The most significant advantage is infrastructure compatibility. HAIPICK robots work with existing standard racking, reducing the capital investment and deployment time versus grid or rail-based systems. A fleet can be deployed in an existing facility in 2-4 months with minimal structural changes. This makes HAI Robotics attractive for facilities that want G2P benefits without committing to a proprietary infrastructure.
+
+Scalability is incremental: add robots to increase throughput without racking changes. The system also handles multiple tote sizes and can work in mixed environments alongside human pickers.
+
+**Limitations.** Storage density gains are modest compared to AutoStore or Exotec because the system uses standard racking with aisle space. Throughput per robot is lower than Exotec Skypod. The robots are large and heavy (the A42 weighs approximately 500 kg), requiring robust flooring and wider aisles than human-only operations.
+
+**Ideal for:** Facilities retrofitting existing racking, operations that want to pilot G2P without a full infrastructure commitment, and mixed-mode warehouses where some areas use G2P while others remain manual.
+
+## ROI Framework
+
+G2P systems justify themselves through four primary value drivers.
+
+**Labor productivity.** Manual pickers typically achieve 60-100 picks per hour. G2P workstations consistently achieve 200-400 picks per hour. For a facility with 20 pickers, G2P can reduce the picking workforce to 6-8 while maintaining the same throughput, saving $400,000-$800,000 annually in fully loaded labor costs.
+
+**Space reduction.** AutoStore delivers 4x density improvement. If your facility lease costs $10 per square foot and you currently dedicate 40,000 square feet to picking storage, AutoStore can reduce that to 10,000 square feet, saving $300,000 annually or eliminating the need for a planned facility expansion.
+
+**Error reduction.** Light-directed picking at G2P workstations reduces pick errors from 1-3% (manual) to 0.1-0.3%. For a facility shipping 50,000 orders per day, this prevents 400-1,400 daily mispicks, each costing $10-$25 in returns processing and customer service.
+
+**Throughput scalability.** Adding G2P robots increases throughput incrementally without adding workstations, training staff, or expanding floor space. During peak seasons, additional robots can be deployed in days.
+
+A typical mid-size G2P system ($2-$4 million installed) achieves full payback in 18-30 months through combined labor, space, and accuracy improvements.
+
+## Making the Decision
+
+Start with your constraints. If floor space is your primary limitation, AutoStore's density is unmatched. If throughput speed and direct access to every SKU matter most, Exotec Skypod delivers. If you need to preserve existing infrastructure and want an incremental path to G2P, HAI Robotics offers the lowest barrier to entry.
+
+Request proposals from all three vendors with your specific SKU profile, order volume, and facility dimensions. The right system is the one that delivers the fastest payback against your unique operational bottleneck.

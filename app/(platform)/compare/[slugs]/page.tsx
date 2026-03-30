@@ -48,8 +48,22 @@ function parseSlugs(slugs: string): [string, string] | null {
 export const revalidate = 3600;
 export const dynamicParams = true;
 
+// Pre-built comparison pages for the most searched robot pairs
+const FEATURED_COMPARISONS = [
+  "boston-dynamics-spot-arm-vs-unitree-go2",
+  "universal-robots-ur10e-vs-fanuc-crx-10ia",
+  "locus-origin-vs-6rs-chuck",
+  "da-vinci-5-vs-cmr-versius",
+  "autostore-b1-vs-ocado-hive",
+  "agility-digit-vs-figure-02",
+  "stretch-vs-righthand-robotics-piece-picker",
+  "abb-yumi-vs-ur3e",
+  "dji-agras-t50-vs-xag-p100",
+  "knightscope-k5-vs-cobalt-r2",
+];
+
 export async function generateStaticParams() {
-  // Only pre-render top 5 robot comparisons (10 combos) to reduce build memory
+  // Pre-render featured comparisons + top 5 robot combos
   const supabase = createServerClient();
   const { data } = await supabase
     .from("robots")
@@ -61,12 +75,15 @@ export async function generateStaticParams() {
     .returns<{ slug: string; robo_score: number }[]>();
 
   const robots = data || [];
-  const params: { slugs: string }[] = [];
+  const params: { slugs: string }[] = FEATURED_COMPARISONS.map(s => ({ slugs: s }));
   for (let i = 0; i < robots.length; i++) {
     for (let j = i + 1; j < robots.length; j++) {
       const a = robots[i].slug;
       const b = robots[j].slug;
-      params.push({ slugs: a < b ? `${a}-vs-${b}` : `${b}-vs-${a}` });
+      const slugs = a < b ? `${a}-vs-${b}` : `${b}-vs-${a}`;
+      if (!params.some(p => p.slugs === slugs)) {
+        params.push({ slugs });
+      }
     }
   }
   return params;
