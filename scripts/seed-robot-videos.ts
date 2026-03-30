@@ -19,66 +19,86 @@ const sb = createClient(
 // slug → YouTube URL
 // All URLs are official manufacturer demos unless marked [unverified]
 const VIDEO_MAP: Record<string, string> = {
-  // Boston Dynamics
-  "spot": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
-  "atlas-electric": "https://www.youtube.com/watch?v=29ECwExc-_M",
+  // Boston Dynamics — corrected slugs
+  "spot-warehouse": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
+  "spot-healthcare": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
+  "spot-delivery": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
+  "spot-construction-ai": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
+  "boston-dynamics-spot-arm": "https://www.youtube.com/watch?v=wlkCQXHEgjA",
+  "boston-dynamics-atlas-electric": "https://www.youtube.com/watch?v=29ECwExc-_M",
+  "boston-dynamics-atlas-electric-humanoid": "https://www.youtube.com/watch?v=29ECwExc-_M",
   "stretch": "https://www.youtube.com/watch?v=yYUuWWnfRsk",
 
   // Universal Robots
   "ur5e": "https://www.youtube.com/watch?v=J3dOJaUVfFI",
+  "ur10e": "https://www.youtube.com/watch?v=J3dOJaUVfFI",
   "ur20": "https://www.youtube.com/watch?v=DoeS0ShIXBY",
   "ur30": "https://www.youtube.com/watch?v=b0j0bCgU5Sw",
 
-  // FANUC
-  "crx-10ia": "https://www.youtube.com/watch?v=T-R-KTtUPfg",
+  // FANUC — corrected slugs
+  "fanuc-crx-10": "https://www.youtube.com/watch?v=T-R-KTtUPfg",
+  "fanuc-crx-10ia": "https://www.youtube.com/watch?v=T-R-KTtUPfg",
+  "fanuc-crx-25ia": "https://www.youtube.com/watch?v=T-R-KTtUPfg",
 
-  // ABB
-  "yumi": "https://www.youtube.com/watch?v=gRGMzuDTPDs",
+  // ABB — corrected slugs
+  "abb-yumi": "https://www.youtube.com/watch?v=gRGMzuDTPDs",
+  "abb-yumi-irb14050": "https://www.youtube.com/watch?v=gRGMzuDTPDs",
 
-  // Agility Robotics
-  "digit": "https://www.youtube.com/watch?v=_JsPPd9gSqo",
+  // Agility Robotics — corrected slugs
+  "agility-digit": "https://www.youtube.com/watch?v=_JsPPd9gSqo",
+  "agility-digit-5": "https://www.youtube.com/watch?v=_JsPPd9gSqo",
+  "agility-digit-field": "https://www.youtube.com/watch?v=_JsPPd9gSqo",
 
   // Figure
   "figure-02": "https://www.youtube.com/watch?v=0SRVJaOg9Co",
 
-  // Unitree
-  "h1": "https://www.youtube.com/watch?v=qGlsGPQUuCc",
-  "g1": "https://www.youtube.com/watch?v=mCKf_WGIUFE",
+  // Unitree — corrected slugs
+  "unitree-h1": "https://www.youtube.com/watch?v=qGlsGPQUuCc",
+  "unitree-h1-humanoid": "https://www.youtube.com/watch?v=qGlsGPQUuCc",
+  "unitree-g1-humanoid": "https://www.youtube.com/watch?v=mCKf_WGIUFE",
+  "unitree-g1-basic": "https://www.youtube.com/watch?v=mCKf_WGIUFE",
+  "unitree-g1-edu": "https://www.youtube.com/watch?v=mCKf_WGIUFE",
 
   // Locus Robotics
   "locus-origin": "https://www.youtube.com/watch?v=Fg8EW-8WjpA",
 
-  // Intuitive Surgical
-  "da-vinci": "https://www.youtube.com/watch?v=JtpW8GgH-VA",
+  // Intuitive Surgical — corrected slugs
+  "da-vinci-5": "https://www.youtube.com/watch?v=JtpW8GgH-VA",
+  "da-vinci-sp": "https://www.youtube.com/watch?v=JtpW8GgH-VA",
+  "davinci-sp-v2": "https://www.youtube.com/watch?v=JtpW8GgH-VA",
 
-  // Starship Technologies
-  "starship-delivery-robot": "https://www.youtube.com/watch?v=Tl3WMzP7QSE",
+  // Starship Technologies — corrected slugs
+  "starship-delivery": "https://www.youtube.com/watch?v=Tl3WMzP7QSE",
+  "starship-s2": "https://www.youtube.com/watch?v=Tl3WMzP7QSE",
+  "starship-s3": "https://www.youtube.com/watch?v=Tl3WMzP7QSE",
+  "starship-gen4": "https://www.youtube.com/watch?v=Tl3WMzP7QSE",
 
   // Nuro
   "nuro-r3": "https://www.youtube.com/watch?v=CVGaMo_wIYg",
 
-  // Zipline
-  "zipline-platform-2": "https://www.youtube.com/watch?v=DOWDNBu9DkU",
+  // Zipline — corrected slugs
+  "zipline-p2": "https://www.youtube.com/watch?v=DOWDNBu9DkU",
+  "zipline-p2-zip": "https://www.youtube.com/watch?v=DOWDNBu9DkU",
 
   // iRobot
   "roomba-j9-plus": "https://www.youtube.com/watch?v=M-tIW_pSNbI",
 
-  // Roborock
-  "s8-maxv-ultra": "https://www.youtube.com/watch?v=TJL2sVFHcpk",
+  // Roborock — corrected slugs
+  "roborock-s8-maxv": "https://www.youtube.com/watch?v=TJL2sVFHcpk",
+  "roborock-s8-maxv-ultra": "https://www.youtube.com/watch?v=TJL2sVFHcpk",
+  "roborock-s8-maxv-ultra-v2": "https://www.youtube.com/watch?v=TJL2sVFHcpk",
+  "roborock-s8-pro": "https://www.youtube.com/watch?v=TJL2sVFHcpk",
 
-  // DJI
-  "agras-t50": "https://www.youtube.com/watch?v=hXvCPRbQAlQ",
+  // DJI — corrected slug
+  "dji-agras-t50": "https://www.youtube.com/watch?v=hXvCPRbQAlQ",
 
-  // KUKA
-  "lbr-iiwa": "https://www.youtube.com/watch?v=F6RHFYQG7CM",
+  // KUKA — corrected slugs
+  "kuka-lbr-iiwa": "https://www.youtube.com/watch?v=F6RHFYQG7CM",
+  "kuka-lbr-iisy": "https://www.youtube.com/watch?v=F6RHFYQG7CM",
+  "kuka-lbr-iisy-11": "https://www.youtube.com/watch?v=F6RHFYQG7CM",
 
-  // Doosan
-  "m1013": "https://www.youtube.com/watch?v=4oGC1cOjRj4",
-
-  // [unverified] — best-guess slugs and URLs from manufacturer channels
-  "ur10e": "https://www.youtube.com/watch?v=J3dOJaUVfFI", // [unverified] UR general demo
-  "ur3e": "https://www.youtube.com/watch?v=J3dOJaUVfFI", // [unverified] UR general demo
-  "atlas": "https://www.youtube.com/watch?v=29ECwExc-_M", // [unverified] Atlas general
+  // Doosan — corrected slug
+  "doosan-m1013": "https://www.youtube.com/watch?v=4oGC1cOjRj4",
 };
 
 async function main() {
