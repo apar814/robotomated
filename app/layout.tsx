@@ -11,6 +11,7 @@ import { CookieBanner } from "@/components/analytics/cookie-banner";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
+import { BuyerJourneyBar } from "@/components/ui/buyer-journey-bar";
 import { SiteStatsProvider } from "@/lib/context/site-stats";
 import { getSiteStats } from "@/lib/data/site-stats";
 import "./globals.css";
@@ -78,6 +79,7 @@ export default async function RootLayout({
             <AffiliateDisclosureBanner />
             <Header />
             <StatusBar />
+            <BuyerJourneyBar />
             <main className="flex-1 animate-fade-in">{children}</main>
             <Footer />
             <CookieBanner />
