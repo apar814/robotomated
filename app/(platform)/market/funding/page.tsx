@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Robotics Funding Tracker",
     description: "Live VC & PE investment data for robotics startups. $10B+ tracked across 40+ deals.",
+    images: [{ url: "/og-funding.png", width: 1200, height: 630, alt: "Robotomated — Robotics Investment Tracker" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-funding.png"],
   },
 };
 

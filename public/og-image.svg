@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#0A0F1E"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#C8FF00"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="473" x2="1200" y2="473"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+  <!-- Accent line top -->
+  <rect x="80" y="160" width="60" height="3" fill="#0EA5E9"/>
+  <!-- Platform label -->
+  <text x="80" y="210" font-family="'JetBrains Mono', monospace" font-size="14" fill="#0EA5E9" letter-spacing="4" text-transform="uppercase">ROBOTICS INTELLIGENCE PLATFORM</text>
+  <!-- Main title -->
+  <text x="80" y="300" font-family="'Space Grotesk', sans-serif" font-size="72" font-weight="700" fill="#E8E8E8" letter-spacing="-2">ROBOTOMATED</text>
+  <!-- Tagline -->
+  <text x="80" y="355" font-family="'Space Grotesk', sans-serif" font-size="28" fill="#0EA5E9">Independent Robotics Intelligence</text>
+  <!-- Divider -->
+  <rect x="80" y="390" width="1040" height="1" fill="#ffffff" fill-opacity="0.08"/>
+  <!-- Stats row -->
+  <text x="80" y="445" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="#C8FF00">602</text>
+  <text x="145" y="445" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#888888">Robots Tracked</text>
+  <text x="380" y="445" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#333333">|</text>
+  <text x="420" y="445" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="#C8FF00">167</text>
+  <text x="480" y="445" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#888888">Manufacturers</text>
+  <text x="690" y="445" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#333333">|</text>
+  <text x="730" y="445" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="700" fill="#C8FF00">$103B</text>
+  <text x="835" y="445" font-family="'Space Grotesk', sans-serif" font-size="18" fill="#888888">Market Monitored</text>
+  <!-- Domain -->
+  <text x="80" y="540" font-family="'JetBrains Mono', monospace" font-size="16" fill="#555555">robotomated.com</text>
+  <!-- Network nodes decoration -->
+  <g fill="none" stroke="#0EA5E9" stroke-opacity="0.08" stroke-width="0.5">
+    <circle cx="950" cy="200" r="80"/>
+    <circle cx="1020" cy="280" r="50"/>
+    <circle cx="880" cy="300" r="35"/>
+    <line x1="950" y1="200" x2="1020" y2="280"/>
+    <line x1="950" y1="200" x2="880" y2="300"/>
+    <line x1="1020" y1="280" x2="880" y2="300"/>
+  </g>
+  <g fill="#0EA5E9" fill-opacity="0.15">
+    <circle cx="950" cy="200" r="4"/>
+    <circle cx="1020" cy="280" r="3"/>
+    <circle cx="880" cy="300" r="3"/>
+    <circle cx="1080" cy="180" r="2"/>
+    <circle cx="1100" cy="350" r="2"/>
+  </g>
+  <g fill="none" stroke="#C8FF00" stroke-opacity="0.06" stroke-width="0.5">
+    <line x1="950" y1="200" x2="1080" y2="180"/>
+    <line x1="1020" y1="280" x2="1100" y2="350"/>
+  </g>
+</svg>

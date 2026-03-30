@@ -48,6 +48,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Robotomated",
     locale: "en_US",
+    title: "Robotomated — Independent Robotics Intelligence",
+    description:
+      "Track 602 robots with independent scoring, TCO calculators, and real deployment data. No manufacturer bias.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Robotomated — Independent Robotics Intelligence",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.png"],
+    title: "Robotomated — Independent Robotics Intelligence",
+    description:
+      "Track 602 robots with independent scoring and real ROI data.",
   },
   robots: {
     index: true,

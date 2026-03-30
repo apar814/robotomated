@@ -8,6 +8,15 @@ import { GridSkeleton } from "@/components/ui/skeleton";
 export const metadata: Metadata = {
   title: "Explore Robots",
   description: "Browse, search, and compare robots across all categories. Filter by price, RoboScore, manufacturer, and more.",
+  openGraph: {
+    title: "Explore 602 Robots — Robotomated",
+    description: "Browse, search, and compare robots across all categories. Filter by price, RoboScore, manufacturer, and more.",
+    images: [{ url: "/og-explore.png", width: 1200, height: 630, alt: "Robotomated — Browse & Compare Robots" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-explore.png"],
+  },
 };
 
 interface Category { id: string; slug: string; name: string }

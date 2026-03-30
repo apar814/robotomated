@@ -17,6 +17,11 @@ export const metadata: Metadata = {
       "Explore robotics solutions across 9 industries. Compare robots, ROI data, and deployment guides for every sector.",
     url: "https://robotomated.com/industries",
     type: "website",
+    images: [{ url: "/og-industries.png", width: 1200, height: 630, alt: "Robotomated — Robotics by Industry" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-industries.png"],
   },
 };
 
