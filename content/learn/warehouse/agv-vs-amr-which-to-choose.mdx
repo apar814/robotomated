@@ -1,0 +1,146 @@
+---
+title: "AGV vs AMR: Which Automated Vehicle Is Right for Your Warehouse?"
+slug: "agv-vs-amr-which-to-choose"
+category: warehouse
+audience: professional
+industry:
+  - warehouse
+  - logistics
+  - manufacturing
+description: "AGVs follow fixed paths while AMRs navigate dynamically. Compare cost, flexibility, throughput, and use cases to pick the right automated vehicle for your facility."
+readTime: 10
+publishedAt: "2026-03-30"
+updatedAt: "2026-03-30"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs:
+  - locus-origin
+  - locus-vector
+faqs:
+  - question: "What is the main difference between an AGV and an AMR?"
+    answer: "AGVs follow fixed paths using magnetic tape, wires, or painted lines embedded in the floor. AMRs use onboard sensors, LiDAR, and software to navigate dynamically around obstacles without any fixed infrastructure."
+  - question: "Are AMRs more expensive than AGVs?"
+    answer: "Per-unit, AMRs typically cost $25,000-$80,000 compared to $15,000-$60,000 for AGVs. However, AMRs require less infrastructure investment (no floor modifications), so total deployment cost is often comparable for facilities under 100,000 sq ft."
+  - question: "Can AGVs and AMRs work together in the same facility?"
+    answer: "Yes. Many large facilities deploy AGVs for predictable, high-volume routes (e.g., dock-to-storage) and AMRs for dynamic tasks like order picking. Modern fleet management software can coordinate both vehicle types."
+  - question: "How long does it take to deploy AGVs vs AMRs?"
+    answer: "AGV deployment typically takes 3-6 months due to infrastructure installation. AMR deployment can be completed in 2-8 weeks since they require minimal facility modifications."
+---
+
+**Quick Answer:** AGVs are best for high-volume, repetitive routes where predictability and lower per-unit cost matter most. AMRs are better for dynamic environments with changing layouts, mixed workflows, and the need for rapid deployment. Most facilities under 100,000 sq ft should start with AMRs; larger operations with stable, high-volume routes benefit from AGVs or a hybrid approach.
+
+## The Fundamental Architecture Difference
+
+The AGV vs AMR debate comes down to one question: does your material flow change?
+
+**Automated Guided Vehicles (AGVs)** follow predetermined paths. These paths are defined by physical infrastructure — magnetic tape on the floor, wires embedded in concrete, or painted lines read by optical sensors. The vehicle knows exactly where it's going because the path is literally built into the facility.
+
+**Autonomous Mobile Robots (AMRs)** build their own maps. Using LiDAR, cameras, and onboard computing, AMRs understand their environment and calculate optimal routes in real time. When someone parks a pallet in the aisle, an AMR routes around it. An AGV stops and waits.
+
+This isn't just a technical distinction. It drives every downstream decision: cost, deployment time, flexibility, and long-term scalability.
+
+## Head-to-Head Comparison
+
+| Factor | AGV | AMR |
+|--------|-----|-----|
+| **Unit cost** | $15,000 - $60,000 | $25,000 - $80,000 |
+| **Infrastructure cost** | $5,000 - $50,000+ (tape, wires, reflectors) | $2,000 - $10,000 (WiFi, mapping) |
+| **Deployment time** | 3 - 6 months | 2 - 8 weeks |
+| **Navigation** | Fixed path (tape, wire, laser with reflectors) | Dynamic (LiDAR, vision, SLAM) |
+| **Obstacle handling** | Stop and wait | Reroute autonomously |
+| **Layout changes** | Requires re-taping/re-wiring | Software remap in hours |
+| **Throughput on fixed routes** | Higher (no path calculation overhead) | Slightly lower |
+| **Scalability** | Add paths + vehicles | Add vehicles only |
+| **Best fleet size** | 20+ vehicles | 3 - 50 vehicles |
+| **Payload range** | 200 kg - 60,000 kg | 10 kg - 1,500 kg |
+| **Typical ROI period** | 18 - 36 months | 12 - 24 months |
+
+## When AGVs Win
+
+### High-Volume, Predictable Routes
+
+If you move the same materials between the same points thousands of times per day, AGVs are hard to beat. Automotive assembly plants running line-side delivery, beverage distributors moving pallets dock-to-rack, and pharmaceutical facilities with validated material flows all favor AGVs.
+
+The math is simple: a tugger AGV pulling 5 carts on a fixed loop can move 150+ pallets per hour on a single route. An AMR doing the same job requires more computational overhead and achieves roughly 120 pallets per hour on the same distance.
+
+### Heavy Payloads
+
+AGVs dominate payloads above 1,500 kg. Heavy-payload AGVs from manufacturers like Jungheinrich, KUKA, and Oceaneering routinely handle 5,000-60,000 kg loads. The AMR market simply doesn't serve this weight class yet — the heaviest AMRs on the market top out around 1,500 kg.
+
+### Regulated Environments
+
+In pharmaceutical manufacturing, food production, and semiconductor fabs, AGVs offer a compliance advantage. Fixed paths are easier to validate, and regulatory bodies like the FDA prefer deterministic material flow that doesn't change based on algorithmic decisions.
+
+## When AMRs Win
+
+### Dynamic Environments
+
+If your warehouse layout changes seasonally, your pick paths vary by order, or your aisles regularly have temporary obstacles, AMRs are the clear choice. E-commerce fulfillment centers are the textbook AMR use case — SKU locations shift, order profiles change daily, and the ability to reroute around congestion directly impacts throughput.
+
+### Rapid Deployment
+
+An AMR fleet can be operational in 2-8 weeks. The robot maps the facility autonomously, operators define zones and pickup/dropoff points in software, and you're running. AGV deployment requires physical infrastructure: cutting floors for wire guidance, laying magnetic tape, or installing laser reflectors. That's 3-6 months of work, often requiring facility downtime.
+
+For a seasonal operation needing automation before peak season, AMRs are the only realistic option.
+
+### Smaller Facilities
+
+Below 100,000 sq ft, the infrastructure cost of AGVs disproportionately impacts ROI. A 30,000 sq ft warehouse might spend $15,000-$25,000 on magnetic tape installation alone — nearly the cost of an additional AMR unit that directly contributes to throughput.
+
+### Mixed Workflows
+
+When robots share space with humans, forklifts, and other equipment, AMRs adapt. Their dynamic navigation handles the unpredictability of a mixed-traffic environment far better than an AGV that simply stops when its path is blocked.
+
+## The Hybrid Approach
+
+The most sophisticated operations don't choose one or the other. They deploy both.
+
+A typical hybrid architecture:
+
+- **AGVs** handle trunk routes: dock-to-storage, storage-to-production line, finished goods-to-shipping. These are high-volume, predictable paths where AGVs maximize throughput.
+- **AMRs** handle the last mile: zone-picking in fulfillment, work-in-process transport between cells, and any task where flexibility matters more than raw throughput.
+
+Fleet management platforms like [Locus Robotics' fleet software](/explore/warehouse/locus-origin) and SVT Robotics' SOFTBOT Platform can coordinate both vehicle types, managing traffic, assigning tasks, and preventing conflicts at intersection points.
+
+## Total Cost of Ownership: A Realistic Comparison
+
+For a 75,000 sq ft distribution center processing 3,000 orders per day:
+
+| Cost Element | AGV Fleet (10 units) | AMR Fleet (10 units) |
+|---|---|---|
+| Vehicle hardware | $350,000 | $450,000 |
+| Infrastructure | $45,000 | $8,000 |
+| Integration/software | $60,000 | $40,000 |
+| Installation labor | $35,000 | $12,000 |
+| **Year 1 total** | **$490,000** | **$510,000** |
+| Annual maintenance | $35,000 | $28,000 |
+| Layout change costs (per change) | $8,000 - $15,000 | $0 - $2,000 |
+| **3-year TCO** | **$585,000** | **$572,000** |
+
+The upfront cost difference is narrow. Over three years, AMRs typically pull ahead because they avoid recurring infrastructure modification costs. Use the [TCO Calculator](/tools/tco-calculator) to model your specific scenario.
+
+## Decision Framework
+
+Answer these five questions to determine your best fit:
+
+1. **How often does your layout change?** More than twice per year? AMR. Stable for years? AGV.
+2. **What's your heaviest payload?** Over 1,500 kg? AGV. Under 1,500 kg? Either works.
+3. **How fast do you need to deploy?** Under 3 months? AMR. 6+ months available? Either works.
+4. **What's your facility size?** Under 50,000 sq ft? AMR. Over 200,000 sq ft with stable routes? Consider AGVs or hybrid.
+5. **Do you operate in a regulated environment?** FDA, GMP, or semiconductor? AGVs may simplify compliance.
+
+If you're still uncertain, start with an AMR pilot. AMRs are easier to redeploy, require less commitment, and give you operational data to make a more informed decision about scaling with AGVs later. The [Robot Finder](/tools/robot-finder) can help you identify specific models that match your requirements.
+
+## Frequently Asked Questions
+
+### What is the main difference between an AGV and an AMR?
+
+AGVs follow fixed paths using magnetic tape, wires, or painted lines embedded in the floor. AMRs use onboard sensors, LiDAR, and software to navigate dynamically around obstacles without any fixed infrastructure. This means AGVs are more predictable but less flexible, while AMRs adapt to changing environments in real time.
+
+### Are AMRs more expensive than AGVs?
+
+Per-unit, AMRs typically cost $25,000-$80,000 compared to $15,000-$60,000 for AGVs. However, AMRs require less infrastructure investment (no floor modifications), so total deployment cost is often comparable for facilities under 100,000 sq ft. Over a 3-year period, AMRs often have lower total cost of ownership due to minimal layout change costs.
+
+### Can AGVs and AMRs work together in the same facility?
+
+Yes. Many large facilities deploy AGVs for predictable, high-volume routes (e.g., dock-to-storage) and AMRs for dynamic tasks like order picking. Modern fleet management software can coordinate both vehicle types, managing traffic flow and task assignment across the mixed fleet.

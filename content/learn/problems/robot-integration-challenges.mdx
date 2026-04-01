@@ -81,10 +81,10 @@ For the complete technical framework, read our [WMS and ERP integration guide](/
 **Why it happens:** Vendors spec floor requirements in their documentation (typically within 5mm flatness per 3 meters, smooth surface, no standing water), but buyers rarely verify their facility meets these specs until robots are on-site. Industrial floors that seem "fine" to human workers — small cracks, minor lips at expansion joints, slight slopes — cause significant problems for robots with millimeter-precision navigation.
 
 **Common floor issues and their impact:**
-- **Expansion joint lips (>3mm):** Causes robot jarring, accelerated wheel wear, and navigation drift
+- **Expansion joint lips (over mm):** Causes robot jarring, accelerated wheel wear, and navigation drift
 - **Cracks and holes:** LiDAR and cameras may interpret as obstacles; wheels can jam
 - **Wet or dusty surfaces:** Wheel slip causes positioning errors; dust coats sensors
-- **Ramps and slopes (>3 degrees):** Most AMRs struggle on slopes; acceleration and braking change
+- **Ramps and slopes (over  degrees):** Most AMRs struggle on slopes; acceleration and braking change
 - **Floor transitions (concrete to tile, dock plates):** Height changes and surface changes confuse sensors
 
 **How to solve it:**

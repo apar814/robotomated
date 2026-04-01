@@ -1,0 +1,208 @@
+---
+title: "Cobot Safety Assessment: ISO/TS 15066 and Risk Reduction in Practice"
+slug: "cobot-safety-assessment-guide"
+category: manufacturing
+audience: professional
+industry:
+  - manufacturing
+  - automotive
+  - electronics
+description: "Practical guide to cobot safety assessment per ISO/TS 15066. Covers risk assessment, force limits, speed reduction, and how to validate collaborative operation."
+readTime: 10
+publishedAt: "2026-03-30"
+updatedAt: "2026-03-30"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs: []
+faqs:
+  - question: "Is a risk assessment required for every cobot installation?"
+    answer: "Yes, without exception. ISO 10218-2 and ISO/TS 15066 require a risk assessment specific to each cobot application and installation. Even if the cobot is safety-certified, the application (including the end-effector, workpiece, and environment) must be assessed. A cobot is not inherently safe — a safe collaborative application is the result of proper design and assessment."
+  - question: "What are the force and pressure limits in ISO/TS 15066?"
+    answer: "ISO/TS 15066 defines maximum permissible contact force and pressure for 29 body regions. For example: hand/fingers allow 140N force and 300 N/cm² pressure for transient contact, while the forehead allows only 65N force and 110 N/cm² pressure. These limits are based on biomechanical pain onset thresholds."
+  - question: "Do cobots eliminate the need for safety fencing?"
+    answer: "Not automatically. Cobots enable fenceless operation when the complete application meets safety requirements — including the end-effector, workpiece, and task-specific risks (e.g., welding arc, sharp edges, hot surfaces). Many cobot applications still require some form of safeguarding (safety-rated area scanners, light curtains, or physical barriers) due to application-specific hazards."
+---
+
+**Quick Answer:** Every cobot installation requires a risk assessment per ISO 10218-2 and ISO/TS 15066 — no exceptions. The assessment must consider the complete application including end-effector, workpiece, and environment, not just the robot. ISO/TS 15066 defines force and pressure limits for 29 body regions, and your application must stay within these thresholds through design, speed limiting, padding, or a combination. A poorly assessed cobot application is more dangerous than a properly fenced industrial robot.
+
+## The Safety Misconception
+
+The biggest danger in cobot deployment is the belief that "collaborative robot" means "inherently safe." It doesn't.
+
+A cobot is a robot designed to support collaborative operation — but collaborative operation is a property of the application, not the robot. A cobot wielding a sharp deburring tool or moving a 20 kg steel casting is not inherently safe just because the robot arm has force limiting.
+
+This misconception has led to cobot installations that would fail a proper safety assessment and, in some cases, to worker injuries that proper risk assessment would have prevented.
+
+## The Standards Framework
+
+### ISO 10218-1:2011 — Robot Safety (Robot Design)
+
+Applies to the robot manufacturer. Defines safety requirements for the robot arm itself: force limiting, emergency stop, protective stop, speed monitoring, and collaborative operation modes.
+
+### ISO 10218-2:2011 — Robot Safety (System Integration)
+
+Applies to you — the integrator or facility deploying the cobot. Requires risk assessment of the complete robotic system including robot, tooling, workpiece, and the environment.
+
+### ISO/TS 15066:2016 — Collaborative Robots
+
+The technical specification that defines permissible contact forces and pressures for collaborative operation. This is the document that determines whether your specific application can operate without fencing.
+
+## The Four Collaborative Modes
+
+ISO 10218-1 defines four methods for achieving safe collaborative operation. Most deployments use one or a combination:
+
+### 1. Safety-Rated Monitored Stop (SMS)
+
+**How it works:** The robot stops (safety-rated zero speed) before a human enters the collaborative workspace. The robot resumes when the human exits.
+
+**Example:** A cobot palletizer that stops completely when an operator enters the stacking zone to remove a full pallet. A safety-rated area scanner monitors the zone.
+
+**Limitations:** Stops frequently in high-traffic environments, reducing throughput.
+
+### 2. Hand Guiding
+
+**How it works:** An operator physically guides the robot through motions. The robot only moves under direct human control via a hand-guiding device with emergency stop.
+
+**Example:** Programming a cobot by hand-guiding it through a weld path or pick-and-place sequence.
+
+**Limitations:** Only applicable during programming/setup, not production operation.
+
+### 3. Speed and Separation Monitoring (SSM)
+
+**How it works:** The robot adjusts speed based on the distance between the robot and the nearest person. Far away: full speed. Closer: reduced speed. Very close: protective stop.
+
+**Example:** A cobot in a shared workspace that slows to 250mm/s when a worker approaches within 1.5m and stops completely at 0.5m.
+
+**Limitations:** Requires safety-rated sensing (LiDAR, area scanners) to monitor human position. Complex to validate. Speed reduction may significantly impact throughput.
+
+### 4. Power and Force Limiting (PFL)
+
+**How it works:** The robot is designed so that contact with a human cannot exceed biomechanical limits defined in ISO/TS 15066. Force sensors in the joints detect contact and stop or reverse the robot.
+
+**Example:** A cobot performing light assembly where occasional contact with a worker's hand is possible but the force is limited to levels that cannot cause injury.
+
+**Limitations:** Limits the robot's speed and payload. The effective payload after deducting for kinetic energy constraints may be much less than the robot's rated payload.
+
+**Most cobot deployments use PFL as the primary safety method**, often combined with SSM for enhanced protection.
+
+## ISO/TS 15066 Force and Pressure Limits
+
+The standard defines contact thresholds for two scenarios:
+
+### Transient Contact (Impact)
+
+The robot strikes a body part and the body part can recoil (move away). This is the more common scenario.
+
+### Quasi-Static Contact (Clamping)
+
+The body part is trapped between the robot and a fixed surface with no ability to recoil. This is more dangerous and has lower force limits.
+
+### Key Body Region Limits
+
+| Body Region | Max Force — Transient (N) | Max Pressure — Transient (N/cm²) | Max Force — Quasi-Static (N) | Max Pressure — Quasi-Static (N/cm²) |
+|---|---|---|---|---|
+| Skull/forehead | 130 | 110 | 65 | 55 |
+| Face | 65 | 110 | 45 | 55 |
+| Neck (front) | 35 | — | 24 | — |
+| Chest | 140 | 170 | 100 | 85 |
+| Abdomen | 110 | 140 | 70 | 70 |
+| Upper arm | 150 | 210 | 100 | 105 |
+| Forearm | 160 | 190 | 100 | 95 |
+| Hand (palm) | 135 | 260 | 100 | 130 |
+| Fingers | 140 | 300 | 100 | 150 |
+| Thigh | 220 | 250 | 150 | 125 |
+| Lower leg | 130 | 170 | 100 | 85 |
+
+**Critical takeaway:** The face and neck have extremely low force limits (65N and 35N respectively). Any application where the robot could contact a worker's face or neck must be designed to stay well below these thresholds — or that body region must be eliminated from the reachable workspace.
+
+## Conducting a Risk Assessment
+
+### Step 1: Define the Application
+
+Document everything:
+- Robot model, payload, speed settings
+- End-effector (gripper, tool) — material, mass, edges, sharp points
+- Workpiece — mass, material, edges, temperature, chemical properties
+- Task sequence — every motion the robot makes
+- Human interaction — when, where, and how humans are near the robot
+
+### Step 2: Identify Hazards
+
+For each phase of robot operation, identify potential hazards:
+
+| Phase | Potential Hazards |
+|---|---|
+| Normal operation | Contact with moving robot, pinch points between robot and fixtures, contact with workpiece |
+| Loading/unloading | Hand in gripper zone, box/part falling from gripper |
+| Changeover | Unexpected motion during programming, manual handling of tools |
+| Maintenance | Stored energy release, unexpected restart |
+| Fault conditions | Loss of grip (drop), uncontrolled motion, software error |
+
+### Step 3: Estimate Risk
+
+For each hazard, assess:
+- **Severity** — Minor bruise, significant bruise, laceration, fracture, crush
+- **Probability** — How likely is contact during normal operation?
+- **Frequency** — How often are workers in the hazard zone?
+- **Avoidability** — Can the worker avoid or escape contact?
+
+### Step 4: Apply Risk Reduction
+
+In order of preference (the "hierarchy of controls"):
+
+1. **Eliminate the hazard** — Redesign the application to remove the contact scenario
+2. **Engineering controls** — Reduce speed, add padding, change end-effector design, add sensors
+3. **Administrative controls** — Training, procedures, signage, floor markings
+4. **PPE** — Last resort and insufficient as a primary control for robot hazards
+
+### Step 5: Validate
+
+**Measurement is required, not optional.** Use a force/pressure measurement device (CBSF — Collision Body Simulation Force measurement) to measure actual contact forces at every identified contact scenario.
+
+Measurement devices: SICK FlexiSoft, Pilz collision measurement, Robotiq FT 300-S.
+
+Measure at:
+- Maximum operating speed
+- Maximum payload
+- Worst-case contact geometry (smallest contact area = highest pressure)
+- Multiple body region proxies
+
+**If measured forces exceed ISO/TS 15066 limits, the application is not safe for collaborative operation.** Reduce speed, add padding, redesign the end-effector, or add safeguarding.
+
+## Common Assessment Mistakes
+
+1. **Assessing only the robot, not the application.** The robot passed safety certification. Your sharp-edged aluminum workpiece did not. The risk assessment covers the complete system.
+
+2. **Ignoring the end-effector.** A vacuum gripper with sharp aluminum edges, a welding torch, or a grinding tool all introduce hazards that the bare robot arm doesn't have. Every end-effector must be assessed.
+
+3. **Not measuring actual forces.** Calculating theoretical forces from robot specifications is insufficient. Real-world forces depend on contact geometry, surface compliance, impact angle, and factors that calculations miss. Measure.
+
+4. **Forgetting quasi-static scenarios.** A worker's hand trapped between the robot and a table edge is quasi-static contact with much lower permissible forces than transient impact. Identify every potential clamping scenario.
+
+5. **Not reassessing after changes.** Changed the gripper? New workpiece? Different speed setting? The risk assessment must be updated.
+
+## When Fencing Is Still Required
+
+Even with a cobot, some applications require safeguarding:
+
+- **High-speed non-collaborative zones** — If the cobot runs at industrial speed during part of its cycle (allowed when no human is present), safety-rated area monitoring must enforce speed reduction when humans approach.
+- **Hazardous processes** — Welding (arc hazard), grinding (sparks, debris), hot material handling, sharp workpieces.
+- **Heavy workpieces** — A 25 kg steel casting swung by a cobot can exceed force limits at even low speeds.
+
+In these cases, a combination approach works: cobot operates without fencing during collaborative phases (loading, programming) and with safety-rated area monitoring during hazardous phases (welding, high-speed operation).
+
+Use the [Robot Finder](/tools/robot-finder) to compare cobot models with their safety ratings and collaborative capabilities.
+
+## Frequently Asked Questions
+
+### Is a risk assessment required for every cobot installation?
+
+Yes, without exception. ISO 10218-2 requires application-specific risk assessment for every robotic installation, including cobots. The assessment covers the complete application — robot, end-effector, workpiece, and environment. A cobot is not inherently safe; a safe application results from proper assessment and design.
+
+### What are the force limits in ISO/TS 15066?
+
+The standard defines limits for 29 body regions. Examples: hand/fingers allow 140N transient force, chest allows 140N, but face allows only 65N and front of neck only 35N. Both force and pressure must be within limits. Quasi-static (clamping) limits are significantly lower than transient (impact) limits.
+
+### Do cobots eliminate the need for safety fencing?
+
+Not automatically. The robot may be collaborative, but the application may not be. Welding arcs, sharp workpieces, heavy parts, and high-speed portions of the cycle may all require safeguarding. The risk assessment determines what safeguarding is needed — it could be nothing, area scanners, or full fencing depending on the application.
