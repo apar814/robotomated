@@ -60,4 +60,12 @@ export const analytics = {
     trackEvent("pro_subscribed"),
   searchPerformed: (query: string, resultsCount: number, filtersApplied: string[]) =>
     trackEvent("search_performed", { query, results_count: resultsCount, filters_applied: filtersApplied }),
+  compareStarted: (robotA: string, robotB: string) =>
+    trackEvent("compare_started", { robot_a: robotA, robot_b: robotB }),
+  tcoCalculated: (robotId: string, years: number, totalCost: number) =>
+    trackEvent("tco_calculated", { robot_id: robotId, years, total_cost: totalCost }),
+  newsletterSignup: (source: string, industry: string | null) =>
+    trackEvent("newsletter_signup", { source, industry }),
+  advisorSession: (sessionId: string, questionsAnswered: number) =>
+    trackEvent("advisor_session", { session_id: sessionId, questions_answered: questionsAnswered }),
 };
