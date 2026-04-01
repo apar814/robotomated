@@ -1,0 +1,196 @@
+---
+title: "Robot Terminology Glossary: 50 Terms Every Buyer Should Know"
+slug: robot-terminology-glossary
+category: getting-started
+audience: professional
+industry:
+  - warehouse
+  - manufacturing
+  - general
+description: "50 essential robotics terms explained in plain English — from AMR and cobot to RaaS and SLAM. The buyer's glossary for 2026."
+readTime: 11
+publishedAt: "2026-04-01"
+updatedAt: "2026-04-01"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs: []
+faqs:
+  - question: "What is the difference between an AMR and an AGV?"
+    answer: "An AGV (Automated Guided Vehicle) follows fixed paths using magnetic tape, wires, or painted lines. An AMR (Autonomous Mobile Robot) navigates dynamically using sensors, cameras, and SLAM technology. AMRs are more flexible and easier to redeploy, while AGVs are simpler and cheaper for fixed, high-volume routes."
+  - question: "What does cobot mean?"
+    answer: "Cobot is short for collaborative robot — a robot designed to work safely alongside humans without the need for physical safety cages. Cobots have force-limiting sensors, rounded joints, and slower maximum speeds compared to traditional industrial robots. They are popular in manufacturing, packing, and machine tending applications."
+  - question: "What is RaaS in robotics?"
+    answer: "RaaS stands for Robotics-as-a-Service, a subscription model where you pay a monthly fee per robot rather than purchasing hardware outright. RaaS typically includes maintenance, software updates, and support. Monthly costs range from $1,500 to $5,000 per robot depending on the category and vendor."
+---
+
+**Quick Answer:** This glossary covers 50 essential robotics terms organized by category — navigation, hardware, software, business models, and safety. Bookmark it as your reference when evaluating vendors, reading spec sheets, or building a business case for automation.
+
+## Navigation and Mapping
+
+### 1. SLAM (Simultaneous Localization and Mapping)
+The technology that allows a robot to build a map of its environment while simultaneously tracking its own position within that map. SLAM uses LiDAR, cameras, or both. It is the foundation of modern AMR navigation.
+
+### 2. LiDAR (Light Detection and Ranging)
+A sensor that fires laser pulses and measures reflections to create a 3D map of the surroundings. LiDAR provides millimeter-level accuracy and works in complete darkness. Most warehouse AMRs use 2D LiDAR; advanced systems use 3D LiDAR.
+
+### 3. AMR (Autonomous Mobile Robot)
+A robot that navigates independently using onboard sensors and software. Unlike AGVs, AMRs do not require fixed infrastructure like magnetic tape or guide wires. They can dynamically reroute around obstacles and adapt to changing environments.
+
+### 4. AGV (Automated Guided Vehicle)
+A mobile robot that follows predetermined paths using physical guidance systems — magnetic tape, embedded wires, or painted lines. AGVs are reliable and cost-effective for fixed, repetitive routes but lack the flexibility of AMRs.
+
+### 5. Odometry
+The use of wheel rotation data to estimate a robot's change in position. Odometry is simple but accumulates error over distance, which is why robots combine it with SLAM and other sensor data for accurate localization.
+
+### 6. Waypoint Navigation
+A navigation method where the robot moves between predefined coordinate points. Operators set waypoints on a facility map, and the robot plans paths between them. Common in warehouse AMR deployments.
+
+### 7. Geofencing
+A virtual boundary that restricts robot movement to designated areas. Geofences prevent robots from entering unsafe zones, restricted areas, or spaces reserved for manual operations.
+
+## Hardware and Mechanics
+
+### 8. Cobot (Collaborative Robot)
+A robot designed to work safely alongside humans. Cobots feature force-limiting joints, rounded edges, and built-in safety sensors. They typically handle payloads under 25 kg and operate at slower speeds than industrial robots.
+
+### 9. End Effector
+The tool attached to the end of a robot arm — grippers, suction cups, welding torches, screwdrivers, or spray nozzles. The end effector determines what tasks the robot can perform. Also called an end-of-arm tool (EOAT).
+
+### 10. Payload Capacity
+The maximum weight a robot can carry or manipulate. For robot arms, this is measured at the end effector. For AMRs, it is the maximum load on the platform. Always check whether the stated payload includes the end effector weight.
+
+### 11. Degrees of Freedom (DoF)
+The number of independent axes of movement a robot has. A typical industrial robot arm has 6 DoF. More degrees of freedom means greater flexibility and reach but also greater complexity and cost.
+
+### 12. Reach
+The maximum distance from the robot's base to the tip of its end effector. Reach determines the robot's work envelope — the total volume of space it can access.
+
+### 13. Repeatability
+How precisely a robot can return to the same position. Expressed in millimeters (e.g., plus or minus 0.05mm). Repeatability matters more than accuracy for most manufacturing tasks because robots repeat learned positions.
+
+### 14. Actuator
+The motor or mechanism that creates movement in a robot joint. Types include electric servo motors (most common), pneumatic actuators (fast, simple), and hydraulic actuators (high force applications).
+
+### 15. Gripper
+An end effector designed to grasp objects. Types include parallel jaw grippers, vacuum suction grippers, magnetic grippers, and soft robotics grippers. Gripper selection depends on object weight, shape, and surface material.
+
+## Software and Intelligence
+
+### 16. Computer Vision
+The ability of a robot to interpret visual information from cameras or sensors. Computer vision enables object recognition, quality inspection, bin picking, and navigation. Deep learning has dramatically improved computer vision accuracy since 2020.
+
+### 17. Fleet Management Software (FMS)
+Software that coordinates multiple robots operating in the same facility. FMS handles task assignment, traffic management, charging schedules, and performance monitoring. Essential for any deployment of more than 3 robots.
+
+### 18. Digital Twin
+A virtual replica of a physical robot or facility used for simulation, planning, and optimization. Digital twins allow you to test robot configurations and workflows before physical deployment, reducing risk and setup time.
+
+### 19. Path Planning
+The algorithm that determines how a robot moves from point A to point B while avoiding obstacles. Path planning balances speed, energy efficiency, and safety.
+
+### 20. Machine Learning (ML)
+A subset of AI where robots improve performance based on data rather than explicit programming. ML enables robots to adapt to new objects, optimize picking strategies, and predict maintenance needs.
+
+### 21. ROS (Robot Operating System)
+An open-source middleware framework for robot software development. ROS provides standard tools for hardware abstraction, device drivers, and inter-process communication. Many commercial robots use ROS or ROS 2 under the hood.
+
+### 22. API (Application Programming Interface)
+A set of protocols that allow different software systems to communicate. Robot APIs enable integration with WMS, ERP, and other enterprise systems. Always verify API availability and documentation quality when evaluating vendors.
+
+### 23. Edge Computing
+Processing data on the robot itself rather than sending it to the cloud. Edge computing reduces latency, improves reliability, and addresses data privacy concerns. Critical for time-sensitive tasks like obstacle avoidance.
+
+### 24. OTA (Over-the-Air) Updates
+Software updates delivered wirelessly to robots in the field. OTA capability means your robots improve over time without manual intervention or downtime for firmware flashing.
+
+## Business and Commercial Terms
+
+### 25. RaaS (Robotics-as-a-Service)
+A subscription model where you pay monthly per robot instead of purchasing outright. RaaS typically includes hardware, software, maintenance, and support. Monthly costs range from $1,500 to $5,000 depending on robot type.
+
+### 26. TCO (Total Cost of Ownership)
+The complete cost of a robot over its lifecycle, including hardware, software licenses, integration, training, maintenance, energy, and decommissioning. TCO is typically 1.5x to 2.5x the initial purchase price over 5 years. Calculate yours with the [TCO Calculator](/tools/tco-calculator).
+
+### 27. ROI (Return on Investment)
+The financial return generated by a robot deployment relative to its cost. Calculate ROI by comparing labor cost savings, throughput increases, and error reductions against TCO. Most warehouse robots achieve ROI in 12 to 24 months.
+
+### 28. Cycle Time
+The total time to complete one unit of work — one pick, one weld, one inspection. Reducing cycle time is the primary way robots increase throughput.
+
+### 29. OEE (Overall Equipment Effectiveness)
+A manufacturing metric combining availability, performance, and quality. OEE measures how effectively a robot or production line uses its operating time. World-class OEE is 85% or higher.
+
+### 30. Uptime
+The percentage of scheduled operating hours that a robot is actually functional. Enterprise SLAs typically guarantee 95% to 99% uptime. Track uptime from day one of deployment.
+
+## Warehouse-Specific Terms
+
+### 31. Goods-to-Person (G2P)
+A fulfillment strategy where robots bring inventory to stationary human pickers, eliminating walking. G2P systems can increase pick rates by 200% to 400% compared to person-to-goods methods.
+
+### 32. Pick-and-Place
+A robot operation where the robot picks up an object from one location and places it in another. Pick-and-place is the most common warehouse robot task, used in order fulfillment, sorting, and palletizing.
+
+### 33. Palletizing/Depalletizing
+Stacking items onto pallets (palletizing) or removing them (depalletizing). Robotic palletizers handle heavy, repetitive stacking that causes worker injuries. Throughput ranges from 10 to 80 cases per minute.
+
+### 34. Sortation
+Automatically routing items to designated locations based on destination, size, or other criteria. Robotic sortation systems handle parcels, totes, or packages at rates of 1,000 to 10,000 items per hour.
+
+### 35. WMS (Warehouse Management System)
+Software that manages warehouse operations — inventory tracking, order routing, labor management. Robot integration with your WMS is critical for coordinated operations. Always verify WMS compatibility before purchasing robots.
+
+### 36. Pick Rate
+The number of items picked per hour. Human pickers average 60 to 100 picks per hour. Robot-assisted picking typically achieves 150 to 300 picks per hour. Fully automated goods-to-person systems can exceed 400.
+
+## Safety and Compliance
+
+### 37. Safety-Rated Monitored Stop
+A cobot safety function that stops the robot when a human enters its workspace, then resumes when the space is clear. This allows shared workspaces without permanent safety fencing.
+
+### 38. ISO 10218
+The international standard for industrial robot safety, covering robot design, integration, and safeguarding requirements. Compliance is typically required for insurance and regulatory purposes.
+
+### 39. ISO/TS 15066
+The technical specification for collaborative robot safety, defining force and pressure limits for human-robot contact. This standard governs how close and how fast cobots can operate near people.
+
+### 40. Safety PLC
+A programmable logic controller certified for safety-critical applications. Safety PLCs monitor robot operations and trigger emergency stops when safety parameters are violated. Required in most industrial robot installations.
+
+### 41. E-Stop (Emergency Stop)
+A physical button that immediately halts all robot motion. Every robot installation must have accessible E-stops per safety regulations. Test E-stops at the start of every shift.
+
+### 42. Risk Assessment
+A systematic evaluation of hazards associated with a robot installation. Required before deployment under ISO 12100. Risk assessments identify pinch points, collision risks, and failure modes.
+
+## Advanced and Emerging Terms
+
+### 43. Swarm Robotics
+Multiple robots coordinating collectively to accomplish tasks, inspired by insect colony behavior. Swarm systems are decentralized — no single robot controls the others. Used in warehouse fulfillment and agricultural applications.
+
+### 44. Humanoid Robot
+A robot with a human-like body form — head, torso, two arms, two legs. Companies like Figure, Tesla, and Agility Robotics are developing humanoids for warehouse and manufacturing work. Still in early commercial stages as of 2026.
+
+### 45. Soft Robotics
+Robots or robot components made from compliant, flexible materials rather than rigid metal. Soft grippers can handle delicate items like fruit, electronics, and medical devices without damage.
+
+### 46. Teleoperation
+Controlling a robot remotely in real time, typically using a joystick, VR headset, or haptic interface. Teleoperation is used when full autonomy is not possible — hazardous environments, complex manipulation, or regulatory requirements.
+
+### 47. Sim-to-Real Transfer
+Training robot behaviors in a simulated environment (digital twin) and transferring them to a physical robot. This approach reduces training time and eliminates the risk of damaging real equipment during learning.
+
+### 48. Foundation Model (Robotics)
+A large AI model trained on diverse data that can be adapted to multiple robot tasks. Similar to how GPT works for text, foundation models for robotics enable faster deployment to new tasks with minimal retraining.
+
+### 49. Interoperability
+The ability of robots from different manufacturers to work together in the same facility. Interoperability standards like VDA 5050 and MassRobotics AMR Interop are emerging but not yet universal. Ask vendors about standards compliance.
+
+### 50. Predictive Maintenance
+Using sensor data and machine learning to predict when a robot component will fail before it does. Predictive maintenance reduces unplanned downtime by 30% to 50% compared to scheduled maintenance alone.
+
+## Using This Glossary
+
+Bookmark this page. When you encounter unfamiliar terms in vendor proposals, spec sheets, or trade publications, refer back here. Understanding the language of robotics is the first step toward making informed purchasing decisions.
+
+Ready to move from terminology to action? Start with our [first warehouse robot guide](/learn/getting-started/first-warehouse-robot-guide) or use the [Robot Finder](/tools/robot-finder) to explore options matched to your needs.

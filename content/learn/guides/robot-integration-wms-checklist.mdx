@@ -1,0 +1,154 @@
+---
+title: "Robot-WMS Integration Checklist: 20 Steps to Connect Your Fleet"
+slug: robot-integration-wms-checklist
+category: guides
+audience: professional
+industry:
+  - warehouse
+  - logistics
+description: "A 20-step checklist for integrating robots with your WMS. Covers API mapping, data flow, middleware selection, testing protocols, and go-live validation."
+readTime: 10
+publishedAt: "2026-04-01"
+updatedAt: "2026-04-01"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs: []
+faqs:
+  - question: "How long does robot-WMS integration typically take?"
+    answer: "Most robot-WMS integrations take 6 to 14 weeks from kickoff to go-live. The timeline depends heavily on whether your WMS has a modern REST API or requires custom middleware. Legacy systems with proprietary protocols can push timelines to 20 weeks or more."
+  - question: "Do I need middleware for robot-WMS integration?"
+    answer: "Middleware is recommended for most deployments. Direct API connections work when you have a single robot vendor and a modern WMS, but middleware provides flexibility to add vendors, normalize data formats, and handle failover. Popular options include Fetch Robotics FetchCore, SVT Robotics SOFTBOT, and Körber integration layers."
+  - question: "What happens to warehouse operations if the WMS-robot connection goes down?"
+    answer: "A properly integrated system includes fallback protocols. Robots should cache enough task data to complete current assignments, and the WMS should be able to reassign tasks to manual workers. Build and test these failover procedures before go-live."
+---
+
+**Quick Answer:** Integrating robots with your warehouse management system requires careful planning across API mapping, data normalization, middleware selection, and staged testing. Most integrations take 6 to 14 weeks. The 20 steps below cover everything from pre-integration audit through post-launch optimization, based on deployment data from facilities running Manhattan Associates, Blue Yonder, and SAP EWM alongside robotic fleets.
+
+## Phase 1: Pre-Integration Audit (Steps 1-5)
+
+Before writing a single line of integration code, you need to understand what you are connecting and where the gaps are.
+
+### Step 1: Document Your Current WMS Architecture
+
+Map your WMS version, hosting model (on-premise vs. cloud), API capabilities, and any existing integrations. Note whether your WMS exposes REST APIs, uses EDI, or requires proprietary connectors. Manhattan Associates Active WMS and Blue Yonder WMS have well-documented APIs. Older systems like legacy RedPrairie installations may require custom adapters.
+
+### Step 2: Catalog Robot Fleet Communication Protocols
+
+Each robot vendor has its own fleet management software and communication standards. Document the protocols for every robot type in your planned fleet: REST API, ROS 2 topics, MQTT, or proprietary protocols. If you are running multiple vendors, note where protocols overlap and where they diverge.
+
+### Step 3: Define the Data Exchange Requirements
+
+At minimum, the WMS and robot fleet need to exchange the following data:
+
+| Data Type | Direction | Frequency | Format |
+|-----------|-----------|-----------|--------|
+| Pick task assignments | WMS to Robot | Real-time | JSON/XML |
+| Task completion confirmations | Robot to WMS | Real-time | JSON/XML |
+| Inventory location updates | Bidirectional | Near real-time | JSON/XML |
+| Robot status and availability | Robot to WMS | Every 5-30 seconds | JSON |
+| Exception and error events | Robot to WMS | Event-driven | JSON |
+| Slotting and zone assignments | WMS to Robot | Batch (daily) | CSV/JSON |
+
+### Step 4: Assess Network Infrastructure
+
+Robots require reliable wireless connectivity throughout the facility. Conduct a site survey measuring signal strength, latency, and bandwidth at every point in the warehouse. Most AMR vendors recommend dedicated SSIDs with less than 50ms latency and less than 1% packet loss. A network that works fine for handheld scanners may not handle the continuous data streams from 20 or more robots.
+
+### Step 5: Identify Integration Ownership
+
+Assign a single integration lead who owns the project end-to-end. This person coordinates between your WMS vendor, robot vendor, IT team, and warehouse operations. Without clear ownership, integration projects stall in finger-pointing between vendors.
+
+## Phase 2: Architecture and Design (Steps 6-10)
+
+### Step 6: Choose Your Integration Pattern
+
+Three common patterns, each with trade-offs:
+
+| Pattern | Best For | Pros | Cons |
+|---------|----------|------|------|
+| Direct API | Single vendor, modern WMS | Lowest latency, simplest | Brittle, hard to scale |
+| Middleware layer | Multi-vendor, complex workflows | Flexible, vendor-agnostic | Added cost and complexity |
+| Event-driven (message queue) | High-volume, real-time | Scalable, decoupled | Requires message broker expertise |
+
+For most warehouse operations running more than 10 robots, a middleware layer or event-driven architecture provides the resilience and flexibility you need. SVT Robotics SOFTBOT and Körber offer pre-built connectors for major WMS and robot platforms.
+
+### Step 7: Design the Task Orchestration Logic
+
+Define how tasks flow from the WMS to robots. The WMS generates pick, put-away, or replenishment tasks. The orchestration layer must decide which robot gets which task based on proximity, battery level, payload capacity, and zone assignments. Document every decision rule before implementation.
+
+### Step 8: Map Data Fields and Normalize Formats
+
+Create a field-by-field mapping between your WMS data model and each robot vendor's API schema. Common friction points include location formatting (aisle-bay-level vs. coordinate-based), unit of measure discrepancies, and SKU identifier mismatches. Build transformation rules for every discrepancy.
+
+### Step 9: Design Error Handling and Failover
+
+Plan for every failure mode: network outage, robot hardware failure, WMS downtime, and partial task completion. Each scenario needs a documented response. Robots should cache current task data locally. The WMS should automatically reassign tasks to manual workers when robot capacity drops below defined thresholds.
+
+### Step 10: Define Security and Access Controls
+
+Robot fleet APIs should authenticate with the WMS using OAuth 2.0 or API keys with rotation policies. Segment robot network traffic on dedicated VLANs. Log all API calls for audit purposes. Ensure the integration does not create new attack vectors for your warehouse network.
+
+## Phase 3: Build and Test (Steps 11-16)
+
+### Step 11: Build the Integration in a Sandbox Environment
+
+Never develop directly against your production WMS. Stand up a sandbox or staging instance with representative data. Most WMS vendors provide test environments, though you may need to request access and pay for additional licensing.
+
+### Step 12: Implement Data Transformation Layer
+
+Build the field mappings and data normalization rules defined in Step 8. Validate each transformation with sample data. Pay special attention to edge cases: partial pallets, split picks, hazmat items, and oversized SKUs.
+
+### Step 13: Conduct Unit Testing on Every Endpoint
+
+Test each API endpoint individually before testing end-to-end workflows. Verify that the WMS correctly sends task data, the robot fleet manager correctly receives and parses it, and confirmations flow back accurately.
+
+### Step 14: Run End-to-End Integration Testing
+
+Execute complete workflows from order receipt through task assignment, robot execution, and task confirmation. Use the [TCO Calculator](/tools/tco-calculator) to model the expected throughput improvements and validate that integration performance matches projections.
+
+### Step 15: Load Test at Peak Volume
+
+Simulate your peak order volume, typically 2 to 3 times your average daily volume. Measure API response times, message queue depths, and robot task assignment latency under load. Integration that works at 500 tasks per hour may collapse at 2,000.
+
+### Step 16: Conduct User Acceptance Testing with Operations Staff
+
+Put warehouse supervisors and operators in front of the integrated system. They will find workflow gaps that engineers miss. Document every issue and prioritize fixes before go-live.
+
+## Phase 4: Go-Live and Optimize (Steps 17-20)
+
+### Step 17: Run a Parallel Operation Period
+
+Operate the integrated robot system alongside your existing manual processes for 5 to 10 business days. Compare output, accuracy, and throughput between the two methods. This period catches issues that testing missed and builds operator confidence.
+
+### Step 18: Execute a Phased Rollout by Zone
+
+Do not activate robots across the entire warehouse simultaneously. Start with a single zone, stabilize, then expand zone by zone. Each zone activation is a mini go-live with its own validation checklist.
+
+### Step 19: Monitor Integration Health Metrics
+
+Track these metrics daily for the first 30 days:
+
+| Metric | Target | Red Flag |
+|--------|--------|----------|
+| API response time | Under 200ms | Over 500ms |
+| Task assignment success rate | Over 99.5% | Under 98% |
+| Data sync accuracy | 100% | Any discrepancy |
+| Robot utilization rate | Over 75% | Under 50% |
+| Manual intervention rate | Under 2% | Over 5% |
+
+### Step 20: Optimize and Iterate
+
+After 30 days of stable operation, begin optimization. Tune task assignment algorithms based on actual performance data. Adjust zone boundaries and robot routing. Use the [Robot Finder](/tools/robot-finder) to evaluate whether additional robot types could address remaining manual bottlenecks. Plan quarterly integration reviews to align with WMS updates and robot firmware upgrades.
+
+## Common Integration Pitfalls
+
+The most expensive mistakes happen before a single robot moves. Three pitfalls account for most integration failures:
+
+**Underestimating WMS customization.** If your WMS has been heavily customized over the years, standard API connectors may not work. Budget 30 to 50% additional integration time for customized WMS instances.
+
+**Ignoring change management.** Warehouse staff who are not trained on the integrated workflow will create manual workarounds that break data integrity. Train every affected role before go-live.
+
+**Skipping the parallel operation period.** The pressure to show ROI quickly tempts teams to skip parallel running. This is where you catch the 5% of edge cases that cause 50% of post-launch problems.
+
+## Next Steps
+
+Use this checklist as a living document, not a one-time exercise. Each step should have an owner, a completion date, and documented evidence of completion. For integration cost modeling, see the [TCO Calculator](/tools/tco-calculator). For selecting robots that integrate well with your specific WMS, use the [Robot Finder](/tools/robot-finder) with the WMS compatibility filter.

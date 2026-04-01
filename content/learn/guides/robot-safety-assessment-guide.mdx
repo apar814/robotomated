@@ -1,0 +1,137 @@
+---
+title: "Robot Safety Assessment Guide: ISO 10218 and ISO/TS 15066 Compliance"
+slug: robot-safety-assessment-guide
+category: guides
+audience: professional
+industry:
+  - manufacturing
+  - warehouse
+description: "Complete guide to robot safety assessments covering ISO 10218, ISO/TS 15066 compliance, risk assessment methodology, and collaborative robot force limits."
+readTime: 11
+publishedAt: "2026-04-01"
+updatedAt: "2026-04-01"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs: []
+faqs:
+  - question: "Is ISO/TS 15066 a legal requirement for cobots?"
+    answer: "ISO/TS 15066 is a technical specification, not a regulation, so it is not legally mandatory in most jurisdictions. However, OSHA and equivalent agencies reference it as the standard of care. If a cobot injures a worker and you have not followed ISO/TS 15066, you face significant liability exposure. Most insurers now require compliance as a condition of coverage."
+  - question: "How often should robot safety assessments be repeated?"
+    answer: "Conduct a full safety reassessment whenever you change the robot application, modify the cell layout, update robot software, or change the end-of-arm tooling. At minimum, perform an annual review of existing assessments. OSHA recommends reassessment after any near-miss incident involving the robot."
+  - question: "What is the maximum allowable force for collaborative robots?"
+    answer: "ISO/TS 15066 specifies maximum permissible force and pressure values based on the body region contacted. For the most sensitive areas like the head and neck, maximum transient force is 130N. For the hand and fingers, it is 140N. For the chest and abdomen, 210N. These values vary between transient (impact) and quasi-static (clamping) contact scenarios."
+---
+
+**Quick Answer:** Robot safety assessments are structured evaluations required before deploying industrial or collaborative robots. The process follows ISO 10218-1/2 for industrial robots and ISO/TS 15066 for collaborative applications, covering hazard identification, risk estimation, risk reduction, and validation. A proper assessment takes 2 to 6 weeks per application and should be conducted by a qualified safety engineer, not the robot vendor alone.
+
+## Why Safety Assessments Are Non-Negotiable
+
+In 2025, OSHA issued over $4.2 million in citations related to robotic equipment, a 35% increase over 2024. The majority of citations fell into two categories: inadequate risk assessments and insufficient safeguarding. Beyond regulatory penalties, a single robot-related injury averages $180,000 in direct costs (medical, indemnity, legal) and significantly more in indirect costs (production downtime, investigation time, reputational damage).
+
+A documented safety assessment is your primary defense against both incidents and liability. It demonstrates that you identified hazards, evaluated risks, implemented controls, and validated their effectiveness.
+
+## The Regulatory Framework
+
+### ISO 10218-1: Robot Design Requirements
+
+ISO 10218-1 applies to robot manufacturers, specifying safety requirements for the robot itself. As a buyer, verify that every robot you purchase is certified to ISO 10218-1. This certification means the robot includes required safety functions: emergency stop, protective stop, speed and force monitoring, and safety-rated monitored stop.
+
+### ISO 10218-2: Robot System Integration
+
+ISO 10218-2 applies to you, the integrator or end user. It governs the complete robot cell or system, including the robot, tooling, workpieces, peripherals, and safeguarding. This standard requires a documented risk assessment for every robot application.
+
+### ISO/TS 15066: Collaborative Robot Safety
+
+ISO/TS 15066 supplements ISO 10218 specifically for collaborative applications where robots and humans share workspace. It defines four collaborative operation modes and specifies biomechanical force and pressure limits for human-robot contact.
+
+| Collaborative Mode | Description | Key Safety Requirement |
+|-------------------|-------------|----------------------|
+| Safety-rated monitored stop | Robot stops when human enters zone | Reliable detection, certified stop function |
+| Hand guiding | Human physically guides robot | Enabling device, speed limits |
+| Speed and separation monitoring | Robot slows as human approaches | Real-time distance measurement, certified speed control |
+| Power and force limiting | Robot limits contact force | Validated force/pressure below ISO/TS 15066 thresholds |
+
+## The Risk Assessment Process
+
+### Step 1: Define the Application Scope
+
+Document everything about the robot application: task description, robot model, end-of-arm tooling, cycle time, workpiece characteristics, facility layout, and every person who may interact with or be near the robot. Include maintenance personnel, cleaning staff, and visitors, not just operators.
+
+### Step 2: Identify Hazards
+
+Walk through every phase of the robot lifecycle and identify hazards at each stage:
+
+| Lifecycle Phase | Common Hazards |
+|----------------|----------------|
+| Installation | Crushing during positioning, electrical hazards |
+| Normal operation | Impact, crushing, entanglement with tooling |
+| Teaching/programming | Unexpected motion, pinch points |
+| Maintenance | Stored energy release, fall hazards |
+| Malfunction | Uncontrolled motion, dropped loads |
+| Emergency stop | Residual motion, gravity-loaded axes |
+
+For collaborative applications, add contact scenarios: transient contact (impact where the human can recoil) and quasi-static contact (clamping where the human is trapped between the robot and a fixed object). Quasi-static scenarios are more dangerous and have lower allowable force thresholds.
+
+### Step 3: Estimate Risk Levels
+
+For each identified hazard, estimate the risk using three factors:
+
+**Severity of harm:** Rate from minor (bruise) to catastrophic (fatality). ISO 10218-2 uses a severity scale from S1 (slight) to S2 (serious or fatal).
+
+**Frequency of exposure:** How often are people exposed to the hazard? From rarely (F1) to frequently or continuously (F2).
+
+**Possibility of avoidance:** Can the person detect the hazard and move out of the way? From possible (P1) to scarcely possible (P2).
+
+Combine these factors using the risk estimation matrix from ISO 12100 to determine a risk level for each hazard.
+
+### Step 4: Implement Risk Reduction Measures
+
+Apply risk reduction in the following hierarchy, as specified by ISO 12100:
+
+1. **Inherently safe design** — Eliminate the hazard entirely. Can you reposition the robot so humans do not need to enter its workspace? Can you use a smaller, lower-force robot?
+
+2. **Safeguarding and protective devices** — Physical barriers, light curtains, laser scanners, safety-rated vision systems. For collaborative robots operating in power and force limiting mode, validate that contact forces remain below ISO/TS 15066 thresholds.
+
+3. **Information for use** — Warning signs, training requirements, operating procedures. These are supplementary measures, never a substitute for engineering controls.
+
+### Step 5: Validate Force and Pressure Limits (Collaborative Applications)
+
+For cobots operating in power and force limiting mode, you must measure actual contact forces and pressures and compare them to the ISO/TS 15066 biomechanical limits.
+
+Key body region limits for transient contact:
+
+| Body Region | Max Force (N) | Max Pressure (N/cm2) |
+|-------------|---------------|---------------------|
+| Skull and forehead | 130 | 110 |
+| Face | 65 | 110 |
+| Neck (sides) | 150 | 140 |
+| Chest | 210 | 170 |
+| Hand and fingers | 140 | 300 |
+| Upper arm | 220 | 190 |
+| Lower leg | 260 | 220 |
+
+Measure using a calibrated force measurement device (CBSF or equivalent) at the point of contact, with the robot running the actual application at production speed. Test multiple contact points and worst-case scenarios. A robot certified to ISO/TS 15066 by the manufacturer may still exceed limits depending on your specific tooling and workpiece.
+
+### Step 6: Document Everything
+
+Your risk assessment documentation should include the application description, hazard identification worksheets, risk estimation for each hazard, risk reduction measures implemented, validation test results, residual risk evaluation, and sign-off by a qualified safety engineer. Retain this documentation for the life of the robot installation plus 10 years.
+
+## Common Assessment Failures
+
+**Relying solely on the robot vendor's generic risk assessment.** Vendors provide risk assessments for the robot in a standard configuration. Your application, tooling, environment, and workflow are unique. The vendor's assessment is a starting point, not a finished document.
+
+**Ignoring tooling and workpiece hazards.** A cobot may be inherently force-limited, but a sharp-edged tool or heavy workpiece can cause serious injury at forces well below the ISO/TS 15066 thresholds. Assess the complete system, not just the robot.
+
+**Failing to reassess after changes.** Changed the gripper? Updated the robot software? Moved the workstation 2 feet to the left? Each change requires reassessment. Document a change management process that triggers reassessment automatically.
+
+**Skipping quasi-static contact analysis.** Transient contact (impact) is the scenario most people think about. Quasi-static contact (clamping) is the scenario that causes the most serious injuries. Identify every possible clamping geometry in your cell and validate forces for each one.
+
+## Building Your Safety Assessment Team
+
+A qualified safety assessment requires expertise across robotics, safety engineering, and your specific industry. The assessment team should include a certified robot safety assessor (CMSE or equivalent), a robot integrator or applications engineer, a facility safety manager, and an operations representative who understands the daily workflow.
+
+For your first deployment, consider hiring a third-party safety assessment firm. Costs range from $5,000 to $25,000 per application, depending on complexity. This investment is trivial compared to the cost of a single OSHA citation or injury claim.
+
+## Next Steps
+
+Start with the risk assessment template from your robot vendor, but do not stop there. Build your own assessment using the methodology above. For help selecting robots with strong safety certifications and proven collaborative track records, use the [Robot Finder](/tools/robot-finder). For cost modeling that includes safety infrastructure, see the [TCO Calculator](/tools/tco-calculator).
