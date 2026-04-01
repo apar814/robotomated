@@ -1,0 +1,137 @@
+--- TWEET 1 ---
+NEW: Clearpath Husky Water Quality by Clearpath Robotics — RoboScore 76.5/100. Autonomous water sampling UGV that traverses riverbanks collecting and analyzing water samples for pH, turbidity, dissolved oxygen, and contaminants. $75,000.
+
+Full analysis: https://robotomated.com/explore/agricultural/clearpath-husky-water
+
+#robotics #automation #agtech #farming
+
+--- TWEET 2 ---
+NEW: DJI FlyCart 30 Reforestation by DJI — RoboScore 77/100. Seed-dispersal drone dropping 30 kg of seed pods per flight across deforested hillsides, planting 40,000 trees per day at 10x the speed of manual planting. $19,000.
+
+Full analysis: https://robotomated.com/explore/drone/dji-flycart-30-reforest
+
+#robotics #automation #drones #UAV
+
+--- TWEET 3 ---
+NEW: Clearpath Jackal Wildlife by Clearpath Robotics — RoboScore 76.1/100. Whisper-quiet UGV for wildlife monitoring with camera traps, acoustic sensors, and scent-neutral materials to minimize animal disturbance. $32,000.
+
+Full analysis: https://robotomated.com/explore/agricultural/clearpath-jackal-wildlife
+
+#robotics #automation #agtech #farming
+
+--- TWEET 4 ---
+#1 in Security & Surveillance: Boston Dynamics Spot Security by Boston Dynamics — RoboScore 84.6/100. Spot quadruped configured for security and surveillance. $74,500.
+
+Compare all security & surveillance robots: https://robotomated.com/explore/security
+
+#robotics #security #surveillance
+
+--- TWEET 5 ---
+#1 in Underwater & Marine: Kongsberg HUGIN by Oceaneering — RoboScore 82.2/100. Deep-sea AUV for detailed seabed mapping and survey. $8.0M.
+
+Compare all underwater & marine robots: https://robotomated.com/explore/underwater
+
+#robotics #robotics
+
+--- TWEET 6 ---
+#1 in Space Robotics: NASA Perseverance by NASA JPL — RoboScore 82.5/100. Mars rover conducting astrobiology research in Jezero Crater. $2700.0M.
+
+Compare all space robotics robots: https://robotomated.com/explore/space
+
+#robotics #robotics
+
+--- TWEET 7 ---
+#1 in Eldercare & Companion: Intuition Robotics ElliQ 2.0 by Intuition Robotics — RoboScore 82.2/100. Updated ElliQ with health monitoring, medication adherence tracking, and expanded proactive engagement. $350.
+
+Compare all eldercare & companion robots: https://robotomated.com/explore/eldercare
+
+#robotics #robotics
+
+--- TWEET 8 ---
+#1 in Humanoid Robots: Unitree H1 by Unitree Robotics — RoboScore 81.6/100. Full-size humanoid that set the world record for bipedal running at 3. $90,000.
+
+Compare all humanoid robots robots: https://robotomated.com/explore/humanoid
+
+#robotics #robotics
+
+--- TWEET 9 ---
+#1 in Hospitality & Service: Brain Corp Fleet (BrainOS) by Brain Corp — RoboScore 82/100. AI platform powering 30,000+ autonomous commercial cleaning robots worldwide. Contact for pricing.
+
+Compare all hospitality & service robots: https://robotomated.com/explore/hospitality
+
+#robotics #robotics
+
+--- TWEET 10 ---
+#1 in Warehouse & Logistics: Stretch by Boston Dynamics — RoboScore 87.5/100. Mobile case-handling robot for warehouse truck unloading. $150,000.
+
+Compare all warehouse & logistics robots: https://robotomated.com/explore/warehouse
+
+#robotics #warehouse #logistics
+
+--- TWEET 11 ---
+#1 in Manufacturing: UR5e by Universal Robots — RoboScore 88/100. Lightweight collaborative robot arm for flexible automation. $29,500.
+
+Compare all manufacturing robots: https://robotomated.com/explore/manufacturing
+
+#robotics #manufacturing #industry40
+
+--- TWEET 12 ---
+#1 in Consumer & Home: S8 MaxV Ultra by Roborock — RoboScore 91/100. AI-powered robot vacuum with advanced obstacle avoidance. $1,399.
+
+Compare all consumer & home robots: https://robotomated.com/explore/consumer
+
+#robotics #smarthome #consumertech
+
+--- TWEET 13 ---
+#1 in Medical & Healthcare: Intuitive da Vinci 5 by Intuitive Surgical — RoboScore 92.5/100. Gold standard surgical robot. $2.0M.
+
+Compare all medical & healthcare robots: https://robotomated.com/explore/medical
+
+#robotics #healthtech #medtech
+
+--- TWEET 14 ---
+#1 in Construction & Infrastructure: Boston Dynamics Spot by Boston Dynamics — RoboScore 87/100. Industry standard quadruped. $74,500.
+
+Compare all construction & infrastructure robots: https://robotomated.com/explore/construction
+
+#robotics #construction #contech
+
+--- TWEET 15 ---
+#1 in Delivery & Last-Mile: Waymo Driver Delivery by Waymo — RoboScore 83.7/100. Waymo's autonomous driving technology applied to goods delivery. Contact for pricing.
+
+Compare all delivery & last-mile robots: https://robotomated.com/explore/delivery
+
+#robotics #lastmile #logistics
+
+--- TWEET 16 ---
+#1 in Agricultural: DJI Agras T50 by DJI — RoboScore 86/100. Professional ag drone. $15,000.
+
+Compare all agricultural robots: https://robotomated.com/explore/agricultural
+
+#robotics #agtech #farming
+
+--- TWEET 17 ---
+#1 in Drones & Aerial: DJI Mavic 3 Pro by DJI — RoboScore 90/100. Flagship consumer drone. $2,199.
+
+Compare all drones & aerial robots: https://robotomated.com/explore/drone
+
+#robotics #drones #UAV
+
+--- TWEET 18 ---
+#1 in Robotics Software & Infrastructure: Viam Robotics Platform by Viam — RoboScore 84.3/100. Full-stack robotics software platform. Contact for pricing.
+
+Compare all robotics software & infrastructure robots: https://robotomated.com/explore/software
+
+#robotics #robotics #AI
+
+--- TWEET 19 ---
+This week's top 3 robots by RoboScore:
+
+1. Intuitive da Vinci 5 (Intuitive Surgical) — 92.5/100
+2. da Vinci 5 (Intuitive Surgical) — 91.7/100
+3. S8 MaxV Ultra (Roborock) — 91/100
+
+Independent scores. No manufacturer bias.
+https://robotomated.com/explore
+
+#robotics #automation #industry40

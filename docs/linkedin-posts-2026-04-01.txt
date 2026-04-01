@@ -1,0 +1,43 @@
+=== MONDAY: Robot of the Week ===
+
+Robot of the Week: Intuitive da Vinci 5
+
+Intuitive Surgical built something worth paying attention to.
+
+Gold standard surgical robot. First force feedback. 10K+ installed base. 2M+ annual procedures.
+
+The data:
+- RoboScore: 92.5/100 (independently scored across 8 dimensions)
+- Price: $2.0M
+- Category: Medical & Healthcare
+
+We score every robot on Performance, Reliability, Ease of Use, Intelligence, Value, Ecosystem, Safety, and Design. The methodology is public. No manufacturer has ever paid to influence a score.
+
+If you are evaluating automation for medical & healthcare operations, start here:
+https://robotomated.com/explore/medical/davinci-5
+
+---
+
+What robot are you evaluating right now? Drop it in the comments and I will pull the RoboScore data for you.
+
+#robotics #automation #operations #medical
+
+
+=== FRIDAY: Funding Watch ===
+
+Where the smart money is going in robotics:
+
+Mentee Robotics just raised $25M Seed+ led by Vinod Khosla, Eric Schmidt, Intel Capital.
+
+
+Also this month:
+- Clone Robotics: $15M Series A
+- Kepler Robot: $60M Series A
+
+The robotics funding landscape tells you where the industry is headed 2-3 years from now. We track every round, every investor, every valuation.
+
+Full funding tracker: https://robotomated.com/market/funding
+
+If you are in procurement or operations, the companies raising today are the vendors pitching you tomorrow. Know who they are before the sales call.
+
+#robotics #venturecapital #automation #startups
