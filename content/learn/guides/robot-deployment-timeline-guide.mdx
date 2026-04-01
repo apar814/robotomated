@@ -1,0 +1,165 @@
+---
+title: "Robot Deployment Timeline: From RFP to Go-Live in 90 Days"
+slug: robot-deployment-timeline-guide
+category: guides
+audience: professional
+industry:
+  - warehouse
+  - manufacturing
+description: "Detailed robot deployment timeline covering RFP, vendor selection, integration, testing, and go-live. Includes week-by-week milestones for a 90-day deployment."
+readTime: 9
+publishedAt: "2026-04-01"
+updatedAt: "2026-04-01"
+author: "Robotomated Editorial"
+authorBio: "The Robotomated editorial team tracks robotics technology across industries — reviews, deployment data, and ROI analysis for operations leaders."
+robotSlugs: []
+faqs:
+  - question: "Can you really deploy robots in 90 days?"
+    answer: "Yes, for straightforward deployments like AMRs in a warehouse or cobots in a manufacturing cell. The 90-day timeline assumes you have selected a vendor, the robot is in stock (not custom-built), and your facility does not require major infrastructure changes. Complex deployments involving custom integration, goods-to-person systems, or multi-robot coordination typically take 4 to 9 months."
+  - question: "What is the biggest cause of deployment delays?"
+    answer: "Integration with existing systems (WMS, ERP, MES) causes more delays than any other factor. The robot vendor and system integrator often underestimate the complexity of connecting to legacy systems. Budget 2 to 4 additional weeks for integration if your systems are older than 5 years or heavily customized."
+  - question: "Should I hire an integrator or deploy robots myself?"
+    answer: "For your first deployment, use a certified integrator. The cost ($10,000 to $50,000 depending on complexity) is worth the reduced risk and faster timeline. After your first successful deployment, you can evaluate whether your team has the capability to handle subsequent deployments with direct vendor support. Most companies bring integration in-house by their third or fourth robot cell."
+---
+
+**Quick Answer:** A standard robot deployment from RFP to go-live takes 12 to 16 weeks for AMRs and cobots, or 90 days if the vendor selection is already complete. The timeline compresses or extends based on three variables: system integration complexity, infrastructure readiness, and organizational change management. This guide provides a week-by-week deployment plan with specific milestones, decision gates, and the dependencies that most often cause delays.
+
+## The 90-Day Deployment Plan
+
+This timeline assumes you have already selected a vendor and signed a contract. If you are still in the vendor selection phase, add 4 to 8 weeks before Day 1.
+
+### Weeks 1-2: Kickoff and Site Assessment
+
+| Activity | Owner | Deliverable |
+|----------|-------|-------------|
+| Kickoff meeting with vendor and integrator | Project lead | Project charter, roles, timeline |
+| Detailed site survey | Vendor/integrator | Site assessment report |
+| Network assessment (Wi-Fi, cellular) | IT team | Coverage map, gap analysis |
+| Power and infrastructure audit | Facilities | Infrastructure readiness report |
+| Change management plan development | HR/Ops | Communication plan, training schedule |
+
+The site survey is the most critical activity in weeks 1 to 2. The vendor or integrator walks the facility, measures aisle widths, identifies obstacles, maps charging locations, and tests network connectivity. For warehouse AMRs, this includes driving every planned route with a test unit. For manufacturing cobots, this includes measuring exact cell dimensions and validating reach and payload requirements.
+
+**Decision gate:** After the site survey, confirm that the facility is ready or identify infrastructure changes needed. If major changes are required (Wi-Fi overhaul, floor resurfacing, power upgrades), the timeline extends.
+
+### Weeks 3-4: Infrastructure Preparation
+
+| Activity | Owner | Duration |
+|----------|-------|----------|
+| Wi-Fi upgrades or access point installation | IT/vendor | 3-7 days |
+| Charging station installation | Facilities/vendor | 1-2 days |
+| Floor marking and lane designation | Facilities | 1-2 days |
+| Safety barrier installation (if needed) | Facilities | 2-3 days |
+| Network segmentation and security configuration | IT | 2-3 days |
+
+For warehouse AMR deployments, Wi-Fi is the most common infrastructure gap. Warehouse racking creates signal shadows and multipath interference. A dedicated site survey with the robot vendor's Wi-Fi recommendations is essential. Budget $3,000 to $10,000 for access point additions or upgrades in a typical warehouse.
+
+For manufacturing cobot cells, infrastructure preparation includes power drops (usually standard 120V or 208V), compressed air lines if needed, and floor mounting for the robot pedestal.
+
+### Weeks 5-8: Integration and Configuration
+
+This is where most deployments hit delays. The robot must connect to your existing systems.
+
+| Week | Activity | Details |
+|------|----------|---------|
+| Week 5 | WMS/ERP API configuration | Map data fields, configure endpoints |
+| Week 5-6 | Robot mapping and navigation setup | Build facility map, define zones and routes |
+| Week 6-7 | Task flow configuration | Program workflows, define task priorities |
+| Week 7 | Integration testing | End-to-end data flow validation |
+| Week 8 | Bug fixing and retesting | Resolve integration issues |
+
+**Common integration blockers:**
+
+| Blocker | Impact | Mitigation |
+|---------|--------|-----------|
+| Legacy WMS without REST API | 2-4 week delay | Middleware adapter (SVT SOFTBOT, custom) |
+| Custom WMS modifications | 1-3 week delay | Additional field mapping and testing |
+| Network security restrictions | 1-2 week delay | Early IT engagement, pre-approved firewall rules |
+| ERP batch processing conflicts | 1-2 week delay | Real-time interface layer or scheduled sync |
+
+For manufacturing cobot deployments, integration is simpler but programming is more involved. Weeks 5 to 8 focus on programming the cobot for each part number, building fixtures, and tuning cycle times.
+
+### Weeks 9-10: Testing and Validation
+
+| Test Phase | Duration | Criteria |
+|-----------|----------|---------|
+| Unit testing (individual functions) | 2-3 days | Each function operates correctly in isolation |
+| Integration testing (data flow) | 2-3 days | Data flows correctly between all systems |
+| Performance testing (throughput) | 2-3 days | Robot meets productivity targets at expected volume |
+| Load testing (peak volume) | 1-2 days | System handles 2x average volume without degradation |
+| Safety validation | 1-2 days | All safety functions verified, emergency stops tested |
+| User acceptance testing | 2-3 days | Operators can perform all required interactions |
+
+Testing should follow a written test plan with pass/fail criteria for each test case. Do not proceed to the next phase until all critical test cases pass. Non-critical issues can be tracked for resolution during parallel operations.
+
+### Weeks 11-12: Training and Parallel Operations
+
+| Activity | Audience | Duration |
+|----------|----------|----------|
+| Operator training (hands-on) | All affected operators | 2-3 days |
+| Supervisor training | Shift supervisors | 1-2 days |
+| Maintenance training | Maintenance team | 1-2 days |
+| Emergency procedures training | All staff in robot area | 0.5 day |
+| Parallel operation (robot + manual) | Operations team | 5-10 business days |
+
+Parallel operations means running the robot alongside your existing manual process. Both systems process real work. This phase validates that the robot performs in production conditions, builds operator confidence, and catches issues that testing missed.
+
+**Key metrics to track during parallel operations:**
+
+| Metric | Acceptable Range | Action if Outside Range |
+|--------|-----------------|----------------------|
+| Robot throughput vs. target | Over 80% of target | Tune programming, investigate bottlenecks |
+| Error rate | Under 2% | Fix integration issues, retrain operators |
+| Robot uptime | Over 90% | Address reliability issues with vendor |
+| Operator intervention rate | Under 5% | Adjust programming, improve fixturing |
+| Safety incidents | Zero | Stop deployment, investigate, resolve |
+
+### Week 13: Go-Live
+
+Go-live is a formal decision point. Review parallel operation metrics with all stakeholders. If metrics meet criteria, transition to robot-primary operation. If metrics do not meet criteria, extend parallel operations and address issues.
+
+**Go-live checklist:**
+
+- All test cases passed
+- Parallel operation metrics meet or exceed targets
+- All operators trained and signed off
+- Emergency procedures documented and practiced
+- Support escalation path defined (vendor support line, integrator contact)
+- Monitoring dashboards active
+- Maintenance schedule established
+
+## Timeline Variations by Robot Type
+
+| Robot Type | Typical Timeline | Key Variable |
+|-----------|-----------------|-------------|
+| Warehouse AMR (picking) | 10-16 weeks | WMS integration complexity |
+| Warehouse AMR (transport) | 8-12 weeks | Simpler integration requirements |
+| Manufacturing cobot (machine tending) | 6-10 weeks | Fixture design and programming |
+| Manufacturing cobot (welding) | 8-14 weeks | Welding program development, fixturing |
+| Palletizing cobot | 6-10 weeks | Pattern programming, conveyor integration |
+| Security robot | 8-12 weeks | Site mapping, VMS integration |
+| Hospital logistics robot | 12-20 weeks | Elevator integration, HIS integration |
+
+## Accelerating the Timeline
+
+If 90 days is too long, here are legitimate ways to compress:
+
+**Pre-order site preparation.** Start infrastructure work before the robot arrives. Wi-Fi upgrades, power drops, and floor preparation can happen in parallel with vendor lead time.
+
+**Choose a pre-integrated solution.** If your WMS vendor has a certified integration with the robot vendor, you skip weeks of custom integration work. Check vendor partnership directories before selecting.
+
+**Use a proven integrator.** An integrator who has deployed the same robot with the same WMS in a similar facility can execute in half the time of a first-time integration.
+
+**Accept phased functionality.** Go live with core functions first (basic picking, basic navigation) and add advanced features (zone optimization, multi-robot coordination, analytics) after go-live.
+
+## The 30-60-90 Day Post-Go-Live Plan
+
+Deployment does not end at go-live. The first 90 days of production operation are critical for optimization.
+
+| Period | Focus | Activities |
+|--------|-------|-----------|
+| Days 1-30 | Stabilization | Daily monitoring, rapid bug fixes, operator support |
+| Days 31-60 | Optimization | Tune routes and programs, reduce manual interventions |
+| Days 61-90 | Performance | Hit steady-state KPIs, begin planning next deployment |
+
+For project planning and cost analysis, use the [TCO Calculator](/tools/tco-calculator). For selecting robots with fast deployment track records, use the [Robot Finder](/tools/robot-finder).
