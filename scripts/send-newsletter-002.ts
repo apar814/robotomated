@@ -23,7 +23,7 @@ const sb = createClient(
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const SUBJECT = "The Robotomated Brief #002 — Humanoid Robots Are Coming to Your Warehouse";
-const FROM = "Robotomated <digest@robotomated.com>";
+const FROM = "Robotomated <onboarding@resend.dev>";
 
 function formatUsd(n: number | null): string {
   if (n == null) return "Request quote";

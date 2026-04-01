@@ -22,7 +22,7 @@ const sb = createClient(
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const SUBJECT = "The Robotomated Brief #001 — The Robot Buying Guide You've Been Missing";
-const FROM = "Robotomated <digest@robotomated.com>";
+const FROM = "Robotomated <onboarding@resend.dev>";
 
 // ── Why each robot ranks high ──
 const ROBOT_WHYS: Record<string, string> = {
@@ -47,7 +47,7 @@ function formatUsd(n: number | null): string {
 
 // ── Build email HTML ──
 function buildEmailHtml(opts: {
-  topRobots: { name: string; mfr: string; score: number; price: number | null }[];
+  topRobots: { name: string; mfr: string; score: number; price: number | null; slug?: string }[];
   totalRobots: number;
   marketInsight: string;
   fundingHighlight: string;
@@ -55,97 +55,162 @@ function buildEmailHtml(opts: {
 }): string {
   const { topRobots, totalRobots, marketInsight, fundingHighlight, unsubParam } = opts;
 
-  const robotRows = topRobots
+  const FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  const BG = "#0A0A0A";
+  const CARD = "#111111";
+  const BORDER = "#222222";
+  const DIVIDER = "#1E1E1E";
+  const BODY_TEXT = "#CCCCCC";
+  const BOLD_TEXT = "#FFFFFF";
+  const LINK = "#0EA5E9";
+  const LABEL = "#666666";
+  const GHOST = "#555555";
+
+  const sectionLabel = (text: string) =>
+    `<div style="font-size:11px;letter-spacing:2px;color:${LABEL};text-transform:uppercase;font-weight:700;font-family:${FONT};margin-bottom:20px;">${text}</div>`;
+
+  const sectionDivider = `<div style="border-top:1px solid ${DIVIDER};margin:48px 0;"></div>`;
+
+  const robotCards = topRobots
     .map(
-      (r, i) => `
-      <tr>
-        <td style="padding:14px 16px;border-bottom:1px solid #1E2642;color:#00C2FF;font-weight:700;font-size:20px;width:36px;vertical-align:top;">#${i + 1}</td>
-        <td style="padding:14px 16px;border-bottom:1px solid #1E2642;">
-          <div style="color:#fff;font-weight:700;font-size:16px;">${r.name}</div>
-          <div style="color:#888;font-size:13px;margin-top:2px;">${r.mfr} &middot; RoboScore <span style="color:#00E5A0;font-weight:700;">${r.score}/100</span> &middot; ${formatUsd(r.price)}</div>
-          <div style="color:#aaa;font-size:13px;margin-top:6px;line-height:1.6;">${getWhyText(r.name)}</div>
-        </td>
-      </tr>`
+      (r) => `
+      <div style="background:${CARD};border:1px solid ${BORDER};border-radius:4px;padding:24px 28px;margin-bottom:12px;">
+        <table style="width:100%;border-collapse:collapse;" role="presentation">
+          <tr>
+            <td style="vertical-align:top;">
+              <div style="color:${BOLD_TEXT};font-size:17px;font-weight:700;font-family:${FONT};line-height:1.3;">${r.name}</div>
+              <div style="color:${GHOST};font-size:13px;font-family:${FONT};margin-top:4px;">${r.mfr}</div>
+            </td>
+            <td style="vertical-align:top;text-align:right;white-space:nowrap;">
+              <div style="color:${LINK};font-size:20px;font-weight:700;font-family:monospace;line-height:1.2;">${r.score.toFixed(1)}</div>
+              <div style="color:${GHOST};font-size:11px;font-family:${FONT};">/ 100</div>
+            </td>
+          </tr>
+        </table>
+        <div style="color:${LABEL};font-size:13px;font-family:monospace;margin-top:12px;">${formatUsd(r.price)}</div>
+        <div style="color:#999;font-size:14px;font-style:italic;font-family:${FONT};margin-top:10px;line-height:1.6;">${getWhyText(r.name)}</div>
+        <div style="margin-top:14px;">
+          <a href="https://robotomated.com/explore" style="color:${LINK};text-decoration:none;font-size:13px;font-weight:600;font-family:${FONT};">View Full Analysis &rarr;</a>
+        </div>
+      </div>`
     )
     .join("");
 
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
-<body style="margin:0;padding:0;background:#0A0F1E;font-family:Arial,Helvetica,sans-serif;">
-<div style="max-width:600px;margin:0 auto;padding:32px 16px;">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Robotomated Brief #001</title>
+</head>
+<body style="margin:0;padding:0;background:${BG};font-family:${FONT};-webkit-font-smoothing:antialiased;">
+<div style="max-width:600px;margin:0 auto;padding:0 16px;">
 
-  <!-- HEADER -->
-  <div style="text-align:center;padding:24px 0 16px;">
-    <h1 style="color:#00C2FF;font-size:26px;margin:0;letter-spacing:-0.5px;">The Robotomated Brief</h1>
-    <p style="color:#555;font-size:13px;margin:8px 0 0;">Issue #001 &middot; Weekly Robotics Intelligence</p>
+  <!-- 1. HEADER -->
+  <div style="text-align:center;padding:40px 0 28px;border-bottom:1px solid ${BORDER};">
+    <div style="color:${BOLD_TEXT};font-size:22px;font-weight:800;letter-spacing:6px;font-family:${FONT};">ROBOTOMATED</div>
+    <div style="color:${GHOST};font-size:13px;letter-spacing:3px;margin-top:6px;font-family:${FONT};">THE BRIEF</div>
+    <div style="color:#444;font-size:11px;margin-top:12px;font-family:${FONT};">Issue #001 &middot; Weekly Robotics Intelligence</div>
   </div>
 
-  <!-- WHY WE BUILT THIS -->
-  <div style="background:#141A2E;border-radius:12px;padding:28px;margin-bottom:20px;">
-    <p style="color:#E8E8E8;font-size:15px;line-height:1.75;margin:0;">
-      We built <strong style="color:#00C2FF;">Robotomated</strong> because buying a robot shouldn't require a PhD or a sales pitch.
+  <!-- 2. HERO — THIS WEEK IN ROBOTICS -->
+  <div style="background:#111111;border-radius:4px;padding:32px 28px;margin-top:32px;">
+    ${sectionLabel("THIS WEEK IN ROBOTICS")}
+    <p style="color:${BOLD_TEXT};font-size:22px;font-weight:700;line-height:1.4;margin:0 0 16px;font-family:${FONT};">
+      We now track ${totalRobots} robots from 300+ manufacturers. The robotics market hit $103B and it is accelerating.
     </p>
-    <p style="color:#bbb;font-size:15px;line-height:1.75;margin:14px 0 0;">
-      We track <strong style="color:#fff;">${totalRobots} robots</strong> from 250+ manufacturers with independent, transparent scoring.
-      No manufacturer pays us. No scores are influenced. Every recommendation is backed by verified specs and real deployment data.
-    </p>
-    <p style="color:#bbb;font-size:15px;line-height:1.75;margin:14px 0 0;">
-      This is your weekly digest of what matters in robotics &mdash; the signal without the noise.
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:0;font-family:${FONT};">
+      This is your weekly signal. Independent scoring, verified specs, and real deployment data. No manufacturer pays us. No scores are influenced. Every recommendation earns its place.
     </p>
   </div>
 
-  <!-- TOP 3 ROBOTS -->
-  <div style="background:#141A2E;border-radius:12px;padding:28px;margin-bottom:20px;">
-    <h2 style="color:#00C2FF;font-size:13px;text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;font-weight:700;">This Week's Top 3 Robots</h2>
-    <table style="width:100%;border-collapse:collapse;">
-      ${robotRows}
-    </table>
-    <div style="text-align:center;margin-top:24px;">
-      <a href="https://robotomated.com/explore" style="display:inline-block;background:#00C2FF;color:#0A0F1E;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">Explore ${totalRobots} Robots &rarr;</a>
-    </div>
-  </div>
+  ${sectionDivider}
 
-  <!-- MARKET PULSE -->
-  <div style="background:#141A2E;border-radius:12px;padding:28px;margin-bottom:20px;">
-    <h2 style="color:#7B2FFF;font-size:13px;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;font-weight:700;">Market Pulse</h2>
-    <p style="color:#E8E8E8;font-size:15px;line-height:1.75;margin:0;">
+  <!-- 3. THE NUMBERS -->
+  ${sectionLabel("THE NUMBERS")}
+  <table style="width:100%;border-collapse:collapse;background:${CARD};border:1px solid ${BORDER};border-radius:4px;" role="presentation">
+    <tr>
+      <td style="width:33.33%;text-align:center;padding:28px 12px;border-right:1px solid ${BORDER};">
+        <div style="color:${BOLD_TEXT};font-size:28px;font-weight:800;font-family:monospace;line-height:1;">${totalRobots}</div>
+        <div style="color:${LABEL};font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;font-family:${FONT};">ROBOTS TRACKED</div>
+      </td>
+      <td style="width:33.33%;text-align:center;padding:28px 12px;border-right:1px solid ${BORDER};">
+        <div style="color:${BOLD_TEXT};font-size:28px;font-weight:800;font-family:monospace;line-height:1;">$103B</div>
+        <div style="color:${LABEL};font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;font-family:${FONT};">MARKET SIZE</div>
+      </td>
+      <td style="width:33.33%;text-align:center;padding:28px 12px;">
+        <div style="color:${BOLD_TEXT};font-size:28px;font-weight:800;font-family:monospace;line-height:1;">+847%</div>
+        <div style="color:${LABEL};font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;font-family:${FONT};">HUMANOID GROWTH</div>
+      </td>
+    </tr>
+  </table>
+
+  ${sectionDivider}
+
+  <!-- 4. TOP ROBOTS THIS WEEK -->
+  ${sectionLabel("TOP ROBOTS THIS WEEK")}
+  ${robotCards}
+
+  ${sectionDivider}
+
+  <!-- 5. MARKET PULSE -->
+  ${sectionLabel("MARKET PULSE")}
+  <div style="background:${CARD};border:1px solid ${BORDER};border-radius:4px;padding:28px;">
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:0;font-family:${FONT};">
       ${marketInsight}
     </p>
   </div>
 
-  <!-- FUNDING WATCH -->
-  <div style="background:#141A2E;border-radius:12px;padding:28px;margin-bottom:20px;">
-    <h2 style="color:#00E5A0;font-size:13px;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;font-weight:700;">Funding Watch</h2>
-    <p style="color:#E8E8E8;font-size:15px;line-height:1.75;margin:0;">
+  ${sectionDivider}
+
+  <!-- 6. FUNDING WATCH -->
+  ${sectionLabel("FUNDING WATCH")}
+  <div style="background:${CARD};border:1px solid ${BORDER};border-radius:4px;padding:28px;">
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:0;font-family:${FONT};">
       ${fundingHighlight}
     </p>
-    <p style="color:#888;font-size:13px;margin:12px 0 0;">
-      <a href="https://robotomated.com/market/funding" style="color:#00C2FF;text-decoration:none;">See all funding rounds &rarr;</a>
+    <p style="margin:16px 0 0;">
+      <a href="https://robotomated.com/market/funding" style="color:${LINK};text-decoration:none;font-size:13px;font-weight:600;font-family:${FONT};">See all funding rounds &rarr;</a>
     </p>
   </div>
 
-  <!-- NEW ON ROBOTOMATED -->
-  <div style="background:#141A2E;border-radius:12px;padding:28px;margin-bottom:20px;">
-    <h2 style="color:#FF6B35;font-size:13px;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;font-weight:700;">New on Robotomated</h2>
-    <ul style="color:#bbb;font-size:15px;line-height:1.85;margin:0;padding-left:20px;">
-      <li><strong style="color:#fff;">9 Industry Landing Pages</strong> &mdash; deep guides for warehouse, medical, manufacturing, agriculture, construction, delivery, security, hospitality, and eldercare. <a href="https://robotomated.com/industries" style="color:#00C2FF;text-decoration:none;">Explore &rarr;</a></li>
-      <li style="margin-top:8px;"><strong style="color:#fff;">TCO Calculator</strong> &mdash; 5-year total cost of ownership with maintenance, training, and integration costs. <a href="https://robotomated.com/tools/tco-calculator" style="color:#00C2FF;text-decoration:none;">Try it &rarr;</a></li>
-      <li style="margin-top:8px;"><strong style="color:#fff;">Fleet Management</strong> &mdash; track your robot assets, maintenance schedules, and service logs. <a href="https://robotomated.com/fleet" style="color:#00C2FF;text-decoration:none;">View demo &rarr;</a></li>
-      <li style="margin-top:8px;"><strong style="color:#fff;">Investment Tracker</strong> &mdash; every VC/PE deal in robotics with investor profiles. <a href="https://robotomated.com/market/funding" style="color:#00C2FF;text-decoration:none;">Browse deals &rarr;</a></li>
-    </ul>
+  ${sectionDivider}
+
+  <!-- 7. FROM THE DESK -->
+  ${sectionLabel("FROM THE DESK")}
+  <div style="background:${CARD};border:1px solid ${BORDER};border-radius:4px;padding:28px;">
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:0;font-family:${FONT};">
+      We started Robotomated because the gap between "I need a robot" and "I bought the right robot" was absurdly wide. Manufacturers sell you features. We give you data. That is the whole thesis.
+    </p>
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:16px 0 0;font-family:${FONT};">
+      This week we crossed ${totalRobots} robots in the database. Every one of them scored independently across 8 dimensions. No manufacturer has ever paid to influence a score, and none ever will.
+    </p>
+    <p style="color:${BODY_TEXT};font-size:15px;line-height:1.7;margin:16px 0 0;font-family:${FONT};">
+      If you are evaluating automation for your operation, we built this for you. Browse the data. Run the calculators. Forward this to whoever signs the PO.
+    </p>
+    <p style="color:${GHOST};font-size:14px;font-style:italic;margin:20px 0 0;font-family:${FONT};">
+      &mdash; The Robotomated Team
+    </p>
   </div>
 
-  <!-- FOOTER -->
-  <div style="text-align:center;padding:24px 0;border-top:1px solid #1E2642;">
-    <p style="color:#555;font-size:12px;margin:0 0 8px;">
-      Robotomated &mdash; Independent robotics intelligence
+  ${sectionDivider}
+
+  <!-- 8. CTA -->
+  <div style="text-align:center;padding:16px 0 32px;">
+    <a href="https://robotomated.com/explore" style="display:inline-block;border:2px solid ${LINK};background:transparent;color:${BOLD_TEXT};padding:16px 40px;border-radius:4px;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:1px;font-family:${FONT};">EXPLORE THIS WEEK'S TOP ROBOTS</a>
+    <p style="color:${GHOST};font-size:13px;margin:20px 0 0;font-family:${FONT};">
+      Forward this to a colleague evaluating automation.
     </p>
-    <p style="margin:0 0 12px;">
-      <a href="https://robotomated.com" style="color:#00C2FF;text-decoration:none;font-size:13px;">robotomated.com</a>
-    </p>
-    <p style="margin:0;">
-      <a href="https://robotomated.com/unsubscribe?${unsubParam}" style="color:#666;text-decoration:underline;font-size:11px;">Unsubscribe</a>
+  </div>
+
+  <!-- 9. FOOTER -->
+  <div style="text-align:center;padding:32px 0;border-top:1px solid ${DIVIDER};">
+    <p style="color:#444;font-size:11px;margin:0;font-family:${FONT};">
+      <a href="https://robotomated.com/unsubscribe?${unsubParam}" style="color:${GHOST};text-decoration:underline;">Unsubscribe</a>
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <a href="https://robotomated.com" style="color:${GHOST};text-decoration:underline;">View in browser</a>
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <a href="https://robotomated.com" style="color:${GHOST};text-decoration:underline;">robotomated.com</a>
     </p>
   </div>
 
