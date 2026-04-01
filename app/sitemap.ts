@@ -105,20 +105,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Comparison pairs for top robots
-  const topRobots = robots.slice(0, 10);
-  const comparePages: MetadataRoute.Sitemap = [];
-  for (let i = 0; i < topRobots.length; i++) {
-    for (let j = i + 1; j < topRobots.length; j++) {
-      const [a, b] = [topRobots[i].slug, topRobots[j].slug].sort();
-      comparePages.push({
-        url: `${BASE_URL}/compare/${a}-vs-${b}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-      });
+  // Comparison pairs — top robots within each category + cross-category leaders
+  const compareSet = new Set<string>();
+  // Group robots by category for intra-category comparisons
+  const byCat = new Map<string, typeof robots>();
+  for (const r of robots) {
+    const catSlug = (r.robot_categories as { slug: string } | null)?.slug || "other";
+    if (!byCat.has(catSlug)) byCat.set(catSlug, []);
+    byCat.get(catSlug)!.push(r);
+  }
+  // Top 6 per category — all pairs within each category
+  for (const [, catRobots] of byCat) {
+    const top = catRobots.slice(0, 6);
+    for (let i = 0; i < top.length; i++) {
+      for (let j = i + 1; j < top.length; j++) {
+        const [a, b] = [top[i].slug, top[j].slug].sort();
+        compareSet.add(`${a}-vs-${b}`);
+      }
     }
   }
+  // Cross-category: top 2 per category vs each other
+  const crossLeaders = [...byCat.values()].flatMap(r => r.slice(0, 2));
+  for (let i = 0; i < crossLeaders.length; i++) {
+    for (let j = i + 1; j < Math.min(crossLeaders.length, i + 4); j++) {
+      const [a, b] = [crossLeaders[i].slug, crossLeaders[j].slug].sort();
+      compareSet.add(`${a}-vs-${b}`);
+    }
+  }
+  const comparePages: MetadataRoute.Sitemap = [...compareSet].map(pair => ({
+    url: `${BASE_URL}/compare/${pair}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
 
   // Learn content — scan all subdirectories for MDX articles
   const learnDirs = [

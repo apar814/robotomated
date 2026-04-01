@@ -50,6 +50,7 @@ export const dynamicParams = true;
 
 // Pre-built comparison pages for the most searched robot pairs
 const FEATURED_COMPARISONS = [
+  // Original featured pairs
   "boston-dynamics-spot-arm-vs-unitree-go2",
   "universal-robots-ur10e-vs-fanuc-crx-10ia",
   "locus-origin-vs-6rs-chuck",
@@ -60,29 +61,88 @@ const FEATURED_COMPARISONS = [
   "abb-yumi-vs-ur3e",
   "dji-agras-t50-vs-xag-p100",
   "knightscope-k5-vs-cobalt-r2",
+  // Warehouse AMR/AGV comparisons
+  "locus-origin-vs-locus-vector",
+  "mir250-vs-mir600",
+  "fetch-freight-vs-mir250",
+  // Cobot comparisons
+  "universal-robots-ur5e-vs-fanuc-crx-10ia",
+  "universal-robots-ur10e-vs-kuka-lbr-iiwa",
+  "fanuc-crx-10ia-vs-abb-yumi",
+  // Industrial robot comparisons
+  "fanuc-m-20ia-vs-kuka-kr-10",
+  "abb-irb-6700-vs-fanuc-r-2000ic",
+  // Surgical robot comparisons
+  "da-vinci-5-vs-stryker-mako",
+  // Construction comparisons
+  "built-excavator-vs-built-dozer",
+  "dusty-fieldprinter-vs-hilti-jaibot-w12",
+  "icon-vulcan-vs-apis-cor-3d",
+  // Agricultural comparisons
+  "monarch-mk-v-vs-naio-dino",
+  "carbon-robotics-laserweeder-vs-farmwise-titan",
+  // Consumer robot comparisons
+  "irobot-roomba-j9-vs-roborock-s8-maxv",
+  // Delivery robot comparisons
+  "starship-enterprise-vs-kiwibot-4",
+  "serve-gen3-vs-coco-1",
+  // Drone comparisons
+  "dji-matrice-350-vs-skydio-x10",
+  // Cross-category leaders
+  "boston-dynamics-atlas-electric-vs-figure-02",
+  "autostore-b1-vs-locus-origin",
+  // AS/RS comparisons
+  "autostore-b1-vs-exotec-skypod",
+  // Humanoid comparisons
+  "unitree-h1-vs-agility-digit",
+  "figure-02-vs-tesla-optimus-gen2",
+  // Vision inspection comparisons
+  "cognex-insight-3d-vs-keyence-xg-x",
+  // Security comparisons
+  "knightscope-k5-vs-cobalt-r2",
+  // Mixed warehouse
+  "stretch-vs-locus-origin",
+  "mir600-vs-fetch-freight",
+  // Premium cobots
+  "universal-robots-ur16e-vs-fanuc-crx-25ia",
+  "doosan-m1013-vs-techman-tm12",
+  // Lawn/consumer
+  "husqvarna-automower-450x-vs-worx-landroid-l",
 ];
 
 export async function generateStaticParams() {
-  // Pre-render featured comparisons + top 5 robot combos
+  // Pre-render featured comparisons + top robot combos by category
   const supabase = createServerClient();
   const { data } = await supabase
     .from("robots")
-    .select("slug, robo_score")
+    .select("slug, robo_score, robot_categories(slug)")
     .eq("status", "active")
     .not("robo_score", "is", null)
     .order("robo_score", { ascending: false, nullsFirst: false })
-    .limit(5)
-    .returns<{ slug: string; robo_score: number }[]>();
+    .limit(30)
+    .returns<{ slug: string; robo_score: number; robot_categories: { slug: string } | null }[]>();
 
   const robots = data || [];
-  const params: { slugs: string }[] = FEATURED_COMPARISONS.map(s => ({ slugs: s }));
-  for (let i = 0; i < robots.length; i++) {
-    for (let j = i + 1; j < robots.length; j++) {
-      const a = robots[i].slug;
-      const b = robots[j].slug;
-      const slugs = a < b ? `${a}-vs-${b}` : `${b}-vs-${a}`;
-      if (!params.some(p => p.slugs === slugs)) {
-        params.push({ slugs });
+  const seen = new Set<string>();
+  const params: { slugs: string }[] = [];
+
+  // Add all featured comparisons
+  for (const s of FEATURED_COMPARISONS) {
+    if (!seen.has(s)) { seen.add(s); params.push({ slugs: s }); }
+  }
+
+  // Add top 3 per category, paired within category
+  const byCat = new Map<string, string[]>();
+  for (const r of robots) {
+    const cat = r.robot_categories?.slug || "other";
+    if (!byCat.has(cat)) byCat.set(cat, []);
+    if (byCat.get(cat)!.length < 3) byCat.get(cat)!.push(r.slug);
+  }
+  for (const [, slugs] of byCat) {
+    for (let i = 0; i < slugs.length; i++) {
+      for (let j = i + 1; j < slugs.length; j++) {
+        const pair = slugs[i] < slugs[j] ? `${slugs[i]}-vs-${slugs[j]}` : `${slugs[j]}-vs-${slugs[i]}`;
+        if (!seen.has(pair)) { seen.add(pair); params.push({ slugs: pair }); }
       }
     }
   }
