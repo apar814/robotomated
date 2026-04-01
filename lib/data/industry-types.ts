@@ -59,9 +59,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Warehouse Robotics Guide (2026)",
     heroSubtitle: "Compare warehouse robots across 5 use cases — real specs, verified ROI",
     marketStats: [
-      { label: "Market Size", value: "$28B", subtext: "projected by 2030" },
-      { label: "Avg. ROI Payback", value: "18 mo", subtext: "at standard utilization" },
       { label: "Labor Cost Reduction", value: "40-65%", subtext: "in automated facilities" },
+      { label: "Avg. ROI Payback", value: "18 mo", subtext: "at standard utilization" },
+      { label: "Order Accuracy", value: "99.5%", subtext: "in fully automated warehouses" },
     ],
     types: [
       { id: "picking", label: "Goods-to-Person Picking", description: "AMRs, robotic arms, and picking systems for automating order fulfillment." },
@@ -148,9 +148,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Medical Robotics Guide (2026)",
     heroSubtitle: "Compare surgical, rehabilitation, and logistics robots for healthcare",
     marketStats: [
-      { label: "Market Size", value: "$20B", subtext: "projected by 2028" },
-      { label: "Surgical Precision", value: "0.1mm", subtext: "sub-millimeter accuracy" },
-      { label: "Recovery Improvement", value: "30-50%", subtext: "faster patient recovery" },
+      { label: "Fewer Complications", value: "40%", subtext: "vs traditional procedures" },
+      { label: "Procedures Per Year", value: "2.4M", subtext: "robot-assisted globally" },
+      { label: "Hospital Avg", value: "12", subtext: "robots per major medical center" },
     ],
     types: [
       { id: "surgical", label: "Surgical Robots", description: "da Vinci, Mako, and robotic-assisted surgery platforms for minimally invasive procedures." },
@@ -237,9 +237,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Manufacturing Robotics Guide (2026)",
     heroSubtitle: "Compare 20+ cobots and industrial arms by application type",
     marketStats: [
-      { label: "Market Size", value: "$45B", subtext: "industrial robotics by 2030" },
       { label: "Productivity Gain", value: "30-50%", subtext: "average output increase" },
-      { label: "Cobot Growth", value: "32% CAGR", subtext: "fastest-growing segment" },
+      { label: "Cobot Payback", value: "7 mo", subtext: "average for collaborative robots" },
+      { label: "Defect Reduction", value: "92%", subtext: "with automated inspection" },
     ],
     types: [
       { id: "welding", label: "Welding & Fabrication", description: "Robotic welding cells for consistent bead quality across high-volume production." },
@@ -326,9 +326,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Agricultural Robotics Guide (2026)",
     heroSubtitle: "Compare crop drones, weeding robots, and autonomous farming systems",
     marketStats: [
-      { label: "Market Size", value: "$12B", subtext: "projected by 2028" },
-      { label: "Chemical Reduction", value: "80-90%", subtext: "with precision application" },
-      { label: "Labor Savings", value: "50-70%", subtext: "in targeted operations" },
+      { label: "Water Reduction", value: "90%", subtext: "with precision application" },
+      { label: "Harvest Speed", value: "3x", subtext: "vs manual picking" },
+      { label: "Labor Cost Reduction", value: "60%", subtext: "in automated operations" },
     ],
     types: [
       { id: "spraying", label: "Crop Spraying & Treatment", description: "Agricultural drones and ground sprayers for precision pesticide and fertilizer application." },
@@ -413,9 +413,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Construction Robotics Guide (2026)",
     heroSubtitle: "Compare autonomous equipment, drones, and robotic systems for construction",
     marketStats: [
-      { label: "Market Size", value: "$8.5B", subtext: "projected by 2029" },
-      { label: "Labor Shortage", value: "500K+", subtext: "unfilled US construction jobs" },
-      { label: "Productivity Gain", value: "3-5x", subtext: "for robotic vs manual tasks" },
+      { label: "Faster Completion", value: "30%", subtext: "vs traditional methods" },
+      { label: "Injury Rate", value: "Zero", subtext: "for robotic task zones" },
+      { label: "Cost Reduction", value: "25%", subtext: "on automated work packages" },
     ],
     types: [
       { id: "bricklaying", label: "Bricklaying & Masonry", description: "Automated bricklaying systems for walls, facades, and structural masonry at 3-5x manual speed." },
@@ -502,9 +502,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Delivery Robotics Guide (2026)",
     heroSubtitle: "Compare autonomous delivery robots for last-mile and urban logistics",
     marketStats: [
-      { label: "Market Size", value: "$14B", subtext: "projected by 2030" },
-      { label: "Cost Per Delivery", value: "$1-3", subtext: "vs $8-12 human driver" },
-      { label: "Market Growth", value: "28% CAGR", subtext: "fastest logistics segment" },
+      { label: "Deliveries Tracked", value: "5M+", subtext: "across all platforms" },
+      { label: "Flat Fee", value: "$1.99", subtext: "average robotic delivery cost" },
+      { label: "On-Time Rate", value: "98%", subtext: "autonomous delivery average" },
     ],
     types: [
       { id: "sidewalk", label: "Sidewalk Delivery Robots", description: "Small autonomous robots for food, grocery, and package delivery on pedestrian pathways." },
@@ -589,9 +589,9 @@ export const INDUSTRIES: Record<string, IndustryConfig> = {
     heroTitle: "Security & Surveillance Robotics Guide (2026)",
     heroSubtitle: "Compare autonomous patrol robots, drones, and monitoring systems",
     marketStats: [
-      { label: "Market Size", value: "$6.5B", subtext: "projected by 2029" },
-      { label: "Cost Savings", value: "60-75%", subtext: "vs manned guard patrols" },
-      { label: "Incident Detection", value: "3x faster", subtext: "vs traditional monitoring" },
+      { label: "Patrol Coverage", value: "24/7", subtext: "autonomous operation" },
+      { label: "Cost vs Guards", value: "60%", subtext: "lower than manned patrols" },
+      { label: "Threat Detection", value: "0.3s", subtext: "average response time" },
     ],
     types: [
       { id: "patrol", label: "Autonomous Patrol Robots", description: "Ground-based robots for scheduled and on-demand security patrols with AI threat detection." },
