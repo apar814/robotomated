@@ -31,6 +31,8 @@ import { MaintenanceGuide } from "@/components/robots/maintenance-guide";
 import { TrainingSection } from "@/components/robots/training-section";
 import { BuyersChecklist } from "@/components/robots/buyers-checklist";
 import { VideoEmbed } from "@/components/robots/video-embed";
+import { cached } from "@/lib/cache/redis";
+import { SidebarNewsletterCta } from "@/components/engagement/sidebar-newsletter-cta";
 
 const YEAR = new Date().getFullYear();
 
@@ -127,19 +129,31 @@ export default async function RobotDetailPage({ params }: Props) {
   const { category: categorySlug, slug } = await params;
   const supabase = createServerClient();
 
-  const { data: robot } = await supabase.from("robots")
-    .select("*, manufacturers(name, slug, country, website, founded_year), robot_categories(name, slug)")
-    .eq("slug", slug).single().returns<RobotDetail>();
+  const robot = await cached<RobotDetail | null>(`robot:${slug}`, 1800, async () => {
+    const { data } = await supabase.from("robots")
+      .select("*, manufacturers(name, slug, country, website, founded_year), robot_categories(name, slug)")
+      .eq("slug", slug).single().returns<RobotDetail>();
+    return data;
+  });
   if (!robot) notFound();
 
-  const [{ data: reviews }, { data: priceHistory }, { data: similarData }] = await Promise.all([
-    supabase.from("reviews").select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
-      .eq("robot_id", robot.id).not("published_at", "is", null).order("published_at", { ascending: false }).returns<ReviewRow[]>(),
-    supabase.from("price_history").select("recorded_at, price, retailer")
-      .eq("robot_id", robot.id).order("recorded_at", { ascending: true }).returns<PricePoint[]>(),
-    supabase.from("robots").select("id, slug, name, robo_score, price_current, description_short, images, manufacturers(name), robot_categories(slug)")
-      .eq("category_id", robot.category_id).neq("id", robot.id).eq("status", "active")
-      .order("robo_score", { ascending: false, nullsFirst: false }).limit(3).returns<SimilarRobot[]>(),
+  const [reviews, priceHistory, similarData] = await Promise.all([
+    cached<ReviewRow[]>(`robot:${slug}:reviews`, 1800, async () => {
+      const { data } = await supabase.from("reviews").select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
+        .eq("robot_id", robot.id).not("published_at", "is", null).order("published_at", { ascending: false }).returns<ReviewRow[]>();
+      return data || [];
+    }),
+    cached<PricePoint[]>(`robot:${slug}:prices`, 3600, async () => {
+      const { data } = await supabase.from("price_history").select("recorded_at, price, retailer")
+        .eq("robot_id", robot.id).order("recorded_at", { ascending: true }).returns<PricePoint[]>();
+      return data || [];
+    }),
+    cached<SimilarRobot[]>(`robot:${slug}:similar`, 3600, async () => {
+      const { data } = await supabase.from("robots").select("id, slug, name, robo_score, price_current, description_short, images, manufacturers(name), robot_categories(slug)")
+        .eq("category_id", robot.category_id).neq("id", robot.id).eq("status", "active")
+        .order("robo_score", { ascending: false, nullsFirst: false }).limit(3).returns<SimilarRobot[]>();
+      return data || [];
+    }),
   ]);
 
   const breakdown = robot.score_breakdown as RoboScoreBreakdown | null;
@@ -147,9 +161,9 @@ export default async function RobotDetailPage({ params }: Props) {
   const robotImages = (Array.isArray(robot.images) ? robot.images : []) as { url: string; alt: string }[];
   const mfr = robot.manufacturers;
   const cat = robot.robot_categories;
-  const expertReviews = (reviews || []).filter((r) => r.review_type === "expert");
-  const communityReviews = (reviews || []).filter((r) => r.review_type === "community");
-  const similar = similarData || [];
+  const expertReviews = reviews.filter((r) => r.review_type === "expert");
+  const communityReviews = reviews.filter((r) => r.review_type === "community");
+  const similar = similarData;
 
   const hasRealImage = robotImages.length > 0 && robotImages[0].url && !robotImages[0].url.includes("unsplash");
 
@@ -720,6 +734,9 @@ export default async function RobotDetailPage({ params }: Props) {
                   )}
                 </div>
               )}
+              {/* Newsletter CTA */}
+              <SidebarNewsletterCta robotName={robot.name} />
+
               {/* Robot Finder CTA */}
               <RobotFinderSidebarCta categorySlug={cat?.slug} />
             </div>

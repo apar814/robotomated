@@ -11,6 +11,7 @@ import { CookieBanner } from "@/components/analytics/cookie-banner";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
+import { ExitIntentPopup } from "@/components/engagement/exit-intent-popup";
 import { BuyerJourneyBar } from "@/components/ui/buyer-journey-bar";
 import { SiteStatsProvider } from "@/lib/context/site-stats";
 import { getSiteStats } from "@/lib/data/site-stats";
@@ -104,6 +105,7 @@ export default async function RootLayout({
             <CursorGlow />
             <CommandPalette />
             <CompareBar />
+            <ExitIntentPopup />
           </PostHogProvider>
           </SiteStatsProvider>
         </Providers>
