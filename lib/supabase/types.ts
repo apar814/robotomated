@@ -75,6 +75,17 @@ export interface Database {
           description: string | null;
           verified: boolean;
           created_at: string;
+          partnership_status: string | null;
+          partnership_tier: string | null;
+          partner_contact_name: string | null;
+          partner_contact_email: string | null;
+          data_accuracy: number;
+          last_verified: string | null;
+          featured_until: string | null;
+          sponsored_listings: boolean;
+          claimed_profile: boolean;
+          claimed_at: string | null;
+          claimed_by: string | null;
         };
         Insert: {
           id?: string;
@@ -87,6 +98,17 @@ export interface Database {
           description?: string | null;
           verified?: boolean;
           created_at?: string;
+          partnership_status?: string | null;
+          partnership_tier?: string | null;
+          partner_contact_name?: string | null;
+          partner_contact_email?: string | null;
+          data_accuracy?: number;
+          last_verified?: string | null;
+          featured_until?: string | null;
+          sponsored_listings?: boolean;
+          claimed_profile?: boolean;
+          claimed_at?: string | null;
+          claimed_by?: string | null;
         };
         Update: {
           id?: string;
@@ -99,6 +121,17 @@ export interface Database {
           description?: string | null;
           verified?: boolean;
           created_at?: string;
+          partnership_status?: string | null;
+          partnership_tier?: string | null;
+          partner_contact_name?: string | null;
+          partner_contact_email?: string | null;
+          data_accuracy?: number;
+          last_verified?: string | null;
+          featured_until?: string | null;
+          sponsored_listings?: boolean;
+          claimed_profile?: boolean;
+          claimed_at?: string | null;
+          claimed_by?: string | null;
         };
         Relationships: [];
       };
@@ -976,6 +1009,570 @@ export interface Database {
           }
         ];
       };
+      robot_service_providers: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          company_name: string;
+          slug: string;
+          description: string | null;
+          bio: string | null;
+          city: string | null;
+          state: string | null;
+          country: string;
+          service_radius: number;
+          operating_regions: string[];
+          verified: boolean;
+          verified_at: string | null;
+          verification_documents: string[];
+          rating: number;
+          total_jobs: number;
+          completed_jobs: number;
+          response_time_hours: number | null;
+          insurance_verified: boolean;
+          background_checked: boolean;
+          profile_image: string | null;
+          portfolio_images: string[];
+          website: string | null;
+          linkedin: string | null;
+          specializations: string[];
+          fulfillment_types: string[];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          company_name: string;
+          slug: string;
+          description?: string | null;
+          bio?: string | null;
+          city?: string | null;
+          state?: string | null;
+          country?: string;
+          service_radius?: number;
+          operating_regions?: string[];
+          verified?: boolean;
+          verified_at?: string | null;
+          verification_documents?: string[];
+          rating?: number;
+          total_jobs?: number;
+          completed_jobs?: number;
+          response_time_hours?: number | null;
+          insurance_verified?: boolean;
+          background_checked?: boolean;
+          profile_image?: string | null;
+          portfolio_images?: string[];
+          website?: string | null;
+          linkedin?: string | null;
+          specializations?: string[];
+          fulfillment_types?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string | null;
+          company_name?: string;
+          slug?: string;
+          description?: string | null;
+          bio?: string | null;
+          city?: string | null;
+          state?: string | null;
+          country?: string;
+          service_radius?: number;
+          operating_regions?: string[];
+          verified?: boolean;
+          verified_at?: string | null;
+          verification_documents?: string[];
+          rating?: number;
+          total_jobs?: number;
+          completed_jobs?: number;
+          response_time_hours?: number | null;
+          insurance_verified?: boolean;
+          background_checked?: boolean;
+          profile_image?: string | null;
+          portfolio_images?: string[];
+          website?: string | null;
+          linkedin?: string | null;
+          specializations?: string[];
+          fulfillment_types?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "robot_service_providers_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      rsp_robots: {
+        Row: {
+          id: string;
+          rsp_id: string;
+          robot_id: string | null;
+          custom_name: string | null;
+          custom_manufacturer: string | null;
+          custom_category: string | null;
+          description: string | null;
+          fulfillment_types: string[];
+          daily_rate: number | null;
+          weekly_rate: number | null;
+          monthly_rate: number | null;
+          minimum_days: number;
+          available: boolean;
+          available_from: string | null;
+          city: string | null;
+          state: string | null;
+          operator_included: boolean;
+          remote_capable: boolean;
+          images: string[];
+          specifications: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          rsp_id: string;
+          robot_id?: string | null;
+          custom_name?: string | null;
+          custom_manufacturer?: string | null;
+          custom_category?: string | null;
+          description?: string | null;
+          fulfillment_types?: string[];
+          daily_rate?: number | null;
+          weekly_rate?: number | null;
+          monthly_rate?: number | null;
+          minimum_days?: number;
+          available?: boolean;
+          available_from?: string | null;
+          city?: string | null;
+          state?: string | null;
+          operator_included?: boolean;
+          remote_capable?: boolean;
+          images?: string[];
+          specifications?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          rsp_id?: string;
+          robot_id?: string | null;
+          custom_name?: string | null;
+          custom_manufacturer?: string | null;
+          custom_category?: string | null;
+          description?: string | null;
+          fulfillment_types?: string[];
+          daily_rate?: number | null;
+          weekly_rate?: number | null;
+          monthly_rate?: number | null;
+          minimum_days?: number;
+          available?: boolean;
+          available_from?: string | null;
+          city?: string | null;
+          state?: string | null;
+          operator_included?: boolean;
+          remote_capable?: boolean;
+          images?: string[];
+          specifications?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "rsp_robots_rsp_id_fkey";
+            columns: ["rsp_id"];
+            isOneToOne: false;
+            referencedRelation: "robot_service_providers";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "rsp_robots_robot_id_fkey";
+            columns: ["robot_id"];
+            isOneToOne: false;
+            referencedRelation: "robots";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      robowork_jobs: {
+        Row: {
+          id: string;
+          slug: string;
+          business_name: string;
+          business_email: string;
+          business_user_id: string | null;
+          title: string;
+          description: string;
+          task_type: string;
+          industry: string;
+          city: string | null;
+          state: string | null;
+          country: string;
+          remote_ok: boolean;
+          start_date: string | null;
+          end_date: string | null;
+          duration_days: number | null;
+          budget_min: number | null;
+          budget_max: number | null;
+          fulfillment_type: string;
+          robot_type: string;
+          status: string;
+          urgency: string;
+          requirements: string | null;
+          site_details: string | null;
+          attachments: string[];
+          view_count: number;
+          bid_count: number;
+          selected_bid_id: string | null;
+          created_at: string;
+          updated_at: string;
+          expires_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          slug: string;
+          business_name: string;
+          business_email: string;
+          business_user_id?: string | null;
+          title: string;
+          description: string;
+          task_type: string;
+          industry: string;
+          city?: string | null;
+          state?: string | null;
+          country?: string;
+          remote_ok?: boolean;
+          start_date?: string | null;
+          end_date?: string | null;
+          duration_days?: number | null;
+          budget_min?: number | null;
+          budget_max?: number | null;
+          fulfillment_type?: string;
+          robot_type?: string;
+          status?: string;
+          urgency?: string;
+          requirements?: string | null;
+          site_details?: string | null;
+          attachments?: string[];
+          view_count?: number;
+          bid_count?: number;
+          selected_bid_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+          expires_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          slug?: string;
+          business_name?: string;
+          business_email?: string;
+          business_user_id?: string | null;
+          title?: string;
+          description?: string;
+          task_type?: string;
+          industry?: string;
+          city?: string | null;
+          state?: string | null;
+          country?: string;
+          remote_ok?: boolean;
+          start_date?: string | null;
+          end_date?: string | null;
+          duration_days?: number | null;
+          budget_min?: number | null;
+          budget_max?: number | null;
+          fulfillment_type?: string;
+          robot_type?: string;
+          status?: string;
+          urgency?: string;
+          requirements?: string | null;
+          site_details?: string | null;
+          attachments?: string[];
+          view_count?: number;
+          bid_count?: number;
+          selected_bid_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+          expires_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "robowork_jobs_business_user_id_fkey";
+            columns: ["business_user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      robowork_bids: {
+        Row: {
+          id: string;
+          job_id: string;
+          rsp_id: string;
+          rsp_robot_id: string | null;
+          proposed_price: number;
+          price_breakdown: Json;
+          message: string | null;
+          fulfillment_type: string | null;
+          proposed_start_date: string | null;
+          proposed_end_date: string | null;
+          includes_operator: boolean;
+          status: string;
+          business_response: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          job_id: string;
+          rsp_id: string;
+          rsp_robot_id?: string | null;
+          proposed_price: number;
+          price_breakdown?: Json;
+          message?: string | null;
+          fulfillment_type?: string | null;
+          proposed_start_date?: string | null;
+          proposed_end_date?: string | null;
+          includes_operator?: boolean;
+          status?: string;
+          business_response?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          job_id?: string;
+          rsp_id?: string;
+          rsp_robot_id?: string | null;
+          proposed_price?: number;
+          price_breakdown?: Json;
+          message?: string | null;
+          fulfillment_type?: string | null;
+          proposed_start_date?: string | null;
+          proposed_end_date?: string | null;
+          includes_operator?: boolean;
+          status?: string;
+          business_response?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "robowork_bids_job_id_fkey";
+            columns: ["job_id"];
+            isOneToOne: false;
+            referencedRelation: "robowork_jobs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "robowork_bids_rsp_id_fkey";
+            columns: ["rsp_id"];
+            isOneToOne: false;
+            referencedRelation: "robot_service_providers";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "robowork_bids_rsp_robot_id_fkey";
+            columns: ["rsp_robot_id"];
+            isOneToOne: false;
+            referencedRelation: "rsp_robots";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      robowork_reviews: {
+        Row: {
+          id: string;
+          job_id: string;
+          rsp_id: string;
+          reviewer_name: string | null;
+          reviewer_company: string | null;
+          rating: number;
+          title: string | null;
+          body: string | null;
+          would_hire_again: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          job_id: string;
+          rsp_id: string;
+          reviewer_name?: string | null;
+          reviewer_company?: string | null;
+          rating: number;
+          title?: string | null;
+          body?: string | null;
+          would_hire_again?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          job_id?: string;
+          rsp_id?: string;
+          reviewer_name?: string | null;
+          reviewer_company?: string | null;
+          rating?: number;
+          title?: string | null;
+          body?: string | null;
+          would_hire_again?: boolean;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "robowork_reviews_job_id_fkey";
+            columns: ["job_id"];
+            isOneToOne: false;
+            referencedRelation: "robowork_jobs";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "robowork_reviews_rsp_id_fkey";
+            columns: ["rsp_id"];
+            isOneToOne: false;
+            referencedRelation: "robot_service_providers";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      manufacturer_claims: {
+        Row: {
+          id: string;
+          manufacturer_id: string;
+          contact_name: string;
+          job_title: string;
+          work_email: string;
+          linkedin_url: string | null;
+          description: string | null;
+          contact_info: string | null;
+          logo_url: string | null;
+          catalog_url: string | null;
+          interested_featured: boolean;
+          interested_sponsored: boolean;
+          preferred_contact: string;
+          status: string;
+          reviewed_at: string | null;
+          reviewed_by: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          manufacturer_id: string;
+          contact_name: string;
+          job_title: string;
+          work_email: string;
+          linkedin_url?: string | null;
+          description?: string | null;
+          contact_info?: string | null;
+          logo_url?: string | null;
+          catalog_url?: string | null;
+          interested_featured?: boolean;
+          interested_sponsored?: boolean;
+          preferred_contact?: string;
+          status?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          manufacturer_id?: string;
+          contact_name?: string;
+          job_title?: string;
+          work_email?: string;
+          linkedin_url?: string | null;
+          description?: string | null;
+          contact_info?: string | null;
+          logo_url?: string | null;
+          catalog_url?: string | null;
+          interested_featured?: boolean;
+          interested_sponsored?: boolean;
+          preferred_contact?: string;
+          status?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "manufacturer_claims_manufacturer_id_fkey";
+            columns: ["manufacturer_id"];
+            isOneToOne: false;
+            referencedRelation: "manufacturers";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      manufacturer_partnerships: {
+        Row: {
+          id: string;
+          contact_name: string;
+          email: string;
+          company: string;
+          tier_interest: string | null;
+          message: string | null;
+          status: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          contact_name: string;
+          email: string;
+          company: string;
+          tier_interest?: string | null;
+          message?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          contact_name?: string;
+          email?: string;
+          company?: string;
+          tier_interest?: string | null;
+          message?: string | null;
+          status?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      manufacturer_contact_clicks: {
+        Row: {
+          id: string;
+          manufacturer_id: string;
+          click_type: string;
+          referrer: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          manufacturer_id: string;
+          click_type: string;
+          referrer?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          manufacturer_id?: string;
+          click_type?: string;
+          referrer?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "manufacturer_contact_clicks_manufacturer_id_fkey";
+            columns: ["manufacturer_id"];
+            isOneToOne: false;
+            referencedRelation: "manufacturers";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -986,6 +1583,10 @@ export interface Database {
       robot_asset_status: "active" | "maintenance" | "offline" | "decommissioned";
       maintenance_type: "routine" | "repair" | "emergency" | "upgrade";
       schedule_interval: "daily" | "weekly" | "monthly" | "quarterly" | "annual" | "hours-based";
+      robowork_fulfillment_type: "with_operator" | "drop_off" | "remote_operated";
+      robowork_job_status: "draft" | "open" | "in_review" | "filled" | "completed" | "cancelled";
+      robowork_urgency: "flexible" | "within_week" | "within_month" | "asap";
+      robowork_bid_status: "pending" | "shortlisted" | "accepted" | "rejected" | "withdrawn";
     };
   };
 }
@@ -1014,6 +1615,21 @@ export type ScheduleInterval = Database["public"]["Enums"]["schedule_interval"];
 export type RobotAsset = Database["public"]["Tables"]["robot_assets"]["Row"];
 export type MaintenanceLog = Database["public"]["Tables"]["maintenance_logs"]["Row"];
 export type MaintenanceSchedule = Database["public"]["Tables"]["maintenance_schedules"]["Row"];
+
+export type RoboworkFulfillmentType = Database["public"]["Enums"]["robowork_fulfillment_type"];
+export type RoboworkJobStatus = Database["public"]["Enums"]["robowork_job_status"];
+export type RoboworkUrgency = Database["public"]["Enums"]["robowork_urgency"];
+export type RoboworkBidStatus = Database["public"]["Enums"]["robowork_bid_status"];
+
+export type RobotServiceProvider = Database["public"]["Tables"]["robot_service_providers"]["Row"];
+export type RspRobot = Database["public"]["Tables"]["rsp_robots"]["Row"];
+export type RoboworkJob = Database["public"]["Tables"]["robowork_jobs"]["Row"];
+export type RoboworkBid = Database["public"]["Tables"]["robowork_bids"]["Row"];
+export type RoboworkReview = Database["public"]["Tables"]["robowork_reviews"]["Row"];
+
+export type ManufacturerClaim = Database["public"]["Tables"]["manufacturer_claims"]["Row"];
+export type ManufacturerPartnership = Database["public"]["Tables"]["manufacturer_partnerships"]["Row"];
+export type ManufacturerContactClick = Database["public"]["Tables"]["manufacturer_contact_clicks"]["Row"];
 
 export interface RoboScoreBreakdown {
   performance: number;
