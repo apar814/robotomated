@@ -514,9 +514,23 @@ function StepResults({
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!email) return;
+    setSubmitted(true);
+    try {
+      await fetch("/api/find-my-robot/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          wizardState: state,
+          recommendations: recommendations.slice(0, 4),
+        }),
+      });
+    } catch {
+      // Still show success — email is best-effort
+    }
   };
 
   return (

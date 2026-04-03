@@ -399,6 +399,129 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     relatedRobotSlugs: [],
   },
+  {
+    slug: "hotel-room-service-robot-guest-satisfaction",
+    title: "How a Hotel Chain Boosted Guest Satisfaction 18% with Room Service Robots",
+    company: "Pacific Coast Hotels",
+    companyType: "Regional hotel chain, 12 properties, 2,400 rooms",
+    industry: "Hospitality",
+    industrySlug: "hospitality",
+    categorySlug: "delivery",
+    metaTitle: "Case Study: Hotel Room Service Robots — 18% Guest Satisfaction Increase",
+    metaDescription: "How a hotel chain deployed room service delivery robots across 12 properties, boosting guest satisfaction 18% and reducing late-night staffing costs by $340K/year.",
+    heroImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop",
+    problem: {
+      summary: "Pacific Coast Hotels struggled with late-night room service staffing, inconsistent delivery times, and declining guest satisfaction scores for in-room dining.",
+      details: [
+        "Room service complaints were the #2 issue on guest surveys, behind wifi",
+        "Average delivery time for late-night orders was 45 minutes, with 25% exceeding 1 hour",
+        "Staffing 24/7 room service across 12 properties cost $1.2M/year in overnight labor",
+        "Turnover for overnight staff was 85% annually, creating constant training costs",
+      ],
+    },
+    solution: {
+      summary: "Deployed autonomous delivery robots for room service, amenity delivery, and housekeeping supply runs across all 12 properties.",
+      robots: "Relay by Savioke (now Bear Robotics) — hospitality delivery robots",
+      details: [
+        "2-3 robots per property handling room service, amenities, and housekeeping supplies",
+        "Robots navigate elevators autonomously and call guest rooms on arrival",
+        "Integration with PMS (property management system) for room mapping",
+        "Guests interact via touchscreen on robot or through room tablet",
+      ],
+    },
+    implementation: {
+      timeline: "4 months for initial 3 properties, 8 months for full rollout",
+      phases: [
+        { name: "Pilot", duration: "2 months", description: "3 properties with highest room service volume tested single robot each" },
+        { name: "Optimization", duration: "2 months", description: "Adjusted delivery routes, elevator timing, and guest notification flow" },
+        { name: "Expansion", duration: "4 months", description: "Rolled out to remaining 9 properties with 2-3 robots each based on room count" },
+      ],
+    },
+    results: {
+      metrics: [
+        { label: "Guest satisfaction", value: "+18%", detail: "Room service satisfaction scores on post-stay surveys" },
+        { label: "Delivery time", value: "12 min avg", detail: "Down from 45 min, with 95% under 20 minutes" },
+        { label: "Staffing savings", value: "$340K/year", detail: "Eliminated overnight room service staffing at 8 of 12 properties" },
+        { label: "Social media", value: "2,800+ posts", detail: "Guest photos/videos with robots in first year, organic marketing" },
+      ],
+      paybackPeriod: "14 months",
+      quote: {
+        text: "The robots paid for themselves in just over a year, but the real value is in guest delight. People book with us specifically because they want the robot experience.",
+        author: "VP of Operations",
+        role: "Pacific Coast Hotels",
+      },
+    },
+    lessons: [
+      "Guests overwhelmingly prefer robot delivery for late-night orders — removes the awkwardness of tipping at 2am",
+      "Robot deliveries became a social media driver — thousands of organic posts created free marketing",
+      "Integration with elevator systems was the biggest technical challenge and required property-specific solutions",
+      "Robots handle 60% of amenity requests that previously required front desk staff, freeing them for higher-value interactions",
+      "Children and families are the biggest fans — robot interactions became a family-friendly amenity",
+    ],
+    relatedRobotSlugs: [],
+  },
+  {
+    slug: "security-patrol-robot-facility-management",
+    title: "How a Corporate Campus Cut Security Costs 35% with Patrol Robots",
+    company: "TechPark Management Group",
+    companyType: "Corporate campus operator, 2.1M sq ft across 8 buildings",
+    industry: "Security & Facility Management",
+    industrySlug: "security",
+    categorySlug: "security",
+    metaTitle: "Case Study: Security Patrol Robots — 35% Cost Reduction",
+    metaDescription: "How a corporate campus deployed autonomous security patrol robots, reducing security costs 35% while increasing incident detection 280%. Full implementation details.",
+    heroImage: "https://images.unsplash.com/photo-1582719508461-905c673771eb?w=1200&h=600&fit=crop",
+    problem: {
+      summary: "TechPark managed 2.1M sq ft of premium office space but faced escalating security costs, inconsistent patrol coverage, and blind spots in overnight monitoring.",
+      details: [
+        "Security budget was $2.8M/year for 24/7 coverage across 8 buildings and outdoor areas",
+        "Guard patrol consistency varied widely — GPS tracking showed 40% of scheduled routes were incomplete",
+        "After-hours incidents (break-ins, vandalism) were increasing 15% year-over-year",
+        "Tenant satisfaction with security was declining, threatening lease renewals worth $45M annually",
+      ],
+    },
+    solution: {
+      summary: "Deployed autonomous outdoor patrol robots for perimeter monitoring and indoor robots for after-hours building sweeps, augmenting the existing guard team.",
+      robots: "Knightscope K5 outdoor patrol units + Cobalt indoor patrol robots",
+      details: [
+        "4 outdoor K5 units covering parking lots, perimeters, and common areas 24/7",
+        "6 indoor Cobalt units handling after-hours building sweeps across 8 buildings",
+        "360-degree cameras, thermal imaging, license plate recognition, and anomaly detection",
+        "All data feeds into central security operations center with human oversight",
+      ],
+    },
+    implementation: {
+      timeline: "6 months",
+      phases: [
+        { name: "Assessment", duration: "1 month", description: "Mapped all patrol routes, identified coverage gaps, and designed robot patrol patterns" },
+        { name: "Outdoor deployment", duration: "2 months", description: "Installed 4 outdoor units with charging stations and mapped perimeter routes" },
+        { name: "Indoor deployment", duration: "2 months", description: "Deployed 6 indoor units with elevator integration and after-hours scheduling" },
+        { name: "Integration", duration: "1 month", description: "Connected robot feeds to SOC, trained guards on robot-augmented workflows" },
+      ],
+    },
+    results: {
+      metrics: [
+        { label: "Cost reduction", value: "35%", detail: "Security budget dropped from $2.8M to $1.82M annually" },
+        { label: "Incident detection", value: "+280%", detail: "Anomaly detection caught issues guards consistently missed" },
+        { label: "Patrol coverage", value: "100%", detail: "Every scheduled route completed, vs 60% with guards alone" },
+        { label: "After-hours incidents", value: "-67%", detail: "Break-ins and vandalism dropped within 3 months of deployment" },
+      ],
+      paybackPeriod: "11 months",
+      quote: {
+        text: "The robots don't replace our guards — they make our guards dramatically more effective. Guards now respond to real alerts instead of walking empty parking lots at 3am.",
+        author: "Director of Security",
+        role: "TechPark Management Group",
+      },
+    },
+    lessons: [
+      "Robot patrol is not about replacing guards — it's about eliminating the low-value patrol routes so guards handle high-value tasks",
+      "Thermal imaging detected a failing HVAC unit that would have caused $200K in water damage — unexpected ROI",
+      "Tenant perception of security improved immediately — visible robots signal investment in safety",
+      "Weather resilience was critical — robots needed to operate reliably in rain, heat, and cold",
+      "License plate recognition data also helped with parking management, an unplanned benefit that offset costs further",
+    ],
+    relatedRobotSlugs: [],
+  },
 ];
 
 export function getAllCaseStudySlugs(): string[] {
