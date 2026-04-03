@@ -91,57 +91,65 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           1. HERO — Clear value proposition
           ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
+      <section className="relative overflow-hidden px-6 py-20 sm:py-24 lg:py-32">
         {/* Network background illustration */}
         <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
 
         {/* Content */}
         <div className="mx-auto max-w-7xl">
-          {/* Tagline */}
+          {/* Section label */}
           <div className="flex items-center gap-3">
-            <div className="h-px w-4 bg-electric-blue" />
-            <span className="font-mono text-[13px] uppercase tracking-widest text-electric-blue">
-              Robotics Intelligence Platform
+            <div className="h-px w-5 bg-[#0EA5E9]" />
+            <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[#0EA5E9]">
+              The Operating System for Robotics
             </span>
           </div>
 
           {/* Headline */}
           <h1
-            className="mt-6 font-display text-[36px] font-bold leading-[1.08] sm:text-[52px] lg:text-[68px]"
-            style={{ letterSpacing: "-0.04em", color: "#E8E8E8" }}
+            className="mt-8 font-display font-extrabold leading-[1.05]"
+            style={{
+              fontSize: "clamp(48px, 6vw, 96px)",
+              letterSpacing: "-0.03em",
+              color: "#FFFFFF",
+              textShadow: "0 0 80px rgba(200,255,0,0.15)",
+            }}
           >
-            Find the Right Robot<br />
+            The Operating System<br />
             for{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(90deg, #0EA5E9, #C8FF00)" }}
-            >
-              Your Business
+            <span style={{ color: "#C8FF00" }}>
+              Robotics
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="mt-6 max-w-2xl text-lg leading-[1.7] text-secondary sm:text-xl">
-            Operations teams using Robotomated find robots that deliver 40-65% labor cost reduction
-            with an average 18-month ROI payback. Independent data on {totalRobots}+ robots. No manufacturer bias.
+          <p
+            className="mt-8 max-w-[560px] font-sans leading-[1.6]"
+            style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "rgba(255,255,255,0.7)" }}
+          >
+            Buy, lease, or hire robots. Deploy with certified operators.
+            Manage your fleet. Sell when you{"'"}re ready. One platform.
+            The entire robot lifecycle.
           </p>
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               href="/explore"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-blue px-8 py-4 text-base font-bold tracking-wide text-black transition-shadow hover:shadow-[0_0_24px_rgba(14,165,233,0.35)]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5"
+              style={{ background: "#0EA5E9" }}
             >
-              Start Your Robot Search
+              Explore Robots
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
             <Link
               href="/advisor"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-8 py-4 text-base font-bold text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+              style={{ borderColor: "rgba(255,255,255,0.3)" }}
             >
-              Talk to the AI Advisor
+              Ask the Advisor
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
@@ -151,30 +159,52 @@ export default async function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          2. TRUST BAR — Static, clean stats
+          2. STATS BAR
           ══════════════════════════════════════════ */}
-      <section className="border-y border-border px-6 py-5">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3">
+      <section className="border-y border-white/[0.08] px-6 py-5">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[14px] font-bold text-lime">40-65%</span>
-            <span className="text-[14px] text-tertiary">Labor Cost Reduction</span>
+            <span className="font-mono font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>
+              <HeroCounter target={totalRobots} />+
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/40">Robots</span>
           </div>
-          <span className="hidden text-border sm:block">|</span>
+          <span className="text-[#0EA5E9]">//</span>
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[14px] font-bold text-lime">18-Month</span>
-            <span className="text-[14px] text-tertiary">Avg ROI Payback</span>
+            <span className="font-mono font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>
+              {manufacturerCount}+
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/40">Manufacturers</span>
           </div>
-          <span className="hidden text-border sm:block">|</span>
+          <span className="text-[#0EA5E9]">//</span>
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[14px] font-bold text-data"><HeroCounter target={totalRobots} />+</span>
-            <span className="text-[14px] text-tertiary">Robots Tracked</span>
+            <span className="font-mono font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>
+              $103B
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/40">Market</span>
           </div>
-          <span className="hidden text-border sm:block">|</span>
+          <span className="text-[#0EA5E9]">//</span>
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[14px] font-bold text-data">No Manufacturer Bias</span>
+            <span className="font-mono font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>
+              5
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/40">Channels</span>
           </div>
         </div>
       </section>
+
+      {/* Trust bar */}
+      <div className="border-b border-white/[0.06] px-6 py-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
+          <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-white/50">
+            Independent
+          </span>
+          <span className="h-1 w-1 rounded-full bg-[#0EA5E9]" />
+          <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-white/50">
+            No manufacturer pays for scores
+          </span>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════════
           2.5. ROBOT FINDER CTA
