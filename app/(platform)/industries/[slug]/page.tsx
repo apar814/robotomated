@@ -43,6 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://robotomated.com/industries/${slug}`,
       type: "article",
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `https://robotomated.com/industries/${slug}`,
+    },
   };
 }
 

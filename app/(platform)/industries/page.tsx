@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/og-industries.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://robotomated.com/industries",
+  },
 };
 
 export default async function IndustriesHubPage() {
