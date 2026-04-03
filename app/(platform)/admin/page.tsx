@@ -252,6 +252,18 @@ export default function AdminDashboard() {
         <Link href="/admin/robots/new" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
           Add Robot
         </Link>
+        <Link href="/admin/manufacturers" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
+          Manufacturers
+        </Link>
+        <Link href="/admin/robowork" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
+          RoboWork
+        </Link>
+        <Link href="/admin/content" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
+          Content
+        </Link>
+        <Link href="/admin/newsletter" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
+          Newsletter
+        </Link>
       </div>
     </div>
   );
