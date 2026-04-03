@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { sendJobPostedNotification } from "@/lib/email/robowork-emails";
 
 function slugify(text: string): string {
   const base = text
@@ -161,6 +162,16 @@ export async function POST(request: NextRequest) {
   if (error) {
     return NextResponse.json({ error: "Failed to create job" }, { status: 500 });
   }
+
+  // Send email notifications (non-blocking)
+  sendJobPostedNotification({
+    title: title as string,
+    slug: data.slug,
+    business_name: business_name as string,
+    business_email: business_email as string,
+    task_type: task_type as string,
+    industry: industry as string,
+  });
 
   return NextResponse.json({ ok: true, id: data.id, slug: data.slug }, { status: 201 });
 }

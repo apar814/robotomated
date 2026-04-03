@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { sendBidReceivedNotification } from "@/lib/email/robowork-emails";
 
 export async function GET(
   request: NextRequest,
@@ -143,7 +144,7 @@ export async function POST(
   // Increment bid_count on the job (best-effort)
   const { data: currentJob } = await supabase
     .from("robowork_jobs")
-    .select("bid_count")
+    .select("bid_count, title, business_email")
     .eq("id", job.id)
     .single();
 
@@ -154,6 +155,24 @@ export async function POST(
       updated_at: new Date().toISOString(),
     })
     .eq("id", job.id);
+
+  // Send bid notification to job poster (non-blocking)
+  if (currentJob?.business_email) {
+    const { data: provider } = await supabase
+      .from("robot_service_providers")
+      .select("company_name")
+      .eq("id", rsp_id as string)
+      .single();
+
+    sendBidReceivedNotification({
+      job_title: currentJob.title || "Untitled Job",
+      job_slug: slug,
+      business_email: currentJob.business_email,
+      provider_name: provider?.company_name || "A provider",
+      proposed_price: proposed_price as number,
+      message: (body.message as string) || null,
+    });
+  }
 
   return NextResponse.json({ ok: true, id: data.id }, { status: 201 });
 }

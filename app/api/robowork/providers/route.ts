@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { sendProviderRegisteredNotification } from "@/lib/email/robowork-emails";
 
 function slugify(text: string): string {
   const base = text
@@ -177,6 +178,14 @@ export async function POST(request: NextRequest) {
       console.error("[robowork/providers] Robot insert error:", robotError);
     }
   }
+
+  // Send registration emails (non-blocking)
+  sendProviderRegisteredNotification({
+    company_name: company_name as string,
+    contact_email: user.email || "",
+    city: (body.city as string) || null,
+    state: (body.state as string) || null,
+  });
 
   return NextResponse.json({ ok: true, id: data.id, slug: data.slug }, { status: 201 });
 }
