@@ -88,6 +88,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${spaceGroteskSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="flex min-h-screen flex-col">

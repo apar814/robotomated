@@ -506,11 +506,52 @@ body::before {
 /* ═══════════════════════════════════════
    BASE STYLES
    ═══════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   THEME CSS VARIABLES
+   ═══════════════════════════════════════ */
+:root {
+  --theme-bg: #F8F9FA;
+  --theme-surface: #FFFFFF;
+  --theme-card: #FFFFFF;
+  --theme-card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --theme-border: rgba(0,0,0,0.08);
+  --theme-text-primary: #0A0A0A;
+  --theme-text-secondary: rgba(0,0,0,0.65);
+  --theme-text-muted: rgba(0,0,0,0.4);
+  --theme-accent-blue: #0284C7;
+  --theme-accent-lime: #65A30D;
+  --theme-accent-magenta: #DB2777;
+  --theme-nav-bg: rgba(255,255,255,0.95);
+  --theme-nav-border: rgba(0,0,0,0.08);
+  --theme-scrollbar-track: #F0F0F0;
+  --theme-scrollbar-thumb: #D0D0D0;
+  color-scheme: light;
+}
+
+.dark {
+  --theme-bg: #080808;
+  --theme-surface: #0D0D0D;
+  --theme-card: #111111;
+  --theme-card-shadow: none;
+  --theme-border: rgba(255,255,255,0.08);
+  --theme-text-primary: #FFFFFF;
+  --theme-text-secondary: rgba(255,255,255,0.65);
+  --theme-text-muted: rgba(255,255,255,0.35);
+  --theme-accent-blue: #0EA5E9;
+  --theme-accent-lime: #C8FF00;
+  --theme-accent-magenta: #FF006E;
+  --theme-nav-bg: rgba(8,8,8,0.95);
+  --theme-nav-border: rgba(255,255,255,0.08);
+  --theme-scrollbar-track: #080808;
+  --theme-scrollbar-thumb: #1A1A1A;
+  color-scheme: dark;
+}
+
 @layer base {
   html { color-scheme: dark; }
   body {
-    background-color: #080808;
-    color: #E8E8E8;
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -521,9 +562,9 @@ body::before {
    SCROLLBAR
    ═══════════════════════════════════════ */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #080808; }
-::-webkit-scrollbar-thumb { background: #1A1A1A; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #2E2E2E; }
+::-webkit-scrollbar-track { background: var(--theme-scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--theme-scrollbar-thumb); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--theme-text-muted); }
 
 /* ═══════════════════════════════════════
    RESPONSIVE UTILITIES
