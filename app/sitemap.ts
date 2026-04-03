@@ -38,6 +38,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/careers`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/newsletter`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/case-studies`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+    { url: `${BASE_URL}/robowork`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE_URL}/robowork/jobs`, lastModified: new Date(), changeFrequency: "daily", priority: 0.7 },
+    { url: `${BASE_URL}/robowork/providers`, lastModified: new Date(), changeFrequency: "daily", priority: 0.7 },
+    { url: `${BASE_URL}/robowork/post`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/manufacturers/claim`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/manufacturers/partner`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/find-my-robot`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/developers`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
 
   // Industry pages (static data, no DB needed)

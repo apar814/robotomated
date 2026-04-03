@@ -19,12 +19,13 @@ const categories = [
 
 const navLinks = [
   { href: "/explore", label: "Explore" },
+  { href: "/find-my-robot", label: "Find My Robot" },
+  { href: "/robowork", label: "RoboWork" },
   { href: "/compare", label: "Compare" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/industries", label: "Industries" },
   { href: "/learn", label: "Learn" },
   { href: "/market", label: "Market Intel" },
-  { href: "/careers", label: "Workforce" },
+  { href: "/manufacturers", label: "Manufacturers" },
+  { href: "/developers", label: "API" },
 ];
 
 export function Header() {
