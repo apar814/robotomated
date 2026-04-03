@@ -1,7 +1,6 @@
-// Rate limiting: should be handled via Upstash Redis middleware (e.g., @upstash/ratelimit)
-
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -44,6 +43,13 @@ export async function OPTIONS() {
 export async function GET(req: NextRequest) {
   if (!validateApiKey(req)) {
     return errorResponse("Missing or invalid API key", 401);
+  }
+
+  // Rate limit: 1000 requests per hour per API key
+  const apiKey = req.headers.get("x-api-key") || req.nextUrl.searchParams.get("api_key") || "anon";
+  const rl = await rateLimit(`v1:${apiKey}`, 1000, 3600);
+  if (!rl.success) {
+    return errorResponse("Rate limit exceeded. Try again later.", 429);
   }
 
   const params = req.nextUrl.searchParams;
