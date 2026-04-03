@@ -250,7 +250,7 @@ export default async function ProblemPage({ params }: Props) {
                 href="/advisor"
                 className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-4 text-base font-bold text-white/80 hover:border-white/20"
               >
-                Ask AI Advisor
+                Ask Robotimus
               </Link>
             </div>
           </div>

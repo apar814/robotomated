@@ -622,14 +622,14 @@ function StepResults({
           )}
         </div>
 
-        {/* AI Advisor */}
+        {/* Robotimus */}
         <Link
           href="/advisor"
           className="glass glass-hover flex items-center justify-between rounded-xl px-6 py-4 transition-all duration-200"
         >
           <div>
             <h3 className="text-sm font-semibold text-white">
-              Talk to AI Advisor about these options
+              Ask Robotimus about these options
             </h3>
             <p className="text-xs text-text-muted">
               Get instant answers about specs, integration, and deployment.

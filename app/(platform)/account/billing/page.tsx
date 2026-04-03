@@ -118,7 +118,7 @@ function BillingContent() {
         <ul className="space-y-2 text-sm text-muted">
           {isPro ? (
             <>
-              <li className="flex items-center gap-2"><Check /> Unlimited AI Advisor conversations</li>
+              <li className="flex items-center gap-2"><Check /> Unlimited Robotimus conversations</li>
               <li className="flex items-center gap-2"><Check /> Unlimited price drop alerts</li>
               <li className="flex items-center gap-2"><Check /> Compare up to 5 robots</li>
               <li className="flex items-center gap-2"><Check /> Pro Insights on all robots</li>
@@ -127,7 +127,7 @@ function BillingContent() {
           ) : (
             <>
               <li className="flex items-center gap-2"><Check /> Browse all robots & reviews</li>
-              <li className="flex items-center gap-2"><Check /> 5 AI Advisor conversations/month</li>
+              <li className="flex items-center gap-2"><Check /> 5 Robotimus conversations/month</li>
               <li className="flex items-center gap-2"><Check /> 3 price drop alerts</li>
               <li className="flex items-center gap-2"><Check /> Compare 2 robots at a time</li>
             </>

@@ -66,7 +66,7 @@ export function AdminCharts({ topRobotClicks, subscribersByDay, advisorByDay }: 
       {/* Advisor conversations by day */}
       <div className="rounded-xl border border-border bg-navy-light p-5 lg:col-span-2">
         <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted">
-          Advisor Conversations (30d)
+          Robotimus Conversations (30d)
         </h3>
         {advisorByDay.length === 0 ? (
           <p className="py-8 text-center text-sm text-muted">No advisor data yet</p>

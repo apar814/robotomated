@@ -5,13 +5,13 @@ import { AdvisorClient } from "@/components/advisor/advisor-client";
 import { JsonLd, FaqSchema } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "AI Robot Advisor — Find Your Perfect Robot",
+  title: "Robotimus \u2014 Your Independent Robotics Advisor",
   description:
-    "Describe your needs and get AI-powered robot recommendations from our AI advisor. Compare robots by use case, budget, and specs across 600+ models. Powered by Claude.",
+    "Meet Robotimus, Robotomated's AI robotics advisor. Describe your needs and get expert robot recommendations across 600+ models with specs, pricing, and RoboScore ratings.",
   openGraph: {
-    title: "AI Robot Advisor — Find Your Perfect Robot | Robotomated",
+    title: "Robotimus \u2014 Your Independent Robotics Advisor | Robotomated",
     description:
-      "Get instant, AI-powered robot recommendations based on your use case, budget, and requirements. Compare 600+ robots across 9 industries.",
+      "Get expert AI-powered robot recommendations based on your use case, budget, and requirements. Compare 600+ robots across 9 industries.",
     url: "https://robotomated.com/advisor",
     type: "website",
   },
@@ -24,41 +24,41 @@ export const metadata: Metadata = {
   },
 };
 
-const ADVISOR_FAQS = [
+const ROBOTIMUS_FAQS = [
   {
-    question: "How does the AI Robot Advisor work?",
+    question: "Who is Robotimus?",
     answer:
-      "Describe your use case, budget, and requirements in plain language. Our AI analyzes 600+ robots across 9 industries and recommends the best matches with specs, pricing, and RoboScore ratings.",
+      "Robotimus is Robotomated's AI robotics advisor \u2014 the world's most knowledgeable independent robotics consultant. He analyzes 600+ robots across 9 industries and gives direct, unbiased recommendations based on your specific needs, budget, and use case.",
   },
   {
-    question: "Is the AI Robot Advisor free?",
+    question: "Is Robotimus free to use?",
     answer:
-      "Yes. The AI advisor is free to use with a monthly conversation limit. Pro subscribers get unlimited conversations and priority responses.",
+      "Yes. Robotimus is free to use with a monthly conversation limit. Pro subscribers get unlimited conversations and priority responses.",
   },
   {
-    question: "What industries does the advisor cover?",
+    question: "What industries does Robotimus cover?",
     answer:
-      "The advisor covers warehouse & logistics, medical & surgical, manufacturing, agricultural, construction, delivery, security, hospitality, and eldercare robotics.",
+      "Robotimus covers warehouse & logistics, medical & surgical, manufacturing, agricultural, construction, delivery, security, hospitality, and eldercare robotics.",
   },
   {
     question: "Are the recommendations unbiased?",
     answer:
-      "Absolutely. Robotomated never accepts payment to influence scores or recommendations. Our RoboScore methodology is public and every recommendation is backed by verified data.",
+      "Absolutely. Robotimus never favors one manufacturer over another. Robotomated never accepts payment to influence scores or recommendations. Every recommendation is backed by our public RoboScore methodology and verified data.",
   },
   {
-    question: "Can I compare robots the advisor recommends?",
+    question: "Can Robotimus help me decide between buying, leasing, or hiring?",
     answer:
-      "Yes. Every robot recommendation links to its full profile with specs, pricing, and side-by-side comparison tools.",
+      "Yes. Robotimus evaluates your budget, timeline, and operational needs to recommend the right path \u2014 whether that's buying, leasing, or hiring through RoboWork for temporary deployments.",
   },
 ];
 
 const USE_CASES = [
-  { label: "Warehouse Automation", query: "Best warehouse robot under $50K", icon: "📦" },
-  { label: "Surgical Robotics", query: "Surgical robot alternatives to da Vinci", icon: "🏥" },
-  { label: "Manufacturing Cobots", query: "Cobots for small manufacturing teams", icon: "🏭" },
-  { label: "Agricultural Drones", query: "Best agricultural drone under $20K", icon: "🌾" },
-  { label: "Security Patrol", query: "Autonomous security patrol robots", icon: "🔒" },
-  { label: "Delivery Robots", query: "Last-mile delivery robots for campus", icon: "🚚" },
+  { label: "Warehouse Automation", query: "I need to automate my warehouse \u2014 where do I start?", icon: "\ud83d\udce6" },
+  { label: "ROI Analysis", query: "What's the ROI on a $150K robot for my operation?", icon: "\ud83d\udcb0" },
+  { label: "Buy vs Lease", query: "Should I buy, lease, or hire a robot?", icon: "\ud83e\udd14" },
+  { label: "Hospital Delivery", query: "Which robot is best for hospital delivery?", icon: "\ud83c\udfe5" },
+  { label: "Budget Planning", query: "I have a 50,000 sq ft warehouse and $200K budget", icon: "\ud83d\udcca" },
+  { label: "CFO Business Case", query: "Help me build a case for my CFO", icon: "\ud83d\udcc4" },
 ];
 
 export default function AdvisorPage() {
@@ -68,7 +68,7 @@ export default function AdvisorPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          name: "Robotomated AI Robot Advisor",
+          name: "Robotimus \u2014 Robotomated AI Robotics Advisor",
           description:
             "AI-powered robot recommendation engine covering 600+ robots across 9 industries.",
           url: "https://robotomated.com/advisor",
@@ -82,28 +82,46 @@ export default function AdvisorPage() {
           publisher: { "@type": "Organization", name: "Robotomated" },
         }}
       />
-      <FaqSchema items={ADVISOR_FAQS} />
+      <FaqSchema items={ROBOTIMUS_FAQS} />
 
-      {/* SSR Hero — visible to crawlers and users before JS loads */}
+      {/* SSR Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-12 pt-12">
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
+          {/* Robotimus avatar */}
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-16 w-16">
+              <line x1="16" y1="2" x2="16" y2="6" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="16" cy="2" r="1.5" fill="#0EA5E9" />
+              <rect x="6" y="6" width="20" height="16" rx="4" fill="#0EA5E9" fillOpacity="0.15" stroke="#0EA5E9" strokeWidth="1.5" />
+              <circle cx="12" cy="14" r="2.5" fill="#0EA5E9" />
+              <circle cx="20" cy="14" r="2.5" fill="#0EA5E9" />
+              <circle cx="13" cy="13" r="0.8" fill="white" fillOpacity="0.8" />
+              <circle cx="21" cy="13" r="0.8" fill="white" fillOpacity="0.8" />
+              <rect x="11" y="18" width="10" height="1.5" rx="0.75" fill="#0EA5E9" fillOpacity="0.6" />
+              <rect x="3" y="11" width="3" height="6" rx="1.5" fill="#0EA5E9" fillOpacity="0.3" />
+              <rect x="26" y="11" width="3" height="6" rx="1.5" fill="#0EA5E9" fillOpacity="0.3" />
+              <rect x="14" y="22" width="4" height="3" rx="1" fill="#0EA5E9" fillOpacity="0.4" />
+              <rect x="9" y="25" width="14" height="4" rx="2" fill="#0EA5E9" fillOpacity="0.15" stroke="#0EA5E9" strokeWidth="1" />
+            </svg>
+          </div>
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl">
-            AI Robot Advisor
+            Robotimus
           </h1>
+          <p className="mt-1 text-sm font-medium text-[#0EA5E9]">Your independent robotics advisor</p>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/60">
-            Describe what you need in plain language. Our AI analyzes 600+ robots
-            across 9 industries and recommends the best match — with specs,
+            Tell me what you need in plain language. I know every robot in our database
+            and I&apos;ll tell you straight whether to buy, lease, or hire &mdash; with specs,
             pricing, and independent RoboScore ratings.
           </p>
 
-          {/* Use case quick links — SSR content for Google */}
+          {/* Use case quick links */}
           <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
             {USE_CASES.map((uc) => (
               <Link
                 key={uc.label}
                 href={`/advisor?q=${encodeURIComponent(uc.query)}`}
-                className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-left transition-all hover:border-[#00C2FF]/30 hover:bg-white/[0.06]"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-left transition-all hover:border-[#0EA5E9]/30 hover:bg-white/[0.06]"
               >
                 <span className="text-lg">{uc.icon}</span>
                 <p className="mt-1 text-sm font-medium text-white">{uc.label}</p>
@@ -114,12 +132,12 @@ export default function AdvisorPage() {
         </div>
       </section>
 
-      {/* Chat interface — client component */}
+      {/* Chat interface */}
       <div className="flex min-h-[60vh] flex-col">
         <Suspense
           fallback={
             <div className="flex flex-1 items-center justify-center bg-[#0A0F1E] text-white/40">
-              Loading advisor...
+              Loading Robotimus...
             </div>
           }
         >
@@ -127,21 +145,21 @@ export default function AdvisorPage() {
         </Suspense>
       </div>
 
-      {/* SSR content sections — indexable by Google */}
+      {/* How it works */}
       <section className="bg-[#0F1628] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">
-            How it works
+            How Robotimus works
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#00C2FF]/10 font-mono text-lg font-bold text-[#00C2FF]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#0EA5E9]/10 font-mono text-lg font-bold text-[#0EA5E9]">
                 1
               </div>
               <h3 className="mt-4 font-semibold text-white">Describe your needs</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                Tell the advisor about your use case, environment, budget, and any
-                specific requirements. Use natural language — no jargon needed.
+                Tell Robotimus about your use case, environment, budget, and
+                requirements. Use natural language &mdash; no jargon needed.
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
@@ -150,32 +168,32 @@ export default function AdvisorPage() {
               </div>
               <h3 className="mt-4 font-semibold text-white">Get recommendations</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                The AI searches our database of 600+ robots and returns matches with
-                RoboScore ratings, pricing, and key specifications.
+                Robotimus searches 600+ robots and returns your top 3 matches with
+                RoboScore ratings, pricing, and why each one fits.
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#00E5A0]/10 font-mono text-lg font-bold text-[#00E5A0]">
                 3
               </div>
-              <h3 className="mt-4 font-semibold text-white">Compare and decide</h3>
+              <h3 className="mt-4 font-semibold text-white">Buy, lease, or hire</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
-                View full robot profiles, compare options side-by-side, and use our
-                TCO calculator to evaluate total cost of ownership.
+                Robotimus recommends the right path forward &mdash; buy, lease, or hire
+                through RoboWork &mdash; based on your budget and timeline.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ section — SSR for SEO */}
+      {/* FAQ */}
       <section className="bg-[#0A0F1E] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">
             Frequently asked questions
           </h2>
           <div className="mt-8 space-y-4">
-            {ADVISOR_FAQS.map((faq) => (
+            {ROBOTIMUS_FAQS.map((faq) => (
               <details
                 key={faq.question}
                 className="group rounded-xl border border-white/[0.07] bg-white/[0.02]"
@@ -205,7 +223,7 @@ export default function AdvisorPage() {
         </div>
       </section>
 
-      {/* Cross-links for crawlability */}
+      {/* Cross-links */}
       <section className="bg-[#0F1628] px-4 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="font-display text-xl font-bold text-white">
@@ -229,7 +247,7 @@ export default function AdvisorPage() {
               <Link
                 key={ind.href}
                 href={ind.href}
-                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition-colors hover:border-[#00C2FF]/30 hover:text-white"
+                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition-colors hover:border-[#0EA5E9]/30 hover:text-white"
               >
                 {ind.label}
               </Link>

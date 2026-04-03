@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const stats = [
   { value: "50,000+", label: "Monthly visitors" },
   { value: "15,000+", label: "Robot comparisons per month" },
-  { value: "5,000+", label: "AI advisor sessions per month" },
+  { value: "5,000+", label: "Robotimus sessions per month" },
   { value: "2,000+", label: "Buyer journey completions per month" },
 ];
 
@@ -53,7 +53,7 @@ const tiers: Tier[] = [
     features: [
       "Everything in Silver",
       "Homepage featured section",
-      "AI Advisor recommendations",
+      "Robotimus recommendations",
       "Lead capture forms",
       "Quarterly strategy call",
       "Custom spotlight article",

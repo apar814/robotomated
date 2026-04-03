@@ -390,7 +390,7 @@ export default async function IndustryPage({ params }: Props) {
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Link href={`/explore/${catSlug}`} className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Browse {industry.name}</Link>
-                <Link href="/advisor" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-3 text-sm font-semibold text-white/80 hover:border-white/20">Ask AI Advisor</Link>
+                <Link href="/advisor" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-3 text-sm font-semibold text-white/80 hover:border-white/20">Ask Robotimus</Link>
               </div>
             </div>
           </RevealOnScroll>

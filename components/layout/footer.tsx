@@ -4,7 +4,7 @@ const PLATFORM_LINKS = [
   { href: "/explore", label: "Explore Robots" },
   { href: "/compare", label: "Compare" },
   { href: "/reviews", label: "Reviews" },
-  { href: "/advisor", label: "AI Advisor" },
+  { href: "/advisor", label: "Robotimus" },
   { href: "/market-intelligence", label: "Market Intelligence" },
 ];
 
@@ -70,7 +70,7 @@ export function Footer() {
               href="/advisor"
               className="mt-3 inline-block text-xs text-electric-blue transition-colors hover:text-electric-blue/80"
             >
-              Start AI Advisor &rarr;
+              Ask Robotimus &rarr;
             </Link>
           </div>
 

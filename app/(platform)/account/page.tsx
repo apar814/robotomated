@@ -113,14 +113,14 @@ export default async function AccountPage() {
         )}
       </section>
 
-      {/* Advisor conversations */}
+      {/* Robotimus conversations */}
       <section className="mt-12">
-        <h2 className="text-xl font-bold">Advisor History</h2>
+        <h2 className="text-xl font-bold">Robotimus History</h2>
         {!conversations?.length ? (
           <div className="mt-4 rounded-xl border border-border bg-navy-light p-8 text-center">
             <p className="text-muted">No conversations yet.</p>
             <Link href="/advisor" className="mt-2 inline-block text-sm text-blue hover:underline">
-              Talk to AI Advisor
+              Ask Robotimus
             </Link>
           </div>
         ) : (

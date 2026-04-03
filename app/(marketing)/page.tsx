@@ -149,7 +149,7 @@ export default async function HomePage() {
               className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
               style={{ borderColor: "rgba(255,255,255,0.3)" }}
             >
-              Ask the Advisor
+              Ask Robotimus
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
@@ -251,7 +251,7 @@ export default async function HomePage() {
               <div>
                 <p className="text-base font-bold text-primary">Decide</p>
                 <p className="mt-1 text-[15px] leading-[1.7] text-tertiary">
-                  Download the buyer{"'"}s checklist and get personalized guidance from our AI advisor.
+                  Download the buyer{"'"}s checklist and get personalized guidance from Robotimus.
                 </p>
               </div>
             </div>

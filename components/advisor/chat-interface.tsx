@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { RobotCardInline, parseRobotCards, type RobotRecommendation } from "@/components/advisor/robot-card-inline";
 import { UpgradeModal } from "@/components/pro/upgrade-prompt";
+import { RobotimusAvatar } from "@/components/advisor/robotimus-avatar";
 import { cn } from "@/lib/utils/cn";
 
 interface RobotLookupResult {
@@ -23,13 +25,39 @@ const STORAGE_KEY = "robotomated-advisor-history";
 const MAX_STORED_MESSAGES = 20;
 
 const STARTER_PROMPTS = [
-  { label: "Best warehouse robot under $50K", icon: "warehouse" },
-  { label: "Surgical robot alternatives to da Vinci", icon: "medical" },
-  { label: "Fastest ROI for manufacturing automation", icon: "manufacturing" },
-  { label: "Consumer robot with highest RoboScore", icon: "consumer" },
-  { label: "Best agricultural drone under $20K", icon: "agricultural" },
-  { label: "Cobots for small manufacturing teams", icon: "cobot" },
+  { label: "I need to automate my warehouse \u2014 where do I start?", icon: "warehouse" },
+  { label: "What\u2019s the ROI on a $150K robot for my operation?", icon: "manufacturing" },
+  { label: "Should I buy, lease, or hire a robot?", icon: "cobot" },
+  { label: "Which robot is best for hospital delivery?", icon: "medical" },
+  { label: "I have a 50,000 sq ft warehouse and $200K budget", icon: "warehouse" },
+  { label: "Help me build a case for my CFO", icon: "consumer" },
 ];
+
+/** Extract follow-up question suggestions from Robotimus responses */
+function extractFollowUps(content: string): string[] {
+  const lines = content.split("\n");
+  const followUps: string[] = [];
+  let inFollowUpSection = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (/follow.?up|you might|want to ask|could also ask/i.test(trimmed) && !trimmed.startsWith(":::")) {
+      inFollowUpSection = true;
+      continue;
+    }
+    if (inFollowUpSection) {
+      // Match numbered or bulleted items
+      const match = trimmed.match(/^(?:\d+[.)]\s*|[-*]\s*|>\s*)(.+)/);
+      if (match && match[1].length > 10 && match[1].length < 120) {
+        // Strip surrounding quotes and question marks cleanup
+        const clean = match[1].replace(/^["']|["']$/g, "").trim();
+        if (clean.length > 10) followUps.push(clean);
+      }
+    }
+  }
+
+  return followUps.slice(0, 3);
+}
 
 function loadSavedMessages(): ChatMessage[] {
   if (typeof window === "undefined") return [];
@@ -247,40 +275,48 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   }
 
   const showStarters = messages.length === 0 && !initialMessage;
+  const lastMessage = messages[messages.length - 1];
+  const followUps = lastMessage?.role === "assistant" && !streaming
+    ? extractFollowUps(lastMessage.content)
+    : [];
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col bg-[#0A0F1E]">
       {showUpgrade && (
         <UpgradeModal
           feature="You've reached your monthly limit"
-          description="Free users get 5 AI Advisor conversations per month. Upgrade to Pro for unlimited conversations, price alerts, and more."
+          description="Free users get 5 Robotimus conversations per month. Upgrade to Pro for unlimited conversations, price alerts, and more."
           onClose={() => setShowUpgrade(false)}
         />
       )}
+
+      {/* Chat header */}
+      <div className="flex items-center gap-3 border-b border-white/[0.06] px-4 py-3">
+        <RobotimusAvatar size="md" />
+        <div>
+          <h2 className="text-sm font-semibold text-white">Robotimus</h2>
+          <p className="text-[11px] text-white/40">Your independent robotics advisor</p>
+        </div>
+      </div>
+
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto px-4 py-6">
         <div className="mx-auto max-w-[700px]">
           {/* Welcome state */}
           {showStarters && (
             <div className="flex flex-col items-center py-12 text-center">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue to-violet">
-                <svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <rect x="4" y="4" width="16" height="12" rx="2" />
-                  <circle cx="9" cy="10" r="1.5" />
-                  <circle cx="15" cy="10" r="1.5" />
-                  <path d="M8 20h8 M10 16v4 M14 16v4" />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold">Robotomated AI Advisor</h2>
-              <p className="mt-2 max-w-md text-sm text-muted">
-                Tell me what you need and I&apos;ll recommend the perfect robot. I know every robot in our database.
+              <RobotimusAvatar size="lg" />
+              <h2 className="mt-4 text-xl font-bold text-white">Robotimus</h2>
+              <p className="text-xs text-white/40">Your independent robotics advisor</p>
+              <p className="mt-3 max-w-md text-sm text-white/50">
+                Tell me what you need and I&apos;ll recommend the perfect robot. I know every robot in our database and I&apos;ll tell you straight whether to buy, lease, or hire.
               </p>
               <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {STARTER_PROMPTS.map((prompt) => (
                   <button
                     key={prompt.label}
                     onClick={() => sendMessage(prompt.label)}
-                    className="group flex items-center gap-3 rounded-xl border border-border bg-navy-light px-4 py-3 text-left text-sm text-muted transition-all hover:border-blue/30 hover:bg-navy-lighter hover:text-foreground"
+                    className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-left text-sm text-white/50 transition-all hover:border-[#0EA5E9]/30 hover:bg-white/[0.04] hover:text-white/80"
                   >
                     <PromptIcon type={prompt.icon} />
                     <span>{prompt.label}</span>
@@ -293,7 +329,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           {/* Restored conversation notice */}
           {restored && messages.length > 0 && (
             <div className="mb-4 text-center">
-              <span className="inline-block rounded-full bg-navy-light px-3 py-1 text-xs text-muted">
+              <span className="inline-block rounded-full bg-white/[0.04] px-3 py-1 text-xs text-white/40">
                 Restored previous conversation
               </span>
             </div>
@@ -305,12 +341,18 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               key={i}
               className={cn("mb-4 flex", msg.role === "user" ? "justify-end" : "justify-start")}
             >
+              {/* Robotimus avatar for assistant messages */}
+              {msg.role === "assistant" && (
+                <div className="mr-2 mt-1">
+                  <RobotimusAvatar size="sm" />
+                </div>
+              )}
               <div
                 className={cn(
                   "max-w-[85%] rounded-2xl px-4 py-3 text-sm",
                   msg.role === "user"
-                    ? "bg-blue text-navy"
-                    : "bg-navy-light text-foreground"
+                    ? "bg-[#0EA5E9] text-[#0A0F1E]"
+                    : "bg-white/[0.04] text-white/90"
                 )}
               >
                 {msg.role === "assistant" ? (
@@ -319,11 +361,50 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                   <p className="whitespace-pre-wrap">{msg.content}</p>
                 )}
                 {msg.role === "assistant" && streaming && i === messages.length - 1 && (
-                  <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-blue" />
+                  <TypingIndicator />
                 )}
               </div>
             </div>
           ))}
+
+          {/* Follow-up suggestion chips */}
+          {followUps.length > 0 && (
+            <div className="mb-4 ml-8 flex flex-wrap gap-2">
+              {followUps.map((q) => (
+                <button
+                  key={q}
+                  onClick={() => sendMessage(q)}
+                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-white/50 transition-all hover:border-[#0EA5E9]/30 hover:text-white/80"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Action CTAs after conversation with recommendations */}
+          {!streaming && messages.length >= 4 && lastMessage?.role === "assistant" && hasRobotCards(lastMessage.content) && (
+            <div className="mb-4 ml-8 flex flex-wrap gap-2">
+              <Link
+                href="/explore"
+                className="rounded-lg border border-[#0EA5E9]/20 bg-[#0EA5E9]/10 px-3 py-1.5 text-xs font-medium text-[#0EA5E9] transition-colors hover:bg-[#0EA5E9]/20"
+              >
+                Browse all robots
+              </Link>
+              <Link
+                href="/robowork"
+                className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/60 transition-colors hover:text-white/80"
+              >
+                Hire on RoboWork
+              </Link>
+              <Link
+                href="/lease"
+                className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/60 transition-colors hover:text-white/80"
+              >
+                Explore leasing
+              </Link>
+            </div>
+          )}
 
           {error && (
             <div className="mb-4 rounded-lg border border-orange/20 bg-orange/5 p-3 text-center text-sm text-orange">
@@ -336,7 +417,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
       </div>
 
       {/* Input area */}
-      <div className="border-t border-border bg-navy px-4 py-4">
+      <div className="border-t border-white/[0.06] bg-[#080C18] px-4 py-4">
         <div className="mx-auto max-w-[700px]">
           <form onSubmit={handleSubmit} className="flex gap-2">
             <textarea
@@ -344,15 +425,15 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask about robots..."
+              placeholder="Ask Robotimus about robots..."
               rows={1}
               disabled={streaming}
-              className="flex-1 resize-none rounded-xl border border-border bg-navy-light px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none disabled:opacity-50"
+              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#0EA5E9]/40 focus:outline-none disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={!input.trim() || streaming}
-              className="shrink-0 rounded-xl bg-blue px-4 py-3 text-navy transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="shrink-0 rounded-xl bg-[#0EA5E9] px-4 py-3 text-[#0A0F1E] transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 12h14" />
@@ -361,7 +442,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           </form>
           {messages.length > 0 && (
             <div className="mt-2 text-center">
-              <button onClick={startOver} className="text-xs text-muted hover:text-foreground">
+              <button onClick={startOver} className="text-xs text-white/30 hover:text-white/60">
                 Start over
               </button>
             </div>
@@ -369,6 +450,22 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/** Check if message contains robot recommendation cards */
+function hasRobotCards(content: string): boolean {
+  return content.includes(":::robot{");
+}
+
+/** Animated typing indicator */
+function TypingIndicator() {
+  return (
+    <span className="ml-1 inline-flex items-center gap-0.5">
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "0ms" }} />
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "150ms" }} />
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "300ms" }} />
+    </span>
   );
 }
 
@@ -402,7 +499,7 @@ function MessageContent({ content, enriched }: { content: string; enriched: Reco
 
 /** Small icon for prompt chips */
 function PromptIcon({ type }: { type: string }) {
-  const cls = "h-5 w-5 shrink-0 text-blue/60 group-hover:text-blue transition-colors";
+  const cls = "h-5 w-5 shrink-0 text-[#0EA5E9]/50 group-hover:text-[#0EA5E9] transition-colors";
   switch (type) {
     case "warehouse":
       return (
@@ -426,12 +523,6 @@ function PromptIcon({ type }: { type: string }) {
       return (
         <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <rect x="4" y="4" width="16" height="12" rx="2" /><circle cx="9" cy="10" r="1.5" /><circle cx="15" cy="10" r="1.5" /><path d="M8 20h8 M10 16v4 M14 16v4" />
-        </svg>
-      );
-    case "agricultural":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path d="M12 22c4-4 8-7 8-12a8 8 0 10-16 0c0 5 4 8 8 12z" /><path d="M12 12V6M9 9h6" />
         </svg>
       );
     case "cobot":

@@ -12,7 +12,7 @@ const features = [
   { name: "Browse & search robots", free: true, pro: true },
   { name: "RoboScore & reviews", free: true, pro: true },
   { name: "Robot comparison", free: "2 robots", pro: "Up to 5" },
-  { name: "AI Advisor conversations", free: "5/month", pro: "Unlimited" },
+  { name: "Robotimus conversations", free: "5/month", pro: "Unlimited" },
   { name: "Price drop alerts", free: "3 robots", pro: "Unlimited" },
   { name: "Pro Insights (extended specs)", free: false, pro: true },
   { name: "Ad-free experience", free: false, pro: true },
@@ -21,7 +21,7 @@ const features = [
 
 const faqs = [
   { question: "Can I cancel anytime?", answer: "Yes. Cancel from your account billing page at any time. You'll keep Pro access until the end of your current billing period." },
-  { question: "What happens when I cancel?", answer: "Your account reverts to the free tier. You keep all your saved robots and reviews. AI Advisor conversations and price alerts revert to free tier limits." },
+  { question: "What happens when I cancel?", answer: "Your account reverts to the free tier. You keep all your saved robots and reviews. Robotimus conversations and price alerts revert to free tier limits." },
   { question: "Is there a free trial?", answer: "Yes — every Pro subscription starts with a 7-day free trial. You won't be charged until the trial ends, and you can cancel anytime during the trial." },
   { question: "What payment methods do you accept?", answer: "We accept all major credit and debit cards via Stripe. Payment processing is fully handled by Stripe — we never see or store your card details." },
   { question: "Can I switch plans?", answer: "Currently we offer Free and Pro ($49/month). Enterprise plans with custom pricing are coming soon — contact us for early access." },

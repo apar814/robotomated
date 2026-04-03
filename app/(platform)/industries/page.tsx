@@ -237,7 +237,7 @@ export default async function IndustriesHubPage() {
                 Not sure which industry to start with?
               </h2>
               <p className="mt-3 text-base text-white/60">
-                Our AI advisor can recommend robots based on your specific use
+                Robotimus can recommend robots based on your specific use
                 case, budget, and requirements.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -245,7 +245,7 @@ export default async function IndustriesHubPage() {
                   href="/advisor"
                   className="rounded-lg bg-[#00C2FF] px-8 py-3 text-sm font-semibold text-white hover:opacity-90"
                 >
-                  Talk to AI Advisor
+                  Ask Robotimus
                 </Link>
                 <Link
                   href="/explore"

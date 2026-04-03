@@ -115,7 +115,7 @@ export default async function GuidePage({ params }: Props) {
               Explore All Robots
             </Link>
             <Link href="/advisor" className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
-              AI Advisor
+              Ask Robotimus
             </Link>
             {frontmatter.category && (
               <Link href={`/best/${frontmatter.category}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">

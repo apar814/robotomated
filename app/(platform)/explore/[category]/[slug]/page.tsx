@@ -675,13 +675,13 @@ export default async function RobotDetailPage({ params }: Props) {
                 industryCerts={robot.industry_certifications}
               />
 
-              {/* AI Advisor CTA */}
+              {/* Robotimus CTA */}
               <div className="rounded-md border border-border bg-obsidian-surface p-4">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[AI] ADVISOR</span>
+                  <span className="font-mono text-[9px] tracking-widest">ROBOTIMUS</span>
                 </div>
                 <p className="mb-3 text-sm text-text-secondary">
-                  Not sure if {robot.name} is right for you?
+                  Not sure if {robot.name} is right for you? Ask Robotimus.
                 </p>
                 <Link
                   href="/advisor"
