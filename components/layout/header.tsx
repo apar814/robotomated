@@ -21,11 +21,12 @@ const navLinks = [
   { href: "/explore", label: "Explore" },
   { href: "/find-my-robot", label: "Find My Robot" },
   { href: "/robowork", label: "RoboWork" },
-  { href: "/compare", label: "Compare" },
+  { href: "/lease", label: "Lease" },
+  { href: "/certify", label: "Certify" },
+  { href: "/service", label: "Service" },
+  { href: "/cpo", label: "Pre-Owned" },
   { href: "/learn", label: "Learn" },
-  { href: "/market", label: "Market Intel" },
   { href: "/manufacturers", label: "Manufacturers" },
-  { href: "/developers", label: "API" },
 ];
 
 export function Header() {
