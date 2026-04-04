@@ -264,16 +264,56 @@ export default async function HomePage() {
       <RoboWorkSection />
 
       {/* ══════════════════════════════════════════
+          7.5. THE ABUNDANCE EQUATION
+          ══════════════════════════════════════════ */}
+      <section className="px-6 py-20" style={{ background: "#080808" }}>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <blockquote className="font-display text-2xl font-bold italic leading-snug text-white sm:text-3xl">
+                &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
+              </blockquote>
+              <p className="mt-4 text-sm text-white/50">-- Brett Adcock, CEO, Figure AI</p>
+            </div>
+            <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-8">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-white/60">Human labor (fully burdened)</span>
+                  <span className="font-mono text-lg font-bold text-white">$46/hour</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-white/60">Robot (leased, amortized)</span>
+                  <span className="font-mono text-lg font-bold" style={{ color: "#C8FF00" }}>$0.45/hour</span>
+                </div>
+                <div className="border-t border-white/10 pt-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-white/80">Cost difference</span>
+                    <span className="font-mono text-2xl font-extrabold" style={{ color: "#0EA5E9" }}>100x</span>
+                  </div>
+                </div>
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-white/50">
+                At $0.45/hour, every business can afford automation. That is the world we are building toward -- and Robotomated is the platform that gets you there.
+              </p>
+              <Link href="/tools/robot-economics" className="mt-4 inline-block text-sm font-semibold text-[#0EA5E9] hover:underline">
+                Calculate your economics &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
           8. SOCIAL PROOF STATS
           ══════════════════════════════════════════ */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {[
-              { value: totalRobots.toString(), label: "Robots" },
+              { value: totalRobots.toString(), label: "Robots Tracked" },
               { value: manufacturerCount.toString(), label: "Manufacturers" },
-              { value: "$103B", label: "Market Covered" },
-              { value: "500+", label: "Deployments Tracked" },
+              { value: "$24T", label: "Projected Market 2040" },
+              { value: "137", label: "Humanoid Companies (China)" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-mono font-extrabold" style={{ fontSize: "clamp(32px, 4vw, 56px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
