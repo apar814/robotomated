@@ -148,6 +148,14 @@ export async function POST(request: NextRequest) {
       website: (body.website as string) || null,
       linkedin: (body.linkedin as string) || null,
       profile_image: (body.profile_image as string) || null,
+      business_type: (body.business_type as string) || null,
+      years_in_robotics: (body.years_in_robotics as number) || null,
+      phone: (body.phone as string) || null,
+      phone_verified: (body.phone_verified as boolean) || false,
+      email_verified: (body.email_verified as boolean) || false,
+      verification_tier: (body.verification_tier as number) || 0,
+      specialization_levels: (body.specialization_levels as Record<string, string>) || {},
+      onboarding_completed_at: new Date().toISOString(),
     })
     .select("id, slug")
     .single();
@@ -171,6 +179,8 @@ export async function POST(request: NextRequest) {
       minimum_days: (r.minimum_days as number) || 1,
       operator_included: (r.operator_included as boolean) || false,
       remote_capable: (r.remote_capable as boolean) || false,
+      fulfillment_types: (r.fulfillment_types as string[]) || [],
+      images: (r.images as string[]) || [],
     }));
 
     const { error: robotError } = await supabase.from("rsp_robots").insert(robotRows);
