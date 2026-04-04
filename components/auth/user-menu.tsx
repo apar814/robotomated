@@ -39,16 +39,32 @@ export function UserMenu() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [open]);
 
-  if (loading) return <div className="h-8 w-8" />;
+  if (loading) return <div className="h-8 w-16" />;
 
   if (!user) {
     return (
-      <Link
-        href="/login"
-        className="rounded-lg bg-blue px-4 py-2 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
-      >
-        Sign In
-      </Link>
+      <div className="flex items-center">
+        <Link
+          href="/login"
+          className="rounded-l-md border px-4 py-2 text-[13px] font-medium transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+          style={{
+            borderColor: "var(--theme-border-strong)",
+            color: "var(--theme-text-secondary)",
+          }}
+        >
+          Log In
+        </Link>
+        <Link
+          href="/login?mode=signup"
+          className="rounded-r-md border-y border-r px-4 py-2 text-[13px] font-bold text-black transition-colors hover:opacity-90"
+          style={{
+            background: "var(--theme-accent-blue)",
+            borderColor: "var(--theme-accent-blue)",
+          }}
+        >
+          Sign Up
+        </Link>
+      </div>
     );
   }
 
@@ -64,40 +80,54 @@ export function UserMenu() {
     <div ref={menuRef} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue to-violet text-xs font-bold text-white"
+        className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white"
+        style={{ background: "linear-gradient(135deg, #0EA5E9, #7B2FFF)" }}
       >
         {(user.email?.[0] || "?").toUpperCase()}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-10 z-50 w-48 rounded-xl border border-border bg-navy-light py-1 shadow-xl">
-          <p className="truncate border-b border-border px-4 py-2 text-xs text-muted">
+        <div
+          className="absolute right-0 top-10 z-50 w-48 rounded-xl border py-1 shadow-xl"
+          style={{
+            borderColor: "var(--theme-border)",
+            background: "var(--theme-surface)",
+          }}
+        >
+          <p
+            className="truncate border-b px-4 py-2 text-xs"
+            style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-muted)" }}
+          >
             {user.email}
           </p>
           <Link
             href="/account"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(14,165,233,0.08)]"
+            style={{ color: "var(--theme-text-secondary)" }}
           >
             Account
           </Link>
           <Link
             href="/account/saved"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(14,165,233,0.08)]"
+            style={{ color: "var(--theme-text-secondary)" }}
           >
             Saved Robots
           </Link>
           <Link
             href="/account/billing"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(14,165,233,0.08)]"
+            style={{ color: "var(--theme-text-secondary)" }}
           >
             Billing
           </Link>
           <button
             onClick={handleSignOut}
-            className="block w-full border-t border-border px-4 py-2 text-left text-sm text-muted transition-colors hover:bg-navy-lighter hover:text-foreground"
+            className="block w-full border-t px-4 py-2 text-left text-sm transition-colors hover:bg-[rgba(14,165,233,0.08)]"
+            style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-secondary)" }}
           >
             Sign Out
           </button>

@@ -288,17 +288,24 @@ export function Header() {
           from { opacity: 0; transform: translateX(-50%) translateY(8px); }
           to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
+        @keyframes pulse-icon {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
+        }
       `}</style>
 
       <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(20px)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <span className="font-display text-[20px] font-extrabold tracking-[-0.02em]">
+          <Link href="/" className="mr-8 flex items-center">
+            <span className="font-display text-[18px] font-extrabold tracking-[-0.02em]">
               <span style={{ color: "var(--theme-text-primary)" }}>ROBOTOMATED</span>
               <span className="text-[#0EA5E9]">.</span>
             </span>
           </Link>
+
+          {/* Divider */}
+          <div className="mr-4 hidden h-5 w-px lg:block" style={{ background: "var(--theme-border)" }} />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-0.5 lg:flex">
@@ -339,10 +346,12 @@ export function Header() {
             {/* ROBOTIMUS button */}
             <Link
               href="/advisor"
-              className="hidden items-center gap-1.5 rounded-md px-4 py-2 text-[13px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] sm:inline-flex"
+              className="hidden items-center gap-1.5 rounded-md px-3.5 py-2 text-[13px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] sm:inline-flex"
               style={{ background: "var(--theme-accent-blue)", boxShadow: "0 0 20px rgba(14,165,233,0.4)" }}
             >
-              <RobotimusAvatar size={18} />
+              <span style={{ animation: "pulse-icon 3s ease-in-out infinite" }}>
+                <RobotimusAvatar size={18} />
+              </span>
               ROBOTIMUS
             </Link>
 
