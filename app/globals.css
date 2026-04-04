@@ -488,7 +488,7 @@ body::before {
    THEME CSS VARIABLES
    ═══════════════════════════════════════ */
 :root {
-  --theme-bg: #F8F9FA;
+  --theme-bg: #F0F4FF;
   --theme-surface: #FFFFFF;
   --theme-card: #FFFFFF;
   --theme-card-hover: #F1F5F9;
@@ -573,6 +573,96 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--theme-scrollbar-track); }
 ::-webkit-scrollbar-thumb { background: var(--theme-scrollbar-thumb); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--theme-text-muted); }
+
+/* ═══════════════════════════════════════
+   SCI-FI PREMIUM ELEMENTS
+   ═══════════════════════════════════════ */
+
+/* Grid background for hero sections */
+.bg-sci-grid {
+  background-image:
+    linear-gradient(var(--theme-accent-blue) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-accent-blue) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+}
+
+/* Glow pulse for key elements */
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+  50% { box-shadow: 0 0 40px rgba(14,165,233,0.6); }
+}
+
+/* Blinking cursor for terminal-style text */
+.blink-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--theme-accent-blue);
+  margin-left: 2px;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Data readout style */
+.data-readout {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* HUD bracket label */
+.hud-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--theme-accent-blue);
+}
+.hud-label::before { content: '[ '; opacity: 0.5; }
+.hud-label::after { content: ' ]'; opacity: 0.5; }
+
+/* Category gradient card (for robots without images) */
+.category-gradient-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.category-gradient-card .gradient-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.15;
+}
+
+/* Premium card hover glow */
+.card-glow:hover {
+  box-shadow: 0 0 20px rgba(14,165,233,0.15), 0 8px 32px rgba(0,0,0,0.2);
+}
+
+/* Active nav indicator */
+.nav-active-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2px;
+  background: var(--theme-accent-blue);
+  border-radius: 1px;
+  transition: width 200ms ease;
+}
+
+/* Pulse icon animation */
+@keyframes pulse-icon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
 
 /* ═══════════════════════════════════════
    RESPONSIVE UTILITIES

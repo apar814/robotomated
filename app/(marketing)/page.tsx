@@ -90,15 +90,14 @@ export default async function HomePage() {
           ══════════════════════════════════════════ */}
       <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
         <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
+        {/* Sci-fi grid overlay */}
+        <div className="bg-sci-grid pointer-events-none absolute inset-0" />
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[55%_45%] lg:gap-12">
           {/* Left column — headline + CTAs */}
           <div>
-            <div className="flex items-center gap-3">
-              <div className="h-px w-5 bg-electric-blue" />
-              <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
-                The Operating System for Robotics
-              </span>
-            </div>
+            <span className="hud-label">
+              The Operating System for Robotics
+            </span>
             <h1
               className="mt-8 font-display font-extrabold leading-[1.05]"
               style={{ fontSize: "clamp(40px, 5vw, 80px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(200,255,0,0.15)" }}
