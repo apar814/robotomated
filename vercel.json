@@ -24,7 +24,7 @@
     },
     {
       "path": "/api/cron/weekly-digest",
-      "schedule": "0 12 * * 1"
+      "schedule": "0 14 * * 1"
     },
     {
       "path": "/api/cron/price-alerts",
@@ -33,6 +33,14 @@
     {
       "path": "/api/cron/news-aggregator",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/enrich-robots",
+      "schedule": "0 2 * * 0"
+    },
+    {
+      "path": "/api/cron/market-intelligence",
+      "schedule": "0 3 * * 1"
     }
   ]
 }
