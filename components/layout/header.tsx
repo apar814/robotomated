@@ -81,12 +81,12 @@ function Chevron({ open }: { open: boolean }) {
 // ── Simple dropdown ──
 function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClose: () => void }) {
   return (
-    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-[#0D0D0D] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border border-[var(--theme-border)] bg-[var(--theme-surface)] p-3 shadow-2xl"
       style={{ animation: "dropIn 150ms ease-out" }}
     >
       {items.map((item, i) => (
         <div key={item.href}>
-          {item.divider && i > 0 && <div className="my-1.5 border-t border-white/[0.06]" />}
+          {item.divider && i > 0 && <div className="my-1.5 border-t border-[var(--theme-border)]" />}
           <Link
             href={item.href}
             onClick={onClose}
@@ -94,8 +94,8 @@ function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClos
           >
             <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full" style={{ background: item.color }} />
             <div>
-              <p className="text-sm font-semibold text-white">{item.title}</p>
-              <p className="text-xs text-white/50">{item.desc}</p>
+              <p className="text-sm font-semibold text-[var(--theme-text-primary)]">{item.title}</p>
+              <p className="text-xs text-[var(--theme-text-muted)]">{item.desc}</p>
             </div>
           </Link>
         </div>
@@ -108,8 +108,8 @@ function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClos
 function MobileAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-white/[0.06]">
-      <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-semibold text-white/80">
+    <div className="border-b border-[var(--theme-border)]">
+      <button onClick={() => setOpen(!open)} className="flex w-full items-center justify-between px-4 py-3 text-left text-[15px] font-semibold text-[var(--theme-text-secondary)]">
         {title}
         <Chevron open={open} />
       </button>
@@ -120,9 +120,9 @@ function MobileAccordion({ title, children }: { title: string; children: React.R
 
 function MobileLink({ href, title, desc, onClose }: { href: string; title: string; desc: string; onClose: () => void }) {
   return (
-    <Link href={href} onClick={onClose} className="block rounded-lg px-3 py-2 transition-colors hover:bg-white/[0.04]">
-      <p className="text-sm font-medium text-white/90">{title}</p>
-      <p className="text-xs text-white/40">{desc}</p>
+    <Link href={href} onClick={onClose} className="block rounded-lg px-3 py-2 transition-colors hover:bg-[var(--theme-tag-bg)]">
+      <p className="text-sm font-medium text-[var(--theme-text-primary)]">{title}</p>
+      <p className="text-xs text-[var(--theme-text-muted)]">{desc}</p>
     </Link>
   );
 }
@@ -178,7 +178,7 @@ export function Header() {
         <button
           onClick={() => setActiveMenu(isActive ? null : id)}
           className={`flex items-center gap-1.5 rounded-md px-3 py-2 font-sans text-[14px] font-medium transition-colors ${
-            isActive ? "text-white" : "text-white/70 hover:text-white"
+            isActive ? "text-[var(--theme-text-primary)]" : "text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]"
           }`}
         >
           {label}
@@ -188,7 +188,7 @@ export function Header() {
         {/* Dropdowns */}
         {isActive && id === "explore" && (
           <div
-            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#0D0D0D] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border border-[var(--theme-border)] bg-[var(--theme-surface)] p-6 shadow-2xl"
             style={{ animation: "dropIn 150ms ease-out" }}
             onMouseEnter={() => handleEnter(id)}
             onMouseLeave={handleLeave}
@@ -196,7 +196,7 @@ export function Header() {
             <div className="grid grid-cols-3 gap-6">
               {/* Column 1: By Category */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">By Category</p>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">By Category</p>
                 <div className="space-y-0.5">
                   {exploreCategories.map((cat) => (
                     <Link
@@ -206,7 +206,7 @@ export function Header() {
                       className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.08)]"
                     >
                       <NavIcon d={cat.icon} />
-                      <span className="text-sm font-semibold text-white">{cat.name}</span>
+                      <span className="text-sm font-semibold text-[var(--theme-text-primary)]">{cat.name}</span>
                     </Link>
                   ))}
                   <Link href="/explore" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#0EA5E9] hover:underline">
@@ -217,7 +217,7 @@ export function Header() {
 
               {/* Column 2: By Need */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">By Need</p>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">By Need</p>
                 <div className="space-y-0.5">
                   {exploreNeeds.map((need) => (
                     <Link
@@ -227,7 +227,7 @@ export function Header() {
                       className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.08)]"
                     >
                       <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#0EA5E9]" />
-                      <span className="text-sm text-white/80">{need.label}</span>
+                      <span className="text-sm text-[var(--theme-text-secondary)]">{need.label}</span>
                     </Link>
                   ))}
                   <Link href="/find-my-robot" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#0EA5E9] hover:underline">
@@ -238,18 +238,18 @@ export function Header() {
 
               {/* Column 3: Featured */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-white/30">Featured</p>
-                <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">Featured</p>
+                <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
                   <p className="text-[11px] font-medium uppercase tracking-widest text-[#0EA5E9]">Robot of the Week</p>
-                  <p className="mt-2 text-base font-bold text-white">Top RoboScore</p>
-                  <p className="mt-1 text-xs text-white/50">Highest-rated robot in our database this week.</p>
+                  <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
+                  <p className="mt-1 text-xs text-[var(--theme-text-muted)]">Highest-rated robot in our database this week.</p>
                   <Link href="/explore" onClick={closeAll} className="mt-3 inline-block text-xs font-medium text-[#0EA5E9] hover:underline">
                     View robot &rarr;
                   </Link>
                 </div>
-                <div className="mt-4 rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
-                  <p className="text-sm font-semibold text-white">{robotCount}+ robots tracked</p>
-                  <p className="mt-1 text-xs text-white/50">Independent RoboScores. No manufacturer bias.</p>
+                <div className="mt-4 rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
+                  <p className="text-sm font-semibold text-[var(--theme-text-primary)]">{robotCount}+ robots tracked</p>
+                  <p className="mt-1 text-xs text-[var(--theme-text-muted)]">Independent RoboScores. No manufacturer bias.</p>
                 </div>
               </div>
             </div>
@@ -295,8 +295,8 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="font-mono text-[14px] font-bold tracking-widest">
-              <span className="text-white">ROBOTO</span>
-              <span className="text-white/40">MATED</span>
+              <span className="text-[var(--theme-text-primary)]">ROBOTO</span>
+              <span className="text-[var(--theme-text-muted)]">MATED</span>
               <span className="text-[#0EA5E9]">.</span>
             </span>
           </Link>
@@ -310,7 +310,7 @@ export function Header() {
             <NavButton id="learn" label="Learn" />
             <Link
               href="/manufacturers"
-              className="rounded-md px-3 py-2 font-sans text-[14px] font-medium text-white/70 transition-colors hover:text-white"
+              className="rounded-md px-3 py-2 font-sans text-[14px] font-medium text-[var(--theme-text-secondary)] transition-colors hover:text-[var(--theme-text-primary)]"
             >
               Manufacturers
             </Link>
@@ -321,13 +321,13 @@ export function Header() {
             {/* Search */}
             <button
               onClick={openSearch}
-              className="flex items-center gap-2 rounded-md border border-white/[0.1] px-3 py-1.5 text-white/50 transition-colors hover:border-white/20 hover:text-white/70"
+              className="flex items-center gap-2 rounded-md border border-[var(--theme-border)] px-3 py-1.5 text-[var(--theme-text-muted)] transition-colors hover:border-[var(--theme-border)] hover:text-[var(--theme-text-secondary)]"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
               </svg>
               <span className="hidden text-[13px] sm:inline">Search {robotCount} robots...</span>
-              <kbd className="hidden rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-white/40 sm:inline">
+              <kbd className="hidden rounded border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--theme-text-muted)] sm:inline">
                 &#8984;K
               </kbd>
             </button>
@@ -352,7 +352,7 @@ export function Header() {
             {/* Mobile hamburger */}
             <button
               type="button"
-              className="rounded-md p-2 text-white/60 hover:text-white lg:hidden"
+              className="rounded-md p-2 text-[var(--theme-text-muted)] hover:text-[var(--theme-text-primary)] lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -369,7 +369,7 @@ export function Header() {
 
         {/* ── Mobile nav ── */}
         {mobileOpen && (
-          <nav className="fixed inset-0 top-16 z-50 overflow-y-auto bg-[#080808] lg:hidden">
+          <nav className="fixed inset-0 top-16 z-50 overflow-y-auto bg-[var(--theme-bg)] lg:hidden">
             <MobileAccordion title="Explore">
               {exploreCategories.map((cat) => (
                 <MobileLink key={cat.slug} href={`/explore/${cat.slug}`} title={cat.name} desc="" onClose={closeAll} />
@@ -395,7 +395,7 @@ export function Header() {
                 <MobileLink key={item.href} href={item.href} title={item.title} desc={item.desc} onClose={closeAll} />
               ))}
             </MobileAccordion>
-            <Link href="/manufacturers" onClick={closeAll} className="block border-b border-white/[0.06] px-4 py-3 text-[15px] font-semibold text-white/80">
+            <Link href="/manufacturers" onClick={closeAll} className="block border-b border-[var(--theme-border)] px-4 py-3 text-[15px] font-semibold text-[var(--theme-text-secondary)]">
               Manufacturers
             </Link>
             <div className="p-4">

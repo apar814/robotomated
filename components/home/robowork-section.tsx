@@ -172,8 +172,8 @@ export function RoboWorkSection() {
           </Link>
           <Link
             href="/robowork/providers/register"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
-            style={{ borderColor: "rgba(255,255,255,0.3)" }}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+            style={{ borderColor: "var(--theme-border)" }}
           >
             Become a Provider
             <svg

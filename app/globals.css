@@ -2,58 +2,63 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* ── Obsidian backgrounds (darkest → lightest) ── */
-  --color-obsidian: #080808;
-  --color-obsidian-2: #0F0F0F;
-  --color-obsidian-3: #1A1A1A;
-  --color-obsidian-surface: #0C0C0C;
-  --color-obsidian-elevated: #101010;
-  --color-obsidian-hover: #151515;
+  /* ── Adaptive backgrounds (switch with .dark) ── */
+  --color-obsidian: var(--theme-bg);
+  --color-obsidian-2: var(--theme-section-alt, #0F0F0F);
+  --color-obsidian-3: var(--theme-border-strong, #1A1A1A);
+  --color-obsidian-surface: var(--theme-card);
+  --color-obsidian-elevated: var(--theme-surface);
+  --color-obsidian-hover: var(--theme-card-hover);
 
-  /* ── Accent colors ── */
-  --color-electric-blue: #0EA5E9;
-  --color-lime: #C8FF00;
-  --color-magenta: #FF006E;
+  /* ── Accent colors (adaptive) ── */
+  --color-electric-blue: var(--theme-accent-blue);
+  --color-lime: var(--theme-accent-lime);
+  --color-magenta: var(--theme-accent-magenta);
   --color-amber: #FBBF24;
 
   /* ── Dim accent variants ── */
-  --color-electric-blue-dim: rgba(14,165,233,0.06);
-  --color-lime-dim: rgba(200,255,0,0.05);
-  --color-magenta-dim: rgba(255,0,110,0.05);
+  --color-electric-blue-dim: var(--theme-accent-blue-dim, rgba(14,165,233,0.06));
+  --color-lime-dim: var(--theme-accent-lime-dim, rgba(200,255,0,0.05));
+  --color-magenta-dim: var(--theme-accent-magenta-dim, rgba(255,0,110,0.05));
 
-  /* ── Text hierarchy ── */
-  --color-text-primary: #E8E8E8;
-  --color-text-secondary: #888888;
-  --color-text-tertiary: #555555;
-  --color-text-ghost: #2E2E2E;
-  --color-text-data: #FFFFFF;
-  --color-text-muted: #6B7280;
+  /* ── Text hierarchy (adaptive) ── */
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-text-tertiary: var(--theme-text-muted);
+  --color-text-ghost: var(--theme-text-muted);
+  --color-text-data: var(--theme-text-primary);
+  --color-text-muted: var(--theme-text-muted);
+  --color-primary: var(--theme-text-primary);
+  --color-secondary: var(--theme-text-secondary);
+  --color-tertiary: var(--theme-text-muted);
+  --color-ghost: var(--theme-text-muted);
+  --color-data: var(--theme-accent-blue);
 
-  /* ── Borders ── */
-  --color-border: #1A1A1A;
-  --color-border-subtle: #131313;
-  --color-border-active: rgba(14,165,233,0.2);
+  /* ── Borders (adaptive) ── */
+  --color-border: var(--theme-border);
+  --color-border-subtle: var(--theme-border);
+  --color-border-active: var(--theme-accent-blue);
 
-  /* ── Semantic (backward compat) ── */
-  --color-background: #080808;
-  --color-foreground: #E8E8E8;
-  --color-muted: #6B7280;
+  /* ── Semantic (adaptive) ── */
+  --color-background: var(--theme-bg);
+  --color-foreground: var(--theme-text-primary);
+  --color-muted: var(--theme-text-muted);
 
-  /* ── Legacy color aliases (backward compat) ── */
-  --color-navy: #080808;
-  --color-navy-light: #0F0F0F;
-  --color-navy-lighter: #1A1A1A;
-  --color-steel: #1A1A1A;
-  --color-carbon: #050505;
-  --color-blue: #0EA5E9;
-  --color-blue-dim: rgba(14,165,233,0.12);
+  /* ── Legacy color aliases (adaptive) ── */
+  --color-navy: var(--theme-bg);
+  --color-navy-light: var(--theme-surface);
+  --color-navy-lighter: var(--theme-section-alt, #1A1A1A);
+  --color-steel: var(--theme-border);
+  --color-carbon: var(--theme-bg);
+  --color-blue: var(--theme-accent-blue);
+  --color-blue-dim: var(--theme-accent-blue-dim, rgba(14,165,233,0.12));
   --color-violet: #6366F1;
   --color-violet-dim: rgba(99,102,241,0.12);
-  --color-green: #C8FF00;
-  --color-green-dim: rgba(200,255,0,0.12);
+  --color-green: var(--theme-accent-lime);
+  --color-green-dim: var(--theme-accent-lime-dim, rgba(200,255,0,0.12));
   --color-orange: #FBBF24;
   --color-orange-dim: rgba(251,191,36,0.12);
-  --color-cyan-glow: #0EA5E9;
+  --color-cyan-glow: var(--theme-accent-blue);
   --color-plasma: #6366F1;
 
   /* ── Fonts ── */
@@ -92,52 +97,24 @@ body::before {
    OBSIDIAN CARD SYSTEM
    ═══════════════════════════════════════ */
 .obsidian-card {
-  background: #0C0C0C;
-  border: 1px solid #1A1A1A;
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
   border-radius: 6px;
+  box-shadow: var(--theme-card-shadow);
   position: relative;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.obsidian-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(14,165,233,0.35), transparent);
-  pointer-events: none;
-  border-radius: 6px 6px 0 0;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .obsidian-card:hover {
-  background: #101010;
+  background: var(--theme-card-hover);
 }
 
-.obsidian-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle at top left, rgba(14,165,233,0.06), transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s;
-  border-radius: 6px 0 0 0;
-}
-
-.obsidian-card:hover::after {
-  opacity: 1;
-}
-
-/* Legacy aliases — point to obsidian card */
+/* Legacy aliases — point to adaptive card */
 .glass {
-  background: #0C0C0C;
-  border: 1px solid #1A1A1A;
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
   border-radius: 6px;
+  box-shadow: var(--theme-card-shadow);
 }
 
 .glass-hover {
@@ -145,24 +122,25 @@ body::before {
 }
 
 .glass-hover:hover {
-  background: #101010;
-  border-color: rgba(14,165,233,0.20);
+  background: var(--theme-card-hover);
+  border-color: var(--theme-accent-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 .glass-card {
-  background: #0C0C0C;
-  border: 1px solid #1A1A1A;
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
   border-radius: 6px;
+  box-shadow: var(--theme-card-shadow);
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .glass-card:hover {
-  background: #101010;
-  border-color: rgba(14,165,233,0.20);
+  background: var(--theme-card-hover);
+  border-color: var(--theme-accent-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* ═══════════════════════════════════════
@@ -513,16 +491,30 @@ body::before {
   --theme-bg: #F8F9FA;
   --theme-surface: #FFFFFF;
   --theme-card: #FFFFFF;
-  --theme-card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --theme-card-hover: #F1F5F9;
+  --theme-card-shadow: 0 2px 8px rgba(0,0,0,0.06);
   --theme-border: rgba(0,0,0,0.08);
+  --theme-border-strong: rgba(0,0,0,0.15);
+  --theme-section-alt: #F1F5F9;
+  --theme-nav-bg: rgba(255,255,255,0.95);
+  --theme-nav-border: rgba(0,0,0,0.08);
   --theme-text-primary: #0A0A0A;
   --theme-text-secondary: rgba(0,0,0,0.65);
   --theme-text-muted: rgba(0,0,0,0.4);
+  --theme-text-inverse: #FFFFFF;
   --theme-accent-blue: #0284C7;
-  --theme-accent-lime: #65A30D;
+  --theme-accent-lime: #4D7C0F;
   --theme-accent-magenta: #DB2777;
-  --theme-nav-bg: rgba(255,255,255,0.95);
-  --theme-nav-border: rgba(0,0,0,0.08);
+  --theme-accent-blue-dim: rgba(2,132,199,0.08);
+  --theme-accent-lime-dim: rgba(77,124,15,0.08);
+  --theme-accent-magenta-dim: rgba(219,39,119,0.06);
+  --theme-input-bg: #FFFFFF;
+  --theme-input-border: rgba(0,0,0,0.15);
+  --theme-tag-bg: rgba(0,0,0,0.05);
+  --theme-tag-border: rgba(0,0,0,0.1);
+  --theme-tag-text: rgba(0,0,0,0.7);
+  --theme-price-text: #065F46;
+  --theme-score-bg: rgba(2,132,199,0.1);
   --theme-scrollbar-track: #F0F0F0;
   --theme-scrollbar-thumb: #D0D0D0;
   color-scheme: light;
@@ -532,23 +524,37 @@ body::before {
   --theme-bg: #080808;
   --theme-surface: #0D0D0D;
   --theme-card: #111111;
+  --theme-card-hover: #151515;
   --theme-card-shadow: none;
   --theme-border: rgba(255,255,255,0.08);
+  --theme-border-strong: rgba(255,255,255,0.15);
+  --theme-section-alt: #0D0D0D;
+  --theme-nav-bg: rgba(8,8,8,0.95);
+  --theme-nav-border: rgba(255,255,255,0.08);
   --theme-text-primary: #FFFFFF;
   --theme-text-secondary: rgba(255,255,255,0.65);
   --theme-text-muted: rgba(255,255,255,0.35);
+  --theme-text-inverse: #000000;
   --theme-accent-blue: #0EA5E9;
   --theme-accent-lime: #C8FF00;
   --theme-accent-magenta: #FF006E;
-  --theme-nav-bg: rgba(8,8,8,0.95);
-  --theme-nav-border: rgba(255,255,255,0.08);
+  --theme-accent-blue-dim: rgba(14,165,233,0.08);
+  --theme-accent-lime-dim: rgba(200,255,0,0.06);
+  --theme-accent-magenta-dim: rgba(255,0,110,0.06);
+  --theme-input-bg: rgba(255,255,255,0.05);
+  --theme-input-border: rgba(255,255,255,0.12);
+  --theme-tag-bg: rgba(255,255,255,0.06);
+  --theme-tag-border: rgba(255,255,255,0.12);
+  --theme-tag-text: rgba(255,255,255,0.7);
+  --theme-price-text: #C8FF00;
+  --theme-score-bg: rgba(14,165,233,0.15);
   --theme-scrollbar-track: #080808;
   --theme-scrollbar-thumb: #1A1A1A;
   color-scheme: dark;
 }
 
 @layer base {
-  html { color-scheme: dark; }
+  html { color-scheme: dark light; }
   body {
     background-color: var(--theme-bg);
     color: var(--theme-text-primary);
@@ -556,6 +562,8 @@ body::before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  /* Remove scanline overlay in light mode */
+  :root:not(.dark) body::before { display: none; }
 }
 
 /* ═══════════════════════════════════════

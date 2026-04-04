@@ -92,8 +92,8 @@ export default async function HomePage() {
         <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-3">
-            <div className="h-px w-5 bg-[#0EA5E9]" />
-            <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[#0EA5E9]">
+            <div className="h-px w-5 bg-electric-blue" />
+            <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
               The Operating System for Robotics
             </span>
           </div>
@@ -103,7 +103,7 @@ export default async function HomePage() {
           >
             One platform.<br />
             The entire robot<br />
-            <span style={{ color: "#C8FF00" }}>lifecycle.</span>
+            <span style={{ color: "var(--theme-accent-lime)" }}>lifecycle.</span>
           </h1>
           <p className="mt-8 max-w-[560px] font-sans leading-[1.6]" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "var(--theme-text-secondary)" }}>
             Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
@@ -134,8 +134,8 @@ export default async function HomePage() {
             { value: "5", label: "Channels" },
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-2">
-              {i > 0 && <span className="mr-6 text-[#0EA5E9]">//</span>}
-              <span className="font-mono font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>{s.value}</span>
+              {i > 0 && <span className="mr-6 text-electric-blue">//</span>}
+              <span className="font-mono font-bold text-electric-blue" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>{s.value}</span>
               <span className="text-[11px] font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
             </div>
           ))}
@@ -145,7 +145,7 @@ export default async function HomePage() {
       <div className="border-b px-6 py-3" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
           <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
-          <span className="h-1 w-1 rounded-full bg-[#0EA5E9]" />
+          <span className="h-1 w-1 rounded-full bg-electric-blue" />
           <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
         </div>
       </div>

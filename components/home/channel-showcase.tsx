@@ -168,7 +168,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={channel.href}
-      className="group relative flex flex-col rounded-xl border border-white/[0.06] p-7 transition-all duration-200 ease-out hover:scale-[1.02]"
+      className="group relative flex flex-col rounded-xl border border-[var(--theme-border)] p-7 transition-all duration-200 ease-out hover:scale-[1.02]"
       style={{
         backgroundColor: "var(--theme-card, #111111)",
         borderLeft: `3px solid ${channel.accent}`,
@@ -181,7 +181,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget;
-        el.style.borderColor = "rgba(255,255,255,0.06)";
+        el.style.borderColor = "var(--theme-border)";
         el.style.borderLeft = `3px solid ${channel.accent}`;
         el.style.boxShadow = "none";
       }}
