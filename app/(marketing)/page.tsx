@@ -8,7 +8,7 @@ import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import ChannelShowcase from "@/components/home/channel-showcase";
-import { RobotimusSection } from "@/components/home/robotimus-section";
+import { RobotimusHeroPanel } from "@/components/home/robotimus-hero-panel";
 import { CertificationSection } from "@/components/home/certification-section";
 import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
@@ -86,38 +86,46 @@ export default async function HomePage() {
     <div className="flex flex-col" style={{ background: "var(--theme-bg)" }}>
 
       {/* ══════════════════════════════════════════
-          1. HERO
+          1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden px-6 py-20 sm:py-24 lg:py-32">
+      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
         <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
-        <div className="mx-auto max-w-7xl">
-          <div className="flex items-center gap-3">
-            <div className="h-px w-5 bg-electric-blue" />
-            <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
-              The Operating System for Robotics
-            </span>
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[55%_45%] lg:gap-12">
+          {/* Left column — headline + CTAs */}
+          <div>
+            <div className="flex items-center gap-3">
+              <div className="h-px w-5 bg-electric-blue" />
+              <span className="text-[12px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
+                The Operating System for Robotics
+              </span>
+            </div>
+            <h1
+              className="mt-8 font-display font-extrabold leading-[1.05]"
+              style={{ fontSize: "clamp(40px, 5vw, 80px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(200,255,0,0.15)" }}
+            >
+              One platform.<br />
+              The entire robot<br />
+              <span style={{ color: "var(--theme-accent-lime)" }}>lifecycle.</span>
+            </h1>
+            <p className="mt-8 max-w-[520px] font-sans leading-[1.6]" style={{ fontSize: "clamp(15px, 1.8vw, 19px)", color: "var(--theme-text-secondary)" }}>
+              Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
+              {" "}{totalRobots} robots. {manufacturerCount} manufacturers. 5 channels.
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/explore" className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5" style={{ background: "var(--theme-accent-blue)" }}>
+                Explore Robots
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </Link>
+              <Link href="/advisor" className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold transition-all hover:-translate-y-0.5" style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-primary)" }}>
+                Ask Robotimus
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </Link>
+            </div>
           </div>
-          <h1
-            className="mt-8 font-display font-extrabold leading-[1.05]"
-            style={{ fontSize: "clamp(48px, 6vw, 96px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(200,255,0,0.15)" }}
-          >
-            One platform.<br />
-            The entire robot<br />
-            <span style={{ color: "var(--theme-accent-lime)" }}>lifecycle.</span>
-          </h1>
-          <p className="mt-8 max-w-[560px] font-sans leading-[1.6]" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "var(--theme-text-secondary)" }}>
-            Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
-            {" "}{totalRobots} robots. {manufacturerCount} manufacturers. 5 channels.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link href="/explore" className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5" style={{ background: "var(--theme-accent-blue)" }}>
-              Explore Robots
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <Link href="/advisor" className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold transition-all hover:-translate-y-0.5" style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-primary)" }}>
-              Ask Robotimus
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
+
+          {/* Right column — Robotimus panel */}
+          <div className="flex justify-center lg:justify-end">
+            <RobotimusHeroPanel />
           </div>
         </div>
       </section>
@@ -156,12 +164,7 @@ export default async function HomePage() {
       <ChannelShowcase />
 
       {/* ══════════════════════════════════════════
-          4. ASK ROBOTIMUS
-          ══════════════════════════════════════════ */}
-      <RobotimusSection />
-
-      {/* ══════════════════════════════════════════
-          5. FEATURED ROBOTS
+          4. FEATURED ROBOTS
           ══════════════════════════════════════════ */}
       {/* ══════════════════════════════════════════
           5. TRENDING ROBOTS

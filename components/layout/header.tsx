@@ -294,9 +294,8 @@ export function Header() {
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="font-mono text-[14px] font-bold tracking-widest">
-              <span className="text-[var(--theme-text-primary)]">ROBOTO</span>
-              <span className="text-[var(--theme-text-muted)]">MATED</span>
+            <span className="font-display text-[20px] font-extrabold tracking-[-0.02em]">
+              <span style={{ color: "var(--theme-text-primary)" }}>ROBOTOMATED</span>
               <span className="text-[#0EA5E9]">.</span>
             </span>
           </Link>
