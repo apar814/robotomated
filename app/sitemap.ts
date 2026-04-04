@@ -181,7 +181,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "problems", "guides", "cost", "vs", "warehouse", "medical",
     "manufacturing", "market", "agricultural", "construction",
     "delivery", "getting-started", "home", "hospitality",
-    "inspection", "retail", "security",
+    "inspection", "retail", "security", "humanoid",
   ];
   const learnPages: MetadataRoute.Sitemap = learnDirs.flatMap(dir =>
     getMdxSlugs(`content/learn/${dir}`).map(slug => ({
