@@ -323,17 +323,18 @@ export function Header() {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2">
             {/* Search */}
             <button
               onClick={openSearch}
-              className="flex items-center gap-2 rounded-md border border-[var(--theme-border)] px-3 py-1.5 text-[var(--theme-text-muted)] transition-colors hover:border-[var(--theme-border)] hover:text-[var(--theme-text-secondary)]"
+              className="hidden max-w-[200px] items-center gap-2 rounded-md border px-3 py-1.5 transition-colors hover:text-[var(--theme-text-secondary)] md:flex"
+              style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-muted)" }}
             >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
               </svg>
-              <span className="hidden text-[13px] sm:inline">Search {robotCount} robots...</span>
-              <kbd className="hidden rounded border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--theme-text-muted)] sm:inline">
+              <span className="truncate text-[13px]">Search...</span>
+              <kbd className="hidden shrink-0 rounded border px-1.5 py-0.5 font-mono text-[10px] lg:inline" style={{ borderColor: "var(--theme-border)", background: "var(--theme-tag-bg)", color: "var(--theme-text-muted)" }}>
                 &#8984;K
               </kbd>
             </button>
@@ -343,16 +344,16 @@ export function Header() {
               <ThemeToggle />
             </div>
 
-            {/* ROBOTIMUS button */}
+            {/* Robotimus button */}
             <Link
               href="/advisor"
-              className="hidden items-center gap-1.5 rounded-md px-3.5 py-2 text-[13px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] sm:inline-flex"
-              style={{ background: "var(--theme-accent-blue)", boxShadow: "0 0 20px rgba(14,165,233,0.4)" }}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]"
+              style={{ background: "#0EA5E9", boxShadow: "0 0 20px rgba(14,165,233,0.4)" }}
             >
               <span className="animate-pulse-live">
-                <RobotimusAvatar size={20} />
+                <RobotimusAvatar size={18} />
               </span>
-              ROBOTIMUS
+              Robotimus
             </Link>
 
             <UserMenu />

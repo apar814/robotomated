@@ -43,10 +43,10 @@ export function UserMenu() {
 
   if (!user) {
     return (
-      <div className="flex items-center">
+      <div className="flex shrink-0 items-center gap-2">
         <Link
           href="/login"
-          className="rounded-l-md border px-4 py-2 text-[13px] font-medium transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+          className="hidden whitespace-nowrap rounded-md border px-4 py-2 text-[14px] font-medium transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9] sm:inline-flex"
           style={{
             borderColor: "var(--theme-border-strong)",
             color: "var(--theme-text-secondary)",
@@ -56,11 +56,8 @@ export function UserMenu() {
         </Link>
         <Link
           href="/login?mode=signup"
-          className="rounded-r-md border-y border-r px-4 py-2 text-[13px] font-bold text-black transition-colors hover:opacity-90"
-          style={{
-            background: "var(--theme-accent-blue)",
-            borderColor: "var(--theme-accent-blue)",
-          }}
+          className="inline-flex whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-colors hover:opacity-90"
+          style={{ background: "#0EA5E9" }}
         >
           Sign Up
         </Link>
