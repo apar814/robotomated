@@ -349,8 +349,8 @@ export function Header() {
               className="hidden items-center gap-1.5 rounded-md px-3.5 py-2 text-[13px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)] sm:inline-flex"
               style={{ background: "var(--theme-accent-blue)", boxShadow: "0 0 20px rgba(14,165,233,0.4)" }}
             >
-              <span style={{ animation: "pulse-icon 3s ease-in-out infinite" }}>
-                <RobotimusAvatar size={18} />
+              <span className="animate-pulse-live">
+                <RobotimusAvatar size={20} />
               </span>
               ROBOTIMUS
             </Link>

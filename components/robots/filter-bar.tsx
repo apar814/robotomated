@@ -13,6 +13,7 @@ const PRICE_OPTIONS = [
   { label: "$50K - $100K", min: "50000", max: "100000" },
   { label: "$100K - $500K", min: "100000", max: "500000" },
   { label: "$500K+", min: "500000", max: "" },
+  { label: "RaaS Only", min: "raas", max: "raas" },
 ];
 
 const INDUSTRY_OPTIONS = [
@@ -21,10 +22,12 @@ const INDUSTRY_OPTIONS = [
 ];
 
 const SORT_OPTIONS = [
-  { value: "score_desc", label: "RoboScore: High to Low" },
+  { value: "score_desc", label: "Best Match" },
+  { value: "score_asc", label: "RoboScore: Low to High" },
   { value: "price_asc", label: "Price: Low to High" },
   { value: "price_desc", label: "Price: High to Low" },
   { value: "newest", label: "Newest Added" },
+  { value: "most_viewed", label: "Most Viewed" },
 ];
 
 const QUICK_CHIPS = [
@@ -33,6 +36,7 @@ const QUICK_CHIPS = [
   { emoji: "\ud83e\udd16", label: "Humanoid", filter: "category", value: "humanoid" },
   { emoji: "\ud83d\udcb0", label: "Under $50K", filter: "price", value: "50000" },
   { emoji: "\u26a1", label: "Top Rated", filter: "score", value: "80" },
+  { emoji: "\ud83d\udd04", label: "RaaS", filter: "price", value: "raas" },
 ];
 
 // ── Types ──
