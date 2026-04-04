@@ -333,6 +333,55 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Why Robotomated exists right now ── */}
+      <section className="px-6 py-16 sm:px-8" style={{ borderTop: "1px solid var(--theme-border)" }}>
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-4 flex items-center gap-2">
+            <div className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--theme-accent-magenta)" }} />
+            <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: "var(--theme-text-muted)" }}>
+              Market Context
+            </span>
+          </div>
+          <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            Why Robotomated exists right now.
+          </h2>
+          <div className="mt-6 space-y-5 text-base leading-[1.8]" style={{ color: "var(--theme-text-secondary)" }}>
+            <p>
+              We are at the inflection point. The first commercially viable humanoid robots are entering
+              the workforce. Manufacturing costs have dropped 90% in two years. Fleet neural learning
+              means one robot{"'"}s experience instantly upgrades an entire fleet.
+            </p>
+            <p>
+              But the buying landscape is complex: 137 Chinese manufacturers. No US-made humanoids
+              commercially available as of early 2026. A 10-year typical deployment journey from
+              prototype to scaled product. Data security questions nobody is answering.
+            </p>
+            <p>
+              Businesses need an independent guide. Not a manufacturer with a product to sell.
+              Not a consultant who charges $500/hour. A platform that serves buyers — with
+              transparent data, independent scoring, and every tool needed to navigate the
+              most significant workforce transformation since the internet.
+            </p>
+          </div>
+          <div className="mt-8 flex gap-3">
+            <Link
+              href="/explore/humanoid"
+              className="rounded-lg px-5 py-2.5 text-sm font-semibold text-black"
+              style={{ background: "var(--theme-accent-blue)" }}
+            >
+              Explore Humanoid Robots
+            </Link>
+            <Link
+              href="/tools/humanoid-comparison"
+              className="rounded-lg border px-5 py-2.5 text-sm font-semibold"
+              style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-primary)" }}
+            >
+              US vs China Analysis
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
