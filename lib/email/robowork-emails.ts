@@ -134,3 +134,86 @@ export async function sendProviderRegisteredNotification(provider: {
     console.error("[RoboWork] Provider registration email failed:", err);
   }
 }
+
+export async function sendFoundingRspApplicationReceived(params: {
+  email: string;
+  company_name: string;
+}) {
+  try {
+    await resend.emails.send({
+      from: EMAIL_FROM,
+      to: params.email,
+      subject: "Your Founding RSP application has been received",
+      html: `
+        <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
+          <h1 style="color: #0EA5E9; font-size: 20px;">Application Received</h1>
+          <p>Thank you for applying to be a Founding Robot Service Provider, ${params.company_name}.</p>
+          <p style="color: #888;">Our team reviews applications within 48 hours. You'll receive an email when a decision is made.</p>
+          <p style="color: #888;">In the meantime, you can start building your RSP profile.</p>
+          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Start Your Profile &rarr;</a>
+          <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
+        </div>
+      `,
+    });
+  } catch (err) {
+    console.error("[RoboWork] Founding RSP application received email failed:", err);
+  }
+}
+
+export async function sendFoundingRspApproved(params: {
+  email: string;
+  company_name: string;
+  founding_number: number;
+}) {
+  try {
+    await resend.emails.send({
+      from: EMAIL_FROM,
+      to: params.email,
+      subject: `Congratulations! You're Founding RSP #${params.founding_number}`,
+      html: `
+        <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
+          <h1 style="color: #0EA5E9; font-size: 20px;">Welcome, Founding RSP #${params.founding_number}</h1>
+          <p>Congratulations, ${params.company_name}! You've been accepted as a Founding Robot Service Provider.</p>
+          <h2 style="color: #0EA5E9; font-size: 16px; margin-top: 24px;">Your Founding Perks</h2>
+          <ol style="color: #ccc; line-height: 2;">
+            <li>Free RCO (Robot Certified Operator) certification</li>
+            <li>Free background check</li>
+            <li>Permanent Founding RSP badge</li>
+            <li>Priority placement in search results</li>
+            <li>8% platform fee for 12 months (vs. standard rate)</li>
+            <li>Founding team access (direct line to our team)</li>
+            <li>Product roadmap input</li>
+          </ol>
+          <a href="${BASE_URL}/robowork" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Go to Dashboard &rarr;</a>
+          <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
+        </div>
+      `,
+    });
+  } catch (err) {
+    console.error("[RoboWork] Founding RSP approved email failed:", err);
+  }
+}
+
+export async function sendFoundingRspRejected(params: {
+  email: string;
+  company_name: string;
+}) {
+  try {
+    await resend.emails.send({
+      from: EMAIL_FROM,
+      to: params.email,
+      subject: "Update on your Founding RSP application",
+      html: `
+        <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
+          <h1 style="color: #0EA5E9; font-size: 20px;">Application Update</h1>
+          <p>Thank you for your interest in the Founding RSP program, ${params.company_name}.</p>
+          <p style="color: #888;">After careful review, we're unable to accept your application at this time. This doesn't affect your ability to use RoboWork &mdash; you can still register as an RSP and start bidding on jobs.</p>
+          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Register as an RSP &rarr;</a>
+          <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
+        </div>
+      `,
+    });
+  } catch (err) {
+    console.error("[RoboWork] Founding RSP rejected email failed:", err);
+  }
+}
