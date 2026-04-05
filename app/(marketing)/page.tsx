@@ -331,7 +331,14 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           10. NEWSLETTER
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-20" style={{ borderTop: `1px solid var(--theme-border)` }}>
+      <section
+        className="px-6 py-20"
+        style={{
+          background: "var(--theme-section-alt)",
+          borderTop: "1px solid var(--theme-border)",
+          borderBottom: "1px solid var(--theme-border)",
+        }}
+      >
         <div className="mx-auto max-w-xl text-center">
           <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
             The Automation Intelligence Brief

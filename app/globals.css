@@ -495,7 +495,7 @@ body::before {
   --theme-card-shadow: 0 2px 8px rgba(0,0,0,0.06);
   --theme-border: rgba(0,0,0,0.08);
   --theme-border-strong: rgba(0,0,0,0.15);
-  --theme-section-alt: #F1F5F9;
+  --theme-section-alt: #EFF6FF;
   --theme-nav-bg: rgba(255,255,255,0.95);
   --theme-nav-border: rgba(0,0,0,0.08);
   --theme-text-primary: #0A0A0A;
@@ -564,6 +564,58 @@ body::before {
   }
   /* Remove scanline overlay in light mode */
   :root:not(.dark) body::before { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   GLOBAL INPUT STYLES (light/dark adaptive)
+   ═══════════════════════════════════════ */
+:root input[type="text"],
+:root input[type="email"],
+:root input[type="number"],
+:root input[type="tel"],
+:root input[type="search"],
+:root input[type="url"],
+:root textarea,
+:root select {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  color: #0A0A0A;
+  border-radius: 8px;
+}
+:root input::placeholder,
+:root textarea::placeholder {
+  color: rgba(0,0,0,0.4);
+}
+:root input:focus,
+:root textarea:focus,
+:root select:focus {
+  outline: none;
+  border-color: #0284C7;
+  box-shadow: 0 0 0 3px rgba(2,132,199,0.12);
+}
+
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="number"],
+.dark input[type="tel"],
+.dark input[type="search"],
+.dark input[type="url"],
+.dark textarea,
+.dark select {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #FFFFFF;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  outline: none;
+  border-color: #0EA5E9;
+  box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
 }
 
 /* ═══════════════════════════════════════

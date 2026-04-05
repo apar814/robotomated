@@ -54,7 +54,7 @@ export function NewsletterForm() {
           placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/25 focus:border-blue focus:outline-none sm:rounded-r-none"
+          className="flex-1 rounded-lg px-4 py-3 text-sm sm:rounded-r-none"
         />
         <Button
           type="submit"
@@ -67,10 +67,10 @@ export function NewsletterForm() {
       <select
         value={industry}
         onChange={(e) => setIndustry(e.target.value)}
-        className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-sm text-white/60 focus:border-blue focus:outline-none sm:w-auto"
+        className="w-full rounded-lg px-4 py-2.5 text-sm sm:w-auto"
       >
         {INDUSTRIES.map((ind) => (
-          <option key={ind.value} value={ind.value} className="bg-navy text-white">
+          <option key={ind.value} value={ind.value}>
             {ind.label}
           </option>
         ))}
