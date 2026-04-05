@@ -1,7 +1,28 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { apiRateLimit } from "@/lib/cache/rate-limit";
 
 export async function middleware(request: NextRequest) {
+  // API rate limiting
+  if (request.nextUrl.pathname.startsWith("/api/")) {
+    if (apiRateLimit) {
+      const ip = request.headers.get("x-forwarded-for")?.split(",")[0] ?? "anonymous";
+      const { success, limit, remaining, reset } = await apiRateLimit.limit(ip);
+      if (!success) {
+        return new Response(JSON.stringify({ error: "Rate limit exceeded" }), {
+          status: 429,
+          headers: {
+            "Content-Type": "application/json",
+            "X-RateLimit-Limit": limit.toString(),
+            "X-RateLimit-Remaining": remaining.toString(),
+            "X-RateLimit-Reset": reset.toString(),
+            "Retry-After": Math.ceil((reset - Date.now()) / 1000).toString(),
+          },
+        });
+      }
+    }
+  }
+
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -40,5 +61,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/login"],
+  matcher: ["/account/:path*", "/login", "/api/:path*"],
 };
