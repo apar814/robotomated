@@ -246,6 +246,9 @@ export default function AdminDashboard() {
         <Link href="/admin/affiliate" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
           Affiliate Analytics
         </Link>
+        <Link href="/admin/reviews" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
+          Review Moderation
+        </Link>
         <Link href="/admin/reviews/new" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
           New Expert Review
         </Link>
