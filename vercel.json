@@ -41,6 +41,10 @@
     {
       "path": "/api/cron/market-intelligence",
       "schedule": "0 3 * * 1"
+    },
+    {
+      "path": "/api/cron/rsp-scores",
+      "schedule": "0 2 * * 1"
     }
   ]
 }
