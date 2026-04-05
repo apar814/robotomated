@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { TaskCard } from "@/components/find-my-robot/task-card";
+import TaskCard from "@/components/find-my-robot/task-card";
 
 /* ────────────────────────────────────────────
    Types
