@@ -51,6 +51,12 @@ export default function MarketplacePage() {
             >
               Top Investors
             </Link>
+            <Link
+              href="/market/reports"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-mono text-xs text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+            >
+              Market Reports
+            </Link>
           </div>
         </div>
       </section>
