@@ -65,6 +65,8 @@
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-brand: var(--font-brand, "Orbitron"), "Space Grotesk", sans-serif;
+  --font-ui: var(--font-ui, "Chakra Petch"), "Space Grotesk", sans-serif;
 }
 
 /* ═══════════════════════════════════════
@@ -665,6 +667,36 @@ body::before {
   font-family: var(--font-mono);
   letter-spacing: 0.05em;
 }
+
+/* Hero accent gradient text */
+.hero-accent {
+  font-family: var(--font-brand);
+  font-weight: 800;
+  background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 40%, #7DD3FC 70%, #0EA5E9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Logo dot pulse on hover */
+.logo-dot-pulse:hover .logo-dot {
+  animation: dot-pulse 300ms ease-in-out;
+}
+@keyframes dot-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Brand font utility */
+.font-brand { font-family: var(--font-brand); }
+.font-ui { font-family: var(--font-ui); }
 
 /* HUD bracket label */
 .hud-label {

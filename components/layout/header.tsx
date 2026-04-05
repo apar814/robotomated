@@ -297,10 +297,10 @@ export function Header() {
       <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(20px)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="mr-8 flex items-center">
-            <span className="font-display text-[18px] font-extrabold tracking-[-0.02em]">
+          <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
+            <span className="font-brand text-[18px] font-bold tracking-[0.04em]">
               <span style={{ color: "var(--theme-text-primary)" }}>ROBOTOMATED</span>
-              <span className="text-[#0EA5E9]">.</span>
+              <span className="logo-dot inline-block text-[#0EA5E9]">.</span>
             </span>
           </Link>
 

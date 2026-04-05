@@ -100,11 +100,11 @@ export default async function HomePage() {
             </span>
             <h1
               className="mt-8 font-display font-extrabold leading-[1.05]"
-              style={{ fontSize: "clamp(40px, 5vw, 80px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(200,255,0,0.15)" }}
+              style={{ fontSize: "clamp(40px, 5vw, 80px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
             >
               One platform.<br />
               The entire robot<br />
-              <span style={{ color: "var(--theme-accent-lime)" }}>lifecycle.</span>
+              <span className="hero-accent">lifecycle.</span>
             </h1>
             <p className="mt-8 max-w-[520px] font-sans leading-[1.6]" style={{ fontSize: "clamp(15px, 1.8vw, 19px)", color: "var(--theme-text-secondary)" }}>
               Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
