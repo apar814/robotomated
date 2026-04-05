@@ -15,6 +15,8 @@ interface ProviderCardProps {
   verified: boolean;
   insurance_verified: boolean;
   background_checked: boolean;
+  is_founding_rsp?: boolean;
+  founding_rsp_number?: number | null;
 }
 
 const fulfillmentIcons: Record<string, { label: string; icon: ReactNode }> = {
@@ -74,6 +76,8 @@ export function ProviderCard({
   verified,
   insurance_verified,
   background_checked,
+  is_founding_rsp,
+  founding_rsp_number,
 }: ProviderCardProps) {
   return (
     <div className="group rounded-xl border border-border bg-obsidian-surface p-5 transition-all hover:border-[#0EA5E9]/30 hover:-translate-y-0.5">
@@ -83,6 +87,14 @@ export function ProviderCard({
           <Link href={`/robowork/providers/${slug}`}>
             <h3 className="font-sans text-base font-semibold text-text-primary group-hover:text-[#0EA5E9] transition-colors">
               {company_name}
+              {is_founding_rsp && founding_rsp_number && (
+                <span
+                  className="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold"
+                  style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "#000" }}
+                >
+                  Founding RSP #{founding_rsp_number}
+                </span>
+              )}
             </h3>
           </Link>
           {(city || state) && (

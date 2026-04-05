@@ -30,6 +30,8 @@ interface RSPRow {
   website: string | null;
   linkedin: string | null;
   created_at: string;
+  is_founding_rsp?: boolean;
+  founding_rsp_number?: number | null;
 }
 
 interface RSPRobotRow {
@@ -206,6 +208,14 @@ export default async function ProviderProfilePage({ params }: Props) {
               </p>
               <h1 className="mt-2 font-sans text-3xl font-bold text-text-primary sm:text-4xl">
                 {provider.company_name}
+                {provider.is_founding_rsp && provider.founding_rsp_number && (
+                  <span
+                    className="ml-3 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold align-middle"
+                    style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "#000" }}
+                  >
+                    Founding RSP #{provider.founding_rsp_number}
+                  </span>
+                )}
               </h1>
               <div className="mt-3 flex flex-wrap items-center gap-4">
                 {location && (
