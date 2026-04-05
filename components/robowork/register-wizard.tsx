@@ -4,23 +4,14 @@ import { useState, useCallback } from "react";
 import { WizardProgress } from "./wizard-progress";
 import { createEmptyWizardData, type WizardData } from "./wizard-types";
 
-// Step components — will be created in later tasks
-// @ts-expect-error - not yet created
-import { StepBusinessBasics } from "./steps/step-business-basics";
-// @ts-expect-error - not yet created
-import { StepServiceAreas } from "./steps/step-service-areas";
-// @ts-expect-error - not yet created
-import { StepRobotFleet } from "./steps/step-robot-fleet";
-// @ts-expect-error - not yet created
-import { StepSpecializations } from "./steps/step-specializations";
-// @ts-expect-error - not yet created
-import { StepVerification } from "./steps/step-verification";
-// @ts-expect-error - not yet created
-import { StepPayment } from "./steps/step-payment";
-// @ts-expect-error - not yet created
-import { StepPreview } from "./steps/step-preview";
-// @ts-expect-error - not yet created
-import { WizardCelebration } from "./wizard-celebration";
+import StepBusinessBasics from "./wizard-steps/step-business-basics";
+import StepServiceAreas from "./wizard-steps/step-service-areas";
+import StepRobotFleet from "./wizard-steps/step-robot-fleet";
+import StepSpecializations from "./wizard-steps/step-specializations";
+import StepVerification from "./wizard-steps/step-verification";
+import StepPayment from "./wizard-steps/step-payment";
+import StepPreview from "./wizard-steps/step-preview";
+import WizardCelebration from "./wizard-celebration";
 
 const ENCOURAGEMENTS = [
   "Great start! You're 15% of the way to your first job on Robotomated.",
@@ -181,7 +172,7 @@ export function RegisterWizard() {
   }, [data]);
 
   if (published) {
-    return <WizardCelebration />;
+    return <WizardCelebration companyName={data.companyName} />;
   }
 
   const stepProps = { data, updateData };
