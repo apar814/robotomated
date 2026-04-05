@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { TaskCard } from "@/components/find-my-robot/task-card";
 
 /* ────────────────────────────────────────────
    Types
@@ -253,28 +254,14 @@ function StepProblem({
       <p className="mb-8 text-sm text-text-muted">
         Select the task you need automated. This helps us narrow the right category.
       </p>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {PROBLEMS.map((p) => (
-          <button
+          <TaskCard
             key={p.id}
-            onClick={() => onChange(p.id)}
-            className={`glass glass-hover flex flex-col items-center gap-3 rounded-xl p-5 text-center transition-all duration-200 ${
-              value === p.id
-                ? "!border-[#00C2FF] !bg-[#00C2FF]/5 ring-1 ring-[#00C2FF]/30"
-                : ""
-            }`}
-          >
-            <div
-              className={`flex h-10 w-10 items-center justify-center rounded-lg font-mono text-xs font-bold ${
-                value === p.id
-                  ? "bg-[#00C2FF]/20 text-[#00C2FF]"
-                  : "bg-white/5 text-white/40"
-              }`}
-            >
-              {p.icon}
-            </div>
-            <span className="text-sm leading-tight text-white/80">{p.label}</span>
-          </button>
+            taskKey={p.id}
+            selected={value === p.id}
+            onSelect={() => onChange(p.id)}
+          />
         ))}
       </div>
     </div>
