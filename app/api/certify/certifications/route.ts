@@ -3,7 +3,8 @@ import { createServerClient } from "@/lib/supabase/server";
 
 export async function GET() {
   try {
-    const supabase = createServerClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const supabase = createServerClient() as any;
 
     const { data: certifications, error } = await supabase
       .from("rco_certifications")

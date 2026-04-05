@@ -46,7 +46,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supabase = createServerClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const supabase = createServerClient() as any;
 
     // Verify certification exists and is active
     const { data: certification, error: certError } = await supabase

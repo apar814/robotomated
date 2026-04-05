@@ -34,7 +34,8 @@ function categoryLabel(cat: string): string {
 async function getReports(): Promise<MarketReport[]> {
   try {
     const supabase = createServerClient();
-    const { data, error } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (supabase as any)
       .from("market_reports")
       .select(
         "id, title, source, source_url, report_date, category, market_size_usd_billions, cagr_percent, forecast_year, key_findings"
@@ -45,7 +46,8 @@ async function getReports(): Promise<MarketReport[]> {
       return SAMPLE_REPORTS;
     }
 
-    return data.map((r) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return data.map((r: any) => ({
       id: String(r.id),
       title: r.title,
       source: r.source,
