@@ -105,11 +105,7 @@ export default async function RoboWorkPage() {
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <div className="mb-4 inline-block rounded-full border border-electric-blue/20 bg-electric-blue/5 px-4 py-1.5">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-electric-blue">
-              Robot Service Marketplace
-            </span>
-          </div>
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ DEPLOY CHANNEL ]</p>
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Don&apos;t want to own a robot?{" "}
@@ -124,13 +120,13 @@ export default async function RoboWorkPage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/robowork/post"
-              className="rounded bg-electric-blue px-7 py-3.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+              className="rounded bg-electric-blue px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90"
             >
               Post a Job
             </Link>
             <Link
               href="/robowork/providers/register"
-              className="rounded border border-border px-7 py-3.5 text-sm font-bold text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
               Become a Provider
             </Link>
@@ -141,17 +137,13 @@ export default async function RoboWorkPage() {
       {/* ── HOW IT WORKS ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
-              How It Works
-            </span>
-          </div>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ PROTOCOL ]</p>
+          <h2 className="mb-10 text-lg font-bold text-text-primary">How It Works</h2>
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* For Businesses */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-6">
-              <h3 className="mb-5 font-mono text-xs font-bold uppercase tracking-wider text-electric-blue">
+              <h3 className="mb-5 font-[family-name:var(--font-ui)] text-xs font-bold uppercase tracking-[0.12em] text-electric-blue">
                 For Businesses
               </h3>
               <ol className="space-y-5">
@@ -173,7 +165,7 @@ export default async function RoboWorkPage() {
                   },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-electric-blue/10 font-mono text-xs font-bold text-electric-blue">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-electric-blue/10 font-[family-name:var(--font-brand)] text-xs font-bold text-electric-blue">
                       {item.step}
                     </span>
                     <div>
@@ -187,7 +179,7 @@ export default async function RoboWorkPage() {
 
             {/* For Providers */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-6">
-              <h3 className="mb-5 font-mono text-xs font-bold uppercase tracking-wider text-lime">
+              <h3 className="mb-5 font-[family-name:var(--font-ui)] text-xs font-bold uppercase tracking-[0.12em] text-lime">
                 For Providers
               </h3>
               <ol className="space-y-5">
@@ -209,7 +201,7 @@ export default async function RoboWorkPage() {
                   },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-lime/10 font-mono text-xs font-bold text-lime">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-lime/10 font-[family-name:var(--font-brand)] text-xs font-bold text-lime">
                       {item.step}
                     </span>
                     <div>
@@ -228,15 +220,13 @@ export default async function RoboWorkPage() {
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-lime" />
-              <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
-                Job Categories
-              </span>
+            <div>
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TASK MATRIX ]</p>
+              <h2 className="text-lg font-bold text-text-primary">Job Categories</h2>
             </div>
             <Link
               href="/robowork/jobs"
-              className="font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+              className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
             >
               Browse All Jobs &rarr;
             </Link>
@@ -249,7 +239,7 @@ export default async function RoboWorkPage() {
                 href={`/robowork/jobs?task_type=${cat.taskType}`}
                 className="group flex flex-col rounded-lg border border-border bg-obsidian-surface p-4 transition-all hover:-translate-y-0.5 hover:border-border-active"
               >
-                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded bg-electric-blue/10 font-mono text-sm font-bold text-electric-blue">
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded bg-electric-blue/10 font-[family-name:var(--font-brand)] text-sm font-bold text-electric-blue">
                   {CATEGORY_ICONS[cat.slug] || "?"}
                 </div>
                 <h3 className="text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
@@ -266,22 +256,25 @@ export default async function RoboWorkPage() {
 
       {/* ── STATS BAR ── */}
       <section className="border-b border-border px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 md:grid-cols-4">
-          {[
-            { label: "Active Jobs", value: stats.activeJobs },
-            { label: "Verified Providers", value: stats.verifiedProviders },
-            { label: "Robots Available", value: stats.robotsAvailable },
-            { label: "Jobs Completed", value: stats.jobsCompleted },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-mono text-3xl font-extrabold text-electric-blue">
-                {stat.value}
-              </p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ LIVE METRICS ]</p>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {[
+              { label: "Active Jobs", value: stats.activeJobs },
+              { label: "Verified Providers", value: stats.verifiedProviders },
+              { label: "Robots Available", value: stats.robotsAvailable },
+              { label: "Jobs Completed", value: stats.jobsCompleted },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="font-[family-name:var(--font-brand)] text-3xl font-extrabold text-electric-blue">
+                  {stat.value}
+                </p>
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.12em] text-text-tertiary">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -290,15 +283,13 @@ export default async function RoboWorkPage() {
         <section className="px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-magenta" />
-                <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
-                  Recent Postings
-                </span>
+              <div>
+                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ INCOMING FEED ]</p>
+                <h2 className="text-lg font-bold text-text-primary">Recent Postings</h2>
               </div>
               <Link
                 href="/robowork/jobs"
-                className="font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+                className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
               >
                 View All &rarr;
               </Link>
@@ -320,12 +311,12 @@ export default async function RoboWorkPage() {
                     className="group flex flex-col rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:-translate-y-0.5 hover:border-border-active"
                   >
                     <div className="mb-3 flex items-center gap-2">
-                      <span className="rounded bg-electric-blue/10 px-2 py-0.5 text-[10px] font-semibold text-electric-blue">
+                      <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-electric-blue">
                         {job.industry}
                       </span>
                       <span
                         className={cn(
-                          "rounded border px-2 py-0.5 text-[10px] font-semibold",
+                          "rounded border px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em]",
                           urgencyConf.color
                         )}
                       >
@@ -337,7 +328,7 @@ export default async function RoboWorkPage() {
                     </h3>
                     <div className="mt-3 flex items-center gap-3 text-[11px] text-text-secondary">
                       <span>{location}</span>
-                      <span className="font-mono font-semibold text-electric-blue">
+                      <span className="font-[family-name:var(--font-mono)] font-semibold text-[#00E5A0]">
                         {formatBudget(job.budget_min, job.budget_max)}
                       </span>
                     </div>
@@ -345,7 +336,7 @@ export default async function RoboWorkPage() {
                       <span className="text-[10px] text-text-tertiary">
                         {relativeTime(job.created_at)}
                       </span>
-                      <span className="font-mono text-[10px] text-text-secondary">
+                      <span className="font-[family-name:var(--font-brand)] text-[10px] text-text-secondary">
                         {job.bid_count} bid{job.bid_count !== 1 ? "s" : ""}
                       </span>
                     </div>
@@ -359,6 +350,7 @@ export default async function RoboWorkPage() {
 
       {/* ── TRUST SIGNALS ── */}
       <section className="border-t border-border px-4 py-12 sm:px-6 lg:px-8">
+        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TRUST LAYER ]</p>
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-6">
           {[
             {
@@ -392,7 +384,7 @@ export default async function RoboWorkPage() {
             <div key={signal.label} className="flex items-center gap-3 rounded-lg border border-border bg-obsidian-surface px-5 py-3">
               <div className="text-electric-blue">{signal.icon}</div>
               <div>
-                <p className="text-xs font-semibold text-text-primary">{signal.label}</p>
+                <p className="font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-[0.08em] text-text-primary">{signal.label}</p>
                 <p className="text-[10px] text-text-tertiary">{signal.desc}</p>
               </div>
             </div>

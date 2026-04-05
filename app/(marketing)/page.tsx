@@ -95,7 +95,7 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[55%_45%] lg:gap-12">
           {/* Left column — headline + CTAs */}
           <div>
-            <span className="hud-label">
+            <span className="hud-label blink-cursor">
               The Operating System for Robotics
             </span>
             <h1
@@ -106,16 +106,16 @@ export default async function HomePage() {
               The entire robot<br />
               <span className="hero-accent">lifecycle.</span>
             </h1>
-            <p className="mt-8 max-w-[520px] font-sans leading-[1.6]" style={{ fontSize: "clamp(15px, 1.8vw, 19px)", color: "var(--theme-text-secondary)" }}>
+            <p className="mt-8 max-w-[520px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.55)" }}>
               Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
               {" "}{totalRobots} robots. {manufacturerCount} manufacturers. 5 channels.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link href="/explore" className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5" style={{ background: "var(--theme-accent-blue)" }}>
+              <Link href="/explore" className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0EA5E9] px-7 py-3.5 font-[family-name:var(--font-ui)] text-[15px] font-semibold tracking-[0.04em] text-black transition-all hover:-translate-y-0.5 hover:bg-[#38BDF8] hover:shadow-[0_0_20px_rgba(14,165,233,0.4)]">
                 Explore Robots
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </Link>
-              <Link href="/advisor" className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold transition-all hover:-translate-y-0.5" style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-primary)" }}>
+              <Link href="/advisor" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-7 py-3.5 font-[family-name:var(--font-ui)] text-[15px] font-medium text-white/80 transition-all hover:-translate-y-0.5 hover:border-white/35 hover:text-white">
                 Ask Robotimus
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </Link>
@@ -132,18 +132,18 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           2. STATS BAR
           ══════════════════════════════════════════ */}
-      <section className="border-y px-6 py-5" style={{ borderColor: "var(--theme-border)" }}>
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)" }}>
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {[
             { value: <><HeroCounter target={totalRobots} />+</>, label: "Robots" },
             { value: `${manufacturerCount}+`, label: "Manufacturers" },
             { value: "$103B", label: "Market" },
             { value: "5", label: "Channels" },
           ].map((s, i) => (
-            <div key={s.label} className="flex items-center gap-2">
-              {i > 0 && <span className="mr-6 text-electric-blue">//</span>}
-              <span className="font-mono font-bold text-electric-blue" style={{ fontSize: "clamp(14px, 1.5vw, 16px)" }}>{s.value}</span>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
+            <div key={s.label} className="flex items-center gap-3">
+              {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/10">//</span>}
+              <span className="font-[family-name:var(--font-brand)] font-bold text-[var(--theme-accent-blue)]" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>{s.value}</span>
+              <span className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
             </div>
           ))}
         </div>
@@ -151,9 +151,9 @@ export default async function HomePage() {
 
       <div className="border-b px-6 py-3" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
-          <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
           <span className="h-1 w-1 rounded-full bg-electric-blue" />
-          <span className="text-[12px] font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
         </div>
       </div>
 
@@ -172,8 +172,8 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           {/* Section label */}
           <div className="mb-6 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
+            <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
               Trending This Week
             </span>
           </div>
@@ -269,6 +269,10 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
+              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+                <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+                The Abundance Equation
+              </p>
               <blockquote className="font-display text-2xl font-bold italic leading-snug text-white sm:text-3xl">
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
@@ -278,16 +282,16 @@ export default async function HomePage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-white/60">Human labor (fully burdened)</span>
-                  <span className="font-mono text-lg font-bold text-white">$46/hour</span>
+                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-white">$46/hour</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-white/60">Robot (leased, amortized)</span>
-                  <span className="font-mono text-lg font-bold" style={{ color: "#C8FF00" }}>$0.45/hour</span>
+                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/60">Robot (leased, amortized)</span>
+                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#C8FF00]">$0.45/hour</span>
                 </div>
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-white/80">Cost difference</span>
-                    <span className="font-mono text-2xl font-extrabold" style={{ color: "#0EA5E9" }}>100x</span>
+                    <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/80">Cost difference</span>
+                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#0EA5E9]">100x</span>
                   </div>
                 </div>
               </div>
@@ -315,8 +319,8 @@ export default async function HomePage() {
               { value: "137", label: "Humanoid Companies (China)" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-mono font-extrabold" style={{ fontSize: "clamp(32px, 4vw, 56px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
-                <p className="mt-2 text-[14px] font-medium" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
+                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(32px, 4vw, 52px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
+                <p className="mt-2 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
               </div>
             ))}
           </div>
@@ -340,10 +344,13 @@ export default async function HomePage() {
         }}
       >
         <div className="mx-auto max-w-xl text-center">
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
+            [ Newsletter ]
+          </p>
           <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
             The Automation Intelligence Brief
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>
+          <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>
             Weekly robotics intelligence for operations leaders.
           </p>
           <div className="mt-6">

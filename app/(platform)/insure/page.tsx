@@ -58,8 +58,11 @@ export default function InsurePage() {
       />
 
       <section className="mt-8 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          Your $500K robot deserves $500K protection.
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ INSURANCE HUB ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Your <span className="font-[family-name:var(--font-mono)]">$500K</span> robot deserves <span className="font-[family-name:var(--font-mono)]">$500K</span> protection.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
           Compare robot insurance from leading carriers. Coverage for every
@@ -68,7 +71,10 @@ export default function InsurePage() {
       </section>
 
       <section className="mt-16">
-        <h2 className="font-display text-2xl font-semibold text-white">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ COVERAGE OPTIONS ]
+        </p>
+        <h2 className="mt-2 font-display text-2xl font-semibold text-white">
           Coverage Types
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -82,8 +88,8 @@ export default function InsurePage() {
               </h3>
               <p className="mt-2 text-sm text-muted">{type.description}</p>
               <div className="mt-4 border-t border-white/10 pt-4">
-                <p className="text-xs text-muted">Average Premium</p>
-                <p className="font-display text-sm font-semibold text-[#00C2FF]">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Average Premium</p>
+                <p className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[#00C2FF]">
                   {type.avgPremium}
                 </p>
               </div>
@@ -94,28 +100,31 @@ export default function InsurePage() {
 
       <section className="mt-16">
         <div className="glass rounded-2xl border border-white/10 p-8">
-          <h2 className="font-display text-xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ PREMIUM TABLE ]
+          </p>
+          <h2 className="mt-2 font-display text-xl font-semibold text-white">
             Average Annual Premiums by Robot Value
           </h2>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="pb-3 font-display font-semibold text-muted">
+                  <th className="pb-3 font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
                     Robot Value
                   </th>
-                  <th className="pb-3 font-display font-semibold text-muted">
+                  <th className="pb-3 font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
                     All-Risk
                   </th>
-                  <th className="pb-3 font-display font-semibold text-muted">
+                  <th className="pb-3 font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
                     Liability
                   </th>
-                  <th className="pb-3 font-display font-semibold text-muted">
+                  <th className="pb-3 font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
                     Comprehensive
                   </th>
                 </tr>
               </thead>
-              <tbody className="text-white">
+              <tbody className="font-[family-name:var(--font-mono)] text-white">
                 <tr className="border-b border-white/5">
                   <td className="py-3 text-muted">$25,000 - $50,000</td>
                   <td className="py-3">$375 - $1,500</td>
@@ -148,7 +157,10 @@ export default function InsurePage() {
 
       <section id="quote" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ QUOTE ENGINE ]
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-white">
             Get Insurance Quotes
           </h2>
           <p className="mt-2 text-muted">

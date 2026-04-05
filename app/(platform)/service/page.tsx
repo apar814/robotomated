@@ -54,7 +54,7 @@ function ServiceRequestForm() {
       className="grid gap-6 sm:grid-cols-2"
     >
       <div className="flex flex-col gap-2">
-        <label htmlFor="brand" className="text-sm font-medium text-muted">
+        <label htmlFor="brand" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Robot Brand
         </label>
         <input
@@ -68,7 +68,7 @@ function ServiceRequestForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="model" className="text-sm font-medium text-muted">
+        <label htmlFor="model" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Robot Model
         </label>
         <input
@@ -84,7 +84,7 @@ function ServiceRequestForm() {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="service_type"
-          className="text-sm font-medium text-muted"
+          className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
         >
           Service Type
         </label>
@@ -104,7 +104,7 @@ function ServiceRequestForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="urgency" className="text-sm font-medium text-muted">
+        <label htmlFor="urgency" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Urgency
         </label>
         <select
@@ -124,7 +124,7 @@ function ServiceRequestForm() {
       <div className="flex flex-col gap-2 sm:col-span-2">
         <label
           htmlFor="description"
-          className="text-sm font-medium text-muted"
+          className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
         >
           Description
         </label>
@@ -139,7 +139,7 @@ function ServiceRequestForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="location" className="text-sm font-medium text-muted">
+        <label htmlFor="location" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Location
         </label>
         <input
@@ -153,7 +153,7 @@ function ServiceRequestForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="contact" className="text-sm font-medium text-muted">
+        <label htmlFor="contact" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Contact Email
         </label>
         <input
@@ -189,7 +189,10 @@ export default function ServicePage() {
       />
 
       <section className="mt-8 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ OPERATE CHANNEL ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Expert robot service. Anywhere.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -199,7 +202,10 @@ export default function ServicePage() {
       </section>
 
       <section className="mt-16">
-        <h2 className="font-display text-2xl font-semibold text-white">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ SERVICE TYPES ]
+        </p>
+        <h2 className="mt-2 font-display text-2xl font-semibold text-white">
           Service Categories
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -208,7 +214,7 @@ export default function ServicePage() {
               key={cat.name}
               className="glass rounded-xl border border-white/10 p-6"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#7B2FFF]/20 font-display text-sm font-bold text-[#7B2FFF]">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#7B2FFF]/20 font-[family-name:var(--font-mono)] text-sm font-bold text-[#7B2FFF]">
                 {cat.icon}
               </div>
               <h3 className="font-display text-lg font-semibold text-white">
@@ -222,7 +228,10 @@ export default function ServicePage() {
 
       <section id="request" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ REQUEST FORM ]
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-white">
             Request Service
           </h2>
           <p className="mt-2 text-muted">

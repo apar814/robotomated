@@ -104,7 +104,10 @@ export default function TradeInPage() {
       />
 
       <section className="mt-8 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ TRADE-IN VALUATOR ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           What is your robot worth today?
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -126,7 +129,7 @@ export default function TradeInPage() {
           >
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
-                <label htmlFor="manufacturer" className="text-sm font-medium text-muted">
+                <label htmlFor="manufacturer" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Manufacturer
                 </label>
                 <input
@@ -141,7 +144,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="model" className="text-sm font-medium text-muted">
+                <label htmlFor="model" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Model
                 </label>
                 <input
@@ -156,7 +159,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="yearPurchased" className="text-sm font-medium text-muted">
+                <label htmlFor="yearPurchased" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Year Purchased
                 </label>
                 <input
@@ -173,7 +176,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="purchasePrice" className="text-sm font-medium text-muted">
+                <label htmlFor="purchasePrice" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Purchase Price (USD)
                 </label>
                 <input
@@ -189,7 +192,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="operatingHours" className="text-sm font-medium text-muted">
+                <label htmlFor="operatingHours" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Operating Hours
                 </label>
                 <input
@@ -205,7 +208,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="softwareVersion" className="text-sm font-medium text-muted">
+                <label htmlFor="softwareVersion" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Software Version
                 </label>
                 <input
@@ -219,7 +222,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2 sm:col-span-2">
-                <label className="text-sm font-medium text-muted">
+                <label className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Condition: {CONDITION_LABELS[condition].label}
                 </label>
                 <p className="text-xs text-muted">
@@ -244,7 +247,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2 sm:col-span-2">
-                <label htmlFor="knownIssues" className="text-sm font-medium text-muted">
+                <label htmlFor="knownIssues" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Known Issues
                 </label>
                 <textarea
@@ -258,7 +261,7 @@ export default function TradeInPage() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="location" className="text-sm font-medium text-muted">
+                <label htmlFor="location" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
                   Location
                 </label>
                 <input
@@ -302,25 +305,28 @@ export default function TradeInPage() {
       {step === "result" && result && (
         <section className="mt-12 space-y-8">
           <div className="glass rounded-2xl border border-white/10 p-8 text-center sm:p-12">
-            <h2 className="font-display text-lg font-semibold text-muted">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+              [ VALUATION RESULT ]
+            </p>
+            <h2 className="mt-2 font-display text-lg font-semibold text-muted">
               Estimated Market Value
             </h2>
             <div className="mt-4 flex items-end justify-center gap-6">
               <div>
-                <p className="text-sm text-muted">Low</p>
-                <p className="font-display text-2xl font-bold text-white/60">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Low</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white/60">
                   {formatCurrency(result.low)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-[#00E5A0]">Mid</p>
-                <p className="font-display text-4xl font-bold text-[#00E5A0]">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-[#00E5A0]">Mid</p>
+                <p className="font-[family-name:var(--font-mono)] text-4xl font-bold text-[#00E5A0]">
                   {formatCurrency(result.mid)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-muted">High</p>
-                <p className="font-display text-2xl font-bold text-white/60">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">High</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white/60">
                   {formatCurrency(result.high)}
                 </p>
               </div>
@@ -331,13 +337,16 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8">
-            <h3 className="font-display text-lg font-semibold text-white">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+              [ ANALYSIS ]
+            </p>
+            <h3 className="mt-2 font-display text-lg font-semibold text-white">
               Valuation Factors
             </h3>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="text-sm text-muted">Age Factor</p>
-                <p className="mt-1 font-display text-2xl font-bold text-white">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Age Factor</p>
+                <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.age_factor)}
                 </p>
                 <div className="mt-2 h-2 rounded-full bg-white/10">
@@ -348,8 +357,8 @@ export default function TradeInPage() {
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="text-sm text-muted">Condition Factor</p>
-                <p className="mt-1 font-display text-2xl font-bold text-white">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Condition Factor</p>
+                <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.condition_factor)}
                 </p>
                 <div className="mt-2 h-2 rounded-full bg-white/10">
@@ -360,8 +369,8 @@ export default function TradeInPage() {
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="text-sm text-muted">Hours Factor</p>
-                <p className="mt-1 font-display text-2xl font-bold text-white">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Hours Factor</p>
+                <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.hours_factor)}
                 </p>
                 <div className="mt-2 h-2 rounded-full bg-white/10">
@@ -405,7 +414,10 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8 text-center">
-            <h3 className="font-display text-lg font-semibold text-white">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+              [ FULL REPORT ]
+            </p>
+            <h3 className="mt-2 font-display text-lg font-semibold text-white">
               Get the Full Report
             </h3>
             <p className="mt-2 text-sm text-muted">

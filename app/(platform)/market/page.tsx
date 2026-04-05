@@ -32,7 +32,8 @@ export default function MarketplacePage() {
       {/* ── Hero ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">Marketplace</h1>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKET INTELLIGENCE ]</p>
+          <h1 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">Marketplace</h1>
           <p className="mt-2 text-muted">
             Buy and sell robots from verified dealers. Track funding rounds, investors, and market intelligence.
           </p>
@@ -41,19 +42,19 @@ export default function MarketplacePage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/market/funding"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-mono text-xs text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
               Funding Tracker
             </Link>
             <Link
               href="/market/investors"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-mono text-xs text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
               Top Investors
             </Link>
             <Link
               href="/market/reports"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-mono text-xs text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
               Market Reports
             </Link>
@@ -67,7 +68,7 @@ export default function MarketplacePage() {
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-              <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-widest text-ghost">
                 Recently Funded
               </span>
             </div>
@@ -96,7 +97,7 @@ export default function MarketplacePage() {
                       {round.company}
                     </span>
                     <span
-                      className="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium"
+                      className="inline-block rounded px-1.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] font-medium"
                       style={{
                         background: (ROUND_COLORS[round.round] || "#00C2FF") + "18",
                         color: ROUND_COLORS[round.round] || "#00C2FF",
@@ -108,7 +109,7 @@ export default function MarketplacePage() {
                   <p className="mt-0.5 text-xs text-ghost">{round.leadInvestor}</p>
                 </div>
                 <div className="flex shrink-0 items-center gap-4">
-                  <span className="font-mono text-sm font-bold text-lime">{round.amount}</span>
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-lime">{round.amount}</span>
                   <span className="hidden font-mono text-[10px] text-ghost sm:block">
                     {formatDate(round.date)}
                   </span>
@@ -124,7 +125,7 @@ export default function MarketplacePage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--theme-accent-magenta)" }} />
-            <span className="font-mono text-[11px] uppercase tracking-widest" style={{ color: "var(--theme-text-muted)" }}>
+            <span className="font-[family-name:var(--font-brand)] text-[11px] uppercase tracking-widest" style={{ color: "var(--theme-text-muted)" }}>
               The Humanoid Report
             </span>
           </div>
@@ -145,7 +146,7 @@ export default function MarketplacePage() {
               { value: "67+", label: "Consecutive autonomous hours (Figure 02)", color: "var(--theme-accent-blue)" },
             ].map((s) => (
               <div key={s.label} className="glass rounded-xl p-5">
-                <p className="font-mono text-3xl font-extrabold" style={{ color: s.color }}>{s.value}</p>
+                <p className="font-[family-name:var(--font-brand)] text-3xl font-extrabold" style={{ color: s.color }}>{s.value}</p>
                 <p className="mt-2 text-sm" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
               </div>
             ))}

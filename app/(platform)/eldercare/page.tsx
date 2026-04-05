@@ -151,7 +151,10 @@ export default function EldercarePage() {
               { name: "Eldercare", href: "/eldercare" },
             ]}
           />
-          <p className="mt-8 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--theme-blue,#00C2FF)]">
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ ELDERCARE ROBOTICS ]
+          </p>
+          <p className="mt-3 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.06em] text-[var(--theme-blue,#00C2FF)]">
             Industry Deep Dive
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
@@ -175,12 +178,12 @@ export default function EldercarePage() {
               className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-6 text-center backdrop-blur-sm"
             >
               <p
-                className="font-mono text-3xl font-extrabold sm:text-4xl"
+                className="font-[family-name:var(--font-brand)] text-3xl font-extrabold sm:text-4xl"
                 style={{ color: s.color }}
               >
                 {s.value}
               </p>
-              <p className="mt-2 text-xs uppercase leading-snug tracking-widest text-white/40">
+              <p className="mt-2 font-[family-name:var(--font-ui)] text-xs uppercase leading-snug tracking-[0.06em] text-white/40">
                 {s.label}
               </p>
             </div>
@@ -191,6 +194,9 @@ export default function EldercarePage() {
       {/* ── PROBLEM SECTION ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ THE CRISIS ]
+          </p>
           <h2 className="text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             The Crisis in Numbers
           </h2>
@@ -200,10 +206,10 @@ export default function EldercarePage() {
                 key={p.title}
                 className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm"
               >
-                <p className="font-mono text-4xl font-extrabold text-[var(--theme-blue,#00C2FF)]">
+                <p className="font-[family-name:var(--font-brand)] text-4xl font-extrabold text-[var(--theme-blue,#00C2FF)]">
                   {p.stat}
                 </p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-white/40">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-white/40">
                   {p.statLabel}
                 </p>
                 <h3 className="mt-6 text-lg font-bold text-white">
@@ -242,13 +248,16 @@ export default function EldercarePage() {
           <div className="grid gap-8 md:grid-cols-2">
             {/* Robot tasks */}
             <div className="rounded-2xl border border-[var(--theme-blue,#00C2FF)]/20 bg-[var(--theme-blue,#00C2FF)]/[0.03] p-8">
-              <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--theme-blue,#00C2FF)]">
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+                [ TASK DIVISION ]
+              </p>
+              <h3 className="font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.06em] text-[var(--theme-blue,#00C2FF)]">
                 What Robots Handle
               </h3>
               <ul className="mt-6 space-y-4">
                 {ROBOT_TASKS.map((t) => (
                   <li key={t.task} className="flex items-center gap-4">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--theme-blue,#00C2FF)]/10 font-mono text-xs font-bold text-[var(--theme-blue,#00C2FF)]">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--theme-blue,#00C2FF)]/10 font-[family-name:var(--font-mono)] text-xs font-bold text-[var(--theme-blue,#00C2FF)]">
                       {t.icon}
                     </span>
                     <span className="text-sm font-medium text-white/80">
@@ -261,13 +270,13 @@ export default function EldercarePage() {
 
             {/* Human tasks */}
             <div className="rounded-2xl border border-[var(--theme-violet,#7B2FFF)]/20 bg-[var(--theme-violet,#7B2FFF)]/[0.03] p-8">
-              <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--theme-violet,#7B2FFF)]">
+              <h3 className="font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.06em] text-[var(--theme-violet,#7B2FFF)]">
                 What Humans Keep Doing
               </h3>
               <ul className="mt-6 space-y-4">
                 {HUMAN_TASKS.map((task) => (
                   <li key={task} className="flex items-center gap-4">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--theme-violet,#7B2FFF)]/10 font-mono text-xs font-bold text-[var(--theme-violet,#7B2FFF)]">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--theme-violet,#7B2FFF)]/10 font-[family-name:var(--font-mono)] text-xs font-bold text-[var(--theme-violet,#7B2FFF)]">
                       H
                     </span>
                     <span className="text-sm font-medium text-white/80">
@@ -284,6 +293,9 @@ export default function EldercarePage() {
       {/* ── CASE STUDIES ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ CASE STUDIES ]
+          </p>
           <h2 className="text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Real Deployments, Measured Results
           </h2>
@@ -296,16 +308,16 @@ export default function EldercarePage() {
                 key={cs.title}
                 className="flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm"
               >
-                <p className="font-mono text-4xl font-extrabold text-[var(--theme-green,#00E5A0)]">
+                <p className="font-[family-name:var(--font-brand)] text-4xl font-extrabold text-[var(--theme-green,#00E5A0)]">
                   {cs.metric}
                 </p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-white/40">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-white/40">
                   {cs.metricLabel}
                 </p>
                 <h3 className="mt-6 text-base font-bold leading-snug text-white">
                   {cs.title}
                 </h3>
-                <p className="mt-1 text-xs font-medium text-[var(--theme-blue,#00C2FF)]">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-xs font-medium uppercase tracking-[0.06em] text-[var(--theme-blue,#00C2FF)]">
                   {cs.environment} -- {cs.robot}
                 </p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-white/50">
@@ -320,6 +332,9 @@ export default function EldercarePage() {
       {/* ── ROBOWORK CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-violet,#7B2FFF)]/30 bg-[var(--theme-violet,#7B2FFF)]/[0.05] p-10 text-center backdrop-blur-sm">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ GET STARTED ]
+          </p>
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             Ready to Automate Your Facility?
           </h2>
@@ -339,6 +354,9 @@ export default function EldercarePage() {
       {/* ── BUYER GUIDE CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 text-center backdrop-blur-sm">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ BUYER GUIDE ]
+          </p>
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
             Eldercare Robotics Buyer Guide
           </h2>

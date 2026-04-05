@@ -39,7 +39,7 @@ function ListPartForm() {
       className="grid gap-6 sm:grid-cols-2"
     >
       <div className="flex flex-col gap-2">
-        <label htmlFor="part_name" className="text-sm font-medium text-muted">
+        <label htmlFor="part_name" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Part Name
         </label>
         <input
@@ -53,7 +53,7 @@ function ListPartForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="part_number" className="text-sm font-medium text-muted">
+        <label htmlFor="part_number" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Part Number
         </label>
         <input
@@ -68,7 +68,7 @@ function ListPartForm() {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="compatible_robots"
-          className="text-sm font-medium text-muted"
+          className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
         >
           Compatible Robots
         </label>
@@ -83,7 +83,7 @@ function ListPartForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="condition" className="text-sm font-medium text-muted">
+        <label htmlFor="condition" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Condition
         </label>
         <select
@@ -102,7 +102,7 @@ function ListPartForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="price" className="text-sm font-medium text-muted">
+        <label htmlFor="price" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Price (USD)
         </label>
         <input
@@ -118,7 +118,7 @@ function ListPartForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="seller_location" className="text-sm font-medium text-muted">
+        <label htmlFor="seller_location" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Location
         </label>
         <input
@@ -134,7 +134,7 @@ function ListPartForm() {
       <div className="flex flex-col gap-2 sm:col-span-2">
         <label
           htmlFor="part_description"
-          className="text-sm font-medium text-muted"
+          className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
         >
           Description
         </label>
@@ -149,7 +149,7 @@ function ListPartForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="seller_email" className="text-sm font-medium text-muted">
+        <label htmlFor="seller_email" className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted">
           Contact Email
         </label>
         <input
@@ -185,7 +185,10 @@ export default function PartsPage() {
       />
 
       <section className="mt-8 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ PARTS MARKETPLACE ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Find the exact part. Fast.
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -202,7 +205,7 @@ export default function PartsPage() {
             <button
               key={c}
               type="button"
-              className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
+              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
             >
               {c}
             </button>
@@ -211,7 +214,7 @@ export default function PartsPage() {
             <button
               key={p}
               type="button"
-              className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
+              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
             >
               {p}
             </button>
@@ -242,7 +245,10 @@ export default function PartsPage() {
 
       <section id="list" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ SELLER PORTAL ]
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-white">
             List a Part
           </h2>
           <p className="mt-2 text-muted">

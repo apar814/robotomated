@@ -67,7 +67,7 @@ function CpoCard({ listing }: { listing: CpoListing }) {
           </p>
         </div>
         {listing.certified && (
-          <span className="rounded-full bg-[#00E5A0]/20 px-3 py-1 text-xs font-semibold text-[#00E5A0]">
+          <span className="rounded-full bg-[#00E5A0]/20 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[#00E5A0]">
             CPO Certified
           </span>
         )}
@@ -75,7 +75,7 @@ function CpoCard({ listing }: { listing: CpoListing }) {
 
       <div className="mt-4 flex items-center gap-4">
         <ConditionStars rating={listing.condition} />
-        <span className="text-sm text-muted">
+        <span className="font-[family-name:var(--font-mono)] text-sm text-muted">
           {formatHours(listing.operating_hours)} hrs
         </span>
       </div>
@@ -86,7 +86,7 @@ function CpoCard({ listing }: { listing: CpoListing }) {
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <p className="font-display text-2xl font-bold text-white">
+          <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white">
             {formatPrice(listing.price)}
           </p>
           <p className="text-xs text-muted">{listing.location}</p>
@@ -147,7 +147,10 @@ export default async function CpoPage() {
       />
 
       <section className="mt-8 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ CPO MARKETPLACE ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Certified Pre-Owned Robots
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -162,7 +165,7 @@ export default async function CpoPage() {
             <button
               key={cat}
               type="button"
-              className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
+              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
             >
               {cat}
             </button>
@@ -199,7 +202,10 @@ export default async function CpoPage() {
 
       <section id="list" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ SELLER PORTAL ]
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-white">
             List Your Robot
           </h2>
           <p className="mt-2 text-muted">
@@ -215,7 +221,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="robot_name"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Robot Name / Model
                 </label>
@@ -232,7 +238,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_manufacturer"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Manufacturer
                 </label>
@@ -249,7 +255,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_year"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Year
                 </label>
@@ -268,7 +274,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_hours"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Operating Hours
                 </label>
@@ -286,7 +292,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_price"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Asking Price (USD)
                 </label>
@@ -304,7 +310,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_location"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Location
                 </label>
@@ -321,7 +327,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2 sm:col-span-2">
                 <label
                   htmlFor="cpo_description"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Description
                 </label>
@@ -338,7 +344,7 @@ export default async function CpoPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="cpo_email"
-                  className="text-sm font-medium text-muted"
+                  className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.08em] text-muted"
                 >
                   Contact Email
                 </label>

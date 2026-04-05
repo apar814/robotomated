@@ -28,26 +28,15 @@ const CHANNELS: Channel[] = [
     cta: "Explore Robots",
     href: "/explore",
     icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M18 20V10" />
-        <path d="M12 20V4" />
-        <path d="M6 20v-6" />
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
       </svg>
     ),
   },
   {
     number: "02",
     name: "ACQUIRE",
-    accent: "#C8FF00",
+    accent: "#22C55E",
     tagline: "Buy or lease the right robot.",
     bullets: [
       "Purchase outright from manufacturers",
@@ -58,26 +47,15 @@ const CHANNELS: Channel[] = [
     cta: "Find My Robot",
     href: "/find-my-robot",
     icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-        <path d="M3 6h18" />
-        <path d="M16 10a4 4 0 01-8 0" />
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 01-8 0" />
       </svg>
     ),
   },
   {
     number: "03",
     name: "DEPLOY",
-    accent: "#A78BFA",
+    accent: "#8B5CF6",
     tagline: "Get it working from day one.",
     bullets: [
       "Post a job, get bids in 24 hours",
@@ -88,16 +66,7 @@ const CHANNELS: Channel[] = [
     cta: "Post a Job",
     href: "/robowork/post",
     icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
@@ -105,7 +74,7 @@ const CHANNELS: Channel[] = [
   {
     number: "04",
     name: "OPERATE",
-    accent: "#34D399",
+    accent: "#F59E0B",
     tagline: "Keep it running. Keep it productive.",
     bullets: [
       "Certified maintenance network",
@@ -116,16 +85,7 @@ const CHANNELS: Channel[] = [
     cta: "Find Service",
     href: "/service",
     icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
         <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
       </svg>
@@ -134,7 +94,7 @@ const CHANNELS: Channel[] = [
   {
     number: "05",
     name: "TRANSITION",
-    accent: "#FF006E",
+    accent: "#EC4899",
     tagline: "Every robot has a next chapter.",
     bullets: [
       "AI-powered instant trade-in valuation",
@@ -145,20 +105,8 @@ const CHANNELS: Channel[] = [
     cta: "Value My Robot",
     href: "/trade-in",
     icon: (
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M23 4v6h-6" />
-        <path d="M1 20v-6h6" />
-        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10" />
-        <path d="M20.49 15a9 9 0 01-14.85 3.36L1 14" />
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M23 4v6h-6" /><path d="M1 20v-6h6" /><path d="M3.51 9a9 9 0 0114.85-3.36L23 10" /><path d="M20.49 15a9 9 0 01-14.85 3.36L1 14" />
       </svg>
     ),
   },
@@ -168,65 +116,55 @@ function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={channel.href}
-      className="group relative flex flex-col rounded-xl border border-[var(--theme-border)] p-7 transition-all duration-200 ease-out hover:scale-[1.02]"
-      style={{
-        backgroundColor: "var(--theme-card, #111111)",
-        borderLeft: `3px solid ${channel.accent}`,
-        // Box shadow applied via inline style for accent color
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget;
-        el.style.borderColor = channel.accent;
-        el.style.boxShadow = `0 0 24px ${channel.accent}20, 0 4px 16px ${channel.accent}10`;
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget;
-        el.style.borderColor = "var(--theme-border)";
-        el.style.borderLeft = `3px solid ${channel.accent}`;
-        el.style.boxShadow = "none";
-      }}
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] p-7 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/[0.12]"
+      style={{ borderTop: `2px solid ${channel.accent}` }}
     >
-      {/* Number */}
+      {/* Glow effect */}
+      <div
+        className="pointer-events-none absolute left-0 top-0 h-[200px] w-full opacity-100 transition-opacity duration-300 group-hover:opacity-150"
+        style={{
+          background: `radial-gradient(ellipse at top, ${channel.accent}12 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Channel number */}
       <span
-        className="mb-4 font-mono text-xs tracking-wider"
-        style={{ color: `${channel.accent}80` }}
+        className="relative mb-4 font-[family-name:var(--font-brand)] text-[10px] font-medium tracking-[0.15em]"
+        style={{ color: channel.accent }}
       >
         {channel.number}
       </span>
 
-      {/* Icon */}
-      <div className="mb-4" style={{ color: channel.accent }}>
+      {/* Icon wrapper */}
+      <div
+        className="relative mb-4 inline-flex rounded-lg p-2.5"
+        style={{
+          background: `${channel.accent}12`,
+          border: `1px solid ${channel.accent}25`,
+          color: channel.accent,
+        }}
+      >
         {channel.icon}
       </div>
 
-      {/* Name */}
-      <h3
-        className="mb-1 text-lg font-bold tracking-wide"
-        style={{ color: "var(--theme-text-primary, #FFFFFF)" }}
-      >
+      {/* Channel name */}
+      <h3 className="relative mb-2 font-[family-name:var(--font-brand)] text-[14px] font-semibold tracking-[0.08em] text-white">
         {channel.name}
       </h3>
 
       {/* Tagline */}
-      <p
-        className="mb-5 text-sm"
-        style={{ color: "var(--theme-text-secondary, #A0A0A0)" }}
-      >
+      <p className="relative mb-5 font-[family-name:var(--font-ui)] text-[13px] text-white/50">
         {channel.tagline}
       </p>
 
-      {/* Bullets */}
-      <ul className="mb-6 flex flex-1 flex-col gap-2.5">
+      {/* Bullets with vertical line accent */}
+      <ul className="relative mb-6 flex flex-1 flex-col gap-1.5">
         {channel.bullets.map((bullet) => (
           <li
             key={bullet}
-            className="flex items-start gap-2 text-[13px] leading-snug"
-            style={{ color: "var(--theme-text-secondary, #A0A0A0)" }}
+            className="border-l py-0.5 pl-3 font-[family-name:var(--font-ui)] text-[12px] leading-relaxed text-white/60"
+            style={{ borderColor: `${channel.accent}40` }}
           >
-            <span
-              className="mt-1.5 block h-1 w-1 shrink-0 rounded-full"
-              style={{ backgroundColor: channel.accent }}
-            />
             {bullet}
           </li>
         ))}
@@ -234,7 +172,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
       {/* CTA */}
       <div
-        className="flex items-center gap-1.5 text-[13px] font-semibold"
+        className="relative mt-auto flex items-center gap-1.5 font-[family-name:var(--font-ui)] text-[12px] font-semibold tracking-[0.05em]"
         style={{ color: channel.accent }}
       >
         {channel.cta}
@@ -259,23 +197,18 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
 export default function ChannelShowcase() {
   return (
-    <section
-      className="w-full py-20 md:py-28"
-      style={{ backgroundColor: "var(--theme-bg, #080808)" }}
-    >
+    <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--theme-bg)" }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 max-w-2xl">
-          <h2
-            className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
-            style={{ color: "var(--theme-text-primary, #FFFFFF)" }}
-          >
+          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+            Platform Channels
+          </p>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-[var(--theme-text-primary)] sm:text-4xl">
             One platform. Five ways to access robotic automation.
           </h2>
-          <p
-            className="text-base leading-relaxed sm:text-lg"
-            style={{ color: "var(--theme-text-secondary, #A0A0A0)" }}
-          >
+          <p className="max-w-[580px] font-[family-name:var(--font-ui)] text-base leading-[1.7] text-[var(--theme-text-secondary)]">
             Whether you want to own, lease, hire, operate, or transition --
             Robotomated serves every stage of the robot lifecycle.
           </p>

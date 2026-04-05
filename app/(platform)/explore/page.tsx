@@ -44,8 +44,11 @@ export default async function ExplorePage() {
   return (
     <div>
       <div className="border-b border-border px-4 py-12 text-center">
-        <h1 className="text-3xl font-bold sm:text-4xl">Explore Robots</h1>
-        <p className="mt-3 text-muted">
+        <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ INTELLIGENCE CHANNEL ]
+        </span>
+        <h1 className="mt-2 font-[family-name:var(--font-brand)] text-3xl font-bold uppercase tracking-wide sm:text-4xl">Explore Robots</h1>
+        <p className="mt-3 font-[family-name:var(--font-ui)] text-sm uppercase tracking-wider text-muted">
           Browse{" "}
           <span className="text-foreground">every robot</span> in our database.
           Filter, sort, and compare.

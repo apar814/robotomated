@@ -81,21 +81,21 @@ function Chevron({ open }: { open: boolean }) {
 // ── Simple dropdown ──
 function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClose: () => void }) {
   return (
-    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border border-[var(--theme-border)] bg-[var(--theme-surface)] p-3 shadow-2xl"
+    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border border-white/[0.08] bg-[#0D0D0D] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(14,165,233,0.05)]"
       style={{ animation: "dropIn 150ms ease-out" }}
     >
       {items.map((item, i) => (
         <div key={item.href}>
-          {item.divider && i > 0 && <div className="my-1.5 border-t border-[var(--theme-border)]" />}
+          {item.divider && i > 0 && <div className="my-1.5 border-t border-white/[0.06]" />}
           <Link
             href={item.href}
             onClick={onClose}
-            className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all hover:bg-[rgba(14,165,233,0.08)] hover:border-l-2 hover:border-l-[#0EA5E9]"
+            className="group flex items-start gap-3 rounded-md px-3 py-2.5 transition-all hover:bg-white/[0.04]"
           >
             <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full" style={{ background: item.color }} />
             <div>
-              <p className="text-sm font-semibold text-[var(--theme-text-primary)]">{item.title}</p>
-              <p className="text-xs text-[var(--theme-text-muted)]">{item.desc}</p>
+              <p className="font-[family-name:var(--font-ui)] text-[13px] font-medium text-white">{item.title}</p>
+              <p className="font-[family-name:var(--font-ui)] text-[11px] text-white/35">{item.desc}</p>
             </div>
           </Link>
         </div>
@@ -177,8 +177,8 @@ export function Header() {
       <div className="relative" onMouseEnter={() => handleEnter(id)} onMouseLeave={handleLeave}>
         <button
           onClick={() => setActiveMenu(isActive ? null : id)}
-          className={`flex items-center gap-1.5 rounded-md px-3 py-2 font-sans text-[14px] font-medium transition-colors ${
-            isActive ? "text-[var(--theme-text-primary)]" : "text-[var(--theme-text-secondary)] hover:text-[var(--theme-text-primary)]"
+          className={`flex items-center gap-1.5 rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors ${
+            isActive ? "text-white" : "text-white/65 hover:text-white"
           }`}
         >
           {label}
@@ -188,7 +188,7 @@ export function Header() {
         {/* Dropdowns */}
         {isActive && id === "explore" && (
           <div
-            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border border-[var(--theme-border)] bg-[var(--theme-surface)] p-6 shadow-2xl"
+            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border border-white/[0.08] bg-[#0D0D0D] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(14,165,233,0.05)]"
             style={{ animation: "dropIn 150ms ease-out" }}
             onMouseEnter={() => handleEnter(id)}
             onMouseLeave={handleLeave}
@@ -196,7 +196,7 @@ export function Header() {
             <div className="grid grid-cols-3 gap-6">
               {/* Column 1: By Category */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">By Category</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-white/25">By Category</p>
                 <div className="space-y-0.5">
                   {exploreCategories.map((cat) => (
                     <Link
@@ -217,7 +217,7 @@ export function Header() {
 
               {/* Column 2: By Need */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">By Need</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-white/25">By Need</p>
                 <div className="space-y-0.5">
                   {exploreNeeds.map((need) => (
                     <Link
@@ -238,7 +238,7 @@ export function Header() {
 
               {/* Column 3: Featured */}
               <div>
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--theme-text-muted)]">Featured</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-white/25">Featured</p>
                 <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
                   <p className="text-[11px] font-medium uppercase tracking-widest text-[#0EA5E9]">Robot of the Week</p>
                   <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
@@ -294,7 +294,7 @@ export function Header() {
         }
       `}</style>
 
-      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(20px)" }}>
+      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(8,8,8,0.92)", backdropFilter: "blur(20px)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
@@ -316,7 +316,7 @@ export function Header() {
             <NavButton id="learn" label="Learn" />
             <Link
               href="/manufacturers"
-              className="rounded-md px-3 py-2 font-sans text-[14px] font-medium text-[var(--theme-text-secondary)] transition-colors hover:text-[var(--theme-text-primary)]"
+              className="rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] text-white/65 transition-colors hover:text-white"
             >
               Manufacturers
             </Link>

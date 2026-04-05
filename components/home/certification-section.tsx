@@ -29,7 +29,7 @@ export function CertificationSection() {
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
             Certification
           </span>
         </div>
@@ -48,7 +48,7 @@ export function CertificationSection() {
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* LEFT -- For Professionals */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-electric-blue">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
               For Professionals
             </p>
             <p className="mt-2 text-lg font-bold text-primary">
@@ -76,7 +76,7 @@ export function CertificationSection() {
                       <span className="text-[14px] font-semibold text-primary">
                         {cert.name}
                       </span>
-                      <span className="font-mono text-[13px] font-bold text-lime">
+                      <span className="font-[family-name:var(--font-mono)] text-[13px] font-bold text-lime">
                         {cert.price}
                       </span>
                     </div>
@@ -122,7 +122,7 @@ export function CertificationSection() {
 
           {/* RIGHT -- For Businesses */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-electric-blue">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
               For Businesses
             </p>
             <p className="mt-2 text-lg font-bold text-primary">
@@ -144,13 +144,13 @@ export function CertificationSection() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-mono text-2xl font-bold text-lime">73%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-lime">73%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   Certified operators reduce incidents by 73%
                 </p>
               </div>
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-mono text-2xl font-bold text-lime">+34%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-lime">+34%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   RCO holders earn 34% more on RoboWork
                 </p>

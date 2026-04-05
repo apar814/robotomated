@@ -26,14 +26,14 @@ export function RecentlyFunded() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-lime" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+            <span className="inline-block h-px w-6 bg-[#C8FF00]" />
+            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#C8FF00]">
               Recently Funded
             </span>
           </div>
           <Link
             href="/market/funding"
-            className="font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+            className="font-[family-name:var(--font-ui)] text-[11px] font-medium text-electric-blue transition-colors hover:underline"
           >
             View All Funding &rarr;
           </Link>
@@ -49,7 +49,7 @@ export function RecentlyFunded() {
               className="group flex flex-col bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
             >
               {/* Date badge */}
-              <span className="font-mono text-[10px] text-ghost">{formatDate(round.date)}</span>
+              <span className="font-[family-name:var(--font-ui)] text-[10px] text-ghost">{formatDate(round.date)}</span>
 
               {/* Company + amount */}
               <div className="mt-2 flex items-baseline justify-between gap-2">

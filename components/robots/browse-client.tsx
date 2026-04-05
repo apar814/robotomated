@@ -202,7 +202,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
             )}
 
             {hasFilters && (
-              <button onClick={clearFilters} className="text-xs font-medium" style={{ color: "#FF006E" }}>
+              <button onClick={clearFilters} className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-wide" style={{ color: "#FF006E" }}>
                 Clear all filters
               </button>
             )}
@@ -263,7 +263,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
                         key={p}
                         onClick={() => handlePage(p)}
                         className={cn(
-                          "h-8 w-8 rounded-md text-xs font-medium transition-colors",
+                          "h-8 w-8 rounded-md font-[family-name:var(--font-brand)] text-xs font-medium transition-colors",
                           p === page ? "bg-[#0EA5E9] text-white" : "hover:bg-[rgba(14,165,233,0.08)]"
                         )}
                         style={{ color: p === page ? undefined : "var(--theme-text-muted)" }}
@@ -284,7 +284,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
           <div className="fixed inset-x-0 bottom-0 z-40 border-t px-4 py-3 shadow-lg backdrop-blur-md" style={{ borderColor: "var(--theme-border)", background: "var(--theme-nav-bg)" }}>
             <div className="mx-auto flex max-w-7xl items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="text-sm font-medium" style={{ color: "var(--theme-text-primary)" }}>{compareIds.length} robots selected</span>
+                <span className="text-sm font-medium" style={{ color: "var(--theme-text-primary)" }}><span className="font-[family-name:var(--font-brand)]">{compareIds.length}</span> robots selected</span>
                 <button onClick={() => setCompareIds([])} className="text-xs" style={{ color: "var(--theme-text-muted)" }}>Clear</button>
               </div>
               <Link href={`/explore/compare?ids=${compareIds.join(",")}`}
@@ -303,7 +303,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>{title}</h4>
+      <span className="mb-1 block font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ {title} ]</span>
       <div className="space-y-0.5">{children}</div>
     </div>
   );
@@ -314,7 +314,7 @@ function FilterButton({ label, active, onClick }: { label: string; active: boole
     <button
       onClick={onClick}
       className={cn(
-        "block w-full rounded-md px-2.5 py-1.5 text-left text-xs transition-colors",
+        "block w-full rounded-md px-2.5 py-1.5 text-left font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors",
         active && "font-medium"
       )}
       style={{

@@ -55,7 +55,7 @@ function Endpoint({
     <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
       <div className="flex items-center gap-3">
         <span
-          className={`rounded px-2 py-0.5 font-mono text-xs font-bold ${methodColor}`}
+          className={`rounded px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-wider ${methodColor}`}
         >
           {method}
         </span>
@@ -102,13 +102,13 @@ function PricingCard({
       }`}
     >
       {highlight && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#7B2FFF] px-3 py-0.5 text-xs font-semibold text-white">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#7B2FFF] px-3 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-white">
           Most Popular
         </span>
       )}
       <h3 className="font-display text-lg font-bold">{name}</h3>
       <div className="mt-3 flex items-baseline gap-1">
-        <span className="font-display text-3xl font-bold">{price}</span>
+        <span className="font-[family-name:var(--font-mono)] text-3xl font-bold">{price}</span>
         {period && <span className="text-sm text-gray-400">{period}</span>}
       </div>
       <p className="mt-2 text-sm text-[#00C2FF]">{requests}</p>
@@ -149,7 +149,8 @@ export default function DevelopersPage() {
               { name: "Developers", href: "/developers" },
             ]}
           />
-          <h1 className="font-display mt-8 text-4xl font-bold tracking-tight sm:text-5xl">
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ DEVELOPER PORTAL ]</p>
+          <h1 className="font-display mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
             Robotomated Intelligence API
           </h1>
           <p className="mt-4 text-lg text-gray-400">
@@ -177,7 +178,8 @@ export default function DevelopersPage() {
       {/* ---- Pricing ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <h2 className="font-display mb-2 text-center text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ PRICING ]</p>
+          <h2 className="font-display mt-3 mb-2 text-center text-2xl font-bold">
             API Pricing
           </h2>
           <p className="mb-10 text-center text-sm text-gray-400">
@@ -256,14 +258,15 @@ export default function DevelopersPage() {
         className="border-b border-white/10 px-4 py-16"
       >
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-8 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ QUICKSTART ]</p>
+          <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Getting Started
           </h2>
 
           <div className="space-y-6">
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-6">
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-mono text-sm font-bold text-[#00C2FF]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-[family-name:var(--font-brand)] text-sm font-bold text-[#00C2FF]">
                   1
                 </span>
                 <h3 className="font-semibold">Create an account</h3>
@@ -282,7 +285,7 @@ export default function DevelopersPage() {
 
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-6">
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-mono text-sm font-bold text-[#00C2FF]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-[family-name:var(--font-brand)] text-sm font-bold text-[#00C2FF]">
                   2
                 </span>
                 <h3 className="font-semibold">Generate an API key</h3>
@@ -295,7 +298,7 @@ export default function DevelopersPage() {
 
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-6">
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-mono text-sm font-bold text-[#00C2FF]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#00C2FF]/15 font-[family-name:var(--font-brand)] text-sm font-bold text-[#00C2FF]">
                   3
                 </span>
                 <h3 className="font-semibold">Make your first request</h3>
@@ -312,7 +315,8 @@ export default function DevelopersPage() {
       {/* ---- Authentication ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-6 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ AUTH ]</p>
+          <h2 className="font-display mt-3 mb-6 text-2xl font-bold">
             Authentication
           </h2>
           <p className="mb-4 text-sm text-gray-400">
@@ -340,7 +344,8 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Endpoints Reference ---- */}
       <section id="endpoints" className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-8 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ ENDPOINTS ]</p>
+          <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Endpoints Reference
           </h2>
 
@@ -395,7 +400,8 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Response Format ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-6 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RESPONSE FORMAT ]</p>
+          <h2 className="font-display mt-3 mb-6 text-2xl font-bold">
             Response Format
           </h2>
           <p className="mb-4 text-sm text-gray-400">
@@ -433,7 +439,8 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Code Examples ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-8 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ CODE EXAMPLES ]</p>
+          <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Code Examples
           </h2>
 
@@ -492,7 +499,8 @@ for robot in data:
       {/* ---- Rate Limits ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-6 text-2xl font-bold">Rate Limits</h2>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RATE LIMITS ]</p>
+          <h2 className="font-display mt-3 mb-6 text-2xl font-bold">Rate Limits</h2>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
@@ -507,27 +515,27 @@ for robot in data:
               <tbody className="text-gray-300">
                 <tr className="border-b border-white/5">
                   <td className="py-3 pr-6 font-medium">Free</td>
-                  <td className="py-3 pr-6 font-mono text-[#00C2FF]">100</td>
+                  <td className="py-3 pr-6 font-[family-name:var(--font-brand)] text-[#00C2FF]">100</td>
                   <td className="py-3 pr-6">10 req/min</td>
-                  <td className="py-3">$0</td>
+                  <td className="py-3 font-[family-name:var(--font-mono)]">$0</td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-3 pr-6 font-medium">Starter</td>
-                  <td className="py-3 pr-6 font-mono text-[#00C2FF]">1,000</td>
+                  <td className="py-3 pr-6 font-[family-name:var(--font-brand)] text-[#00C2FF]">1,000</td>
                   <td className="py-3 pr-6">60 req/min</td>
-                  <td className="py-3">$99/mo</td>
+                  <td className="py-3 font-[family-name:var(--font-mono)]">$99/mo</td>
                 </tr>
                 <tr className="border-b border-white/5">
                   <td className="py-3 pr-6 font-medium">Pro</td>
-                  <td className="py-3 pr-6 font-mono text-[#7B2FFF]">
+                  <td className="py-3 pr-6 font-[family-name:var(--font-brand)] text-[#7B2FFF]">
                     10,000
                   </td>
                   <td className="py-3 pr-6">300 req/min</td>
-                  <td className="py-3">$499/mo</td>
+                  <td className="py-3 font-[family-name:var(--font-mono)]">$499/mo</td>
                 </tr>
                 <tr>
                   <td className="py-3 pr-6 font-medium">Enterprise</td>
-                  <td className="py-3 pr-6 font-mono text-[#00E5A0]">
+                  <td className="py-3 pr-6 font-[family-name:var(--font-brand)] text-[#00E5A0]">
                     Unlimited
                   </td>
                   <td className="py-3 pr-6">Custom</td>
@@ -553,7 +561,8 @@ for robot in data:
       {/* ---- Webhooks ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="font-display mb-2 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ WEBHOOKS ]</p>
+          <h2 className="font-display mt-3 mb-2 text-2xl font-bold">
             Webhook Events
           </h2>
           <p className="mb-6 text-sm text-gray-400">
@@ -568,7 +577,7 @@ for robot in data:
                 <code className="font-mono text-sm font-bold text-[#00C2FF]">
                   robot.added
                 </code>
-                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 text-xs font-semibold text-[#7B2FFF]">
+                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[#7B2FFF]">
                   Pro+
                 </span>
               </div>
@@ -583,7 +592,7 @@ for robot in data:
                 <code className="font-mono text-sm font-bold text-[#00C2FF]">
                   robot.price_changed
                 </code>
-                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 text-xs font-semibold text-[#7B2FFF]">
+                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[#7B2FFF]">
                   Pro+
                 </span>
               </div>
@@ -598,7 +607,7 @@ for robot in data:
                 <code className="font-mono text-sm font-bold text-[#00C2FF]">
                   market.report
                 </code>
-                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 text-xs font-semibold text-[#7B2FFF]">
+                <span className="rounded bg-[#7B2FFF]/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[#7B2FFF]">
                   Pro+
                 </span>
               </div>
@@ -628,7 +637,8 @@ for robot in data:
       {/* ---- CTA ---- */}
       <section className="px-4 py-20 text-center">
         <div className="mx-auto max-w-2xl">
-          <h2 className="font-display mb-4 text-2xl font-bold">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ GET STARTED ]</p>
+          <h2 className="font-display mt-3 mb-4 text-2xl font-bold">
             Ready to build with robot intelligence?
           </h2>
           <p className="mb-8 text-gray-400">

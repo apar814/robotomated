@@ -61,8 +61,8 @@ export default function FinancePage() {
 
       {/* Hero */}
       <section className="mt-8 text-center">
-        <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-[var(--theme-green,#00E5A0)]">
-          Robotomated Finance
+        <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ ROBOT FINANCING ]
         </span>
         <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Robotomated Finance
@@ -79,7 +79,8 @@ export default function FinancePage() {
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl font-semibold text-white">
+              <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ EQUIPMENT LOANS ]</p>
+              <h2 className="mt-3 font-display text-2xl font-semibold text-white">
                 Equipment Financing
               </h2>
               <p className="mt-4 text-muted">
@@ -135,13 +136,13 @@ export default function FinancePage() {
               <div className="mt-6 space-y-4">
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
                   <span className="text-sm text-muted">Robot value</span>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-white">
                     $25K - $500K+
                   </span>
                 </div>
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
                   <span className="text-sm text-muted">APR range</span>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="font-[family-name:var(--font-brand)] text-sm font-semibold text-white">
                     5.9% - 14.9%
                   </span>
                 </div>
@@ -171,7 +172,8 @@ export default function FinancePage() {
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl font-semibold text-white">
+              <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ COVERAGE ]</p>
+              <h2 className="mt-3 font-display text-2xl font-semibold text-white">
                 Robot Insurance
               </h2>
               <p className="mt-4 text-muted">
@@ -212,7 +214,7 @@ export default function FinancePage() {
                   <span className="text-sm text-muted">
                     Single cobot ($25-50K)
                   </span>
-                  <span className="text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
                     $3,000 - $6,000/yr
                   </span>
                 </div>
@@ -220,7 +222,7 @@ export default function FinancePage() {
                   <span className="text-sm text-muted">
                     Industrial arm ($50-150K)
                   </span>
-                  <span className="text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
                     $5,000 - $14,000/yr
                   </span>
                 </div>
@@ -228,7 +230,7 @@ export default function FinancePage() {
                   <span className="text-sm text-muted">
                     AMR fleet ($150-500K)
                   </span>
-                  <span className="text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[var(--theme-blue,#00C2FF)]">
                     $10,000 - $30,000/yr
                   </span>
                 </div>
@@ -255,7 +257,8 @@ export default function FinancePage() {
       {/* Lease Programs */}
       <section className="mt-16">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ LEASE OPTIONS ]</p>
+          <h2 className="mt-3 font-display text-2xl font-semibold text-white">
             Lease Programs
           </h2>
           <p className="mt-4 max-w-2xl text-muted">
@@ -278,7 +281,7 @@ export default function FinancePage() {
                 </h3>
                 <p className="mt-2 text-sm text-muted">{item.description}</p>
                 {item.highlight && (
-                  <span className="mt-3 inline-block rounded-full bg-[var(--theme-blue,#00C2FF)]/20 px-3 py-0.5 text-xs font-semibold text-[var(--theme-blue,#00C2FF)]">
+                  <span className="mt-3 inline-block rounded-full bg-[var(--theme-blue,#00C2FF)]/20 px-3 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-blue,#00C2FF)]">
                     Most Popular
                   </span>
                 )}

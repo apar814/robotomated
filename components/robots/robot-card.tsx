@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { SafeImage } from "@/components/ui/safe-image";
-import { RoboScoreBadge } from "@/components/ui/robo-score";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { cn } from "@/lib/utils/cn";
 
@@ -25,6 +24,12 @@ function formatPrice(price: number): string {
   if (price >= 1000000) return `$${(price / 1000000).toFixed(1)}M`;
   if (price >= 1000) return `$${price.toLocaleString()}`;
   return `$${price}`;
+}
+
+function getScoreColor(score: number): string {
+  if (score >= 80) return "#10B981";
+  if (score >= 60) return "#F59E0B";
+  return "#EF4444";
 }
 
 function getKeySpec(specs: Record<string, unknown> | null): { label: string; value: string } | null {
@@ -54,7 +59,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
   const sectorCode = SECTOR_CODES[robot.category_slug];
 
   return (
-    <div className="obsidian-card group flex flex-col overflow-hidden">
+    <div className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-250 ease-out hover:-translate-y-[3px] hover:border-[rgba(14,165,233,0.3)] hover:shadow-[0_0_0_1px_rgba(14,165,233,0.1),0_8px_32px_rgba(0,0,0,0.4)]">
       {/* Compare checkbox */}
       {onCompareToggle && (
         <label
@@ -72,81 +77,94 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
         </label>
       )}
 
-      {/* Image */}
+      {/* Image area */}
       <Link href={`/explore/${robot.category_slug}/${robot.slug}`} className="block">
-        <div className="relative h-44 overflow-hidden bg-white/[0.03]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-white/[0.03]">
           {hasRealImage ? (
             <SafeImage
               src={robot.image_url!}
               alt={robot.name}
               sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
-              className="object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-105"
+              className="object-cover object-[center_20%] transition-transform duration-400 group-hover:scale-[1.04]"
               fallbackLabel={robot.manufacturer_name}
               fallbackSublabel={robot.name}
             />
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-4 text-center">
               <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
-              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{robot.manufacturer_name}</span>
-              <span className="mt-0.5 text-sm font-semibold text-white/45">{robot.name}</span>
+              <span className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{robot.manufacturer_name}</span>
+              <span className="mt-0.5 font-[family-name:var(--font-ui)] text-sm font-semibold text-white/45">{robot.name}</span>
+            </div>
+          )}
+
+          {/* Category badge - top left */}
+          {sectorCode && (
+            <div className="absolute left-3 top-3 rounded border border-white/10 bg-black/60 px-2 py-0.5 backdrop-blur-sm">
+              <span className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-white/80">
+                {robot.category_name || robot.category_slug}
+              </span>
+            </div>
+          )}
+
+          {/* RoboScore badge - top right */}
+          {robot.robo_score != null && robot.robo_score > 0 && (
+            <div className="absolute right-3 top-3 rounded-md bg-black/70 px-2.5 py-1.5 backdrop-blur-sm">
+              <div
+                className="font-[family-name:var(--font-brand)] text-lg font-bold leading-none"
+                style={{ color: getScoreColor(robot.robo_score) }}
+              >
+                {robot.robo_score}
+              </div>
+              <div className="mt-0.5 font-[family-name:var(--font-ui)] text-[8px] uppercase tracking-[0.12em] text-white/40">
+                Score
+              </div>
             </div>
           )}
         </div>
       </Link>
 
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-4">
-        {/* 1. Robot name */}
+      {/* Info area */}
+      <div className="flex flex-1 flex-col px-4 py-3.5">
+        {/* Manufacturer */}
+        <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#0EA5E9]">
+          {robot.manufacturer_name}
+        </span>
+
+        {/* Robot name */}
         <Link href={`/explore/${robot.category_slug}/${robot.slug}`}>
-          <h3 className="font-display text-sm font-semibold leading-tight text-primary transition-colors group-hover:text-electric-blue">
+          <h3 className="mt-1 font-[family-name:var(--font-ui)] text-[15px] font-semibold leading-tight text-white transition-colors group-hover:text-[#0EA5E9]">
             {robot.name}
           </h3>
         </Link>
 
-        {/* 2. Manufacturer + sector code */}
-        <div className="mt-1 flex items-center gap-2">
-          <span className="text-[10px] text-tertiary">
-            {robot.manufacturer_name}
-          </span>
-          {sectorCode && <SectorCode code={sectorCode} />}
-        </div>
-
-        {/* 3. RoboScore */}
-        {robot.robo_score != null && robot.robo_score > 0 && (
-          <div className="mt-3">
-            <RoboScoreBadge score={robot.robo_score} />
-          </div>
-        )}
-
-        {/* 4. Price */}
-        <div className="mt-2">
-          {robot.price_current != null ? (
-            <span className="font-mono text-sm font-bold text-lime">
-              {formatPrice(robot.price_current)}
-            </span>
-          ) : (
-            <span className="font-mono text-sm font-bold text-tertiary">
-              RFQ
-            </span>
-          )}
-        </div>
-
-        {/* 5. Key spec */}
+        {/* Key spec */}
         {keySpec && (
           <div className="mt-1.5">
-            <span className="font-mono text-[10px] uppercase text-tertiary">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-white/35">
               {keySpec.label} {keySpec.value}
             </span>
           </div>
         )}
 
-        {/* 6. CTA */}
-        <div className="mt-auto pt-3">
+        {/* Divider */}
+        <div className="my-2.5 border-t border-white/[0.06]" />
+
+        {/* Bottom row: price + action */}
+        <div className="mt-auto flex items-center justify-between">
+          {robot.price_current != null ? (
+            <span className="font-[family-name:var(--font-mono)] text-base font-bold text-[#C8FF00]">
+              {formatPrice(robot.price_current)}
+            </span>
+          ) : (
+            <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-white/35">
+              RFQ
+            </span>
+          )}
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className="text-[11px] font-medium text-electric-blue transition-colors hover:text-electric-blue/80"
+            className="rounded border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#0EA5E9] transition-all hover:bg-[#0EA5E9] hover:text-black"
           >
-            View Analysis →
+            View &rarr;
           </Link>
         </div>
       </div>

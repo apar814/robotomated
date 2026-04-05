@@ -42,7 +42,8 @@ export default async function ManufacturersPage() {
       <section className="border-b border-white/[0.06] px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Manufacturers", href: "/manufacturers" }]} />
-          <h1 className="mt-6 font-display text-3xl font-bold">Robot Manufacturers</h1>
+          <p className="mt-6 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MANUFACTURERS ]</p>
+          <h1 className="mt-2 font-display text-3xl font-bold">Robot Manufacturers</h1>
           <p className="mt-3 text-muted">{manufacturers.length} companies building the future of robotics.</p>
         </div>
       </section>
@@ -65,16 +66,16 @@ export default async function ManufacturersPage() {
                     </p>
                     </div>
                   </div>
-                  <span className="rounded-full bg-white/[0.04] px-2.5 py-0.5 font-mono text-xs font-medium text-muted">
+                  <span className="rounded-full bg-white/[0.04] px-2.5 py-0.5 font-[family-name:var(--font-brand)] text-xs font-medium text-muted">
                     {m.robot_count}
                   </span>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  <Link href={`/manufacturers/${m.slug}`} className="rounded-lg bg-blue/10 px-3 py-1.5 text-xs font-medium text-blue hover:bg-blue/20">
+                  <Link href={`/manufacturers/${m.slug}`} className="rounded-lg bg-blue/10 px-3 py-1.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-medium text-blue hover:bg-blue/20">
                     View Robots
                   </Link>
                   {m.website && (
-                    <a href={m.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 rounded-lg border border-white/[0.08] px-3 py-1.5 text-xs text-muted hover:text-foreground">
+                    <a href={m.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 rounded-lg border border-white/[0.08] px-3 py-1.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-muted hover:text-foreground">
                       Website
                       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

@@ -133,7 +133,8 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
         <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[3fr_2fr]">
           {/* Left: copy + form */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-blue">Every Monday at 7am</p>
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ NEWSLETTER ]</p>
+            <p className="mt-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-widest text-blue">Every Monday at 7am</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">
               The Robotomated Brief
             </h1>
@@ -144,16 +145,16 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
             {/* Stats */}
             <div className="mt-8 flex gap-8">
               <div>
-                <p className="font-mono text-2xl font-bold text-blue">{robotCount}+</p>
-                <p className="text-xs text-muted">Robots Tracked</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue">{robotCount}+</p>
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Robots Tracked</p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-green">$103B</p>
-                <p className="text-xs text-muted">Market Coverage</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-green">$103B</p>
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Market Coverage</p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-violet">51</p>
-                <p className="text-xs text-muted">Research Reports</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-violet">51</p>
+                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Research Reports</p>
               </div>
             </div>
 
@@ -205,7 +206,8 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* What you get */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-center text-xl font-bold">What&apos;s Inside Every Issue</h2>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ INSIDE EVERY ISSUE ]</p>
+          <h2 className="mt-2 text-center text-xl font-bold">What&apos;s Inside Every Issue</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { iconType: "bar-chart" as const, title: "Market Moves", desc: "Funding rounds, acquisitions, and IPOs in robotics" },
@@ -226,11 +228,12 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* Recent issues */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-center text-xl font-bold">Recent Issues</h2>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RECENT ISSUES ]</p>
+          <h2 className="mt-2 text-center text-xl font-bold">Recent Issues</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {RECENT_ISSUES.map((issue) => (
               <div key={issue.title} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-blue">{issue.date}</p>
+                <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-blue">{issue.date}</p>
                 <h3 className="mt-2 text-sm font-semibold leading-tight">{issue.title}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">{issue.preview}</p>
               </div>

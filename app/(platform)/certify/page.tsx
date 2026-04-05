@@ -127,7 +127,10 @@ export default function CertifyPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl text-center">
-          <div className="mb-6 inline-block rounded-full bg-violet/10 px-4 py-1.5 text-sm font-medium text-violet">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ CERTIFICATION HUB ]
+          </p>
+          <div className="mt-4 mb-6 inline-block rounded-full bg-violet/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-sm font-medium uppercase tracking-[0.06em] text-violet">
             RCO Certification Program
           </div>
           <h1 className="font-display text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -140,17 +143,17 @@ export default function CertifyPage() {
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-8 text-sm text-muted">
             <div className="text-center">
-              <p className="font-display text-3xl font-bold text-white">2,400+</p>
+              <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-white">2,400+</p>
               <p>Certified operators</p>
             </div>
             <div className="h-8 w-px bg-border" />
             <div className="text-center">
-              <p className="font-display text-3xl font-bold text-white">180+</p>
+              <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-white">180+</p>
               <p>Employers recognize RCO</p>
             </div>
             <div className="h-8 w-px bg-border" />
             <div className="text-center">
-              <p className="font-display text-3xl font-bold text-white">45+</p>
+              <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-white">45+</p>
               <p>Manufacturers endorse</p>
             </div>
           </div>
@@ -160,6 +163,9 @@ export default function CertifyPage() {
       {/* Certification levels */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-6xl">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ CERTIFICATION LEVELS ]
+          </p>
           <h2 className="mb-4 text-center font-display text-2xl font-bold sm:text-3xl">
             Four Levels of Mastery
           </h2>
@@ -177,15 +183,15 @@ export default function CertifyPage() {
                 {/* Badge + price */}
                 <div className="mb-4 flex items-start justify-between">
                   <span
-                    className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${LEVEL_BADGE_BG[cert.color]}`}
+                    className={`inline-flex items-center rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-[0.06em] ${LEVEL_BADGE_BG[cert.color]}`}
                   >
                     Level {cert.level}
                   </span>
                   <div className="text-right">
-                    <p className="font-display text-2xl font-bold text-white">
+                    <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white">
                       ${cert.price}
                     </p>
-                    <p className="text-xs text-muted">one-time</p>
+                    <p className="font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-muted">one-time</p>
                   </div>
                 </div>
 
@@ -198,14 +204,14 @@ export default function CertifyPage() {
                 {/* Specializations (Level 2 only) */}
                 {cert.specializations && (
                   <div className="mt-4">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                    <p className="mb-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-[0.06em] text-muted">
                       Choose your specialization
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {cert.specializations.map((spec) => (
                         <span
                           key={spec}
-                          className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted"
+                          className="rounded-full border border-border px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-muted"
                         >
                           {spec}
                         </span>
@@ -215,16 +221,16 @@ export default function CertifyPage() {
                 )}
 
                 {/* Exam details */}
-                <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 text-xs text-muted">
-                  <span>{cert.questions} questions</span>
-                  <span>{cert.duration} min</span>
-                  <span>{cert.passScore}% to pass</span>
+                <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-muted">
+                  <span><span className="font-[family-name:var(--font-brand)]">{cert.questions}</span> questions</span>
+                  <span><span className="font-[family-name:var(--font-brand)]">{cert.duration}</span> min</span>
+                  <span><span className="font-[family-name:var(--font-brand)]">{cert.passScore}%</span> to pass</span>
                   <span>Prereq: {cert.prerequisites}</span>
                 </div>
 
                 {/* Skills */}
                 <div className="mt-4">
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                  <p className="mb-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-[0.06em] text-muted">
                     Skills validated
                   </p>
                   <ul className="grid grid-cols-2 gap-1 text-xs text-muted">
@@ -266,26 +272,29 @@ export default function CertifyPage() {
       {/* Trust bar */}
       <section className="border-t border-border px-4 py-12">
         <div className="mx-auto max-w-4xl text-center">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            [ WHY IT MATTERS ]
+          </p>
           <h2 className="font-display text-xl font-bold">
             Why RCO Matters
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             <div>
-              <p className="font-display text-lg font-bold text-blue">Industry Standard</p>
+              <p className="font-[family-name:var(--font-ui)] text-lg font-bold uppercase tracking-[0.06em] text-blue">Industry Standard</p>
               <p className="mt-2 text-sm text-muted">
                 Built on real-world operational requirements, not academic theory.
                 RCO validates what employers actually need.
               </p>
             </div>
             <div>
-              <p className="font-display text-lg font-bold text-violet">Manufacturer Endorsed</p>
+              <p className="font-[family-name:var(--font-ui)] text-lg font-bold uppercase tracking-[0.06em] text-violet">Manufacturer Endorsed</p>
               <p className="mt-2 text-sm text-muted">
                 Leading robotics manufacturers recognize RCO credentials
                 for operator certification and partner programs.
               </p>
             </div>
             <div>
-              <p className="font-display text-lg font-bold text-green">Publicly Verifiable</p>
+              <p className="font-[family-name:var(--font-ui)] text-lg font-bold uppercase tracking-[0.06em] text-green">Publicly Verifiable</p>
               <p className="mt-2 text-sm text-muted">
                 Every credential has a unique verification link. Employers
                 can confirm certification status instantly.

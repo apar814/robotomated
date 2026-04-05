@@ -134,8 +134,8 @@ export default function EnterprisePage() {
 
       {/* Hero */}
       <section className="mt-8 text-center">
-        <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-[var(--theme-blue,#00C2FF)]">
-          Enterprise Platform
+        <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ ENTERPRISE ]
         </span>
         <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
           The robotics platform for serious operators.
@@ -164,7 +164,8 @@ export default function EnterprisePage() {
 
       {/* Features Grid */}
       <section className="mt-24">
-        <h2 className="text-center font-display text-2xl font-semibold text-white sm:text-3xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ CAPABILITIES ]</p>
+        <h2 className="mt-3 text-center font-display text-2xl font-semibold text-white sm:text-3xl">
           Built for Enterprise Scale
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted">
@@ -178,7 +179,7 @@ export default function EnterprisePage() {
               className="glass relative rounded-xl border border-white/10 p-6"
             >
               {feature.badge ? (
-                <span className="absolute right-4 top-4 rounded-full bg-[var(--theme-violet,#7B2FFF)]/20 px-2.5 py-0.5 text-[10px] font-semibold text-[var(--theme-violet,#7B2FFF)]">
+                <span className="absolute right-4 top-4 rounded-full bg-[var(--theme-violet,#7B2FFF)]/20 px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-violet,#7B2FFF)]">
                   {feature.badge}
                 </span>
               ) : null}
@@ -193,7 +194,8 @@ export default function EnterprisePage() {
 
       {/* Pricing */}
       <section className="mt-24">
-        <h2 className="text-center font-display text-2xl font-semibold text-white sm:text-3xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ PRICING ]</p>
+        <h2 className="mt-3 text-center font-display text-2xl font-semibold text-white sm:text-3xl">
           Pricing
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted">
@@ -211,7 +213,7 @@ export default function EnterprisePage() {
               }`}
             >
               {tier.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--theme-blue,#00C2FF)] px-4 py-1 text-xs font-semibold text-[var(--theme-navy,#0A0F1E)]">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--theme-blue,#00C2FF)] px-4 py-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-navy,#0A0F1E)]">
                   Most Popular
                 </span>
               )}
@@ -220,7 +222,7 @@ export default function EnterprisePage() {
               </h3>
               <p className="mt-1 text-sm text-muted">{tier.description}</p>
               <div className="mt-6 flex items-baseline">
-                <span className="font-display text-4xl font-bold text-white">
+                <span className="font-[family-name:var(--font-mono)] text-4xl font-bold text-white">
                   {tier.price}
                 </span>
                 {tier.period && (
@@ -268,7 +270,8 @@ export default function EnterprisePage() {
       {/* Contact Form */}
       <section id="contact" className="mt-24">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <h2 className="font-display text-2xl font-semibold text-white">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ CONTACT ]</p>
+          <h2 className="mt-3 font-display text-2xl font-semibold text-white">
             Contact Enterprise Sales
           </h2>
           <p className="mt-2 text-muted">

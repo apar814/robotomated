@@ -79,7 +79,8 @@ export default function AboutPage() {
         style={{ background: "#080808" }}
       >
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-display text-4xl font-extrabold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] animate-fade-up" style={{ animationDelay: "0ms", animationFillMode: "both" }}>[ OUR MISSION ]</p>
+          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
             <span
               className="block animate-fade-up text-white"
               style={{ animationDelay: "0ms", animationFillMode: "both" }}
@@ -116,8 +117,9 @@ export default function AboutPage() {
       {/* ── SECTION 2: THE PROBLEM ── */}
       <section className="px-4 py-20 sm:px-6 lg:px-8" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-5xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ THE PROBLEM ]</p>
           <h2
-            className="text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+            className="mt-3 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The world faces an impossible labor equation.
@@ -147,7 +149,7 @@ export default function AboutPage() {
                 }}
               >
                 <div
-                  className="font-mono text-4xl font-extrabold sm:text-5xl"
+                  className="font-[family-name:var(--font-brand)] text-4xl font-extrabold sm:text-5xl"
                   style={{ color: "var(--theme-accent-blue)" }}
                 >
                   {item.stat}
@@ -178,8 +180,9 @@ export default function AboutPage() {
         style={{ background: "var(--theme-section-alt, var(--theme-surface))" }}
       >
         <div className="mx-auto max-w-5xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ BELIEF SYSTEM ]</p>
           <h2
-            className="mb-12 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+            className="mt-3 mb-12 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             We believe three things.
@@ -270,7 +273,8 @@ export default function AboutPage() {
         }}
       >
         <div className="mx-auto max-w-4xl text-center">
-          <blockquote className="font-display text-2xl font-bold leading-snug tracking-tight text-white sm:text-3xl lg:text-4xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-white/60 mb-6">[ MISSION STATEMENT ]</p>
+          <blockquote className="font-display text-3xl font-extrabold leading-snug tracking-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
             We accelerate the transition to a world where humans work on what matters --
             and robots handle the rest.
           </blockquote>
@@ -283,8 +287,9 @@ export default function AboutPage() {
         style={{ background: "var(--theme-bg)" }}
       >
         <div className="mx-auto max-w-5xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ PLATFORM CHANNELS ]</p>
           <h2
-            className="mb-4 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
+            className="mt-3 mb-4 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             One platform. Five ways to participate in the robotics economy.
@@ -308,7 +313,7 @@ export default function AboutPage() {
                 }}
               >
                 <div
-                  className="mb-4 font-mono text-3xl font-extrabold"
+                  className="mb-4 font-[family-name:var(--font-brand)] text-3xl font-extrabold"
                   style={{ color: "var(--theme-accent-blue)" }}
                 >
                   {channel.number}
@@ -347,8 +352,9 @@ export default function AboutPage() {
       {/* ── SECTION 6: THE NUMBERS ── */}
       <section className="px-4 py-20 sm:px-6 lg:px-8" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-5xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ BY THE NUMBERS ]</p>
           <h2
-            className="mb-14 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="mt-3 mb-14 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The landscape we cover.
@@ -358,7 +364,7 @@ export default function AboutPage() {
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div
-                  className="font-mono text-3xl font-extrabold sm:text-4xl"
+                  className="font-[family-name:var(--font-brand)] text-3xl font-extrabold sm:text-4xl"
                   style={{ color: "var(--theme-accent-blue)" }}
                 >
                   {stat.value}
@@ -381,8 +387,9 @@ export default function AboutPage() {
         style={{ background: "var(--theme-bg)" }}
       >
         <div className="mx-auto max-w-3xl">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TEAM ETHOS ]</p>
           <h2
-            className="mb-10 font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="mt-3 mb-10 font-display text-2xl font-bold tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             We are independent. We are buyers-first.
@@ -441,7 +448,7 @@ export default function AboutPage() {
               }}
             >
               <span
-                className="mb-1 font-mono text-[10px] uppercase tracking-widest"
+                className="mb-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-widest"
                 style={{ color: "var(--theme-text-muted)" }}
               >
                 For Businesses
@@ -476,7 +483,7 @@ export default function AboutPage() {
               }}
             >
               <span
-                className="mb-1 font-mono text-[10px] uppercase tracking-widest"
+                className="mb-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-widest"
                 style={{ color: "var(--theme-text-muted)" }}
               >
                 For Providers
@@ -511,7 +518,7 @@ export default function AboutPage() {
               }}
             >
               <span
-                className="mb-1 font-mono text-[10px] uppercase tracking-widest"
+                className="mb-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-widest"
                 style={{ color: "var(--theme-text-muted)" }}
               >
                 For Manufacturers

@@ -57,9 +57,9 @@ export function RoboWorkSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
-            RoboWork
+          <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            Deploy Channel
           </span>
         </div>
 
@@ -87,7 +87,7 @@ export function RoboWorkSection() {
                   {job.title}
                 </h3>
                 {job.urgent && (
-                  <span className="shrink-0 rounded bg-red-500/15 px-2 py-0.5 font-mono text-[11px] font-bold uppercase tracking-wider text-red-400">
+                  <span className="shrink-0 rounded bg-red-500/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.06em] text-red-400">
                     Urgent
                   </span>
                 )}
@@ -98,7 +98,7 @@ export function RoboWorkSection() {
                 {job.tags.map((tag) => (
                   <span
                     key={tag.label}
-                    className={`rounded-full px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider ${tag.color}`}
+                    className={`rounded-full px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.06em] ${tag.color}`}
                   >
                     {tag.label}
                   </span>
@@ -131,7 +131,7 @@ export function RoboWorkSection() {
                   <span>{job.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[14px] font-bold text-lime">
+                  <span className="font-[family-name:var(--font-mono)] text-[14px] font-bold text-lime">
                     {job.budget}
                   </span>
                 </div>
@@ -139,7 +139,7 @@ export function RoboWorkSection() {
 
               {/* Footer */}
               <div className="mt-4 flex items-center justify-between border-t border-border-subtle pt-3">
-                <span className="font-mono text-[12px] text-electric-blue">
+                <span className="font-[family-name:var(--font-ui)] text-[12px] font-medium text-electric-blue">
                   {job.bids}
                 </span>
                 <span className="text-[12px] text-ghost">{job.posted}</span>

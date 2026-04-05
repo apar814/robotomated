@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils/cn";
 // ── Data ──
 
 const PRICE_OPTIONS = [
-  { label: "Any Price", min: "", max: "" },
-  { label: "Under $10K", min: "", max: "10000" },
-  { label: "$10K - $50K", min: "10000", max: "50000" },
-  { label: "$50K - $100K", min: "50000", max: "100000" },
-  { label: "$100K - $500K", min: "100000", max: "500000" },
-  { label: "$500K+", min: "500000", max: "" },
-  { label: "RaaS Only", min: "raas", max: "raas" },
+  { label: "Any Price", min: "", max: "", hasMoney: false },
+  { label: "Under $10K", min: "", max: "10000", hasMoney: true },
+  { label: "$10K – $50K", min: "10000", max: "50000", hasMoney: true },
+  { label: "$50K – $100K", min: "50000", max: "100000", hasMoney: true },
+  { label: "$100K – $500K", min: "100000", max: "500000", hasMoney: true },
+  { label: "$500K+", min: "500000", max: "", hasMoney: true },
+  { label: "RaaS Only", min: "raas", max: "raas", hasMoney: false },
 ];
 
 const INDUSTRY_OPTIONS = [
@@ -181,14 +181,14 @@ export function FilterBar({
           {hasFilters && (
             <button
               onClick={onClear}
-              className="shrink-0 text-xs font-medium transition-colors hover:opacity-80"
+              className="shrink-0 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-wide transition-colors hover:opacity-80"
               style={{ color: "#FF006E" }}
             >
               Clear filters
             </button>
           )}
-          <span className="shrink-0 text-xs" style={{ color: "var(--theme-text-muted)" }}>
-            {totalCount} of {totalAll} robots
+          <span className="shrink-0 font-[family-name:var(--font-ui)] text-xs uppercase tracking-wide" style={{ color: "var(--theme-text-muted)" }}>
+            <span className="font-[family-name:var(--font-brand)]">{totalCount}</span> of <span className="font-[family-name:var(--font-brand)]">{totalAll}</span> robots
           </span>
 
           {/* Mobile filter trigger */}
@@ -207,7 +207,7 @@ export function FilterBar({
             {activeFilters.map((f) => (
               <span
                 key={f.key}
-                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium"
+                className={cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium", f.key === "price" && "font-[family-name:var(--font-mono)]")}
                 style={{
                   background: "rgba(14,165,233,0.1)",
                   border: "1px solid rgba(14,165,233,0.3)",
@@ -235,7 +235,7 @@ export function FilterBar({
                   key={chip.label}
                   href={`/explore/${chip.value}`}
                   className={cn(
-                    "rounded-full border px-2.5 py-1 text-[11px] transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9]",
+                    "rounded-full border px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9]",
                   )}
                   style={{
                     borderColor: "var(--theme-tag-border)",
@@ -252,7 +252,7 @@ export function FilterBar({
               <button
                 key={chip.label}
                 onClick={() => isActive ? removeFilter({ key: chip.filter, label: chip.label, value: chip.value }) : handleQuickChip(chip)}
-                className="rounded-full border px-2.5 py-1 text-[11px] transition-colors"
+                className="rounded-full border px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors"
                 style={{
                   borderColor: isActive ? "#0EA5E9" : "var(--theme-tag-border)",
                   color: isActive ? "#0EA5E9" : "var(--theme-tag-text)",
@@ -270,13 +270,13 @@ export function FilterBar({
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-[var(--theme-bg)] lg:hidden">
           <div className="flex items-center justify-between border-b px-4 py-4" style={{ borderColor: "var(--theme-border)" }}>
-            <h2 className="text-lg font-bold" style={{ color: "var(--theme-text-primary)" }}>Filters</h2>
+            <h2 className="font-[family-name:var(--font-brand)] text-lg font-bold uppercase tracking-wide" style={{ color: "var(--theme-text-primary)" }}>Filters</h2>
             <button onClick={() => setMobileOpen(false)} className="text-2xl" style={{ color: "var(--theme-text-muted)" }}>&times;</button>
           </div>
           <div className="flex-1 overflow-y-auto px-4 py-6 space-y-6">
             {/* Search */}
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Search</label>
+              <label className="mb-2 block font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Search</label>
               <input
                 type="text"
                 placeholder="Search robots..."
@@ -288,13 +288,14 @@ export function FilterBar({
             </div>
             {/* Price */}
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Price</label>
+              <label className="mb-2 block font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Price</label>
               <div className="grid grid-cols-2 gap-2">
                 {PRICE_OPTIONS.map(p => (
                   <button
                     key={p.label}
                     onClick={() => onPriceChange(p.min, p.max)}
                     className={cn("rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors",
+                      p.hasMoney && "font-[family-name:var(--font-mono)] dark:text-[#84CC16]",
                       priceMin === p.min && priceMax === p.max ? "border-[#0EA5E9] text-[#0EA5E9]" : ""
                     )}
                     style={{
@@ -310,7 +311,7 @@ export function FilterBar({
             </div>
             {/* Industry */}
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Industry</label>
+              <label className="mb-2 block font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Industry</label>
               <div className="grid grid-cols-2 gap-2">
                 {INDUSTRY_OPTIONS.map(ind => {
                   const isActive = (industry || "All Industries") === ind;
@@ -333,7 +334,7 @@ export function FilterBar({
             </div>
             {/* Sort */}
             <div>
-              <label className="mb-2 block text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Sort</label>
+              <label className="mb-2 block font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>Sort</label>
               {SORT_OPTIONS.map(s => {
                 const isActive = sortBy === s.value;
                 return (
@@ -359,7 +360,7 @@ export function FilterBar({
               className="w-full rounded-lg py-3 text-center text-sm font-bold text-black"
               style={{ background: "#0EA5E9" }}
             >
-              Apply ({totalCount} results)
+              Apply (<span className="font-[family-name:var(--font-brand)]">{totalCount}</span> results)
             </button>
           </div>
         </div>
@@ -396,7 +397,7 @@ function FilterDropdown({
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[13px] font-medium transition-colors",
+          "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-wide transition-colors",
         )}
         style={{
           borderColor: isDefault ? "var(--theme-border)" : "rgba(14,165,233,0.3)",

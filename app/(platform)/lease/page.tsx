@@ -137,11 +137,14 @@ export default function LeasePage() {
 
       {/* Hero */}
       <section className="py-16 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ LEASE CHANNEL ]
+        </p>
+        <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
           Get a robot for{" "}
-          <span className="text-[#00C2FF]">$3,200/month</span>
+          <span className="font-[family-name:var(--font-mono)] text-[#00C2FF]">$3,200/month</span>
           <br />
-          instead of $150,000 upfront
+          instead of <span className="font-[family-name:var(--font-mono)]">$150,000</span> upfront
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
           Robot leasing gives you enterprise automation without the capital
@@ -166,7 +169,10 @@ export default function LeasePage() {
 
       {/* Benefits Grid */}
       <section className="py-12">
-        <h2 className="font-display text-center text-2xl font-bold sm:text-3xl">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ BENEFITS ]
+        </p>
+        <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
           Why Lease a Robot
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -181,7 +187,10 @@ export default function LeasePage() {
 
       {/* Lease Calculator */}
       <section className="py-12">
-        <h2 className="font-display text-center text-2xl font-bold sm:text-3xl">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ CALCULATOR ]
+        </p>
+        <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
           Estimate Your Monthly Payment
         </h2>
         <p className="mt-2 text-center text-muted">
@@ -194,7 +203,10 @@ export default function LeasePage() {
 
       {/* Lease vs Buy vs Hire */}
       <section className="py-12">
-        <h2 className="font-display text-center text-2xl font-bold sm:text-3xl">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ COMPARISON ]
+        </p>
+        <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
           Lease vs Buy vs Hire
         </h2>
         <p className="mt-2 text-center text-muted">
@@ -204,16 +216,16 @@ export default function LeasePage() {
           <table className="w-full min-w-[600px] border-collapse">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="px-4 py-3 text-left text-sm font-semibold text-muted">
+                <th className="px-4 py-3 text-left font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
                   Factor
                 </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold text-[#00C2FF]">
+                <th className="px-4 py-3 text-left font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em] text-[#00C2FF]">
                   Lease
                 </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">
+                <th className="px-4 py-3 text-left font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em]">
                   Buy
                 </th>
-                <th className="px-4 py-3 text-left text-sm font-semibold">
+                <th className="px-4 py-3 text-left font-[family-name:var(--font-ui)] text-[11px] font-semibold uppercase tracking-[0.08em]">
                   Hire Human
                 </th>
               </tr>
@@ -227,11 +239,11 @@ export default function LeasePage() {
                   <td className="px-4 py-3 text-sm font-medium">
                     {row.label}
                   </td>
-                  <td className="px-4 py-3 text-sm text-[#00E5A0]">
+                  <td className="px-4 py-3 font-[family-name:var(--font-mono)] text-sm text-[#00E5A0]">
                     {row.lease}
                   </td>
-                  <td className="px-4 py-3 text-sm text-muted">{row.buy}</td>
-                  <td className="px-4 py-3 text-sm text-muted">{row.hire}</td>
+                  <td className="px-4 py-3 font-[family-name:var(--font-mono)] text-sm text-muted">{row.buy}</td>
+                  <td className="px-4 py-3 font-[family-name:var(--font-mono)] text-sm text-muted">{row.hire}</td>
                 </tr>
               ))}
             </tbody>
@@ -241,13 +253,16 @@ export default function LeasePage() {
 
       {/* How It Works */}
       <section className="py-12">
-        <h2 className="font-display text-center text-2xl font-bold sm:text-3xl">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ PROCESS ]
+        </p>
+        <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
           How It Works
         </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
             <div key={s.step} className="glass rounded-xl p-6">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#7B2FFF]/20 text-sm font-bold text-[#7B2FFF]">
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#7B2FFF]/20 font-[family-name:var(--font-brand)] text-sm font-bold text-[#7B2FFF]">
                 {s.step}
               </div>
               <h3 className="font-display text-lg font-semibold">{s.title}</h3>
@@ -259,7 +274,10 @@ export default function LeasePage() {
 
       {/* Bottom CTA */}
       <section className="py-16 text-center">
-        <h2 className="font-display text-2xl font-bold sm:text-3xl">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          [ GET STARTED ]
+        </p>
+        <h2 className="mt-2 font-display text-2xl font-bold sm:text-3xl">
           Ready to Automate Without the Upfront Cost?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-muted">
