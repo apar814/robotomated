@@ -327,7 +327,7 @@ export function Header() {
             {/* Search trigger */}
             <button
               onClick={openSearch}
-              className="hidden items-center gap-2 rounded-lg border px-3 py-2 transition-colors hover:border-[#0EA5E9]/40 md:flex"
+              className="hidden items-center gap-2 rounded-[10px] border px-3.5 py-2 transition-all hover:border-[#0EA5E9]/40 hover:shadow-[0_0_12px_rgba(14,165,233,0.1)] md:flex"
               style={{
                 width: "clamp(180px, 20vw, 280px)",
                 borderColor: "var(--theme-border)",
@@ -339,7 +339,7 @@ export function Header() {
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
               </svg>
               <span className="flex-1 truncate text-[13px]">Search robots...</span>
-              <kbd className="shrink-0 rounded px-1.5 py-0.5 font-mono text-[10px]" style={{ background: "rgba(255,255,255,0.08)", color: "var(--theme-text-muted)" }}>
+              <kbd className="shrink-0 rounded px-1.5 py-0.5 font-mono text-[10px]" style={{ background: "var(--theme-tag-bg)", color: "var(--theme-text-muted)", border: "1px solid var(--theme-border)" }}>
                 &#8984;K
               </kbd>
             </button>

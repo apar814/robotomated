@@ -59,6 +59,9 @@ const STARTER_CHIPS = [
   { label: "Post a job", query: "How do I post a job on RoboWork?" },
 ];
 
+const TICKER_TEXT =
+  "FLEET STATUS: 975 ROBOTS INDEXED \u00B7\u00B7\u00B7 MARKET: $24T PROJECTED \u00B7\u00B7\u00B7 LAST ANALYSIS: 0:03 AGO \u00B7\u00B7\u00B7 SAFETY STANDARDS: 2027 RATIFICATION \u00B7\u00B7\u00B7 HUMANOID COST: -40% YoY \u00B7\u00B7\u00B7";
+
 // ── Component ──
 
 export function RobotimusHeroPanel() {
@@ -123,175 +126,346 @@ export function RobotimusHeroPanel() {
   }, [inputValue, router]);
 
   return (
-    <div
-      className="w-full max-w-[420px] transition-all duration-500"
-      style={{
-        opacity: mounted ? 1 : 0,
-        transform: mounted ? "translateY(0)" : "translateY(20px)",
-      }}
-    >
-      {/* Panel card */}
+    <>
+      {/* Keyframe animations */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes panelGlow {
+          0%, 100% { box-shadow: 0 0 40px rgba(14,165,233,0.15), 0 0 80px rgba(14,165,233,0.05); }
+          50% { box-shadow: 0 0 40px rgba(14,165,233,0.25), 0 0 80px rgba(14,165,233,0.1); }
+        }
+        @keyframes pulseRing {
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(1.8); opacity: 0; }
+        }
+        @keyframes dotPulse {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+          40% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes greenPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      ` }} />
+
       <div
-        className="overflow-hidden rounded-2xl border"
+        className="w-full max-w-[420px] transition-all duration-500"
         style={{
-          backgroundColor: "var(--theme-surface)",
-          borderColor: "rgba(14,165,233,0.2)",
-          boxShadow: "0 0 40px rgba(14,165,233,0.08)",
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? "translateY(0)" : "translateY(20px)",
         }}
       >
-        {/* Header */}
-        <div className="flex items-center gap-3 border-b px-4 py-3" style={{ borderColor: "var(--theme-border)" }}>
-          <div className="relative">
-            <RobotimusAvatar size={48} />
-            <span
-              className="absolute -bottom-0.5 -right-0.5 block h-3 w-3 rounded-full border-2 bg-emerald-500"
-              style={{ borderColor: "var(--theme-surface)" }}
-            />
-          </div>
-          <div className="flex-1">
-            <p className="text-base font-bold" style={{ color: "var(--theme-text-primary)" }}>Robotimus</p>
-            <p className="text-xs" style={{ color: "var(--theme-text-muted)" }}>Your robotics advisor</p>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="text-[11px] font-medium text-emerald-500">Online</span>
-          </div>
-        </div>
+        {/* Panel card */}
+        <div
+          className="relative overflow-hidden"
+          style={{
+            background: "rgba(0, 0, 0, 0.85)",
+            backdropFilter: "blur(24px) saturate(180%)",
+            WebkitBackdropFilter: "blur(24px) saturate(180%)",
+            border: "1px solid rgba(14,165,233,0.3)",
+            borderRadius: "16px",
+            animation: "panelGlow 4s ease-in-out infinite",
+          }}
+        >
+          {/* Corner brackets — top-left */}
+          <span
+            className="pointer-events-none absolute left-0 top-0"
+            style={{
+              width: "12px",
+              height: "12px",
+              borderLeft: "2px solid rgba(14,165,233,0.4)",
+              borderTop: "2px solid rgba(14,165,233,0.4)",
+            }}
+          />
+          {/* Corner brackets — top-right */}
+          <span
+            className="pointer-events-none absolute right-0 top-0"
+            style={{
+              width: "12px",
+              height: "12px",
+              borderRight: "2px solid rgba(14,165,233,0.4)",
+              borderTop: "2px solid rgba(14,165,233,0.4)",
+            }}
+          />
 
-        {/* Chat messages */}
-        <div className="h-[240px] overflow-hidden px-4 py-4 md:h-[240px]">
-          <div className="flex flex-col gap-3">
-            {conversation.slice(0, visibleMessages).map((msg, i) => (
+          {/* Header */}
+          <div
+            className="flex items-center gap-3 px-4 py-3"
+            style={{
+              background: "rgba(14,165,233,0.08)",
+              borderBottom: "1px solid rgba(14,165,233,0.15)",
+            }}
+          >
+            <div className="relative">
+              {/* Avatar with gradient background */}
               <div
-                key={`${convoIndex}-${i}`}
-                className="transition-opacity duration-300"
-                style={{ opacity: 1 }}
+                className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full"
+                style={{
+                  background: "linear-gradient(135deg, #0EA5E9, #7B2FFF)",
+                }}
               >
-                {msg.role === "user" ? (
-                  <div className="flex justify-end">
-                    <div
-                      className="max-w-[80%] rounded-xl rounded-br-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-white"
-                      style={{ backgroundColor: "#0EA5E9" }}
-                    >
-                      {msg.text}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex items-start gap-2">
-                    <div className="mt-1 shrink-0">
-                      <RobotimusAvatar size={24} />
-                    </div>
-                    <div>
+                <RobotimusAvatar size={32} />
+              </div>
+              {/* Pulse ring */}
+              <span
+                className="pointer-events-none absolute inset-0 rounded-full"
+                style={{
+                  border: "2px solid rgba(14,165,233,0.5)",
+                  animation: "pulseRing 2s ease-out infinite",
+                }}
+              />
+            </div>
+            <div className="flex-1">
+              <p
+                className="font-[family-name:var(--font-brand)] text-[13px] font-semibold text-white"
+              >
+                ROBOTIMUS
+              </p>
+              <p
+                className="font-[family-name:var(--font-ui)] text-[9px] tracking-[0.12em]"
+                style={{ color: "rgba(255,255,255,0.4)" }}
+              >
+                AI ROBOTICS ADVISOR
+              </p>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span
+                className="block h-1.5 w-1.5 rounded-full"
+                style={{
+                  backgroundColor: "#10B981",
+                  animation: "greenPulse 2s ease-in-out infinite",
+                }}
+              />
+              <span
+                className="font-[family-name:var(--font-ui)] text-[9px] tracking-[0.08em]"
+                style={{ color: "#10B981" }}
+              >
+                ONLINE
+              </span>
+            </div>
+          </div>
+
+          {/* Chat messages */}
+          <div className="h-[240px] overflow-hidden px-4 py-4 md:h-[240px]">
+            <div className="flex flex-col gap-3">
+              {conversation.slice(0, visibleMessages).map((msg, i) => (
+                <div
+                  key={`${convoIndex}-${i}`}
+                  className="transition-opacity duration-300"
+                  style={{ opacity: 1 }}
+                >
+                  {msg.role === "user" ? (
+                    <div className="flex justify-end">
                       <div
-                        className="max-w-full rounded-xl rounded-bl-sm border px-3.5 py-2.5 text-[13px] leading-relaxed"
+                        className="max-w-[80%] rounded-xl rounded-br-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-white"
                         style={{
-                          backgroundColor: "var(--theme-card)",
-                          borderColor: "var(--theme-border)",
-                          color: "var(--theme-text-primary)",
+                          background: "linear-gradient(135deg, #0EA5E9, #0284C7)",
+                          boxShadow: "0 4px 12px rgba(14,165,233,0.3)",
                         }}
                       >
                         {msg.text}
                       </div>
-                      {msg.chips && (
-                        <div className="mt-2 flex flex-wrap gap-1.5">
-                          {msg.chips.map((chip) => (
-                            <span
-                              key={chip.label}
-                              className="inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium"
-                              style={{
-                                backgroundColor: "rgba(14,165,233,0.1)",
-                                border: "1px solid rgba(14,165,233,0.2)",
-                                color: "#0EA5E9",
-                              }}
-                            >
-                              {chip.label}
-                              <span className="opacity-70">{chip.score}&uarr;</span>
-                            </span>
-                          ))}
-                        </div>
-                      )}
                     </div>
+                  ) : (
+                    <div className="flex items-start gap-2">
+                      <div className="mt-1 shrink-0">
+                        <RobotimusAvatar size={24} />
+                      </div>
+                      <div>
+                        <div
+                          className="max-w-full rounded-xl rounded-bl-sm px-3.5 py-2.5 text-[13px] leading-relaxed"
+                          style={{
+                            background: "rgba(255,255,255,0.04)",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                            borderLeft: "2px solid #0EA5E9",
+                            color: "rgba(255,255,255,0.85)",
+                          }}
+                        >
+                          {msg.text}
+                        </div>
+                        {msg.chips && (
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {msg.chips.map((chip) => (
+                              <span
+                                key={chip.label}
+                                className="inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium"
+                                style={{
+                                  backgroundColor: "rgba(14,165,233,0.08)",
+                                  border: "1px solid rgba(14,165,233,0.2)",
+                                  color: "#0EA5E9",
+                                }}
+                              >
+                                {chip.label}
+                                <span className="opacity-70">{chip.score}&uarr;</span>
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              {/* Typing indicator */}
+              {showTyping && (
+                <div className="flex items-start gap-2">
+                  <div className="mt-1 shrink-0">
+                    <RobotimusAvatar size={24} />
                   </div>
-                )}
-              </div>
-            ))}
-
-            {/* Typing indicator */}
-            {showTyping && (
-              <div className="flex items-start gap-2">
-                <div className="mt-1 shrink-0">
-                  <RobotimusAvatar size={24} />
+                  <div
+                    className="flex items-center gap-2 rounded-xl rounded-bl-sm px-4 py-3"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderLeft: "2px solid #0EA5E9",
+                    }}
+                  >
+                    <div className="flex items-center gap-1">
+                      <span
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "0ms" }}
+                      />
+                      <span
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "200ms" }}
+                      />
+                      <span
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "400ms" }}
+                      />
+                    </div>
+                    <span
+                      className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.15em]"
+                      style={{ color: "rgba(14,165,233,0.6)" }}
+                    >
+                      PROCESSING...
+                    </span>
+                  </div>
                 </div>
-                <div
-                  className="flex items-center gap-1.5 rounded-xl rounded-bl-sm border px-4 py-3"
-                  style={{
-                    backgroundColor: "var(--theme-card)",
-                    borderColor: "var(--theme-border)",
-                  }}
-                >
-                  <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "0ms" }} />
-                  <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "150ms" }} />
-                  <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "300ms" }} />
-                  <span className="ml-2 text-xs" style={{ color: "var(--theme-text-muted)" }}>Robotimus is thinking...</span>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Input bar */}
-        <div className="border-t px-3 py-3" style={{ borderColor: "var(--theme-border)" }}>
+          {/* Data ticker */}
           <div
-            className="flex items-center gap-2 rounded-lg border px-3.5 py-2.5 transition-colors focus-within:border-[#0EA5E9] focus-within:shadow-[0_0_0_3px_rgba(14,165,233,0.15)]"
+            className="relative overflow-hidden"
             style={{
-              backgroundColor: "var(--theme-input-bg)",
-              borderColor: "var(--theme-input-border)",
+              height: "24px",
+              background: "rgba(0,0,0,0.3)",
+              borderTop: "1px solid rgba(14,165,233,0.1)",
             }}
           >
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-              placeholder={PLACEHOLDERS[placeholderIndex]}
-              className="min-w-0 flex-1 bg-transparent text-[13px] outline-none placeholder:transition-opacity"
-              style={{ color: "var(--theme-text-primary)" }}
-            />
-            <button
-              onClick={handleSubmit}
-              className="shrink-0 rounded-md bg-[#0EA5E9] px-3 py-1.5 text-[13px] font-semibold text-black transition-colors hover:bg-[#0EA5E9]/90"
+            <div
+              className="absolute top-0 flex h-full items-center whitespace-nowrap font-[family-name:var(--font-mono)] text-[9px]"
+              style={{
+                color: "rgba(14,165,233,0.5)",
+                animation: "ticker 30s linear infinite",
+              }}
             >
-              Ask &rarr;
-            </button>
+              <span className="px-4">{TICKER_TEXT}</span>
+              <span className="px-4">{TICKER_TEXT}</span>
+            </div>
+          </div>
+
+          {/* Suggestion chips */}
+          <div className="flex flex-wrap gap-1.5 px-4 py-2.5">
+            {STARTER_CHIPS.map((chip) => (
+              <Link
+                key={chip.label}
+                href={`/advisor?q=${encodeURIComponent(chip.query)}`}
+                className="rounded-full px-2.5 py-1 text-[11px] transition-all duration-200"
+                style={{
+                  backgroundColor: "rgba(14,165,233,0.08)",
+                  border: "1px solid rgba(14,165,233,0.2)",
+                  color: "#0EA5E9",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.backgroundColor = "rgba(14,165,233,0.15)";
+                  el.style.borderColor = "rgba(14,165,233,0.4)";
+                  el.style.transform = "translateY(-1px)";
+                  el.style.boxShadow = "0 4px 12px rgba(14,165,233,0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.backgroundColor = "rgba(14,165,233,0.08)";
+                  el.style.borderColor = "rgba(14,165,233,0.2)";
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "none";
+                }}
+              >
+                {chip.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Input area */}
+          <div
+            className="px-3 py-3"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              borderTop: "1px solid rgba(14,165,233,0.15)",
+            }}
+          >
+            <div
+              className="flex items-center gap-2 rounded-lg px-3.5 py-2.5 transition-all duration-200"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+              onFocusCapture={(e) => {
+                e.currentTarget.style.borderColor = "rgba(14,165,233,0.4)";
+                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(14,165,233,0.1)";
+              }}
+              onBlurCapture={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                placeholder={PLACEHOLDERS[placeholderIndex]}
+                className="min-w-0 flex-1 bg-transparent text-[13px] outline-none"
+                style={{
+                  color: "rgba(255,255,255,0.9)",
+                }}
+              />
+              <button
+                onClick={handleSubmit}
+                className="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-semibold text-black transition-all duration-200"
+                style={{
+                  background: "linear-gradient(135deg, #0EA5E9, #0284C7)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(14,165,233,0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                Ask &rarr;
+              </button>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="px-4 pb-3 pt-1 text-center">
+            <p
+              className="font-[family-name:var(--font-brand)] text-[8px] tracking-[0.12em]"
+              style={{ color: "rgba(255,255,255,0.2)" }}
+            >
+              POWERED BY CLAUDE &middot; INDEPENDENT &middot; NO MANUFACTURER PAYS
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Starter chips */}
-      <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {STARTER_CHIPS.map((chip) => (
-          <Link
-            key={chip.label}
-            href={`/advisor?q=${encodeURIComponent(chip.query)}`}
-            className="rounded-full border px-2.5 py-1.5 text-[11px] transition-colors hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
-            style={{
-              backgroundColor: "var(--theme-tag-bg)",
-              borderColor: "var(--theme-tag-border)",
-              color: "var(--theme-tag-text)",
-            }}
-          >
-            {chip.label}
-          </Link>
-        ))}
-      </div>
-
-      {/* Footer text */}
-      <p className="mt-3 text-center text-[10px]" style={{ color: "var(--theme-text-muted)" }}>
-        Powered by Claude &middot; Independent &middot; No manufacturer pays for recommendations
-      </p>
-    </div>
+    </>
   );
 }

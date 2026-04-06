@@ -501,8 +501,8 @@ body::before {
   --theme-nav-bg: rgba(255,255,255,0.95);
   --theme-nav-border: rgba(10,22,40,0.08);
   --theme-text-primary: #0A1628;
-  --theme-text-secondary: rgba(10,22,40,0.6);
-  --theme-text-muted: rgba(10,22,40,0.35);
+  --theme-text-secondary: rgba(10,22,40,0.7);
+  --theme-text-muted: rgba(10,22,40,0.5);
   --theme-text-inverse: #FFFFFF;
   --theme-accent-blue: #0284C7;
   --theme-accent-lime: #15803D;

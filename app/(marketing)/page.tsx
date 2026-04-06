@@ -4,6 +4,7 @@ import { cached } from "@/lib/cache/redis";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 // SocialProofStrip removed — stats now inline
 import { HeroNetworkSvg } from "@/components/ui/hero-network-svg";
+import { HeroBackground } from "@/components/hero/hero-background";
 import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
@@ -89,9 +90,8 @@ export default async function HomePage() {
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
       <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
-        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-60" />
-        {/* Sci-fi grid overlay */}
-        <div className="bg-sci-grid pointer-events-none absolute inset-0" />
+        <HeroBackground className="pointer-events-none absolute inset-0" />
+        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30" />
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[55%_45%] lg:gap-12">
           {/* Left column — headline + CTAs */}
           <div>
@@ -106,7 +106,7 @@ export default async function HomePage() {
               The entire robot<br />
               <span className="hero-accent">lifecycle.</span>
             </h1>
-            <p className="mt-8 max-w-[520px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "clamp(15px, 1.8vw, 18px)", color: "rgba(255,255,255,0.55)" }}>
+            <p className="mt-8 max-w-[520px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "clamp(15px, 1.8vw, 18px)", color: "var(--theme-text-secondary)" }}>
               Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
               {" "}{totalRobots} robots. {manufacturerCount} manufacturers. 5 channels.
             </p>
