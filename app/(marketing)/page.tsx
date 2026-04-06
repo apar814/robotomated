@@ -11,6 +11,8 @@ import { NewsletterForm } from "@/components/home/newsletter-form";
 import ChannelShowcase from "@/components/home/channel-showcase";
 import { RobotimusHeroPanel } from "@/components/home/robotimus-hero-panel";
 import { CertificationSection } from "@/components/home/certification-section";
+import { OpportunityBanner } from "@/components/home/opportunity-banner";
+import { RaaSExplainer } from "@/components/home/raas-explainer";
 import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import type { RobotCategory } from "@/lib/supabase/types";
@@ -253,6 +255,11 @@ export default async function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════
+          5.5. THE $24T OPPORTUNITY BANNER
+          ══════════════════════════════════════════ */}
+      <OpportunityBanner />
+
+      {/* ══════════════════════════════════════════
           6. CERTIFICATION & TRAINING
           ══════════════════════════════════════════ */}
       <CertificationSection />
@@ -263,7 +270,12 @@ export default async function HomePage() {
       <RoboWorkSection />
 
       {/* ══════════════════════════════════════════
-          7.5. THE ABUNDANCE EQUATION
+          7.5. RAAS EXPLAINER
+          ══════════════════════════════════════════ */}
+      <RaaSExplainer />
+
+      {/* ══════════════════════════════════════════
+          7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
       <section className="px-6 py-20" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-7xl">
