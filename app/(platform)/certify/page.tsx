@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "RCO Certification Program -- The Standard for Robot Operations | Robotomated",
   description:
-    "The industry-standard credential for robotics professionals. 700+ questions, 4 levels, 7 specializations, The Gauntlet live assessment. Designed with input from Tesla Optimus, Boston Dynamics, and Fortune 500 automation directors.",
+    "The industry-standard credential for robotics professionals. 700+ questions, 6 levels (free entry to CRO), 10 specializations, The Gauntlet live assessment. From robot literacy to Chief Robotics Officer.",
 };
 
 /* ═══════════════════════════════════════════════════
@@ -13,6 +13,37 @@ export const metadata: Metadata = {
    ═══════════════════════════════════════════════════ */
 
 const LEVELS = [
+  {
+    level: 0,
+    slug: "awareness",
+    name: "Awareness",
+    tag: "ROBOT LITERACY CERTIFIED",
+    tagShort: "RCO-A",
+    questions: 40,
+    duration: 60,
+    passScore: 70,
+    price: 0,
+    rspPrice: 0,
+    studyHours: "3-5",
+    proves:
+      "You understand robots well enough to work alongside them safely and intelligently. You know the 5 types, basic safety, and the robot economy.",
+    careers: ["Any role near robots", "Career changers", "Facility staff"],
+    salaryBump: "Career access",
+    glow: "shadow-green/20 hover:shadow-green/40",
+    border: "border-green/20 hover:border-green/50",
+    badge: "bg-green/10 text-green",
+    accent: "text-green",
+    cta: "bg-green hover:bg-green/90 text-navy",
+    ring: "ring-green/30",
+    isFree: true,
+    domains: [
+      { name: "Robot Revolution", pct: 20 },
+      { name: "How Robots Work", pct: 25 },
+      { name: "Safety Basics", pct: 30 },
+      { name: "Robot Economy", pct: 15 },
+      { name: "First Interaction", pct: 10 },
+    ],
+  },
   {
     level: 1,
     slug: "foundation",
@@ -143,6 +174,39 @@ const LEVELS = [
       { name: "Program Design & Training", pct: 30 },
       { name: "Incident Command", pct: 35 },
       { name: "Business Operations", pct: 35 },
+    ],
+  },
+  {
+    level: 5,
+    slug: "cro",
+    name: "Chief Robotics Officer",
+    tag: "CRO (ROBOTOMATED CERTIFIED)",
+    tagShort: "CRO",
+    questions: 0,
+    duration: 90,
+    passScore: 80,
+    price: 2499,
+    rspPrice: 2499,
+    studyHours: "N/A",
+    proves:
+      "You have demonstrably shaped the future of robotics at scale. Portfolio defense, panel review, and ongoing contribution commitment. Not an exam — an induction.",
+    careers: [
+      "Chief Robotics Officer",
+      "Robotics Board Member",
+      "Industry Advisor",
+    ],
+    salaryBump: "Executive tier",
+    glow: "shadow-white/10 hover:shadow-white/20",
+    border: "border-white/20 hover:border-white/40",
+    badge: "bg-white/10 text-white",
+    accent: "text-white",
+    cta: "bg-gradient-to-r from-white to-gray-200 text-black hover:from-gray-100 hover:to-white",
+    ring: "ring-white/20",
+    isCRO: true,
+    domains: [
+      { name: "Portfolio Defense", pct: 33 },
+      { name: "Panel Review (90 min)", pct: 34 },
+      { name: "Contribution Commitment", pct: 33 },
     ],
   },
 ];
@@ -277,8 +341,8 @@ export default function CertifyPage() {
           <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">
             {[
               { value: "700+", label: "Questions" },
-              { value: "4", label: "Levels" },
-              { value: "7", label: "Specializations" },
+              { value: "6", label: "Levels" },
+              { value: "10", label: "Specializations" },
               { value: "17", label: "Domains" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -294,16 +358,16 @@ export default function CertifyPage() {
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
-              href="/certify/1"
-              className="inline-flex items-center rounded-lg bg-blue px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/20"
+              href="/certify/awareness"
+              className="inline-flex items-center rounded-lg bg-green px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
             >
-              Start at Foundation
+              Start Free — Level 0
             </Link>
             <Link
               href="#levels"
               className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
             >
-              Explore All Levels
+              Explore All 6 Levels
             </Link>
           </div>
         </div>
@@ -344,11 +408,13 @@ export default function CertifyPage() {
                   </div>
                   <div className="text-right">
                     <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-white">
-                      ${lvl.price}
+                      {lvl.price === 0 ? "FREE" : `$${lvl.price.toLocaleString()}`}
                     </p>
-                    <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-muted">
-                      RSP: ${lvl.rspPrice}
-                    </p>
+                    {lvl.price > 0 && lvl.rspPrice !== lvl.price && (
+                      <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-muted">
+                        RSP: ${lvl.rspPrice}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -456,17 +522,23 @@ export default function CertifyPage() {
                 {/* CTA */}
                 <div className="mt-6 flex gap-3">
                   <Link
-                    href={`/certify/${lvl.level}`}
+                    href={`/certify/${lvl.slug === "awareness" ? "awareness" : lvl.slug === "cro" ? "cro" : lvl.level}`}
                     className={`flex-1 rounded-lg px-5 py-3 text-center text-sm font-semibold text-white transition-all ${lvl.cta}`}
                   >
-                    Start Level {lvl.level}
+                    {(lvl as Record<string, unknown>).isFree
+                      ? "Start Free →"
+                      : (lvl as Record<string, unknown>).isCRO
+                        ? "Apply for CRO"
+                        : `Start Level ${lvl.level}`}
                   </Link>
-                  <Link
-                    href={`/certify/study/${lvl.slug}`}
-                    className="rounded-lg border border-border px-5 py-3 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
-                  >
-                    Study
-                  </Link>
+                  {!(lvl as Record<string, unknown>).isCRO && (
+                    <Link
+                      href={`/certify/study/${lvl.slug}`}
+                      className="rounded-lg border border-border px-5 py-3 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
+                    >
+                      Study
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
@@ -865,15 +937,14 @@ export default function CertifyPage() {
             <span className="text-blue">certified operators</span>.
           </h2>
           <p className="mt-4 text-muted">
-            Start your certification journey today. No prerequisites for Level
-            1.
+            Start your certification journey today. Level 0 is free.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/certify/1"
-              className="inline-flex items-center rounded-lg bg-blue px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/20"
+              href="/certify/awareness"
+              className="inline-flex items-center rounded-lg bg-green px-10 py-4 text-sm font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
             >
-              Begin RCO Foundation — $149
+              Start Free — RCO Awareness
             </Link>
             <Link
               href="/certify/employer"

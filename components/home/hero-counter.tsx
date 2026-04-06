@@ -4,32 +4,71 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Animated counter that counts from 0 to `target` over `duration` ms
- * with ease-out timing. Used in the hero status line.
+ * with ease-out timing. Triggers on viewport intersection.
  */
-export function HeroCounter({ target, duration = 2200 }: { target: number; duration?: number }) {
+export function HeroCounter({
+  target,
+  duration = 2200,
+  delay = 0,
+  prefix = "",
+  suffix = "",
+}: {
+  target: number;
+  duration?: number;
+  delay?: number;
+  prefix?: string;
+  suffix?: string;
+}) {
   const [value, setValue] = useState(0);
-  const started = useRef(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
 
+  // Trigger on viewport intersection
   useEffect(() => {
-    if (started.current) return;
-    started.current = true;
+    const el = ref.current;
+    if (!el || hasStarted) return;
 
-    const start = performance.now();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
 
-    function tick(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasStarted]);
 
-      if (progress < 1) {
-        requestAnimationFrame(tick);
+  // Animate on start
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const timeout = setTimeout(() => {
+      const start = performance.now();
+
+      function tick(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.round(eased * target));
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
       }
-    }
 
-    requestAnimationFrame(tick);
-  }, [target, duration]);
+      requestAnimationFrame(tick);
+    }, delay);
 
-  return <>{value}</>;
+    return () => clearTimeout(timeout);
+  }, [hasStarted, target, duration, delay]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{value}{suffix}
+    </span>
+  );
 }

@@ -135,10 +135,10 @@ export default async function HomePage() {
       <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {[
-            { value: <><HeroCounter target={totalRobots} />+</>, label: "Robots" },
-            { value: `${manufacturerCount}+`, label: "Manufacturers" },
-            { value: "$103B", label: "Market" },
-            { value: "5", label: "Channels" },
+            { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots" },
+            { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers" },
+            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market" },
+            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Channels" },
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-3">
               {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/10">//</span>}
