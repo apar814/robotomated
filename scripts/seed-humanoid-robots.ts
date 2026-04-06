@@ -15,7 +15,8 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  { db: { schema: "public" } }
 );
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -53,6 +54,9 @@ async function getOrCreateManufacturer(
   country: string,
   website?: string
 ): Promise<string> {
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  // Check by name first, then by slug (handles name variants)
   const { data } = await supabase
     .from("manufacturers")
     .select("id")
@@ -61,11 +65,19 @@ async function getOrCreateManufacturer(
 
   if (data) return data.id;
 
+  const { data: bySlug } = await supabase
+    .from("manufacturers")
+    .select("id")
+    .eq("slug", slug)
+    .single();
+
+  if (bySlug) return bySlug.id;
+
   const { data: newMfr, error } = await supabase
     .from("manufacturers")
     .insert({
       name,
-      slug: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      slug,
       country,
       website,
       verified: true,

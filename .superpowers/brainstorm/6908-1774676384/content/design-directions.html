@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotomated — 3 Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0A0F1E;
+    --navy-light: #0F1628;
+    --navy-lighter: #141C33;
+    --steel: #1A2340;
+    --blue: #00C2FF;
+    --violet: #7B2FFF;
+    --green: #00E5A0;
+    --orange: #FFB700;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(0,194,255,0.25);
+  }
+
+  body {
+    background: #050810;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── Page header ── */
+  .page-header {
+    text-align: center;
+    padding: 48px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .page-header .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    border: 1px solid rgba(0,194,255,0.2);
+    border-radius: 4px;
+  }
+
+  /* ── Direction cards ── */
+  .directions {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .direction {
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .direction:hover {
+    background: rgba(255,255,255,0.015);
+  }
+  .direction.selected {
+    background: rgba(0,194,255,0.03);
+    border-left: 3px solid var(--blue);
+  }
+  .direction.selected .dir-label { color: var(--blue); }
+
+  .dir-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 24px;
+  }
+
+  .dir-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    background: rgba(0,194,255,0.08);
+    border: 1px solid rgba(0,194,255,0.15);
+    border-radius: 4px;
+    padding: 4px 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .dir-number.recommended {
+    background: rgba(0,229,160,0.08);
+    border-color: rgba(0,229,160,0.15);
+    color: var(--green);
+  }
+  .dir-number.recommended::after {
+    content: ' ★';
+  }
+
+  .dir-label {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 4px;
+  }
+  .dir-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0;
+  }
+
+  .dir-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── Mockup panels ── */
+  .mockup-panel {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .mockup-panel.full {
+    grid-column: 1 / -1;
+  }
+
+  .mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .mockup-bar .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+  .mockup-bar .dot.green { background: var(--green); opacity: 0.6; }
+
+  .mockup-body {
+    padding: 16px;
+    min-height: 200px;
+  }
+
+  /* ── Design tokens display ── */
+  .tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .token {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Traits ── */
+  .traits {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .trait {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .trait::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+  }
+  .trait.density::before { background: var(--blue); }
+  .trait.terminal::before { background: var(--green); }
+  .trait.authority::before { background: var(--violet); }
+  .trait.motion::before { background: var(--orange); }
+
+  /* ═══════════════════════════════════════
+     DIRECTION A — MISSION CONTROL
+     ═══════════════════════════════════════ */
+
+  /* Header bar mockup */
+  .mc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+  }
+  .mc-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .mc-logo span { opacity: 0.4; }
+  .mc-nav {
+    display: flex;
+    gap: 2px;
+  }
+  .mc-nav a {
+    padding: 4px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  .mc-nav a.active {
+    background: rgba(0,194,255,0.1);
+    color: var(--blue);
+  }
+  .mc-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+  }
+  .mc-status .live {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--green);
+  }
+  .mc-status .live::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-dot 2s ease infinite;
+  }
+
+  /* Dashboard grid */
+  .mc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1px;
+    background: rgba(255,255,255,0.03);
+  }
+  .mc-panel {
+    background: var(--navy);
+    padding: 12px;
+  }
+  .mc-panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mc-panel-label .indicator {
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+  }
+
+  /* Ticker strip */
+  .mc-ticker {
+    display: flex;
+    gap: 16px;
+    padding: 6px 16px;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    overflow: hidden;
+  }
+  .mc-ticker-item {
+    display: flex;
+    gap: 6px;
+    white-space: nowrap;
+    align-items: center;
+  }
+  .mc-ticker-item .name { color: rgba(255,255,255,0.5); }
+  .mc-ticker-item .score { color: var(--blue); font-weight: 600; }
+  .mc-ticker-item .change { font-size: 9px; }
+  .mc-ticker-item .change.up { color: var(--green); }
+  .mc-ticker-item .change.down { color: #FF4D6A; }
+
+  /* Score mini cards */
+  .mc-score-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 11px;
+  }
+  .mc-score-row:last-child { border-bottom: none; }
+  .mc-score-row .rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.2);
+    width: 16px;
+  }
+  .mc-score-row .name {
+    flex: 1;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+  }
+  .mc-score-row .score-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .mc-score-row .bar {
+    width: 40px;
+    height: 3px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .mc-score-row .bar-fill {
+    height: 100%;
+    border-radius: 1px;
+  }
+
+  /* Mini chart */
+  .mc-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  .mc-chart-bar {
+    flex: 1;
+    border-radius: 1px 1px 0 0;
+    min-width: 4px;
+    transition: height 0.3s;
+  }
+
+  /* Category mini grid */
+  .mc-cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .mc-cat {
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+  .mc-cat-name {
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2px;
+  }
+  .mc-cat-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* Stat number */
+  .mc-stat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .mc-stat-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     DIRECTION B — OBSIDIAN GRID
+     ═══════════════════════════════════════ */
+  .ob-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ob-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+  .ob-logo span { color: var(--blue); }
+  .ob-nav {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .ob-nav a {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.15s;
+  }
+  .ob-nav a:hover { color: rgba(255,255,255,0.8); }
+  .ob-nav a.active {
+    background: rgba(255,255,255,0.05);
+    color: white;
+  }
+  .ob-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+  }
+  .ob-search kbd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 1px 5px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* Hero area */
+  .ob-hero {
+    padding: 32px 20px 24px;
+    position: relative;
+  }
+  .ob-hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .ob-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .ob-hero p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+  }
+
+  /* Bento grid */
+  .ob-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 6px;
+    padding: 0 20px 16px;
+  }
+  .ob-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    transition: border-color 0.2s;
+  }
+  .ob-card:hover {
+    border-color: var(--border-hover);
+  }
+  .ob-card.wide { grid-column: span 2; }
+  .ob-card.tall { grid-row: span 2; }
+
+  .ob-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ob-card-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .ob-card-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+  }
+
+  /* Robot list row */
+  .ob-robot-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 11px;
+  }
+  .ob-robot-row:last-child { border: none; }
+  .ob-robot-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .ob-robot-info { flex: 1; }
+  .ob-robot-name { color: rgba(255,255,255,0.8); font-weight: 500; font-size: 11px; }
+  .ob-robot-mfr { font-size: 10px; color: rgba(255,255,255,0.25); }
+  .ob-robot-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  /* ═══════════════════════════════════════
+     DIRECTION C — SIGNAL
+     ═══════════════════════════════════════ */
+  .sg-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sg-logo .icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+  .sg-nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 2px;
+  }
+  .sg-nav a {
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .sg-nav a.active {
+    background: rgba(255,255,255,0.06);
+    color: white;
+  }
+
+  /* Split layout */
+  .sg-split {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 260px;
+  }
+  .sg-sidebar {
+    border-right: 1px solid var(--border);
+    padding: 16px;
+  }
+  .sg-sidebar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .sg-filter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  .sg-filter:hover { background: rgba(255,255,255,0.03); }
+  .sg-filter.active {
+    background: rgba(0,194,255,0.06);
+    color: var(--blue);
+  }
+  .sg-filter .count {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+  }
+  .sg-main {
+    padding: 16px;
+  }
+
+  /* Data table */
+  .sg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .sg-table th {
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-table td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.6);
+  }
+  .sg-table tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+  .sg-table .name-col { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .sg-table .score-col {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+  }
+  .sg-table .price-col {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--green);
+  }
+
+  /* Score sparkline */
+  .sg-sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 16px;
+  }
+  .sg-sparkline-bar {
+    width: 3px;
+    border-radius: 1px;
+    background: var(--blue);
+    opacity: 0.4;
+  }
+
+  /* Signal pulse indicator */
+  .sg-pulse {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(0,229,160,0.04);
+    border: 1px solid rgba(0,229,160,0.1);
+    border-radius: 5px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+  }
+  .sg-pulse .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-dot 2s ease infinite;
+  }
+  .sg-pulse strong { color: var(--green); }
+
+  /* ═══════════════════════════════════════
+     SHARED ANIMATIONS
+     ═══════════════════════════════════════ */
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
+    50% { opacity: 0.6; box-shadow: 0 0 0 4px transparent; }
+  }
+
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ticker-slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .animate-count { animation: count-up 0.6s ease forwards; }
+
+  /* ── Selection mechanics ── */
+  .direction .select-indicator {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .direction.selected .select-indicator {
+    border-color: var(--blue);
+    background: var(--blue);
+  }
+  .direction.selected .select-indicator::after {
+    content: '✓';
+    font-size: 12px;
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* ── Comparison row ── */
+  .comparison {
+    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .comparison h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 180px repeat(3, 1fr);
+    gap: 0;
+    font-size: 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .comparison-grid .cell {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    align-items: center;
+  }
+  .comparison-grid .cell.header {
+    background: rgba(255,255,255,0.02);
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comparison-grid .cell.label {
+    color: rgba(255,255,255,0.35);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    background: rgba(255,255,255,0.01);
+    border-right: 1px solid rgba(255,255,255,0.03);
+  }
+  .comparison-grid .cell .meter {
+    display: flex;
+    gap: 2px;
+  }
+  .comparison-grid .cell .meter span {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.06);
+  }
+  .comparison-grid .cell .meter span.filled { background: var(--blue); }
+  .comparison-grid .cell .meter span.filled.green { background: var(--green); }
+  .comparison-grid .cell .meter span.filled.violet { background: var(--violet); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="tag">DESIGN REVIEW</div>
+  <h1>3 Design Directions for Robotomated</h1>
+  <p>Click to select your preferred direction. Each represents a distinct interpretation of "Bloomberg Terminal for robotics."</p>
+</div>
+
+<!-- ═══════════════════════════════════════
+     DIRECTION A — MISSION CONTROL
+     ═══════════════════════════════════════ -->
+<div class="direction" data-choice="a" onclick="selectDirection(this)">
+  <div class="select-indicator"></div>
+  <div class="dir-header">
+    <div class="dir-number">01</div>
+    <div>
+      <div class="dir-label">Mission Control</div>
+      <div class="dir-subtitle">Maximum density. Multi-panel dashboard. Every pixel is data. The Bloomberg Terminal taken literally — a command center for robotics intelligence.</div>
+      <div class="traits">
+        <span class="trait density">High density</span>
+        <span class="trait terminal">Full terminal chrome</span>
+        <span class="trait authority">Maximum authority</span>
+        <span class="trait motion">Live tickers + counters</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dir-content">
+    <!-- Homepage mockup -->
+    <div class="mockup-panel full">
+      <div class="mockup-bar">
+        <span class="dot green"></span>
+        HOMEPAGE — DASHBOARD VIEW
+      </div>
+      <div class="mockup-body" style="padding:0;">
+        <!-- Header -->
+        <div class="mc-header">
+          <div class="mc-logo">ROBOTO<span>MATED</span></div>
+          <div class="mc-nav">
+            <a class="active">TERMINAL</a>
+            <a>EXPLORE</a>
+            <a>COMPARE</a>
+            <a>REVIEWS</a>
+            <a>LEARN</a>
+            <a>ADVISOR</a>
+          </div>
+          <div class="mc-status">
+            <span class="live">LIVE</span>
+            <span>305 ROBOTS</span>
+            <span>9 CATEGORIES</span>
+          </div>
+        </div>
+
+        <!-- Ticker strip -->
+        <div class="mc-ticker">
+          <div class="mc-ticker-item"><span class="name">Spot</span><span class="score">87</span><span class="change up">▲ 2.1</span></div>
+          <div class="mc-ticker-item"><span class="name">Stretch</span><span class="score">91</span><span class="change up">▲ 0.8</span></div>
+          <div class="mc-ticker-item"><span class="name">Digit</span><span class="score">78</span><span class="change down">▼ 1.2</span></div>
+          <div class="mc-ticker-item"><span class="name">Atlas</span><span class="score">94</span><span class="change up">▲ 3.0</span></div>
+          <div class="mc-ticker-item"><span class="name">Moxi</span><span class="score">72</span><span class="change">— 0.0</span></div>
+          <div class="mc-ticker-item"><span class="name">Rex</span><span class="score">85</span><span class="change up">▲ 1.5</span></div>
+          <div class="mc-ticker-item"><span class="name">UR20</span><span class="score">89</span><span class="change up">▲ 0.4</span></div>
+          <div class="mc-ticker-item"><span class="name">Panda</span><span class="score">83</span><span class="change down">▼ 0.3</span></div>
+        </div>
+
+        <!-- Dashboard grid -->
+        <div class="mc-grid">
+          <!-- Top Scored -->
+          <div class="mc-panel">
+            <div class="mc-panel-label"><span class="indicator" style="background:var(--blue)"></span> TOP ROBOSCORE</div>
+            <div class="mc-score-row">
+              <span class="rank">01</span>
+              <span class="name">Atlas</span>
+              <span class="score-val" style="color:var(--green)">94</span>
+              <span class="bar"><span class="bar-fill" style="width:94%;background:var(--green)"></span></span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank">02</span>
+              <span class="name">Stretch</span>
+              <span class="score-val" style="color:var(--blue)">91</span>
+              <span class="bar"><span class="bar-fill" style="width:91%;background:var(--blue)"></span></span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank">03</span>
+              <span class="name">UR20</span>
+              <span class="score-val" style="color:var(--blue)">89</span>
+              <span class="bar"><span class="bar-fill" style="width:89%;background:var(--blue)"></span></span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank">04</span>
+              <span class="name">Spot</span>
+              <span class="score-val" style="color:var(--blue)">87</span>
+              <span class="bar"><span class="bar-fill" style="width:87%;background:var(--blue)"></span></span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank">05</span>
+              <span class="name">Rex</span>
+              <span class="score-val" style="color:var(--blue)">85</span>
+              <span class="bar"><span class="bar-fill" style="width:85%;background:var(--blue)"></span></span>
+            </div>
+          </div>
+
+          <!-- Market Overview -->
+          <div class="mc-panel">
+            <div class="mc-panel-label"><span class="indicator" style="background:var(--green)"></span> MARKET PULSE</div>
+            <div class="mc-stat" style="color:var(--green)">305</div>
+            <div class="mc-stat-label">Total indexed robots</div>
+            <div class="mc-chart">
+              <div class="mc-chart-bar" style="height:45%;background:rgba(0,194,255,0.3)"></div>
+              <div class="mc-chart-bar" style="height:65%;background:rgba(0,194,255,0.35)"></div>
+              <div class="mc-chart-bar" style="height:55%;background:rgba(0,194,255,0.3)"></div>
+              <div class="mc-chart-bar" style="height:80%;background:rgba(0,194,255,0.4)"></div>
+              <div class="mc-chart-bar" style="height:72%;background:rgba(0,194,255,0.35)"></div>
+              <div class="mc-chart-bar" style="height:90%;background:rgba(0,194,255,0.45)"></div>
+              <div class="mc-chart-bar" style="height:85%;background:rgba(0,194,255,0.4)"></div>
+              <div class="mc-chart-bar" style="height:100%;background:var(--blue)"></div>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px;display:flex;justify-content:space-between">
+              <span>Q1'25</span><span>Q1'26</span>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="mc-panel">
+            <div class="mc-panel-label"><span class="indicator" style="background:var(--violet)"></span> BY CATEGORY</div>
+            <div class="mc-cat-grid">
+              <div class="mc-cat"><div class="mc-cat-name">Warehouse</div><div class="mc-cat-count">47</div></div>
+              <div class="mc-cat"><div class="mc-cat-name">Cobots</div><div class="mc-cat-count">62</div></div>
+              <div class="mc-cat"><div class="mc-cat-name">Consumer</div><div class="mc-cat-count">38</div></div>
+              <div class="mc-cat"><div class="mc-cat-name">Medical</div><div class="mc-cat-count">29</div></div>
+              <div class="mc-cat"><div class="mc-cat-name">Drones</div><div class="mc-cat-count">44</div></div>
+              <div class="mc-cat"><div class="mc-cat-name">Delivery</div><div class="mc-cat-count">31</div></div>
+            </div>
+          </div>
+
+          <!-- Latest Reviews -->
+          <div class="mc-panel" style="grid-column:span 2">
+            <div class="mc-panel-label"><span class="indicator" style="background:var(--orange)"></span> LATEST REVIEWS</div>
+            <div class="mc-score-row">
+              <span class="rank" style="color:var(--green)">NEW</span>
+              <span class="name">Boston Dynamics Atlas — "The benchmark just moved"</span>
+              <span class="score-val" style="color:var(--green)">94</span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank" style="color:var(--blue)">UPD</span>
+              <span class="name">Agility Digit v3 — "Ready for the warehouse floor"</span>
+              <span class="score-val" style="color:var(--blue)">78</span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank">—</span>
+              <span class="name">Universal Robots UR20 — "The cobot king defends its crown"</span>
+              <span class="score-val" style="color:var(--blue)">89</span>
+            </div>
+          </div>
+
+          <!-- Price alerts -->
+          <div class="mc-panel">
+            <div class="mc-panel-label"><span class="indicator" style="background:var(--green)"></span> PRICE DROPS</div>
+            <div class="mc-score-row">
+              <span class="rank" style="color:var(--green)">▼</span>
+              <span class="name">Spot Explorer</span>
+              <span class="score-val" style="color:var(--green)">-12%</span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank" style="color:var(--green)">▼</span>
+              <span class="name">UR10e</span>
+              <span class="score-val" style="color:var(--green)">-8%</span>
+            </div>
+            <div class="mc-score-row">
+              <span class="rank" style="color:var(--green)">▼</span>
+              <span class="name">Roomba j9+</span>
+              <span class="score-val" style="color:var(--green)">-22%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design tokens -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> DESIGN TOKENS</div>
+      <div class="mockup-body">
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">TYPOGRAPHY</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;margin-bottom:2px">JetBrains Mono</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3)">Primary for everything — headings, labels, data, nav</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;margin-top:8px;color:rgba(255,255,255,0.5)">Space Grotesk — body text only</div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">CORNERS</div>
+          <div style="display:flex;gap:8px">
+            <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:2px"></div>
+            <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:4px"></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);display:flex;align-items:center">2-4px max</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">DENSITY</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3)">1px gaps between panels. No padding waste. Every row is data.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vibe -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> FEEL</div>
+      <div class="mockup-body">
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:12px">
+          Walking into a <strong style="color:var(--blue)">trading floor control room</strong>. Data everywhere. Tickers scrolling. Panels updating. You know instantly — this is where the serious people work.
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">
+          <strong style="color:rgba(255,255,255,0.5)">Risk:</strong> Can feel overwhelming for first-time visitors. High learning curve. May alienate consumer robot buyers (Roomba shoppers).
+        </div>
+        <div class="tokens">
+          <span class="token">grid-gap: 1px</span>
+          <span class="token">radius: 2-4px</span>
+          <span class="token">font: mono-first</span>
+          <span class="token">live-tickers: yes</span>
+          <span class="token">panels: 6-8</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     DIRECTION B — OBSIDIAN GRID  ★ RECOMMENDED
+     ═══════════════════════════════════════ -->
+<div class="direction" data-choice="b" onclick="selectDirection(this)">
+  <div class="select-indicator"></div>
+  <div class="dir-header">
+    <div class="dir-number recommended">02</div>
+    <div>
+      <div class="dir-label">Obsidian Grid</div>
+      <div class="dir-subtitle">Vercel meets Bloomberg. Bento grid layout with data cards. Clean enough to navigate, dense enough to impress. The sweet spot between command center and premium product site.</div>
+      <div class="traits">
+        <span class="trait density">Smart density</span>
+        <span class="trait terminal">Selective mono</span>
+        <span class="trait authority">High authority</span>
+        <span class="trait motion">Breathing data cards</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dir-content">
+    <!-- Homepage mockup -->
+    <div class="mockup-panel full">
+      <div class="mockup-bar">
+        <span class="dot green"></span>
+        HOMEPAGE — BENTO GRID VIEW
+      </div>
+      <div class="mockup-body" style="padding:0;">
+        <!-- Header -->
+        <div class="ob-header">
+          <div class="ob-logo">Roboto<span>mated</span></div>
+          <div class="ob-nav">
+            <a class="active">Explore</a>
+            <a>Compare</a>
+            <a>Reviews</a>
+            <a>Industries</a>
+            <a>Learn</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="ob-search">
+              <span style="opacity:0.5">⌘</span> Search 305 robots...
+              <kbd>⌘K</kbd>
+            </div>
+            <div style="padding:5px 14px;font-size:11px;font-weight:600;background:linear-gradient(135deg,var(--blue),var(--violet));border-radius:5px;color:white">AI Advisor</div>
+          </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="ob-hero">
+          <div class="ob-hero-tag">// THE ROBOTICS INTELLIGENCE PLATFORM</div>
+          <h1>The Bloomberg Terminal<br>for <span style="color:var(--blue)">Robotics</span></h1>
+          <p>305 robots. 9 categories. Real specs. Transparent scores. Live pricing.</p>
+        </div>
+
+        <!-- Bento grid -->
+        <div class="ob-bento">
+          <!-- Market stats -->
+          <div class="ob-card">
+            <div class="ob-card-label">ROBOTS INDEXED</div>
+            <div class="ob-card-value" style="color:var(--blue)">305</div>
+            <div class="ob-card-sub">↑ 23 this month</div>
+          </div>
+          <div class="ob-card">
+            <div class="ob-card-label">AVG ROBOSCORE</div>
+            <div class="ob-card-value" style="color:var(--green)">74.2</div>
+            <div class="ob-card-sub">↑ 1.3 vs last quarter</div>
+          </div>
+
+          <!-- Trending -->
+          <div class="ob-card wide">
+            <div class="ob-card-label">TRENDING THIS WEEK</div>
+            <div class="ob-robot-row">
+              <div class="ob-robot-thumb">🤖</div>
+              <div class="ob-robot-info">
+                <div class="ob-robot-name">Boston Dynamics Atlas</div>
+                <div class="ob-robot-mfr">Humanoid · $150K+</div>
+              </div>
+              <div class="ob-robot-score" style="color:var(--green)">94</div>
+            </div>
+            <div class="ob-robot-row">
+              <div class="ob-robot-thumb">🦾</div>
+              <div class="ob-robot-info">
+                <div class="ob-robot-name">Universal Robots UR20</div>
+                <div class="ob-robot-mfr">Cobot · $58,000</div>
+              </div>
+              <div class="ob-robot-score" style="color:var(--blue)">89</div>
+            </div>
+            <div class="ob-robot-row">
+              <div class="ob-robot-thumb">📦</div>
+              <div class="ob-robot-info">
+                <div class="ob-robot-name">Boston Dynamics Stretch</div>
+                <div class="ob-robot-mfr">Warehouse · $Request</div>
+              </div>
+              <div class="ob-robot-score" style="color:var(--blue)">91</div>
+            </div>
+          </div>
+
+          <!-- Categories grid -->
+          <div class="ob-card wide">
+            <div class="ob-card-label">CATEGORIES</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
+              <div style="padding:8px;background:rgba(0,194,255,0.04);border-radius:4px;border:1px solid rgba(0,194,255,0.08)">
+                <div style="font-size:10px;color:rgba(255,255,255,0.5)">Warehouse</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--blue)">47</div>
+              </div>
+              <div style="padding:8px;background:rgba(123,47,255,0.04);border-radius:4px;border:1px solid rgba(123,47,255,0.08)">
+                <div style="font-size:10px;color:rgba(255,255,255,0.5)">Cobots</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--violet)">62</div>
+              </div>
+              <div style="padding:8px;background:rgba(0,229,160,0.04);border-radius:4px;border:1px solid rgba(0,229,160,0.08)">
+                <div style="font-size:10px;color:rgba(255,255,255,0.5)">Medical</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--green)">29</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score distribution -->
+          <div class="ob-card">
+            <div class="ob-card-label">SCORE DIST.</div>
+            <div style="display:flex;align-items:flex-end;gap:3px;height:50px;margin-top:4px">
+              <div style="flex:1;height:15%;background:rgba(0,194,255,0.15);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:25%;background:rgba(0,194,255,0.2);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:55%;background:rgba(0,194,255,0.3);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:100%;background:rgba(0,194,255,0.5);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:80%;background:rgba(0,194,255,0.4);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:45%;background:rgba(0,194,255,0.25);border-radius:2px 2px 0 0"></div>
+              <div style="flex:1;height:20%;background:rgba(0,194,255,0.15);border-radius:2px 2px 0 0"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,0.15);margin-top:4px">
+              <span>0</span><span>50</span><span>100</span>
+            </div>
+          </div>
+
+          <!-- Price drop alert -->
+          <div class="ob-card" style="border-color:rgba(0,229,160,0.12)">
+            <div class="ob-card-label" style="color:var(--green)">🔔 PRICE ALERT</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:4px">Spot Explorer</div>
+            <div style="display:flex;align-items:baseline;gap:6px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--green)">$68.5K</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green)">▼ 12%</span>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.2);text-decoration:line-through;margin-top:2px">$77,800</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design tokens -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> DESIGN TOKENS</div>
+      <div class="mockup-body">
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">TYPOGRAPHY</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:2px">Space Grotesk</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3)">Primary — headings, nav, body text</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;margin-top:8px;color:var(--blue)">JetBrains Mono — data, scores, labels</div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">CORNERS</div>
+          <div style="display:flex;gap:8px">
+            <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:4px"></div>
+            <div style="width:40px;height:40px;border:1px solid var(--border);border-radius:6px"></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);display:flex;align-items:center">4-6px standard</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">LAYOUT</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3)">Bento grid with 6px gaps. Cards breathe but stay dense. Data labels in mono, content in sans.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vibe -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> FEEL</div>
+      <div class="mockup-body">
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:12px">
+          Opening the <strong style="color:var(--blue)">Vercel dashboard</strong> and seeing your deployment metrics — but for robots. Data cards that feel alive. Clean enough to scan, dense enough to trust. You feel like an <strong style="color:var(--green)">informed professional</strong>.
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">
+          <strong style="color:rgba(255,255,255,0.5)">Sweet spot:</strong> Professional buyers feel at home. Consumer buyers aren't scared off. Data density scales with the page context.
+        </div>
+        <div class="tokens">
+          <span class="token">grid-gap: 6px</span>
+          <span class="token">radius: 4-6px</span>
+          <span class="token">font: sans + mono data</span>
+          <span class="token">data-breathing: yes</span>
+          <span class="token">bento: 4-6 cards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     DIRECTION C — SIGNAL
+     ═══════════════════════════════════════ -->
+<div class="direction" data-choice="c" onclick="selectDirection(this)">
+  <div class="select-indicator"></div>
+  <div class="dir-header">
+    <div class="dir-number">03</div>
+    <div>
+      <div class="dir-label">Signal</div>
+      <div class="dir-subtitle">Data table-forward. Sidebar filters + sortable grids. Less visual, more functional. Like Linear's issue tracker applied to robot intelligence. Pure utility.</div>
+      <div class="traits">
+        <span class="trait density">Table density</span>
+        <span class="trait terminal">Functional mono</span>
+        <span class="trait authority">Quiet authority</span>
+        <span class="trait motion">Sparklines + pulses</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dir-content">
+    <!-- Homepage mockup -->
+    <div class="mockup-panel full">
+      <div class="mockup-bar">
+        <span class="dot green"></span>
+        HOMEPAGE — TABLE VIEW
+      </div>
+      <div class="mockup-body" style="padding:0;">
+        <!-- Header -->
+        <div class="sg-header">
+          <div class="sg-logo">
+            <div class="icon">R</div>
+            ROBOTOMATED
+          </div>
+          <div class="sg-nav">
+            <a class="active">Browse</a>
+            <a>Compare</a>
+            <a>Reviews</a>
+            <a>Intelligence</a>
+          </div>
+          <div class="ob-search">
+            Search robots... <kbd>⌘K</kbd>
+          </div>
+        </div>
+
+        <!-- Pulse bar -->
+        <div style="padding:8px 20px;border-bottom:1px solid var(--border)">
+          <div class="sg-pulse">
+            <span class="dot"></span>
+            <strong>3 new robots</strong> indexed today · <strong>2 price drops</strong> detected · <strong>1 new review</strong> published
+          </div>
+        </div>
+
+        <!-- Split layout -->
+        <div class="sg-split">
+          <div class="sg-sidebar">
+            <div class="sg-sidebar-label">CATEGORIES</div>
+            <div class="sg-filter active">
+              <span>All Robots</span>
+              <span class="count">305</span>
+            </div>
+            <div class="sg-filter">
+              <span>Warehouse</span>
+              <span class="count">47</span>
+            </div>
+            <div class="sg-filter">
+              <span>Cobots & Industrial</span>
+              <span class="count">62</span>
+            </div>
+            <div class="sg-filter">
+              <span>Consumer & Home</span>
+              <span class="count">38</span>
+            </div>
+            <div class="sg-filter">
+              <span>Medical</span>
+              <span class="count">29</span>
+            </div>
+            <div class="sg-filter">
+              <span>Construction</span>
+              <span class="count">18</span>
+            </div>
+            <div class="sg-filter">
+              <span>Drones</span>
+              <span class="count">44</span>
+            </div>
+
+            <div class="sg-sidebar-label" style="margin-top:16px">ROBOSCORE</div>
+            <div class="sg-filter">
+              <span>90+ Elite</span>
+              <span class="count">12</span>
+            </div>
+            <div class="sg-filter">
+              <span>80-89 Strong</span>
+              <span class="count">47</span>
+            </div>
+            <div class="sg-filter">
+              <span>70-79 Good</span>
+              <span class="count">89</span>
+            </div>
+
+            <div class="sg-sidebar-label" style="margin-top:16px">PRICE RANGE</div>
+            <div class="sg-filter">
+              <span>&lt; $10K</span>
+              <span class="count">64</span>
+            </div>
+            <div class="sg-filter">
+              <span>$10K - $50K</span>
+              <span class="count">98</span>
+            </div>
+            <div class="sg-filter">
+              <span>$50K+</span>
+              <span class="count">71</span>
+            </div>
+          </div>
+
+          <div class="sg-main">
+            <table class="sg-table">
+              <thead>
+                <tr>
+                  <th>Robot</th>
+                  <th>Category</th>
+                  <th>Score</th>
+                  <th>Trend</th>
+                  <th>Price</th>
+                  <th>Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name-col">Atlas</td>
+                  <td>Humanoid</td>
+                  <td class="score-col" style="color:var(--green)">94</td>
+                  <td>
+                    <div class="sg-sparkline">
+                      <div class="sg-sparkline-bar" style="height:60%"></div>
+                      <div class="sg-sparkline-bar" style="height:70%"></div>
+                      <div class="sg-sparkline-bar" style="height:65%"></div>
+                      <div class="sg-sparkline-bar" style="height:80%"></div>
+                      <div class="sg-sparkline-bar" style="height:100%;background:var(--green)"></div>
+                    </div>
+                  </td>
+                  <td class="price-col">$150K+</td>
+                  <td>2024</td>
+                </tr>
+                <tr>
+                  <td class="name-col">Stretch</td>
+                  <td>Warehouse</td>
+                  <td class="score-col" style="color:var(--blue)">91</td>
+                  <td>
+                    <div class="sg-sparkline">
+                      <div class="sg-sparkline-bar" style="height:85%"></div>
+                      <div class="sg-sparkline-bar" style="height:80%"></div>
+                      <div class="sg-sparkline-bar" style="height:90%"></div>
+                      <div class="sg-sparkline-bar" style="height:88%"></div>
+                      <div class="sg-sparkline-bar" style="height:95%;background:var(--blue)"></div>
+                    </div>
+                  </td>
+                  <td class="price-col">Request</td>
+                  <td>2023</td>
+                </tr>
+                <tr>
+                  <td class="name-col">UR20</td>
+                  <td>Cobot</td>
+                  <td class="score-col" style="color:var(--blue)">89</td>
+                  <td>
+                    <div class="sg-sparkline">
+                      <div class="sg-sparkline-bar" style="height:75%"></div>
+                      <div class="sg-sparkline-bar" style="height:80%"></div>
+                      <div class="sg-sparkline-bar" style="height:82%"></div>
+                      <div class="sg-sparkline-bar" style="height:85%"></div>
+                      <div class="sg-sparkline-bar" style="height:88%;background:var(--blue)"></div>
+                    </div>
+                  </td>
+                  <td class="price-col">$58,000</td>
+                  <td>2023</td>
+                </tr>
+                <tr>
+                  <td class="name-col">Spot</td>
+                  <td>Quadruped</td>
+                  <td class="score-col" style="color:var(--blue)">87</td>
+                  <td>
+                    <div class="sg-sparkline">
+                      <div class="sg-sparkline-bar" style="height:90%"></div>
+                      <div class="sg-sparkline-bar" style="height:88%"></div>
+                      <div class="sg-sparkline-bar" style="height:85%"></div>
+                      <div class="sg-sparkline-bar" style="height:87%"></div>
+                      <div class="sg-sparkline-bar" style="height:86%;background:var(--blue)"></div>
+                    </div>
+                  </td>
+                  <td class="price-col">$74,500</td>
+                  <td>2022</td>
+                </tr>
+                <tr>
+                  <td class="name-col">Rex</td>
+                  <td>Warehouse</td>
+                  <td class="score-col" style="color:var(--blue)">85</td>
+                  <td>
+                    <div class="sg-sparkline">
+                      <div class="sg-sparkline-bar" style="height:60%"></div>
+                      <div class="sg-sparkline-bar" style="height:70%"></div>
+                      <div class="sg-sparkline-bar" style="height:75%"></div>
+                      <div class="sg-sparkline-bar" style="height:80%"></div>
+                      <div class="sg-sparkline-bar" style="height:84%;background:var(--blue)"></div>
+                    </div>
+                  </td>
+                  <td class="price-col">$42,000</td>
+                  <td>2024</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Design tokens -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> DESIGN TOKENS</div>
+      <div class="mockup-body">
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">TYPOGRAPHY</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:2px">Space Grotesk</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3)">Primary everywhere</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;margin-top:8px;color:rgba(255,255,255,0.4)">JetBrains Mono — table data only</div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">LAYOUT</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3)">Sidebar + main content. Tables over cards. Scannable rows. Filter-heavy.</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-bottom:6px">ANIMATION</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3)">Sparkline micro-charts. Pulse indicators for live data. Minimal motion — function over flourish.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vibe -->
+    <div class="mockup-panel">
+      <div class="mockup-bar"><span class="dot"></span> FEEL</div>
+      <div class="mockup-body">
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:12px">
+          Opening <strong style="color:var(--blue)">Linear</strong> and immediately seeing your work. No hero banners. No marketing fluff. Just <strong style="color:var(--green)">the data you came for</strong>, filterable, sortable, instant.
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6">
+          <strong style="color:rgba(255,255,255,0.5)">Risk:</strong> May feel too utilitarian for a site that also needs to attract and convert. Less visual wow factor. The homepage becomes the browse page — could work, but loses the "platform brand" moment.
+        </div>
+        <div class="tokens">
+          <span class="token">layout: sidebar + table</span>
+          <span class="token">radius: 4-5px</span>
+          <span class="token">font: sans + table mono</span>
+          <span class="token">sparklines: yes</span>
+          <span class="token">hero: none</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     COMPARISON TABLE
+     ═══════════════════════════════════════ -->
+<div class="comparison">
+  <h3>Side-by-Side Comparison</h3>
+  <div class="comparison-grid">
+    <div class="cell header"></div>
+    <div class="cell header">01 · Mission Control</div>
+    <div class="cell header">02 · Obsidian Grid ★</div>
+    <div class="cell header">03 · Signal</div>
+
+    <div class="cell label">Data Density</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span><span></span><span></span></div></div>
+
+    <div class="cell label">Terminal Feel</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span></span><span></span><span></span></div></div>
+
+    <div class="cell label">Accessibility</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span></span><span></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span></div></div>
+
+    <div class="cell label">Visual Impact</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span></span><span></span><span></span></div></div>
+
+    <div class="cell label">Motion / Life</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span></span><span></span><span></span></div></div>
+
+    <div class="cell label">SEO / Content</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span></span><span></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span><span class="filled violet"></span><span></span></div></div>
+
+    <div class="cell label">Build Effort</div>
+    <div class="cell"><div class="meter"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled green"></span><span class="filled green"></span><span class="filled green"></span><span></span><span></span></div></div>
+    <div class="cell"><div class="meter"><span class="filled violet"></span><span class="filled violet"></span><span></span><span></span><span></span></div></div>
+  </div>
+</div>
+
+<script>
+function selectDirection(el) {
+  document.querySelectorAll('.direction').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+
+  // Record selection
+  const choice = el.dataset.choice;
+  const label = el.querySelector('.dir-label').textContent;
+
+  if (window.__sp_record) {
+    window.__sp_record({ type: 'click', choice: choice, text: label });
+  }
+}
+</script>
+
+</body>
+</html>

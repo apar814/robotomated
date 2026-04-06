@@ -4,7 +4,25 @@
       "Bash(npx vitest:*)",
       "Bash(npx next:*)",
       "Bash(npx vercel:*)",
-      "Bash(grep:*)"
-    ]
+      "Bash(grep:*)",
+      "Bash(node -e \":*)",
+      "Bash(find:*)",
+      "Bash(ls C:/Users/aparp/projects/robotomated/app/\\\\\\(platform\\\\\\)/)",
+      "Bash(npm run:*)",
+      "Bash(npx tsx:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:robotomated.com)",
+      "Bash(bash C:/Users/aparp/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.6/skills/brainstorming/scripts/start-server.sh --project-dir C:/Users/aparp/projects/robotomated)",
+      "Skill(firecrawl-scrape)",
+      "Bash(npx supabase:*)",
+      "Bash(wc -l app/\\\\\\(platform\\\\\\)/fleet/page.tsx app/\\\\\\(platform\\\\\\)/fleet/add/page.tsx app/\\\\\\(platform\\\\\\)/fleet/[assetId]/page.tsx)",
+      "Bash(wc -l app/\\\\\\(platform\\\\\\)/market/funding/page.tsx app/\\\\\\(platform\\\\\\)/market/investors/page.tsx)",
+      "Bash(wc -l components/fleet/*.tsx components/home/recently-funded.tsx)",
+      "Bash(ls app/\\\\\\(platform\\\\\\)/fleet/[assetId]/log-service/)",
+      "Bash(drift scan:*)",
+      "Bash(find /c/Users/aparp/projects/robotomated -type f \\\\\\(-name *nav* -o -name *header* -o -name *footer* \\\\\\) -iname *.tsx -o -iname *.ts -o -iname *.jsx -o -iname *.js)"
+    ],
+    "defaultMode": "bypassPermissions"
   }
 }

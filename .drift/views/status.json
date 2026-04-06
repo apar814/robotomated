@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-03-30T00:24:35.816Z",
+  "health": {
+    "score": 60,
+    "trend": "stable",
+    "factors": [
+      {
+        "name": "Pattern Approval Rate",
+        "score": 0.5303983228511531,
+        "weight": 0.3,
+        "trend": "stable"
+      },
+      {
+        "name": "High Confidence Patterns",
+        "score": 0.6771488469601677,
+        "weight": 0.3,
+        "trend": "stable"
+      },
+      {
+        "name": "Low Outlier Rate",
+        "score": 0.9924834864474983,
+        "weight": 0.4,
+        "trend": "stable"
+      }
+    ]
+  },
+  "patterns": {
+    "total": 477,
+    "approved": 253,
+    "discovered": 224,
+    "ignored": 0,
+    "byCategory": {
+      "structural": 34,
+      "components": 35,
+      "styling": 41,
+      "auth": 29,
+      "errors": 35,
+      "data-access": 54,
+      "testing": 27,
+      "logging": 32,
+      "security": 40,
+      "config": 25,
+      "types": 42,
+      "performance": 24,
+      "accessibility": 28,
+      "documentation": 17,
+      "api": 14
+    }
+  },
+  "issues": {
+    "critical": 2,
+    "warnings": 1,
+    "topIssues": [
+      {
+        "id": "outlier-b114ce45ede68749",
+        "type": "outlier",
+        "severity": "critical",
+        "message": "Response Envelope Detector has 88 outliers",
+        "patternId": "b114ce45ede68749"
+      },
+      {
+        "id": "outlier-bcace1516c86fdf6",
+        "type": "outlier",
+        "severity": "critical",
+        "message": "HTTP Methods Detector has 10 outliers",
+        "patternId": "bcace1516c86fdf6"
+      },
+      {
+        "id": "outlier-b707b60a76bb8385",
+        "type": "outlier",
+        "severity": "warning",
+        "message": "Route Structure Detector has 1 outliers",
+        "patternId": "b707b60a76bb8385"
+      }
+    ]
+  },
+  "security": {
+    "violations": 0,
+    "sensitiveExposures": 0,
+    "riskLevel": "low"
+  },
+  "lastScan": {
+    "timestamp": "2026-03-30T00:24:35.803Z",
+    "duration": 4238,
+    "filesScanned": 102,
+    "patternsFound": 477,
+    "errors": 0
+  }
+}

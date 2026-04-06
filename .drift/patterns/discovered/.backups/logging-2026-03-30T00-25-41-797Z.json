@@ -1,0 +1,2591 @@
+{
+  "version": "1.0.0",
+  "category": "logging",
+  "patterns": [
+    {
+      "id": "d82f25392be2bc29",
+      "subcategory": "structured-logging",
+      "name": "Structured Logging Detector",
+      "description": "Learns structured logging patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/structured-logging",
+          "patternId": "logging/structured-logging/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 1,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 41,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 114,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 17,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 27,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 35,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 95,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 95,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\page.tsx",
+          "line": 17,
+          "column": 80,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 13,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.5449999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 41,
+          "column": 71,
+          "isOutlier": false,
+          "confidence": 0.5449999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 54,
+          "column": 61,
+          "isOutlier": false,
+          "confidence": 0.5449999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 229,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 28,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 122,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 122,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 274,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 274,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 32,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 33,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 33,
+          "column": 69,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 56,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 66,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 104,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 71,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 88,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 149,
+          "column": 54,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 154,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 186,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 190,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 29,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 103,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 105,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 103,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 140,
+          "column": 52,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 180,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 190,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 69,
+          "column": 41,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 72,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 146,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 147,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 218,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 228,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 259,
+          "column": 53,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 330,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 331,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 331,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 332,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 334,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 340,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 342,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 344,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 356,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 359,
+          "column": 41,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 359,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 362,
+          "column": 68,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 364,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 366,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 371,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 371,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 372,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 373,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 375,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 376,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 384,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.704375
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 18,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 157,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 157,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 32,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 121,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 121,
+          "column": 74,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 13,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 16,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 14,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 21,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 12,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 31,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.55125
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 16,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.55125
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 23,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 29,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 63,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 81,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 109,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 150,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 100,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 97,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 51,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 56,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 79,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 98,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 102,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 106,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 108,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 112,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 115,
+          "column": 77,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\feedback\\route.ts",
+          "line": 14,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 42,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 35,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 67,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 64,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.780Z",
+        "lastSeen": "2026-03-30T00:24:33.780Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "structured-logging"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "1fbc1da674c021a1",
+      "subcategory": "log-levels",
+      "name": "Log Levels Detector",
+      "description": "Learns log level patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/log-levels",
+          "patternId": "logging/log-levels/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.6,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 26,
+        "score": 0.7116666666666667,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 17,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 27,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 35,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 95,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 95,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 28,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 122,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 122,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 274,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 274,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 32,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 33,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 33,
+          "column": 69,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 56,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 66,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 104,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 71,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 133,
+          "column": 88,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 149,
+          "column": 54,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 154,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 186,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 190,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.6026086956521739
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 29,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 103,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 105,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 18,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 157,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 157,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 32,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 121,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 121,
+          "column": 74,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 16,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 14,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 21,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 12,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 16,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5700000000000001
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 23,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 29,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 63,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 81,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 109,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6042105263157895
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 100,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 42,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 64,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\newsletter\\route.ts",
+          "line": 16,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\newsletter\\subscribe\\route.ts",
+          "line": 57,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 12,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\portal\\route.ts",
+          "line": 13,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5700000000000001
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 43,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 28,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 65,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 93,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 34,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 16,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 32,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 33,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 33,
+          "column": 69,
+          "isOutlier": false,
+          "confidence": 0.6699999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.780Z",
+        "lastSeen": "2026-03-30T00:24:33.780Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "log-levels"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "62f76b572e6363ff",
+      "subcategory": "health-checks",
+      "name": "Health Checks Detector",
+      "description": "Learns health check patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/health-checks",
+          "patternId": "logging/health-checks/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.64,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 18,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 52,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 16,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 213,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 121,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 122,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 123,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 124,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 125,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 129,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 130,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 131,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 132,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 27,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 6,
+          "column": 131,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 144,
+          "column": 66,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 32,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.5546153846153845
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 50,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.5546153846153845
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 88,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.5546153846153845
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 92,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.5546153846153845
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 126,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.5546153846153845
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 176,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 262,
+          "column": 75,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 254,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.52
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 96,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 26,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 17,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 57,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 30,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 10,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 57,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 26,
+          "column": 51,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 75,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.780Z",
+        "lastSeen": "2026-03-30T00:24:33.780Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "health-checks"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "bd759dd3d63a6060",
+      "subcategory": "context-fields",
+      "name": "Context Fields Detector",
+      "description": "Learns logging context field patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/context-fields",
+          "patternId": "logging/context-fields/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 1,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 41,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 35,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 40,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 32,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 33,
+          "column": 22,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 173,
+          "column": 59,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 37,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 77,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 112,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 113,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 114,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 228,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 232,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 34,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 35,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 84,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 49,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.5472727272727271
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 56,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.5472727272727271
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 96,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.5472727272727271
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 96,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.5472727272727271
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 27,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 114,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 116,
+          "column": 53,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 132,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 162,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 170,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 173,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 173,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 184,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 185,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 25,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 27,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 28,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 39,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 40,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 46,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 31,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 70,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 54,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 63,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 20,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 21,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 25,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 26,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 41,
+          "column": 71,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 18,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 98,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5790909090909091
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 17,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 30,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 31,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 98,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 82,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.55125
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 87,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.55125
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 31,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\market\\investors\\page.tsx",
+          "line": 65,
+          "column": 68,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 35,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 161,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 43,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 46,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 67,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 109,
+          "column": 73,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 42,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 49,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 52,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 46,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 47,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 53,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.5154545454545454
+        },
+        {
+          "file": "app\\api\\admin\\export-emails\\route.ts",
+          "line": 6,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\export-emails\\route.ts",
+          "line": 11,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 8,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 9,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 9,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.665
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 14,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.665
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 19,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.665
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 9,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 15,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 29,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 36,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 60,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 60,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 65,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 46,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 42,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 59,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 28,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 49,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 6,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 20,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 34,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 93,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 99,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 68,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 72,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 62,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 66,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 3,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\sitemap.ts",
+          "line": 11,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.6745454545454546
+        },
+        {
+          "file": "app\\sitemap.ts",
+          "line": 13,
+          "column": 22,
+          "isOutlier": false,
+          "confidence": 0.6745454545454546
+        },
+        {
+          "file": "app\\sitemap.ts",
+          "line": 27,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6745454545454546
+        },
+        {
+          "file": "app\\sitemap.ts",
+          "line": 60,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6745454545454546
+        },
+        {
+          "file": "app\\sitemap.ts",
+          "line": 67,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6745454545454546
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.783Z",
+        "lastSeen": "2026-03-30T00:24:33.783Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "context-fields"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "15d3a020f5134ab5",
+      "subcategory": "structured-logging",
+      "name": "Structured Logging Detector",
+      "description": "Learns structured logging patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/structured-logging",
+          "patternId": "logging/structured-logging/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.8825,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 43,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.8825
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.786Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "structured-logging"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "83ca37c73ee72871",
+      "subcategory": "log-levels",
+      "name": "Log Levels Detector",
+      "description": "Learns log level patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/log-levels",
+          "patternId": "logging/log-levels/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.8825,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 43,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.8825
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "log-levels"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "24e3c79c4e217310",
+      "subcategory": "context-fields",
+      "name": "Context Fields Detector",
+      "description": "Learns logging context field patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/context-fields",
+          "patternId": "logging/context-fields/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.75125,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 69,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.75125
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "context-fields"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "6445ba19153a02de",
+      "subcategory": "pii-redaction",
+      "name": "PII Redaction Detector",
+      "description": "Learns PII redaction patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/pii-redaction",
+          "patternId": "logging/pii-redaction/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.08,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.8999999999999999,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 22,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 23,
+          "column": 22,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 24,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 25,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "pii-redaction"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "daad9917b4ff22c9",
+      "subcategory": "pii-redaction",
+      "name": "PII Redaction Detector",
+      "description": "Learns PII redaction patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/pii-redaction",
+          "patternId": "logging/pii-redaction/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.06,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\globals.css",
+          "line": 256,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 257,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 258,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.77
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.789Z",
+        "lastSeen": "2026-03-30T00:24:33.789Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "pii-redaction"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "801431bf0ca6cc55",
+      "subcategory": "metrics",
+      "name": "Metrics Detector",
+      "description": "Learns metrics patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/metrics",
+          "patternId": "logging/metrics/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 255,
+          "column": 78,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 319,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.595
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "metrics"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "a219eeea65834c7f",
+      "subcategory": "health-checks",
+      "name": "Health Checks Detector",
+      "description": "Learns health check patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/health-checks",
+          "patternId": "logging/health-checks/import"
+        }
+      },
+      "confidence": {
+        "frequency": 0.08,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.8533333333333333,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 24,
+          "column": 62,
+          "isOutlier": false,
+          "confidence": 0.72
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 29,
+          "column": 61,
+          "isOutlier": false,
+          "confidence": 0.72
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 4,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 4,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "health-checks"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "0f21de81ebd6b7b3",
+      "subcategory": "metrics",
+      "name": "Metrics Detector",
+      "description": "Learns metrics patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "logging/metrics",
+          "patternId": "logging/metrics/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.7949999999999999,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 319,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "logging",
+          "metrics"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-30T00:25:41.733Z",
+  "checksum": "8007567e78b5fb36"
+}

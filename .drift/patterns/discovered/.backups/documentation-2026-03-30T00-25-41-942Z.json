@@ -1,0 +1,1385 @@
+{
+  "version": "1.0.0",
+  "category": "documentation",
+  "patterns": [
+    {
+      "id": "da021a2631592937",
+      "subcategory": "jsdoc-patterns",
+      "name": "JSDoc Patterns Detector",
+      "description": "Learns JSDoc documentation patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/jsdoc-patterns",
+          "patternId": "documentation/jsdoc-patterns/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.79,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 24,
+        "score": 0.6824999999999999,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\saved\\page.tsx",
+          "line": 72,
+          "column": 72,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 6,
+          "column": 113,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 9,
+          "column": 52,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 10,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 13,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 43,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.5489473684210526
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 44,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.5489473684210526
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 55,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.5489473684210526
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 56,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.5489473684210526
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 146,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.5489473684210526
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 28,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 29,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 39,
+          "column": 47,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 40,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 69,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 72,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 75,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 76,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 106,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 107,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 15,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.6066666666666667
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 16,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.6066666666666667
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 33,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.6066666666666667
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 34,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.6066666666666667
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 95,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 96,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 112,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 113,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 305,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 305,
+          "column": 47,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 308,
+          "column": 85,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 311,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 311,
+          "column": 52,
+          "isOutlier": false,
+          "confidence": 0.5569565217391304
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 15,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 19,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 14,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 18,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 42,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 46,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.5755555555555556
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 40,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 41,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 68,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 69,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 32,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 33,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 48,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 49,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 413,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 414,
+          "column": 73,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 13,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 14,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 22,
+          "column": 51,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 23,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 43,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 44,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 63,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 64,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 28,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 29,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 40,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 41,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 176,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 214,
+          "column": 83,
+          "isOutlier": false,
+          "confidence": 0.556111111111111
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 50,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.5658333333333334
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 51,
+          "column": 40,
+          "isOutlier": false,
+          "confidence": 0.5658333333333334
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 62,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.5658333333333334
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 63,
+          "column": 40,
+          "isOutlier": false,
+          "confidence": 0.5658333333333334
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 129,
+          "column": 78,
+          "isOutlier": false,
+          "confidence": 0.5658333333333334
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 14,
+          "column": 3,
+          "isOutlier": true,
+          "confidence": 0.6824999999999999,
+          "outlierReason": "Value above IQR upper bound"
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 74,
+          "column": 23,
+          "isOutlier": true,
+          "confidence": 0.6824999999999999,
+          "outlierReason": "Value above IQR upper bound"
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 37,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 69,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 6,
+          "column": 4,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 16,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 53,
+          "column": 78,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 16,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 47,
+          "column": 78,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\go\\[slug]\\[retailer]\\route.ts",
+          "line": 15,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.595
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "jsdoc-patterns"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "4b14a592bc6b5bf5",
+      "subcategory": "todo-patterns",
+      "name": "Todo Patterns Detector",
+      "description": "Learns TODO/FIXME comment patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/todo-patterns",
+          "patternId": "documentation/todo-patterns/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.07,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 6,
+        "score": 0.7,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 216,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 392,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 395,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 152,
+          "column": 73,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 5,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 33,
+          "column": 107,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\portal\\route.ts",
+          "line": 5,
+          "column": 86,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.785Z",
+        "lastSeen": "2026-03-30T00:24:33.785Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "todo-patterns"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "43c28b52f53d5868",
+      "subcategory": "jsdoc-patterns",
+      "name": "JSDoc Patterns Detector",
+      "description": "Learns JSDoc documentation patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/jsdoc-patterns",
+          "patternId": "documentation/jsdoc-patterns/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.03,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.8533333333333333,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 39,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 40,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 45,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "jsdoc-patterns"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "5dd7f96ccc3f4758",
+      "subcategory": "readme-structure",
+      "name": "Readme Structure Detector",
+      "description": "Learns README structure patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/readme-structure",
+          "patternId": "documentation/readme-structure/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 72,
+          "column": 72,
+          "isOutlier": false,
+          "confidence": 0.77
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "readme-structure"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "44c0396a136a86c8",
+      "subcategory": "readme-structure",
+      "name": "Readme Structure Detector",
+      "description": "Learns README structure patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/readme-structure",
+          "patternId": "documentation/readme-structure/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\tools\\tco-calculator\\page.tsx",
+          "line": 71,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.97
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "readme-structure"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "4da6260cde11de02",
+      "subcategory": "deprecation",
+      "name": "Deprecation Detector",
+      "description": "Learns deprecation patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/deprecation",
+          "patternId": "documentation/deprecation/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 56,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.77
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "deprecation"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "3ef56f771bc5b062",
+      "subcategory": "example-code",
+      "name": "Example Code Detector",
+      "description": "Learns example code patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/example-code",
+          "patternId": "documentation/example-code/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.8533333333333333,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 51,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "example-code"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "cec5368f057924b3",
+      "subcategory": "readme-structure",
+      "name": "Readme Structure Detector",
+      "description": "Learns README structure patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/readme-structure",
+          "patternId": "documentation/readme-structure/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.06,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.8825,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 63,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 514,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 514,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.8825
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "readme-structure"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "e68629f2fa400216",
+      "subcategory": "example-code",
+      "name": "Example Code Detector",
+      "description": "Learns example code patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/example-code",
+          "patternId": "documentation/example-code/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.5,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.6727777777777777,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 9,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 10,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 11,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 27,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 27,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 28,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 28,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 29,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 29,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 112,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6387499999999999
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 48,
+          "column": 19,
+          "isOutlier": true,
+          "confidence": 0.52,
+          "outlierReason": "Low confidence outlier"
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 48,
+          "column": 44,
+          "isOutlier": true,
+          "confidence": 0.52,
+          "outlierReason": "Low confidence outlier"
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 7,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 9,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 19,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 52,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 53,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 54,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 57,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 58,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 59,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 72,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 74,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 75,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.6727777777777777
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "example-code"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "d422ae6f5e634158",
+      "subcategory": "example-code",
+      "name": "Example Code Detector",
+      "description": "Learns example code patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/example-code",
+          "patternId": "documentation/example-code/import"
+        }
+      },
+      "confidence": {
+        "frequency": 0.24,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.8727777777777778,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 13,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 14,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 14,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 14,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 14,
+          "column": 79,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 7,
+          "column": 10,
+          "isOutlier": true,
+          "confidence": 0.72,
+          "outlierReason": "Value below IQR lower bound"
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 7,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.72
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 10,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.8727777777777778
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 11,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.8727777777777778
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 11,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.8727777777777778
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 11,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.8727777777777778
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 11,
+          "column": 79,
+          "isOutlier": false,
+          "confidence": 0.8727777777777778
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "example-code"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "90d7829ab7728b38",
+      "subcategory": "example-code",
+      "name": "Example Code Detector",
+      "description": "Learns example code patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/example-code",
+          "patternId": "documentation/example-code/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.04,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.83875,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 100,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 47,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.72
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "example-code"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "8393d67d9c5d4507",
+      "subcategory": "todo-patterns",
+      "name": "Todo Patterns Detector",
+      "description": "Learns TODO/FIXME comment patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "documentation/todo-patterns",
+          "patternId": "documentation/todo-patterns/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.76,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 394,
+          "column": 93,
+          "isOutlier": false,
+          "confidence": 0.76
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "documentation",
+          "todo-patterns"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-30T00:25:41.874Z",
+  "checksum": "4625a527eeaf240e"
+}

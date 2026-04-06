@@ -1,0 +1,3909 @@
+{
+  "version": "1.0.0",
+  "category": "accessibility",
+  "patterns": [
+    {
+      "id": "e880740442cf25f7",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/import"
+        }
+      },
+      "confidence": {
+        "frequency": 0.49,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 27,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 4,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 5,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 4,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 1,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 4,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.8745454545454545
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 7,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.8745454545454545
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 4,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.9026923076923077
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 7,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.9026923076923077
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 3,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 27,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 27,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 28,
+          "column": 63,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\fleet\\add\\page.tsx",
+          "line": 3,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 7,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 7,
+          "column": 57,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 3,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 3,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.9116666666666666
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 9,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.9116666666666666
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.9296153846153845
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 3,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 4,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 4,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 3,
+          "column": 80,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 4,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 4,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 4,
+          "column": 94,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 10,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 10,
+          "column": 53,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 11,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 11,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.9199999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 5,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 7,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 2,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 7,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\tools\\maintenance-estimator\\page.tsx",
+          "line": 2,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\tools\\maintenance-estimator\\page.tsx",
+          "line": 2,
+          "column": 64,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 3,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 72,
+          "column": 156,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 3,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 3,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 5,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 5,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.781Z",
+        "lastSeen": "2026-03-30T00:24:33.781Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "dd45ffb558275b84",
+      "subcategory": "keyboard-nav",
+      "name": "Keyboard Navigation Detector",
+      "description": "Learns keyboard navigation patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/keyboard-nav",
+          "patternId": "accessibility/keyboard-nav/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.54,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 10,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 91,
+          "column": 134,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 91,
+          "column": 152,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 56,
+          "column": 140,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 56,
+          "column": 158,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 191,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 191,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 196,
+          "column": 110,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 196,
+          "column": 128,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 211,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 211,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 218,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 218,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 173,
+          "column": 113,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 173,
+          "column": 131,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 190,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 190,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 215,
+          "column": 134,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 215,
+          "column": 152,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 234,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 234,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 246,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 246,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 258,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 258,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 270,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 270,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 85,
+          "column": 111,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 85,
+          "column": 129,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 90,
+          "column": 104,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 90,
+          "column": 122,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 127,
+          "column": 144,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 127,
+          "column": 162,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 137,
+          "column": 144,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 137,
+          "column": 162,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 86,
+          "column": 120,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 86,
+          "column": 147,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 100,
+          "column": 120,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 100,
+          "column": 147,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 98,
+          "column": 146,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 98,
+          "column": 164,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 120,
+          "column": 216,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 120,
+          "column": 234,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 124,
+          "column": 231,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 124,
+          "column": 249,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 134,
+          "column": 212,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 134,
+          "column": 230,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 138,
+          "column": 207,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 138,
+          "column": 225,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 149,
+          "column": 316,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 149,
+          "column": 334,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 153,
+          "column": 282,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 153,
+          "column": 300,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 110,
+          "column": 137,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 110,
+          "column": 164,
+          "isOutlier": false,
+          "confidence": 0.97
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.781Z",
+        "lastSeen": "2026-03-30T00:24:33.781Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "keyboard-nav"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "e45017b90e1edbb3",
+      "subcategory": "focus-management",
+      "name": "Focus Management Detector",
+      "description": "Learns focus management patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/focus-management",
+          "patternId": "accessibility/focus-management/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.54,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 10,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 91,
+          "column": 134,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 91,
+          "column": 152,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 56,
+          "column": 140,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 56,
+          "column": 158,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 191,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 191,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 196,
+          "column": 110,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 196,
+          "column": 128,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 211,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 211,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 218,
+          "column": 117,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 218,
+          "column": 135,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 173,
+          "column": 113,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 173,
+          "column": 131,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 190,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 190,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 215,
+          "column": 134,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 215,
+          "column": 152,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 234,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 234,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 246,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 246,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 258,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 258,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 270,
+          "column": 136,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 270,
+          "column": 154,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 85,
+          "column": 111,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 85,
+          "column": 129,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 90,
+          "column": 104,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 90,
+          "column": 122,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 127,
+          "column": 144,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 127,
+          "column": 162,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 137,
+          "column": 144,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 137,
+          "column": 162,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 86,
+          "column": 120,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 86,
+          "column": 147,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 100,
+          "column": 120,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 100,
+          "column": 147,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 98,
+          "column": 146,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 98,
+          "column": 164,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 120,
+          "column": 216,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 120,
+          "column": 234,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 124,
+          "column": 231,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 124,
+          "column": 249,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 134,
+          "column": 212,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 134,
+          "column": 230,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 138,
+          "column": 207,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 138,
+          "column": 225,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 149,
+          "column": 316,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 149,
+          "column": 334,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 153,
+          "column": 282,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 153,
+          "column": 300,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 110,
+          "column": 137,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 110,
+          "column": 164,
+          "isOutlier": false,
+          "confidence": 0.97
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.781Z",
+        "lastSeen": "2026-03-30T00:24:33.781Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "focus-management"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "66aff425fd028334",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.65,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 23,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 28,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 52,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 65,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 69,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 43,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 92,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 60,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 31,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.9026923076923077
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 32,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.9026923076923077
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 33,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.9026923076923077
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 48,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 49,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 50,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 464,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 595,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 595,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 596,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 596,
+          "column": 40,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 597,
+          "column": 17,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 597,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.8869491525423728
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 75,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 75,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 201,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 201,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 29,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 110,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 110,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 340,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 342,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 344,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 15,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 66,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 66,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 86,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 86,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 25,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 81,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 81,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 36,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 45,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 65,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 142,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 142,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 218,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 218,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 110,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 110,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 122,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 122,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 134,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 134,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 36,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.9199999999999999
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 53,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 42,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.9199999999999999
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 25,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\admin\\export-emails\\route.ts",
+          "line": 18,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 23,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 47,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 70,
+          "column": 22,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 160,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 28,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 22,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 164,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 49,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 43,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.785Z",
+        "lastSeen": "2026-03-30T00:24:33.785Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "557b52f82a2cae1d",
+      "subcategory": "alt-text",
+      "name": "Alt Text Detector",
+      "description": "Learns alt text patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/alt-text",
+          "patternId": "accessibility/alt-text/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 1,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 53,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 17,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 8,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 24,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\account\\saved\\page.tsx",
+          "line": 8,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 4,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 30,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 72,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.75125
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 72,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.75125
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 24,
+          "column": 57,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 42,
+          "column": 54,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 24,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 24,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 42,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 42,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 42,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 9,
+          "column": 86,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 15,
+          "column": 55,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 35,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 154,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 35,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 9,
+          "column": 63,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 82,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\advisor\\page.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 51,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 49,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 34,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 145,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 24,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 91,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 89,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 9,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 28,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 41,
+          "column": 58,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 85,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 133,
+          "column": 91,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 693,
+          "column": 91,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 705,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 73,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 104,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 41,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 85,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 133,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 133,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 693,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 693,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\fleet\\add\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 17,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 10,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 21,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 47,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 15,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 139,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 11,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 15,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 394,
+          "column": 84,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 402,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 37,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 40,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 394,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 23,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 394,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 394,
+          "column": 53,
+          "isOutlier": false,
+          "confidence": 0.845
+        },
+        {
+          "file": "app\\(platform)\\learn\\page.tsx",
+          "line": 9,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 17,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 51,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 22,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 36,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 162,
+          "column": 53,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 205,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 34,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 200,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 22,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.7755555555555556
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\page.tsx",
+          "line": 14,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\page.tsx",
+          "line": 18,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\investors\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\investors\\page.tsx",
+          "line": 12,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\market\\page.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.87
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 90,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.87
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 91,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.87
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 92,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.87
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 93,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.87
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 8,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 13,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 18,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 120,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 121,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 122,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 123,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\page.tsx",
+          "line": 8,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\page.tsx",
+          "line": 6,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\page.tsx",
+          "line": 7,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\page.tsx",
+          "line": 5,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 7,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 8,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 9,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 10,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 11,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8825
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "alt-text"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "20a483c91b268d24",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.12,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 8,
+        "score": 0.8825,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 129,
+          "column": 111,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 161,
+          "column": 114,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 130,
+          "column": 93,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 131,
+          "column": 101,
+          "isOutlier": false,
+          "confidence": 0.8745454545454545
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 255,
+          "column": 85,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\page.tsx",
+          "line": 18,
+          "column": 72,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 46,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 46,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 57,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 66,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.7847058823529411
+        },
+        {
+          "file": "app\\api\\feedback\\route.ts",
+          "line": 7,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 45,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "49f70a67792082f6",
+      "subcategory": "alt-text",
+      "name": "Alt Text Detector",
+      "description": "Learns alt text patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/alt-text",
+          "patternId": "accessibility/alt-text/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.5,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 17,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 419,
+          "column": 86,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 163,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 132,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 94,
+          "column": 40,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 94,
+          "column": 49,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 102,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 267,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 267,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 181,
+          "column": 95,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 326,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 326,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 543,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 543,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.8095833333333333
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 45,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 45,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 85,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 87,
+          "column": 76,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 49,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 49,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 53,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 53,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 101,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 104,
+          "column": 76,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 128,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 128,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.8999999999999999
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 38,
+          "column": 20,
+          "isOutlier": true,
+          "confidence": 0.97,
+          "outlierReason": "High confidence outlier"
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 125,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 127,
+          "column": 66,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 141,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 143,
+          "column": 81,
+          "isOutlier": false,
+          "confidence": 0.8427272727272728
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 131,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 136,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\reviews\\page.tsx",
+          "line": 111,
+          "column": 103,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\reviews\\page.tsx",
+          "line": 169,
+          "column": 64,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\tools\\tco-calculator\\page.tsx",
+          "line": 104,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\tools\\tco-calculator\\page.tsx",
+          "line": 107,
+          "column": 70,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 98,
+          "column": 71,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 101,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 101,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 81,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 81,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.83875
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 37,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 37,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 51,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 83,
+          "column": 89,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 60,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 60,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 49,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 0.83
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 52,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.83
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 52,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.83
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "alt-text"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "081e6bcc8fe1b49d",
+      "subcategory": "aria-roles",
+      "name": "ARIA Roles Detector",
+      "description": "Learns ARIA roles patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/aria-roles",
+          "patternId": "accessibility/aria-roles/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.44,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 10,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 85,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 86,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 87,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 88,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 99,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 100,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 101,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 102,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 103,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 104,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 105,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 106,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 260,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 260,
+          "column": 54,
+          "isOutlier": false,
+          "confidence": 0.9381818181818182
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 140,
+          "column": 190,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 198,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 226,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 227,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 228,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 229,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 236,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 244,
+          "column": 43,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 304,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 140,
+          "column": 185,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 95,
+          "column": 46,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 96,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 97,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 98,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 99,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 100,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 101,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 102,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 103,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.9063636363636364
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 18,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 18,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 34,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 130,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 131,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 132,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 10,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 133,
+          "column": 45,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 60,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 63,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 182,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.83
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "aria-roles"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "b47c776b325245ac",
+      "subcategory": "aria-roles",
+      "name": "ARIA Roles Detector",
+      "description": "Learns ARIA roles patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/aria-roles",
+          "patternId": "accessibility/aria-roles/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.28,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 8,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 90,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 91,
+          "column": 92,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 144,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 144,
+          "column": 50,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 202,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 202,
+          "column": 72,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 202,
+          "column": 80,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 352,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 352,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 577,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 577,
+          "column": 38,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 165,
+          "column": 39,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 171,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 183,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 149,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 151,
+          "column": 86,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 177,
+          "column": 105,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 190,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 320,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 322,
+          "column": 100,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 51,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 51,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\methodology\\page.tsx",
+          "line": 72,
+          "column": 54,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 138,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8825
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 63,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 65,
+          "column": 52,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 109,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 109,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "aria-roles"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "a9e6fc269b454ac7",
+      "subcategory": "aria-roles",
+      "name": "ARIA Roles Detector",
+      "description": "Learns ARIA roles patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/aria-roles",
+          "patternId": "accessibility/aria-roles/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.15,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 169,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 169,
+          "column": 106,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 184,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 184,
+          "column": 113,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 228,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 228,
+          "column": 112,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 240,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 240,
+          "column": 118,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 252,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 252,
+          "column": 118,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 264,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 264,
+          "column": 106,
+          "isOutlier": false,
+          "confidence": 0.8410526315789473
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 199,
+          "column": 61,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 200,
+          "column": 82,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 11,
+          "column": 40,
+          "isOutlier": true,
+          "confidence": 0.97,
+          "outlierReason": "High confidence outlier"
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.785Z",
+        "lastSeen": "2026-03-30T00:24:33.785Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "aria-roles"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "f7a021d1cc133b7e",
+      "subcategory": "heading-hierarchy",
+      "name": "Heading Hierarchy Detector",
+      "description": "Learns heading hierarchy patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/heading-hierarchy",
+          "patternId": "accessibility/heading-hierarchy/import"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 109,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.97
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 109,
+          "column": 67,
+          "isOutlier": false,
+          "confidence": 0.97
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.786Z",
+        "lastSeen": "2026-03-30T00:24:33.786Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "heading-hierarchy"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "23277bdcee24d038",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/class_definition"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 159,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "de8fe777caa8c34e",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/function_call"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.9296153846153845,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 167,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.9296153846153845
+        },
+        {
+          "file": "app\\(platform)\\tools\\tco-calculator\\page.tsx",
+          "line": 72,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.9199999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "a7dba1ac5b39f19b",
+      "subcategory": "heading-hierarchy",
+      "name": "Heading Hierarchy Detector",
+      "description": "Learns heading hierarchy patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/heading-hierarchy",
+          "patternId": "accessibility/heading-hierarchy/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 240,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.957037037037037
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "heading-hierarchy"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "e49a0f7ce14448c1",
+      "subcategory": "semantic-html",
+      "name": "Semantic HTML Detector",
+      "description": "Learns semantic HTML patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "accessibility/semantic-html",
+          "patternId": "accessibility/semantic-html/function_definition"
+        }
+      },
+      "confidence": {
+        "frequency": 0.05,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 63,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.9347058823529412
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 27,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.98875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 27,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.98875
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 27,
+          "column": 37,
+          "isOutlier": false,
+          "confidence": 0.98875
+        },
+        {
+          "file": "app\\(platform)\\tools\\maintenance-estimator\\page.tsx",
+          "line": 10,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 0.945
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "accessibility",
+          "semantic-html"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-30T00:25:41.777Z",
+  "checksum": "1d1916c9f2e11d87"
+}

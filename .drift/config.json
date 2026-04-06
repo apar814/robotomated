@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "project": {
+    "id": "462b9a96-d510-4a18-8754-c1cc3f78784b",
+    "name": "robotomated",
+    "initializedAt": "2026-03-28T05:15:18.530Z"
+  },
+  "severity": {},
+  "ignore": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    ".git/**",
+    "coverage/**",
+    "*.min.js",
+    "*.bundle.js",
+    "vendor/**",
+    "__pycache__/**",
+    ".venv/**",
+    "target/**",
+    "bin/**",
+    "obj/**"
+  ],
+  "ci": {
+    "failOn": "error",
+    "reportFormat": "text"
+  },
+  "learning": {
+    "autoApproveThreshold": 0.95,
+    "minOccurrences": 3,
+    "semanticLearning": true
+  },
+  "performance": {
+    "maxWorkers": 4,
+    "cacheEnabled": true,
+    "incrementalAnalysis": true,
+    "cacheTTL": 3600
+  },
+  "features": {
+    "callGraph": true,
+    "boundaries": true,
+    "dna": true,
+    "contracts": true
+  },
+  "telemetry": {
+    "enabled": true,
+    "sharePatternSignatures": true,
+    "shareAggregateStats": true,
+    "shareUserActions": false,
+    "installationId": "ca6d8412-388b-49c6-9899-ae5d4172704c",
+    "enabledAt": "2026-03-28T05:15:29.612Z"
+  }
+}

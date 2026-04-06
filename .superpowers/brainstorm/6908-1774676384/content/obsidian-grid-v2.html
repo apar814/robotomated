@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotomated — Obsidian Grid v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-void: #050810;
+    --bg-base: #0A0F1E;
+    --bg-surface: #0E1425;
+    --bg-elevated: #121A2E;
+    --bg-hover: #161F35;
+
+    --cyan: #00D4FF;
+    --cyan-dim: rgba(0, 212, 255, 0.08);
+    --cyan-glow: rgba(0, 212, 255, 0.15);
+    --acid: #00FF88;
+    --acid-dim: rgba(0, 255, 136, 0.06);
+    --violet: #6366F1;
+    --violet-dim: rgba(99, 102, 241, 0.08);
+    --amber: #FBBF24;
+    --amber-dim: rgba(251, 191, 36, 0.06);
+    --red: #EF4444;
+    --red-dim: rgba(239, 68, 68, 0.06);
+
+    --text-primary: #E8ECF4;
+    --text-secondary: #7A8BA8;
+    --text-tertiary: #4A5568;
+    --text-ghost: #2D3748;
+
+    --border: rgba(255, 255, 255, 0.03);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-active: rgba(0, 212, 255, 0.15);
+
+    --font-ui: 'Space Grotesk', system-ui, sans-serif;
+    --font-data: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════
+     SCANLINE TEXTURE
+     ═══════════════════════════════════════ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ═══════════════════════════════════════
+     DATA GRID BACKGROUND (hero)
+     ═══════════════════════════════════════ */
+  .data-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 212, 255, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.018) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+    animation: grid-drift 20s linear infinite;
+  }
+  @keyframes grid-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 48px 48px; }
+  }
+
+  /* ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 48px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10, 15, 30, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: var(--font-data);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+  }
+  .logo .dim { color: var(--text-tertiary); }
+  .logo .accent { color: var(--cyan); }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+  .nav a {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 5px;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: -0.01em;
+  }
+  .nav a:hover { color: var(--text-secondary); }
+  .nav a.active {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    background: rgba(255, 255, 255, 0.015);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .search-trigger:hover { border-color: var(--border-active); }
+  .search-trigger kbd {
+    font-family: var(--font-data);
+    font-size: 9px;
+    padding: 2px 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 3px;
+    color: var(--text-ghost);
+    border: 1px solid var(--border);
+  }
+
+  .advisor-btn {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    background: var(--violet);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .advisor-btn:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     STATUS BAR
+     ═══════════════════════════════════════ */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 28px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5, 8, 16, 0.6);
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-ghost);
+  }
+  .status-bar .left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .status-bar .live {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--acid);
+  }
+  .status-bar .live::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--acid);
+    animation: pulse-live 2s ease infinite;
+  }
+  @keyframes pulse-live {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 3px rgba(0, 255, 136, 0); }
+  }
+  .status-bar .stat { color: var(--text-tertiary); }
+  .status-bar .stat span { color: var(--cyan); font-weight: 500; }
+
+  /* ═══════════════════════════════════════
+     TICKER STRIP
+     ═══════════════════════════════════════ */
+  .ticker-strip {
+    display: flex;
+    height: 32px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(5, 8, 16, 0.4);
+    overflow: hidden;
+    position: relative;
+  }
+  .ticker-strip::before, .ticker-strip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ticker-strip::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-void), transparent);
+  }
+  .ticker-strip::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-void), transparent);
+  }
+
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    animation: ticker-scroll 30s linear infinite;
+    white-space: nowrap;
+    padding: 0 24px;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-data);
+    font-size: 11px;
+  }
+  .ticker-item .name { color: var(--text-secondary); font-weight: 500; }
+  .ticker-item .score { color: var(--cyan); font-weight: 600; }
+  .ticker-item .price { color: var(--text-tertiary); }
+  .ticker-item .delta { font-size: 9px; font-weight: 600; }
+  .ticker-item .delta.up { color: var(--acid); }
+  .ticker-item .delta.down { color: var(--red); }
+  .ticker-item .sep {
+    width: 1px;
+    height: 12px;
+    background: var(--border-subtle);
+  }
+
+  /* ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    padding: 48px 24px 32px;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 8px;
+    height: 1px;
+    background: var(--cyan);
+  }
+  .hero h1 {
+    font-family: var(--font-ui);
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--cyan) 0%, #00FF88 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-family: var(--font-data);
+    font-size: 13px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+  .hero .subtitle span { color: var(--text-secondary); }
+
+  /* Ambient hero glow */
+  .hero-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    opacity: 0.04;
+  }
+  .hero-glow.cyan {
+    top: -100px;
+    right: 10%;
+    background: var(--cyan);
+  }
+  .hero-glow.violet {
+    bottom: -150px;
+    left: 5%;
+    background: var(--violet);
+  }
+
+  /* ═══════════════════════════════════════
+     BENTO GRID
+     ═══════════════════════════════════════ */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding: 0 24px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .card {
+    background: var(--bg-surface);
+    padding: 16px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .card:hover {
+    background: var(--bg-elevated);
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    pointer-events: none;
+    transition: border-color 0.2s;
+    border-radius: inherit;
+  }
+  .card:hover::after {
+    border-color: var(--border-active);
+  }
+  .card.w2 { grid-column: span 2; }
+  .card.w3 { grid-column: span 3; }
+  .card.w4 { grid-column: span 4; }
+  .card.h2 { grid-row: span 2; }
+
+  .card-label {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-ghost);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-label .indicator {
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+  }
+
+  /* ── Stat card ── */
+  .stat-value {
+    font-family: var(--font-data);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-delta {
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .stat-delta.up { color: var(--acid); }
+
+  /* ── Robot list ── */
+  .robot-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+    cursor: pointer;
+  }
+  .robot-row:last-child { border: none; }
+  .robot-row:hover {
+    background: rgba(255, 255, 255, 0.01);
+  }
+  .robot-rank {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--text-ghost);
+    width: 18px;
+    text-align: right;
+  }
+  .robot-thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .robot-info { flex: 1; min-width: 0; }
+  .robot-name {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .robot-meta {
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-ghost);
+    margin-top: 1px;
+  }
+  .robot-score {
+    font-family: var(--font-data);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .robot-score-bar {
+    width: 48px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .robot-score-fill {
+    height: 100%;
+    border-radius: 1px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .robot-price {
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--acid);
+    text-align: right;
+    min-width: 60px;
+  }
+
+  /* ── Category micro cards ── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+  .cat-cell {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    transition: border-color 0.15s;
+    cursor: pointer;
+  }
+  .cat-cell:hover {
+    border-color: var(--border-active);
+  }
+  .cat-name {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+  .cat-count {
+    font-family: var(--font-data);
+    font-size: 18px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Score distribution chart ── */
+  .dist-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 56px;
+    margin-top: 6px;
+  }
+  .dist-bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dist-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.05));
+  }
+  .dist-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-data);
+    font-size: 8px;
+    color: var(--text-ghost);
+    margin-top: 4px;
+  }
+
+  /* ── Price alert card ── */
+  .price-alert {
+    border-left: 2px solid var(--acid);
+    padding-left: 10px;
+  }
+  .price-old {
+    font-family: var(--font-data);
+    font-size: 11px;
+    color: var(--text-ghost);
+    text-decoration: line-through;
+  }
+  .price-new {
+    font-family: var(--font-data);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--acid);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin: 4px 0 2px;
+  }
+  .price-delta {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--acid);
+  }
+
+  /* ── Review headline ── */
+  .review-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+  }
+  .review-row:last-child { border: none; }
+  .review-tag {
+    font-family: var(--font-data);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .review-tag.new {
+    background: var(--acid-dim);
+    color: var(--acid);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+  }
+  .review-tag.upd {
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    border: 1px solid rgba(0, 212, 255, 0.1);
+  }
+  .review-title {
+    flex: 1;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .review-score {
+    font-family: var(--font-data);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Sparkline ── */
+  .sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 20px;
+  }
+  .spark-bar {
+    width: 3px;
+    border-radius: 1px;
+    opacity: 0.5;
+    transition: height 0.6s ease;
+  }
+  .spark-bar:last-child { opacity: 1; }
+
+  /* ── RoboScore mini ring ── */
+  .score-ring {
+    width: 36px;
+    height: 36px;
+    position: relative;
+  }
+  .score-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  .score-ring .track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.03);
+    stroke-width: 3;
+  }
+  .score-ring .fill {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .score-ring .value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION BELOW BENTO — WHY + CTA
+     ═══════════════════════════════════════ */
+  .pillars {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .pillar {
+    background: var(--bg-surface);
+    padding: 20px;
+    transition: background 0.2s;
+  }
+  .pillar:hover { background: var(--bg-elevated); }
+  .pillar-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .pillar h3 {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+  .pillar p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-tertiary);
+  }
+
+  /* ═══════════════════════════════════════
+     CTA SECTION
+     ═══════════════════════════════════════ */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: var(--font-ui);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 20px;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn-primary {
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 10px 24px;
+    background: var(--cyan);
+    color: #050810;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1);
+  }
+  .btn-secondary {
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 10px 24px;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--violet);
+    color: var(--text-primary);
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER STRIP
+     ═══════════════════════════════════════ */
+  .footer-strip {
+    border-top: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-ghost);
+    margin-top: 20px;
+  }
+
+  /* ═══════════════════════════════════════
+     ANIMATIONS
+     ═══════════════════════════════════════ */
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(6px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .animate-in {
+    animation: count-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+
+  @keyframes ticker-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Score color tiers */
+  .score-elite { color: var(--acid); }
+  .score-strong { color: var(--cyan); }
+  .score-good { color: var(--amber); }
+  .score-low { color: var(--red); }
+
+  /* ═══════════════════════════════════════
+     DESIGN NOTES PANEL (below mockup)
+     ═══════════════════════════════════════ */
+  .design-notes {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 24px 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .note-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .note-panel h4 {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-ghost);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .note-panel .swatch-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .swatch .label {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    font-family: var(--font-data);
+    font-size: 8px;
+    color: var(--text-ghost);
+    white-space: nowrap;
+  }
+  .note-panel .type-sample {
+    margin-bottom: 6px;
+  }
+  .note-panel .note-desc {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  .token-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .token {
+    font-family: var(--font-data);
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--text-tertiary);
+    background: rgba(255, 255, 255, 0.01);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ -->
+<div class="header">
+  <div class="logo">ROBOTO<span class="dim">MATED</span><span class="accent">.</span></div>
+  <nav class="nav">
+    <a class="active">Explore</a>
+    <a>Compare</a>
+    <a>Reviews</a>
+    <a>Industries</a>
+    <a>Learn</a>
+    <a>Market Intel</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-trigger">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      Search 305 robots...
+      <kbd>&#8984;K</kbd>
+    </div>
+    <a class="advisor-btn">AI ADVISOR</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     STATUS BAR
+     ═══════════════════════════════════════ -->
+<div class="status-bar">
+  <div class="left">
+    <span class="live">LIVE</span>
+    <span class="stat"><span>305</span> ROBOTS</span>
+    <span class="stat"><span>9</span> CATEGORIES</span>
+    <span class="stat"><span>48</span> MANUFACTURERS</span>
+  </div>
+  <div style="font-size:9px">LAST UPDATED <span style="color:var(--cyan)">2 MIN AGO</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TICKER
+     ═══════════════════════════════════════ -->
+<div class="ticker-strip">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="name">Atlas</span><span class="score">94</span><span class="delta up">+3.0</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Stretch</span><span class="score">91</span><span class="delta up">+0.8</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">UR20</span><span class="score">89</span><span class="delta up">+0.4</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Spot</span><span class="score">87</span><span class="delta up">+2.1</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Digit</span><span class="score">78</span><span class="delta down">-1.2</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Panda</span><span class="score">83</span><span class="delta down">-0.3</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Rex</span><span class="score">85</span><span class="delta up">+1.5</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Moxi</span><span class="score">72</span><span class="price">$28K</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Atlas</span><span class="score">94</span><span class="delta up">+3.0</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Stretch</span><span class="score">91</span><span class="delta up">+0.8</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">UR20</span><span class="score">89</span><span class="delta up">+0.4</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Spot</span><span class="score">87</span><span class="delta up">+2.1</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Digit</span><span class="score">78</span><span class="delta down">-1.2</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Panda</span><span class="score">83</span><span class="delta down">-0.3</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Rex</span><span class="score">85</span><span class="delta up">+1.5</span></div>
+    <div class="sep" style="width:1px;height:12px;background:var(--border-subtle)"></div>
+    <div class="ticker-item"><span class="name">Moxi</span><span class="score">72</span><span class="price">$28K</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="data-grid-bg"></div>
+  <div class="hero-glow cyan"></div>
+  <div class="hero-glow violet"></div>
+  <div class="hero-inner">
+    <div class="hero-tag animate-in">THE ROBOTICS INTELLIGENCE PLATFORM</div>
+    <h1 class="animate-in delay-1">The Bloomberg Terminal<br>for <span class="gradient">Robotics</span></h1>
+    <p class="subtitle animate-in delay-2">
+      <span>305</span> robots · <span>9</span> categories · Real specs · Transparent scores · Live pricing
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     BENTO GRID
+     ═══════════════════════════════════════ -->
+<div class="bento">
+  <!-- Row 1: Stats + Trending -->
+  <div class="card animate-in delay-2">
+    <div class="card-label"><span class="indicator" style="background:var(--cyan)"></span> ROBOTS INDEXED</div>
+    <div class="stat-value" style="color:var(--cyan)" id="stat-robots">305</div>
+    <div class="stat-delta up">+23 this month</div>
+  </div>
+
+  <div class="card animate-in delay-3">
+    <div class="card-label"><span class="indicator" style="background:var(--acid)"></span> AVG ROBOSCORE</div>
+    <div class="stat-value" style="color:var(--acid)" id="stat-score">74.2</div>
+    <div class="stat-delta up">+1.3 vs Q4</div>
+  </div>
+
+  <div class="card w2 animate-in delay-4">
+    <div class="card-label"><span class="indicator" style="background:var(--cyan)"></span> TRENDING THIS WEEK</div>
+    <div class="robot-row">
+      <span class="robot-rank">01</span>
+      <div class="robot-thumb">🤖</div>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Atlas</div>
+        <div class="robot-meta">Humanoid · BD</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:55%;background:var(--acid)"></div>
+        <div class="spark-bar" style="height:70%;background:var(--acid)"></div>
+        <div class="spark-bar" style="height:65%;background:var(--acid)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--acid)"></div>
+        <div class="spark-bar" style="height:100%;background:var(--acid)"></div>
+      </div>
+      <div class="robot-score score-elite">94</div>
+      <div class="robot-price">$150K+</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">02</span>
+      <div class="robot-thumb">📦</div>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Stretch</div>
+        <div class="robot-meta">Warehouse · BD</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:80%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:82%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:90%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:95%;background:var(--cyan)"></div>
+      </div>
+      <div class="robot-score score-elite">91</div>
+      <div class="robot-price">Request</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">03</span>
+      <div class="robot-thumb">🦾</div>
+      <div class="robot-info">
+        <div class="robot-name">Universal Robots UR20</div>
+        <div class="robot-meta">Cobot · UR</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:75%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:78%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:82%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:89%;background:var(--cyan)"></div>
+      </div>
+      <div class="robot-score score-strong">89</div>
+      <div class="robot-price">$58,000</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">04</span>
+      <div class="robot-thumb">🐕</div>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Spot</div>
+        <div class="robot-meta">Quadruped · BD</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:88%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:83%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:86%;background:var(--cyan)"></div>
+        <div class="spark-bar" style="height:87%;background:var(--cyan)"></div>
+      </div>
+      <div class="robot-score score-strong">87</div>
+      <div class="robot-price">$74,500</div>
+    </div>
+  </div>
+
+  <!-- Row 2: Categories + Score Dist + Price Alert + Review -->
+  <div class="card w2 animate-in delay-4">
+    <div class="card-label"><span class="indicator" style="background:var(--violet)"></span> CATEGORIES</div>
+    <div class="cat-grid">
+      <div class="cat-cell">
+        <div class="cat-name">Warehouse</div>
+        <div class="cat-count" style="color:var(--cyan)">47</div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-name">Cobots</div>
+        <div class="cat-count" style="color:var(--violet)">62</div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-name">Consumer</div>
+        <div class="cat-count" style="color:var(--cyan)">38</div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-name">Medical</div>
+        <div class="cat-count" style="color:var(--acid)">29</div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-name">Drones</div>
+        <div class="cat-count" style="color:var(--cyan)">44</div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-name">Construction</div>
+        <div class="cat-count" style="color:var(--amber)">18</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card animate-in delay-5">
+    <div class="card-label"><span class="indicator" style="background:var(--cyan)"></span> SCORE DIST.</div>
+    <div class="dist-chart">
+      <div class="dist-bar" style="height:8%;background:var(--red);opacity:0.5"></div>
+      <div class="dist-bar" style="height:14%;background:var(--red);opacity:0.4"></div>
+      <div class="dist-bar" style="height:22%;background:var(--amber);opacity:0.5"></div>
+      <div class="dist-bar" style="height:38%;background:var(--amber);opacity:0.6"></div>
+      <div class="dist-bar" style="height:65%;background:var(--cyan);opacity:0.5"></div>
+      <div class="dist-bar" style="height:100%;background:var(--cyan);opacity:0.6"></div>
+      <div class="dist-bar" style="height:85%;background:var(--cyan);opacity:0.7"></div>
+      <div class="dist-bar" style="height:55%;background:var(--acid);opacity:0.5"></div>
+      <div class="dist-bar" style="height:30%;background:var(--acid);opacity:0.6"></div>
+      <div class="dist-bar" style="height:12%;background:var(--acid);opacity:0.8"></div>
+    </div>
+    <div class="dist-labels">
+      <span>0</span><span>50</span><span>100</span>
+    </div>
+  </div>
+
+  <div class="card animate-in delay-5">
+    <div class="card-label"><span class="indicator" style="background:var(--acid)"></span> PRICE ALERT</div>
+    <div class="price-alert">
+      <div style="font-size:12px;color:var(--text-secondary);font-weight:500;margin-bottom:4px">Spot Explorer</div>
+      <div class="price-old">$77,800</div>
+      <div class="price-new">$68,500</div>
+      <div class="price-delta">&#9660; 12% · 3 days ago</div>
+    </div>
+  </div>
+
+  <!-- Row 3: Reviews full width -->
+  <div class="card w4 animate-in delay-6">
+    <div class="card-label"><span class="indicator" style="background:var(--amber)"></span> LATEST REVIEWS</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="review-row" style="border:none;flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <span class="review-tag new">NEW</span>
+          <span class="review-score score-elite">94</span>
+        </div>
+        <div class="review-title">Boston Dynamics Atlas — "The benchmark just moved"</div>
+      </div>
+      <div class="review-row" style="border:none;flex-direction:column;align-items:flex-start;gap:6px;border-left:1px solid var(--border);padding-left:16px">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <span class="review-tag upd">UPD</span>
+          <span class="review-score score-strong">89</span>
+        </div>
+        <div class="review-title">Universal Robots UR20 — "The cobot king defends its crown"</div>
+      </div>
+      <div class="review-row" style="border:none;flex-direction:column;align-items:flex-start;gap:6px;border-left:1px solid var(--border);padding-left:16px">
+        <div style="display:flex;align-items:center;gap:8px;width:100%">
+          <span class="review-tag upd">UPD</span>
+          <span class="review-score score-good">78</span>
+        </div>
+        <div class="review-title">Agility Digit v3 — "Ready for the warehouse floor"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     VALUE PILLARS
+     ═══════════════════════════════════════ -->
+<div class="pillars" style="margin-top:24px">
+  <div class="pillar">
+    <div class="pillar-icon" style="background:var(--cyan-dim);border:1px solid rgba(0,212,255,0.1)">
+      <span style="color:var(--cyan)">&#9733;</span>
+    </div>
+    <h3>Transparent Scoring</h3>
+    <p>RoboScore rates every robot across 8 dimensions. Public methodology. No pay-to-play. No black boxes.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-icon" style="background:var(--acid-dim);border:1px solid rgba(0,255,136,0.1)">
+      <span style="color:var(--acid)">&#9651;</span>
+    </div>
+    <h3>ROI Calculator</h3>
+    <p>Every robot page includes a live ROI model. Know your payback period before you commit.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-icon" style="background:var(--violet-dim);border:1px solid rgba(99,102,241,0.1)">
+      <span style="color:var(--violet)">&#9670;</span>
+    </div>
+    <h3>AI Advisor</h3>
+    <p>Describe your use case. Our AI matches you to the right robot based on specs, budget, and industry.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ -->
+<div class="cta-section">
+  <h2>Not sure which robot?</h2>
+  <p>Compare specs, scores, and prices side-by-side. Or let our AI Advisor match you.</p>
+  <div class="cta-buttons">
+    <a class="btn-primary">COMPARE ROBOTS</a>
+    <a class="btn-secondary">AI ADVISOR</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<div class="footer-strip">
+  <div>&copy; 2026 ROBOTOMATED</div>
+  <div style="display:flex;gap:16px">
+    <span>METHODOLOGY</span>
+    <span>ABOUT</span>
+    <span>NEWSLETTER</span>
+    <span>CONTACT</span>
+  </div>
+  <div>v2.0 · <span style="color:var(--acid)">ALL SYSTEMS NOMINAL</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     DESIGN NOTES
+     ═══════════════════════════════════════ -->
+<div class="design-notes">
+  <div class="note-panel">
+    <h4>COLOR SYSTEM</h4>
+    <div class="swatch-row">
+      <div class="swatch" style="background:var(--bg-void)"><span class="label">#050810</span></div>
+      <div class="swatch" style="background:var(--bg-base)"><span class="label">#0A0F1E</span></div>
+      <div class="swatch" style="background:var(--bg-surface)"><span class="label">#0E1425</span></div>
+      <div class="swatch" style="background:var(--bg-elevated)"><span class="label">#121A2E</span></div>
+    </div>
+    <div class="swatch-row" style="margin-top:20px">
+      <div class="swatch" style="background:var(--cyan)"><span class="label">cyan</span></div>
+      <div class="swatch" style="background:var(--acid)"><span class="label">acid</span></div>
+      <div class="swatch" style="background:var(--violet)"><span class="label">violet</span></div>
+      <div class="swatch" style="background:var(--amber)"><span class="label">amber</span></div>
+      <div class="swatch" style="background:var(--red)"><span class="label">red</span></div>
+    </div>
+    <p class="note-desc" style="margin-top:22px">Electric cyan for data. Acid green for positive/scores. Violet for interactive. Amber for warnings. Red for negative. Color is intentional — not decorative.</p>
+  </div>
+
+  <div class="note-panel">
+    <h4>TYPOGRAPHY</h4>
+    <div class="type-sample">
+      <div style="font-family:var(--font-ui);font-size:18px;font-weight:700;letter-spacing:-0.03em;margin-bottom:4px">Space Grotesk</div>
+      <div style="font-size:11px;color:var(--text-tertiary)">UI chrome · headings · body · navigation</div>
+    </div>
+    <div class="type-sample" style="margin-top:10px">
+      <div style="font-family:var(--font-data);font-size:18px;font-weight:700;color:var(--cyan);margin-bottom:4px">JetBrains Mono</div>
+      <div style="font-size:11px;color:var(--text-tertiary)">ALL data · scores · prices · labels · tags · meta</div>
+    </div>
+    <div class="token-list" style="margin-top:10px">
+      <span class="token">tabular-nums</span>
+      <span class="token">letter-spacing: -0.04em heads</span>
+      <span class="token">0.12em labels</span>
+    </div>
+  </div>
+
+  <div class="note-panel">
+    <h4>DEPTH + MOTION</h4>
+    <p class="note-desc">
+      Scanline texture at 1.5% opacity. Data grid drifts in hero. 1px borders at #ffffff03. Cards separated by 1px gap lines — feels like they're floating on different planes.
+    </p>
+    <div class="token-list">
+      <span class="token">scanlines: 2px/4px</span>
+      <span class="token">grid-drift: 20s</span>
+      <span class="token">gap: 1px</span>
+      <span class="token">radius: 4-6px</span>
+      <span class="token">borders: #fff 3%</span>
+      <span class="token">count-up: 0.8s</span>
+      <span class="token">ticker: 30s loop</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

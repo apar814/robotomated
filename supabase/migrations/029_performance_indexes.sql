@@ -49,5 +49,5 @@ ON rsp_fleet_status(rsp_id, status);
 
 -- Newsletter subscribers (for digest queries)
 CREATE INDEX IF NOT EXISTS idx_newsletter_active
-ON newsletter_subscribers(active, created_at DESC)
-WHERE active = true;
+ON newsletter_subscribers(confirmed, created_at DESC)
+WHERE confirmed = true;

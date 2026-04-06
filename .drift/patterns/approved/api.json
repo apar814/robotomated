@@ -1,0 +1,2832 @@
+{
+  "version": "1.0.0",
+  "category": "api",
+  "patterns": [
+    {
+      "id": "b114ce45ede68749",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/format-standard"
+        }
+      },
+      "confidence": {
+        "frequency": 0.61,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 61,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 27,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 25,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 33,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\saved\\page.tsx",
+          "line": 25,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 23,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 8,
+          "column": 4,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 73,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 38,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 13,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 59,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 43,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 81,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 37,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 116,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\add\\page.tsx",
+          "line": 14,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 56,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 22,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 49,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 28,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 36,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\page.tsx",
+          "line": 21,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 44,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\page.tsx",
+          "line": 15,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\reviews\\page.tsx",
+          "line": 36,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 42,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 79,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 6,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 6,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 32,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 21,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 80,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 53,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\update-prices\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 112,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\feedback\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 7,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 7,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\health\\route.ts",
+          "line": 4,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\manufacturers\\top\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\route.ts",
+          "line": 9,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\subscribe\\route.ts",
+          "line": 48,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\portal\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 15,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 96,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 25,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\portal\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 60,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 8,
+          "column": 4,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\go\\[slug]\\[retailer]\\route.ts",
+          "line": 19,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 15,
+          "column": 10,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 16,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 17,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 18,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 19,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 44,
+          "column": 3,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 56,
+          "column": 9,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 35,
+          "column": 35,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 42,
+          "column": 23,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 36,
+          "column": 3,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 79,
+          "column": 14,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 15,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 16,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 17,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 18,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 19,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 20,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 21,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 22,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 23,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 24,
+          "column": 5,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 32,
+          "column": 42,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 33,
+          "column": 42,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 34,
+          "column": 42,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 35,
+          "column": 41,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 36,
+          "column": 43,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 37,
+          "column": 43,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 38,
+          "column": 60,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 39,
+          "column": 58,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 40,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 41,
+          "column": 52,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 18,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 25,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 17,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 29,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 35,
+          "column": 14,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 87,
+          "column": 14,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 101,
+          "column": 18,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 15,
+          "column": 153,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 35,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 87,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 63,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 101,
+          "column": 18,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 15,
+          "column": 153,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 38,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 55,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 75,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 72,
+          "column": 5,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 74,
+          "column": 5,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 91,
+          "column": 13,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 31,
+          "column": 18,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 50,
+          "column": 5,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 59,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 115,
+          "column": 14,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 30,
+          "column": 87,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 77,
+          "column": 36,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\update-prices\\route.ts",
+          "line": 41,
+          "column": 14,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 118,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 133,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 33,
+          "column": 18,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 42,
+          "column": 5,
+          "reason": "Direct array/data return without envelope wrapper",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 7,
+          "column": 32,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 59,
+          "column": 14,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 7,
+          "column": 32,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 59,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 26,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 7,
+          "column": 32,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 84,
+          "column": 14,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 7,
+          "column": 32,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 84,
+          "column": 14,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 26,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 53,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 14,
+          "column": 13,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 28,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 15,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 37,
+          "column": 13,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 50,
+          "column": 21,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 43,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 50,
+          "column": 21,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 119,
+          "column": 14,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 101,
+          "column": 5,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 39,
+          "column": 208,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 44,
+          "column": 7,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 44,
+          "column": 7,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 11,
+          "column": 32,
+          "reason": "Response envelope is missing a data field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 11,
+          "column": 32,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 28,
+          "column": 9,
+          "reason": "Response envelope is missing an error field",
+          "deviationScore": 0.4
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 92,
+          "column": 5,
+          "reason": "Response uses custom format but project predominantly uses standard",
+          "deviationScore": 0.7
+        }
+      ],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.782Z",
+        "lastSeen": "2026-03-30T00:24:33.782Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "warning",
+      "autoFixable": false
+    },
+    {
+      "id": "3d1ccf5f8415dfff",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/envelope-structure"
+        }
+      },
+      "confidence": {
+        "frequency": 0.53,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 53,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 27,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 25,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 33,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\account\\saved\\page.tsx",
+          "line": 25,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 23,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\error.tsx",
+          "line": 8,
+          "column": 4,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 73,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\edit\\page.tsx",
+          "line": 13,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 59,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 43,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\compare\\[slugs]\\page.tsx",
+          "line": 81,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\page.tsx",
+          "line": 37,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 116,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\add\\page.tsx",
+          "line": 14,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\page.tsx",
+          "line": 56,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\log-service\\page.tsx",
+          "line": 22,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 49,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 44,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 28,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 36,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 48,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\page.tsx",
+          "line": 21,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 44,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\reviews\\page.tsx",
+          "line": 36,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\robots\\[manufacturer]\\page.tsx",
+          "line": 42,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 25,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 63,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 38,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 72,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 59,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 18,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\update-prices\\route.ts",
+          "line": 13,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 118,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 26,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 26,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\manufacturers\\top\\route.ts",
+          "line": 8,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\route.ts",
+          "line": 10,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\subscribe\\route.ts",
+          "line": 49,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 19,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 28,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 15,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 43,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 38,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 101,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 19,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 19,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 28,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 23,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\portal\\route.ts",
+          "line": 22,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 92,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\error.tsx",
+          "line": 8,
+          "column": 4,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\go\\[slug]\\[retailer]\\route.ts",
+          "line": 19,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 5,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.782Z",
+        "lastSeen": "2026-03-30T00:24:33.782Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "b707b60a76bb8385",
+      "subcategory": "route-structure",
+      "name": "Route Structure Detector",
+      "description": "Detects route URL structure patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/route-structure",
+          "patternId": "api/route-structure/restful"
+        }
+      },
+      "confidence": {
+        "frequency": 0.15,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 15,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 42,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\page.tsx",
+          "line": 12,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 18,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 43,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 32,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 90,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 42,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 23,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 68,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 34,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 51,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 38,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 40,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 23,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 10,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 32,
+          "column": 11,
+          "reason": "URL segment 'robots?sort=score_desc&perPage=100' uses snake_case but project uses kebab-case/lowercase",
+          "deviationScore": 0.4
+        }
+      ],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "route-structure"
+        ]
+      },
+      "severity": "warning",
+      "autoFixable": false
+    },
+    {
+      "id": "f505f62b2ba18d9d",
+      "subcategory": "route-structure",
+      "name": "Route Structure Detector",
+      "description": "Detects route URL structure patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/route-structure",
+          "patternId": "api/route-structure/restful-route"
+        }
+      },
+      "confidence": {
+        "frequency": 0.15,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 15,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 42,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\page.tsx",
+          "line": 12,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 18,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 43,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 32,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 90,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 42,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 23,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\compare\\page.tsx",
+          "line": 68,
+          "column": 33,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 34,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 51,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 38,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 40,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 23,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 10,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "route-structure"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "bcace1516c86fdf6",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/fetch-api"
+        }
+      },
+      "confidence": {
+        "frequency": 0.13,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 13,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 42,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 26,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 50,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 67,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 90,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 58,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 34,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 51,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 38,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 40,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 23,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 94,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 20,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 42,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 50,
+          "column": 11,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 56,
+          "column": 23,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 67,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 34,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 51,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 38,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 40,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 23,
+          "column": 25,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 20,
+          "column": 23,
+          "reason": "Using POST for read operation. Consider using GET for idempotent read operations.",
+          "deviationScore": 0.7
+        }
+      ],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "warning",
+      "autoFixable": false
+    },
+    {
+      "id": "f3d225a266f43a43",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/method-post"
+        }
+      },
+      "confidence": {
+        "frequency": 0.09,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 9,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 42,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\page.tsx",
+          "line": 50,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\reviews\\new\\page.tsx",
+          "line": 67,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 34,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\portal\\page.tsx",
+          "line": 51,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 38,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\pro\\waitlist\\waitlist-client.tsx",
+          "line": 40,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\unsubscribe\\unsubscribe-client.tsx",
+          "line": 23,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 20,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "832e25578e10ef9b",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/pagination-offset"
+        }
+      },
+      "confidence": {
+        "frequency": 0.12,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 12,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 15,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 42,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\page.tsx",
+          "line": 15,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 15,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 15,
+          "column": 153,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 30,
+          "column": 87,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 174,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 14,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 50,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 119,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 44,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 44,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "371034bb96e51711",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/pagination-metadata"
+        }
+      },
+      "confidence": {
+        "frequency": 0.12,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 12,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\affiliate\\page.tsx",
+          "line": 15,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 38,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 42,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\page.tsx",
+          "line": 15,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 15,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 15,
+          "column": 153,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 30,
+          "column": 87,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 14,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 50,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 39,
+          "column": 208,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 44,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 44,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.784Z",
+        "lastSeen": "2026-03-30T00:24:33.784Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "8e1ba17fb2efff43",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/method-put"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 2,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\manufacturers\\[slug]\\page.tsx",
+          "line": 26,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 58,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.785Z",
+        "lastSeen": "2026-03-30T00:24:33.785Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "92323a46b79b6c1e",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/method-patch"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\import\\page.tsx",
+          "line": 90,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.785Z",
+        "lastSeen": "2026-03-30T00:24:33.785Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "d3b08a504a4799d4",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/pagination-page-based"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\admin\\robots\\page.tsx",
+          "line": 38,
+          "column": 42,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.786Z",
+        "lastSeen": "2026-03-30T00:24:33.786Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "74d78a7aa71cb9a6",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/format-custom"
+        }
+      },
+      "confidence": {
+        "frequency": 0.04,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 4,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 44,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 48,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 5,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "2a6e52fc7f915448",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/nextjs-response"
+        }
+      },
+      "confidence": {
+        "frequency": 0.35,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 35,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 79,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 6,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 6,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 32,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 21,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 80,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 53,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\update-prices\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 112,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\feedback\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\assets\\route.ts",
+          "line": 7,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\fleet\\maintenance-logs\\route.ts",
+          "line": 7,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\health\\route.ts",
+          "line": 4,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\manufacturers\\top\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\route.ts",
+          "line": 9,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\subscribe\\route.ts",
+          "line": 48,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\portal\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\pro\\waitlist\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 15,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 96,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 25,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\portal\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 60,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "27209eeb59615629",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/method-head"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 94,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-30T00:25:41.951Z",
+  "checksum": "e33533c633f9db6b"
+}

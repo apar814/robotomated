@@ -58,7 +58,7 @@ function RoboScoreTooltip() {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute left-0 top-full z-50 mt-2 w-[280px] rounded-md border border-border bg-obsidian-surface p-4 opacity-0 shadow-xl transition-opacity duration-150",
+        "pointer-events-none absolute left-0 bottom-full z-50 mb-2 w-[280px] rounded-md border border-border bg-obsidian-surface p-4 opacity-0 shadow-xl transition-opacity duration-150",
         "group-hover:pointer-events-auto group-hover:opacity-100"
       )}
     >

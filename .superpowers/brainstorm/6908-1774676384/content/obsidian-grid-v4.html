@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robotomated — Obsidian Grid v4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-void: #050505;
+    --bg-base: #080808;
+    --bg-surface: #0C0C0C;
+    --bg-elevated: #101010;
+    --bg-hover: #151515;
+
+    --blue: #0EA5E9;
+    --blue-dim: rgba(14, 165, 233, 0.06);
+    --blue-glow: rgba(14, 165, 233, 0.12);
+    --blue-border: rgba(14, 165, 233, 0.2);
+
+    --lime: #C8FF00;
+    --lime-dim: rgba(200, 255, 0, 0.05);
+    --lime-glow: rgba(200, 255, 0, 0.1);
+
+    --magenta: #FF006E;
+    --magenta-dim: rgba(255, 0, 110, 0.05);
+
+    --amber: #F59E0B;
+    --amber-dim: rgba(245, 158, 11, 0.05);
+
+    --text-primary: #E8E8E8;
+    --text-secondary: #888888;
+    --text-tertiary: #555555;
+    --text-ghost: #2E2E2E;
+    --text-data: #FFFFFF;
+
+    --border: #1A1A1A;
+    --border-subtle: #131313;
+
+    --font-ui: 'Space Grotesk', system-ui, sans-serif;
+    --font-data: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg-void);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Scanlines */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 1px,
+      rgba(255,255,255,0.01) 1px, rgba(255,255,255,0.01) 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ═══════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════ */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 48px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: var(--font-data);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+  }
+  .logo .dim { color: var(--text-ghost); }
+  .logo .accent { color: var(--blue); }
+
+  .nav { display: flex; align-items: center; gap: 1px; }
+  .nav a {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+    letter-spacing: -0.01em;
+  }
+  .nav a:hover { color: var(--text-secondary); background: rgba(255,255,255,0.02); }
+  .nav a.active { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+
+  .header-right { display: flex; align-items: center; gap: 10px; }
+
+  .search-trigger {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .search-trigger:hover { border-color: var(--blue-border); }
+  .search-trigger kbd {
+    font-family: var(--font-data);
+    font-size: 9px;
+    padding: 2px 5px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 2px;
+    color: var(--text-ghost);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .advisor-btn {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    background: var(--blue);
+    border-radius: 4px;
+    color: #000;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .advisor-btn:hover {
+    box-shadow: 0 0 16px rgba(14,165,233,0.3), 0 0 48px rgba(14,165,233,0.08);
+  }
+
+  /* ═══════════════════════════════════════
+     STATUS BAR — professional data signals
+     ═══════════════════════════════════════ */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 26px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-void);
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-ghost);
+    letter-spacing: 0.03em;
+  }
+  .status-bar .left { display: flex; align-items: center; gap: 20px; }
+  .status-bar .live {
+    display: flex; align-items: center; gap: 5px;
+    color: var(--lime);
+  }
+  .status-bar .live::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 4px var(--lime);
+    animation: pulse-live 2.5s ease infinite;
+  }
+  @keyframes pulse-live {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+  .status-bar .stat { color: var(--text-tertiary); }
+  .status-bar .stat span { color: var(--text-data); font-weight: 600; }
+
+  .status-bar .timestamp { color: var(--text-tertiary); }
+  .status-bar .timestamp span { color: var(--blue); }
+
+  /* ═══════════════════════════════════════
+     TICKER — financial-grade data feed
+     ═══════════════════════════════════════ */
+  .ticker-strip {
+    display: flex;
+    height: 30px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-void);
+    overflow: hidden;
+    position: relative;
+  }
+  .ticker-strip::before, .ticker-strip::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; width: 80px;
+    z-index: 2; pointer-events: none;
+  }
+  .ticker-strip::before { left: 0; background: linear-gradient(to right, var(--bg-void), transparent); }
+  .ticker-strip::after { right: 0; background: linear-gradient(to left, var(--bg-void), transparent); }
+
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    animation: ticker-scroll 42s linear infinite;
+    white-space: nowrap;
+    padding: 0 24px;
+  }
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: flex; align-items: center; gap: 6px;
+    font-family: var(--font-data);
+    font-size: 10px;
+    padding: 0 14px;
+    border-right: 1px solid var(--border-subtle);
+    height: 30px;
+  }
+  .ticker-item:last-child { border-right: none; }
+  .ticker-item .sym {
+    color: var(--text-data);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .ticker-item .score {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .ticker-item .delta { font-size: 9px; font-weight: 600; }
+  .ticker-item .delta.up { color: var(--lime); }
+  .ticker-item .delta.down { color: var(--magenta); }
+  .ticker-item .px {
+    color: var(--text-tertiary);
+    font-size: 9px;
+  }
+
+  /* ═══════════════════════════════════════
+     HERO — commanding, professional
+     ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    padding: 64px 24px 40px;
+    overflow: hidden;
+    min-height: 320px;
+  }
+
+  /* Floating data particles */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: 0;
+    animation: float-particle linear infinite;
+  }
+  @keyframes float-particle {
+    0% { transform: translateY(100%) translateX(0); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+  }
+  /* 20 particles with staggered positions and speeds */
+  .particle:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; }
+  .particle:nth-child(2) { left: 12%; animation-duration: 22s; animation-delay: -3s; width: 1px; height: 1px; }
+  .particle:nth-child(3) { left: 20%; animation-duration: 16s; animation-delay: -7s; }
+  .particle:nth-child(4) { left: 28%; animation-duration: 25s; animation-delay: -2s; width: 3px; height: 3px; opacity: 0.08; }
+  .particle:nth-child(5) { left: 35%; animation-duration: 19s; animation-delay: -10s; }
+  .particle:nth-child(6) { left: 42%; animation-duration: 23s; animation-delay: -5s; width: 1px; height: 1px; }
+  .particle:nth-child(7) { left: 50%; animation-duration: 17s; animation-delay: -8s; }
+  .particle:nth-child(8) { left: 58%; animation-duration: 21s; animation-delay: -1s; width: 1px; height: 1px; }
+  .particle:nth-child(9) { left: 65%; animation-duration: 20s; animation-delay: -12s; }
+  .particle:nth-child(10) { left: 72%; animation-duration: 24s; animation-delay: -4s; width: 3px; height: 3px; }
+  .particle:nth-child(11) { left: 78%; animation-duration: 18s; animation-delay: -6s; width: 1px; height: 1px; }
+  .particle:nth-child(12) { left: 85%; animation-duration: 22s; animation-delay: -9s; }
+  .particle:nth-child(13) { left: 92%; animation-duration: 16s; animation-delay: -11s; }
+  .particle:nth-child(14) { left: 8%; animation-duration: 26s; animation-delay: -14s; width: 1px; height: 1px; }
+  .particle:nth-child(15) { left: 38%; animation-duration: 20s; animation-delay: -16s; }
+  .particle:nth-child(16) { left: 55%; animation-duration: 24s; animation-delay: -13s; width: 1px; height: 1px; }
+  .particle:nth-child(17) { left: 70%; animation-duration: 18s; animation-delay: -15s; }
+  .particle:nth-child(18) { left: 25%; animation-duration: 22s; animation-delay: -17s; width: 3px; height: 3px; }
+  .particle:nth-child(19) { left: 48%; animation-duration: 19s; animation-delay: -19s; width: 1px; height: 1px; }
+  .particle:nth-child(20) { left: 82%; animation-duration: 21s; animation-delay: -20s; }
+
+  .hero-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    filter: blur(180px);
+    pointer-events: none;
+  }
+  .hero-glow.b { top: -120px; right: 10%; background: var(--blue); opacity: 0.025; }
+  .hero-glow.l { bottom: -200px; left: 15%; background: var(--lime); opacity: 0.012; }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 12px; height: 1px;
+    background: var(--blue);
+  }
+  .hero h1 {
+    font-family: var(--font-ui);
+    font-size: 72px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.02;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--lime) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* System status line */
+  .system-status {
+    font-family: var(--font-data);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .system-status .sep {
+    margin: 0 10px;
+    color: var(--text-ghost);
+  }
+  .system-status .val {
+    color: var(--text-data);
+    font-weight: 600;
+  }
+  .system-status .counting {
+    display: inline-block;
+    min-width: 2.2em;
+    text-align: right;
+  }
+
+  /* ═══════════════════════════════════════
+     BENTO GRID
+     ═══════════════════════════════════════ */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding: 0 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .card {
+    background: var(--bg-surface);
+    padding: 16px;
+    position: relative;
+    transition: background 0.15s;
+    overflow: hidden;
+  }
+  /* Top gradient border — blue to transparent */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), transparent 70%);
+    opacity: 0.35;
+  }
+  .card:hover {
+    background: var(--bg-elevated);
+  }
+  /* Corner glow on hover */
+  .card::after {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at top left, rgba(14,165,233,0.06), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+  .card:hover::after { opacity: 1; }
+
+  .card.w2 { grid-column: span 2; }
+  .card.w3 { grid-column: span 3; }
+  .card.w4 { grid-column: span 4; }
+
+  .card-label {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-ghost);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-label .dot {
+    width: 4px; height: 4px;
+    border-radius: 1px;
+  }
+
+  /* Stats */
+  .stat-value {
+    font-family: var(--font-data);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-data);
+  }
+  .stat-delta {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 500;
+  }
+  .stat-delta.up { color: var(--lime); }
+
+  /* Robot rows */
+  .robot-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .robot-row:last-child { border: none; }
+  .robot-row:hover { background: rgba(255,255,255,0.01); }
+
+  .robot-rank {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--text-ghost);
+    width: 18px;
+    text-align: right;
+  }
+  .robot-sym {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    background: var(--blue-dim);
+    padding: 3px 6px;
+    border-radius: 2px;
+    border: 1px solid rgba(14,165,233,0.08);
+    min-width: 38px;
+    text-align: center;
+  }
+  .robot-info { flex: 1; min-width: 0; }
+  .robot-name {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .robot-meta {
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-ghost);
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  .sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 18px;
+  }
+  .spark-bar {
+    width: 3px;
+    border-radius: 1px;
+    opacity: 0.35;
+  }
+  .spark-bar:last-child { opacity: 0.9; }
+
+  .robot-score {
+    font-family: var(--font-data);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .robot-price {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 600;
+    text-align: right;
+    min-width: 56px;
+  }
+
+  .tier-elite { color: var(--lime) !important; }
+  .tier-strong { color: var(--text-data) !important; }
+  .tier-mid { color: var(--amber) !important; }
+  .tier-low { color: var(--magenta) !important; }
+
+  /* Sector cards — industrial classification */
+  .sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .sector-cell {
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.01);
+    border-radius: 3px;
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sector-cell:hover {
+    border-color: var(--blue-border);
+    background: var(--blue-dim);
+  }
+  .sector-code {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--blue);
+    background: var(--blue-dim);
+    padding: 2px 5px;
+    border-radius: 2px;
+    border: 1px solid rgba(14,165,233,0.08);
+    flex-shrink: 0;
+  }
+  .sector-info { flex: 1; }
+  .sector-name {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .sector-count {
+    font-family: var(--font-data);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-data);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Score dist */
+  .dist-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 56px;
+    margin-top: 6px;
+  }
+  .dist-bar {
+    flex: 1;
+    border-radius: 1px 1px 0 0;
+  }
+  .dist-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-data);
+    font-size: 8px;
+    color: var(--text-ghost);
+    margin-top: 4px;
+  }
+
+  /* Price alert */
+  .price-alert {
+    border-left: 2px solid var(--lime);
+    padding-left: 10px;
+  }
+  .price-robot {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .price-old {
+    font-family: var(--font-data);
+    font-size: 10px;
+    color: var(--text-ghost);
+    text-decoration: line-through;
+  }
+  .price-new {
+    font-family: var(--font-data);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--lime);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    margin: 4px 0 2px;
+  }
+  .price-delta {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--lime);
+  }
+
+  /* Reviews */
+  .review-tag {
+    font-family: var(--font-data);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .review-tag.new {
+    background: var(--lime-dim);
+    color: var(--lime);
+    border: 1px solid rgba(200,255,0,0.1);
+  }
+  .review-tag.upd {
+    background: rgba(255,255,255,0.02);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .review-title {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .review-score {
+    font-family: var(--font-data);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ═══════════════════════════════════════
+     PILLARS
+     ═══════════════════════════════════════ */
+  .pillars {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pillar {
+    background: var(--bg-surface);
+    padding: 20px;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), transparent 60%);
+    opacity: 0.25;
+  }
+  .pillar:hover { background: var(--bg-elevated); }
+  .pillar-code {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .pillar h3 {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+  .pillar p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-tertiary);
+  }
+
+  /* ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: var(--font-ui);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 24px;
+  }
+  .cta-buttons { display: flex; justify-content: center; gap: 10px; }
+  .btn-primary {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 10px 28px;
+    background: var(--blue);
+    color: #000;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(14,165,233,0.3), 0 0 60px rgba(14,165,233,0.08);
+  }
+  .btn-secondary {
+    font-family: var(--font-data);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 10px 28px;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--blue-border); color: var(--blue); }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer-strip {
+    border-top: 1px solid var(--border-subtle);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-data);
+    font-size: 9px;
+    color: var(--text-ghost);
+    letter-spacing: 0.06em;
+  }
+  .footer-strip a {
+    color: var(--text-ghost);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-strip a:hover { color: var(--text-secondary); }
+
+  /* ═══════════════════════════════════════
+     ANIMATIONS
+     ═══════════════════════════════════════ */
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(6px); filter: blur(3px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .anim {
+    animation: count-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  .d1 { animation-delay: 0.05s; }
+  .d2 { animation-delay: 0.1s; }
+  .d3 { animation-delay: 0.15s; }
+  .d4 { animation-delay: 0.2s; }
+  .d5 { animation-delay: 0.25s; }
+  .d6 { animation-delay: 0.3s; }
+  .d7 { animation-delay: 0.35s; }
+
+  /* ═══════════════════════════════════════
+     DESIGN NOTES
+     ═══════════════════════════════════════ */
+  .design-notes {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 24px 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .note-panel {
+    background: var(--bg-surface);
+    padding: 16px;
+    position: relative;
+  }
+  .note-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), transparent 60%);
+    opacity: 0.2;
+  }
+  .note-panel h4 {
+    font-family: var(--font-data);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-ghost);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .swatch-row {
+    display: flex; gap: 6px; margin-bottom: 8px;
+  }
+  .swatch {
+    width: 24px; height: 24px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .swatch .label {
+    position: absolute;
+    top: 28px; left: -2px;
+    font-family: var(--font-data);
+    font-size: 7px;
+    color: var(--text-ghost);
+    white-space: nowrap;
+  }
+  .note-desc {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+  .token-list {
+    display: flex; flex-wrap: wrap; gap: 3px; margin-top: 8px;
+  }
+  .token {
+    font-family: var(--font-data);
+    font-size: 9px;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--text-tertiary);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">ROBOTO<span class="dim">MATED</span><span class="accent">.</span></div>
+  <nav class="nav">
+    <a class="active">Explore</a>
+    <a>Compare</a>
+    <a>Reviews</a>
+    <a>Industries</a>
+    <a>Learn</a>
+    <a>Market Intel</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-trigger">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      Search 305 robots...
+      <kbd>&#8984;K</kbd>
+    </div>
+    <a class="advisor-btn">AI ADVISOR</a>
+  </div>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="left">
+    <span class="live">ACTIVE</span>
+    <span class="stat">ROBOTS <span>305</span></span>
+    <span class="stat">MANUFACTURERS <span>167</span></span>
+    <span class="stat">MARKETS <span>15</span></span>
+  </div>
+  <div class="timestamp">REFRESHED <span id="refresh-time">00:00</span> AGO</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-strip">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="sym">ATLAS</span><span class="score">94</span><span class="delta up">+3.0</span><span class="px">$150K</span></div>
+    <div class="ticker-item"><span class="sym">STCH</span><span class="score">91</span><span class="delta up">+0.8</span><span class="px">RFQ</span></div>
+    <div class="ticker-item"><span class="sym">UR20</span><span class="score">89</span><span class="delta up">+0.4</span><span class="px">$58K</span></div>
+    <div class="ticker-item"><span class="sym">SPOT</span><span class="score">87</span><span class="delta up">+2.1</span><span class="px">$74K</span></div>
+    <div class="ticker-item"><span class="sym">DIGIT</span><span class="score">78</span><span class="delta down">-1.2</span><span class="px">RFQ</span></div>
+    <div class="ticker-item"><span class="sym">PNDA</span><span class="score">83</span><span class="delta down">-0.3</span><span class="px">$28K</span></div>
+    <div class="ticker-item"><span class="sym">REX</span><span class="score">85</span><span class="delta up">+1.5</span><span class="px">$42K</span></div>
+    <div class="ticker-item"><span class="sym">UR10</span><span class="score">82</span><span class="delta up">+0.2</span><span class="px">$35K</span></div>
+    <div class="ticker-item"><span class="sym">ION</span><span class="score">76</span><span class="delta down">-0.5</span><span class="px">$12K</span></div>
+    <div class="ticker-item"><span class="sym">B2</span><span class="score">80</span><span class="delta up">+1.1</span><span class="px">$45K</span></div>
+    <!-- duplicate for loop -->
+    <div class="ticker-item"><span class="sym">ATLAS</span><span class="score">94</span><span class="delta up">+3.0</span><span class="px">$150K</span></div>
+    <div class="ticker-item"><span class="sym">STCH</span><span class="score">91</span><span class="delta up">+0.8</span><span class="px">RFQ</span></div>
+    <div class="ticker-item"><span class="sym">UR20</span><span class="score">89</span><span class="delta up">+0.4</span><span class="px">$58K</span></div>
+    <div class="ticker-item"><span class="sym">SPOT</span><span class="score">87</span><span class="delta up">+2.1</span><span class="px">$74K</span></div>
+    <div class="ticker-item"><span class="sym">DIGIT</span><span class="score">78</span><span class="delta down">-1.2</span><span class="px">RFQ</span></div>
+    <div class="ticker-item"><span class="sym">PNDA</span><span class="score">83</span><span class="delta down">-0.3</span><span class="px">$28K</span></div>
+    <div class="ticker-item"><span class="sym">REX</span><span class="score">85</span><span class="delta up">+1.5</span><span class="px">$42K</span></div>
+    <div class="ticker-item"><span class="sym">UR10</span><span class="score">82</span><span class="delta up">+0.2</span><span class="px">$35K</span></div>
+    <div class="ticker-item"><span class="sym">ION</span><span class="score">76</span><span class="delta down">-0.5</span><span class="px">$12K</span></div>
+    <div class="ticker-item"><span class="sym">B2</span><span class="score">80</span><span class="delta up">+1.1</span><span class="px">$45K</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+  </div>
+  <div class="hero-glow b"></div>
+  <div class="hero-glow l"></div>
+  <div class="hero-inner">
+    <div class="hero-tag anim d1">ROBOTICS INTELLIGENCE PLATFORM</div>
+    <h1 class="anim d2">The Bloomberg<br>Terminal for<br><span class="gradient">Robotics</span></h1>
+    <div class="system-status anim d3">
+      <span>MONITORING</span>
+      <span class="val counting" id="hero-robots">0</span>
+      <span>ROBOTS</span>
+      <span class="sep">//</span>
+      <span class="val">167</span>
+      <span>MANUFACTURERS</span>
+      <span class="sep">//</span>
+      <span>$</span><span class="val">103B</span>
+      <span>MARKET</span>
+      <span class="sep">//</span>
+      <span>UPDATED TODAY</span>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO GRID -->
+<div class="bento">
+  <div class="card anim d3">
+    <div class="card-label"><span class="dot" style="background:var(--blue)"></span> ROBOTS INDEXED</div>
+    <div class="stat-value" id="stat-robots">305</div>
+    <div class="stat-delta up">+23 this month</div>
+  </div>
+
+  <div class="card anim d4">
+    <div class="card-label"><span class="dot" style="background:var(--lime)"></span> AVG ROBOSCORE</div>
+    <div class="stat-value" style="color:var(--lime)">74.2</div>
+    <div class="stat-delta up">+1.3 vs Q4</div>
+  </div>
+
+  <div class="card w2 anim d4">
+    <div class="card-label"><span class="dot" style="background:var(--blue)"></span> TRENDING THIS WEEK</div>
+    <div class="robot-row">
+      <span class="robot-rank">01</span>
+      <span class="robot-sym">ATLAS</span>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Atlas</div>
+        <div class="robot-meta">HUMANOID · BOSTON DYNAMICS</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:55%;background:var(--lime)"></div>
+        <div class="spark-bar" style="height:70%;background:var(--lime)"></div>
+        <div class="spark-bar" style="height:65%;background:var(--lime)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--lime)"></div>
+        <div class="spark-bar" style="height:100%;background:var(--lime)"></div>
+      </div>
+      <div class="robot-score tier-elite">94</div>
+      <div class="robot-price" style="color:var(--text-secondary)">$150K+</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">02</span>
+      <span class="robot-sym">STCH</span>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Stretch</div>
+        <div class="robot-meta">WAREHOUSE · BOSTON DYNAMICS</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:80%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:82%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:90%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:95%;background:var(--text-data)"></div>
+      </div>
+      <div class="robot-score tier-elite">91</div>
+      <div class="robot-price" style="color:var(--text-tertiary)">RFQ</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">03</span>
+      <span class="robot-sym">UR20</span>
+      <div class="robot-info">
+        <div class="robot-name">Universal Robots UR20</div>
+        <div class="robot-meta">COBOT · UNIVERSAL ROBOTS</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:75%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:78%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:82%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:89%;background:var(--text-data)"></div>
+      </div>
+      <div class="robot-score tier-strong">89</div>
+      <div class="robot-price" style="color:var(--lime)">$58,000</div>
+    </div>
+    <div class="robot-row">
+      <span class="robot-rank">04</span>
+      <span class="robot-sym">SPOT</span>
+      <div class="robot-info">
+        <div class="robot-name">Boston Dynamics Spot</div>
+        <div class="robot-meta">QUADRUPED · BOSTON DYNAMICS</div>
+      </div>
+      <div class="sparkline">
+        <div class="spark-bar" style="height:88%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:85%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:83%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:86%;background:var(--text-tertiary)"></div>
+        <div class="spark-bar" style="height:87%;background:var(--text-data)"></div>
+      </div>
+      <div class="robot-score tier-strong">87</div>
+      <div class="robot-price" style="color:var(--lime)">$74,500</div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="card w2 anim d5">
+    <div class="card-label"><span class="dot" style="background:var(--blue)"></span> SECTORS</div>
+    <div class="sector-grid">
+      <div class="sector-cell">
+        <span class="sector-code">[WRH]</span>
+        <div class="sector-info">
+          <div class="sector-name">Warehouse</div>
+        </div>
+        <div class="sector-count">47</div>
+      </div>
+      <div class="sector-cell">
+        <span class="sector-code">[MFG]</span>
+        <div class="sector-info">
+          <div class="sector-name">Manufacturing</div>
+        </div>
+        <div class="sector-count">62</div>
+      </div>
+      <div class="sector-cell">
+        <span class="sector-code">[CON]</span>
+        <div class="sector-info">
+          <div class="sector-name">Consumer</div>
+        </div>
+        <div class="sector-count">38</div>
+      </div>
+      <div class="sector-cell">
+        <span class="sector-code">[MED]</span>
+        <div class="sector-info">
+          <div class="sector-name">Medical</div>
+        </div>
+        <div class="sector-count">29</div>
+      </div>
+      <div class="sector-cell">
+        <span class="sector-code">[UAV]</span>
+        <div class="sector-info">
+          <div class="sector-name">Drones</div>
+        </div>
+        <div class="sector-count">44</div>
+      </div>
+      <div class="sector-cell">
+        <span class="sector-code">[AGR]</span>
+        <div class="sector-info">
+          <div class="sector-name">Agricultural</div>
+        </div>
+        <div class="sector-count">18</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card anim d5">
+    <div class="card-label"><span class="dot" style="background:var(--blue)"></span> SCORE DIST.</div>
+    <div class="dist-chart">
+      <div class="dist-bar" style="height:8%;background:var(--magenta);opacity:0.5"></div>
+      <div class="dist-bar" style="height:14%;background:var(--magenta);opacity:0.35"></div>
+      <div class="dist-bar" style="height:22%;background:var(--amber);opacity:0.35"></div>
+      <div class="dist-bar" style="height:38%;background:var(--amber);opacity:0.45"></div>
+      <div class="dist-bar" style="height:65%;background:var(--text-tertiary);opacity:0.35"></div>
+      <div class="dist-bar" style="height:100%;background:var(--text-secondary);opacity:0.4"></div>
+      <div class="dist-bar" style="height:85%;background:var(--text-secondary);opacity:0.5"></div>
+      <div class="dist-bar" style="height:55%;background:var(--lime);opacity:0.35"></div>
+      <div class="dist-bar" style="height:30%;background:var(--lime);opacity:0.45"></div>
+      <div class="dist-bar" style="height:12%;background:var(--lime);opacity:0.6"></div>
+    </div>
+    <div class="dist-labels"><span>0</span><span>50</span><span>100</span></div>
+  </div>
+
+  <div class="card anim d6">
+    <div class="card-label"><span class="dot" style="background:var(--lime)"></span> PRICE DROP</div>
+    <div class="price-alert">
+      <div class="price-robot">Spot Explorer</div>
+      <div class="price-old">$77,800</div>
+      <div class="price-new">$68,500</div>
+      <div class="price-delta">&#9660; 12% · 3d ago</div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="card w4 anim d6">
+    <div class="card-label"><span class="dot" style="background:var(--blue)"></span> LATEST REVIEWS</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px">
+      <div style="padding-right:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span class="review-tag new">NEW</span>
+          <span class="review-score tier-elite">94</span>
+        </div>
+        <div class="review-title">Boston Dynamics Atlas — "The benchmark just moved"</div>
+      </div>
+      <div style="padding:0 16px;border-left:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span class="review-tag upd">UPD</span>
+          <span class="review-score tier-strong">89</span>
+        </div>
+        <div class="review-title">Universal Robots UR20 — "The cobot king defends its crown"</div>
+      </div>
+      <div style="padding-left:16px;border-left:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span class="review-tag upd">UPD</span>
+          <span class="review-score tier-mid">78</span>
+        </div>
+        <div class="review-title">Agility Digit v3 — "Ready for the warehouse floor"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<div class="pillars">
+  <div class="pillar">
+    <div class="pillar-code">[01] SCORING</div>
+    <h3>Transparent Methodology</h3>
+    <p>RoboScore rates every robot across 8 dimensions. Public methodology. No pay-to-play. No black boxes.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-code">[02] ROI</div>
+    <h3>ROI Calculator</h3>
+    <p>Every robot page includes a live ROI model. Know your payback period before you commit.</p>
+  </div>
+  <div class="pillar">
+    <div class="pillar-code">[03] ADVISOR</div>
+    <h3>AI-Powered Matching</h3>
+    <p>Describe your use case. Our AI matches you to the right robot based on specs, budget, and industry requirements.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Not sure which robot?</h2>
+  <p>Compare specs, scores, and prices side-by-side. Or let our AI Advisor match you.</p>
+  <div class="cta-buttons">
+    <a class="btn-primary">COMPARE ROBOTS</a>
+    <a class="btn-secondary">AI ADVISOR</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-strip">
+  <div>&copy; 2026 ROBOTOMATED</div>
+  <div style="display:flex;gap:16px">
+    <a>METHODOLOGY</a>
+    <a>ABOUT</a>
+    <a>NEWSLETTER</a>
+    <a>CONTACT</a>
+  </div>
+  <div>v4.0 · <span style="color:var(--lime)">ALL SYSTEMS NOMINAL</span></div>
+</div>
+
+<!-- DESIGN NOTES -->
+<div class="design-notes">
+  <div class="note-panel">
+    <h4>COLOR SYSTEM — FINAL</h4>
+    <div class="swatch-row">
+      <div class="swatch" style="background:var(--bg-void)"><span class="label">#050505</span></div>
+      <div class="swatch" style="background:var(--bg-base)"><span class="label">#080808</span></div>
+      <div class="swatch" style="background:var(--bg-surface)"><span class="label">#0C0C0C</span></div>
+      <div class="swatch" style="background:var(--bg-elevated)"><span class="label">#101010</span></div>
+    </div>
+    <div class="swatch-row" style="margin-top:20px">
+      <div class="swatch" style="background:var(--blue)"><span class="label">#0EA5E9</span></div>
+      <div class="swatch" style="background:var(--lime)"><span class="label">#C8FF00</span></div>
+      <div class="swatch" style="background:var(--magenta)"><span class="label">#FF006E</span></div>
+      <div class="swatch" style="background:var(--amber)"><span class="label">#F59E0B</span></div>
+    </div>
+    <p class="note-desc" style="margin-top:22px">Deep electric blue for interactive + borders. Lime strictly for positive metrics + scores. Magenta for negative. No orange-red. Reads as precision intelligence tool, not gaming UI.</p>
+  </div>
+
+  <div class="note-panel">
+    <h4>TYPOGRAPHY</h4>
+    <div style="font-family:var(--font-ui);font-size:18px;font-weight:700;letter-spacing:-0.04em;margin-bottom:4px">Space Grotesk 72px</div>
+    <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:10px">Hero headlines · UI chrome · body</div>
+    <div style="font-family:var(--font-data);font-size:18px;font-weight:700;color:var(--blue);margin-bottom:4px">JetBrains Mono</div>
+    <div style="font-size:10px;color:var(--text-tertiary)">All data · ticker symbols · sector codes · status</div>
+    <div class="token-list" style="margin-top:10px">
+      <span class="token">tabular-nums</span>
+      <span class="token">-0.05em hero</span>
+      <span class="token">0.12em labels</span>
+      <span class="token">#FFF data</span>
+    </div>
+  </div>
+
+  <div class="note-panel">
+    <h4>SIGNALS + MOTION</h4>
+    <p class="note-desc">Data particles float through hero. Robot count animates up on load. Refresh timestamp ticks live. Ticker uses real-feeling symbols (ATLAS, STCH, UR20). Sector codes in brackets. Blue gradient top-border on cards. Corner glow on hover.</p>
+    <div class="token-list">
+      <span class="token">particles: 20</span>
+      <span class="token">count-up: 2s</span>
+      <span class="token">refresh: 30s tick</span>
+      <span class="token">top-border: blue→transparent</span>
+      <span class="token">hover: corner glow</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// Robot count animation — counts up slowly like pulling live data
+(function() {
+  const target = 305;
+  const el = document.getElementById('hero-robots');
+  if (!el) return;
+  const duration = 2200;
+  const start = performance.now();
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // ease-out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  // delay start to feel like it's loading
+  setTimeout(() => requestAnimationFrame(step), 600);
+})();
+
+// Refresh timestamp — ticks every 30 seconds
+(function() {
+  const el = document.getElementById('refresh-time');
+  if (!el) return;
+  let seconds = 0;
+  function pad(n) { return n.toString().padStart(2, '0'); }
+  function update() {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    el.textContent = pad(m) + ':' + pad(s);
+    seconds++;
+  }
+  update();
+  setInterval(update, 1000);
+  // Reset every 30 seconds to simulate refresh
+  setInterval(() => { seconds = 0; }, 30000);
+})();
+</script>
+
+</body>
+</html>

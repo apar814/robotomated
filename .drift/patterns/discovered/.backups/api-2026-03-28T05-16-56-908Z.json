@@ -1,0 +1,372 @@
+{
+  "version": "1.0.0",
+  "category": "api",
+  "patterns": [
+    {
+      "id": "74d78a7aa71cb9a6",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/format-custom"
+        }
+      },
+      "confidence": {
+        "frequency": 0.04,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 4,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\guides\\[topic]\\page.tsx",
+          "line": 44,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\(platform)\\learn\\[category]\\[slug]\\page.tsx",
+          "line": 48,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\robots.ts",
+          "line": 5,
+          "column": 3,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-28T05:16:12.840Z",
+        "lastSeen": "2026-03-28T05:16:12.840Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "2a6e52fc7f915448",
+      "subcategory": "response-envelope",
+      "name": "Response Envelope Detector",
+      "description": "Detects response envelope patterns and flags inconsistencies",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/response-envelope",
+          "patternId": "api/response-envelope/nextjs-response"
+        }
+      },
+      "confidence": {
+        "frequency": 0.32,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 32,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\admin\\dashboard\\route.ts",
+          "line": 79,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\manufacturer-logo\\route.ts",
+          "line": 6,
+          "column": 25,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\meta\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\moderate\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\revenue\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\reviews\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robot-images\\route.ts",
+          "line": 6,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\admin\\robots\\route.ts",
+          "line": 32,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 21,
+          "column": 12,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\news-aggregator\\route.ts",
+          "line": 80,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\price-alerts\\route.ts",
+          "line": 53,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\update-prices\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\cron\\weekly-digest\\route.ts",
+          "line": 112,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\feedback\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\health\\route.ts",
+          "line": 4,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\manufacturers\\top\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\route.ts",
+          "line": 9,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\subscribe\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\newsletter\\unsubscribe\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\portal\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\price-alerts\\route.ts",
+          "line": 10,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\reviews\\route.ts",
+          "line": 15,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\lookup\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\route.ts",
+          "line": 96,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\expert-reviews\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\robots\\[slug]\\news\\route.ts",
+          "line": 23,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\saved-robots\\route.ts",
+          "line": 8,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 25,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\stripe\\portal\\route.ts",
+          "line": 24,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 60,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 11,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-28T05:16:12.840Z",
+        "lastSeen": "2026-03-28T05:16:12.840Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "response-envelope"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "27209eeb59615629",
+      "subcategory": "http-methods",
+      "name": "HTTP Methods Detector",
+      "description": "Detects HTTP method usage patterns and flags RESTful convention violations",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "api/http-methods",
+          "patternId": "api/http-methods/method-head"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.95,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\cron\\refresh-robot-data\\route.ts",
+          "line": 94,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 1
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-28T05:16:12.841Z",
+        "lastSeen": "2026-03-28T05:16:12.841Z",
+        "source": "auto-detected",
+        "tags": [
+          "api",
+          "http-methods"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-28T05:16:56.852Z",
+  "checksum": "a78374cc1f6bdac5"
+}

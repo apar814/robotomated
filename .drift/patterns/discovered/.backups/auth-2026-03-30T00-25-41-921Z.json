@@ -1,0 +1,939 @@
+{
+  "version": "1.0.0",
+  "category": "auth",
+  "patterns": [
+    {
+      "id": "3348b1aa452a3d56",
+      "subcategory": "permission-checks",
+      "name": "Permission Checks Detector",
+      "description": "Learns permission check patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/permission-checks",
+          "patternId": "auth/permission-checks/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.2,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 9,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(auth)\\login\\page.tsx",
+          "line": 52,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 213,
+          "column": 44,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 121,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 122,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 123,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 124,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 125,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 129,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 130,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 131,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\account\\billing\\page.tsx",
+          "line": 132,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7350000000000001
+        },
+        {
+          "file": "app\\(platform)\\admin\\robots\\[id]\\images\\page.tsx",
+          "line": 176,
+          "column": 15,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 254,
+          "column": 34,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 228,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 55,
+          "column": 8,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 57,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 119,
+          "column": 52,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 57,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.6199999999999999
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 57,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 26,
+          "column": 51,
+          "isOutlier": false,
+          "confidence": 0.595
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.777Z",
+        "lastSeen": "2026-03-30T00:24:33.778Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "permission-checks"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "9d06ebee674113f5",
+      "subcategory": "audit",
+      "name": "Audit Logging Detector",
+      "description": "Learns audit logging patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/audit",
+          "patternId": "auth/audit/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.2,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 13,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(marketing)\\page.tsx",
+          "line": 159,
+          "column": 64,
+          "isOutlier": false,
+          "confidence": 0.7579310344827586
+        },
+        {
+          "file": "app\\(platform)\\account\\page.tsx",
+          "line": 118,
+          "column": 51,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\(platform)\\best-price\\[slug]\\page.tsx",
+          "line": 134,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 670,
+          "column": 31,
+          "isOutlier": false,
+          "confidence": 0.7466666666666666
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 327,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\fleet\\[assetId]\\page.tsx",
+          "line": 259,
+          "column": 74,
+          "isOutlier": false,
+          "confidence": 0.7262500000000001
+        },
+        {
+          "file": "app\\(platform)\\industries\\page.tsx",
+          "line": 114,
+          "column": 24,
+          "isOutlier": false,
+          "confidence": 0.72
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\page.tsx",
+          "line": 75,
+          "column": 30,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\page.tsx",
+          "line": 78,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.6824999999999999
+        },
+        {
+          "file": "app\\(platform)\\market\\investors\\page.tsx",
+          "line": 65,
+          "column": 57,
+          "isOutlier": false,
+          "confidence": 0.6922222222222223
+        },
+        {
+          "file": "app\\(platform)\\market\\investors\\page.tsx",
+          "line": 57,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.6922222222222223
+        },
+        {
+          "file": "app\\(platform)\\market\\page.tsx",
+          "line": 46,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\(platform)\\newsletter\\newsletter-client.tsx",
+          "line": 71,
+          "column": 56,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 121,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 123,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 26,
+          "column": 23,
+          "isOutlier": false,
+          "confidence": 0.5700000000000001
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 55,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.5700000000000001
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 72,
+          "column": 19,
+          "isOutlier": false,
+          "confidence": 0.5700000000000001
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 524,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.7116666666666667
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.782Z",
+        "lastSeen": "2026-03-30T00:24:33.782Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "audit"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "23bc65433833a42f",
+      "subcategory": "permission-checks",
+      "name": "Permission Checks Detector",
+      "description": "Learns permission check patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/permission-checks",
+          "patternId": "auth/permission-checks/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.03,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.82,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\best\\[category]\\page.tsx",
+          "line": 79,
+          "column": 292,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\(platform)\\pro\\page.tsx",
+          "line": 24,
+          "column": 36,
+          "isOutlier": false,
+          "confidence": 0.82
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 25,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "permission-checks"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "2b939ba95206e275",
+      "subcategory": "middleware",
+      "name": "Auth Middleware Detector",
+      "description": "Learns auth middleware patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/middleware",
+          "patternId": "auth/middleware/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.1,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 4,
+        "score": 0.7,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\explore\\page.tsx",
+          "line": 42,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 110,
+          "column": 14,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 110,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 152,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 200,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 202,
+          "column": 76,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 207,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\(platform)\\news\\page.tsx",
+          "line": 139,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 77,
+          "column": 5,
+          "isOutlier": false,
+          "confidence": 0.56
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 85,
+          "column": 16,
+          "isOutlier": false,
+          "confidence": 0.56
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "middleware"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "221052f07a74db71",
+      "subcategory": "ownership",
+      "name": "Resource Ownership Detector",
+      "description": "Learns resource ownership patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/ownership",
+          "patternId": "auth/ownership/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.08,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 5,
+        "score": 0.6533333333333333,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\industries\\[slug]\\page.tsx",
+          "line": 297,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\manufacturers\\[slug]\\page.tsx",
+          "line": 84,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\(platform)\\tools\\tco-calculator\\page.tsx",
+          "line": 41,
+          "column": 27,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 49,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.5366666666666666
+        },
+        {
+          "file": "app\\layout.tsx",
+          "line": 70,
+          "column": 10,
+          "isOutlier": false,
+          "confidence": 0.595
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "ownership"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "56e6e9dc22887ddf",
+      "subcategory": "token-handling",
+      "name": "Token Handling Detector",
+      "description": "Learns token handling patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/token-handling",
+          "patternId": "auth/token-handling/unknown"
+        }
+      },
+      "confidence": {
+        "frequency": 0.11,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 6,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\advisor\\route.ts",
+          "line": 15,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.6299999999999999
+        },
+        {
+          "file": "app\\api\\stripe\\checkout\\route.ts",
+          "line": 69,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.6533333333333333
+        },
+        {
+          "file": "app\\api\\stripe\\portal\\route.ts",
+          "line": 46,
+          "column": 35,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 27,
+          "column": 22,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 28,
+          "column": 26,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 32,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.595
+        },
+        {
+          "file": "app\\auth\\callback\\route.ts",
+          "line": 18,
+          "column": 28,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\auth\\callback\\route.ts",
+          "line": 20,
+          "column": 18,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\auth\\callback\\route.ts",
+          "line": 21,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\auth\\callback\\route.ts",
+          "line": 22,
+          "column": 32,
+          "isOutlier": false,
+          "confidence": 0.7
+        },
+        {
+          "file": "app\\go\\[slug]\\[retailer]\\route.ts",
+          "line": 44,
+          "column": 29,
+          "isOutlier": false,
+          "confidence": 0.7
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "token-handling"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "47e38cfc6f97e4a9",
+      "subcategory": "middleware",
+      "name": "Auth Middleware Detector",
+      "description": "Learns auth middleware patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/middleware",
+          "patternId": "auth/middleware/assignment"
+        }
+      },
+      "confidence": {
+        "frequency": 0.03,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 3,
+        "score": 0.8533333333333333,
+        "level": "high"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\market\\funding\\funding-table.tsx",
+          "line": 30,
+          "column": 9,
+          "isOutlier": false,
+          "confidence": 0.8533333333333333
+        },
+        {
+          "file": "app\\api\\tools\\robot-finder\\route.ts",
+          "line": 65,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.76
+        },
+        {
+          "file": "app\\globals.css",
+          "line": 398,
+          "column": 48,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.788Z",
+        "lastSeen": "2026-03-30T00:24:33.788Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "middleware"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "9a4da8074066194e",
+      "subcategory": "token-handling",
+      "name": "Token Handling Detector",
+      "description": "Learns token handling patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/token-handling",
+          "patternId": "auth/token-handling/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.03,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.7949999999999999,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 25,
+          "column": 20,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 26,
+          "column": 13,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 26,
+          "column": 60,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.789Z",
+        "lastSeen": "2026-03-30T00:24:33.789Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "token-handling"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "88ba71c96cf14aa5",
+      "subcategory": "ownership",
+      "name": "Resource Ownership Detector",
+      "description": "Learns resource ownership patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/ownership",
+          "patternId": "auth/ownership/conditional"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.7366666666666666,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 30,
+          "column": 11,
+          "isOutlier": false,
+          "confidence": 0.7366666666666666
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.789Z",
+        "lastSeen": "2026-03-30T00:24:33.789Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "ownership"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "1179270fccd03ed0",
+      "subcategory": "audit",
+      "name": "Audit Logging Detector",
+      "description": "Learns audit logging patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/audit",
+          "patternId": "auth/audit/property_access"
+        }
+      },
+      "confidence": {
+        "frequency": 0.02,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.77,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 14,
+          "column": 7,
+          "isOutlier": false,
+          "confidence": 0.77
+        },
+        {
+          "file": "app\\api\\webhooks\\stripe\\route.ts",
+          "line": 14,
+          "column": 21,
+          "isOutlier": false,
+          "confidence": 0.77
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.789Z",
+        "lastSeen": "2026-03-30T00:24:33.789Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "audit"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    },
+    {
+      "id": "8f1dc44cc6fee603",
+      "subcategory": "permission-checks",
+      "name": "Permission Checks Detector",
+      "description": "Learns permission check patterns from your codebase",
+      "detector": {
+        "type": "regex",
+        "config": {
+          "detectorId": "auth/permission-checks",
+          "patternId": "auth/permission-checks/import"
+        }
+      },
+      "confidence": {
+        "frequency": 0.01,
+        "consistency": 0.9,
+        "age": 0,
+        "spread": 1,
+        "score": 0.7949999999999999,
+        "level": "medium"
+      },
+      "locations": [
+        {
+          "file": "app\\(platform)\\explore\\[category]\\[slug]\\page.tsx",
+          "line": 29,
+          "column": 61,
+          "isOutlier": false,
+          "confidence": 0.7949999999999999
+        }
+      ],
+      "outliers": [],
+      "metadata": {
+        "firstSeen": "2026-03-30T00:24:33.787Z",
+        "lastSeen": "2026-03-30T00:24:33.787Z",
+        "source": "auto-detected",
+        "tags": [
+          "auth",
+          "permission-checks"
+        ]
+      },
+      "severity": "info",
+      "autoFixable": false
+    }
+  ],
+  "lastUpdated": "2026-03-30T00:25:41.855Z",
+  "checksum": "5d2c814a84e54bf0"
+}
