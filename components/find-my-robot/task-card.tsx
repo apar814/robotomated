@@ -4,24 +4,34 @@ import { useState, useCallback } from "react";
 import { getActionImage, getThumbnailUrl } from "@/lib/action-images";
 
 /* ────────────────────────────────────────────
-   Icon name → emoji mapping (no Lucide dep)
+   Icon name → SVG mapping (no emoji, no deps)
    ──────────────────────────────────────────── */
 
-const ICON_EMOJI: Record<string, string> = {
-  Package: "\u{1F4E6}",
-  Sparkles: "\u2728",
-  ScanLine: "\u{1F50D}",
-  Shield: "\u{1F6E1}\uFE0F",
-  Users: "\u{1F465}",
-  Leaf: "\u{1F33F}",
-  Wrench: "\u{1F527}",
-  Truck: "\u{1F69A}",
-  HelpCircle: "\u2753",
-  PackageCheck: "\u{1F4E6}",
-};
+const svgProps = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#0EA5E9", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 
-function iconToEmoji(iconName: string): string {
-  return ICON_EMOJI[iconName] ?? "\u2753";
+function iconToSvg(iconName: string) {
+  switch (iconName) {
+    case "Package":
+    case "PackageCheck":
+      return <svg {...svgProps}><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>;
+    case "Sparkles":
+      return <svg {...svgProps}><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z" /></svg>;
+    case "ScanLine":
+      return <svg {...svgProps}><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>;
+    case "Shield":
+      return <svg {...svgProps}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>;
+    case "Users":
+      return <svg {...svgProps}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>;
+    case "Leaf":
+      return <svg {...svgProps}><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg>;
+    case "Wrench":
+      return <svg {...svgProps}><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg>;
+    case "Truck":
+      return <svg {...svgProps}><rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></svg>;
+    case "HelpCircle":
+    default:
+      return <svg {...svgProps}><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>;
+  }
 }
 
 /* ────────────────────────────────────────────
@@ -122,8 +132,8 @@ export default function TaskCard({ taskKey, selected, onSelect }: TaskCardProps)
 
       {/* Layer 4: Content at bottom */}
       <div className="absolute inset-0 flex flex-col justify-end p-3">
-        <span className="mb-0.5 text-lg leading-none" aria-hidden="true">
-          {iconToEmoji(action.icon)}
+        <span className="mb-0.5 leading-none" aria-hidden="true">
+          {iconToSvg(action.icon)}
         </span>
         <span
           className="text-left font-bold text-white"

@@ -8,29 +8,29 @@ interface StepProps {
 }
 
 const INDUSTRY_SPECIALIZATIONS = [
-  { value: "warehouse", label: "Warehouse", icon: "\uD83C\uDFED" },
-  { value: "manufacturing", label: "Manufacturing", icon: "\u2699\uFE0F" },
-  { value: "healthcare", label: "Healthcare", icon: "\uD83C\uDFE5" },
-  { value: "agricultural", label: "Agricultural", icon: "\uD83C\uDF3E" },
-  { value: "security", label: "Security", icon: "\uD83D\uDD12" },
-  { value: "hospitality", label: "Hospitality", icon: "\uD83D\uDECE\uFE0F" },
-  { value: "construction", label: "Construction", icon: "\uD83C\uDFD7\uFE0F" },
-  { value: "eldercare", label: "Eldercare", icon: "\uD83D\uDC75" },
-  { value: "retail", label: "Retail", icon: "\uD83D\uDED2" },
-  { value: "education", label: "Education", icon: "\uD83D\uDCDA" },
+  { value: "warehouse", label: "Warehouse" },
+  { value: "manufacturing", label: "Manufacturing" },
+  { value: "healthcare", label: "Healthcare" },
+  { value: "agricultural", label: "Agricultural" },
+  { value: "security", label: "Security" },
+  { value: "hospitality", label: "Hospitality" },
+  { value: "construction", label: "Construction" },
+  { value: "eldercare", label: "Eldercare" },
+  { value: "retail", label: "Retail" },
+  { value: "education", label: "Education" },
 ] as const;
 
 const TASK_SPECIALIZATIONS = [
-  { value: "material_handling", label: "Material Handling", icon: "\uD83D\uDCE6" },
-  { value: "pick_and_pack", label: "Pick & Pack", icon: "\uD83D\uDCCB" },
-  { value: "floor_cleaning", label: "Floor Cleaning", icon: "\uD83E\uDDF9" },
-  { value: "security_patrol", label: "Security Patrol", icon: "\uD83D\uDC6E" },
-  { value: "inspection", label: "Inspection", icon: "\uD83D\uDD0D" },
-  { value: "welding_assembly", label: "Welding & Assembly", icon: "\uD83D\uDD27" },
-  { value: "customer_service", label: "Customer Service", icon: "\uD83D\uDCAC" },
-  { value: "agricultural_harvest", label: "Agricultural Harvest", icon: "\uD83C\uDF3F" },
-  { value: "medical_delivery", label: "Medical Delivery", icon: "\uD83D\uDC8A" },
-  { value: "humanoid_operation", label: "Humanoid Operation", icon: "\uD83E\uDD16" },
+  { value: "material_handling", label: "Material Handling" },
+  { value: "pick_and_pack", label: "Pick & Pack" },
+  { value: "floor_cleaning", label: "Floor Cleaning" },
+  { value: "security_patrol", label: "Security Patrol" },
+  { value: "inspection", label: "Inspection" },
+  { value: "welding_assembly", label: "Welding & Assembly" },
+  { value: "customer_service", label: "Customer Service" },
+  { value: "agricultural_harvest", label: "Agricultural Harvest" },
+  { value: "medical_delivery", label: "Medical Delivery" },
+  { value: "humanoid_operation", label: "Humanoid Operation" },
 ] as const;
 
 const LEVELS = ["beginner", "experienced", "expert"] as const;
@@ -40,7 +40,7 @@ function SpecCard({
   active,
   onToggle,
 }: {
-  item: { value: string; label: string; icon: string };
+  item: { value: string; label: string };
   active: boolean;
   onToggle: () => void;
 }) {
@@ -54,7 +54,7 @@ function SpecCard({
         background: active ? "rgba(14,165,233,0.05)" : "var(--theme-card)",
       }}
     >
-      <div className="text-2xl">{item.icon}</div>
+      <div className="flex h-6 w-6 items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4" /></svg></div>
       <div
         className="mt-1 text-xs font-semibold"
         style={{ color: "var(--theme-text-primary)" }}
@@ -197,7 +197,7 @@ export default function StepSpecializations({ data, updateData }: StepProps) {
                     className="text-sm font-medium"
                     style={{ color: "var(--theme-text-primary)" }}
                   >
-                    {item.icon} {item.label}
+                    {item.label}
                   </span>
                   <LevelToggle
                     slug={slug}

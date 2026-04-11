@@ -9,12 +9,12 @@ interface StepProps {
 }
 
 const BUSINESS_TYPES = [
-  { value: "solo", label: "Solo Operator", subtitle: "Just me and my robot", icon: "\uD83E\uDDD1\u200D\uD83D\uDD27" },
-  { value: "small_fleet", label: "Small Fleet (2-5)", subtitle: "Growing operation", icon: "\uD83E\uDD16" },
-  { value: "mid_fleet", label: "Mid Fleet (6-20)", subtitle: "Established business", icon: "\uD83C\uDFE2" },
-  { value: "large_fleet", label: "Large Fleet (20+)", subtitle: "Enterprise scale", icon: "\uD83C\uDFED" },
-  { value: "rental_company", label: "Rental Company", subtitle: "Robot rental business", icon: "\uD83D\uDD04" },
-  { value: "integrator", label: "Integrator", subtitle: "Systems integration", icon: "\u2699\uFE0F" },
+  { value: "solo", label: "Solo Operator", subtitle: "Just me and my robot" },
+  { value: "small_fleet", label: "Small Fleet (2-5)", subtitle: "Growing operation" },
+  { value: "mid_fleet", label: "Mid Fleet (6-20)", subtitle: "Established business" },
+  { value: "large_fleet", label: "Large Fleet (20+)", subtitle: "Enterprise scale" },
+  { value: "rental_company", label: "Rental Company", subtitle: "Robot rental business" },
+  { value: "integrator", label: "Integrator", subtitle: "Systems integration" },
 ] as const;
 
 export default function StepBusinessBasics({ data, updateData }: StepProps) {
@@ -81,7 +81,9 @@ export default function StepBusinessBasics({ data, updateData }: StepProps) {
                     : "var(--theme-card)",
                 }}
               >
-                <div className="text-2xl">{bt.icon}</div>
+                <div className="flex h-6 w-6 items-center justify-center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4" /></svg>
+                </div>
                 <div
                   className="mt-1 text-sm font-semibold"
                   style={{ color: "var(--theme-text-primary)" }}

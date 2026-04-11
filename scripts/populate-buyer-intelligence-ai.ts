@@ -113,7 +113,7 @@ Return JSON with these exact fields:
 
   try {
     const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-6-20250514",
+      model: "claude-sonnet-4-5-20241022",
       max_tokens: 1024,
       system: SYSTEM_PROMPT,
       messages: [{ role: "user", content: prompt }],
