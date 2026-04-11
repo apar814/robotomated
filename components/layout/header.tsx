@@ -314,6 +314,13 @@ export function Header() {
             <NavButton id="operate" label="Operate" />
             <NavButton id="learn" label="Learn" />
             <Link
+              href="/intelligence"
+              className="rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
+              style={{ color: "var(--theme-text-secondary)" }}
+            >
+              Intelligence
+            </Link>
+            <Link
               href="/manufacturers"
               className="rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
               style={{ color: "var(--theme-text-secondary)" }}
@@ -409,6 +416,9 @@ export function Header() {
                 <MobileLink key={item.href} href={item.href} title={item.title} desc={item.desc} onClose={closeAll} />
               ))}
             </MobileAccordion>
+            <Link href="/intelligence" onClick={closeAll} className="block border-b border-[var(--theme-border)] px-4 py-3 text-[15px] font-semibold text-[var(--theme-text-secondary)]">
+              Intelligence
+            </Link>
             <Link href="/manufacturers" onClick={closeAll} className="block border-b border-[var(--theme-border)] px-4 py-3 text-[15px] font-semibold text-[var(--theme-text-secondary)]">
               Manufacturers
             </Link>

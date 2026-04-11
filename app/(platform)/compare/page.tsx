@@ -6,6 +6,7 @@ import Link from "next/link";
 import { RoboScoreBadge, ScoreBar } from "@/components/ui/robo-score";
 import { SafeImage } from "@/components/ui/safe-image";
 import { RobotSearch } from "@/components/compare/robot-search";
+import { ComparisonSkeleton } from "@/components/ui/skeleton";
 import { DIMENSIONS } from "@/lib/scoring/roboscore";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
 import { cn } from "@/lib/utils/cn";
@@ -40,7 +41,7 @@ function specVal(specs: Record<string, unknown> | null, key: string): string {
 
 export default function ComparePageWrapper() {
   return (
-    <Suspense fallback={<div className="py-20 text-center text-white/30">Loading comparison...</div>}>
+    <Suspense fallback={<ComparisonSkeleton />}>
       <ComparePageInner />
     </Suspense>
   );
@@ -127,8 +128,13 @@ function ComparePageInner() {
       {/* Header */}
       <div className="border-b border-border px-4 py-8">
         <div className="mx-auto max-w-6xl">
+          <nav className="mb-4 flex items-center gap-1 font-mono text-[10px]">
+            <a href="/explore" className="text-white/25 transition-colors hover:text-white/50">Explore</a>
+            <span className="text-white/15">/</span>
+            <span className="text-white/40">Compare</span>
+          </nav>
           <h1 className="font-display text-3xl font-bold text-foreground">Compare Robots</h1>
-          <p className="mt-1 text-white/35">Side-by-side comparison of specs, scores, and pricing</p>
+          <p className="mt-1 text-white/35">Side-by-side across every dimension — specs, scores, pricing, and total cost.</p>
         </div>
       </div>
 
@@ -175,7 +181,7 @@ function ComparePageInner() {
           )}
         </div>
 
-        {loading && <p className="py-12 text-center text-white/30">Loading comparison...</p>}
+        {loading && <ComparisonSkeleton />}
 
         {!loading && robots.length >= 2 && (
           <>

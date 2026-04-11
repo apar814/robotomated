@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CertificationRoiCalculator } from "@/components/certify/roi-calculator";
 
 export const metadata: Metadata = {
   title:
@@ -26,14 +27,21 @@ const LEVELS = [
     rspPrice: 0,
     studyHours: "3-5",
     proves:
-      "You understand robots well enough to work alongside them safely and intelligently. You know the 5 types, basic safety, and the robot economy.",
+      "Learn what robots actually are, how they work, and the five categories reshaping every industry. You'll finish with enough context to evaluate automation opportunities and speak intelligently with vendors.",
+    outcomes: [
+      "Identify the 5 robot categories and their applications",
+      "Apply safety protocols when working near deployed robots",
+      "Evaluate vendor claims with a structured framework",
+      "Explain ROI fundamentals of automation to stakeholders",
+    ],
     careers: ["Any role near robots", "Career changers", "Facility staff"],
-    salaryBump: "Career access",
-    glow: "shadow-green/20 hover:shadow-green/40",
-    border: "border-green/20 hover:border-green/50",
-    badge: "bg-green/10 text-green",
-    accent: "text-green",
-    cta: "bg-green hover:bg-green/90 text-navy",
+    salaryBump: "$42K–58K entry roles",
+    glow: "shadow-[#0EA5E9]/20 hover:shadow-[#0EA5E9]/40",
+    border: "border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50",
+    badge: "bg-[#0EA5E9]/10 text-[#0EA5E9]",
+    accent: "text-[#0EA5E9]",
+    cta: "bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-black",
+    ctaLabel: "Get Robot Literate — Free",
     ring: "ring-green/30",
     isFree: true,
     domains: [
@@ -57,7 +65,13 @@ const LEVELS = [
     rspPrice: 99,
     studyHours: "20-40",
     proves:
-      "You can safely operate and monitor deployed robots. You know when to call for help. You won't hurt yourself, coworkers, or equipment.",
+      "Master the fundamentals of safe robot operation. You'll learn startup/shutdown procedures, basic fault diagnosis, and how to monitor deployed robots without putting people or equipment at risk.",
+    outcomes: [
+      "Safely start, operate, and shut down deployed robots",
+      "Diagnose and escalate Level 1 faults under pressure",
+      "Monitor robot performance and flag anomalies in real time",
+      "Follow OSHA and industry safety regulations for automation",
+    ],
     careers: ["Robot Operator", "AMR Technician", "Warehouse Automation Specialist"],
     salaryBump: "$8,000-15,000/year",
     glow: "shadow-blue/20 hover:shadow-blue/40",
@@ -65,6 +79,7 @@ const LEVELS = [
     badge: "bg-blue/10 text-blue",
     accent: "text-blue",
     cta: "bg-blue hover:bg-blue/90",
+    ctaLabel: "Become a Certified Operator",
     ring: "ring-blue/30",
     domains: [
       { name: "Safety Fundamentals", pct: 25 },
@@ -87,18 +102,25 @@ const LEVELS = [
     rspPrice: 199,
     studyHours: "60-100",
     proves:
-      "You can program, deploy, integrate, and maintain robots in your specialization. You handle common faults autonomously.",
+      "Go deep in your chosen robotics domain. You'll learn to program robots, integrate them with existing systems (WMS, ERP, MES), and resolve faults without calling the manufacturer.",
+    outcomes: [
+      "Program and deploy robots in your chosen specialization",
+      "Integrate robots with warehouse, ERP, and MES systems",
+      "Resolve common faults autonomously without vendor support",
+      "Pass 2 live simulation scenarios under time pressure",
+    ],
     careers: [
       "Robot Technician",
       "Integration Specialist",
       "Automation Engineer",
     ],
     salaryBump: "$20,000-35,000/year",
-    glow: "shadow-green/20 hover:shadow-green/40",
-    border: "border-green/20 hover:border-green/50",
-    badge: "bg-green/10 text-green",
-    accent: "text-green",
-    cta: "bg-green hover:bg-green/90 text-navy",
+    glow: "shadow-[#0EA5E9]/20 hover:shadow-[#0EA5E9]/40",
+    border: "border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50",
+    badge: "bg-[#0EA5E9]/10 text-[#0EA5E9]",
+    accent: "text-[#0EA5E9]",
+    cta: "bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-black",
+    ctaLabel: "Get Certified as a Specialist",
     ring: "ring-green/30",
     hasPractical: true,
     domains: [
@@ -121,7 +143,13 @@ const LEVELS = [
     rspPrice: 349,
     studyHours: "120-200",
     proves:
-      "You survive chaos. You can reprogram a robot mid-shift. You close the sim-to-real gap. You handle edge cases nobody trained you for.",
+      "Prove you can handle anything. Reprogram a robot mid-shift, close the sim-to-real gap, and debug edge cases nobody anticipated. The Gauntlet assessment tests all of this under live conditions.",
+    outcomes: [
+      "Reprogram robot behavior live during production shifts",
+      "Architect multi-robot systems across different manufacturers",
+      "Survive The Gauntlet: 4 rounds of live fault injection",
+      "Design and validate sim-to-real transfer pipelines",
+    ],
     careers: [
       "Senior Robot Engineer",
       "Fleet Architect",
@@ -133,6 +161,7 @@ const LEVELS = [
     badge: "bg-violet/10 text-violet",
     accent: "text-violet",
     cta: "bg-violet hover:bg-violet/90",
+    ctaLabel: "Earn Your Master Credential",
     ring: "ring-violet/30",
     hasGauntlet: true,
     domains: [
@@ -156,7 +185,13 @@ const LEVELS = [
     rspPrice: 599,
     studyHours: "200+",
     proves:
-      "You design and run large-scale robot operations. You train other operators. You make strategic decisions about fleet architecture and automation strategy.",
+      "Lead large-scale automation operations. You'll learn to design fleet architectures, run incident command, train and certify operators beneath you, and present ROI cases to executive leadership.",
+    outcomes: [
+      "Design fleet architectures spanning multiple facilities",
+      "Run incident command during production-critical failures",
+      "Build and deliver operator training programs",
+      "Present automation ROI cases to C-suite stakeholders",
+    ],
     careers: [
       "Head of Automation",
       "VP Operations",
@@ -168,6 +203,7 @@ const LEVELS = [
     badge: "bg-amber-500/10 text-amber-400",
     accent: "text-amber-400",
     cta: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
+    ctaLabel: "Become a Fleet Commander",
     ring: "ring-amber-500/30",
     hasCapstone: true,
     domains: [
@@ -189,7 +225,13 @@ const LEVELS = [
     rspPrice: 2499,
     studyHours: "N/A",
     proves:
-      "You have demonstrably shaped the future of robotics at scale. Portfolio defense, panel review, and ongoing contribution commitment. Not an exam — an induction.",
+      "The highest designation in robotics operations. Not an exam — an induction. Demonstrate that you have shaped the future of robotics at scale through a portfolio defense, expert panel review, and ongoing contribution commitment.",
+    outcomes: [
+      "Join an exclusive network of senior robotics leaders",
+      "Receive CRO designation recognized across the industry",
+      "Contribute to RCO curriculum and industry standards",
+      "Access board-level advisory and speaking opportunities",
+    ],
     careers: [
       "Chief Robotics Officer",
       "Robotics Board Member",
@@ -201,6 +243,7 @@ const LEVELS = [
     badge: "bg-white/10 text-white",
     accent: "text-white",
     cta: "bg-gradient-to-r from-white to-gray-200 text-black hover:from-gray-100 hover:to-white",
+    ctaLabel: "Apply for CRO Designation",
     ring: "ring-white/20",
     isCRO: true,
     domains: [
@@ -329,9 +372,11 @@ export default function CertifyPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
+            The robotics industry will add 1.3 million jobs by 2030. Most of them don&apos;t exist yet. RCO certification puts your name on the shortlist before the roles are even posted.
+          </p>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted">
             Designed with input from Tesla&apos;s Optimus program, Boston
-            Dynamics field teams, and Fortune 500 automation directors.
-            <br />
+            Dynamics field teams, and Fortune 500 automation directors.{" "}
             <span className="font-semibold text-white">
               Not a quiz. A gauntlet.
             </span>
@@ -359,15 +404,15 @@ export default function CertifyPage() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-green px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
+              className="inline-flex items-center rounded-lg bg-[#0EA5E9] px-8 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#38BDF8] hover:shadow-lg hover:shadow-[#0EA5E9]/20"
             >
-              Start Free — Level 0
+              Get Certified Free — Level 0 Awareness
             </Link>
             <Link
               href="#levels"
               className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
             >
-              Explore All 6 Levels
+              Compare All 6 Levels
             </Link>
           </div>
         </div>
@@ -377,16 +422,29 @@ export default function CertifyPage() {
       <section id="levels" className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
-            [ FOUR LEVELS OF MASTERY ]
+            [ 6 LEVELS &middot; FROM LITERACY TO LEADERSHIP ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
-            From Operator to Commander
+            Every Level Unlocks a New Career
           </h2>
-          <p className="mx-auto mb-14 max-w-xl text-center text-muted">
-            Each level builds on the last. The person who passes RCO Master
-            should be able to walk onto any factory floor and deploy, debug, and
-            operate any robot under pressure.
+          <p className="mx-auto mb-6 max-w-xl text-center text-muted">
+            Each certification proves a concrete competency. The person who passes RCO Master
+            can walk onto any factory floor and deploy, debug, and
+            operate any robot under production pressure.
           </p>
+
+          {/* ROI headline */}
+          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-[#0EA5E9]/20 bg-[#0EA5E9]/5 px-6 py-4 text-center">
+            <p className="text-sm text-white">
+              The average RCO Master earns{" "}
+              <span className="font-bold text-[#0EA5E9]">$40,000 more per year</span>{" "}
+              than an uncertified operator. The certification pays for itself in{" "}
+              <span className="font-bold text-[#0EA5E9]">11 days</span>.
+            </p>
+            <p className="mt-1 text-xs text-muted">
+              Most students complete Foundation to Master in 14 weeks.
+            </p>
+          </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
             {LEVELS.map((lvl) => (
@@ -426,32 +484,47 @@ export default function CertifyPage() {
                   {lvl.proves}
                 </p>
 
-                {/* Exam details */}
-                <div className="mt-5 flex flex-wrap gap-3 text-xs">
-                  <span className="rounded-md border border-border px-2.5 py-1 text-muted">
-                    <span className="font-[family-name:var(--font-brand)] font-bold text-white">
+                {/* What you'll be able to do */}
+                <div className="mt-4">
+                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                    What you&apos;ll be able to do
+                  </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {lvl.outcomes.map((o) => (
+                      <li key={o} className="flex items-start gap-2 text-[13px] text-white/80">
+                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-current" />
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Exam details — labeled stats */}
+                <div className="mt-5 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+                  <div className="rounded-md border border-border px-2.5 py-2 text-center">
+                    <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.questions}
-                    </span>{" "}
-                    questions
-                  </span>
-                  <span className="rounded-md border border-border px-2.5 py-1 text-muted">
-                    <span className="font-[family-name:var(--font-brand)] font-bold text-white">
+                    </p>
+                    <p className="text-[10px] text-muted">Questions</p>
+                  </div>
+                  <div className="rounded-md border border-border px-2.5 py-2 text-center">
+                    <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.duration}
-                    </span>{" "}
-                    min
-                  </span>
-                  <span className="rounded-md border border-border px-2.5 py-1 text-muted">
-                    <span className="font-[family-name:var(--font-brand)] font-bold text-white">
+                    </p>
+                    <p className="text-[10px] text-muted">Minutes</p>
+                  </div>
+                  <div className="rounded-md border border-border px-2.5 py-2 text-center">
+                    <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.passScore}%
-                    </span>{" "}
-                    to pass
-                  </span>
-                  <span className="rounded-md border border-border px-2.5 py-1 text-muted">
-                    <span className="font-[family-name:var(--font-brand)] font-bold text-white">
+                    </p>
+                    <p className="text-[10px] text-muted">Pass Score</p>
+                  </div>
+                  <div className="rounded-md border border-border px-2.5 py-2 text-center">
+                    <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.studyHours}
-                    </span>{" "}
-                    hours study
-                  </span>
+                    </p>
+                    <p className="text-[10px] text-muted">Study Hours</p>
+                  </div>
                 </div>
 
                 {/* Gauntlet / Practical badges */}
@@ -471,39 +544,54 @@ export default function CertifyPage() {
                   </div>
                 )}
 
-                {/* Domain weights */}
-                <div className="mt-5 space-y-1.5">
-                  {lvl.domains.map((d) => (
-                    <div key={d.name} className="flex items-center gap-3">
-                      <div className="h-1.5 flex-1 rounded-full bg-border">
-                        <div
-                          className={`h-1.5 rounded-full ${
-                            lvl.level === 1
-                              ? "bg-blue/60"
-                              : lvl.level === 2
-                                ? "bg-green/60"
-                                : lvl.level === 3
-                                  ? "bg-violet/60"
-                                  : "bg-amber-500/60"
-                          }`}
-                          style={{ width: `${d.pct}%` }}
-                        />
+                {/* Domain weights — labeled progress bars */}
+                <div className="mt-5">
+                  <p className="mb-2 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                    Exam Domain Weights
+                  </p>
+                  <div className="space-y-1.5">
+                    {lvl.domains.map((d) => (
+                      <div key={d.name} className="flex items-center gap-3">
+                        <span className="w-36 text-[11px] text-muted">
+                          {d.name}
+                        </span>
+                        <div className="h-1.5 flex-1 rounded-full bg-border">
+                          <div
+                            className={`h-1.5 rounded-full ${
+                              lvl.level <= 0
+                                ? "bg-[#0EA5E9]/60"
+                                : lvl.level === 1
+                                  ? "bg-blue/60"
+                                  : lvl.level === 2
+                                    ? "bg-[#0EA5E9]/60"
+                                    : lvl.level === 3
+                                      ? "bg-violet/60"
+                                      : lvl.level === 4
+                                        ? "bg-amber-500/60"
+                                        : "bg-white/40"
+                            }`}
+                            style={{ width: `${d.pct}%` }}
+                          />
+                        </div>
+                        <span className="w-8 text-right font-[family-name:var(--font-mono)] text-[11px] text-white">
+                          {d.pct}%
+                        </span>
                       </div>
-                      <span className="w-32 text-right text-[11px] text-muted">
-                        {d.name}
-                      </span>
-                      <span className="w-8 text-right font-[family-name:var(--font-mono)] text-[11px] text-white">
-                        {d.pct}%
-                      </span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
-                {/* Career outcomes */}
+                {/* Career outcomes + salary */}
                 <div className="mt-5 border-t border-border pt-4">
-                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
-                    Career outcome
-                  </p>
+                  <div className="flex items-baseline justify-between">
+                    <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                      Career Outcome
+                    </p>
+                    <p className={`text-base font-bold ${lvl.accent}`}>
+                      {lvl.salaryBump}
+                    </p>
+                  </div>
+                  <p className="mt-0.5 text-right text-[10px] text-muted">avg. salary increase</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {lvl.careers.map((c) => (
                       <span
@@ -514,29 +602,22 @@ export default function CertifyPage() {
                       </span>
                     ))}
                   </div>
-                  <p className={`mt-2 text-sm font-semibold ${lvl.accent}`}>
-                    Avg salary increase: {lvl.salaryBump}
-                  </p>
                 </div>
 
-                {/* CTA */}
+                {/* CTA — outcome-driven copy */}
                 <div className="mt-6 flex gap-3">
                   <Link
                     href={`/certify/${lvl.slug === "awareness" ? "awareness" : lvl.slug === "cro" ? "cro" : lvl.level}`}
                     className={`flex-1 rounded-lg px-5 py-3 text-center text-sm font-semibold text-white transition-all ${lvl.cta}`}
                   >
-                    {(lvl as Record<string, unknown>).isFree
-                      ? "Start Free →"
-                      : (lvl as Record<string, unknown>).isCRO
-                        ? "Apply for CRO"
-                        : `Start Level ${lvl.level}`}
+                    {lvl.ctaLabel}
                   </Link>
-                  {!(lvl as Record<string, unknown>).isCRO && (
+                  {!("isCRO" in lvl && lvl.isCRO) && (
                     <Link
                       href={`/certify/study/${lvl.slug}`}
                       className="rounded-lg border border-border px-5 py-3 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
                     >
-                      Study
+                      Preview Curriculum
                     </Link>
                   )}
                 </div>
@@ -702,7 +783,7 @@ export default function CertifyPage() {
                 href="/certify/employer"
                 className="mt-8 inline-flex items-center rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90"
               >
-                Employer Portal
+                Certify Your Team
               </Link>
             </div>
 
@@ -929,6 +1010,22 @@ export default function CertifyPage() {
         </div>
       </section>
 
+      {/* ═══ YOUR ROI ═══ */}
+      <section className="border-t border-border px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+            [ YOUR ROI ]
+          </p>
+          <h2 className="mb-4 text-center font-display text-3xl font-bold">
+            What Is Certification Worth to You?
+          </h2>
+          <p className="mx-auto mb-8 max-w-lg text-center text-muted">
+            Enter your current salary and target level. See exactly what certification is worth over 5 years.
+          </p>
+          <CertificationRoiCalculator />
+        </div>
+      </section>
+
       {/* ═══ BOTTOM CTA ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-2xl text-center">
@@ -942,9 +1039,9 @@ export default function CertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-green px-10 py-4 text-sm font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
+              className="inline-flex items-center rounded-lg bg-[#0EA5E9] px-10 py-4 text-sm font-semibold text-black transition-all hover:bg-[#38BDF8] hover:shadow-lg hover:shadow-[#0EA5E9]/20"
             >
-              Start Free — RCO Awareness
+              Get Certified Free — Level 0 Awareness
             </Link>
             <Link
               href="/certify/employer"
@@ -954,7 +1051,7 @@ export default function CertifyPage() {
             </Link>
           </div>
           <p className="mt-6 text-xs text-muted">
-            Issued by Robotomated — The Operating System for Robotics
+            Issued by Robotomated — The Intelligence Layer for Robotics
           </p>
         </div>
       </section>

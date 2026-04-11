@@ -42,29 +42,31 @@ const CARDS = [
 export function OpportunityBanner() {
   return (
     <section
-      className="px-6 py-20"
-      style={{ background: "var(--theme-bg)", color: "var(--theme-text-primary)" }}
+      className="border-t px-6 py-32"
+      style={{ borderColor: "var(--theme-border)", background: "var(--theme-bg)", color: "var(--theme-text-primary)" }}
     >
       <div className="mx-auto max-w-7xl">
-        <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
-          <span className="inline-block h-px w-6 bg-[var(--theme-accent-blue)]" />
+        <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
+          <span className="inline-block h-px w-8 bg-[var(--theme-accent-blue)]" />
           The $24 Trillion Shift
         </p>
-        <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
-          Robots are replacing human labor
-          <br className="hidden sm:block" />
-          faster than anyone predicted.
+        <h2
+          className="font-display font-bold tracking-[-0.03em]"
+          style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-text-primary)" }}
+        >
+          Robots are replacing<br className="hidden sm:block" />
+          human labor faster than<br className="hidden lg:block" />
+          anyone predicted.
         </h2>
         <p
-          className="mt-4 max-w-[600px] text-base leading-relaxed"
+          className="mt-6 max-w-[600px] text-lg leading-relaxed"
           style={{ color: "var(--theme-text-secondary)" }}
         >
           137 humanoid companies in China alone. Figure AI at $39.5B. Amazon
-          deploying Digit at scale. The window to be a certified robotics
-          professional — before everyone else — is open right now.
+          deploying Digit at scale. The window to move is open right now.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-3">
           {CARDS.map((card) => (
             <div
               key={card.title}

@@ -2,7 +2,7 @@ import { createServerClient } from "@/lib/supabase/server";
 
 export const PRO_LIMITS = {
   free: {
-    advisorConversationsPerMonth: 5,
+    advisorConversationsPerMonth: 10,
     priceAlerts: 3,
     compareRobots: 2,
   },

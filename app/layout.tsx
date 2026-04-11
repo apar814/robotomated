@@ -12,6 +12,7 @@ import { CursorGlow } from "@/components/ui/cursor-glow";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
 import { ExitIntentPopup } from "@/components/engagement/exit-intent-popup";
+import { MobileNav } from "@/components/layout/mobile-nav";
 import { BuyerJourneyBar } from "@/components/ui/buyer-journey-bar";
 import { SiteStatsProvider } from "@/lib/context/site-stats";
 import { getSiteStats } from "@/lib/data/site-stats";
@@ -51,7 +52,7 @@ const chakraPetch = Chakra_Petch({
 
 export const metadata: Metadata = {
   title: {
-    default: "Robotomated — The Robotics Intelligence Platform",
+    default: "Robotomated — Robotics Intelligence",
     template: "%s | Robotomated",
   },
   description:
@@ -114,13 +115,14 @@ export default async function RootLayout({
             <Header />
             <StatusBar />
             <BuyerJourneyBar />
-            <main className="flex-1 animate-fade-in">{children}</main>
+            <main className="flex-1 animate-fade-in pb-16 lg:pb-0">{children}</main>
             <Footer />
             <CookieBanner />
             <CursorGlow />
             <CommandPalette />
             <CompareBar />
             <ExitIntentPopup />
+            <MobileNav />
           </PostHogProvider>
           </SiteStatsProvider>
         </Providers>

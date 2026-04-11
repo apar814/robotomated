@@ -25,12 +25,12 @@ const STORAGE_KEY = "robotomated-advisor-history";
 const MAX_STORED_MESSAGES = 20;
 
 const STARTER_PROMPTS = [
-  { label: "I need to automate my warehouse \u2014 where do I start?", icon: "warehouse" },
-  { label: "What\u2019s the ROI on a $150K robot for my operation?", icon: "manufacturing" },
-  { label: "Should I buy, lease, or hire a robot?", icon: "cobot" },
-  { label: "Which robot is best for hospital delivery?", icon: "medical" },
-  { label: "I have a 50,000 sq ft warehouse and $200K budget", icon: "warehouse" },
-  { label: "Help me build a case for my CFO", icon: "consumer" },
+  { label: "I have a $150K budget and a 40,000 sq ft warehouse. What do I need?", icon: "warehouse" },
+  { label: "I want to get RCO certified. Where do I start?", icon: "cobot" },
+  { label: "Best robot for hospital floor cleaning under $5K/month?", icon: "medical" },
+  { label: "Help me build a CFO business case for AMR deployment", icon: "manufacturing" },
+  { label: "What\u2019s happening in humanoid robotics right now?", icon: "consumer" },
+  { label: "I want to become a Robot Service Provider. What do I need?", icon: "warehouse" },
 ];
 
 /** Extract follow-up question suggestions from Robotimus responses */

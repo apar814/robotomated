@@ -5,7 +5,6 @@ import { RoboScoreBadge } from "@/components/ui/robo-score";
 // SocialProofStrip removed — stats now inline
 import { HeroNetworkSvg } from "@/components/ui/hero-network-svg";
 import { HeroBackground } from "@/components/hero/hero-background";
-import { SectorCode, SECTOR_CODES } from "@/components/ui/sector-code";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import ChannelShowcase from "@/components/home/channel-showcase";
@@ -15,6 +14,8 @@ import { OpportunityBanner } from "@/components/home/opportunity-banner";
 import { RaaSExplainer } from "@/components/home/raas-explainer";
 import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
+import { RecentlyViewed } from "@/components/home/recently-viewed";
+import { JobInput } from "@/components/home/job-input";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -91,41 +92,39 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-28">
+      <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
         <HeroBackground className="pointer-events-none absolute inset-0" />
-        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30" />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[55%_45%] lg:gap-12">
-          {/* Left column — headline + CTAs */}
-          <div>
+        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20" />
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
+          {/* Left column — job-first messaging + input */}
+          <div className="relative">
             <span className="hud-label blink-cursor">
-              The Operating System for Robotics
+              The Intelligence Layer for Robotics
             </span>
             <h1
               className="mt-8 font-display font-extrabold leading-[1.05]"
-              style={{ fontSize: "clamp(40px, 5vw, 80px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
+              style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
             >
-              One platform.<br />
-              The entire robot<br />
-              <span className="hero-accent">lifecycle.</span>
+              What job needs<br />
+              to get <span className="hero-accent">done?</span>
             </h1>
-            <p className="mt-8 max-w-[520px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "clamp(15px, 1.8vw, 18px)", color: "var(--theme-text-secondary)" }}>
-              Buy, lease, or hire robots. Deploy with certified operators. Manage your fleet. Sell when you{"'"}re ready.
-              {" "}{totalRobots} robots. {manufacturerCount} manufacturers. 5 channels.
+            <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
+              Describe your operation. We{"'"}ll find the robot — and tell you exactly what it costs, how fast it deploys, and how many hours it saves.
             </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link href="/explore" className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#0EA5E9] px-7 py-3.5 font-[family-name:var(--font-ui)] text-[15px] font-semibold tracking-[0.04em] text-black transition-all hover:-translate-y-0.5 hover:bg-[#38BDF8] hover:shadow-[0_0_20px_rgba(14,165,233,0.4)]">
-                Explore Robots
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-              </Link>
-              <Link href="/advisor" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/15 px-7 py-3.5 font-[family-name:var(--font-ui)] text-[15px] font-medium text-white/80 transition-all hover:-translate-y-0.5 hover:border-white/35 hover:text-white">
-                Ask Robotimus
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-              </Link>
+
+            {/* Job input */}
+            <div className="mt-8">
+              <JobInput />
             </div>
+
+            {/* Stats inline */}
+            <p className="mt-6 font-mono text-[11px] text-white/20">
+              {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independently scored
+            </p>
           </div>
 
           {/* Right column — Robotimus panel */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end lg:pt-16">
             <RobotimusHeroPanel />
           </div>
         </div>
@@ -137,10 +136,10 @@ export default async function HomePage() {
       <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {[
-            { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots" },
-            { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers" },
-            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market" },
-            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Channels" },
+            { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
+            { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers Indexed" },
+            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "2030 Global Market" },
+            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Deployment Channels" },
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-3">
               {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/10">//</span>}
@@ -160,6 +159,11 @@ export default async function HomePage() {
       </div>
 
       {/* ══════════════════════════════════════════
+          2.5. RECENTLY VIEWED (personalization)
+          ══════════════════════════════════════════ */}
+      <RecentlyViewed />
+
+      {/* ══════════════════════════════════════════
           3. THE 5 CHANNELS — Most important section
           ══════════════════════════════════════════ */}
       <ChannelShowcase />
@@ -170,81 +174,100 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           5. TRENDING ROBOTS
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-28">
         <div className="mx-auto max-w-7xl">
-          {/* Section label */}
-          <div className="mb-6 flex items-center gap-2">
-            <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
-              Trending This Week
-            </span>
-          </div>
+          {/* Section heading — DJI-scale */}
+          <h2
+            className="font-display font-bold tracking-[-0.03em]"
+            style={{ fontSize: "clamp(32px, 4vw, 56px)", color: "var(--theme-text-primary)" }}
+          >
+            Trending This Week
+          </h2>
+          <p className="mt-3 max-w-lg text-base leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
+            {totalRobots} robots, independently scored. No manufacturer pays for placement.
+          </p>
 
           {/* Search bar */}
           <Link
             href="/explore"
-            className="flex items-center gap-3 rounded-lg border border-border bg-transparent px-5 py-4 transition-colors hover:border-border-active"
+            className="mt-8 flex items-center gap-3 rounded-lg border border-white/[0.08] bg-transparent px-5 py-4 transition-colors hover:border-[#0EA5E9]/30"
           >
-            <svg className="h-5 w-5 shrink-0 text-tertiary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 shrink-0 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
-            <span className="flex-1 text-[15px] text-tertiary">
-              Search {totalRobots} robots by name, manufacturer, use case, or spec...
+            <span className="flex-1 text-[15px] text-white/30">
+              Search by name, manufacturer, use case, or spec...
             </span>
-            <kbd className="hidden rounded border border-border bg-obsidian-surface px-2 py-0.5 font-mono text-[13px] text-ghost sm:inline">
+            <kbd className="hidden rounded border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 font-mono text-[13px] text-white/20 sm:inline">
               &#8984;K
             </kbd>
           </Link>
 
-          {/* Category filter pills */}
+          {/* Category filter pills — clean pill style */}
           <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
             {categories.filter(c => c.robot_count > 0).map((cat) => (
               <Link
                 key={cat.id}
                 href={`/explore/${cat.slug}`}
-                className="shrink-0"
+                className="shrink-0 rounded-full border border-white/[0.08] px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] text-white/50 transition-colors hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
               >
-                <SectorCode code={SECTOR_CODES[cat.slug] || cat.slug.slice(0, 3).toUpperCase()} />
+                {cat.name}
               </Link>
             ))}
           </div>
 
-          {/* Robot grid */}
-          <div className="mt-8 overflow-hidden rounded-lg bg-border-subtle">
-            <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+          {/* Robot grid — with images */}
+          <div className="mt-10 overflow-visible">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {trending.slice(0, 6).map((robot) => {
                 const mfr = (robot.manufacturers as { name: string } | null)?.name || "";
                 const cat = robot.robot_categories as { slug: string; name: string } | null;
-                const sectorCode = SECTOR_CODES[cat?.slug || ""] || (cat?.slug || "").slice(0, 3).toUpperCase();
+                const imgs = (Array.isArray(robot.images) ? robot.images : []) as { url: string; alt: string }[];
+                const hasImg = imgs[0]?.url && !imgs[0].url.includes("unsplash");
                 return (
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="group block bg-obsidian-surface p-5 transition-colors hover:bg-obsidian-hover"
+                    className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-300 hover:-translate-y-1 hover:border-[#0EA5E9]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                   >
-                    <div className="flex items-start justify-between">
-                      <div className="min-w-0 flex-1">
-                        <p className="text-lg font-bold text-primary">{robot.name}</p>
-                        <div className="mt-1.5 flex items-center gap-2">
-                          <span className="text-[13px] text-tertiary">{mfr}</span>
-                          <SectorCode code={sectorCode} />
+                    {/* Image — 60% of card height */}
+                    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#0F1628] to-[#141C33]">
+                      {hasImg ? (
+                        <img
+                          src={imgs[0].url}
+                          alt={imgs[0].alt || robot.name}
+                          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex h-full flex-col items-center justify-center">
+                          <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/></svg>
+                          <span className="mt-1 text-xs font-medium text-white/20">{robot.name}</span>
                         </div>
-                      </div>
+                      )}
+                      {/* RoboScore overlay */}
                       {robot.robo_score != null && robot.robo_score > 0 && (
-                        <RoboScoreBadge score={robot.robo_score} />
+                        <div className="absolute right-3 top-3">
+                          <RoboScoreBadge score={robot.robo_score} />
+                        </div>
                       )}
                     </div>
-                    <div className="mt-4 flex items-center justify-between">
-                      {robot.price_current != null ? (
-                        <span className="font-mono text-base font-bold text-lime">
-                          {formatPrice(robot.price_current)}
+                    {/* Info */}
+                    <div className="p-5">
+                      <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#0EA5E9]">{mfr}</span>
+                      <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#0EA5E9]">{robot.name}</p>
+                      <div className="mt-3 flex items-center justify-between">
+                        {robot.price_current != null ? (
+                          <span className="font-mono text-base font-bold text-[#C8FF00]">
+                            {formatPrice(robot.price_current)}
+                          </span>
+                        ) : (
+                          <span className="font-mono text-[11px] text-white/30">Contact for pricing</span>
+                        )}
+                        <span className="text-[12px] font-medium text-[#0EA5E9] opacity-0 transition-opacity group-hover:opacity-100">
+                          Full Analysis &rarr;
                         </span>
-                      ) : (
-                        <span className="font-mono text-base text-tertiary">RFQ</span>
-                      )}
-                      <span className="text-[13px] text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
-                        View Analysis &rarr;
-                      </span>
+                      </div>
                     </div>
                   </Link>
                 );
@@ -277,15 +300,15 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-20" style={{ background: "#080808" }}>
+      <section className="border-t border-white/[0.06] px-6 py-32" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
               <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
-                <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+                <span className="inline-block h-px w-8 bg-[#0EA5E9]" />
                 The Abundance Equation
               </p>
-              <blockquote className="font-display text-2xl font-bold italic leading-snug text-white sm:text-3xl">
+              <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(24px, 3vw, 40px)" }}>
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
               <p className="mt-4 text-sm text-white/50">-- Brett Adcock, CEO, Figure AI</p>
@@ -308,7 +331,7 @@ export default async function HomePage() {
                 </div>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-white/50">
-                At $0.45/hour, every business can afford automation. That is the world we are building toward -- and Robotomated is the platform that gets you there.
+                At $0.45/hour, every business can afford automation. That is the world we are building toward -- and Robotomated is how you get there.
               </p>
               <Link href="/tools/robot-economics" className="mt-4 inline-block text-sm font-semibold text-[#0EA5E9] hover:underline">
                 Calculate your economics &rarr;
@@ -321,18 +344,18 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           8. SOCIAL PROOF STATS
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-20">
+      <section className="border-y px-6 py-28" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
             {[
-              { value: totalRobots.toString(), label: "Robots Tracked" },
-              { value: manufacturerCount.toString(), label: "Manufacturers" },
-              { value: "$24T", label: "Projected Market 2040" },
-              { value: "137", label: "Humanoid Companies (China)" },
+              { value: totalRobots.toString(), label: "Robots in Database" },
+              { value: manufacturerCount.toString(), label: "Manufacturers Indexed" },
+              { value: "$24T", label: "Projected Global Market by 2040" },
+              { value: "137", label: "Humanoid Startups (China Alone)" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(32px, 4vw, 52px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
-                <p className="mt-2 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
+                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
+                <p className="mt-3 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
               </div>
             ))}
           </div>
@@ -348,7 +371,7 @@ export default async function HomePage() {
           10. NEWSLETTER
           ══════════════════════════════════════════ */}
       <section
-        className="px-6 py-20"
+        className="px-6 py-28"
         style={{
           background: "var(--theme-section-alt)",
           borderTop: "1px solid var(--theme-border)",
@@ -359,7 +382,7 @@ export default async function HomePage() {
           <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
             [ Newsletter ]
           </p>
-          <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+          <h2 className="font-display text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>
             The Automation Intelligence Brief
           </h2>
           <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>

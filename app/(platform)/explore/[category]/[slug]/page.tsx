@@ -33,6 +33,7 @@ import { BuyersChecklist } from "@/components/robots/buyers-checklist";
 import { VideoEmbed } from "@/components/robots/video-embed";
 import { cached } from "@/lib/cache/redis";
 import { SidebarNewsletterCta } from "@/components/engagement/sidebar-newsletter-cta";
+import { TrackView } from "@/components/robots/track-view";
 
 const YEAR = new Date().getFullYear();
 
@@ -93,6 +94,9 @@ interface SimilarRobot {
   manufacturers: { name: string } | null;
   robot_categories: { slug: string } | null;
 }
+
+// ISR: revalidate robot pages every hour
+export const revalidate = 3600;
 
 interface Props { params: Promise<{ category: string; slug: string }> }
 
@@ -204,6 +208,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
   return (
     <div className="bg-obsidian">
+      <TrackView slug={robot.slug} category={cat?.slug || categorySlug} name={robot.name} />
       <AskAiButton robotName={robot.name} />
       <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} score={robot.robo_score} categorySlug={categorySlug} model={robot.model_number} status={robot.status} />
       {expertReviews[0] && <ReviewSchema robotName={robot.name} reviewTitle={expertReviews[0].title} reviewBody={expertReviews[0].body.slice(0, 200)} author="Robotomated Editorial" score={expertReviews[0].robo_score} publishedAt={expertReviews[0].published_at} />}
@@ -273,6 +278,28 @@ export default async function RobotDetailPage({ params }: Props) {
               </p>
             )}
 
+            {/* Who is this for + What problem does it solve */}
+            <div className="mt-5 space-y-2">
+              <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-electric-blue">What problem does this solve?</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-text-primary">
+                  {bestFor}.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-electric-blue">Who is this for?</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
+                  {robot.price_current != null && robot.price_current < 15000
+                    ? "Small-to-mid operations evaluating automation for the first time. Low barrier to entry, fast deployment."
+                    : robot.price_current != null && robot.price_current < 50000
+                      ? "Mid-market operations teams with proven use cases looking to scale beyond manual processes."
+                      : robot.price_current != null && robot.price_current >= 50000
+                        ? "Enterprise operations teams with dedicated automation budgets and integration requirements."
+                        : "Operations teams evaluating automation — contact the manufacturer for deployment consultation and pricing."}
+                </p>
+              </div>
+            </div>
+
             {/* CTAs */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
@@ -285,8 +312,24 @@ export default async function RobotDetailPage({ params }: Props) {
               <SaveRobotButton robotId={robot.id} />
             </div>
 
+            {/* Data confidence + Report error */}
+            <div className="mt-4 flex items-center gap-3 text-[10px]">
+              <span className="flex items-center gap-1 font-mono text-text-ghost">
+                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                Updated {new Date(robot.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+              </span>
+              <span className="text-text-ghost">·</span>
+              <span className="font-mono text-text-ghost">
+                {[robot.price_current, robot.robo_score, robotImages.length > 0, Object.keys(specs).length > 3].filter(Boolean).length}/4 data completeness
+              </span>
+              <span className="text-text-ghost">·</span>
+              <a href={`mailto:data@robotomated.com?subject=Data%20correction:%20${encodeURIComponent(robot.name)}&body=Robot:%20${encodeURIComponent(robot.name)}%0AField:%20%0ACorrection:%20`} className="text-electric-blue hover:underline">
+                Report an error
+              </a>
+            </div>
+
             {/* Share & Download */}
-            <div className="mt-4 flex flex-wrap items-center gap-2">
+            <div className="mt-3 flex flex-wrap items-center gap-2">
               <ShareButtons
                 robotName={robot.name}
                 robotScore={robot.robo_score}
@@ -749,7 +792,7 @@ export default async function RobotDetailPage({ params }: Props) {
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-4 py-10 lg:px-6">
             <div className="section-label mb-4">
-              <span className="font-mono text-[9px] tracking-widest">[ALTERNATIVES] SIMILAR ROBOTS</span>
+              <span className="font-mono text-[9px] tracking-widest">[ALTERNATIVES] ALSO CONSIDER</span>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {similar.map((s) => {
@@ -787,7 +830,7 @@ export default async function RobotDetailPage({ params }: Props) {
                       </h3>
                       <div className="mt-2 flex items-center justify-between">
                         <span className="font-mono text-sm font-bold text-text-secondary">
-                          {s.price_current != null ? fmtPrice(s.price_current) : "Contact"}
+                          {s.price_current != null ? fmtPrice(s.price_current) : "Contact for pricing"}
                         </span>
                         {s.robo_score != null && s.robo_score > 0 && (
                           <RoboScoreBadge score={s.robo_score} />
@@ -801,6 +844,90 @@ export default async function RobotDetailPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* ── FAQ ── */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-4 py-10 lg:px-6">
+          <div className="section-label mb-4">
+            <span className="font-mono text-[9px] tracking-widest">[FAQ] COMMON QUESTIONS</span>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                q: `How much does the ${robot.name} cost?`,
+                a: robot.price_current != null
+                  ? `The ${robot.name} is currently priced at ${fmtPrice(robot.price_current)}${robot.price_msrp != null && robot.price_msrp !== robot.price_current ? ` (MSRP ${fmtPrice(robot.price_msrp)})` : ""}. Total cost of ownership including maintenance, integration, and training is typically 1.5-2.5x the purchase price over 5 years.`
+                  : `Contact ${mfr?.name || "the manufacturer"} directly for current pricing. Pricing for ${cat?.name || "this category"} robots varies significantly based on configuration and deployment requirements.`,
+              },
+              {
+                q: `What certification do I need to operate the ${robot.name}?`,
+                a: `Operators should hold at minimum an RCO Foundation (Level 1) certification. For programming and integration work, RCO Specialist (Level 2) is recommended. ${robot.operator_training_hours ? `${mfr?.name} estimates ${robot.operator_training_hours} hours of operator training.` : ""}`,
+              },
+              {
+                q: `How long does it take to deploy the ${robot.name}?`,
+                a: robot.deployment_weeks_min != null
+                  ? `Typical deployment takes ${robot.deployment_weeks_min}${robot.deployment_weeks_max ? `-${robot.deployment_weeks_max}` : ""} weeks including site assessment, installation, integration, and operator training.`
+                  : `Deployment timelines for ${cat?.name || "this category"} robots typically range from 2-12 weeks depending on facility complexity and integration requirements.`,
+              },
+              {
+                q: `Should I buy, lease, or hire the ${robot.name}?`,
+                a: `Buy if you plan to use it for 3+ years at high utilization. Lease (typically $${robot.price_current ? Math.round(robot.price_current / 36).toLocaleString() : "varies"}/month) if you want flexibility and upgrades. Hire through RoboWork if you need it for a project or pilot — no capital expenditure required.`,
+              },
+              {
+                q: `How does the ${robot.name} compare to alternatives?`,
+                a: `${robot.robo_score != null ? `With a RoboScore of ${robot.robo_score}/100, the ${robot.name} scores ${robot.robo_score >= 80 ? "in the top tier" : robot.robo_score >= 60 ? "competitively" : "below average"} for ${cat?.name || "its category"}.` : ""} Use our comparison tool to evaluate it against up to 2 other robots across all 8 scoring dimensions.`,
+              },
+            ].map((faq) => (
+              <details key={faq.q} className="group rounded-lg border border-border bg-obsidian-surface">
+                <summary className="cursor-pointer px-5 py-4 text-sm font-semibold text-text-primary transition-colors hover:text-electric-blue">
+                  {faq.q}
+                </summary>
+                <div className="border-t border-border px-5 py-4 text-sm leading-relaxed text-text-secondary">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── NEXT STEP ── */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-4 py-12 lg:px-6">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Link
+              href="/compare"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+            >
+              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+                Compare with alternatives
+              </p>
+              <p className="mt-1 text-xs text-text-tertiary">Side-by-side across every dimension.</p>
+            </Link>
+            <Link
+              href="/tools/tco-calculator"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+            >
+              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+                Calculate 5-year total cost
+              </p>
+              <p className="mt-1 text-xs text-text-tertiary">Purchase + maintenance + integration.</p>
+            </Link>
+            <Link
+              href="/advisor"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+            >
+              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+                Get a deployment recommendation
+              </p>
+              <p className="mt-1 text-xs text-text-tertiary">Tell Robotimus your use case and budget.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

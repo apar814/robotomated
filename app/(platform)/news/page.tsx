@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { NEWS_ARTICLES, NEWS_CATEGORIES, type NewsArticle } from "@/lib/data/news";
+import { NextStepBar } from "@/components/ui/next-step-bar";
 import { cn } from "@/lib/utils/cn";
 
 function relativeTime(dateStr: string): string {
@@ -138,11 +139,14 @@ export default function NewsPage() {
 
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <p className="text-lg font-semibold">No articles match</p>
-            <p className="mt-2 text-sm text-white/35">Try a different category or source filter.</p>
+            <svg className="mx-auto mb-4 h-8 w-8 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
+            <p className="text-lg font-semibold">No articles match these filters</p>
+            <p className="mt-2 text-sm text-white/35">Try a broader category or clear the source filter to see all coverage.</p>
           </div>
         )}
       </div>
+
+      <NextStepBar preset="news" />
     </div>
   );
 }

@@ -195,28 +195,28 @@ export const ONBOARDING_EMAILS = [
         <tr>
           <td style="padding:10px 0;">
             <a href="https://robotomated.com/portal?survey=purchased" style="color:#00E5A0;text-decoration:none;font-weight:600;">
-              ✅ Already purchased / deployed
+              &#x2713; Already purchased / deployed
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding:10px 0;">
             <a href="https://robotomated.com/portal?survey=evaluating" style="color:#00C2FF;text-decoration:none;font-weight:600;">
-              🔍 Still evaluating options
+              &#x25B6; Still evaluating options
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding:10px 0;">
             <a href="https://robotomated.com/portal?survey=postponed" style="color:#FF6B35;text-decoration:none;font-weight:600;">
-              ⏸️ Put the project on hold
+              &#x23F8; Put the project on hold
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding:10px 0;">
             <a href="https://robotomated.com/portal?survey=decided-against" style="color:#888;text-decoration:none;font-weight:600;">
-              ❌ Decided against automation (for now)
+              &#x2014; Decided against automation (for now)
             </a>
           </td>
         </tr>

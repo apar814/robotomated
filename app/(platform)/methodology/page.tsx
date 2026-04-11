@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { ScoreBar } from "@/components/ui/robo-score";
+import { ScoreARobot } from "@/components/ui/score-a-robot";
 import { DIMENSIONS } from "@/lib/scoring/roboscore";
 
 export const metadata: Metadata = {
@@ -150,6 +151,19 @@ export default function MethodologyPage() {
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      {/* Score a Robot tool */}
+      <section className="border-b border-border px-4 py-12">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-2 text-xl font-bold">Score a Robot Your Way</h2>
+          <p className="mb-8 text-sm text-muted">
+            Every buyer has different priorities. Adjust the weights below to see how your use case
+            changes what matters most. A warehouse manager might weight Performance at 40% and Design at 0%.
+            A hospital administrator might weight Safety at 30%.
+          </p>
+          <ScoreARobot />
         </div>
       </section>
 

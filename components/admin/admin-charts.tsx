@@ -25,7 +25,7 @@ export function AdminCharts({ topRobotClicks, subscribersByDay, advisorByDay }: 
           Affiliate Clicks by Robot
         </h3>
         {topRobotClicks.length === 0 ? (
-          <p className="py-8 text-center text-sm text-muted">No click data yet</p>
+          <p className="py-8 text-center text-sm text-muted">Affiliate click data will populate as users interact with buy links.</p>
         ) : (
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -47,7 +47,7 @@ export function AdminCharts({ topRobotClicks, subscribersByDay, advisorByDay }: 
           New Subscribers (30d)
         </h3>
         {subscribersByDay.length === 0 ? (
-          <p className="py-8 text-center text-sm text-muted">No subscriber data yet</p>
+          <p className="py-8 text-center text-sm text-muted">Subscriber growth will chart here after the first newsletter signup.</p>
         ) : (
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -69,7 +69,7 @@ export function AdminCharts({ topRobotClicks, subscribersByDay, advisorByDay }: 
           Robotimus Conversations (30d)
         </h3>
         {advisorByDay.length === 0 ? (
-          <p className="py-8 text-center text-sm text-muted">No advisor data yet</p>
+          <p className="py-8 text-center text-sm text-muted">Advisor conversation volume will appear after the first Robotimus interaction.</p>
         ) : (
           <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">

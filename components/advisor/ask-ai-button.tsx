@@ -4,7 +4,7 @@ import Link from "next/link";
 import { RobotimusIcon } from "@/components/advisor/robotimus-avatar";
 
 export function AskAiButton({ robotName }: { robotName: string }) {
-  const query = encodeURIComponent(`Tell me about ${robotName} — is it right for me?`);
+  const query = encodeURIComponent(`I'm evaluating the ${robotName}. What should I know before buying?`);
 
   return (
     <Link

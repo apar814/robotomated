@@ -92,7 +92,13 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
     fetch(`/api/robots?${params}`, { signal: controller.signal })
       .then((r) => r.json())
       .then((data) => {
-        setRobots(data.robots || []);
+        const seen = new Set<string>();
+        const deduped = (data.robots || []).filter((r: RobotCardData) => {
+          if (seen.has(r.slug)) return false;
+          seen.add(r.slug);
+          return true;
+        });
+        setRobots(deduped);
         setTotal(data.total || 0);
         setTotalPages(data.totalPages || 0);
         setLoading(false);
@@ -211,9 +217,16 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
           {/* Results */}
           <div className="min-w-0 flex-1">
             {loading && (
-              <div className="flex flex-col items-center py-20 text-center">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-t-[#0EA5E9]" style={{ borderColor: "var(--theme-border)", borderTopColor: "#0EA5E9" }} />
-                <p className="mt-4 text-sm" style={{ color: "var(--theme-text-muted)" }}>Loading robots...</p>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="rounded-xl p-5" style={{ background: "var(--theme-card)" }}>
+                    <div className="mb-4 h-40 w-full animate-shimmer rounded-lg" style={{ background: "rgba(255,255,255,0.03)" }} />
+                    <div className="mb-2 h-2 w-16 animate-shimmer rounded" style={{ background: "rgba(255,255,255,0.03)" }} />
+                    <div className="mb-2 h-5 w-3/4 animate-shimmer rounded" style={{ background: "rgba(255,255,255,0.03)" }} />
+                    <div className="mb-3 h-3 w-full animate-shimmer rounded" style={{ background: "rgba(255,255,255,0.03)" }} />
+                    <div className="h-3 w-2/3 animate-shimmer rounded" style={{ background: "rgba(255,255,255,0.03)" }} />
+                  </div>
+                ))}
               </div>
             )}
 
@@ -224,9 +237,9 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                   </svg>
                 </div>
-                <p className="mt-4 text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>No robots match your filters</p>
+                <p className="mt-4 text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>No robots match these filters</p>
                 <p className="mt-1 max-w-sm text-sm" style={{ color: "var(--theme-text-muted)" }}>
-                  Try removing some filters or ask Robotimus for help.
+                  Adjust your criteria, or tell Robotimus what you need — it can search across all {totalRobotCount || total} robots for the best match.
                 </p>
                 <div className="mt-5 flex gap-3">
                   {hasFilters && (

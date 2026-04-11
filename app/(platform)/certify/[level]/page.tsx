@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EnrollButton } from "@/components/certify/enroll-button";
 
 /* ══════════════════════════════════════════════
    Level data — rebuilt for RCO v2
@@ -640,18 +641,13 @@ export default async function CertificationDetailPage({
           )}
 
           {/* CTA */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href={`/certify/${cert.level}`}
-              className={`inline-flex items-center justify-center rounded-lg px-8 py-3.5 text-sm font-semibold text-white transition-all ${colors.cta}`}
-            >
-              Enroll Now -- ${cert.price}
-            </Link>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <EnrollButton level={cert.level} price={cert.price} rspPrice={cert.rspPrice} className={colors.cta} />
             <Link
               href={`/certify/study/${cert.level === 4 ? "fleet-commander" : cert.level === 1 ? "foundation" : cert.level === 2 ? "specialist" : "master"}`}
               className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:text-white"
             >
-              Study Materials
+              Preview Curriculum
             </Link>
           </div>
         </div>
@@ -886,16 +882,8 @@ export default async function CertificationDetailPage({
               : `Requires ${cert.prerequisites}.`}
             {" "}Renewal every {cert.renewalYears} years.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              href={`/certify/${cert.level}`}
-              className={`inline-flex items-center justify-center rounded-lg px-10 py-3.5 text-sm font-semibold text-white transition-all ${colors.cta}`}
-            >
-              Enroll Now -- ${cert.price}
-            </Link>
-            <p className="text-xs text-muted">
-              Pay yourself | Have employer pay | RSP discount: ${cert.rspPrice}
-            </p>
+          <div className="mt-8">
+            <EnrollButton level={cert.level} price={cert.price} rspPrice={cert.rspPrice} className={colors.cta} />
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase/server";
 import { BrowseClient } from "@/components/robots/browse-client";
+import { GridSkeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 
 interface Category { id: string; slug: string; name: string; description: string | null }
@@ -91,7 +92,7 @@ export default async function CategoryPage({ params }: Props) {
           )}
         </div>
       </div>
-      <Suspense fallback={<div className="py-20 text-center text-muted">Loading robots...</div>}>
+      <Suspense fallback={<div className="px-4 py-12"><GridSkeleton count={9} /></div>}>
         <BrowseClient
           categories={cats || []}
           manufacturers={manufacturers}

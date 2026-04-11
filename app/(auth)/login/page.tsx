@@ -110,7 +110,7 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-muted">Loading...</div>}>
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="space-y-4 w-full max-w-sm"><div className="mx-auto h-6 w-32 animate-shimmer rounded bg-white/[0.03]" /><div className="h-12 w-full animate-shimmer rounded-lg bg-white/[0.03]" /><div className="h-12 w-full animate-shimmer rounded-lg bg-white/[0.03]" /></div></div>}>
       <LoginForm />
     </Suspense>
   );

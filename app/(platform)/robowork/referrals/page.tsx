@@ -93,7 +93,7 @@ export default async function RspReferralsPage() {
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
             Know a great robotics service company? Refer them to Robotomated.
-            When they complete their first job on the platform, you earn $500.
+            When they complete their first job, you earn $500.
             No cap on referrals.
           </p>
         </div>
@@ -119,7 +119,7 @@ export default async function RspReferralsPage() {
               {
                 step: "02",
                 title: "They Register",
-                desc: "The referred RSP signs up using your link and gets verified on the platform.",
+                desc: "The referred RSP signs up using your link and completes verification.",
               },
               {
                 step: "03",

@@ -9,6 +9,7 @@ import {
   FULFILLMENT_OPTIONS,
   URGENCY_CONFIG,
 } from "@/lib/robowork/constants";
+import { TASK_TYPE_ICONS } from "@/components/ui/icons";
 
 type FormData = {
   title: string;
@@ -193,7 +194,7 @@ export function PostJobForm() {
                         : "border-border text-text-secondary hover:border-text-tertiary"
                     )}
                   >
-                    <span className="text-lg">{t.icon}</span>
+                    {(() => { const Icon = TASK_TYPE_ICONS[t.value]; return Icon ? <Icon size={18} /> : null; })()}
                     <span className="text-[10px] leading-tight">{t.label}</span>
                   </button>
                 ))}
@@ -480,6 +481,14 @@ export function PostJobForm() {
               {form.site_details && <ReviewRow label="Site Details" value={form.site_details} />}
               <ReviewRow label="Business" value={form.business_name} />
               <ReviewRow label="Email" value={form.business_email} />
+            </div>
+
+            {/* Fee disclosure */}
+            <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+              <p className="text-xs text-text-secondary">
+                <span className="font-semibold text-text-primary">No upfront cost.</span>{" "}
+                Robotomated charges an 8% fee upon job completion only. You pay nothing to post, nothing to receive bids, and nothing if you don&apos;t hire.
+              </p>
             </div>
           </div>
         )}

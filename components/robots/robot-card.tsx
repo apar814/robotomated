@@ -156,15 +156,15 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
               {formatPrice(robot.price_current)}
             </span>
           ) : (
-            <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-white/35">
-              RFQ
+            <span className="font-[family-name:var(--font-mono)] text-[11px] font-medium text-white/35">
+              Contact for pricing
             </span>
           )}
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
             className="rounded border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#0EA5E9] transition-all hover:bg-[#0EA5E9] hover:text-black"
           >
-            View &rarr;
+            Full Analysis &rarr;
           </Link>
         </div>
       </div>

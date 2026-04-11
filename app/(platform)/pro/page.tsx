@@ -78,7 +78,7 @@ function ProPageContent() {
             <p className="text-sm text-lime">7-day free trial included</p>
           </div>
           <Button onClick={handleCheckout} disabled={loading} className="mt-6 px-8 py-3 text-base">
-            {loading ? "Loading..." : "Start Free Trial"}
+            {loading ? "Processing..." : "Start Free Trial"}
           </Button>
         </div>
       </section>
@@ -114,7 +114,7 @@ function ProPageContent() {
 
           <div className="mt-8 text-center">
             <Button onClick={handleCheckout} disabled={loading} className="px-8 py-3">
-              {loading ? "Loading..." : "Start 7-Day Free Trial"}
+              {loading ? "Processing..." : "Start 7-Day Free Trial"}
             </Button>
             <p className="mt-3 text-xs text-muted">Cancel anytime. No questions asked.</p>
           </div>
@@ -169,7 +169,7 @@ function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }
 
 export default function ProPage() {
   return (
-    <Suspense fallback={<div className="py-20 text-center text-muted">Loading...</div>}>
+    <Suspense fallback={<div className="mx-auto max-w-3xl px-4 py-20 space-y-4"><div className="mx-auto h-8 w-40 animate-shimmer rounded bg-white/[0.03]" /><div className="mx-auto h-16 w-64 animate-shimmer rounded-lg bg-white/[0.03]" /><div className="h-48 w-full animate-shimmer rounded-lg bg-white/[0.03]" /></div>}>
       <ProPageContent />
     </Suspense>
   );

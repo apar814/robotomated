@@ -1,20 +1,20 @@
 // ── RoboWork shared constants ──
 
 export const TASK_TYPES = [
-  { value: "cleaning", label: "Cleaning & Sanitation", icon: "🧹" },
-  { value: "delivery", label: "Delivery & Transport", icon: "📦" },
-  { value: "security", label: "Security & Patrol", icon: "🛡️" },
-  { value: "inspection", label: "Inspection & Survey", icon: "🔍" },
-  { value: "assembly", label: "Assembly & Manufacturing", icon: "🔧" },
-  { value: "picking", label: "Order Picking", icon: "📋" },
-  { value: "packing", label: "Packing & Palletizing", icon: "📦" },
-  { value: "welding", label: "Welding & Fabrication", icon: "⚡" },
-  { value: "painting", label: "Painting & Coating", icon: "🎨" },
-  { value: "agriculture", label: "Agriculture & Harvest", icon: "🌾" },
-  { value: "healthcare", label: "Healthcare Support", icon: "🏥" },
-  { value: "hospitality", label: "Hospitality Service", icon: "🏨" },
-  { value: "construction", label: "Construction & Demo", icon: "🏗️" },
-  { value: "other", label: "Other", icon: "⚙️" },
+  { value: "cleaning", label: "Cleaning & Sanitation" },
+  { value: "delivery", label: "Delivery & Transport" },
+  { value: "security", label: "Security & Patrol" },
+  { value: "inspection", label: "Inspection & Survey" },
+  { value: "assembly", label: "Assembly & Manufacturing" },
+  { value: "picking", label: "Order Picking" },
+  { value: "packing", label: "Packing & Palletizing" },
+  { value: "welding", label: "Welding & Fabrication" },
+  { value: "painting", label: "Painting & Coating" },
+  { value: "agriculture", label: "Agriculture & Harvest" },
+  { value: "healthcare", label: "Healthcare Support" },
+  { value: "hospitality", label: "Hospitality Service" },
+  { value: "construction", label: "Construction & Demo" },
+  { value: "other", label: "Other" },
 ] as const;
 
 export const INDUSTRIES = [

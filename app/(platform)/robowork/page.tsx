@@ -113,8 +113,7 @@ export default async function RoboWorkPage() {
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
-            Post a job. Get matched with verified Robot Service Providers.
-            Pay for outcomes, not hardware.
+            You don&apos;t need to own a robot to use one. Post a job. Get bids from certified operators. Pay for the outcome.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -122,13 +121,13 @@ export default async function RoboWorkPage() {
               href="/robowork/post"
               className="rounded bg-electric-blue px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90"
             >
-              Post a Job
+              Deploy a Robot Today
             </Link>
             <Link
               href="/robowork/providers/register"
               className="rounded border border-border px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
             >
-              Become a Provider
+              List Your Fleet
             </Link>
           </div>
         </div>
@@ -137,8 +136,9 @@ export default async function RoboWorkPage() {
       {/* ── HOW IT WORKS ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ PROTOCOL ]</p>
-          <h2 className="mb-10 text-lg font-bold text-text-primary">How It Works</h2>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ FROM POST TO DEPLOY IN 72 HOURS ]</p>
+          <h2 className="mb-3 text-lg font-bold text-text-primary">Three Steps to a Working Robot</h2>
+          <p className="mb-10 max-w-xl text-sm text-text-secondary">No hardware purchase. No integration timeline. Describe the job, pick a provider, and deploy.</p>
 
           <div className="grid gap-8 md:grid-cols-2">
             {/* For Businesses */}
@@ -197,7 +197,7 @@ export default async function RoboWorkPage() {
                   {
                     step: "03",
                     title: "Get hired and grow your business",
-                    desc: "Complete jobs, earn reviews, and build a reputation on the platform.",
+                    desc: "Complete jobs, earn reviews, and build a reputation that compounds with every deployment.",
                   },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
@@ -216,13 +216,59 @@ export default async function RoboWorkPage() {
         </div>
       </section>
 
+      {/* ── WHAT KIND OF WORK ── */}
+      <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ PRESET DEPLOYMENTS ]</p>
+          <h2 className="mb-3 text-lg font-bold text-text-primary">What Kind of Work Can Robots Do for You?</h2>
+          <p className="mb-10 max-w-xl text-sm text-text-secondary">Pick a job template. We fill in the details. You get bids from certified providers.</p>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { task: "Warehouse Pallet Moving", robot: "AMR", price: "$6–12K/mo", time: "1–4 weeks", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg> },
+              { task: "Facility Floor Cleaning", robot: "Cleaning Robot", price: "$2.5–4.5K/mo", time: "Ongoing", type: "cleaning", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l3.5-3.5M7.5 16.5l-1-1M18 4l-8.5 8.5M9.5 12.5l2 2M5.5 18.5l2-2" /><path d="M14 7l3-3 3 3-3 3z" /></svg> },
+              { task: "Security & Perimeter Patrol", robot: "Autonomous Mobile", price: "$3–6K/mo", time: "Ongoing", type: "security", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> },
+              { task: "Agricultural Harvest", robot: "AGR Robot", price: "$12–25K", time: "Seasonal", type: "agriculture", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M7 20h10M12 20v-8" /><path d="M12 12C12 8 8 4 4 4c0 4 4 8 8 8z" /><path d="M12 12c0-4 4-8 8-8-4 0-8 4-8 8z" /></svg> },
+              { task: "Manufacturing Assembly", robot: "Cobot", price: "$8–18K/mo", time: "Project-based", type: "assembly", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg> },
+              { task: "Hospital Logistics", robot: "Medical AMR", price: "$4–8K/mo", time: "Ongoing", type: "healthcare", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M12 10v4M10 12h4" /></svg> },
+              { task: "Construction Monitoring", robot: "Drone / Quadruped", price: "$5–15K", time: "Per project", type: "inspection", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg> },
+              { task: "Last-Mile Sorting", robot: "Conveyor AMR", price: "$10–20K/mo", time: "Peak season", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" /></svg> },
+            ].map((job) => (
+              <Link
+                key={job.task}
+                href={`/robowork/post?task_type=${job.type}`}
+                className="group flex flex-col rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:-translate-y-0.5 hover:border-electric-blue/30 hover:shadow-lg hover:shadow-electric-blue/5"
+              >
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-electric-blue/10">
+                  {job.icon}
+                </div>
+                <h3 className="text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">{job.task}</h3>
+                <p className="mt-1 text-[10px] text-text-tertiary">{job.robot}</p>
+                <div className="mt-auto pt-3">
+                  <p className="font-mono text-sm font-bold text-[#00E5A0]">{job.price}</p>
+                  <p className="text-[10px] text-text-tertiary">{job.time}</p>
+                </div>
+                <span className="mt-3 text-[11px] font-semibold text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">Post This Job &rarr;</span>
+              </Link>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-sm text-text-secondary">
+            Don&apos;t see your use case?{" "}
+            <Link href="/advisor" className="font-semibold text-electric-blue hover:underline">
+              Describe it to Robotimus &rarr;
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* ── JOB CATEGORIES ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TASK MATRIX ]</p>
-              <h2 className="text-lg font-bold text-text-primary">Job Categories</h2>
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ 8 INDUSTRIES &middot; VERIFIED PROVIDERS ]</p>
+              <h2 className="text-lg font-bold text-text-primary">What Can a Robot Do for You?</h2>
             </div>
             <Link
               href="/robowork/jobs"
@@ -257,7 +303,7 @@ export default async function RoboWorkPage() {
       {/* ── STATS BAR ── */}
       <section className="border-b border-border px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ LIVE METRICS ]</p>
+          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKETPLACE PULSE &middot; LIVE ]</p>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {[
               { label: "Active Jobs", value: stats.activeJobs },
@@ -278,14 +324,40 @@ export default async function RoboWorkPage() {
         </div>
       </section>
 
+      {/* ── MARKET RATES ── */}
+      <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKET RATES &middot; Q2 2026 ]</p>
+          <h2 className="mb-6 text-lg font-bold text-text-primary">What Are Businesses Paying Right Now?</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { category: "Warehouse AMR", rate: "$8,400", unit: "avg 2-week engagement", trend: "+12% vs Q1" },
+              { category: "Floor Cleaning", rate: "$3,200/mo", unit: "avg monthly contract", trend: "Stable" },
+              { category: "Security Patrol", rate: "$4,500/mo", unit: "avg monthly contract", trend: "+8% vs Q1" },
+              { category: "Hospital Logistics", rate: "$5,800/mo", unit: "avg monthly contract", trend: "+15% vs Q1" },
+            ].map((r) => (
+              <div key={r.category} className="rounded-lg border border-border bg-obsidian-surface p-4">
+                <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-text-tertiary">{r.category}</p>
+                <p className="mt-1 font-[family-name:var(--font-mono)] text-xl font-bold text-[#0EA5E9]">{r.rate}</p>
+                <p className="mt-0.5 text-[10px] text-text-ghost">{r.unit}</p>
+                <p className="mt-2 text-[10px] font-medium text-[#00E5A0]">{r.trend}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-center text-xs text-text-ghost">
+            Based on RoboWork marketplace data. Rates vary by geography, duration, and complexity.
+          </p>
+        </div>
+      </section>
+
       {/* ── RECENT JOBS ── */}
       {jobs.length > 0 && (
         <section className="px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ INCOMING FEED ]</p>
-                <h2 className="text-lg font-bold text-text-primary">Recent Postings</h2>
+                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ LIVE FEED ]</p>
+                <h2 className="text-lg font-bold text-text-primary">Jobs Being Posted Right Now</h2>
               </div>
               <Link
                 href="/robowork/jobs"
@@ -389,6 +461,31 @@ export default async function RoboWorkPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── NEXT STEP ── */}
+      <section className="border-t border-border px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ NEXT STEP ]</p>
+          <h2 className="mt-4 text-2xl font-bold text-text-primary">Not sure where to start?</h2>
+          <p className="mx-auto mt-3 max-w-md text-sm text-text-secondary">
+            Tell Robotimus your budget, use case, and timeline. Get a deployment recommendation in 60 seconds.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/advisor"
+              className="rounded bg-electric-blue px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90"
+            >
+              Get a Recommendation
+            </Link>
+            <Link
+              href="/certify"
+              className="rounded border border-border px-7 py-3.5 font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.08em] text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
+            >
+              Get Certified to Operate
+            </Link>
+          </div>
         </div>
       </section>
     </div>

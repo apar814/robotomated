@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
+import { IconFactory, IconMedical, IconRobot, IconDollar, IconZap, IconRefresh } from "@/components/ui/icons";
 
 // ── Data ──
 
@@ -30,13 +31,13 @@ const SORT_OPTIONS = [
   { value: "most_viewed", label: "Most Viewed" },
 ];
 
-const QUICK_CHIPS = [
-  { emoji: "\ud83c\udfed", label: "Warehouse", filter: "industry", value: "Warehouse" },
-  { emoji: "\ud83c\udfe5", label: "Medical", filter: "industry", value: "Medical" },
-  { emoji: "\ud83e\udd16", label: "Humanoid", filter: "category", value: "humanoid" },
-  { emoji: "\ud83d\udcb0", label: "Under $50K", filter: "price", value: "50000" },
-  { emoji: "\u26a1", label: "Top Rated", filter: "score", value: "80" },
-  { emoji: "\ud83d\udd04", label: "RaaS", filter: "price", value: "raas" },
+const QUICK_CHIPS: { icon: ReactNode; label: string; filter: string; value: string }[] = [
+  { icon: <IconFactory size={14} />, label: "Warehouse", filter: "industry", value: "Warehouse" },
+  { icon: <IconMedical size={14} />, label: "Medical", filter: "industry", value: "Medical" },
+  { icon: <IconRobot size={14} />, label: "Humanoid", filter: "category", value: "humanoid" },
+  { icon: <IconDollar size={14} />, label: "Under $50K", filter: "price", value: "50000" },
+  { icon: <IconZap size={14} />, label: "Top Rated", filter: "score", value: "80" },
+  { icon: <IconRefresh size={14} />, label: "RaaS", filter: "price", value: "raas" },
 ];
 
 // ── Types ──
@@ -243,7 +244,7 @@ export function FilterBar({
                     background: "var(--theme-tag-bg)",
                   }}
                 >
-                  {chip.emoji} {chip.label}
+                  {chip.icon} {chip.label}
                 </Link>
               );
             }
@@ -259,7 +260,7 @@ export function FilterBar({
                   background: isActive ? "rgba(14,165,233,0.1)" : "var(--theme-tag-bg)",
                 }}
               >
-                {chip.emoji} {chip.label}
+                {chip.icon} {chip.label}
               </button>
             );
           })}

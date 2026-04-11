@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { CompanyLogo } from "@/components/ui/company-logo";
+import { NextStepBar } from "@/components/ui/next-step-bar";
 
 export const metadata: Metadata = {
   title: "Robot Manufacturers — Directory",
@@ -88,6 +89,8 @@ export default async function ManufacturersPage() {
           </div>
         </div>
       </section>
+
+      <NextStepBar preset="manufacturers" />
     </div>
   );
 }

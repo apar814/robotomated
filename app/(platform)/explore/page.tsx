@@ -45,13 +45,11 @@ export default async function ExplorePage() {
     <div>
       <div className="border-b border-border px-4 py-12 text-center">
         <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
-          [ INTELLIGENCE CHANNEL ]
+          [ ROBOT INTELLIGENCE ]
         </span>
         <h1 className="mt-2 font-[family-name:var(--font-brand)] text-3xl font-bold uppercase tracking-wide sm:text-4xl">Explore Robots</h1>
-        <p className="mt-3 font-[family-name:var(--font-ui)] text-sm uppercase tracking-wider text-muted">
-          Browse{" "}
-          <span className="text-foreground">every robot</span> in our database.
-          Filter, sort, and compare.
+        <p className="mt-3 font-[family-name:var(--font-ui)] text-sm tracking-wider text-muted">
+          Every robot independently scored across 8 dimensions. No manufacturer pays for placement.
         </p>
       </div>
       <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-8"><GridSkeleton /></div>}>

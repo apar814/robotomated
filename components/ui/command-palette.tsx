@@ -30,10 +30,10 @@ interface SearchResults {
 /* ── Quick access items ── */
 
 const QUICK_LINKS = [
-  { icon: "\ud83e\udd16", label: "Explore All Robots", href: "/explore" },
-  { icon: "\u26a1", label: "Post a RoboWork Job", href: "/robowork/post" },
-  { icon: "\ud83c\udf93", label: "Get RCO Certified", href: "/certify" },
-  { icon: "\ud83d\udd0d", label: "Find My Robot", href: "/find-my-robot" },
+  { label: "Explore All Robots", href: "/explore" },
+  { label: "Deploy a Robot (RoboWork)", href: "/robowork/post" },
+  { label: "Get RCO Certified", href: "/certify" },
+  { label: "Find My Robot", href: "/find-my-robot" },
 ];
 
 const BROWSE_CHIPS = [
@@ -41,6 +41,15 @@ const BROWSE_CHIPS = [
   { label: "Medical", href: "/explore/medical" },
   { label: "Security", href: "/explore/security" },
   { label: "Manufacturing", href: "/explore/manufacturing" },
+];
+
+const TRENDING_SEARCHES = [
+  "humanoid robots",
+  "warehouse AMR under $50K",
+  "Boston Dynamics",
+  "hospital delivery robot",
+  "cobot for manufacturing",
+  "robot operator certification",
 ];
 
 /* ── Component ── */
@@ -276,7 +285,7 @@ export function CommandPalette() {
                     onMouseEnter={() => setSelected(i)}
                     animDelay={i * 20}
                   >
-                    <span className="text-base">{link.icon}</span>
+                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M9 5l7 7-7 7" /></svg>
                     <span className="flex-1 text-sm font-medium text-white">{link.label}</span>
                     <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "13px" }}>&rarr;</span>
                   </ResultRow>
@@ -309,6 +318,35 @@ export function CommandPalette() {
                       }}
                     >
                       {chip.label}
+                    </button>
+                  ))}
+                </div>
+
+                <SectionHeader label="Trending Searches" />
+                <div className="flex flex-wrap gap-2 px-5 pb-4">
+                  {TRENDING_SEARCHES.map((term) => (
+                    <button
+                      key={term}
+                      onClick={() => { setQuery(term); }}
+                      className="transition-all duration-150"
+                      style={{
+                        background: "transparent",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        color: "rgba(255,255,255,0.4)",
+                        padding: "4px 12px",
+                        borderRadius: "6px",
+                        fontSize: "11px",
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(14,165,233,0.3)";
+                        e.currentTarget.style.color = "#0EA5E9";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+                        e.currentTarget.style.color = "rgba(255,255,255,0.4)";
+                      }}
+                    >
+                      {term}
                     </button>
                   ))}
                 </div>

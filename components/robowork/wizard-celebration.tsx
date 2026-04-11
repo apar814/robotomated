@@ -1,6 +1,8 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
+import { IconRobot, IconSearch, IconCheck, IconCertificate } from "@/components/ui/icons";
 
 interface WizardCelebrationProps {
   companyName: string;
@@ -28,21 +30,21 @@ const checkItems = [
   "You can start browsing and bidding on jobs right now",
 ];
 
-const actionCards = [
+const actionCards: { icon: ReactNode; title: string; subtitle: string; href: string }[] = [
   {
-    emoji: "\uD83D\uDD0D",
+    icon: <IconSearch size={20} />,
     title: "Browse Open Jobs",
     subtitle: "Find robotics jobs that match your skills and fleet",
     href: "/robowork/jobs",
   },
   {
-    emoji: "\u2705",
+    icon: <IconCheck size={20} />,
     title: "Complete Verification",
     subtitle: "Get verified faster by uploading remaining documents",
     href: "/account",
   },
   {
-    emoji: "\uD83C\uDFC5",
+    icon: <IconCertificate size={20} />,
     title: "Get RCO Certified",
     subtitle: "Stand out with Robotomated Certified Operator status",
     href: "/certify",
@@ -86,14 +88,12 @@ export default function WizardCelebration({ companyName }: WizardCelebrationProp
         />
       ))}
 
-      {/* Robot emoji circle */}
+      {/* Robot icon circle */}
       <div
         className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full"
         style={{ backgroundColor: "var(--theme-card)", border: "2px solid var(--theme-border)" }}
       >
-        <span className="text-5xl" role="img" aria-label="Robot">
-          🤖
-        </span>
+        <IconRobot size={48} aria-label="Robot" />
       </div>
 
       {/* Heading */}
@@ -136,7 +136,7 @@ export default function WizardCelebration({ companyName }: WizardCelebrationProp
               borderColor: "var(--theme-border)",
             }}
           >
-            <span className="mb-3 text-3xl">{card.emoji}</span>
+            <span className="mb-3">{card.icon}</span>
             <span
               className="mb-1 text-sm font-semibold"
               style={{ color: "var(--theme-text-primary)" }}

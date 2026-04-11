@@ -48,7 +48,7 @@ function BillingContent() {
     }
   }
 
-  if (loading) return <div className="py-20 text-center text-muted">Loading...</div>;
+  if (loading) return <div className="mx-auto max-w-2xl px-4 py-20 space-y-4"><div className="h-3 w-24 animate-shimmer rounded bg-white/[0.03]" /><div className="h-6 w-48 animate-shimmer rounded bg-white/[0.03]" /><div className="h-32 w-full animate-shimmer rounded-lg bg-white/[0.03]" /></div>;
 
   const isPro = profile?.subscription_tier === "pro" || profile?.subscription_tier === "enterprise";
 
@@ -154,7 +154,7 @@ function Check() {
 
 export default function BillingPage() {
   return (
-    <Suspense fallback={<div className="py-20 text-center text-muted">Loading...</div>}>
+    <Suspense fallback={<div className="mx-auto max-w-2xl px-4 py-20 space-y-4"><div className="h-3 w-24 animate-shimmer rounded bg-white/[0.03]" /><div className="h-6 w-48 animate-shimmer rounded bg-white/[0.03]" /><div className="h-32 w-full animate-shimmer rounded-lg bg-white/[0.03]" /></div>}>
       <BillingContent />
     </Suspense>
   );

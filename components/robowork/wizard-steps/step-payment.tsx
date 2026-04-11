@@ -213,7 +213,7 @@ export default function StepPayment({ data, updateData }: StepProps) {
         }}
       >
         <div className="flex items-start gap-2">
-          <span className="text-sm">🔒</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>
           <div>
             <div
               className="text-xs font-semibold"

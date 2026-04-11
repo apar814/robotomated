@@ -96,7 +96,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  const robots = (data || []).map((r) => {
+  // Deduplicate by slug (handles duplicate database entries)
+  const seen = new Set<string>();
+  const robots = (data || []).reduce<ReturnType<typeof mapRobot>[]>((acc, r) => {
+    if (seen.has(r.slug)) return acc;
+    seen.add(r.slug);
+    acc.push(mapRobot(r));
+    return acc;
+  }, []);
+
+  function mapRobot(r: RobotResult) {
     const cat = r.robot_categories as { slug: string; name: string } | null;
     return {
       id: r.id,
@@ -114,7 +123,7 @@ export async function GET(request: NextRequest) {
       image_url: Array.isArray(r.images) && r.images.length > 0 ? (r.images as { url: string }[])[0]?.url : null,
       specs: r.specs || null,
     };
-  });
+  }
 
   return NextResponse.json({
     robots,

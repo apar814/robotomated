@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { RegisterWizard } from "@/components/robowork/register-wizard";
+import { IconTarget, IconDollar, IconTrophy } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Become a Robot Service Provider — RoboWork | Robotomated",
@@ -19,23 +21,23 @@ export const metadata: Metadata = {
   },
 };
 
-const VALUE_PROPS = [
+const VALUE_PROPS: { icon: ReactNode; label: string; title: string; description: string }[] = [
   {
-    emoji: "🎯",
+    icon: <IconTarget size={20} />,
     label: "GET FOUND",
     title: "Your robots, front and center",
     description:
       "Businesses searching for automation solutions find you first. Your profile, fleet, and specializations are indexed, ranked, and surfaced to decision-makers actively looking to deploy robots.",
   },
   {
-    emoji: "💰",
+    icon: <IconDollar size={20} />,
     label: "GET PAID",
     title: "Transparent pricing, zero surprises",
     description:
       "Set daily, weekly, and monthly rates. Customers see exactly what they'll pay. No hidden fees, no bidding wars — just clear pricing that builds trust and closes deals faster.",
   },
   {
-    emoji: "🏆",
+    icon: <IconTrophy size={20} />,
     label: "GET CERTIFIED",
     title: "Verification that earns trust",
     description:
@@ -215,7 +217,7 @@ export default function RegisterProviderPage() {
                 backgroundColor: "var(--theme-bg-secondary)",
               }}
             >
-              <span style={{ fontSize: "1.5rem" }}>{prop.emoji}</span>
+              <span style={{ display: "flex" }}>{prop.icon}</span>
               <p
                 style={{
                   marginTop: "0.75rem",
