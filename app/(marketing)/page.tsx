@@ -16,6 +16,7 @@ import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import { RecentlyViewed } from "@/components/home/recently-viewed";
 import { JobInput } from "@/components/home/job-input";
+import { VideoHero } from "@/components/ui/video-hero";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -92,43 +93,52 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
+      <VideoHero
+        videoUrl={process.env.HERO_VIDEO_URL || null}
+        posterUrl={null}
+        overlayOpacity={0.7}
+        className="min-h-[600px] lg:min-h-[700px]"
+      >
+        {/* Fallback background layers (show when no video) */}
         <HeroBackground className="pointer-events-none absolute inset-0" />
-        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20" />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
-          {/* Left column — job-first messaging + input */}
-          <div className="relative">
-            <span className="hud-label blink-cursor">
-              The Intelligence Layer for Robotics
-            </span>
-            <h1
-              className="mt-8 font-display font-extrabold leading-[1.05]"
-              style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
-            >
-              What job needs<br />
-              to get <span className="hero-accent">done?</span>
-            </h1>
-            <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
-              Describe your operation. We{"'"}ll find the robot — and tell you exactly what it costs, how fast it deploys, and how many hours it saves.
-            </p>
+        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15" />
 
-            {/* Job input */}
-            <div className="mt-8">
-              <JobInput />
+        <div className="px-6 py-20 sm:py-28 lg:py-36">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
+            {/* Left column — job-first messaging + input */}
+            <div className="relative">
+              <span className="hud-label blink-cursor">
+                The Intelligence Layer for Robotics
+              </span>
+              <h1
+                className="mt-8 font-display font-extrabold leading-[1.05]"
+                style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
+              >
+                What job needs<br />
+                to get <span className="hero-accent">done?</span>
+              </h1>
+              <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
+                Describe your operation. We{"'"}ll find the robot — and tell you exactly what it costs, how fast it deploys, and how many hours it saves.
+              </p>
+
+              {/* Job input */}
+              <div className="mt-8">
+                <JobInput />
+              </div>
+
+              {/* Stats inline */}
+              <p className="mt-6 font-mono text-[11px] text-white/20">
+                {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independently scored
+              </p>
             </div>
 
-            {/* Stats inline */}
-            <p className="mt-6 font-mono text-[11px] text-white/20">
-              {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independently scored
-            </p>
-          </div>
-
-          {/* Right column — Robotimus panel */}
-          <div className="flex justify-center lg:justify-end lg:pt-16">
-            <RobotimusHeroPanel />
+            {/* Right column — Robotimus panel */}
+            <div className="flex justify-center lg:justify-end lg:pt-16">
+              <RobotimusHeroPanel />
+            </div>
           </div>
         </div>
-      </section>
+      </VideoHero>
 
       {/* ══════════════════════════════════════════
           2. STATS BAR

@@ -34,6 +34,7 @@ import { VideoEmbed } from "@/components/robots/video-embed";
 import { cached } from "@/lib/cache/redis";
 import { SidebarNewsletterCta } from "@/components/engagement/sidebar-newsletter-cta";
 import { TrackView } from "@/components/robots/track-view";
+import { VideoPlayer } from "@/components/ui/video-hero";
 
 const YEAR = new Date().getFullYear();
 
@@ -75,6 +76,7 @@ interface RobotDetail {
   vendor_employees_range: string | null;
   vendor_health_score: number | null;
   youtube_url: string | null;
+  video_url: string | null;
 }
 
 interface ReviewRow {
@@ -379,8 +381,22 @@ export default async function RobotDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── VIDEO EMBED ── */}
-      {robot.youtube_url && (
+      {/* ── DIRECT VIDEO ── */}
+      {robot.video_url && (
+        <section className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
+          <div className="section-label mb-3">
+            <span className="font-mono text-[9px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
+          </div>
+          <VideoPlayer
+            videoUrl={robot.video_url}
+            posterUrl={hasRealImage ? robotImages[0].url : null}
+            alt={`${robot.name} in action`}
+          />
+        </section>
+      )}
+
+      {/* ── YOUTUBE EMBED ── */}
+      {robot.youtube_url && !robot.video_url && (
         <section className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
           <div className="section-label mb-3">
             <span className="font-mono text-[9px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
