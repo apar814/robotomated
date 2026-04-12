@@ -6,6 +6,7 @@ import { RobotCardInline, parseRobotCards, type RobotRecommendation } from "@/co
 import { UpgradeModal } from "@/components/pro/upgrade-prompt";
 import { RobotimusAvatar } from "@/components/advisor/robotimus-avatar";
 import { cn } from "@/lib/utils/cn";
+import ReactMarkdown from "react-markdown";
 
 interface RobotLookupResult {
   slug: string;
@@ -488,9 +489,9 @@ function MessageContent({ content, enriched }: { content: string; enriched: Reco
           return <RobotCardInline key={i} robot={merged} />;
         }
         return (
-          <span key={i} className="whitespace-pre-wrap">
-            {seg.content}
-          </span>
+          <div key={i} className="prose-robotimus">
+            <ReactMarkdown>{seg.content}</ReactMarkdown>
+          </div>
         );
       })}
     </div>
@@ -499,7 +500,7 @@ function MessageContent({ content, enriched }: { content: string; enriched: Reco
 
 /** Small icon for prompt chips */
 function PromptIcon({ type }: { type: string }) {
-  const cls = "h-5 w-5 shrink-0 text-[#0EA5E9]/50 group-hover:text-[#0EA5E9] transition-colors";
+  const cls = "h-5 w-5 shrink-0 text-[#60A5FA]/50 group-hover:text-[#60A5FA] transition-colors";
   switch (type) {
     case "warehouse":
       return (

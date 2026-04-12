@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono, Orbitron, Chakra_Petch } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { StatusBar } from "@/components/layout/status-bar";
 import { Footer } from "@/components/layout/footer";
@@ -20,33 +20,8 @@ import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const spaceGroteskSans = Space_Grotesk({
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-brand",
-  display: "swap",
-});
-
-const chakraPetch = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-ui",
   display: "swap",
 });
 
@@ -104,7 +79,7 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${spaceGroteskSans.variable} ${jetbrainsMono.variable} ${orbitron.variable} ${chakraPetch.variable}`}
+      className={spaceGrotesk.variable}
     >
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />

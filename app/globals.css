@@ -488,7 +488,7 @@ body::before {
    ═══════════════════════════════════════ */
 /* Visible focus rings on all interactive elements */
 :focus-visible {
-  outline: 2px solid #0EA5E9;
+  outline: 2px solid #2563EB;
   outline-offset: 2px;
 }
 
@@ -528,68 +528,68 @@ html {
    ═══════════════════════════════════════ */
 :root {
   --theme-circuit-tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cdefs%3E%3Cpattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='0' cy='0' r='1.5' fill='%2300B4D8' opacity='.13'/%3E%3Ccircle cx='60' cy='0' r='1.5' fill='%2300B4D8' opacity='.13'/%3E%3Ccircle cx='0' cy='60' r='1.5' fill='%2300B4D8' opacity='.13'/%3E%3Ccircle cx='60' cy='60' r='1.5' fill='%2300B4D8' opacity='.13'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%2300B4D8' opacity='.10'/%3E%3Cline x1='0' y1='30' x2='14' y2='30' stroke='%2300B4D8' stroke-width='.7' opacity='.09'/%3E%3Cline x1='46' y1='30' x2='60' y2='30' stroke='%2300B4D8' stroke-width='.7' opacity='.09'/%3E%3Cline x1='30' y1='0' x2='30' y2='14' stroke='%2300B4D8' stroke-width='.7' opacity='.09'/%3E%3Cline x1='30' y1='46' x2='30' y2='60' stroke='%2300B4D8' stroke-width='.7' opacity='.09'/%3E%3Cpolyline points='0,12 6,12 6,0' fill='none' stroke='%2300B4D8' stroke-width='.6' opacity='.07'/%3E%3Cpolyline points='60,12 54,12 54,0' fill='none' stroke='%2300B4D8' stroke-width='.6' opacity='.07'/%3E%3Cpolyline points='0,48 6,48 6,60' fill='none' stroke='%2300B4D8' stroke-width='.6' opacity='.07'/%3E%3Cpolyline points='60,48 54,48 54,60' fill='none' stroke='%2300B4D8' stroke-width='.6' opacity='.07'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='60' height='60' fill='url(%23p)'/%3E%3C/svg%3E");
-  --theme-bg: #F0F4FF;
-  --theme-surface: #FFFFFF;
+  --theme-bg: #FFFFFF;
+  --theme-surface: #F8F9FF;
   --theme-card: #FFFFFF;
-  --theme-card-hover: #F1F5F9;
-  --theme-card-shadow: 0 2px 12px rgba(10,22,40,0.08);
-  --theme-border: rgba(10,22,40,0.08);
-  --theme-border-strong: rgba(10,22,40,0.15);
-  --theme-section-alt: #EFF6FF;
-  --theme-nav-bg: rgba(255,255,255,0.95);
-  --theme-nav-border: rgba(10,22,40,0.08);
-  --theme-text-primary: #0A1628;
-  --theme-text-secondary: rgba(10,22,40,0.7);
-  --theme-text-muted: rgba(10,22,40,0.5);
+  --theme-card-hover: #F3F5FF;
+  --theme-card-shadow: 0 2px 12px rgba(5,5,16,0.06);
+  --theme-border: rgba(5,5,16,0.08);
+  --theme-border-strong: rgba(5,5,16,0.15);
+  --theme-section-alt: #F8F9FF;
+  --theme-nav-bg: rgba(255,255,255,0.97);
+  --theme-nav-border: rgba(5,5,16,0.08);
+  --theme-text-primary: #050510;
+  --theme-text-secondary: rgba(5,5,16,0.55);
+  --theme-text-muted: rgba(5,5,16,0.35);
   --theme-text-inverse: #FFFFFF;
-  --theme-accent-blue: #0284C7;
-  --theme-accent-lime: #007A8C;
-  --theme-accent-magenta: #DB2777;
-  --theme-accent-blue-dim: rgba(2,132,199,0.08);
-  --theme-accent-lime-dim: rgba(21,128,61,0.08);
-  --theme-accent-magenta-dim: rgba(219,39,119,0.06);
+  --theme-accent-blue: #1D4ED8;
+  --theme-accent-lime: #1D4ED8;
+  --theme-accent-magenta: #1D4ED8;
+  --theme-accent-blue-dim: rgba(37,99,235,0.08);
+  --theme-accent-lime-dim: rgba(37,99,235,0.06);
+  --theme-accent-magenta-dim: rgba(37,99,235,0.06);
   --theme-input-bg: #FFFFFF;
-  --theme-input-border: rgba(10,22,40,0.15);
-  --theme-tag-bg: rgba(10,22,40,0.05);
-  --theme-tag-border: rgba(10,22,40,0.1);
-  --theme-tag-text: rgba(10,22,40,0.7);
-  --theme-price-text: #15803D;
-  --theme-score-bg: rgba(2,132,199,0.1);
+  --theme-input-border: rgba(5,5,16,0.12);
+  --theme-tag-bg: rgba(37,99,235,0.06);
+  --theme-tag-border: rgba(37,99,235,0.2);
+  --theme-tag-text: #1D4ED8;
+  --theme-price-text: #2563EB;
+  --theme-score-bg: rgba(37,99,235,0.1);
   --theme-scrollbar-track: #F0F0F0;
   --theme-scrollbar-thumb: #D0D0D0;
   color-scheme: light;
 }
 
 .dark {
-  --theme-bg: #080808;
-  --theme-surface: #0D0D0D;
-  --theme-card: #111111;
-  --theme-card-hover: #151515;
+  --theme-bg: #02020A;
+  --theme-surface: #07070F;
+  --theme-card: #0C0C18;
+  --theme-card-hover: #0F0F20;
   --theme-card-shadow: none;
-  --theme-border: rgba(255,255,255,0.08);
-  --theme-border-strong: rgba(255,255,255,0.15);
-  --theme-section-alt: #0D0D0D;
-  --theme-nav-bg: rgba(8,8,8,0.95);
-  --theme-nav-border: rgba(255,255,255,0.08);
-  --theme-text-primary: #FFFFFF;
-  --theme-text-secondary: rgba(255,255,255,0.65);
-  --theme-text-muted: rgba(255,255,255,0.35);
-  --theme-text-inverse: #000000;
-  --theme-accent-blue: #0EA5E9;
-  --theme-accent-lime: #C8FF00;
-  --theme-accent-magenta: #FF006E;
-  --theme-accent-blue-dim: rgba(14,165,233,0.08);
-  --theme-accent-lime-dim: rgba(200,255,0,0.06);
-  --theme-accent-magenta-dim: rgba(255,0,110,0.06);
-  --theme-input-bg: rgba(255,255,255,0.05);
-  --theme-input-border: rgba(255,255,255,0.12);
-  --theme-tag-bg: rgba(255,255,255,0.06);
-  --theme-tag-border: rgba(255,255,255,0.12);
-  --theme-tag-text: rgba(255,255,255,0.7);
-  --theme-price-text: #C8FF00;
-  --theme-score-bg: rgba(14,165,233,0.15);
-  --theme-scrollbar-track: #080808;
-  --theme-scrollbar-thumb: #1A1A1A;
+  --theme-border: rgba(255,255,255,0.06);
+  --theme-border-strong: rgba(255,255,255,0.12);
+  --theme-section-alt: #07070F;
+  --theme-nav-bg: rgba(2,2,10,0.9);
+  --theme-nav-border: rgba(255,255,255,0.06);
+  --theme-text-primary: #F0F4FF;
+  --theme-text-secondary: rgba(240,244,255,0.5);
+  --theme-text-muted: rgba(240,244,255,0.25);
+  --theme-text-inverse: #02020A;
+  --theme-accent-blue: #2563EB;
+  --theme-accent-lime: #2563EB;
+  --theme-accent-magenta: #2563EB;
+  --theme-accent-blue-dim: rgba(37,99,235,0.12);
+  --theme-accent-lime-dim: rgba(37,99,235,0.08);
+  --theme-accent-magenta-dim: rgba(37,99,235,0.06);
+  --theme-input-bg: rgba(255,255,255,0.03);
+  --theme-input-border: rgba(255,255,255,0.06);
+  --theme-tag-bg: rgba(37,99,235,0.08);
+  --theme-tag-border: rgba(37,99,235,0.25);
+  --theme-tag-text: #60A5FA;
+  --theme-price-text: #60A5FA;
+  --theme-score-bg: rgba(37,99,235,0.12);
+  --theme-scrollbar-track: #02020A;
+  --theme-scrollbar-thumb: #111122;
   color-scheme: dark;
 }
 
@@ -598,12 +598,67 @@ html {
   body {
     background-color: var(--theme-bg);
     color: var(--theme-text-primary);
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  button, [role="button"] {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 0;
+  }
   /* Remove scanline overlay in light mode */
   :root:not(.dark) body::before { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   ROBOTIMUS MARKDOWN STYLES
+   ═══════════════════════════════════════ */
+.prose-robotimus h2,
+.prose-robotimus h3 {
+  font-weight: 700;
+  color: var(--theme-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+.prose-robotimus h2 { font-size: 1.1rem; }
+.prose-robotimus h3 { font-size: 0.95rem; }
+.prose-robotimus strong, .prose-robotimus b {
+  color: var(--theme-text-primary);
+  font-weight: 700;
+}
+.prose-robotimus p {
+  margin-bottom: 0.75rem;
+  color: rgba(240,244,255,0.8);
+  line-height: 1.65;
+}
+.prose-robotimus ul, .prose-robotimus ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose-robotimus li {
+  margin-bottom: 0.3rem;
+  color: rgba(240,244,255,0.8);
+}
+.prose-robotimus hr {
+  border-color: rgba(255,255,255,0.1);
+  margin: 1rem 0;
+}
+.prose-robotimus code {
+  background: rgba(255,255,255,0.06);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  font-size: 0.85em;
+}
+.prose-robotimus a {
+  color: #60A5FA;
+  text-decoration: underline;
 }
 
 /* ═══════════════════════════════════════
