@@ -357,9 +357,7 @@ export function Header() {
               className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
               style={{ background: "#2563EB", boxShadow: "0 0 20px rgba(37,99,235,0.4)" }}
             >
-              <span className="animate-pulse-live">
-                <RobotimusAvatar size={18} />
-              </span>
+              <RobotimusAvatar size={18} />
               Robotimus
             </Link>
 

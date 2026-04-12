@@ -761,16 +761,7 @@ html {
 }
 
 /* Blinking cursor for terminal-style text */
-.blink-cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-  color: var(--theme-accent-blue);
-  margin-left: 2px;
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
+/* blink-cursor removed — was causing flicker on hero eyebrow */
 
 /* Data readout style */
 .data-readout {
@@ -780,7 +771,6 @@ html {
 
 /* Hero accent gradient text */
 .hero-accent {
-  font-family: var(--font-brand);
   font-weight: 800;
   background: linear-gradient(135deg, #2563EB 0%, #60A5FA 40%, #7DD3FC 70%, #2563EB 100%);
   -webkit-background-clip: text;
@@ -810,15 +800,14 @@ html {
 
 /* HUD bracket label */
 .hud-label {
-  font-family: var(--font-brand);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--theme-accent-blue);
+  color: #F0F4FF;
 }
-.hud-label::before { content: '[ '; color: var(--theme-accent-blue); opacity: 0.5; }
-.hud-label::after { content: ' ]'; color: var(--theme-accent-blue); opacity: 0.5; }
+.hud-label::before { content: '[ '; color: #60A5FA; }
+.hud-label::after { content: ' ]'; color: #60A5FA; }
 
 /* Category gradient card (for robots without images) */
 .category-gradient-card {

@@ -118,17 +118,17 @@ export function Footer() {
               <span className="text-white/40">MATED</span>
               <span className="text-[#2563EB]">.</span>
             </span>
-            <p className="mt-3 font-[family-name:var(--font-ui)] text-[13px] leading-relaxed text-white/40">
-              The operating system for robotics.
+            <p className="mt-3 text-[13px] leading-relaxed text-white/50">
+              The world is going to run on robots.<br />We make the world&apos;s robots run.
             </p>
             <div className="mt-5 flex items-center gap-4">
-              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="Twitter / X">
+              <a href="https://x.com/robotomated" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white" aria-label="X (Twitter)">
                 <TwitterIcon />
               </a>
-              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="LinkedIn">
+              <a href="https://linkedin.com/company/robotomated" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white" aria-label="LinkedIn">
                 <LinkedInIcon />
               </a>
-              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="YouTube">
+              <a href="https://youtube.com/@robotomated" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-white" aria-label="YouTube">
                 <YouTubeIcon />
               </a>
             </div>
@@ -143,17 +143,17 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/[0.06] pt-8 text-center">
           <p className="font-[family-name:var(--font-ui)] text-[12px] text-white/45">
-            &copy; 2026 Robotomated. The operating system for robotics. Built for buyers, not sellers.
+            &copy; 2026 Robotomated. Independent. No manufacturer pays for scores or placement. Built for buyers, not sellers.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
-              Privacy
+            <Link href="/about" className="text-[12px] text-white/45 transition-colors hover:text-white">
+              About
             </Link>
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
-              Terms
+            <Link href="/methodology" className="text-[12px] text-white/45 transition-colors hover:text-white">
+              Methodology
             </Link>
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
-              Cookie Policy
+            <Link href="/pricing" className="text-[12px] text-white/45 transition-colors hover:text-white">
+              Pricing
             </Link>
           </div>
         </div>

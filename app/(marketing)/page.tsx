@@ -107,7 +107,7 @@ export default async function HomePage() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
             {/* Left column — job-first messaging + category pills */}
             <div className="relative">
-              <span className="hud-label blink-cursor">
+              <span className="hud-label">
                 The Intelligence Layer for Robotics
               </span>
               <h1
