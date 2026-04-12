@@ -59,7 +59,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
   const sectorCode = SECTOR_CODES[robot.category_slug];
 
   return (
-    <div className="group flex cursor-pointer flex-col rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-250 ease-out hover:-translate-y-[3px] hover:border-[rgba(14,165,233,0.3)] hover:shadow-[0_0_0_1px_rgba(14,165,233,0.1),0_8px_32px_rgba(0,0,0,0.4)]">
+    <div className="group flex cursor-pointer flex-col rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-200 ease-out hover:-translate-y-[3px] hover:border-[rgba(14,165,233,0.3)] hover:shadow-[0_0_0_1px_rgba(14,165,233,0.1),0_8px_32px_rgba(0,0,0,0.4)] focus-within:border-[rgba(14,165,233,0.3)] focus-within:shadow-[0_0_0_2px_rgba(14,165,233,0.2)]">
       {/* Compare checkbox */}
       {onCompareToggle && (
         <label
@@ -162,7 +162,8 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
           )}
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className="rounded border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#0EA5E9] transition-all hover:bg-[#0EA5E9] hover:text-black"
+            className="rounded border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#0EA5E9] transition-all duration-150 hover:bg-[#0EA5E9] hover:text-black focus-visible:bg-[#0EA5E9] focus-visible:text-black"
+            aria-label={`Full analysis of ${robot.name}`}
           >
             Full Analysis &rarr;
           </Link>

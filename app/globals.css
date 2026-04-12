@@ -484,6 +484,43 @@ body::before {
 }
 
 /* ═══════════════════════════════════════
+   FOCUS & ACCESSIBILITY
+   ═══════════════════════════════════════ */
+/* Visible focus rings on all interactive elements */
+:focus-visible {
+  outline: 2px solid #0EA5E9;
+  outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure minimum touch targets */
+button, a, [role="button"], input, select, textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception: inline text links and tiny utility elements */
+a:not([class*="rounded"]):not([class*="btn"]):not([class*="px-"]) {
+  min-height: auto;
+  min-width: auto;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ═══════════════════════════════════════
    BASE STYLES
    ═══════════════════════════════════════ */
 /* ═══════════════════════════════════════
