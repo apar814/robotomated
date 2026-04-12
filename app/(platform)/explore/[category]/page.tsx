@@ -5,6 +5,7 @@ import { createServerClient } from "@/lib/supabase/server";
 import { BrowseClient } from "@/components/robots/browse-client";
 import { GridSkeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
+import { getCategoryContent } from "@/lib/categories/content";
 
 interface Category { id: string; slug: string; name: string; description: string | null }
 interface Mfr { id: string; name: string; robot_count?: number }
@@ -77,8 +78,11 @@ export default async function CategoryPage({ params }: Props) {
     .sort((a, b) => b.count - a.count)
     .map(m => ({ id: m.id, name: m.name, robot_count: m.count }));
 
+  const content = getCategoryContent(slug);
+
   return (
     <div>
+      {/* Category Hero */}
       <div className="border-b border-border px-4 py-12">
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2 text-sm text-muted">
@@ -87,11 +91,52 @@ export default async function CategoryPage({ params }: Props) {
             <span className="text-foreground">{cat.name}</span>
           </div>
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">{cat.name}</h1>
-          {cat.description && (
-            <p className="mt-2 max-w-2xl text-muted">{cat.description}</p>
+          <p className="mt-2 max-w-2xl text-muted">
+            {content?.description || cat.description || `Explore all ${cat.name} robots, independently scored across 8 dimensions.`}
+          </p>
+
+          {/* Category stats */}
+          {content && (
+            <div className="mt-6 flex flex-wrap gap-6">
+              {content.stats.map((s) => (
+                <div key={s.label}>
+                  <p className="text-2xl font-bold" style={{ color: "#2563EB" }}>{s.value}</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-white/45">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {content && (
+            <p className="mt-4 text-xs text-white/45">
+              <span className="font-bold">Who uses it:</span> {content.whoUsesIt}
+            </p>
           )}
         </div>
       </div>
+
+      {/* Buyer's Guide (collapsed) */}
+      {content && content.buyersGuide.length > 0 && (
+        <div className="border-b border-border px-4 py-6">
+          <div className="mx-auto max-w-7xl">
+            <details className="group">
+              <summary className="cursor-pointer text-sm font-bold text-white/65 transition-colors hover:text-white">
+                How to choose a {cat.name.toLowerCase()} robot ↓
+              </summary>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {content.buyersGuide.map((g) => (
+                  <div key={g.title} className="rounded-lg border border-white/[0.06] p-4" style={{ background: "var(--theme-card)" }}>
+                    <h3 className="text-sm font-bold text-white">{g.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-white/50">{g.body}</p>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </div>
+        </div>
+      )}
+
+      {/* FAQ at bottom (after robot grid) rendered via NextStepBar import */}
       <Suspense fallback={<div className="px-4 py-12"><GridSkeleton count={9} /></div>}>
         <BrowseClient
           categories={cats || []}
