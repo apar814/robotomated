@@ -148,8 +148,8 @@ export default async function HomePage() {
           {[
             { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
             { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers Indexed" },
-            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "2030 Global Market" },
-            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Deployment Channels" },
+            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market Today \u2192 $24T by 2040" },
+            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Ways to Access Robots" },
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-3">
               {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/28">//</span>}
@@ -327,7 +327,7 @@ export default async function HomePage() {
               <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(24px, 3vw, 40px)" }}>
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
-              <p className="mt-4 text-sm text-white/50">-- Brett Adcock, CEO, Figure AI</p>
+              <p className="mt-4 text-sm text-white/50">-- Brett Adcock, Founder &amp; CEO, Figure AI</p>
             </div>
             <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-8">
               <div className="space-y-4">

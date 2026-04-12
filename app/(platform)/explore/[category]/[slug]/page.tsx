@@ -501,8 +501,11 @@ export default async function RobotDetailPage({ params }: Props) {
                                 <td className="px-4 py-2.5 text-text-tertiary sm:w-48">
                                   {fmtKey(key)}
                                 </td>
-                                <td className="px-4 py-2.5 font-mono text-text-primary">
-                                  {fmtVal(value)}
+                                <td className="px-4 py-2.5">
+                                  <span className="font-mono text-text-primary">{fmtVal(value)}</span>
+                                  {specTranslation(key, value) && (
+                                    <span className="ml-2 text-xs text-white/45"> — {specTranslation(key, value)}</span>
+                                  )}
                                 </td>
                               </tr>
                             ))}
@@ -517,6 +520,10 @@ export default async function RobotDetailPage({ params }: Props) {
 
             {/* TCO Section */}
             <section className="border-t border-border pt-6">
+              <h3 className="mb-1 text-lg font-bold text-text-primary">The Real Cost of Ownership</h3>
+              <p className="mb-4 text-xs text-white/45">Purchase price is only 40-60% of the true cost. Here&apos;s the full picture.</p>
+            </section>
+            <section>
               <div className="section-label mb-3">
                 <span className="font-mono text-[9px] tracking-widest">[TCO] COST ANALYSIS</span>
               </div>
@@ -574,7 +581,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
                 {/* 5-Year Summary */}
                 {robot.price_current != null && (
-                  <div className="rounded-md border border-border border-l-2 border-l-lime bg-obsidian-surface p-4">
+                  <div className="rounded-md border border-border border-l-2 border-l-blue-500 bg-obsidian-surface p-4">
                     <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
                       5-Year Summary
                     </p>
@@ -995,4 +1002,34 @@ function fmtVal(value: unknown): string {
   if (Array.isArray(value)) return value.join(", ");
   if (typeof value === "object") return JSON.stringify(value);
   return String(value);
+}
+
+/** Plain English translations for key robot specs */
+function specTranslation(key: string, value: unknown): string | null {
+  const v = Number(value);
+  const s = String(value).toLowerCase();
+  switch (key) {
+    case "payload_kg":
+      return v <= 5 ? "Handles light assembly and pick-and-place" : v <= 20 ? "Medium-duty industrial tasks" : "Heavy-duty material handling";
+    case "reach_mm":
+      return v <= 500 ? "Compact workspace" : v <= 1000 ? "Standard desktop/benchtop reach" : "Extended reach for large workspaces";
+    case "repeatability":
+      return s.includes("0.01") || s.includes("0.02") || s.includes("0.03") ? "Surgical precision — tighter than a human hair" : "Industrial-grade accuracy";
+    case "max_speed":
+      return "Maximum operational velocity";
+    case "battery_hrs":
+      return v >= 8 ? "Full shift operation without recharging" : v >= 4 ? "Half-shift operation, mid-shift charge needed" : "Short-duration tasks, frequent charging";
+    case "ip_rating":
+      return s.includes("67") || s.includes("68") ? "Fully waterproof and dustproof" : s.includes("54") || s.includes("55") ? "Dust and splash resistant — suitable for most factory floors" : s.includes("2") ? "Indoor use only — not rated for harsh environments" : null;
+    case "dof":
+      return v >= 7 ? "Human-like dexterity — complex manipulation" : v === 6 ? "Full 6-axis industrial capability" : v === 4 ? "4-axis — optimized for high-speed pick-and-place" : null;
+    case "weight_kg":
+      return v <= 10 ? "Portable — one person can move it" : v <= 50 ? "Requires two people or a cart" : "Permanently mounted — crane installation required";
+    case "collaborative":
+      return s === "true" || s === "yes" ? "Safe to work alongside humans without safety caging" : "Requires safety fencing or separation monitoring";
+    case "charge_time_hrs":
+      return v <= 1 ? "Fast charge — minimal downtime" : v <= 3 ? "Standard charge time" : "Extended charge — plan for overnight";
+    default:
+      return null;
+  }
 }
