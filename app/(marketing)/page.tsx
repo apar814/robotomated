@@ -15,7 +15,7 @@ import { RaaSExplainer } from "@/components/home/raas-explainer";
 import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import { RecentlyViewed } from "@/components/home/recently-viewed";
-import { JobInput } from "@/components/home/job-input";
+import { HeroPills } from "@/components/home/hero-pills";
 import { VideoHero } from "@/components/ui/video-hero";
 import type { RobotCategory } from "@/lib/supabase/types";
 
@@ -105,7 +105,7 @@ export default async function HomePage() {
 
         <div className="px-6 py-20 sm:py-28 lg:py-36">
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
-            {/* Left column — job-first messaging + input */}
+            {/* Left column — job-first messaging + category pills */}
             <div className="relative">
               <span className="hud-label blink-cursor">
                 The Intelligence Layer for Robotics
@@ -114,16 +114,16 @@ export default async function HomePage() {
                 className="mt-8 font-display font-extrabold leading-[1.05]"
                 style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
               >
-                What job needs<br />
-                to get <span className="hero-accent">done?</span>
+                What job would you<br />
+                like done by a <span className="hero-accent">robot?</span>
               </h1>
               <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
-                Describe your operation. We{"'"}ll find the robot — and tell you exactly what it costs, how fast it deploys, and how many hours it saves.
+                Tell us what needs doing. Robotimus will find the right robot, tell you what it costs, and get you deployed.
               </p>
 
-              {/* Job input */}
+              {/* Category pills */}
               <div className="mt-8">
-                <JobInput />
+                <HeroPills />
               </div>
 
               {/* Stats inline */}
