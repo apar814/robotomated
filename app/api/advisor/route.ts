@@ -3,6 +3,8 @@ import { anthropic, ADVISOR_MODEL, ADVISOR_SYSTEM_PROMPT } from "@/lib/ai/claude
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 import { isPro, getMonthlyConversationCount, PRO_LIMITS } from "@/lib/stripe/pro";
+import { buildRobotimusContext } from "@/lib/ai/context-builder";
+import { classifyIntent } from "@/lib/ai/intent-classifier";
 
 const MAX_REQUESTS_PER_SESSION = 10;
 
@@ -24,7 +26,7 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  // Check monthly conversation limit for free users
+  // ── Auth check ──
   const authSupabase = createSSRClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -50,17 +52,17 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  // Rate limit check per session
-  const supabase = createServerClient();
+  // ── Session limit check ──
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const supabase = createServerClient() as any;
   const { data: existing } = await supabase
     .from("advisor_conversations")
     .select("id, messages")
     .eq("session_id", session_id)
-    .single()
-    .returns<{ id: string; messages: ChatMessage[] }>();
+    .single();
 
   const existingMsgCount = existing?.messages
-    ? (existing.messages as ChatMessage[]).filter((m) => m.role === "user").length
+    ? (existing.messages as ChatMessage[]).filter((m: ChatMessage) => m.role === "user").length
     : 0;
   const currentUserMsgs = messages.filter((m) => m.role === "user").length;
 
@@ -71,39 +73,47 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Fetch robot context for the system prompt
-  const { data: robots } = await supabase
-    .from("robots")
-    .select("slug, name, robo_score, price_current, description_short, status, manufacturers(name), robot_categories(name, slug)")
-    .eq("status", "active")
-    .order("robo_score", { ascending: false, nullsFirst: false })
-    .returns<{
-      slug: string;
-      name: string;
-      robo_score: number | null;
-      price_current: number | null;
-      description_short: string | null;
-      status: string;
-      manufacturers: { name: string } | null;
-      robot_categories: { name: string; slug: string } | null;
-    }[]>();
+  // ── UPGRADE 1: Build rich database context ──
+  const latestUserMessage = messages.filter((m) => m.role === "user").pop()?.content || "";
+  const databaseContext = await buildRobotimusContext(latestUserMessage);
 
-  const robotContext = (robots || [])
-    .map((r) => {
-      const mfr = (r.manufacturers as { name: string } | null)?.name || "";
-      const catObj = r.robot_categories as { name: string; slug: string } | null;
-      const cat = catObj?.name || "";
-      const catSlug = catObj?.slug || "all";
-      return `- ${r.name} by ${mfr} | Category: ${cat} | CategorySlug: ${catSlug} | RoboScore: ${r.robo_score ?? "N/A"}/100 | Price: ${r.price_current != null ? `$${r.price_current.toLocaleString()}` : "Contact"} | Slug: ${r.slug} | ${r.description_short || ""}`;
-    })
-    .join("\n");
+  // ── UPGRADE 2: Classify intent and get specialized prompt ──
+  const { intent, promptAddition } = classifyIntent(latestUserMessage);
 
-  const systemPrompt = `${ADVISOR_SYSTEM_PROMPT}\n\nAvailable robots in the database:\n${robotContext}`;
+  // ── UPGRADE 3: Load conversation memory ──
+  let memoryContext = "";
+  if (user) {
+    const { data: prevConversations } = await supabase
+      .from("advisor_conversations")
+      .select("session_summary, use_case_detected, budget_mentioned, robots_discussed")
+      .eq("user_id", user.id)
+      .not("session_summary", "is", null)
+      .order("created_at", { ascending: false })
+      .limit(3);
 
-  // Stream response from Claude
+    if (prevConversations && prevConversations.length > 0) {
+      memoryContext = "\n\n[USER HISTORY — PREVIOUS CONVERSATIONS]\n";
+      for (const conv of prevConversations as { session_summary: string; use_case_detected: string | null; budget_mentioned: number | null; robots_discussed: string[] }[]) {
+        memoryContext += `- ${conv.session_summary}`;
+        if (conv.budget_mentioned) memoryContext += ` Budget: $${conv.budget_mentioned.toLocaleString()}.`;
+        if (conv.robots_discussed?.length) memoryContext += ` Robots discussed: ${conv.robots_discussed.join(", ")}.`;
+        memoryContext += "\n";
+      }
+    }
+  }
+
+  // ── Assemble system prompt ──
+  const systemPrompt = [
+    ADVISOR_SYSTEM_PROMPT,
+    promptAddition,
+    databaseContext,
+    memoryContext,
+  ].filter(Boolean).join("\n");
+
+  // ── Stream response ──
   const stream = await anthropic.messages.stream({
     model: ADVISOR_MODEL,
-    max_tokens: 1024,
+    max_tokens: 1500,
     system: systemPrompt,
     messages: messages.map((m) => ({
       role: m.role,
@@ -111,7 +121,6 @@ export async function POST(request: NextRequest) {
     })),
   });
 
-  // Create a TransformStream to pipe the response
   const encoder = new TextEncoder();
   let fullResponse = "";
 
@@ -129,21 +138,51 @@ export async function POST(request: NextRequest) {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify({ done: true })}\n\n`));
         controller.close();
 
-        // Save conversation after stream completes
+        // ── Save conversation with memory extraction ──
         const allMessages = [...messages, { role: "assistant" as const, content: fullResponse }];
+
+        // Extract memory signals from conversation
+        const budgetMatch = latestUserMessage.match(/\$[\d,]+[kKmM]?|\d+[kK]\b/);
+        const budgetMentioned = budgetMatch
+          ? parseInt(budgetMatch[0].replace(/[$,kK]/g, "")) * (budgetMatch[0].includes("k") || budgetMatch[0].includes("K") ? 1000 : 1)
+          : null;
+
+        // Extract robot names mentioned in the response
+        const robotMatches = fullResponse.match(/:::robot\{[^}]*"name":"([^"]+)"[^}]*\}/g);
+        const robotsDiscussed = robotMatches
+          ? robotMatches.map((m) => {
+              const nameMatch = m.match(/"name":"([^"]+)"/);
+              return nameMatch ? nameMatch[1] : "";
+            }).filter(Boolean)
+          : [];
+
+        // Build session summary
+        const summaryParts: string[] = [];
+        if (intent !== "DISCOVERY") summaryParts.push(`Intent: ${intent.toLowerCase()}.`);
+        if (latestUserMessage.length > 20) summaryParts.push(`Query: "${latestUserMessage.slice(0, 100)}"`);
+        if (robotsDiscussed.length > 0) summaryParts.push(`Recommended: ${robotsDiscussed.join(", ")}.`);
+        const sessionSummary = summaryParts.join(" ") || null;
+
+        const conversationData = {
+          session_id,
+          messages: allMessages as unknown as string,
+          user_id: user?.id || null,
+          use_case_detected: intent,
+          budget_mentioned: budgetMentioned,
+          robots_discussed: robotsDiscussed.length > 0 ? robotsDiscussed : null,
+          session_summary: sessionSummary,
+          intent_detected: intent,
+        };
 
         if (existing) {
           await supabase
             .from("advisor_conversations")
-            .update({ messages: allMessages as unknown as string })
+            .update(conversationData)
             .eq("id", existing.id);
         } else {
           await supabase
             .from("advisor_conversations")
-            .insert({
-              session_id,
-              messages: allMessages as unknown as string,
-            });
+            .insert(conversationData);
         }
       } catch (err) {
         const message = err instanceof Error ? err.message : "Stream error";
