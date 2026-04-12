@@ -28,7 +28,7 @@ interface SelectedRobot {
   installationCost: number;
 }
 
-const COLORS = ["#0EA5E9", "#6366F1", "#C8FF00"];
+const COLORS = ["#2563EB", "#6366F1", "#C8FF00"];
 
 export function TcoCalculatorClient() {
   // ─── Robot Search ───

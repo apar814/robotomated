@@ -18,7 +18,7 @@ export default function CaseStudiesPage() {
             { name: "Home", href: "/" },
             { name: "Case Studies", href: "/case-studies" },
           ]} />
-          <p className="mt-6 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ CASE STUDIES ]</p>
+          <p className="mt-6 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ CASE STUDIES ]</p>
           <h1 className="mt-2 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">
             Real-World Robot Deployments
           </h1>

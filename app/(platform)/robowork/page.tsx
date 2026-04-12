@@ -105,7 +105,7 @@ export default async function RoboWorkPage() {
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ DEPLOY CHANNEL ]</p>
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ DEPLOY CHANNEL ]</p>
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Don&apos;t want to own a robot?{" "}
@@ -136,7 +136,7 @@ export default async function RoboWorkPage() {
       {/* ── HOW IT WORKS ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ FROM POST TO DEPLOY IN 72 HOURS ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ FROM POST TO DEPLOY IN 72 HOURS ]</p>
           <h2 className="mb-3 text-lg font-bold text-text-primary">Three Steps to a Working Robot</h2>
           <p className="mb-10 max-w-xl text-sm text-text-secondary">No hardware purchase. No integration timeline. Describe the job, pick a provider, and deploy.</p>
 
@@ -219,20 +219,20 @@ export default async function RoboWorkPage() {
       {/* ── WHAT KIND OF WORK ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ PRESET DEPLOYMENTS ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ PRESET DEPLOYMENTS ]</p>
           <h2 className="mb-3 text-lg font-bold text-text-primary">What Kind of Work Can Robots Do for You?</h2>
           <p className="mb-10 max-w-xl text-sm text-text-secondary">Pick a job template. We fill in the details. You get bids from certified providers.</p>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { task: "Warehouse Pallet Moving", robot: "AMR", price: "$6–12K/mo", time: "1–4 weeks", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg> },
-              { task: "Facility Floor Cleaning", robot: "Cleaning Robot", price: "$2.5–4.5K/mo", time: "Ongoing", type: "cleaning", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l3.5-3.5M7.5 16.5l-1-1M18 4l-8.5 8.5M9.5 12.5l2 2M5.5 18.5l2-2" /><path d="M14 7l3-3 3 3-3 3z" /></svg> },
-              { task: "Security & Perimeter Patrol", robot: "Autonomous Mobile", price: "$3–6K/mo", time: "Ongoing", type: "security", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> },
-              { task: "Agricultural Harvest", robot: "AGR Robot", price: "$12–25K", time: "Seasonal", type: "agriculture", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M7 20h10M12 20v-8" /><path d="M12 12C12 8 8 4 4 4c0 4 4 8 8 8z" /><path d="M12 12c0-4 4-8 8-8-4 0-8 4-8 8z" /></svg> },
-              { task: "Manufacturing Assembly", robot: "Cobot", price: "$8–18K/mo", time: "Project-based", type: "assembly", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg> },
-              { task: "Hospital Logistics", robot: "Medical AMR", price: "$4–8K/mo", time: "Ongoing", type: "healthcare", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M12 10v4M10 12h4" /></svg> },
-              { task: "Construction Monitoring", robot: "Drone / Quadruped", price: "$5–15K", time: "Per project", type: "inspection", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg> },
-              { task: "Last-Mile Sorting", robot: "Conveyor AMR", price: "$10–20K/mo", time: "Peak season", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" /></svg> },
+              { task: "Warehouse Pallet Moving", robot: "AMR", price: "$6–12K/mo", time: "1–4 weeks", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg> },
+              { task: "Facility Floor Cleaning", robot: "Cleaning Robot", price: "$2.5–4.5K/mo", time: "Ongoing", type: "cleaning", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21l3.5-3.5M7.5 16.5l-1-1M18 4l-8.5 8.5M9.5 12.5l2 2M5.5 18.5l2-2" /><path d="M14 7l3-3 3 3-3 3z" /></svg> },
+              { task: "Security & Perimeter Patrol", robot: "Autonomous Mobile", price: "$3–6K/mo", time: "Ongoing", type: "security", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg> },
+              { task: "Agricultural Harvest", robot: "AGR Robot", price: "$12–25K", time: "Seasonal", type: "agriculture", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M7 20h10M12 20v-8" /><path d="M12 12C12 8 8 4 4 4c0 4 4 8 8 8z" /><path d="M12 12c0-4 4-8 8-8-4 0-8 4-8 8z" /></svg> },
+              { task: "Manufacturing Assembly", robot: "Cobot", price: "$8–18K/mo", time: "Project-based", type: "assembly", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg> },
+              { task: "Hospital Logistics", robot: "Medical AMR", price: "$4–8K/mo", time: "Ongoing", type: "healthcare", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M12 10v4M10 12h4" /></svg> },
+              { task: "Construction Monitoring", robot: "Drone / Quadruped", price: "$5–15K", time: "Per project", type: "inspection", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg> },
+              { task: "Last-Mile Sorting", robot: "Conveyor AMR", price: "$10–20K/mo", time: "Peak season", type: "picking", icon: <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" /></svg> },
             ].map((job) => (
               <Link
                 key={job.task}
@@ -267,7 +267,7 @@ export default async function RoboWorkPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ 8 INDUSTRIES &middot; VERIFIED PROVIDERS ]</p>
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ 8 INDUSTRIES &middot; VERIFIED PROVIDERS ]</p>
               <h2 className="text-lg font-bold text-text-primary">What Can a Robot Do for You?</h2>
             </div>
             <Link
@@ -303,7 +303,7 @@ export default async function RoboWorkPage() {
       {/* ── STATS BAR ── */}
       <section className="border-b border-border px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKETPLACE PULSE &middot; LIVE ]</p>
+          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKETPLACE PULSE &middot; LIVE ]</p>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {[
               { label: "Active Jobs", value: stats.activeJobs },
@@ -327,7 +327,7 @@ export default async function RoboWorkPage() {
       {/* ── MARKET RATES ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKET RATES &middot; Q2 2026 ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET RATES &middot; Q2 2026 ]</p>
           <h2 className="mb-6 text-lg font-bold text-text-primary">What Are Businesses Paying Right Now?</h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -338,7 +338,7 @@ export default async function RoboWorkPage() {
             ].map((r) => (
               <div key={r.category} className="rounded-lg border border-border bg-obsidian-surface p-4">
                 <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-text-tertiary">{r.category}</p>
-                <p className="mt-1 font-[family-name:var(--font-mono)] text-xl font-bold text-[#0EA5E9]">{r.rate}</p>
+                <p className="mt-1 font-[family-name:var(--font-mono)] text-xl font-bold text-[#2563EB]">{r.rate}</p>
                 <p className="mt-0.5 text-[10px] text-text-ghost">{r.unit}</p>
                 <p className="mt-2 text-[10px] font-medium text-[#00E5A0]">{r.trend}</p>
               </div>
@@ -356,7 +356,7 @@ export default async function RoboWorkPage() {
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ LIVE FEED ]</p>
+                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ LIVE FEED ]</p>
                 <h2 className="text-lg font-bold text-text-primary">Jobs Being Posted Right Now</h2>
               </div>
               <Link
@@ -422,7 +422,7 @@ export default async function RoboWorkPage() {
 
       {/* ── TRUST SIGNALS ── */}
       <section className="border-t border-border px-4 py-12 sm:px-6 lg:px-8">
-        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TRUST LAYER ]</p>
+        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ TRUST LAYER ]</p>
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-6">
           {[
             {
@@ -467,7 +467,7 @@ export default async function RoboWorkPage() {
       {/* ── NEXT STEP ── */}
       <section className="border-t border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ NEXT STEP ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ NEXT STEP ]</p>
           <h2 className="mt-4 text-2xl font-bold text-text-primary">Not sure where to start?</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-text-secondary">
             Tell Robotimus your budget, use case, and timeline. Get a deployment recommendation in 60 seconds.

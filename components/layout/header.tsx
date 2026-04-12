@@ -30,40 +30,40 @@ const exploreNeeds = [
 ];
 
 const acquireItems = [
-  { href: "/explore", title: "Buy a Robot", desc: "Research and purchase outright", color: "#0EA5E9" },
-  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $X,XXX/mo", color: "#0EA5E9" },
-  { href: "/cpo", title: "Certified Pre-Owned", desc: "Verified robots at 40-60% off new", color: "#0EA5E9" },
-  { href: "/find-my-robot", title: "Find My Robot", desc: "Answer 5 questions, get matched", color: "#0EA5E9" },
-  { href: "/lease/quote", title: "Lease Calculator", desc: "Estimate your monthly payment", color: "#0EA5E9", divider: true },
+  { href: "/explore", title: "Buy a Robot", desc: "Research and purchase outright", color: "#2563EB" },
+  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $X,XXX/mo", color: "#2563EB" },
+  { href: "/cpo", title: "Certified Pre-Owned", desc: "Verified robots at 40-60% off new", color: "#2563EB" },
+  { href: "/find-my-robot", title: "Find My Robot", desc: "Answer 5 questions, get matched", color: "#2563EB" },
+  { href: "/lease/quote", title: "Lease Calculator", desc: "Estimate your monthly payment", color: "#2563EB", divider: true },
 ];
 
 const deployItems = [
-  { href: "/robowork", title: "RoboWork", desc: "Post a job, hire a robot service provider", color: "#0EA5E9" },
-  { href: "/robowork/providers", title: "Find an RSP", desc: "Browse Robot Service Providers near you", color: "#0EA5E9" },
-  { href: "/robowork/post", title: "Post a Job", desc: "Describe your task, get bids", color: "#0EA5E9" },
-  { href: "/robowork/providers/register", title: "Become a Provider", desc: "List your robots and get hired", color: "#0EA5E9", divider: true },
+  { href: "/robowork", title: "RoboWork", desc: "Post a job, hire a robot service provider", color: "#2563EB" },
+  { href: "/robowork/providers", title: "Find an RSP", desc: "Browse Robot Service Providers near you", color: "#2563EB" },
+  { href: "/robowork/post", title: "Post a Job", desc: "Describe your task, get bids", color: "#2563EB" },
+  { href: "/robowork/providers/register", title: "Become a Provider", desc: "List your robots and get hired", color: "#2563EB", divider: true },
 ];
 
 const operateItems = [
-  { href: "/service", title: "Service & Maintenance", desc: "Find certified technicians near you", color: "#0EA5E9" },
-  { href: "/parts", title: "Parts Marketplace", desc: "OEM and aftermarket parts", color: "#0EA5E9" },
-  { href: "/insure", title: "Robot Insurance", desc: "Protect your automation investment", color: "#0EA5E9" },
-  { href: "/trade-in", title: "Trade In Your Robot", desc: "AI-powered instant valuation", color: "#0EA5E9" },
-  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#0EA5E9", divider: true },
+  { href: "/service", title: "Service & Maintenance", desc: "Find certified technicians near you", color: "#2563EB" },
+  { href: "/parts", title: "Parts Marketplace", desc: "OEM and aftermarket parts", color: "#2563EB" },
+  { href: "/insure", title: "Robot Insurance", desc: "Protect your automation investment", color: "#2563EB" },
+  { href: "/trade-in", title: "Trade In Your Robot", desc: "AI-powered instant valuation", color: "#2563EB" },
+  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#2563EB", divider: true },
 ];
 
 const learnItems = [
-  { href: "/learn", title: "Intelligence Library", desc: "50+ buyer guides and industry reports", color: "#0EA5E9" },
-  { href: "/market", title: "Market Intelligence", desc: "Funding, launches, price trends", color: "#0EA5E9" },
-  { href: "/case-studies", title: "Case Studies", desc: "Real deployments, real results", color: "#0EA5E9" },
-  { href: "/tools/tco-calculator", title: "TCO Calculator", desc: "5-year total cost of ownership", color: "#0EA5E9" },
-  { href: "/newsletter", title: "Newsletter", desc: "Weekly automation intelligence", color: "#0EA5E9", divider: true },
+  { href: "/learn", title: "Intelligence Library", desc: "50+ buyer guides and industry reports", color: "#2563EB" },
+  { href: "/market", title: "Market Intelligence", desc: "Funding, launches, price trends", color: "#2563EB" },
+  { href: "/case-studies", title: "Case Studies", desc: "Real deployments, real results", color: "#2563EB" },
+  { href: "/tools/tco-calculator", title: "TCO Calculator", desc: "5-year total cost of ownership", color: "#2563EB" },
+  { href: "/newsletter", title: "Newsletter", desc: "Weekly automation intelligence", color: "#2563EB", divider: true },
 ];
 
 // ── SVG icon helper ──
 function NavIcon({ d }: { d: string }) {
   return (
-    <svg className="h-4 w-4 shrink-0 text-[#0EA5E9]" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <svg className="h-4 w-4 shrink-0 text-[#2563EB]" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" d={d} />
     </svg>
   );
@@ -202,13 +202,13 @@ export function Header() {
                       key={cat.slug}
                       href={`/explore/${cat.slug}`}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.08)]"
+                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(37,99,235,0.08)]"
                     >
                       <NavIcon d={cat.icon} />
                       <span className="text-sm font-semibold text-[var(--theme-text-primary)]">{cat.name}</span>
                     </Link>
                   ))}
-                  <Link href="/explore" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#0EA5E9] hover:underline">
+                  <Link href="/explore" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#2563EB] hover:underline">
                     View all categories &rarr;
                   </Link>
                 </div>
@@ -223,13 +223,13 @@ export function Header() {
                       key={need.label}
                       href={need.href}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.08)]"
+                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(37,99,235,0.08)]"
                     >
-                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#0EA5E9]" />
+                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563EB]" />
                       <span className="text-sm text-[var(--theme-text-secondary)]">{need.label}</span>
                     </Link>
                   ))}
-                  <Link href="/find-my-robot" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#0EA5E9] hover:underline">
+                  <Link href="/find-my-robot" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#2563EB] hover:underline">
                     Find my robot &rarr;
                   </Link>
                 </div>
@@ -239,10 +239,10 @@ export function Header() {
               <div>
                 <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">Featured</p>
                 <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
-                  <p className="text-[11px] font-medium uppercase tracking-widest text-[#0EA5E9]">Robot of the Week</p>
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-[#2563EB]">Robot of the Week</p>
                   <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
                   <p className="mt-1 text-xs text-[var(--theme-text-muted)]">Highest-rated robot in our database this week.</p>
-                  <Link href="/explore" onClick={closeAll} className="mt-3 inline-block text-xs font-medium text-[#0EA5E9] hover:underline">
+                  <Link href="/explore" onClick={closeAll} className="mt-3 inline-block text-xs font-medium text-[#2563EB] hover:underline">
                     View robot &rarr;
                   </Link>
                 </div>
@@ -299,7 +299,7 @@ export function Header() {
           <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
             <span className="font-brand text-[18px] font-bold tracking-[0.04em]">
               <span style={{ color: "var(--theme-text-primary)" }}>ROBOTOMATED</span>
-              <span className="logo-dot inline-block text-[#0EA5E9]">.</span>
+              <span className="logo-dot inline-block text-[#2563EB]">.</span>
             </span>
           </Link>
 
@@ -334,7 +334,7 @@ export function Header() {
             {/* Search trigger */}
             <button
               onClick={openSearch}
-              className="hidden items-center gap-2 rounded-[10px] border px-3.5 py-2 transition-all hover:border-[#0EA5E9]/40 hover:shadow-[0_0_12px_rgba(14,165,233,0.1)] md:flex"
+              className="hidden items-center gap-2 rounded-[10px] border px-3.5 py-2 transition-all hover:border-[#2563EB]/40 hover:shadow-[0_0_12px_rgba(37,99,235,0.1)] md:flex"
               style={{
                 width: "clamp(180px, 20vw, 280px)",
                 borderColor: "var(--theme-border)",
@@ -351,16 +351,11 @@ export function Header() {
               </kbd>
             </button>
 
-            {/* Theme toggle */}
-            <div className="hidden sm:block">
-              <ThemeToggle />
-            </div>
-
             {/* Robotimus button */}
             <Link
               href="/advisor"
-              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]"
-              style={{ background: "#0EA5E9", boxShadow: "0 0 20px rgba(14,165,233,0.4)" }}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
+              style={{ background: "#2563EB", boxShadow: "0 0 20px rgba(37,99,235,0.4)" }}
             >
               <span className="animate-pulse-live">
                 <RobotimusAvatar size={18} />
@@ -427,7 +422,7 @@ export function Header() {
                 href="/advisor"
                 onClick={closeAll}
                 className="flex items-center justify-center gap-2 rounded-lg py-3 text-[14px] font-bold text-black"
-                style={{ background: "#0EA5E9" }}
+                style={{ background: "#2563EB" }}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />

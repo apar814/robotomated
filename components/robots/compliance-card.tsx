@@ -5,7 +5,7 @@ interface ComplianceCardProps {
 
 function CertBadge({ label }: { label: string }) {
   return (
-    <span className="inline-block rounded-[2px] border border-[rgba(14,165,233,0.08)] bg-electric-blue-dim px-1.5 py-0.5 font-mono text-[9px] text-electric-blue">
+    <span className="inline-block rounded-[2px] border border-[rgba(37,99,235,0.08)] bg-electric-blue-dim px-1.5 py-0.5 font-mono text-[9px] text-electric-blue">
       {label}
     </span>
   );

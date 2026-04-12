@@ -291,7 +291,7 @@ export default function AwarenessPage() {
       {/* ═══ WHO IS THIS FOR ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ WHO IS THIS FOR ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold sm:text-4xl">

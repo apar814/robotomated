@@ -59,7 +59,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
   const sectorCode = SECTOR_CODES[robot.category_slug];
 
   return (
-    <div className="group flex cursor-pointer flex-col rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-200 ease-out hover:-translate-y-[3px] hover:border-[rgba(14,165,233,0.3)] hover:shadow-[0_0_0_1px_rgba(14,165,233,0.1),0_8px_32px_rgba(0,0,0,0.4)] focus-within:border-[rgba(14,165,233,0.3)] focus-within:shadow-[0_0_0_2px_rgba(14,165,233,0.2)]">
+    <div className="group flex cursor-pointer flex-col rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-200 ease-out hover:-translate-y-[3px] hover:border-[rgba(37,99,235,0.3)] hover:shadow-[0_0_0_1px_rgba(37,99,235,0.1),0_8px_32px_rgba(0,0,0,0.4)] focus-within:border-[rgba(37,99,235,0.3)] focus-within:shadow-[0_0_0_2px_rgba(37,99,235,0.2)]">
       {/* Compare checkbox */}
       {onCompareToggle && (
         <label
@@ -126,13 +126,13 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
       {/* Info area */}
       <div className="flex flex-1 flex-col px-4 py-3.5">
         {/* Manufacturer */}
-        <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#0EA5E9]">
+        <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">
           {robot.manufacturer_name}
         </span>
 
         {/* Robot name */}
         <Link href={`/explore/${robot.category_slug}/${robot.slug}`}>
-          <h3 className="mt-1 font-[family-name:var(--font-ui)] text-[15px] font-semibold leading-tight text-white transition-colors group-hover:text-[#0EA5E9]">
+          <h3 className="mt-1 font-[family-name:var(--font-ui)] text-[15px] font-semibold leading-tight text-white transition-colors group-hover:text-[#2563EB]">
             {robot.name}
           </h3>
         </Link>
@@ -162,7 +162,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
           )}
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className="rounded border border-[rgba(14,165,233,0.2)] bg-[rgba(14,165,233,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#0EA5E9] transition-all duration-150 hover:bg-[#0EA5E9] hover:text-black focus-visible:bg-[#0EA5E9] focus-visible:text-black"
+            className="rounded border border-[rgba(37,99,235,0.2)] bg-[rgba(37,99,235,0.1)] px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] font-medium text-[#2563EB] transition-all duration-150 hover:bg-[#2563EB] hover:text-black focus-visible:bg-[#2563EB] focus-visible:text-black"
             aria-label={`Full analysis of ${robot.name}`}
           >
             Full Analysis &rarr;

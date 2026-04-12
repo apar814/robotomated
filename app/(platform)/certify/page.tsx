@@ -36,11 +36,11 @@ const LEVELS = [
     ],
     careers: ["Any role near robots", "Career changers", "Facility staff"],
     salaryBump: "$42K–58K entry roles",
-    glow: "shadow-[#0EA5E9]/20 hover:shadow-[#0EA5E9]/40",
-    border: "border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50",
-    badge: "bg-[#0EA5E9]/10 text-[#0EA5E9]",
-    accent: "text-[#0EA5E9]",
-    cta: "bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-black",
+    glow: "shadow-[#2563EB]/20 hover:shadow-[#2563EB]/40",
+    border: "border-[#2563EB]/20 hover:border-[#2563EB]/50",
+    badge: "bg-[#2563EB]/10 text-[#2563EB]",
+    accent: "text-[#2563EB]",
+    cta: "bg-[#2563EB] hover:bg-[#2563EB]/90 text-black",
     ctaLabel: "Get Robot Literate — Free",
     ring: "ring-green/30",
     isFree: true,
@@ -115,11 +115,11 @@ const LEVELS = [
       "Automation Engineer",
     ],
     salaryBump: "$20,000-35,000/year",
-    glow: "shadow-[#0EA5E9]/20 hover:shadow-[#0EA5E9]/40",
-    border: "border-[#0EA5E9]/20 hover:border-[#0EA5E9]/50",
-    badge: "bg-[#0EA5E9]/10 text-[#0EA5E9]",
-    accent: "text-[#0EA5E9]",
-    cta: "bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-black",
+    glow: "shadow-[#2563EB]/20 hover:shadow-[#2563EB]/40",
+    border: "border-[#2563EB]/20 hover:border-[#2563EB]/50",
+    badge: "bg-[#2563EB]/10 text-[#2563EB]",
+    accent: "text-[#2563EB]",
+    cta: "bg-[#2563EB] hover:bg-[#2563EB]/90 text-black",
     ctaLabel: "Get Certified as a Specialist",
     ring: "ring-green/30",
     hasPractical: true,
@@ -360,7 +360,7 @@ export default function CertifyPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ CERTIFICATION PROGRAM ]
           </p>
 
@@ -404,7 +404,7 @@ export default function CertifyPage() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-[#0EA5E9] px-8 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#38BDF8] hover:shadow-lg hover:shadow-[#0EA5E9]/20"
+              className="inline-flex items-center rounded-lg bg-[#2563EB] px-8 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#60A5FA] hover:shadow-lg hover:shadow-[#2563EB]/20"
             >
               Get Certified Free — Level 0 Awareness
             </Link>
@@ -421,7 +421,7 @@ export default function CertifyPage() {
       {/* ═══ CERTIFICATION LEVELS ═══ */}
       <section id="levels" className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 6 LEVELS &middot; FROM LITERACY TO LEADERSHIP ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -434,12 +434,12 @@ export default function CertifyPage() {
           </p>
 
           {/* ROI headline */}
-          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-[#0EA5E9]/20 bg-[#0EA5E9]/5 px-6 py-4 text-center">
+          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-[#2563EB]/20 bg-[#2563EB]/5 px-6 py-4 text-center">
             <p className="text-sm text-white">
               The average RCO Master earns{" "}
-              <span className="font-bold text-[#0EA5E9]">$40,000 more per year</span>{" "}
+              <span className="font-bold text-[#2563EB]">$40,000 more per year</span>{" "}
               than an uncertified operator. The certification pays for itself in{" "}
-              <span className="font-bold text-[#0EA5E9]">11 days</span>.
+              <span className="font-bold text-[#2563EB]">11 days</span>.
             </p>
             <p className="mt-1 text-xs text-muted">
               Most students complete Foundation to Master in 14 weeks.
@@ -559,11 +559,11 @@ export default function CertifyPage() {
                           <div
                             className={`h-1.5 rounded-full ${
                               lvl.level <= 0
-                                ? "bg-[#0EA5E9]/60"
+                                ? "bg-[#2563EB]/60"
                                 : lvl.level === 1
                                   ? "bg-blue/60"
                                   : lvl.level === 2
-                                    ? "bg-[#0EA5E9]/60"
+                                    ? "bg-[#2563EB]/60"
                                     : lvl.level === 3
                                       ? "bg-violet/60"
                                       : lvl.level === 4
@@ -676,7 +676,7 @@ export default function CertifyPage() {
       {/* ═══ SPECIALIZATIONS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 7 SPECIALIZATION TRACKS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -729,7 +729,7 @@ export default function CertifyPage() {
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+              <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
                 [ FOR EMPLOYERS ]
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold">
@@ -893,7 +893,7 @@ export default function CertifyPage() {
       {/* ═══ LIVING CERTIFICATION ═══ */}
       <section className="bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE LIVING CERTIFICATION ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -924,7 +924,7 @@ export default function CertifyPage() {
       {/* ═══ VERIFICATION ═══ */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-md text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ VERIFY A CREDENTIAL ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -956,7 +956,7 @@ export default function CertifyPage() {
       {/* ═══ WHY RCO ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE STANDARD ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold">
@@ -1013,7 +1013,7 @@ export default function CertifyPage() {
       {/* ═══ YOUR ROI ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ YOUR ROI ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -1039,7 +1039,7 @@ export default function CertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-[#0EA5E9] px-10 py-4 text-sm font-semibold text-black transition-all hover:bg-[#38BDF8] hover:shadow-lg hover:shadow-[#0EA5E9]/20"
+              className="inline-flex items-center rounded-lg bg-[#2563EB] px-10 py-4 text-sm font-semibold text-black transition-all hover:bg-[#60A5FA] hover:shadow-lg hover:shadow-[#2563EB]/20"
             >
               Get Certified Free — Level 0 Awareness
             </Link>

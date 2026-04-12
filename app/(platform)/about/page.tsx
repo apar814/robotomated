@@ -79,7 +79,7 @@ export default function AboutPage() {
         style={{ background: "#080808" }}
       >
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] animate-fade-up" style={{ animationDelay: "0ms", animationFillMode: "both" }}>[ OUR MISSION ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] animate-fade-up" style={{ animationDelay: "0ms", animationFillMode: "both" }}>[ OUR MISSION ]</p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
             <span
               className="block animate-fade-up text-white"
@@ -117,7 +117,7 @@ export default function AboutPage() {
       {/* ── SECTION 2: THE PROBLEM ── */}
       <section className="px-4 py-20 sm:px-6 lg:px-8" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-5xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ THE PROBLEM ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ THE PROBLEM ]</p>
           <h2
             className="mt-3 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
@@ -180,7 +180,7 @@ export default function AboutPage() {
         style={{ background: "var(--theme-section-alt, var(--theme-surface))" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ BELIEF SYSTEM ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ BELIEF SYSTEM ]</p>
           <h2
             className="mt-3 mb-12 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
@@ -287,7 +287,7 @@ export default function AboutPage() {
         style={{ background: "var(--theme-bg)" }}
       >
         <div className="mx-auto max-w-5xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ PLATFORM CHANNELS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ PLATFORM CHANNELS ]</p>
           <h2
             className="mt-3 mb-4 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
             style={{ color: "var(--theme-text-primary)" }}
@@ -352,7 +352,7 @@ export default function AboutPage() {
       {/* ── SECTION 6: THE NUMBERS ── */}
       <section className="px-4 py-20 sm:px-6 lg:px-8" style={{ background: "#080808" }}>
         <div className="mx-auto max-w-5xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ BY THE NUMBERS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ BY THE NUMBERS ]</p>
           <h2
             className="mt-3 mb-14 text-center font-display text-2xl font-bold tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
@@ -387,7 +387,7 @@ export default function AboutPage() {
         style={{ background: "var(--theme-bg)" }}
       >
         <div className="mx-auto max-w-3xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ TEAM ETHOS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ TEAM ETHOS ]</p>
           <h2
             className="mt-3 mb-10 font-display text-2xl font-bold tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}

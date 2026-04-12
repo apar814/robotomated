@@ -105,8 +105,8 @@ export function CapabilityRadar({ data, activeCategory }: CapabilityRadarProps) 
         {/* Data polygon */}
         <polygon
           points={dataPolygonPoints}
-          fill="rgba(14,165,233,0.15)"
-          stroke="#0EA5E9"
+          fill="rgba(37,99,235,0.15)"
+          stroke="#2563EB"
           strokeWidth={2}
           strokeLinejoin="round"
           style={{
@@ -121,7 +121,7 @@ export function CapabilityRadar({ data, activeCategory }: CapabilityRadarProps) 
             cx={p.x}
             cy={p.y}
             r={4}
-            fill="#0EA5E9"
+            fill="#2563EB"
             stroke="#080808"
             strokeWidth={2}
             style={{
@@ -154,7 +154,7 @@ export function CapabilityRadar({ data, activeCategory }: CapabilityRadarProps) 
             y={p.valuePos.y}
             textAnchor="middle"
             dominantBaseline="central"
-            fill="#0EA5E9"
+            fill="#2563EB"
             fontSize={11}
             fontFamily="'JetBrains Mono', monospace"
             fontWeight={600}

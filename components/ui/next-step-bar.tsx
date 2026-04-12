@@ -42,10 +42,10 @@ export function NextStepBar({ preset }: { preset: keyof typeof PRESETS }) {
             <Link
               key={step.href}
               href={step.href}
-              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-[#0EA5E9]/30"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-[#2563EB]/30"
             >
               <p className="font-mono text-[9px] uppercase tracking-widest text-white/25">{step.label}</p>
-              <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-[#0EA5E9]">
+              <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-[#2563EB]">
                 {step.title}
               </p>
               <p className="mt-1 text-xs text-white/40">{step.subtitle}</p>

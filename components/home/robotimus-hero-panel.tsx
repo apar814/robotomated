@@ -130,8 +130,8 @@ export function RobotimusHeroPanel() {
       {/* Keyframe animations */}
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes panelGlow {
-          0%, 100% { box-shadow: 0 0 40px rgba(14,165,233,0.15), 0 0 80px rgba(14,165,233,0.05); }
-          50% { box-shadow: 0 0 40px rgba(14,165,233,0.25), 0 0 80px rgba(14,165,233,0.1); }
+          0%, 100% { box-shadow: 0 0 40px rgba(37,99,235,0.15), 0 0 80px rgba(37,99,235,0.05); }
+          50% { box-shadow: 0 0 40px rgba(37,99,235,0.25), 0 0 80px rgba(37,99,235,0.1); }
         }
         @keyframes pulseRing {
           0% { transform: scale(1); opacity: 0.6; }
@@ -165,7 +165,7 @@ export function RobotimusHeroPanel() {
             background: "rgba(0, 0, 0, 0.85)",
             backdropFilter: "blur(24px) saturate(180%)",
             WebkitBackdropFilter: "blur(24px) saturate(180%)",
-            border: "1px solid rgba(14,165,233,0.3)",
+            border: "1px solid rgba(37,99,235,0.3)",
             borderRadius: "16px",
             animation: "panelGlow 4s ease-in-out infinite",
           }}
@@ -176,8 +176,8 @@ export function RobotimusHeroPanel() {
             style={{
               width: "12px",
               height: "12px",
-              borderLeft: "2px solid rgba(14,165,233,0.4)",
-              borderTop: "2px solid rgba(14,165,233,0.4)",
+              borderLeft: "2px solid rgba(37,99,235,0.4)",
+              borderTop: "2px solid rgba(37,99,235,0.4)",
             }}
           />
           {/* Corner brackets — top-right */}
@@ -186,8 +186,8 @@ export function RobotimusHeroPanel() {
             style={{
               width: "12px",
               height: "12px",
-              borderRight: "2px solid rgba(14,165,233,0.4)",
-              borderTop: "2px solid rgba(14,165,233,0.4)",
+              borderRight: "2px solid rgba(37,99,235,0.4)",
+              borderTop: "2px solid rgba(37,99,235,0.4)",
             }}
           />
 
@@ -195,8 +195,8 @@ export function RobotimusHeroPanel() {
           <div
             className="flex items-center gap-3 px-4 py-3"
             style={{
-              background: "rgba(14,165,233,0.08)",
-              borderBottom: "1px solid rgba(14,165,233,0.15)",
+              background: "rgba(37,99,235,0.08)",
+              borderBottom: "1px solid rgba(37,99,235,0.15)",
             }}
           >
             <div className="relative">
@@ -204,7 +204,7 @@ export function RobotimusHeroPanel() {
               <div
                 className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full"
                 style={{
-                  background: "linear-gradient(135deg, #0EA5E9, #7B2FFF)",
+                  background: "linear-gradient(135deg, #2563EB, #7B2FFF)",
                 }}
               >
                 <RobotimusAvatar size={32} />
@@ -213,7 +213,7 @@ export function RobotimusHeroPanel() {
               <span
                 className="pointer-events-none absolute inset-0 rounded-full"
                 style={{
-                  border: "2px solid rgba(14,165,233,0.5)",
+                  border: "2px solid rgba(37,99,235,0.5)",
                   animation: "pulseRing 2s ease-out infinite",
                 }}
               />
@@ -262,8 +262,8 @@ export function RobotimusHeroPanel() {
                       <div
                         className="max-w-[80%] rounded-xl rounded-br-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-white"
                         style={{
-                          background: "linear-gradient(135deg, #0EA5E9, #0284C7)",
-                          boxShadow: "0 4px 12px rgba(14,165,233,0.3)",
+                          background: "linear-gradient(135deg, #2563EB, #0284C7)",
+                          boxShadow: "0 4px 12px rgba(37,99,235,0.3)",
                         }}
                       >
                         {msg.text}
@@ -280,7 +280,7 @@ export function RobotimusHeroPanel() {
                           style={{
                             background: "rgba(255,255,255,0.04)",
                             border: "1px solid rgba(255,255,255,0.08)",
-                            borderLeft: "2px solid #0EA5E9",
+                            borderLeft: "2px solid #2563EB",
                             color: "rgba(255,255,255,0.85)",
                           }}
                         >
@@ -293,9 +293,9 @@ export function RobotimusHeroPanel() {
                                 key={chip.label}
                                 className="inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium"
                                 style={{
-                                  backgroundColor: "rgba(14,165,233,0.08)",
-                                  border: "1px solid rgba(14,165,233,0.2)",
-                                  color: "#0EA5E9",
+                                  backgroundColor: "rgba(37,99,235,0.08)",
+                                  border: "1px solid rgba(37,99,235,0.2)",
+                                  color: "#2563EB",
                                 }}
                               >
                                 {chip.label}
@@ -321,26 +321,26 @@ export function RobotimusHeroPanel() {
                     style={{
                       background: "rgba(255,255,255,0.04)",
                       border: "1px solid rgba(255,255,255,0.08)",
-                      borderLeft: "2px solid #0EA5E9",
+                      borderLeft: "2px solid #2563EB",
                     }}
                   >
                     <div className="flex items-center gap-1">
                       <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
                         style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "0ms" }}
                       />
                       <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
                         style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "200ms" }}
                       />
                       <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"
+                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
                         style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "400ms" }}
                       />
                     </div>
                     <span
                       className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.15em]"
-                      style={{ color: "rgba(14,165,233,0.6)" }}
+                      style={{ color: "rgba(37,99,235,0.6)" }}
                     >
                       PROCESSING...
                     </span>
@@ -356,13 +356,13 @@ export function RobotimusHeroPanel() {
             style={{
               height: "24px",
               background: "rgba(0,0,0,0.3)",
-              borderTop: "1px solid rgba(14,165,233,0.1)",
+              borderTop: "1px solid rgba(37,99,235,0.1)",
             }}
           >
             <div
               className="absolute top-0 flex h-full items-center whitespace-nowrap font-[family-name:var(--font-mono)] text-[9px]"
               style={{
-                color: "rgba(14,165,233,0.5)",
+                color: "rgba(37,99,235,0.5)",
                 animation: "ticker 30s linear infinite",
               }}
             >
@@ -379,21 +379,21 @@ export function RobotimusHeroPanel() {
                 href={`/advisor?q=${encodeURIComponent(chip.query)}`}
                 className="rounded-full px-2.5 py-1 text-[11px] transition-all duration-200"
                 style={{
-                  backgroundColor: "rgba(14,165,233,0.08)",
-                  border: "1px solid rgba(14,165,233,0.2)",
-                  color: "#0EA5E9",
+                  backgroundColor: "rgba(37,99,235,0.08)",
+                  border: "1px solid rgba(37,99,235,0.2)",
+                  color: "#2563EB",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget;
-                  el.style.backgroundColor = "rgba(14,165,233,0.15)";
-                  el.style.borderColor = "rgba(14,165,233,0.4)";
+                  el.style.backgroundColor = "rgba(37,99,235,0.15)";
+                  el.style.borderColor = "rgba(37,99,235,0.4)";
                   el.style.transform = "translateY(-1px)";
-                  el.style.boxShadow = "0 4px 12px rgba(14,165,233,0.2)";
+                  el.style.boxShadow = "0 4px 12px rgba(37,99,235,0.2)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget;
-                  el.style.backgroundColor = "rgba(14,165,233,0.08)";
-                  el.style.borderColor = "rgba(14,165,233,0.2)";
+                  el.style.backgroundColor = "rgba(37,99,235,0.08)";
+                  el.style.borderColor = "rgba(37,99,235,0.2)";
                   el.style.transform = "translateY(0)";
                   el.style.boxShadow = "none";
                 }}
@@ -408,7 +408,7 @@ export function RobotimusHeroPanel() {
             className="px-3 py-3"
             style={{
               background: "rgba(255,255,255,0.04)",
-              borderTop: "1px solid rgba(14,165,233,0.15)",
+              borderTop: "1px solid rgba(37,99,235,0.15)",
             }}
           >
             <div
@@ -418,8 +418,8 @@ export function RobotimusHeroPanel() {
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
               onFocusCapture={(e) => {
-                e.currentTarget.style.borderColor = "rgba(14,165,233,0.4)";
-                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(14,165,233,0.1)";
+                e.currentTarget.style.borderColor = "rgba(37,99,235,0.4)";
+                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
               }}
               onBlurCapture={(e) => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
@@ -441,10 +441,10 @@ export function RobotimusHeroPanel() {
                 onClick={handleSubmit}
                 className="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-semibold text-black transition-all duration-200"
                 style={{
-                  background: "linear-gradient(135deg, #0EA5E9, #0284C7)",
+                  background: "linear-gradient(135deg, #2563EB, #0284C7)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = "0 0 16px rgba(14,165,233,0.4)";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(37,99,235,0.4)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = "none";

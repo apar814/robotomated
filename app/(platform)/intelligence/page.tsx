@@ -115,11 +115,11 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 const CATEGORY_COLORS: Record<string, string> = {
   funding: "text-[#00E5A0] bg-[#00E5A0]/10 border-[#00E5A0]/20",
-  product: "text-[#0EA5E9] bg-[#0EA5E9]/10 border-[#0EA5E9]/20",
+  product: "text-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/20",
   research: "text-[#7B2FFF] bg-[#7B2FFF]/10 border-[#7B2FFF]/20",
   regulation: "text-amber-400 bg-amber-400/10 border-amber-400/20",
   market: "text-white/70 bg-white/5 border-white/10",
-  partnership: "text-[#0EA5E9] bg-[#0EA5E9]/10 border-[#0EA5E9]/20",
+  partnership: "text-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/20",
   brief: "text-white bg-white/10 border-white/20",
 };
 
@@ -164,7 +164,7 @@ export default async function IntelligencePage() {
       {/* Subscribe */}
       <section className="border-b border-white/[0.06] px-4 py-8">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-xl border border-[#0EA5E9]/15 bg-[#0EA5E9]/[0.03] p-6 sm:flex sm:items-center sm:justify-between">
+          <div className="rounded-xl border border-[#2563EB]/15 bg-[#2563EB]/[0.03] p-6 sm:flex sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-semibold text-white">Get the weekly brief in your inbox</p>
               <p className="mt-0.5 text-xs text-white/30">Every Monday. 500 words. The only robotics email worth reading.</p>
@@ -184,7 +184,7 @@ export default async function IntelligencePage() {
             {/* Featured items */}
             {featured.length > 0 && (
               <div className="space-y-4">
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
                   [ FEATURED ]
                 </p>
                 {featured.slice(0, 5).map((item) => (
@@ -202,8 +202,8 @@ export default async function IntelligencePage() {
                     <h3 className="text-lg font-bold text-white">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/50">{item.summary}</p>
                     {item.what_it_means && (
-                      <div className="mt-3 rounded-lg border border-[#0EA5E9]/10 bg-[#0EA5E9]/[0.03] px-4 py-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#0EA5E9]">What this means</p>
+                      <div className="mt-3 rounded-lg border border-[#2563EB]/10 bg-[#2563EB]/[0.03] px-4 py-3">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#2563EB]">What this means</p>
                         <p className="mt-1 text-sm text-white/60">{item.what_it_means}</p>
                       </div>
                     )}
@@ -268,7 +268,7 @@ export default async function IntelligencePage() {
                     <div key={r.announced_at + r.company} className="border-t border-white/[0.04] pt-2">
                       <div className="flex items-center justify-between">
                         <p className="text-xs font-semibold text-white">{r.company}</p>
-                        <p className="font-mono text-xs font-bold text-[#0EA5E9]">{formatAmount(r.amount_usd)}</p>
+                        <p className="font-mono text-xs font-bold text-[#2563EB]">{formatAmount(r.amount_usd)}</p>
                       </div>
                       {r.round_type && (
                         <p className="text-[10px] text-white/20">{r.round_type}</p>
@@ -289,7 +289,7 @@ export default async function IntelligencePage() {
                   {trendingTags.map(([tag, count]) => (
                     <span key={tag} className="flex items-center gap-1 rounded-full border border-white/[0.06] px-2.5 py-1 text-[10px] text-white/40">
                       {tag}
-                      <span className="font-mono text-[#0EA5E9]">{count}</span>
+                      <span className="font-mono text-[#2563EB]">{count}</span>
                     </span>
                   ))}
                 </div>
@@ -302,7 +302,7 @@ export default async function IntelligencePage() {
               <p className="mt-1 text-xs text-white/30">Robotimus can analyze any item in this feed.</p>
               <Link
                 href="/advisor"
-                className="mt-3 block rounded-lg bg-[#0EA5E9] px-4 py-2.5 text-center text-xs font-semibold text-black transition-opacity hover:opacity-90"
+                className="mt-3 block rounded-lg bg-[#2563EB] px-4 py-2.5 text-center text-xs font-semibold text-black transition-opacity hover:opacity-90"
               >
                 Ask Robotimus
               </Link>

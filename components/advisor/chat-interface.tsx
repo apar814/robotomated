@@ -317,7 +317,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                   <button
                     key={prompt.label}
                     onClick={() => sendMessage(prompt.label)}
-                    className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-left text-sm text-white/50 transition-all hover:border-[#0EA5E9]/30 hover:bg-white/[0.04] hover:text-white/80"
+                    className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-left text-sm text-white/50 transition-all hover:border-[#2563EB]/30 hover:bg-white/[0.04] hover:text-white/80"
                   >
                     <PromptIcon type={prompt.icon} />
                     <span>{prompt.label}</span>
@@ -379,7 +379,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-white/50 transition-all hover:border-[#0EA5E9]/30 hover:text-white/80"
+                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-white/50 transition-all hover:border-[#2563EB]/30 hover:text-white/80"
                 >
                   {q}
                 </button>
@@ -392,7 +392,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
             <div className="mb-4 ml-8 flex flex-wrap gap-2">
               <Link
                 href="/explore"
-                className="rounded-lg border border-[#0EA5E9]/20 bg-[#0EA5E9]/10 px-3 py-1.5 text-xs font-medium text-[#0EA5E9] transition-colors hover:bg-[#0EA5E9]/20"
+                className="rounded-lg border border-[#2563EB]/20 bg-[#2563EB]/10 px-3 py-1.5 text-xs font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB]/20"
               >
                 Browse all robots
               </Link>
@@ -433,12 +433,12 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               placeholder="Ask Robotimus about robots..."
               rows={1}
               disabled={streaming}
-              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#0EA5E9]/40 focus:outline-none disabled:opacity-50"
+              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#2563EB]/40 focus:outline-none disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={!input.trim() || streaming}
-              className="shrink-0 rounded-xl bg-[#0EA5E9] px-4 py-3 text-[#0A0F1E] transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="shrink-0 rounded-xl bg-[#2563EB] px-4 py-3 text-[#0A0F1E] transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 12h14" />
@@ -467,9 +467,9 @@ function hasRobotCards(content: string): boolean {
 function TypingIndicator() {
   return (
     <span className="ml-1 inline-flex items-center gap-0.5">
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "0ms" }} />
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "150ms" }} />
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#0EA5E9]" style={{ animationDelay: "300ms" }} />
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "0ms" }} />
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "150ms" }} />
+      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "300ms" }} />
     </span>
   );
 }

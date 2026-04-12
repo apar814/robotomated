@@ -7,7 +7,7 @@ import { getActionImage, getThumbnailUrl } from "@/lib/action-images";
    Icon name → SVG mapping (no emoji, no deps)
    ──────────────────────────────────────────── */
 
-const svgProps = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#0EA5E9", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+const svgProps = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#2563EB", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
 
 function iconToSvg(iconName: string) {
   switch (iconName) {

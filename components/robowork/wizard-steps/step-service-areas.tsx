@@ -213,7 +213,7 @@ export default function StepServiceAreas({ data, updateData }: StepProps) {
           <span
             className="inline-flex h-5 w-9 items-center rounded-full px-0.5 transition-colors"
             style={{
-              background: showMultiple ? "#0EA5E9" : "var(--theme-border)",
+              background: showMultiple ? "#2563EB" : "var(--theme-border)",
             }}
           >
             <span
@@ -271,8 +271,8 @@ export default function StepServiceAreas({ data, updateData }: StepProps) {
                 onClick={addCity}
                 className="rounded-lg border px-4 py-2 text-sm font-medium transition-colors hover:opacity-80"
                 style={{
-                  borderColor: "#0EA5E9",
-                  color: "#0EA5E9",
+                  borderColor: "#2563EB",
+                  color: "#2563EB",
                 }}
               >
                 + Add City

@@ -22,7 +22,7 @@ export function AdvisorCtaStrip() {
         </p>
         <Link
           href="/advisor"
-          className="mt-5 inline-flex items-center gap-2 rounded-[4px] bg-electric-blue px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-black transition-shadow hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+          className="mt-5 inline-flex items-center gap-2 rounded-[4px] bg-electric-blue px-6 py-2.5 font-mono text-[10px] font-bold tracking-widest text-black transition-shadow hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
         >
           ASK ROBOTIMUS →
         </Link>

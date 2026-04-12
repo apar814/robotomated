@@ -54,15 +54,15 @@ function getInitials(name: string): string {
 const BOLT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" width="140" height="175">
   <!-- Antenna -->
   <line x1="80" y1="8" x2="80" y2="28" stroke="#64748B" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="80" cy="6" r="5" fill="#0EA5E9"/>
+  <circle cx="80" cy="6" r="5" fill="#2563EB"/>
   <!-- Head -->
   <rect x="38" y="28" width="84" height="60" rx="8" fill="#334155"/>
   <rect x="42" y="32" width="76" height="52" rx="5" fill="#475569"/>
   <!-- Eyes -->
   <rect x="52" y="44" width="20" height="14" rx="3" fill="#0F172A"/>
-  <rect x="54" y="46" width="16" height="10" rx="2" fill="#0EA5E9"/>
+  <rect x="54" y="46" width="16" height="10" rx="2" fill="#2563EB"/>
   <rect x="88" y="44" width="20" height="14" rx="3" fill="#0F172A"/>
-  <rect x="90" y="46" width="16" height="10" rx="2" fill="#0EA5E9"/>
+  <rect x="90" y="46" width="16" height="10" rx="2" fill="#2563EB"/>
   <!-- Grin -->
   <rect x="56" y="68" width="48" height="8" rx="4" fill="#0F172A"/>
   <rect x="60" y="69" width="8" height="5" rx="1" fill="#FFFFFF"/>
@@ -74,7 +74,7 @@ const BOLT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" 
   <rect x="28" y="98" width="104" height="70" rx="8" fill="#334155"/>
   <rect x="32" y="102" width="96" height="62" rx="5" fill="#475569"/>
   <!-- Lightning bolt -->
-  <polygon points="72,110 84,110 78,128 90,128 68,152 74,136 62,136" fill="#0EA5E9"/>
+  <polygon points="72,110 84,110 78,128 90,128 68,152 74,136 62,136" fill="#2563EB"/>
   <!-- Arms -->
   <rect x="10" y="102" width="18" height="44" rx="6" fill="#334155"/>
   <rect x="132" y="102" width="18" height="44" rx="6" fill="#334155"/>
@@ -90,13 +90,13 @@ const BOLT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" 
 // Small BOLT head for "BOLT SAYS" section
 const BOLT_HEAD_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="38 0 84 90" width="48" height="52">
   <line x1="80" y1="8" x2="80" y2="28" stroke="#64748B" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="80" cy="6" r="5" fill="#0EA5E9"/>
+  <circle cx="80" cy="6" r="5" fill="#2563EB"/>
   <rect x="38" y="28" width="84" height="60" rx="8" fill="#334155"/>
   <rect x="42" y="32" width="76" height="52" rx="5" fill="#475569"/>
   <rect x="52" y="44" width="20" height="14" rx="3" fill="#0F172A"/>
-  <rect x="54" y="46" width="16" height="10" rx="2" fill="#0EA5E9"/>
+  <rect x="54" y="46" width="16" height="10" rx="2" fill="#2563EB"/>
   <rect x="88" y="44" width="20" height="14" rx="3" fill="#0F172A"/>
-  <rect x="90" y="46" width="16" height="10" rx="2" fill="#0EA5E9"/>
+  <rect x="90" y="46" width="16" height="10" rx="2" fill="#2563EB"/>
   <rect x="56" y="68" width="48" height="8" rx="4" fill="#0F172A"/>
   <rect x="60" y="69" width="8" height="5" rx="1" fill="#FFFFFF"/>
   <rect x="72" y="69" width="8" height="5" rx="1" fill="#FFFFFF"/>
@@ -117,7 +117,7 @@ interface RobotCard {
 
 function buildRobotCard(r: RobotCard, rank: number): string {
   const F = "Arial, Helvetica, sans-serif";
-  const borderColor = rank === 1 ? "#0EA5E9" : rank === 2 ? "#94A3B8" : "#E2E4EA";
+  const borderColor = rank === 1 ? "#2563EB" : rank === 2 ? "#94A3B8" : "#E2E4EA";
   const initials = getInitials(r.mfr);
   const catLabel = r.category.toUpperCase().replace(/&/g, "&amp;");
 
@@ -150,7 +150,7 @@ function buildRobotCard(r: RobotCard, rank: number): string {
         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin-top:12px;width:100%;">
           <tr>
             <td style="font-family:${F};">
-              <a href="https://robotomated.com/explore" style="color:#0EA5E9;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.5px;font-family:${F};">VIEW ANALYSIS &rarr;</a>
+              <a href="https://robotomated.com/explore" style="color:#2563EB;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.5px;font-family:${F};">VIEW ANALYSIS &rarr;</a>
             </td>
             <td style="text-align:right;font-family:${F};">
               <span style="display:inline-block;background:#0F1117;color:#FFFFFF;font-size:13px;font-weight:700;padding:4px 10px;font-family:${F};">${r.score.toFixed(1)}</span>
@@ -268,7 +268,7 @@ function buildEmailHtml(opts: {
       <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
           <td width="50%" style="padding:0 6px 12px 0;vertical-align:top;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #0EA5E9;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #2563EB;">
               <tr><td style="padding:20px;font-family:${F};">
                 <div style="color:#0F1117;font-size:22px;font-weight:800;">40-65%</div>
                 <div style="color:#64748B;font-size:12px;margin-top:4px;line-height:1.5;">Labor cost reduction in automated facilities</div>
@@ -276,7 +276,7 @@ function buildEmailHtml(opts: {
             </table>
           </td>
           <td width="50%" style="padding:0 0 12px 6px;vertical-align:top;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #0EA5E9;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #2563EB;">
               <tr><td style="padding:20px;font-family:${F};">
                 <div style="color:#0F1117;font-size:22px;font-weight:800;">18 mo</div>
                 <div style="color:#64748B;font-size:12px;margin-top:4px;line-height:1.5;">Average ROI payback at standard utilization</div>
@@ -286,7 +286,7 @@ function buildEmailHtml(opts: {
         </tr>
         <tr>
           <td width="50%" style="padding:0 6px 0 0;vertical-align:top;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #0EA5E9;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #2563EB;">
               <tr><td style="padding:20px;font-family:${F};">
                 <div style="color:#0F1117;font-size:22px;font-weight:800;">$2.3M</div>
                 <div style="color:#64748B;font-size:12px;margin-top:4px;line-height:1.5;">Average annual savings per automated facility</div>
@@ -294,7 +294,7 @@ function buildEmailHtml(opts: {
             </table>
           </td>
           <td width="50%" style="padding:0 0 0 6px;vertical-align:top;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #0EA5E9;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;border-top:3px solid #2563EB;">
               <tr><td style="padding:20px;font-family:${F};">
                 <div style="color:#0F1117;font-size:22px;font-weight:800;">99.5%</div>
                 <div style="color:#64748B;font-size:12px;margin-top:4px;line-height:1.5;">Order accuracy in fully automated warehouses</div>
@@ -352,7 +352,7 @@ function buildEmailHtml(opts: {
           <td style="padding:24px;font-family:${F};">
             <div style="color:#334155;font-size:14px;line-height:1.7;">${fundingHighlight}</div>
             <div style="margin-top:14px;">
-              <a href="https://robotomated.com/market/funding" style="color:#0EA5E9;text-decoration:none;font-size:12px;font-weight:700;font-family:${F};">SEE ALL FUNDING ROUNDS &rarr;</a>
+              <a href="https://robotomated.com/market/funding" style="color:#2563EB;text-decoration:none;font-size:12px;font-weight:700;font-family:${F};">SEE ALL FUNDING ROUNDS &rarr;</a>
             </div>
           </td>
         </tr>
@@ -383,7 +383,7 @@ function buildEmailHtml(opts: {
     <td style="background:#0F1117;padding:0 32px 40px;text-align:center;border-top:1px solid #1E293B;">
       <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="margin-top:32px;">
         <tr>
-          <td style="background:#0EA5E9;padding:14px 32px;">
+          <td style="background:#2563EB;padding:14px 32px;">
             <a href="https://robotomated.com/explore" style="color:#FFFFFF;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:1px;font-family:${F};display:block;">EXPLORE THIS WEEK'S TOP ROBOTS &rarr;</a>
           </td>
         </tr>
@@ -480,7 +480,7 @@ async function main() {
   console.log("Market insight loaded from DB");
 
   // 4. Funding highlight
-  let fundingHighlight = "<strong style=\"color:#0F1117;\">Figure AI</strong> raised <strong style=\"color:#0EA5E9;\">$675M Series B</strong> led by Jeff Bezos, Microsoft, and NVIDIA &mdash; the largest humanoid robotics round ever. The round values Figure at $2.6B pre-money.";
+  let fundingHighlight = "<strong style=\"color:#0F1117;\">Figure AI</strong> raised <strong style=\"color:#2563EB;\">$675M Series B</strong> led by Jeff Bezos, Microsoft, and NVIDIA &mdash; the largest humanoid robotics round ever. The round values Figure at $2.6B pre-money.";
 
   const { data: rounds } = await sb
     .from("funding_rounds")
@@ -490,7 +490,7 @@ async function main() {
 
   if (rounds && rounds.length > 0) {
     const f = rounds[0] as Record<string, unknown>;
-    fundingHighlight = `<strong style="color:#0F1117;">${f.company}</strong> raised <strong style="color:#0EA5E9;">${f.amount} ${f.round || ""}</strong>${f.investors ? ` led by ${f.investors}` : ""}. Track all robotics funding rounds on our investment tracker.`;
+    fundingHighlight = `<strong style="color:#0F1117;">${f.company}</strong> raised <strong style="color:#2563EB;">${f.amount} ${f.round || ""}</strong>${f.investors ? ` led by ${f.investors}` : ""}. Track all robotics funding rounds on our investment tracker.`;
   }
 
   console.log("Funding highlight loaded from DB");

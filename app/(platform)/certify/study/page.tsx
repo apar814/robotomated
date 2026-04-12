@@ -97,7 +97,7 @@ export default function StudyCenterPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ STUDY CENTER ]
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">

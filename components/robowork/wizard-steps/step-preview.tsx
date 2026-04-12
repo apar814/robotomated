@@ -15,7 +15,7 @@ const BADGE_CONFIG = [
 
 const FULFILLMENT_COLORS: Record<string, string> = {
   delivery: "#7B2FFF",
-  pickup: "#0EA5E9",
+  pickup: "#2563EB",
   onsite: "#00E5A0",
   remote: "#F59E0B",
 };
@@ -147,7 +147,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.dailyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#0EA5E9" }}
+                      style={{ color: "#2563EB" }}
                     >
                       {formatRate(robot.dailyRate, "day")}
                     </span>
@@ -155,7 +155,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.weeklyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#0EA5E9" }}
+                      style={{ color: "#2563EB" }}
                     >
                       {formatRate(robot.weeklyRate, "week")}
                     </span>
@@ -163,7 +163,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.monthlyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#0EA5E9" }}
+                      style={{ color: "#2563EB" }}
                     >
                       {formatRate(robot.monthlyRate, "month")}
                     </span>
@@ -221,9 +221,9 @@ export default function StepPreview({ data }: StepProps) {
                 key={task}
                 className="rounded-full px-3 py-1 text-xs font-semibold"
                 style={{
-                  background: "rgba(14,165,233,0.1)",
-                  color: "#0EA5E9",
-                  border: "1px solid rgba(14,165,233,0.2)",
+                  background: "rgba(37,99,235,0.1)",
+                  color: "#2563EB",
+                  border: "1px solid rgba(37,99,235,0.2)",
                 }}
               >
                 {task}

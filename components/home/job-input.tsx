@@ -88,8 +88,8 @@ export function JobInput() {
             }
           }}
           rows={2}
-          className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-5 py-4 pr-14 font-[family-name:var(--font-ui)] text-[15px] text-white placeholder:text-transparent focus:border-[#0EA5E9]/30 focus:outline-none focus:ring-0"
-          style={{ minHeight: "56px", borderLeftWidth: "3px", borderLeftColor: value ? "#0EA5E9" : "transparent" }}
+          className="w-full resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-5 py-4 pr-14 font-[family-name:var(--font-ui)] text-[15px] text-white placeholder:text-transparent focus:border-[#2563EB]/30 focus:outline-none focus:ring-0"
+          style={{ minHeight: "56px", borderLeftWidth: "3px", borderLeftColor: value ? "#2563EB" : "transparent" }}
           aria-label="Describe your job"
         />
         {/* Animated placeholder overlay */}
@@ -103,7 +103,7 @@ export function JobInput() {
         <button
           onClick={handleSubmit}
           disabled={!value.trim()}
-          className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#0EA5E9] text-black transition-opacity disabled:opacity-20"
+          className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#2563EB] text-black transition-opacity disabled:opacity-20"
           aria-label="Analyze job"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -118,9 +118,9 @@ export function JobInput() {
           <button
             key={cat.id}
             onClick={() => handleCategory(cat.id)}
-            className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/[0.06] px-3 py-1.5 text-[11px] font-medium text-white/40 transition-all hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
+            className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/[0.06] px-3 py-1.5 text-[11px] font-medium text-white/40 transition-all hover:border-[#2563EB]/30 hover:text-[#2563EB]"
           >
-            <span className="text-white/20 transition-colors group-hover:text-[#0EA5E9]">{cat.icon}</span>
+            <span className="text-white/20 transition-colors group-hover:text-[#2563EB]">{cat.icon}</span>
             {cat.label}
           </button>
         ))}

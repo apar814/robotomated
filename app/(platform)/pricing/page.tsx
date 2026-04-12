@@ -35,7 +35,7 @@ export default function PricingPage() {
     <div className="min-h-screen" style={{ background: "var(--theme-bg)" }}>
       {/* ── HEADER ── */}
       <section className="px-4 pb-12 pt-20 text-center sm:px-6">
-        <span className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.2em] text-[#0EA5E9]">
+        <span className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.2em] text-[#2563EB]">
           [ PRICING ]
         </span>
         <h1
@@ -80,10 +80,10 @@ export default function PricingPage() {
           </div>
 
           {/* PRO CARD */}
-          <div className="rounded-2xl border border-[#0EA5E9]/20 bg-[#0D0D0D] p-8 shadow-lg shadow-[#0EA5E9]/5">
+          <div className="rounded-2xl border border-[#2563EB]/20 bg-[#0D0D0D] p-8 shadow-lg shadow-[#2563EB]/5">
             <div className="flex items-center gap-3">
               <h2 className="text-xl font-bold">Pro</h2>
-              <span className="rounded-full bg-[#0EA5E9]/10 px-3 py-0.5 text-xs font-semibold text-[#0EA5E9]">
+              <span className="rounded-full bg-[#2563EB]/10 px-3 py-0.5 text-xs font-semibold text-[#2563EB]">
                 7-day free trial
               </span>
             </div>
@@ -105,7 +105,7 @@ export default function PricingPage() {
 
             <Link
               href="/pro"
-              className="mt-8 inline-block rounded-lg bg-[#0EA5E9] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0EA5E9]/90"
+              className="mt-8 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#2563EB]/90"
             >
               Start Free Trial
             </Link>

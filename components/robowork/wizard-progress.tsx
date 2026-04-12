@@ -53,7 +53,7 @@ export function WizardProgress({ currentStep }: WizardProgressProps) {
               height: "6px",
               borderRadius: "3px",
               backgroundColor:
-                i < currentStep ? "#0EA5E9" : "var(--theme-border)",
+                i < currentStep ? "#2563EB" : "var(--theme-border)",
               transition: "background-color 0.3s ease",
             }}
             title={label}

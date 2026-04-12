@@ -57,8 +57,8 @@ export function RoboWorkSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
-          <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <span className="inline-block h-px w-6 bg-[#2563EB]" />
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             Deploy Channel
           </span>
         </div>
@@ -153,7 +153,7 @@ export function RoboWorkSection() {
           <Link
             href="/robowork/post"
             className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5"
-            style={{ background: "#0EA5E9" }}
+            style={{ background: "#2563EB" }}
           >
             Post a Job
             <svg
@@ -172,7 +172,7 @@ export function RoboWorkSection() {
           </Link>
           <Link
             href="/robowork/providers/register"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#2563EB] hover:text-[#2563EB]"
             style={{ borderColor: "var(--theme-border)" }}
           >
             Become a Provider

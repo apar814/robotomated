@@ -149,7 +149,7 @@ export default function DevelopersPage() {
               { name: "Developers", href: "/developers" },
             ]}
           />
-          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ DEVELOPER PORTAL ]</p>
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ DEVELOPER PORTAL ]</p>
           <h1 className="font-display mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
             Robotomated Intelligence API
           </h1>
@@ -178,7 +178,7 @@ export default function DevelopersPage() {
       {/* ---- Pricing ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9] text-center">[ PRICING ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ PRICING ]</p>
           <h2 className="font-display mt-3 mb-2 text-center text-2xl font-bold">
             API Pricing
           </h2>
@@ -258,7 +258,7 @@ export default function DevelopersPage() {
         className="border-b border-white/10 px-4 py-16"
       >
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ QUICKSTART ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ QUICKSTART ]</p>
           <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Getting Started
           </h2>
@@ -315,7 +315,7 @@ export default function DevelopersPage() {
       {/* ---- Authentication ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ AUTH ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ AUTH ]</p>
           <h2 className="font-display mt-3 mb-6 text-2xl font-bold">
             Authentication
           </h2>
@@ -344,7 +344,7 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Endpoints Reference ---- */}
       <section id="endpoints" className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ ENDPOINTS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ ENDPOINTS ]</p>
           <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Endpoints Reference
           </h2>
@@ -400,7 +400,7 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Response Format ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RESPONSE FORMAT ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ RESPONSE FORMAT ]</p>
           <h2 className="font-display mt-3 mb-6 text-2xl font-bold">
             Response Format
           </h2>
@@ -439,7 +439,7 @@ x-api-key: rtm_live_aBcDeFgH...`}</CodeBlock>
       {/* ---- Code Examples ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ CODE EXAMPLES ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ CODE EXAMPLES ]</p>
           <h2 className="font-display mt-3 mb-8 text-2xl font-bold">
             Code Examples
           </h2>
@@ -499,7 +499,7 @@ for robot in data:
       {/* ---- Rate Limits ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RATE LIMITS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ RATE LIMITS ]</p>
           <h2 className="font-display mt-3 mb-6 text-2xl font-bold">Rate Limits</h2>
 
           <div className="overflow-x-auto">
@@ -561,7 +561,7 @@ for robot in data:
       {/* ---- Webhooks ---- */}
       <section className="border-b border-white/10 px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ WEBHOOKS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ WEBHOOKS ]</p>
           <h2 className="font-display mt-3 mb-2 text-2xl font-bold">
             Webhook Events
           </h2>
@@ -637,7 +637,7 @@ for robot in data:
       {/* ---- CTA ---- */}
       <section className="px-4 py-20 text-center">
         <div className="mx-auto max-w-2xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ GET STARTED ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ GET STARTED ]</p>
           <h2 className="font-display mt-3 mb-4 text-2xl font-bold">
             Ready to build with robot intelligence?
           </h2>

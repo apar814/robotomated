@@ -95,11 +95,11 @@ export default function AdminReviewsPage() {
             onClick={() => setTab(t.key)}
             className={cn(
               "relative px-4 py-2 text-sm font-medium capitalize",
-              tab === t.key ? "text-[#0EA5E9]" : "text-white/40 hover:text-white/60"
+              tab === t.key ? "text-[#2563EB]" : "text-white/40 hover:text-white/60"
             )}
           >
             {t.label}
-            {tab === t.key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0EA5E9]" />}
+            {tab === t.key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2563EB]" />}
           </button>
         ))}
       </div>
@@ -135,7 +135,7 @@ export default function AdminReviewsPage() {
                       className={cn(
                         "rounded px-2 py-0.5 text-[10px] font-semibold",
                         review.review_type === "expert"
-                          ? "bg-[#0EA5E9]/10 text-[#0EA5E9]"
+                          ? "bg-[#2563EB]/10 text-[#2563EB]"
                           : "bg-white/10 text-white/60"
                       )}
                     >

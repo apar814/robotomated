@@ -116,7 +116,7 @@ export function Footer() {
             <span className="font-[family-name:var(--font-brand)] text-lg font-bold tracking-[0.04em]">
               <span className="text-white">ROBOTO</span>
               <span className="text-white/40">MATED</span>
-              <span className="text-[#0EA5E9]">.</span>
+              <span className="text-[#2563EB]">.</span>
             </span>
             <p className="mt-3 font-[family-name:var(--font-ui)] text-[13px] leading-relaxed text-white/40">
               The operating system for robotics.

@@ -98,7 +98,7 @@ export default function AdminManufacturersPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`relative px-4 py-2 text-sm font-medium capitalize transition-colors ${
-              tab === t ? "text-[#0EA5E9]" : "text-white/40 hover:text-white/60"
+              tab === t ? "text-[#2563EB]" : "text-white/40 hover:text-white/60"
             }`}
           >
             {t}
@@ -112,7 +112,7 @@ export default function AdminManufacturersPage() {
                 {pendingPartnerships.length}
               </span>
             )}
-            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0EA5E9]" />}
+            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2563EB]" />}
           </button>
         ))}
       </div>

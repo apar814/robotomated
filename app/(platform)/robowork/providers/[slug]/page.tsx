@@ -204,7 +204,7 @@ function AvailabilityBadge({ status }: { status: string }) {
     available: { label: "Available Now", color: "bg-[#00E5A0]/10 text-[#00E5A0] border-[#00E5A0]/20" },
     busy: { label: "Currently Busy", color: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
     unavailable: { label: "Unavailable", color: "bg-red-500/10 text-red-400 border-red-500/20" },
-    by_appointment: { label: "By Appointment", color: "bg-[#0EA5E9]/10 text-[#0EA5E9] border-[#0EA5E9]/20" },
+    by_appointment: { label: "By Appointment", color: "bg-[#2563EB]/10 text-[#2563EB] border-[#2563EB]/20" },
   };
   const c = config[status] || config.available;
   return (
@@ -431,7 +431,7 @@ export default async function ProviderProfilePage({ params }: Props) {
               )}
               <Link
                 href={`mailto:?subject=RoboWork inquiry: ${provider.company_name}`}
-                className="rounded-lg bg-blue px-6 py-3 font-[family-name:var(--font-mono)] text-[10px] font-semibold tracking-wider text-white transition-shadow hover:shadow-[0_0_16px_rgba(14,165,233,0.3)]"
+                className="rounded-lg bg-blue px-6 py-3 font-[family-name:var(--font-mono)] text-[10px] font-semibold tracking-wider text-white transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
               >
                 CONTACT PROVIDER
               </Link>

@@ -120,7 +120,7 @@ export default function SitemapPage() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
-          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ SITEMAP ]
           </p>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-[var(--color-text-primary)] sm:text-5xl">
@@ -135,7 +135,7 @@ export default function SitemapPage() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sections.map((section) => (
             <div key={section.title}>
-              <h2 className="mb-4 font-[family-name:var(--font-brand)] text-[11px] font-medium uppercase tracking-[0.12em] text-[#0EA5E9]">
+              <h2 className="mb-4 font-[family-name:var(--font-brand)] text-[11px] font-medium uppercase tracking-[0.12em] text-[#2563EB]">
                 {section.title}
               </h2>
               <ul className="space-y-2">
@@ -160,7 +160,7 @@ export default function SitemapPage() {
             For search engines:{" "}
             <a
               href="/sitemap.xml"
-              className="text-[#0EA5E9] hover:underline"
+              className="text-[#2563EB] hover:underline"
             >
               sitemap.xml
             </a>

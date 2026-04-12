@@ -32,7 +32,7 @@ export default function FutureOfRoboticsPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ INDUSTRY INTELLIGENCE ]
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
@@ -54,7 +54,7 @@ export default function FutureOfRoboticsPage() {
       {/* Autonomy Framework */}
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE AUTONOMY FRAMEWORK ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -126,7 +126,7 @@ export default function FutureOfRoboticsPage() {
       {/* 12 Megatrends */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 12 MEGATRENDS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">

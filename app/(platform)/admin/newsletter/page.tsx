@@ -64,7 +64,7 @@ export default function AdminNewsletterPage() {
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[10px] uppercase tracking-wider text-white/40">New This Week</p>
-          <p className="mt-1 text-2xl font-bold text-[#0EA5E9]">
+          <p className="mt-1 text-2xl font-bold text-[#2563EB]">
             {stats?.byDay?.reduce((s, d) => s + d.count, 0) || 0}
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function AdminNewsletterPage() {
           <button
             type="submit"
             disabled={sending}
-            className="rounded bg-[#0EA5E9] px-4 py-2 text-sm font-semibold text-black disabled:opacity-50"
+            className="rounded bg-[#2563EB] px-4 py-2 text-sm font-semibold text-black disabled:opacity-50"
           >
             {sending ? "Sending..." : "Send Test"}
           </button>

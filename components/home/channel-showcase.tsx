@@ -17,7 +17,7 @@ const CHANNELS: Channel[] = [
   {
     number: "01",
     name: "INTELLIGENCE",
-    accent: "#0EA5E9",
+    accent: "#2563EB",
     tagline: "Know before you buy.",
     bullets: [
       "Compare 305 robots side by side",
@@ -201,8 +201,8 @@ export default function ChannelShowcase() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 max-w-2xl">
-          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
-            <span className="inline-block h-px w-6 bg-[#0EA5E9]" />
+          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <span className="inline-block h-px w-6 bg-[#2563EB]" />
             Platform Channels
           </p>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-[var(--theme-text-primary)] sm:text-4xl">

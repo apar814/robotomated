@@ -18,7 +18,7 @@ export function HeroPills() {
         <Link
           key={pill.label}
           href={pill.href}
-          className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/[0.06] px-3 py-1.5 text-[11px] font-medium text-white/40 transition-all hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
+          className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/[0.06] px-3 py-1.5 text-[11px] font-medium text-white/40 transition-all hover:border-[#2563EB]/30 hover:text-[#2563EB]"
         >
           <span className="text-white/20">{pill.icon}</span>
           {pill.label}

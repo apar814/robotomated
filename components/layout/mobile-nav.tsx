@@ -64,7 +64,7 @@ export function MobileNav() {
               key={item.href}
               href={item.href}
               className={`flex min-w-[64px] flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${
-                isActive ? "text-[#0EA5E9]" : "text-white/35"
+                isActive ? "text-[#2563EB]" : "text-white/35"
               }`}
             >
               {item.icon}

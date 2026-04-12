@@ -131,7 +131,7 @@ export default function StepPayment({ data, updateData }: StepProps) {
             </div>
             <div
               className="text-lg font-bold"
-              style={{ color: "#0EA5E9" }}
+              style={{ color: "#2563EB" }}
             >
               88%
             </div>
@@ -159,7 +159,7 @@ export default function StepPayment({ data, updateData }: StepProps) {
             <li key={req} className="flex items-center gap-2">
               <span
                 className="flex h-5 w-5 items-center justify-center rounded-full text-xs text-white"
-                style={{ background: "#0EA5E9" }}
+                style={{ background: "#2563EB" }}
               >
                 ✓
               </span>
@@ -180,7 +180,7 @@ export default function StepPayment({ data, updateData }: StepProps) {
           type="button"
           onClick={handleConnect}
           className="w-full rounded-lg px-4 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
-          style={{ background: "#0EA5E9" }}
+          style={{ background: "#2563EB" }}
         >
           Connect your bank account
         </button>
@@ -213,7 +213,7 @@ export default function StepPayment({ data, updateData }: StepProps) {
         }}
       >
         <div className="flex items-start gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>
           <div>
             <div
               className="text-xs font-semibold"

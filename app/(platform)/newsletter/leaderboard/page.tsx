@@ -40,7 +40,7 @@ export default async function LeaderboardPage() {
     <div className="min-h-screen bg-[#080808]">
       <section className="px-4 pb-16 pt-12">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#0EA5E9]">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#2563EB]">
             Newsletter Community
           </p>
           <h1 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">
@@ -62,7 +62,7 @@ export default async function LeaderboardPage() {
               </p>
               <a
                 href="/newsletter"
-                className="mt-4 inline-block rounded-lg bg-[#0EA5E9] px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
               >
                 Subscribe and get your link
               </a>
@@ -76,7 +76,7 @@ export default async function LeaderboardPage() {
                     i === 0
                       ? "border-[#C8FF00]/30 bg-[#C8FF00]/[0.04]"
                       : i < 3
-                        ? "border-[#0EA5E9]/20 bg-[#0EA5E9]/[0.02]"
+                        ? "border-[#2563EB]/20 bg-[#2563EB]/[0.02]"
                         : "border-white/10 bg-white/[0.02]"
                   }`}
                 >
@@ -86,7 +86,7 @@ export default async function LeaderboardPage() {
                         i === 0
                           ? "bg-[#C8FF00] text-black"
                           : i < 3
-                            ? "bg-[#0EA5E9]/20 text-[#0EA5E9]"
+                            ? "bg-[#2563EB]/20 text-[#2563EB]"
                             : "bg-white/10 text-white/40"
                       }`}
                     >
@@ -106,11 +106,11 @@ export default async function LeaderboardPage() {
             <h2 className="text-sm font-semibold text-white">How it works</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div>
-                <p className="font-mono text-2xl font-bold text-[#0EA5E9]">1</p>
+                <p className="font-mono text-2xl font-bold text-[#2563EB]">1</p>
                 <p className="mt-1 text-xs text-white/50">Subscribe to the newsletter</p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-[#0EA5E9]">2</p>
+                <p className="font-mono text-2xl font-bold text-[#2563EB]">2</p>
                 <p className="mt-1 text-xs text-white/50">Share your unique referral link</p>
               </div>
               <div>

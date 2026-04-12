@@ -65,7 +65,7 @@ export default function AdminRoboWorkPage() {
       <div className="mt-6 grid gap-3 sm:grid-cols-4">
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[10px] uppercase tracking-wider text-white/40">Active Jobs</p>
-          <p className="mt-1 text-2xl font-bold text-[#0EA5E9]">{stats.activeJobs}</p>
+          <p className="mt-1 text-2xl font-bold text-[#2563EB]">{stats.activeJobs}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[10px] uppercase tracking-wider text-white/40">Providers</p>
@@ -88,11 +88,11 @@ export default function AdminRoboWorkPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`relative px-4 py-2 text-sm font-medium capitalize ${
-              tab === t ? "text-[#0EA5E9]" : "text-white/40 hover:text-white/60"
+              tab === t ? "text-[#2563EB]" : "text-white/40 hover:text-white/60"
             }`}
           >
             {t}
-            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0EA5E9]" />}
+            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2563EB]" />}
           </button>
         ))}
       </div>
@@ -123,7 +123,7 @@ export default function AdminRoboWorkPage() {
                         ? "bg-[#00E5A0]/10 text-[#00E5A0]"
                         : j.status === "draft"
                           ? "bg-white/10 text-white/50"
-                          : "bg-[#0EA5E9]/10 text-[#0EA5E9]"
+                          : "bg-[#2563EB]/10 text-[#2563EB]"
                     }`}
                   >
                     {j.status}

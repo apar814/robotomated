@@ -204,10 +204,10 @@ export function CommandPalette() {
           className="relative overflow-hidden"
           style={{
             background: "#080808",
-            border: "1px solid rgba(14,165,233,0.25)",
+            border: "1px solid rgba(37,99,235,0.25)",
             borderRadius: "16px",
             boxShadow:
-              "0 0 0 1px rgba(14,165,233,0.1), 0 0 60px rgba(14,165,233,0.15), 0 32px 80px rgba(0,0,0,0.8)",
+              "0 0 0 1px rgba(37,99,235,0.1), 0 0 60px rgba(37,99,235,0.15), 0 32px 80px rgba(0,0,0,0.8)",
           }}
         >
           {/* Corner brackets */}
@@ -219,17 +219,17 @@ export function CommandPalette() {
           {/* Search input row */}
           <div
             className="flex items-center gap-3"
-            style={{ padding: "18px 20px", borderBottom: "1px solid rgba(14,165,233,0.1)" }}
+            style={{ padding: "18px 20px", borderBottom: "1px solid rgba(37,99,235,0.1)" }}
           >
             {loading ? (
               <div
                 className="h-[20px] w-[20px] shrink-0 animate-spin rounded-full border-2 border-transparent"
-                style={{ borderTopColor: "#0EA5E9" }}
+                style={{ borderTopColor: "#2563EB" }}
               />
             ) : (
               <svg
                 className="h-[20px] w-[20px] shrink-0"
-                style={{ color: "#0EA5E9" }}
+                style={{ color: "#2563EB" }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -249,7 +249,7 @@ export function CommandPalette() {
               className="min-w-0 flex-1 bg-transparent font-normal text-white outline-none"
               style={{
                 fontSize: "20px",
-                caretColor: "#0EA5E9",
+                caretColor: "#2563EB",
                 fontFamily: "inherit",
               }}
             />
@@ -285,7 +285,7 @@ export function CommandPalette() {
                     onMouseEnter={() => setSelected(i)}
                     animDelay={i * 20}
                   >
-                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#0EA5E9" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M9 5l7 7-7 7" /></svg>
+                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><path d="M9 5l7 7-7 7" /></svg>
                     <span className="flex-1 text-sm font-medium text-white">{link.label}</span>
                     <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "13px" }}>&rarr;</span>
                   </ResultRow>
@@ -307,9 +307,9 @@ export function CommandPalette() {
                         fontSize: "12px",
                       }}
                       onMouseOver={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(14,165,233,0.5)";
-                        e.currentTarget.style.color = "#0EA5E9";
-                        e.currentTarget.style.background = "rgba(14,165,233,0.08)";
+                        e.currentTarget.style.borderColor = "rgba(37,99,235,0.5)";
+                        e.currentTarget.style.color = "#2563EB";
+                        e.currentTarget.style.background = "rgba(37,99,235,0.08)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
@@ -338,8 +338,8 @@ export function CommandPalette() {
                         fontSize: "11px",
                       }}
                       onMouseOver={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(14,165,233,0.3)";
-                        e.currentTarget.style.color = "#0EA5E9";
+                        e.currentTarget.style.borderColor = "rgba(37,99,235,0.3)";
+                        e.currentTarget.style.color = "#2563EB";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
@@ -395,11 +395,11 @@ export function CommandPalette() {
                               <span
                                 className="font-mono text-xs font-bold"
                                 style={{
-                                  background: "rgba(14,165,233,0.15)",
-                                  color: "#0EA5E9",
+                                  background: "rgba(37,99,235,0.15)",
+                                  color: "#2563EB",
                                   padding: "2px 8px",
                                   borderRadius: "4px",
-                                  border: "1px solid rgba(14,165,233,0.2)",
+                                  border: "1px solid rgba(37,99,235,0.2)",
                                 }}
                               >
                                 {Math.round(r.robo_score)}
@@ -463,7 +463,7 @@ export function CommandPalette() {
                         >
                           <div
                             className="flex h-8 w-8 shrink-0 items-center justify-center text-sm"
-                            style={{ borderRadius: "6px", background: "rgba(14,165,233,0.1)" }}
+                            style={{ borderRadius: "6px", background: "rgba(37,99,235,0.1)" }}
                           >
                             {"\ud83d\udcc1"}
                           </div>
@@ -495,7 +495,7 @@ export function CommandPalette() {
               <div className="flex items-center justify-center py-12">
                 <div
                   className="h-6 w-6 animate-spin rounded-full border-2 border-transparent"
-                  style={{ borderTopColor: "#0EA5E9" }}
+                  style={{ borderTopColor: "#2563EB" }}
                 />
               </div>
             )}
@@ -505,25 +505,25 @@ export function CommandPalette() {
           {hasQuery && (
             <button
               onClick={() => navigateTo(`/advisor?q=${encodeURIComponent(query)}`)}
-              className="flex w-full items-center gap-3 text-left transition-colors duration-150 hover:bg-[rgba(14,165,233,0.08)]"
+              className="flex w-full items-center gap-3 text-left transition-colors duration-150 hover:bg-[rgba(37,99,235,0.08)]"
               style={{
                 padding: "12px 20px",
-                borderTop: "1px solid rgba(14,165,233,0.1)",
-                background: "rgba(14,165,233,0.05)",
+                borderTop: "1px solid rgba(37,99,235,0.1)",
+                background: "rgba(37,99,235,0.05)",
               }}
             >
               <div
                 className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
-                style={{ background: "rgba(14,165,233,0.15)", border: "1px solid rgba(14,165,233,0.25)" }}
+                style={{ background: "rgba(37,99,235,0.15)", border: "1px solid rgba(37,99,235,0.25)" }}
               >
-                <svg className="h-3 w-3" style={{ color: "#0EA5E9" }} fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-3 w-3" style={{ color: "#2563EB" }} fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2a1 1 0 0 1 1 1v2.07A8.002 8.002 0 0 1 19.93 12H22a1 1 0 1 1 0 2h-2.07A8.002 8.002 0 0 1 13 20.93V23a1 1 0 1 1-2 0v-2.07A8.002 8.002 0 0 1 4.07 14H2a1 1 0 1 1 0-2h2.07A8.002 8.002 0 0 1 11 5.07V3a1 1 0 0 1 1-1zm0 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
                 </svg>
               </div>
               <span className="flex-1 text-[13px]" style={{ color: "rgba(255,255,255,0.5)" }}>
                 Ask Robotimus about &lsquo;<span className="text-white/70">{query}</span>&rsquo;
               </span>
-              <span className="text-[11px] font-semibold" style={{ color: "#0EA5E9" }}>&rarr;</span>
+              <span className="text-[11px] font-semibold" style={{ color: "#2563EB" }}>&rarr;</span>
             </button>
           )}
 
@@ -598,8 +598,8 @@ export function CommandPalette() {
         }
         .cp-scroll::-webkit-scrollbar { width: 4px; }
         .cp-scroll::-webkit-scrollbar-track { background: transparent; }
-        .cp-scroll::-webkit-scrollbar-thumb { background: rgba(14,165,233,0.2); border-radius: 2px; }
-        .cp-scroll::-webkit-scrollbar-thumb:hover { background: rgba(14,165,233,0.4); }
+        .cp-scroll::-webkit-scrollbar-thumb { background: rgba(37,99,235,0.2); border-radius: 2px; }
+        .cp-scroll::-webkit-scrollbar-thumb:hover { background: rgba(37,99,235,0.4); }
       `}</style>
     </>
   );
@@ -610,7 +610,7 @@ export function CommandPalette() {
 function CornerBracket({ position }: { position: "top-left" | "top-right" | "bottom-left" | "bottom-right" }) {
   const size = 12;
   const width = 2;
-  const color = "rgba(14,165,233,0.4)";
+  const color = "rgba(37,99,235,0.4)";
   const offset = 6;
 
   const styles: React.CSSProperties = {
@@ -692,8 +692,8 @@ function ResultRow({
       style={{
         height: tall ? "56px" : undefined,
         padding: tall ? "0 20px" : "10px 20px",
-        background: selected ? "rgba(14,165,233,0.08)" : "transparent",
-        borderLeft: selected ? "2px solid #0EA5E9" : "2px solid transparent",
+        background: selected ? "rgba(37,99,235,0.08)" : "transparent",
+        borderLeft: selected ? "2px solid #2563EB" : "2px solid transparent",
         animation: `cpRowIn 180ms ${animDelay}ms both cubic-bezier(0.16, 1, 0.3, 1)`,
       }}
     >

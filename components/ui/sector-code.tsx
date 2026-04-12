@@ -13,8 +13,8 @@ export function SectorCode({ code, className }: SectorCodeProps) {
         className
       )}
       style={{
-        background: "rgba(14,165,233,0.06)",
-        border: "1px solid rgba(14,165,233,0.08)",
+        background: "rgba(37,99,235,0.06)",
+        border: "1px solid rgba(37,99,235,0.08)",
       }}
     >
       [{code}]

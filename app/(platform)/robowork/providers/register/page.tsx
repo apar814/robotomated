@@ -152,7 +152,7 @@ export default function RegisterProviderPage() {
                 display: "inline-block",
                 padding: "0.75rem 1.5rem",
                 borderRadius: "0.5rem",
-                backgroundColor: "#0EA5E9",
+                backgroundColor: "#2563EB",
                 color: "#000",
                 fontSize: "0.875rem",
                 fontWeight: 600,
@@ -225,7 +225,7 @@ export default function RegisterProviderPage() {
                   fontSize: "10px",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "#0EA5E9",
+                  color: "#2563EB",
                   fontWeight: 600,
                 }}
               >
@@ -316,7 +316,7 @@ export default function RegisterProviderPage() {
                     justifyContent: "center",
                     borderRadius: "0.5rem",
                     backgroundColor: "rgba(14, 165, 233, 0.1)",
-                    color: "#0EA5E9",
+                    color: "#2563EB",
                     fontFamily: "var(--font-mono, monospace)",
                     fontSize: "0.875rem",
                     fontWeight: 700,
@@ -339,7 +339,7 @@ export default function RegisterProviderPage() {
                       marginTop: "0.125rem",
                       fontFamily: "var(--font-mono, monospace)",
                       fontSize: "0.75rem",
-                      color: "#0EA5E9",
+                      color: "#2563EB",
                     }}
                   >
                     {s.subtitle}
@@ -418,7 +418,7 @@ export default function RegisterProviderPage() {
                   padding: "0.375rem 0.875rem",
                   borderRadius: "9999px",
                   backgroundColor: "rgba(14, 165, 233, 0.12)",
-                  color: "#0EA5E9",
+                  color: "#2563EB",
                   fontSize: "0.8125rem",
                   fontWeight: 500,
                 }}

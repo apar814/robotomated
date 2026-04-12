@@ -139,7 +139,7 @@ export default async function AnalyticsDashboard() {
                         <div style={{ color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "Arial, sans-serif" }}>{r.name}</div>
                         <div style={{ color: "#555", fontSize: 11, fontFamily: "Arial, sans-serif" }}>{mfr}</div>
                       </td>
-                      <td style={{ color: "#0EA5E9", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
+                      <td style={{ color: "#2563EB", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
                         {r.robo_score}
                       </td>
                     </tr>
@@ -161,7 +161,7 @@ export default async function AnalyticsDashboard() {
                   .map(([name, count]) => (
                     <tr key={name} style={{ borderBottom: "1px solid #1E1E1E" }}>
                       <td style={{ color: "#ccc", fontSize: 13, padding: "8px 4px", fontFamily: "Arial, sans-serif" }}>{name}</td>
-                      <td style={{ color: "#0EA5E9", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
+                      <td style={{ color: "#2563EB", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
                         {count}
                       </td>
                     </tr>
@@ -179,7 +179,7 @@ export default async function AnalyticsDashboard() {
             </h2>
             <div style={{ color: "#ccc", fontSize: 14, lineHeight: 1.8, fontFamily: "Arial, sans-serif" }}>
               <div>Total subscribers: <strong style={{ color: "#fff" }}>{totalSubscribers || 0}</strong></div>
-              <div>New this week: <strong style={{ color: "#0EA5E9" }}>{weekSubscribers || 0}</strong></div>
+              <div>New this week: <strong style={{ color: "#2563EB" }}>{weekSubscribers || 0}</strong></div>
               <div>Reviews in DB: <strong style={{ color: "#fff" }}>{totalReviews || 0}</strong></div>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default async function AnalyticsDashboard() {
                   {topReferrers.map((r) => (
                     <tr key={r.email} style={{ borderBottom: "1px solid #1E1E1E" }}>
                       <td style={{ color: "#ccc", fontSize: 12, padding: "8px 4px", fontFamily: "Arial, sans-serif" }}>{r.email}</td>
-                      <td style={{ color: "#0EA5E9", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
+                      <td style={{ color: "#2563EB", fontSize: 14, fontWeight: 700, textAlign: "right" as const, padding: "8px 4px", fontFamily: "monospace" }}>
                         {r.referral_count}
                       </td>
                     </tr>
@@ -212,7 +212,7 @@ export default async function AnalyticsDashboard() {
           <p style={{ color: "#64748B", fontSize: 13, margin: 0, fontFamily: "Arial, sans-serif" }}>
             Real-time event tracking (robot_viewed, compare_started, tco_calculated, newsletter_signup, advisor_session, affiliate_click) is captured via PostHog.
             Connect the PostHog API to surface live event counts here. Dashboard at{" "}
-            <Link href="https://us.posthog.com" style={{ color: "#0EA5E9", textDecoration: "none" }}>us.posthog.com</Link>.
+            <Link href="https://us.posthog.com" style={{ color: "#2563EB", textDecoration: "none" }}>us.posthog.com</Link>.
           </p>
         </div>
 

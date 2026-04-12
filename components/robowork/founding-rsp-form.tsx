@@ -235,7 +235,7 @@ export function FoundingRspForm() {
         type="submit"
         disabled={submitting}
         className="w-full rounded px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90 disabled:opacity-50"
-        style={{ backgroundColor: "#0EA5E9", color: "#000" }}
+        style={{ backgroundColor: "#2563EB", color: "#000" }}
       >
         {submitting ? "Submitting..." : "Submit Application"}
       </button>

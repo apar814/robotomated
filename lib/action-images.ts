@@ -32,7 +32,7 @@ export const ACTION_IMAGES: Record<string, ActionImage> = {
     icon: "Package",
     label: "Move Materials",
     subtitle: "AMRs, conveyors, forklifts",
-    color: "#0EA5E9",
+    color: "#2563EB",
   },
   "pick-pack": {
     youtubeId: "quMz3FhOMZk",
@@ -112,7 +112,7 @@ export const ACTION_IMAGES: Record<string, ActionImage> = {
     gradient: "from-blue-950 via-blue-900 to-cyan-950",
     icon: "Warehouse",
     label: "Warehouse",
-    color: "#0EA5E9",
+    color: "#2563EB",
   },
   medical: {
     youtubeId: "dRi4Jl7dLkQ",
@@ -161,7 +161,7 @@ export const ACTION_IMAGES: Record<string, ActionImage> = {
     gradient: "from-sky-950 via-sky-900 to-blue-950",
     icon: "Home",
     label: "Consumer",
-    color: "#38BDF8",
+    color: "#60A5FA",
   },
 };
 

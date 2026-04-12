@@ -22,7 +22,7 @@ export default async function NotFound() {
 
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-4 text-center">
-      <p className="font-[family-name:var(--font-brand)] text-7xl font-bold text-[#0EA5E9]/20 sm:text-8xl">
+      <p className="font-[family-name:var(--font-brand)] text-7xl font-bold text-[#2563EB]/20 sm:text-8xl">
         404
       </p>
       <h1 className="mt-4 text-2xl font-bold sm:text-3xl">
@@ -36,13 +36,13 @@ export default async function NotFound() {
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link
           href="/explore"
-          className="rounded-lg bg-[#0EA5E9] px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+          className="rounded-lg bg-[#2563EB] px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
         >
           Explore All Robots
         </Link>
         <Link
           href="/advisor"
-          className="rounded-lg border border-white/[0.08] px-6 py-2.5 text-sm font-medium text-white/60 transition-colors hover:border-[#0EA5E9]/30 hover:text-white"
+          className="rounded-lg border border-white/[0.08] px-6 py-2.5 text-sm font-medium text-white/60 transition-colors hover:border-[#2563EB]/30 hover:text-white"
         >
           Ask Robotimus
         </Link>
@@ -62,10 +62,10 @@ export default async function NotFound() {
                 <Link
                   key={r.slug as string}
                   href={`/explore/${catSlug}/${r.slug}`}
-                  className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left transition-all hover:border-[#0EA5E9]/20"
+                  className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left transition-all hover:border-[#2563EB]/20"
                 >
-                  <p className="text-[10px] text-[#0EA5E9]">{mfr}</p>
-                  <p className="mt-0.5 text-sm font-semibold text-white transition-colors group-hover:text-[#0EA5E9]">
+                  <p className="text-[10px] text-[#2563EB]">{mfr}</p>
+                  <p className="mt-0.5 text-sm font-semibold text-white transition-colors group-hover:text-[#2563EB]">
                     {r.name as string}
                   </p>
                   {r.robo_score != null && (

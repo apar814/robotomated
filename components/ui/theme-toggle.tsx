@@ -40,7 +40,7 @@ export function ThemeToggle() {
         className="absolute flex h-5 w-5 items-center justify-center rounded-full transition-all duration-200"
         style={{
           left: isDark ? "4px" : "calc(100% - 24px)",
-          background: isDark ? "#0EA5E9" : "#0284C7",
+          background: isDark ? "#2563EB" : "#0284C7",
         }}
       >
         {isDark ? (

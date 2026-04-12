@@ -72,7 +72,7 @@ export default async function ProblemPage({ params }: Props) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href={`/tools/robot-finder?industry=${problem.wizardPresets.industry}&useCase=${problem.wizardPresets.useCase}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(14,165,233,0.35)]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
             >
               Find Your Solution
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -242,7 +242,7 @@ export default async function ProblemPage({ params }: Props) {
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href={`/tools/robot-finder?industry=${problem.wizardPresets.industry}&useCase=${problem.wizardPresets.useCase}`}
-                className="rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(14,165,233,0.35)]"
+                className="rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
               >
                 Find Your Solution &rarr;
               </Link>

@@ -32,7 +32,7 @@ export default function MarketplacePage() {
       {/* ── Hero ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ MARKET INTELLIGENCE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET INTELLIGENCE ]</p>
           <h1 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">Marketplace</h1>
           <p className="mt-2 text-muted">
             Buy and sell robots from verified dealers. Track funding rounds, investors, and market intelligence.

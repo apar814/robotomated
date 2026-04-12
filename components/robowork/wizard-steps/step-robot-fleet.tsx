@@ -348,7 +348,7 @@ function RobotCard({
                   className="inline-flex h-5 w-9 items-center rounded-full px-0.5 transition-colors"
                   style={{
                     background: robot.available
-                      ? "#0EA5E9"
+                      ? "#2563EB"
                       : "var(--theme-border)",
                   }}
                 >
@@ -435,7 +435,7 @@ export default function StepRobotFleet({ data, updateData }: StepProps) {
         type="button"
         onClick={addRobot}
         className="w-full rounded-lg border-2 border-dashed px-4 py-3 text-sm font-medium transition-colors hover:opacity-80"
-        style={{ borderColor: "#0EA5E9", color: "#0EA5E9" }}
+        style={{ borderColor: "#2563EB", color: "#2563EB" }}
       >
         + Add a Robot
       </button>
@@ -445,7 +445,7 @@ export default function StepRobotFleet({ data, updateData }: StepProps) {
         <div
           className="rounded-lg px-4 py-3 text-sm font-medium"
           style={{
-            background: "rgba(14,165,233,0.08)",
+            background: "rgba(37,99,235,0.08)",
             color: "var(--theme-text-primary)",
           }}
         >

@@ -50,7 +50,7 @@ export function RobotVideoEmbed({ videoId, robotName }: RobotVideoEmbedProps) {
             {/* Play button */}
             <div
               className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-110"
-              style={{ background: "var(--theme-accent-blue)", boxShadow: "0 0 30px rgba(14,165,233,0.4)" }}
+              style={{ background: "var(--theme-accent-blue)", boxShadow: "0 0 30px rgba(37,99,235,0.4)" }}
             >
               <svg className="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />

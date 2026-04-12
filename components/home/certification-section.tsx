@@ -29,7 +29,7 @@ export function CertificationSection() {
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             Certification
           </span>
         </div>
@@ -48,7 +48,7 @@ export function CertificationSection() {
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* LEFT -- For Professionals */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Professionals
             </p>
             <p className="mt-2 text-lg font-bold text-primary">
@@ -101,7 +101,7 @@ export function CertificationSection() {
             <Link
               href="/certify"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5"
-              style={{ background: "#0EA5E9" }}
+              style={{ background: "#2563EB" }}
             >
               Start Certification
               <svg
@@ -122,7 +122,7 @@ export function CertificationSection() {
 
           {/* RIGHT -- For Businesses */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Businesses
             </p>
             <p className="mt-2 text-lg font-bold text-primary">
@@ -160,7 +160,7 @@ export function CertificationSection() {
             {/* CTA */}
             <Link
               href="/certify"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#0EA5E9] hover:text-[#0EA5E9]"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#2563EB] hover:text-[#2563EB]"
               style={{ borderColor: "var(--theme-border)" }}
             >
               Certify Your Team

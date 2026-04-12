@@ -151,7 +151,7 @@ export default function EldercarePage() {
               { name: "Eldercare", href: "/eldercare" },
             ]}
           />
-          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ ELDERCARE ROBOTICS ]
           </p>
           <p className="mt-3 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.06em] text-[var(--theme-blue,#00C2FF)]">
@@ -194,7 +194,7 @@ export default function EldercarePage() {
       {/* ── PROBLEM SECTION ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ THE CRISIS ]
           </p>
           <h2 className="text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -248,7 +248,7 @@ export default function EldercarePage() {
           <div className="grid gap-8 md:grid-cols-2">
             {/* Robot tasks */}
             <div className="rounded-2xl border border-[var(--theme-blue,#00C2FF)]/20 bg-[var(--theme-blue,#00C2FF)]/[0.03] p-8">
-              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
                 [ TASK DIVISION ]
               </p>
               <h3 className="font-[family-name:var(--font-ui)] text-sm font-bold uppercase tracking-[0.06em] text-[var(--theme-blue,#00C2FF)]">
@@ -293,7 +293,7 @@ export default function EldercarePage() {
       {/* ── CASE STUDIES ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ CASE STUDIES ]
           </p>
           <h2 className="text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -332,7 +332,7 @@ export default function EldercarePage() {
       {/* ── ROBOWORK CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-violet,#7B2FFF)]/30 bg-[var(--theme-violet,#7B2FFF)]/[0.05] p-10 text-center backdrop-blur-sm">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ GET STARTED ]
           </p>
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
@@ -354,7 +354,7 @@ export default function EldercarePage() {
       {/* ── BUYER GUIDE CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-white/[0.08] bg-white/[0.03] p-10 text-center backdrop-blur-sm">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ BUYER GUIDE ]
           </p>
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">

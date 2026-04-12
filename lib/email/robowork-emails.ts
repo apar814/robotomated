@@ -19,7 +19,7 @@ export async function sendJobPostedNotification(job: {
       subject: `[RoboWork] New job posted: ${job.title}`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">New RoboWork Job Posted</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">New RoboWork Job Posted</h1>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
             <tr><td style="padding: 8px 0; color: #888;">Title</td><td style="padding: 8px 0;">${job.title}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Business</td><td style="padding: 8px 0;">${job.business_name}</td></tr>
@@ -27,7 +27,7 @@ export async function sendJobPostedNotification(job: {
             <tr><td style="padding: 8px 0; color: #888;">Task Type</td><td style="padding: 8px 0;">${job.task_type}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Industry</td><td style="padding: 8px 0;">${job.industry}</td></tr>
           </table>
-          <a href="${BASE_URL}/robowork/jobs/${job.slug}" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Job</a>
+          <a href="${BASE_URL}/robowork/jobs/${job.slug}" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Job</a>
         </div>
       `,
     });
@@ -39,10 +39,10 @@ export async function sendJobPostedNotification(job: {
       subject: `Your RoboWork job "${job.title}" has been posted`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">Job Posted Successfully</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">Job Posted Successfully</h1>
           <p>Your job <strong>"${job.title}"</strong> is now live on RoboWork.</p>
           <p style="color: #888;">Robot service providers can now find your job and submit bids. We'll notify you when you receive a bid.</p>
-          <a href="${BASE_URL}/robowork/jobs/${job.slug}" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">View Your Job</a>
+          <a href="${BASE_URL}/robowork/jobs/${job.slug}" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">View Your Job</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,
@@ -67,7 +67,7 @@ export async function sendBidReceivedNotification(bid: {
       subject: `New bid on "${bid.job_title}" from ${bid.provider_name}`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">New Bid Received</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">New Bid Received</h1>
           <p>A robot service provider has bid on your job.</p>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
             <tr><td style="padding: 8px 0; color: #888;">Job</td><td style="padding: 8px 0;">${bid.job_title}</td></tr>
@@ -75,7 +75,7 @@ export async function sendBidReceivedNotification(bid: {
             <tr><td style="padding: 8px 0; color: #888;">Proposed Price</td><td style="padding: 8px 0; color: #C8FF00; font-weight: 600;">$${bid.proposed_price.toLocaleString()}</td></tr>
             ${bid.message ? `<tr><td style="padding: 8px 0; color: #888;">Message</td><td style="padding: 8px 0;">${bid.message}</td></tr>` : ""}
           </table>
-          <a href="${BASE_URL}/robowork/jobs/${bid.job_slug}" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Bids</a>
+          <a href="${BASE_URL}/robowork/jobs/${bid.job_slug}" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Bids</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,
@@ -125,7 +125,7 @@ export async function sendProviderRegisteredNotification(provider: {
             <li>Browse available jobs and submit bids</li>
             <li>Get verified to build trust with clients</li>
           </ul>
-          <a href="${BASE_URL}/robowork/jobs" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Browse Jobs</a>
+          <a href="${BASE_URL}/robowork/jobs" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Browse Jobs</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,
@@ -146,11 +146,11 @@ export async function sendFoundingRspApplicationReceived(params: {
       subject: "Your Founding RSP application has been received",
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">Application Received</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">Application Received</h1>
           <p>Thank you for applying to be a Founding Robot Service Provider, ${params.company_name}.</p>
           <p style="color: #888;">Our team reviews applications within 48 hours. You'll receive an email when a decision is made.</p>
           <p style="color: #888;">In the meantime, you can start building your RSP profile.</p>
-          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Start Your Profile &rarr;</a>
+          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Start Your Profile &rarr;</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,
@@ -172,9 +172,9 @@ export async function sendFoundingRspApproved(params: {
       subject: `Congratulations! You're Founding RSP #${params.founding_number}`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">Welcome, Founding RSP #${params.founding_number}</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">Welcome, Founding RSP #${params.founding_number}</h1>
           <p>Congratulations, ${params.company_name}! You've been accepted as a Founding Robot Service Provider.</p>
-          <h2 style="color: #0EA5E9; font-size: 16px; margin-top: 24px;">Your Founding Perks</h2>
+          <h2 style="color: #2563EB; font-size: 16px; margin-top: 24px;">Your Founding Perks</h2>
           <ol style="color: #ccc; line-height: 2;">
             <li>Free RCO (Robot Certified Operator) certification</li>
             <li>Free background check</li>
@@ -184,7 +184,7 @@ export async function sendFoundingRspApproved(params: {
             <li>Founding team access (direct line to our team)</li>
             <li>Product roadmap input</li>
           </ol>
-          <a href="${BASE_URL}/robowork" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Go to Dashboard &rarr;</a>
+          <a href="${BASE_URL}/robowork" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Go to Dashboard &rarr;</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,
@@ -205,10 +205,10 @@ export async function sendFoundingRspRejected(params: {
       subject: "Update on your Founding RSP application",
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">Application Update</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">Application Update</h1>
           <p>Thank you for your interest in the Founding RSP program, ${params.company_name}.</p>
           <p style="color: #888;">After careful review, we're unable to accept your application at this time. This doesn't affect your ability to use RoboWork &mdash; you can still register as an RSP and start bidding on jobs.</p>
-          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Register as an RSP &rarr;</a>
+          <a href="${BASE_URL}/robowork/providers/register" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; margin-top: 16px;">Register as an RSP &rarr;</a>
           <p style="color: #555; font-size: 12px; margin-top: 24px;">Robotomated RoboWork -- ${BASE_URL}/robowork</p>
         </div>
       `,

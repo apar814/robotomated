@@ -192,7 +192,7 @@ export default async function CaseStudyPage({ params }: Props) {
               Find the right robot for your {cs.industry.toLowerCase()} operation.
             </p>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <Link href={`/explore/${cs.categorySlug}`} className="rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(14,165,233,0.35)]">
+              <Link href={`/explore/${cs.categorySlug}`} className="rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]">
                 Browse {cs.industry} Robots
               </Link>
               <Link href="/tools/robot-finder" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-4 text-base font-bold text-white/80 hover:border-white/20">

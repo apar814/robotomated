@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       subject: `New Founding RSP Application: ${company_name}`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #0EA5E9; font-size: 20px;">New Founding RSP Application</h1>
+          <h1 style="color: #2563EB; font-size: 20px;">New Founding RSP Application</h1>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
             <tr><td style="padding: 8px 0; color: #888;">Company</td><td style="padding: 8px 0;">${company_name}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;">${email}</td></tr>
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
             <tr><td style="padding: 8px 0; color: #888;">Fleet Size</td><td style="padding: 8px 0;">${fleet_size || "Not specified"}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Robot Types</td><td style="padding: 8px 0;">${robot_types || "Not specified"}</td></tr>
           </table>
-          <a href="${process.env.NEXT_PUBLIC_BASE_URL || "https://robotomated.com"}/admin/founding-rsp" style="display: inline-block; background: #0EA5E9; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">Review Application</a>
+          <a href="${process.env.NEXT_PUBLIC_BASE_URL || "https://robotomated.com"}/admin/founding-rsp" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">Review Application</a>
         </div>
       `,
     })

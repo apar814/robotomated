@@ -112,7 +112,7 @@ export default async function HomePage() {
               </span>
               <h1
                 className="mt-8 font-display font-extrabold leading-[1.05]"
-                style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(14,165,233,0.12)" }}
+                style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(37,99,235,0.12)" }}
               >
                 What job would you<br />
                 like done by a <span className="hero-accent">robot?</span>
@@ -200,7 +200,7 @@ export default async function HomePage() {
           {/* Search bar */}
           <Link
             href="/explore"
-            className="mt-8 flex items-center gap-3 rounded-lg border border-white/[0.08] bg-transparent px-5 py-4 transition-colors hover:border-[#0EA5E9]/30"
+            className="mt-8 flex items-center gap-3 rounded-lg border border-white/[0.08] bg-transparent px-5 py-4 transition-colors hover:border-[#2563EB]/30"
           >
             <svg className="h-5 w-5 shrink-0 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
@@ -219,7 +219,7 @@ export default async function HomePage() {
               <Link
                 key={cat.id}
                 href={`/explore/${cat.slug}`}
-                className="shrink-0 rounded-full border border-white/[0.08] px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] text-white/50 transition-colors hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
+                className="shrink-0 rounded-full border border-white/[0.08] px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] text-white/50 transition-colors hover:border-[#2563EB]/30 hover:text-[#2563EB]"
               >
                 {cat.name}
               </Link>
@@ -238,7 +238,7 @@ export default async function HomePage() {
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-300 hover:-translate-y-1 hover:border-[#0EA5E9]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                    className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
                   >
                     {/* Image — 60% of card height */}
                     <div className="relative aspect-[16/10] bg-gradient-to-br from-[#0F1628] to-[#141C33]">
@@ -264,8 +264,8 @@ export default async function HomePage() {
                     </div>
                     {/* Info */}
                     <div className="p-5">
-                      <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#0EA5E9]">{mfr}</span>
-                      <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#0EA5E9]">{robot.name}</p>
+                      <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">{mfr}</span>
+                      <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#2563EB]">{robot.name}</p>
                       <div className="mt-3 flex items-center justify-between">
                         {robot.price_current != null ? (
                           <span className="font-mono text-base font-bold text-[#C8FF00]">
@@ -274,7 +274,7 @@ export default async function HomePage() {
                         ) : (
                           <span className="font-mono text-[11px] text-white/30">Contact for pricing</span>
                         )}
-                        <span className="text-[12px] font-medium text-[#0EA5E9] opacity-0 transition-opacity group-hover:opacity-100">
+                        <span className="text-[12px] font-medium text-[#2563EB] opacity-0 transition-opacity group-hover:opacity-100">
                           Full Analysis &rarr;
                         </span>
                       </div>
@@ -314,8 +314,8 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
-                <span className="inline-block h-px w-8 bg-[#0EA5E9]" />
+              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+                <span className="inline-block h-px w-8 bg-[#2563EB]" />
                 The Abundance Equation
               </p>
               <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(24px, 3vw, 40px)" }}>
@@ -336,14 +336,14 @@ export default async function HomePage() {
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">
                     <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/80">Cost difference</span>
-                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#0EA5E9]">100x</span>
+                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#2563EB]">100x</span>
                   </div>
                 </div>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-white/50">
                 At $0.45/hour, every business can afford automation. That is the world we are building toward -- and Robotomated is how you get there.
               </p>
-              <Link href="/tools/robot-economics" className="mt-4 inline-block text-sm font-semibold text-[#0EA5E9] hover:underline">
+              <Link href="/tools/robot-economics" className="mt-4 inline-block text-sm font-semibold text-[#2563EB] hover:underline">
                 Calculate your economics &rarr;
               </Link>
             </div>

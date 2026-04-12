@@ -23,7 +23,7 @@ export function RobotFinderCtaStrip() {
         </div>
         <Link
           href="/tools/robot-finder"
-          className="shrink-0 rounded-lg bg-electric-blue px-6 py-3 font-mono text-[11px] font-bold tracking-wider text-black transition-shadow hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]"
+          className="shrink-0 rounded-lg bg-electric-blue px-6 py-3 font-mono text-[11px] font-bold tracking-wider text-black transition-shadow hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
         >
           START QUIZ &rarr;
         </Link>

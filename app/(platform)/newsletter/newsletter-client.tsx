@@ -133,7 +133,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
         <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[3fr_2fr]">
           {/* Left: copy + form */}
           <div>
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ NEWSLETTER ]</p>
+            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ NEWSLETTER ]</p>
             <p className="mt-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-widest text-blue">Every Monday at 7am</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">
               The Robotomated Brief
@@ -206,7 +206,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* What you get */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ INSIDE EVERY ISSUE ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ INSIDE EVERY ISSUE ]</p>
           <h2 className="mt-2 text-center text-xl font-bold">What&apos;s Inside Every Issue</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -228,7 +228,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* Recent issues */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">[ RECENT ISSUES ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ RECENT ISSUES ]</p>
           <h2 className="mt-2 text-center text-xl font-bold">Recent Issues</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {RECENT_ISSUES.map((issue) => (

@@ -124,7 +124,7 @@ export function RobotVideoPlayer({
               border: "2px solid rgba(255,255,255,0.8)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(14,165,233,0.8)";
+              e.currentTarget.style.background = "rgba(37,99,235,0.8)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "rgba(0,0,0,0.7)";

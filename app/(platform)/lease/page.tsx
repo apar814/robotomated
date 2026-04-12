@@ -137,7 +137,7 @@ export default function LeasePage() {
 
       {/* Hero */}
       <section className="py-16 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ LEASE CHANNEL ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
@@ -169,7 +169,7 @@ export default function LeasePage() {
 
       {/* Benefits Grid */}
       <section className="py-12">
-        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ BENEFITS ]
         </p>
         <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
@@ -187,7 +187,7 @@ export default function LeasePage() {
 
       {/* Lease Calculator */}
       <section className="py-12">
-        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ CALCULATOR ]
         </p>
         <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
@@ -203,7 +203,7 @@ export default function LeasePage() {
 
       {/* Lease vs Buy vs Hire */}
       <section className="py-12">
-        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ COMPARISON ]
         </p>
         <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
@@ -253,7 +253,7 @@ export default function LeasePage() {
 
       {/* How It Works */}
       <section className="py-12">
-        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ PROCESS ]
         </p>
         <h2 className="mt-2 font-display text-center text-2xl font-bold sm:text-3xl">
@@ -274,7 +274,7 @@ export default function LeasePage() {
 
       {/* Bottom CTA */}
       <section className="py-16 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ GET STARTED ]
         </p>
         <h2 className="mt-2 font-display text-2xl font-bold sm:text-3xl">
