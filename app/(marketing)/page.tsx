@@ -14,6 +14,7 @@ import { OpportunityBanner } from "@/components/home/opportunity-banner";
 import { RaaSExplainer } from "@/components/home/raas-explainer";
 import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
+import { LiveActivity } from "@/components/home/live-activity";
 import { RecentlyViewed } from "@/components/home/recently-viewed";
 import { HeroPills } from "@/components/home/hero-pills";
 import { VideoHero } from "@/components/ui/video-hero";
@@ -160,11 +161,13 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <LiveActivity />
+
       <div className="border-b px-6 py-3" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
-          <span className="h-1 w-1 rounded-full bg-electric-blue" />
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
+          <span className="h-1 w-1 rounded-full" style={{ background: "#2563EB" }} />
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
         </div>
       </div>
 
