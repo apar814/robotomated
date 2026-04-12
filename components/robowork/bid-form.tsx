@@ -86,7 +86,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
 
       {/* Proposed price */}
       <div className="mb-4">
-        <label className="mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+        <label className="mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
           Proposed Price (USD) *
         </label>
         <div className="relative">
@@ -106,7 +106,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
 
       {/* Message */}
       <div className="mb-4">
-        <label className="mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+        <label className="mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
           Message to Business
         </label>
         <textarea
@@ -120,7 +120,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
 
       {/* Fulfillment type */}
       <div className="mb-4">
-        <label className="mb-2 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+        <label className="mb-2 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
           Fulfillment Type
         </label>
         <div className="flex flex-wrap gap-2">
@@ -168,7 +168,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
       {/* Dates */}
       <div className="mb-6 grid grid-cols-2 gap-3">
         <div>
-          <label className="mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <label className="mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Proposed Start
           </label>
           <input
@@ -179,7 +179,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
           />
         </div>
         <div>
-          <label className="mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <label className="mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Proposed End
           </label>
           <input

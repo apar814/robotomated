@@ -464,7 +464,7 @@ export default async function StudyLevelPage({
           </Link>
           <div className="mt-6 flex items-center gap-3">
             <span
-              className={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${data.badge}`}
+              className={`inline-flex items-center rounded-full px-3 py-1 text-[13px] font-bold uppercase tracking-[0.1em] ${data.badge}`}
             >
               Level {data.level}
             </span>
@@ -544,7 +544,7 @@ export default async function StudyLevelPage({
                         className="flex items-center justify-between rounded-lg border border-border/50 bg-[#0C0C0C] px-4 py-2.5"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="font-[family-name:var(--font-mono)] text-[10px] text-muted">
+                          <span className="font-[family-name:var(--font-mono)] text-[13px] text-muted">
                             {mod.number}.{idx + 1}
                           </span>
                           <span className="text-sm text-muted">

@@ -18,7 +18,7 @@ export default function CaseStudiesPage() {
             { name: "Home", href: "/" },
             { name: "Case Studies", href: "/case-studies" },
           ]} />
-          <p className="mt-6 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ CASE STUDIES ]</p>
+          <p className="mt-6 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ CASE STUDIES ]</p>
           <h1 className="mt-2 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">
             Real-World Robot Deployments
           </h1>
@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
                 className="group flex flex-col overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.02] transition-all hover:-translate-y-1 hover:border-blue/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]"
               >
                 <div className="px-6 pb-6 pt-5">
-                  <span className="inline-block rounded-full bg-blue/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] font-semibold text-blue">
+                  <span className="inline-block rounded-full bg-blue/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] font-semibold text-blue">
                     {cs.industry}
                   </span>
                   <h2 className="mt-3 font-display text-base font-bold leading-snug text-white transition-colors group-hover:text-blue">
@@ -50,7 +50,7 @@ export default function CaseStudiesPage() {
                     {cs.results.metrics.slice(0, 2).map((m) => (
                       <div key={m.label}>
                         <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-blue-400">{m.value}</p>
-                        <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-white/50">{m.label}</p>
+                        <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] text-white/50">{m.label}</p>
                       </div>
                     ))}
                   </div>

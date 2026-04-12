@@ -58,7 +58,7 @@ export default function InsurePage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ INSURANCE HUB ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -71,7 +71,7 @@ export default function InsurePage() {
       </section>
 
       <section className="mt-16">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ COVERAGE OPTIONS ]
         </p>
         <h2 className="mt-2 font-display text-2xl font-semibold text-white">
@@ -88,7 +88,7 @@ export default function InsurePage() {
               </h3>
               <p className="mt-2 text-sm text-muted">{type.description}</p>
               <div className="mt-4 border-t border-white/10 pt-4">
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Average Premium</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Average Premium</p>
                 <p className="font-[family-name:var(--font-mono)] text-sm font-semibold text-[#00C2FF]">
                   {type.avgPremium}
                 </p>
@@ -100,7 +100,7 @@ export default function InsurePage() {
 
       <section className="mt-16">
         <div className="glass rounded-2xl border border-white/10 p-8">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ PREMIUM TABLE ]
           </p>
           <h2 className="mt-2 font-display text-xl font-semibold text-white">
@@ -157,7 +157,7 @@ export default function InsurePage() {
 
       <section id="quote" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ QUOTE ENGINE ]
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-white">

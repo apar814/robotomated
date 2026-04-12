@@ -64,19 +64,19 @@ export default function AdminRoboWorkPage() {
       {/* Stats */}
       <div className="mt-6 grid gap-3 sm:grid-cols-4">
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Active Jobs</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Active Jobs</p>
           <p className="mt-1 text-2xl font-bold text-[#2563EB]">{stats.activeJobs}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Providers</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Providers</p>
           <p className="mt-1 text-2xl font-bold">{stats.totalProviders}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Verified</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Verified</p>
           <p className="mt-1 text-2xl font-bold text-[#60A5FA]">{stats.verifiedProviders}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Total Bids</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Total Bids</p>
           <p className="mt-1 text-2xl font-bold">{stats.totalBids}</p>
         </div>
       </div>
@@ -118,7 +118,7 @@ export default function AdminRoboWorkPage() {
                 <div className="flex items-center gap-3 text-xs">
                   <span className="text-white/40">{j.bid_count} bids</span>
                   <span
-                    className={`rounded px-2 py-0.5 font-mono text-[10px] font-semibold ${
+                    className={`rounded px-2 py-0.5 font-mono text-[13px] font-semibold ${
                       j.status === "open"
                         ? "bg-[#00E5A0]/10 text-[#00E5A0]"
                         : j.status === "draft"
@@ -155,7 +155,7 @@ export default function AdminRoboWorkPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   {p.verified && (
-                    <span className="rounded bg-[#60A5FA]/10 px-2 py-0.5 text-[10px] font-semibold text-[#60A5FA]">
+                    <span className="rounded bg-[#60A5FA]/10 px-2 py-0.5 text-[13px] font-semibold text-[#60A5FA]">
                       Verified
                     </span>
                   )}

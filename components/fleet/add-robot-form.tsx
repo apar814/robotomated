@@ -424,7 +424,7 @@ export function AddRobotForm() {
                   </p>
                 </div>
                 {sched.pro && (
-                  <span className="shrink-0 rounded bg-[#7B2FFF]/20 px-2 py-0.5 text-[10px] font-medium text-[#7B2FFF]">
+                  <span className="shrink-0 rounded bg-[#7B2FFF]/20 px-2 py-0.5 text-[13px] font-medium text-[#7B2FFF]">
                     REQUIRES PRO
                   </span>
                 )}

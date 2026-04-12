@@ -72,13 +72,13 @@ export function JobCard({
     >
       {/* Top row: badges */}
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        <span className={cn("rounded px-2 py-0.5 text-[10px] font-semibold", industryColor)}>
+        <span className={cn("rounded px-2 py-0.5 text-[13px] font-semibold", industryColor)}>
           {industry}
         </span>
-        <span className={cn("rounded border px-2 py-0.5 text-[10px] font-semibold", urgencyConf.color)}>
+        <span className={cn("rounded border px-2 py-0.5 text-[13px] font-semibold", urgencyConf.color)}>
           {urgencyConf.label}
         </span>
-        <span className={cn("rounded px-2 py-0.5 text-[10px] font-semibold", statusConf.color)}>
+        <span className={cn("rounded px-2 py-0.5 text-[13px] font-semibold", statusConf.color)}>
           {statusConf.label}
         </span>
       </div>

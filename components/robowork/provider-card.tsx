@@ -89,7 +89,7 @@ export function ProviderCard({
               {company_name}
               {is_founding_rsp && founding_rsp_number && (
                 <span
-                  className="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold"
+                  className="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[13px] font-bold"
                   style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "#000" }}
                 >
                   Founding RSP #{founding_rsp_number}
@@ -104,7 +104,7 @@ export function ProviderCard({
           )}
         </div>
         {response_time_hours != null && (
-          <span className="rounded-full bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] text-text-secondary">
+          <span className="rounded-full bg-white/[0.04] px-2.5 py-1 font-mono text-[13px] text-text-secondary">
             {response_time_hours < 1 ? "<1h" : `${Math.round(response_time_hours)}h`} response
           </span>
         )}
@@ -123,13 +123,13 @@ export function ProviderCard({
           {specializations.slice(0, 4).map((spec) => (
             <span
               key={spec}
-              className="rounded-full bg-[#2563EB]/10 px-2.5 py-0.5 font-sans text-[10px] font-medium text-[#2563EB]"
+              className="rounded-full bg-[#2563EB]/10 px-2.5 py-0.5 font-sans text-[13px] font-medium text-[#2563EB]"
             >
               {spec}
             </span>
           ))}
           {specializations.length > 4 && (
-            <span className="rounded-full bg-white/[0.04] px-2.5 py-0.5 font-sans text-[10px] text-text-ghost">
+            <span className="rounded-full bg-white/[0.04] px-2.5 py-0.5 font-sans text-[13px] text-text-ghost">
               +{specializations.length - 4}
             </span>
           )}
@@ -145,7 +145,7 @@ export function ProviderCard({
             return (
               <span
                 key={ft}
-                className="flex items-center gap-1 rounded bg-white/[0.04] px-2 py-1 font-sans text-[10px] text-text-secondary"
+                className="flex items-center gap-1 rounded bg-white/[0.04] px-2 py-1 font-sans text-[13px] text-text-secondary"
               >
                 {info.icon}
                 {info.label}
@@ -158,7 +158,7 @@ export function ProviderCard({
       {/* Verification badges */}
       <div className="mt-4 flex items-center gap-2">
         {verified && (
-          <span className="flex items-center gap-1 rounded-full bg-[#2563EB]/10 px-2 py-0.5 font-mono text-[9px] tracking-wider text-[#2563EB]">
+          <span className="flex items-center gap-1 rounded-full bg-[#2563EB]/10 px-2 py-0.5 font-mono text-[13px] tracking-wider text-[#2563EB]">
             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
@@ -166,7 +166,7 @@ export function ProviderCard({
           </span>
         )}
         {insurance_verified && (
-          <span className="flex items-center gap-1 rounded-full bg-[#00E5A0]/10 px-2 py-0.5 font-mono text-[9px] tracking-wider text-[#00E5A0]">
+          <span className="flex items-center gap-1 rounded-full bg-[#00E5A0]/10 px-2 py-0.5 font-mono text-[13px] tracking-wider text-[#00E5A0]">
             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM13.707 8.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
@@ -174,7 +174,7 @@ export function ProviderCard({
           </span>
         )}
         {background_checked && (
-          <span className="flex items-center gap-1 rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-mono text-[9px] tracking-wider text-[#14B8A6]">
+          <span className="flex items-center gap-1 rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-mono text-[13px] tracking-wider text-[#14B8A6]">
             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
             </svg>

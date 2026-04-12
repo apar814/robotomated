@@ -27,7 +27,7 @@ export function RecentlyFunded() {
         <div className="mb-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="inline-block h-px w-6 bg-[#60A5FA]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#60A5FA]">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#60A5FA]">
               Recently Funded
             </span>
           </div>
@@ -49,7 +49,7 @@ export function RecentlyFunded() {
               className="group flex flex-col bg-obsidian-surface p-4 transition-colors hover:bg-obsidian-hover"
             >
               {/* Date badge */}
-              <span className="font-[family-name:var(--font-ui)] text-[10px] text-ghost">{formatDate(round.date)}</span>
+              <span className="font-[family-name:var(--font-ui)] text-[13px] text-ghost">{formatDate(round.date)}</span>
 
               {/* Company + amount */}
               <div className="mt-2 flex items-baseline justify-between gap-2">
@@ -62,7 +62,7 @@ export function RecentlyFunded() {
               {/* Round badge */}
               <div className="mt-2 flex items-center gap-2">
                 <span
-                  className="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium"
+                  className="inline-block rounded px-1.5 py-0.5 text-[13px] font-medium"
                   style={{
                     background: (ROUND_COLORS[round.round] || "#00C2FF") + "15",
                     color: ROUND_COLORS[round.round] || "#00C2FF",
@@ -71,7 +71,7 @@ export function RecentlyFunded() {
                 >
                   {round.round}
                 </span>
-                <span className="text-[10px] text-ghost">{round.leadInvestor}</span>
+                <span className="text-[13px] text-ghost">{round.leadInvestor}</span>
               </div>
 
               {/* Description */}

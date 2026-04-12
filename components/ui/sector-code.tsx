@@ -9,7 +9,7 @@ export function SectorCode({ code, className }: SectorCodeProps) {
   return (
     <span
       className={cn(
-        "inline-flex font-mono text-[9px] font-bold tracking-wider text-electric-blue px-1.5 py-0.5 rounded-[2px]",
+        "inline-flex font-mono text-[13px] font-bold tracking-wider text-electric-blue px-1.5 py-0.5 rounded-[2px]",
         className
       )}
       style={{

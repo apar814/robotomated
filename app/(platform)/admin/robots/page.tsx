@@ -139,7 +139,7 @@ export default function AdminRobotsPage() {
                       {r.price_current != null ? `$${r.price_current.toLocaleString()}` : "—"}
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${
+                      <span className={`inline-block rounded-full px-2 py-0.5 text-[13px] font-semibold uppercase ${
                         r.status === "active" ? "bg-green/15 text-green" :
                         r.status === "discontinued" ? "bg-orange/15 text-orange" :
                         "bg-blue/15 text-blue"

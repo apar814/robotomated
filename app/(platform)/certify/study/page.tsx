@@ -97,7 +97,7 @@ export default function StudyCenterPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ STUDY CENTER ]
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">
@@ -123,7 +123,7 @@ export default function StudyCenterPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
                     <span
-                      className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${lvl.badge}`}
+                      className={`inline-flex items-center rounded-full border px-3 py-1 text-[13px] font-bold uppercase tracking-[0.1em] ${lvl.badge}`}
                     >
                       Level {lvl.level}
                     </span>
@@ -141,7 +141,7 @@ export default function StudyCenterPage() {
                         key={mod}
                         className="flex items-center gap-3 text-sm text-muted"
                       >
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border font-[family-name:var(--font-mono)] text-[10px] text-white">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border font-[family-name:var(--font-mono)] text-[13px] text-white">
                           {idx + 1}
                         </span>
                         {mod}
@@ -156,7 +156,7 @@ export default function StudyCenterPage() {
                       <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                         {lvl.modules}
                       </p>
-                      <p className="text-[10px] uppercase tracking-wider text-muted">
+                      <p className="text-[13px] uppercase tracking-wider text-muted">
                         Modules
                       </p>
                     </div>
@@ -165,7 +165,7 @@ export default function StudyCenterPage() {
                       <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                         {lvl.practiceQuestions}
                       </p>
-                      <p className="text-[10px] uppercase tracking-wider text-muted">
+                      <p className="text-[13px] uppercase tracking-wider text-muted">
                         Questions
                       </p>
                     </div>

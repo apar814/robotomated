@@ -249,21 +249,21 @@ export default async function AssetDetailPage({
           <p className="mt-1 text-2xl font-bold text-[#00C2FF]">
             ${(asset.purchase_price + totalMaintenanceCost).toLocaleString()}
           </p>
-          <p className="text-[10px] text-white/50">Purchase + maintenance</p>
+          <p className="text-[13px] text-white/50">Purchase + maintenance</p>
         </div>
         <div className="rounded-xl border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Maintenance</p>
           <p className="mt-1 text-2xl font-bold text-[#7B2FFF]">
             ${totalMaintenanceCost.toLocaleString()}
           </p>
-          <p className="text-[10px] text-white/50">{logs.length} service events</p>
+          <p className="text-[13px] text-white/50">{logs.length} service events</p>
         </div>
         <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Age</p>
           <p className="mt-1 text-2xl font-bold text-white/80">
             {ageMonths !== null ? (ageMonths >= 12 ? `${Math.floor(ageMonths / 12)}y ${ageMonths % 12}m` : `${ageMonths}m`) : "--"}
           </p>
-          <p className="text-[10px] text-white/50">
+          <p className="text-[13px] text-white/50">
             {purchaseDate ? `Since ${formatDate(asset.purchase_date)}` : "No purchase date"}
           </p>
         </div>
@@ -301,7 +301,7 @@ export default async function AssetDetailPage({
                           {isOverdue && " (overdue)"}
                         </p>
                         {s.requires_professional && (
-                          <span className="mt-1 inline-block rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[10px] font-medium text-[#7B2FFF]">
+                          <span className="mt-1 inline-block rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[13px] font-medium text-[#7B2FFF]">
                             PRO
                           </span>
                         )}
@@ -351,7 +351,7 @@ export default async function AssetDetailPage({
                       <div>
                         <div className="flex items-center gap-2">
                           <span
-                            className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-medium capitalize ${typeStyles[log.maintenance_type]}`}
+                            className={`inline-block rounded px-1.5 py-0.5 text-[13px] font-medium capitalize ${typeStyles[log.maintenance_type]}`}
                           >
                             {log.maintenance_type}
                           </span>

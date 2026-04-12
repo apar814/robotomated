@@ -36,7 +36,7 @@ export function VendorHealthCard({
     <div className="rounded-md border border-border bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label mb-3">
-        <span className="font-mono text-[9px] tracking-widest">[VENDOR] HEALTH</span>
+        <span className="font-mono text-[13px] tracking-widest">[VENDOR] HEALTH</span>
       </div>
 
       {/* Manufacturer Name */}
@@ -46,7 +46,7 @@ export function VendorHealthCard({
 
       {/* Founded */}
       <div className="mb-2">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Founded
         </p>
         <p className="font-mono text-sm text-text-data">
@@ -67,7 +67,7 @@ export function VendorHealthCard({
 
       {/* Funding */}
       <div className="mb-2">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Funding
         </p>
         <p className="font-mono text-sm text-text-data">
@@ -79,7 +79,7 @@ export function VendorHealthCard({
 
       {/* Employees */}
       <div className="mb-2">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Employees
         </p>
         <p className="font-mono text-sm text-text-data">
@@ -94,7 +94,7 @@ export function VendorHealthCard({
       {/* Country / HQ */}
       {manufacturer.country && (
         <div className="mb-3">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             HQ
           </p>
           <p className="font-mono text-sm text-text-data">
@@ -105,7 +105,7 @@ export function VendorHealthCard({
 
       {/* Health Score */}
       <div>
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Vendor Health Score
         </p>
         {healthScore != null && healthColor != null ? (

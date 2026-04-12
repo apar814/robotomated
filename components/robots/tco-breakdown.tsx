@@ -136,7 +136,7 @@ export function TcoBreakdown({
 function DetailItem({ label, value, color }: { label: string; value: string; color?: string }) {
   return (
     <div>
-      <p className="text-[10px] text-muted/60">{label}</p>
+      <p className="text-[13px] text-muted/60">{label}</p>
       <p className={cn("text-xs font-medium", color || "text-foreground")}>{value}</p>
     </div>
   );

@@ -342,7 +342,7 @@ function Slider({ label, value, min, max, step, onChange, prefix = "", suffix = 
 function Output({ label, value, large, color }: { label: string; value: string; large?: boolean; color?: string }) {
   return (
     <div className="rounded-xl bg-white/[0.04] px-4 py-4">
-      <p className="text-[10px] font-medium uppercase tracking-widest text-white/50">{label}</p>
+      <p className="text-[13px] font-medium uppercase tracking-widest text-white/50">{label}</p>
       <p className={cn("mt-1 font-mono font-bold", large ? "text-[clamp(24px,3vw,40px)]" : "text-lg", color || "text-green")}>{value}</p>
     </div>
   );

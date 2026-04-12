@@ -110,7 +110,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-4 text-center">
               <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10" style={{ color: "rgba(37,99,235,0.3)" }}><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
-              <span className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-white/65">{robot.manufacturer_name}</span>
+              <span className="mt-1 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-white/65">{robot.manufacturer_name}</span>
               <span className="mt-0.5 font-[family-name:var(--font-ui)] text-sm font-bold text-white">{robot.name}</span>
             </div>
           )}
@@ -118,7 +118,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
           {/* Category badge - top left */}
           {sectorCode && (
             <div className="absolute left-3 top-3 rounded border border-white/10 bg-black/60 px-2 py-0.5 backdrop-blur-sm">
-              <span className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-white/80">
+              <span className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-white/80">
                 {robot.category_name || robot.category_slug}
               </span>
             </div>
@@ -143,7 +143,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
       {/* Info area */}
       <div className="flex flex-1 flex-col px-4 py-3.5">
         {/* Manufacturer */}
-        <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">
+        <span className="font-[family-name:var(--font-ui)] text-[13px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">
           {robot.manufacturer_name}
         </span>
 
@@ -157,7 +157,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
         {/* Key spec */}
         {keySpec && (
           <div className="mt-1.5">
-            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase text-white/35">
+            <span className="font-[family-name:var(--font-mono)] text-[13px] uppercase text-white/35">
               {keySpec.label} {keySpec.value}
             </span>
           </div>

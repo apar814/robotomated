@@ -121,7 +121,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
               {categories.length > 0 && (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {categories.map(c => (
-                    <span key={c} className="rounded-full bg-white/[0.02] px-2.5 py-0.5 text-[10px] text-muted">{c}</span>
+                    <span key={c} className="rounded-full bg-white/[0.02] px-2.5 py-0.5 text-[13px] text-muted">{c}</span>
                   ))}
                 </div>
               )}
@@ -167,7 +167,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                 )}
               </div>
               <div className="flex-1">
-                <p className="font-mono text-[9px] uppercase tracking-widest text-electric-blue">
+                <p className="font-mono text-[13px] uppercase tracking-widest text-electric-blue">
                   <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-electric-blue" />Best from {mfr.name}
                 </p>
                 <h2 className="mt-1 text-xl font-bold transition-colors group-hover:text-electric-blue">
@@ -192,7 +192,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
       {/* All Robots Grid */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 font-mono text-[9px] uppercase tracking-widest text-text-ghost"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-electric-blue" />Product Catalog</p>
+          <p className="mb-2 font-mono text-[13px] uppercase tracking-widest text-text-ghost"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-electric-blue" />Product Catalog</p>
           <h2 className="mb-6 text-xl font-bold">All {mfr.name} Robots</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {allRobots.map((robot) => {
@@ -207,7 +207,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                       <div className="flex h-full items-center justify-center bg-gradient-to-br from-obsidian-3 to-obsidian-2"><span className="text-2xl opacity-20">&#129302;</span></div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent" />
-                    {cat && <span className="absolute left-3 top-3 rounded-full bg-obsidian/70 px-2 py-0.5 text-[10px] text-foreground/80 backdrop-blur-sm">{cat.name}</span>}
+                    {cat && <span className="absolute left-3 top-3 rounded-full bg-obsidian/70 px-2 py-0.5 text-[13px] text-foreground/80 backdrop-blur-sm">{cat.name}</span>}
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold transition-colors group-hover:text-electric-blue">{robot.name}</h3>

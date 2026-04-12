@@ -161,7 +161,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
           />
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">
+              <p className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">
                 ROBOWORK MARKETPLACE
               </p>
               <h1 className="mt-2 font-sans text-3xl font-bold text-text-primary sm:text-4xl">
@@ -176,7 +176,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
             </div>
             <Link
               href="/robowork/providers/register"
-              className="shrink-0 rounded-lg bg-[#2563EB] px-5 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="shrink-0 rounded-lg bg-[#2563EB] px-5 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
             >
               BECOME A PROVIDER
             </Link>
@@ -190,7 +190,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
           <form method="GET" action="/robowork/providers" className="flex flex-wrap items-end gap-3">
             {/* Location */}
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">City</label>
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">City</label>
               <input
                 name="city"
                 defaultValue={params.city || ""}
@@ -199,7 +199,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">State</label>
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">State</label>
               <input
                 name="state"
                 defaultValue={params.state || ""}
@@ -210,7 +210,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
 
             {/* Specialization */}
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">
                 Specialization
               </label>
               <select
@@ -229,7 +229,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
 
             {/* Fulfillment */}
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">
                 Fulfillment
               </label>
               <select
@@ -248,7 +248,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
 
             {/* Min Rating */}
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">
                 Min Rating
               </label>
               <select
@@ -277,7 +277,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
 
             {/* Sort */}
             <div className="flex flex-col gap-1">
-              <label className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">Sort</label>
+              <label className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">Sort</label>
               <select
                 name="sort"
                 defaultValue={params.sort || "rating"}

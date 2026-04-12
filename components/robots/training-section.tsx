@@ -9,14 +9,14 @@ export function TrainingSection({
     <div className="rounded-md border border-border bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label mb-3">
-        <span className="font-mono text-[9px] tracking-widest">
+        <span className="font-mono text-[13px] tracking-widest">
           [TRAINING] REQUIREMENTS
         </span>
       </div>
 
       {/* Training Hours */}
       <div className="mb-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Operator Training
         </p>
         <p className="mt-0.5 font-mono text-lg font-bold text-text-primary">
@@ -39,12 +39,12 @@ export function TrainingSection({
 
       {/* Generic Training Breakdown */}
       <div className="space-y-2">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Typical Training Plan
         </p>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <p className="font-mono text-[9px] text-text-tertiary">
+            <p className="font-mono text-[13px] text-text-tertiary">
               SAFETY & BASICS
             </p>
             <p className="font-mono text-[11px] text-text-secondary">
@@ -52,7 +52,7 @@ export function TrainingSection({
             </p>
           </div>
           <div>
-            <p className="font-mono text-[9px] text-text-tertiary">
+            <p className="font-mono text-[13px] text-text-tertiary">
               OPERATIONS
             </p>
             <p className="font-mono text-[11px] text-text-secondary">
@@ -60,7 +60,7 @@ export function TrainingSection({
             </p>
           </div>
           <div>
-            <p className="font-mono text-[9px] text-text-tertiary">
+            <p className="font-mono text-[13px] text-text-tertiary">
               TROUBLESHOOTING
             </p>
             <p className="font-mono text-[11px] text-text-secondary">
@@ -68,7 +68,7 @@ export function TrainingSection({
             </p>
           </div>
           <div>
-            <p className="font-mono text-[9px] text-text-tertiary">
+            <p className="font-mono text-[13px] text-text-tertiary">
               MAINTENANCE
             </p>
             <p className="font-mono text-[11px] text-text-secondary">

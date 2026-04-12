@@ -62,7 +62,7 @@ export function PriceComparison({ robotSlug, prices, affiliateUrl, manufacturerW
           return (
             <div key={entry.retailer} className="flex items-center gap-4 px-5 py-3">
               {/* Retailer icon placeholder */}
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy-lighter text-[10px] font-bold uppercase text-muted">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy-lighter text-[13px] font-bold uppercase text-muted">
                 {meta.name.slice(0, 2)}
               </div>
 
@@ -70,12 +70,12 @@ export function PriceComparison({ robotSlug, prices, affiliateUrl, manufacturerW
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">{meta.name}</span>
                   {isBest && (
-                    <span className="rounded-full bg-green/10 px-2 py-0.5 text-[10px] font-semibold text-green">
+                    <span className="rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-semibold text-green">
                       Best Price
                     </span>
                   )}
                 </div>
-                {meta.domain && <p className="text-[10px] text-muted">{meta.domain}</p>}
+                {meta.domain && <p className="text-[13px] text-muted">{meta.domain}</p>}
               </div>
 
               {entry.price > 0 && (

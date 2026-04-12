@@ -114,7 +114,7 @@ export default async function ArticlePage({ params }: Props) {
             <span className="text-border">|</span>
             <span>{frontmatter.readTime} min read</span>
             <span className={cn(
-              "rounded-full px-2 py-0.5 text-[10px] font-medium",
+              "rounded-full px-2 py-0.5 text-[13px] font-medium",
               frontmatter.audience === "beginner" ? "bg-green/10 text-green" :
               frontmatter.audience === "enthusiast" ? "bg-blue/10 text-blue" :
               frontmatter.audience === "professional" ? "bg-violet/10 text-violet" :
@@ -192,10 +192,10 @@ export default async function ArticlePage({ params }: Props) {
                         >
                           <div className="flex items-start justify-between gap-1">
                             <div className="min-w-0">
-                              <p className="truncate text-[10px] text-muted">{mfr}</p>
+                              <p className="truncate text-[13px] text-muted">{mfr}</p>
                               <p className="truncate text-xs font-semibold">{r.name}</p>
                             </div>
-                            {r.robo_score != null && <RoboScoreBadge score={r.robo_score} className="text-[9px]" />}
+                            {r.robo_score != null && <RoboScoreBadge score={r.robo_score} className="text-[13px]" />}
                           </div>
                         </Link>
                       );

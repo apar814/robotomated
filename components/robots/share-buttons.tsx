@@ -35,7 +35,7 @@ export function ShareButtons({ robotName, robotScore, robotUrl }: ShareButtonsPr
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[10px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
+        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[13px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z" />
@@ -49,7 +49,7 @@ export function ShareButtons({ robotName, robotScore, robotUrl }: ShareButtonsPr
         href={linkedInUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[10px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
+        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[13px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
@@ -65,7 +65,7 @@ export function ShareButtons({ robotName, robotScore, robotUrl }: ShareButtonsPr
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[10px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
+        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[13px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />

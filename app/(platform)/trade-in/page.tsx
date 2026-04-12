@@ -104,7 +104,7 @@ export default function TradeInPage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ TRADE-IN VALUATOR ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -305,7 +305,7 @@ export default function TradeInPage() {
       {step === "result" && result && (
         <section className="mt-12 space-y-8">
           <div className="glass rounded-2xl border border-white/10 p-8 text-center sm:p-12">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               [ VALUATION RESULT ]
             </p>
             <h2 className="mt-2 font-display text-lg font-semibold text-muted">
@@ -313,19 +313,19 @@ export default function TradeInPage() {
             </h2>
             <div className="mt-4 flex items-end justify-center gap-6">
               <div>
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Low</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Low</p>
                 <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white/60">
                   {formatCurrency(result.low)}
                 </p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-[#00E5A0]">Mid</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-[#00E5A0]">Mid</p>
                 <p className="font-[family-name:var(--font-mono)] text-4xl font-bold text-[#00E5A0]">
                   {formatCurrency(result.mid)}
                 </p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">High</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">High</p>
                 <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white/60">
                   {formatCurrency(result.high)}
                 </p>
@@ -337,7 +337,7 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               [ ANALYSIS ]
             </p>
             <h3 className="mt-2 font-display text-lg font-semibold text-white">
@@ -345,7 +345,7 @@ export default function TradeInPage() {
             </h3>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Age Factor</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Age Factor</p>
                 <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.age_factor)}
                 </p>
@@ -357,7 +357,7 @@ export default function TradeInPage() {
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Condition Factor</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Condition Factor</p>
                 <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.condition_factor)}
                 </p>
@@ -369,7 +369,7 @@ export default function TradeInPage() {
                 </div>
               </div>
               <div className="rounded-lg border border-white/10 p-4">
-                <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-muted">Hours Factor</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Hours Factor</p>
                 <p className="mt-1 font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {formatPercent(result.factors.hours_factor)}
                 </p>
@@ -414,7 +414,7 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8 text-center">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               [ FULL REPORT ]
             </p>
             <h3 className="mt-2 font-display text-lg font-semibold text-white">

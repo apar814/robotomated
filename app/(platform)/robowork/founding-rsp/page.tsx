@@ -91,7 +91,7 @@ export default async function FoundingRspPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-block rounded-full border border-[#F59E0B]/20 bg-[#F59E0B]/5 px-4 py-1.5">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[#F59E0B]">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-[#F59E0B]">
               Founding Program — Limited to 100
             </span>
           </div>
@@ -127,7 +127,7 @@ export default async function FoundingRspPage() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#F59E0B]" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               What You Get
             </span>
           </div>
@@ -158,7 +158,7 @@ export default async function FoundingRspPage() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Requirements
             </span>
           </div>
@@ -167,7 +167,7 @@ export default async function FoundingRspPage() {
             <ul className="space-y-3">
               {REQUIREMENTS.map((req) => (
                 <li key={req} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-electric-blue/10 text-[10px] text-electric-blue">
+                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-electric-blue/10 text-[13px] text-electric-blue">
                     &#10003;
                   </span>
                   <span className="text-sm text-text-secondary">{req}</span>
@@ -183,7 +183,7 @@ export default async function FoundingRspPage() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Apply Now
             </span>
           </div>

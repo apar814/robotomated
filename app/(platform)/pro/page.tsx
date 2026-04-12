@@ -135,7 +135,7 @@ function ProPageContent() {
                 <p className="text-sm italic text-muted">&ldquo;{t.quote}&rdquo;</p>
                 <div className="mt-3">
                   <p className="text-xs font-semibold">{t.name}</p>
-                  <p className="text-[10px] text-muted">{t.role}</p>
+                  <p className="text-[13px] text-muted">{t.role}</p>
                 </div>
               </div>
             ))}

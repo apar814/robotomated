@@ -235,7 +235,7 @@ export default function ManufacturerClaimPage() {
               { name: "Claim Profile", href: "/manufacturers/claim" },
             ]}
           />
-          <p className="mt-6 font-mono text-[9px] tracking-widest uppercase text-muted/60">
+          <p className="mt-6 font-mono text-[13px] tracking-widest uppercase text-muted/60">
             MANUFACTURER VERIFICATION
           </p>
           <h1 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">

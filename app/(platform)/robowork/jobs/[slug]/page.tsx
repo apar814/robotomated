@@ -144,7 +144,7 @@ export default async function JobDetailPage({
         {/* Breadcrumb */}
         <Link
           href="/robowork/jobs"
-          className="mb-4 inline-block font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+          className="mb-4 inline-block font-mono text-[13px] text-electric-blue transition-colors hover:underline"
         >
           &larr; Back to Jobs
         </Link>
@@ -152,13 +152,13 @@ export default async function JobDetailPage({
         {/* Header */}
         <div className="mb-8 rounded-lg border border-border bg-obsidian-surface p-6">
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="rounded bg-electric-blue/10 px-2.5 py-1 text-[10px] font-semibold text-electric-blue">
+            <span className="rounded bg-electric-blue/10 px-2.5 py-1 text-[13px] font-semibold text-electric-blue">
               {j.industry}
             </span>
-            <span className={cn("rounded border px-2.5 py-1 text-[10px] font-semibold", urgencyConf.color)}>
+            <span className={cn("rounded border px-2.5 py-1 text-[13px] font-semibold", urgencyConf.color)}>
               {urgencyConf.label}
             </span>
-            <span className={cn("rounded px-2.5 py-1 text-[10px] font-semibold", statusConf.color)}>
+            <span className={cn("rounded px-2.5 py-1 text-[13px] font-semibold", statusConf.color)}>
               {statusConf.label}
             </span>
           </div>
@@ -237,7 +237,7 @@ export default async function JobDetailPage({
           <div className="space-y-4">
             {/* Details card */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-5">
-              <h3 className="mb-4 font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+              <h3 className="mb-4 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                 Job Details
               </h3>
               <div className="space-y-3">
@@ -253,7 +253,7 @@ export default async function JobDetailPage({
 
             {/* Timeline card */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-5">
-              <h3 className="mb-4 font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+              <h3 className="mb-4 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                 Timeline
               </h3>
               <div className="space-y-3">
@@ -275,7 +275,7 @@ export default async function JobDetailPage({
 
             {/* Business card */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-5">
-              <h3 className="mb-4 font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+              <h3 className="mb-4 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                 Posted By
               </h3>
               <p className="text-sm font-semibold text-text-primary">

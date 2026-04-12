@@ -337,7 +337,7 @@ export function TcoCalculatorClient() {
               suffix="/hr"
             />
             <div className="rounded-md bg-obsidian px-4 py-2.5">
-              <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 Fully-loaded cost (1.3x)
               </p>
               <p className="font-mono text-sm font-bold text-text-data">
@@ -425,16 +425,16 @@ export function TcoCalculatorClient() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="py-2 pr-4 text-left font-mono text-[10px] uppercase tracking-wider text-text-ghost" />
+                  <th className="py-2 pr-4 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost" />
                   {[1, 2, 3, 4, 5].map((y) => (
                     <th
                       key={y}
-                      className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-wider text-text-ghost"
+                      className="px-3 py-2 text-right font-mono text-[13px] uppercase tracking-wider text-text-ghost"
                     >
                       Year {y}
                     </th>
                   ))}
-                  <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-wider text-text-secondary">
+                  <th className="px-3 py-2 text-right font-mono text-[13px] uppercase tracking-wider text-text-secondary">
                     Total
                   </th>
                 </tr>
@@ -609,13 +609,13 @@ export function TcoCalculatorClient() {
             {robotCalcs.map((rc, i) => (
               <div key={i} className="space-y-3">
                 <p
-                  className="font-mono text-[10px] uppercase tracking-wider"
+                  className="font-mono text-[13px] uppercase tracking-wider"
                   style={{ color: COLORS[i] }}
                 >
                   {rc.name}
                 </p>
                 <div className="rounded-md bg-obsidian px-4 py-3 text-center">
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                  <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     Payback Period
                   </p>
                   <p className="mt-1 font-mono text-2xl font-bold text-blue-400">
@@ -625,7 +625,7 @@ export function TcoCalculatorClient() {
                   </p>
                 </div>
                 <div className="rounded-md bg-obsidian px-4 py-3 text-center">
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                  <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     5-Year ROI
                   </p>
                   <p
@@ -638,7 +638,7 @@ export function TcoCalculatorClient() {
                   </p>
                 </div>
                 <div className="rounded-md bg-obsidian px-4 py-3 text-center">
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                  <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     Monthly Savings
                   </p>
                   <p className="mt-1 font-mono text-lg font-bold text-text-data">
@@ -738,7 +738,7 @@ function Slider({
   return (
     <div>
       <div className="mb-1 flex items-center justify-between">
-        <label className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <label className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           {label}
         </label>
         <span className="font-mono text-sm font-bold text-text-data">
@@ -774,7 +774,7 @@ function NumberInput({
 }) {
   return (
     <div>
-      <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+      <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
         {label}
       </label>
       <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2 focus-within:border-electric-blue">

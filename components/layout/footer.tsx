@@ -47,7 +47,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="mb-4 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-white/45">
+      <h3 className="mb-4 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/45">
         {heading}
       </h3>
       <ul className="space-y-0">

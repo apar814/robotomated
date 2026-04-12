@@ -133,7 +133,7 @@ export default function AdminReviewsPage() {
                   <td className="px-3 py-3">
                     <span
                       className={cn(
-                        "rounded px-2 py-0.5 text-[10px] font-semibold",
+                        "rounded px-2 py-0.5 text-[13px] font-semibold",
                         review.review_type === "expert"
                           ? "bg-[#2563EB]/10 text-[#2563EB]"
                           : "bg-white/10 text-white/60"
@@ -242,7 +242,7 @@ function StatusBadge({ status }: { status: string }) {
   };
 
   return (
-    <span className={cn("rounded px-2 py-0.5 text-[10px] font-semibold", styles[status] || styles.draft)}>
+    <span className={cn("rounded px-2 py-0.5 text-[13px] font-semibold", styles[status] || styles.draft)}>
       {status}
     </span>
   );
@@ -251,7 +251,7 @@ function StatusBadge({ status }: { status: string }) {
 function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
   return (
     <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-      <p className="text-[10px] uppercase tracking-wider text-white/40">{label}</p>
+      <p className="text-[13px] uppercase tracking-wider text-white/40">{label}</p>
       <p className={cn("mt-1 text-2xl font-bold", color)}>{value}</p>
     </div>
   );

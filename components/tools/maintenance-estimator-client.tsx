@@ -99,7 +99,7 @@ export function MaintenanceEstimatorClient() {
         </h3>
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
               Fleet Size
             </label>
             <input
@@ -112,7 +112,7 @@ export function MaintenanceEstimatorClient() {
             />
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
               Average Robot Value
             </label>
             <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2.5 focus-within:border-electric-blue">
@@ -126,7 +126,7 @@ export function MaintenanceEstimatorClient() {
             </div>
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
               Robot Category
             </label>
             <select
@@ -142,7 +142,7 @@ export function MaintenanceEstimatorClient() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
               Current Maintenance Model
             </label>
             <select
@@ -173,7 +173,7 @@ export function MaintenanceEstimatorClient() {
           </span>
           <span className="pb-1 font-mono text-sm text-text-ghost">/year</span>
         </div>
-        <p className="mt-2 text-center font-mono text-[10px] text-text-ghost">
+        <p className="mt-2 text-center font-mono text-[13px] text-text-ghost">
           Based on {Math.round(maintenancePctLow * 100)}–{Math.round(maintenancePctHigh * 100)}% of total fleet value (${(fleetSize * avgRobotValue).toLocaleString()})
         </p>
       </div>
@@ -190,7 +190,7 @@ export function MaintenanceEstimatorClient() {
               In-House Team
             </h3>
             {maintenanceModel === "in_house" && (
-              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[9px] text-electric-blue">
+              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] text-electric-blue">
                 CURRENT
               </span>
             )}
@@ -213,7 +213,7 @@ export function MaintenanceEstimatorClient() {
               />
             </div>
             <div className="mt-2 rounded-md bg-obsidian px-4 py-3 text-center">
-              <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 5-Year Total
               </p>
               <p className="mt-1 font-mono text-xl font-bold text-text-data">
@@ -233,7 +233,7 @@ export function MaintenanceEstimatorClient() {
               Service Contract
             </h3>
             {maintenanceModel === "service_contract" && (
-              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[9px] text-electric-blue">
+              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] text-electric-blue">
                 CURRENT
               </span>
             )}
@@ -258,7 +258,7 @@ export function MaintenanceEstimatorClient() {
               />
             </div>
             <div className="mt-2 rounded-md bg-obsidian px-4 py-3 text-center">
-              <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 5-Year Total
               </p>
               <p className="mt-1 font-mono text-xl font-bold text-text-data">
@@ -286,7 +286,7 @@ export function MaintenanceEstimatorClient() {
           <p className="mt-1 text-sm text-text-secondary">
             maintenance technician{results.techsNeeded > 1 ? "s" : ""}
           </p>
-          <p className="mt-3 font-mono text-[10px] text-text-ghost">
+          <p className="mt-3 font-mono text-[13px] text-text-ghost">
             Rule of thumb: 1 technician per 10–15 robots
           </p>
         </div>

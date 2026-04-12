@@ -81,7 +81,7 @@ export default async function RspReferralsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-block rounded-full border border-blue-600/20 bg-blue-600/5 px-4 py-1.5">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-blue-400">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-blue-400">
               RSP Referral Program
             </span>
           </div>
@@ -104,7 +104,7 @@ export default async function RspReferralsPage() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               How It Works
             </span>
           </div>

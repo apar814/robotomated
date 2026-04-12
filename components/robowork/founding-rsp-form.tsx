@@ -104,7 +104,7 @@ export function FoundingRspForm() {
     "w-full rounded border px-3 py-2.5 text-sm outline-none transition-colors focus:border-electric-blue placeholder:text-text-tertiary";
 
   const labelClass =
-    "mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost";
+    "mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost";
 
   return (
     <form
@@ -226,7 +226,7 @@ export function FoundingRspForm() {
           value={motivation}
           onChange={(e) => setMotivation(e.target.value)}
         />
-        <p className="mt-1 text-right font-mono text-[10px] text-text-tertiary">
+        <p className="mt-1 text-right font-mono text-[13px] text-text-tertiary">
           {motivation.length}/200 min
         </p>
       </div>

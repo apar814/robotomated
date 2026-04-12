@@ -217,7 +217,7 @@ export default async function RobotDetailPage({ params }: Props) {
 
       {/* ── 1. BREADCRUMB ── */}
       <div className="mx-auto max-w-6xl px-4 pt-6 lg:px-6">
-        <nav className="flex items-center gap-1 font-mono text-[10px]">
+        <nav className="flex items-center gap-1 font-mono text-[13px]">
           <Link href="/explore" className="text-text-tertiary transition-colors hover:text-text-secondary">
             Explore
           </Link>
@@ -236,7 +236,7 @@ export default async function RobotDetailPage({ params }: Props) {
           {/* Left side (60%) */}
           <div className="flex-1 lg:w-[60%]">
             {/* Manufacturer */}
-            <p className="font-mono text-[10px] uppercase tracking-widest text-text-tertiary">
+            <p className="font-mono text-[13px] uppercase tracking-widest text-text-tertiary">
               {mfr?.name}
             </p>
 
@@ -248,7 +248,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Sector code + year */}
             <div className="mt-2 flex items-center gap-2">
               <SectorCode code={sectorCode} />
-              <span className="font-mono text-[10px] text-text-tertiary">
+              <span className="font-mono text-[13px] text-text-tertiary">
                 · {robot.year_released || YEAR}
               </span>
             </div>
@@ -283,13 +283,13 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Who is this for + What problem does it solve */}
             <div className="mt-5 space-y-2">
               <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-electric-blue">What problem does this solve?</p>
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-electric-blue">What problem does this solve?</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-text-primary">
                   {bestFor}.
                 </p>
               </div>
               <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-widest text-electric-blue">Who is this for?</p>
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-electric-blue">Who is this for?</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
                   {robot.price_current != null && robot.price_current < 15000
                     ? "Small-to-mid operations evaluating automation for the first time. Low barrier to entry, fast deployment."
@@ -315,7 +315,7 @@ export default async function RobotDetailPage({ params }: Props) {
             </div>
 
             {/* Data confidence + Report error */}
-            <div className="mt-4 flex items-center gap-3 text-[10px]">
+            <div className="mt-4 flex items-center gap-3 text-[13px]">
               <span className="flex items-center gap-1 font-mono text-text-ghost">
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
                 Updated {new Date(robot.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
@@ -368,7 +368,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 />
               ) : (
                 <div className="flex h-full flex-col items-center justify-center">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-text-ghost">
+                  <span className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     {mfr?.name}
                   </span>
                   <span className="mt-1 text-sm font-semibold text-text-tertiary">
@@ -385,7 +385,7 @@ export default async function RobotDetailPage({ params }: Props) {
       {robot.video_url && (
         <section className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
           <div className="section-label mb-3">
-            <span className="font-mono text-[9px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
+            <span className="font-mono text-[13px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
           </div>
           <VideoPlayer
             videoUrl={robot.video_url}
@@ -399,7 +399,7 @@ export default async function RobotDetailPage({ params }: Props) {
       {robot.youtube_url && !robot.video_url && (
         <section className="mx-auto max-w-6xl px-4 pb-2 lg:px-6">
           <div className="section-label mb-3">
-            <span className="font-mono text-[9px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
+            <span className="font-mono text-[13px] tracking-widest">[VIDEO] WATCH IN ACTION</span>
           </div>
           <VideoEmbed youtubeUrl={robot.youtube_url} robotName={robot.name} />
         </section>
@@ -424,7 +424,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {(robot.description_long || robot.description_short) && (
               <section className="border-t border-border pt-6">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[OVERVIEW] DESCRIPTION</span>
+                  <span className="font-mono text-[13px] tracking-widest">[OVERVIEW] DESCRIPTION</span>
                 </div>
                 <p className="text-sm leading-relaxed text-text-secondary">
                   {robot.description_long || robot.description_short}
@@ -436,7 +436,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {expertReviews.length > 0 && (
               <section className="border-t border-border pt-6">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[REVIEW] EXPERT ANALYSIS</span>
+                  <span className="font-mono text-[13px] tracking-widest">[REVIEW] EXPERT ANALYSIS</span>
                 </div>
                 <div className="space-y-4">
                   {expertReviews.map((review) => (
@@ -460,7 +460,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {breakdown && (
               <section className="border-t border-border pt-6">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[SCORE] BREAKDOWN</span>
+                  <span className="font-mono text-[13px] tracking-widest">[SCORE] BREAKDOWN</span>
                 </div>
                 <div className="space-y-3">
                   {DIMENSIONS.map((dim) => {
@@ -482,12 +482,12 @@ export default async function RobotDetailPage({ params }: Props) {
             {Object.keys(specs).length > 0 && (
               <section id="specs" className="border-t border-border pt-6">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[SPECS] TECHNICAL</span>
+                  <span className="font-mono text-[13px] tracking-widest">[SPECS] TECHNICAL</span>
                 </div>
                 <div className="space-y-6">
                   {specGroups.map(([group, entries]) => (
                     <div key={group}>
-                      <h3 className="mb-2 font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+                      <h3 className="mb-2 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                         {group}
                       </h3>
                       <div className="overflow-hidden rounded-md border border-border">
@@ -525,23 +525,23 @@ export default async function RobotDetailPage({ params }: Props) {
             </section>
             <section>
               <div className="section-label mb-3">
-                <span className="font-mono text-[9px] tracking-widest">[TCO] COST ANALYSIS</span>
+                <span className="font-mono text-[13px] tracking-widest">[TCO] COST ANALYSIS</span>
               </div>
               <div className="space-y-4">
                 {/* Purchase Costs */}
                 <div className="rounded-md border border-border bg-obsidian-surface p-4">
-                  <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                  <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     Purchase Costs
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <p className="font-mono text-[9px] text-text-ghost">MSRP</p>
+                      <p className="font-mono text-[13px] text-text-ghost">MSRP</p>
                       <p className="font-mono text-sm text-text-data">
                         {robot.price_msrp != null ? fmtPrice(robot.price_msrp) : "—"}
                       </p>
                     </div>
                     <div>
-                      <p className="font-mono text-[9px] text-text-ghost">CURRENT</p>
+                      <p className="font-mono text-[13px] text-text-ghost">CURRENT</p>
                       <p className="font-mono text-sm font-bold text-blue-400">
                         {robot.price_current != null ? fmtPrice(robot.price_current) : "RFQ"}
                       </p>
@@ -551,12 +551,12 @@ export default async function RobotDetailPage({ params }: Props) {
 
                 {/* Operating Costs */}
                 <div className="rounded-md border border-border bg-obsidian-surface p-4">
-                  <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                  <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     Operating Costs (Annual)
                   </p>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <p className="font-mono text-[9px] text-text-ghost">MAINTENANCE LOW</p>
+                      <p className="font-mono text-[13px] text-text-ghost">MAINTENANCE LOW</p>
                       <p className="font-mono text-sm text-text-data">
                         {robot.maintenance_annual_cost_low != null
                           ? fmtPrice(robot.maintenance_annual_cost_low)
@@ -564,7 +564,7 @@ export default async function RobotDetailPage({ params }: Props) {
                       </p>
                     </div>
                     <div>
-                      <p className="font-mono text-[9px] text-text-ghost">MAINTENANCE HIGH</p>
+                      <p className="font-mono text-[13px] text-text-ghost">MAINTENANCE HIGH</p>
                       <p className="font-mono text-sm text-text-data">
                         {robot.maintenance_annual_cost_high != null
                           ? fmtPrice(robot.maintenance_annual_cost_high)
@@ -573,7 +573,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     </div>
                   </div>
                   {robot.maintenance_annual_pct != null && (
-                    <p className="mt-2 font-mono text-[9px] text-text-tertiary">
+                    <p className="mt-2 font-mono text-[13px] text-text-tertiary">
                       ~{robot.maintenance_annual_pct}% of purchase price annually
                     </p>
                   )}
@@ -582,7 +582,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 {/* 5-Year Summary */}
                 {robot.price_current != null && (
                   <div className="rounded-md border border-border border-l-2 border-l-blue-500 bg-obsidian-surface p-4">
-                    <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                    <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                       5-Year Summary
                     </p>
                     <p className="font-mono text-lg font-bold text-text-primary">
@@ -596,7 +596,7 @@ export default async function RobotDetailPage({ params }: Props) {
                         return fmtPrice(robot.price_current! + 5 * maint);
                       })()}
                     </p>
-                    <p className="mt-1 text-[9px] text-text-ghost">
+                    <p className="mt-1 text-[13px] text-text-ghost">
                       Purchase price + estimated 5 years maintenance
                     </p>
                   </div>
@@ -607,7 +607,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* ROI Calculator */}
             <section id="roi" className="border-t border-border pt-6">
               <div className="section-label mb-3">
-                <span className="font-mono text-[9px] tracking-widest">[ROI] CALCULATOR</span>
+                <span className="font-mono text-[13px] tracking-widest">[ROI] CALCULATOR</span>
               </div>
               <RoiCalculatorStandalone
                 robotName={robot.name}
@@ -659,7 +659,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Community Reviews */}
             <section className="border-t border-border pt-6">
               <div className="section-label mb-3">
-                <span className="font-mono text-[9px] tracking-widest">[COMMUNITY] REVIEWS</span>
+                <span className="font-mono text-[13px] tracking-widest">[COMMUNITY] REVIEWS</span>
               </div>
               {communityReviews.length > 0 && (
                 <div className="mb-4 space-y-4">
@@ -689,7 +689,7 @@ export default async function RobotDetailPage({ params }: Props) {
               {breakdown && robot.robo_score != null && (
                 <div className="rounded-md border border-border bg-obsidian-surface p-4">
                   <div className="section-label mb-3">
-                    <span className="font-mono text-[9px] tracking-widest">[ROBOSCORE] RATING</span>
+                    <span className="font-mono text-[13px] tracking-widest">[ROBOSCORE] RATING</span>
                   </div>
                   <div className="mb-4 flex justify-center">
                     <RoboScoreRing score={robot.robo_score} size={120} />
@@ -708,7 +708,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     })}
                   </div>
                   <div className="mt-3 border-t border-border pt-3">
-                    <Link href="/methodology" className="font-mono text-[9px] text-electric-blue hover:underline">
+                    <Link href="/methodology" className="font-mono text-[13px] text-electric-blue hover:underline">
                       Read methodology →
                     </Link>
                   </div>
@@ -744,7 +744,7 @@ export default async function RobotDetailPage({ params }: Props) {
               {/* Robotimus CTA */}
               <div className="rounded-md border border-border bg-obsidian-surface p-4">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">ROBOTIMUS</span>
+                  <span className="font-mono text-[13px] tracking-widest">ROBOTIMUS</span>
                 </div>
                 <p className="mb-3 text-sm text-text-secondary">
                   Not sure if {robot.name} is right for you? Ask Robotimus.
@@ -760,7 +760,7 @@ export default async function RobotDetailPage({ params }: Props) {
               {/* Price Alert */}
               <div className="rounded-md border border-border bg-obsidian-surface p-4">
                 <div className="section-label mb-3">
-                  <span className="font-mono text-[9px] tracking-widest">[PRICE] ALERT</span>
+                  <span className="font-mono text-[13px] tracking-widest">[PRICE] ALERT</span>
                 </div>
                 <PriceAlertForm
                   robotId={robot.id}
@@ -773,7 +773,7 @@ export default async function RobotDetailPage({ params }: Props) {
               {(robot.affiliate_url || mfr?.website) && (
                 <div className="rounded-md border border-border bg-obsidian-surface p-4">
                   <div className="section-label mb-3">
-                    <span className="font-mono text-[9px] tracking-widest">[BUY] WHERE TO PURCHASE</span>
+                    <span className="font-mono text-[13px] tracking-widest">[BUY] WHERE TO PURCHASE</span>
                   </div>
                   <a
                     href={`/api/out/${robot.slug}?ref=product-page&pos=sidebar`}
@@ -792,7 +792,7 @@ export default async function RobotDetailPage({ params }: Props) {
                   />
                   {(priceHistory || []).length > 0 && (
                     <div className="mt-4">
-                      <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+                      <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                         Price History
                       </p>
                       <PriceChart data={priceHistory || []} />
@@ -815,7 +815,7 @@ export default async function RobotDetailPage({ params }: Props) {
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-4 py-10 lg:px-6">
             <div className="section-label mb-4">
-              <span className="font-mono text-[9px] tracking-widest">[ALTERNATIVES] ALSO CONSIDER</span>
+              <span className="font-mono text-[13px] tracking-widest">[ALTERNATIVES] ALSO CONSIDER</span>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {similar.map((s) => {
@@ -841,13 +841,13 @@ export default async function RobotDetailPage({ params }: Props) {
                         />
                       ) : (
                         <div className="flex h-full flex-col items-center justify-center text-center">
-                          <span className="font-mono text-[10px] text-text-ghost">{sMfr}</span>
+                          <span className="font-mono text-[13px] text-text-ghost">{sMfr}</span>
                           <span className="mt-1 text-xs font-semibold text-text-tertiary">{s.name}</span>
                         </div>
                       )}
                     </div>
                     <div className="p-4">
-                      <p className="font-mono text-[10px] text-text-ghost">{sMfr}</p>
+                      <p className="font-mono text-[13px] text-text-ghost">{sMfr}</p>
                       <h3 className="font-semibold text-text-primary transition-colors group-hover:text-electric-blue">
                         {s.name}
                       </h3>
@@ -872,7 +872,7 @@ export default async function RobotDetailPage({ params }: Props) {
       <section className="border-t border-border">
         <div className="mx-auto max-w-6xl px-4 py-10 lg:px-6">
           <div className="section-label mb-4">
-            <span className="font-mono text-[9px] tracking-widest">[FAQ] COMMON QUESTIONS</span>
+            <span className="font-mono text-[13px] tracking-widest">[FAQ] COMMON QUESTIONS</span>
           </div>
           <div className="space-y-4">
             {[
@@ -922,7 +922,7 @@ export default async function RobotDetailPage({ params }: Props) {
               href="/compare"
               className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
             >
-              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
               <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
                 Compare with alternatives
               </p>
@@ -932,7 +932,7 @@ export default async function RobotDetailPage({ params }: Props) {
               href="/tools/tco-calculator"
               className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
             >
-              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
               <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
                 Calculate 5-year total cost
               </p>
@@ -942,7 +942,7 @@ export default async function RobotDetailPage({ params }: Props) {
               href="/advisor"
               className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
             >
-              <p className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">Next</p>
+              <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
               <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
                 Get a deployment recommendation
               </p>

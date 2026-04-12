@@ -19,7 +19,7 @@ function SupportBadge({ model }: { model: string }) {
   return (
     <span
       className={cn(
-        "inline-block rounded-[2px] border px-1.5 py-0.5 font-mono text-[9px] uppercase",
+        "inline-block rounded-[2px] border px-1.5 py-0.5 font-mono text-[13px] uppercase",
         colorMap[model] ?? "text-text-tertiary border-border bg-obsidian-elevated"
       )}
     >
@@ -39,7 +39,7 @@ function PartsBadge({ availability }: { availability: string }) {
   return (
     <span
       className={cn(
-        "inline-block rounded-[2px] border px-1.5 py-0.5 font-mono text-[9px] uppercase",
+        "inline-block rounded-[2px] border px-1.5 py-0.5 font-mono text-[13px] uppercase",
         colorMap[availability] ?? "text-text-tertiary border-border bg-obsidian-elevated"
       )}
     >
@@ -97,7 +97,7 @@ export function MaintenanceGuide({
     <div className="rounded-md border border-border bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label mb-3">
-        <span className="font-mono text-[9px] tracking-widest">
+        <span className="font-mono text-[13px] tracking-widest">
           [SERVICE] MAINTENANCE
         </span>
       </div>
@@ -107,19 +107,19 @@ export function MaintenanceGuide({
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-obsidian-elevated">
-              <th className="px-2 py-1.5 text-left font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <th className="px-2 py-1.5 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 Interval
               </th>
-              <th className="px-2 py-1.5 text-left font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <th className="px-2 py-1.5 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 Task
               </th>
-              <th className="hidden px-2 py-1.5 text-left font-mono text-[9px] uppercase tracking-wider text-text-ghost sm:table-cell">
+              <th className="hidden px-2 py-1.5 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost sm:table-cell">
                 Est. Time
               </th>
-              <th className="px-2 py-1.5 text-left font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+              <th className="px-2 py-1.5 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                 Est. Cost
               </th>
-              <th className="hidden px-2 py-1.5 text-left font-mono text-[9px] uppercase tracking-wider text-text-ghost sm:table-cell">
+              <th className="hidden px-2 py-1.5 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost sm:table-cell">
                 Type
               </th>
             </tr>
@@ -152,13 +152,13 @@ export function MaintenanceGuide({
       </div>
 
       {/* Service Details */}
-      <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+      <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
         Service Details
       </p>
       <div className="space-y-2">
         {/* Warranty */}
         <div className="flex items-start gap-2">
-          <span className="shrink-0 font-mono text-[9px] uppercase text-text-tertiary">
+          <span className="shrink-0 font-mono text-[13px] uppercase text-text-tertiary">
             Warranty:
           </span>
           <span className="font-mono text-[11px] text-text-secondary">
@@ -170,7 +170,7 @@ export function MaintenanceGuide({
 
         {/* Support */}
         <div className="flex items-center gap-2">
-          <span className="shrink-0 font-mono text-[9px] uppercase text-text-tertiary">
+          <span className="shrink-0 font-mono text-[13px] uppercase text-text-tertiary">
             Support:
           </span>
           {supportModel ? (
@@ -184,7 +184,7 @@ export function MaintenanceGuide({
 
         {/* Response Time */}
         <div className="flex items-center gap-2">
-          <span className="shrink-0 font-mono text-[9px] uppercase text-text-tertiary">
+          <span className="shrink-0 font-mono text-[13px] uppercase text-text-tertiary">
             Response:
           </span>
           <span className="font-mono text-[11px] text-text-secondary">
@@ -196,7 +196,7 @@ export function MaintenanceGuide({
 
         {/* Spare Parts */}
         <div className="flex items-center gap-2">
-          <span className="shrink-0 font-mono text-[9px] uppercase text-text-tertiary">
+          <span className="shrink-0 font-mono text-[13px] uppercase text-text-tertiary">
             Spare Parts:
           </span>
           {sparePartsAvailability ? (

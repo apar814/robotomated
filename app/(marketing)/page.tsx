@@ -164,9 +164,9 @@ export default async function HomePage() {
 
       <div className="border-b px-6 py-3" style={{ borderColor: "var(--theme-border)" }}>
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
+          <span className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
           <span className="h-1 w-1 rounded-full" style={{ background: "#2563EB" }} />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
+          <span className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
         </div>
       </div>
 
@@ -272,7 +272,7 @@ export default async function HomePage() {
                     </div>
                     {/* Info */}
                     <div className="p-5">
-                      <span className="font-[family-name:var(--font-ui)] text-[10px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">{mfr}</span>
+                      <span className="font-[family-name:var(--font-ui)] text-[13px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">{mfr}</span>
                       <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#2563EB]">{robot.name}</p>
                       <div className="mt-3 flex items-center justify-between">
                         {robot.price_current != null ? (
@@ -317,7 +317,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
                 <span className="inline-block h-px w-8 bg-[#2563EB]" />
                 The Abundance Equation
               </p>
@@ -392,7 +392,7 @@ export default async function HomePage() {
         }}
       >
         <div className="mx-auto max-w-xl text-center">
-          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
             [ Newsletter ]
           </p>
           <h2 className="font-display text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>

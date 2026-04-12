@@ -76,7 +76,7 @@ export default function CROPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/70">
             [ LEVEL 5 — BY MERIT AND CONTRIBUTION ]
           </p>
 
@@ -114,7 +114,7 @@ export default function CROPage() {
       {/* ═══ THE THREE GATES ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE THREE GATES ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -130,10 +130,10 @@ export default function CROPage() {
             <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-7 transition-all hover:border-white/20">
               <div className="mb-5 flex items-start justify-between">
                 <div>
-                  <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/70">
+                  <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-white/70">
                     Gate 1
                   </span>
-                  <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+                  <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
                     PORTFOLIO SUBMISSION
                   </p>
                 </div>
@@ -191,10 +191,10 @@ export default function CROPage() {
             <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-7 transition-all hover:border-white/20">
               <div className="mb-5 flex items-start justify-between">
                 <div>
-                  <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/70">
+                  <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-white/70">
                     Gate 2
                   </span>
-                  <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+                  <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
                     PANEL REVIEW
                   </p>
                 </div>
@@ -202,7 +202,7 @@ export default function CROPage() {
                   <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                     90
                   </p>
-                  <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-muted">
+                  <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] text-muted">
                     minutes
                   </p>
                 </div>
@@ -233,7 +233,7 @@ export default function CROPage() {
               </div>
 
               <div className="mt-6 rounded-lg border border-border bg-white/[0.02] p-4">
-                <p className="mb-3 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                <p className="mb-3 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                   Scoring
                 </p>
                 <div className="grid gap-2 sm:grid-cols-2">
@@ -260,10 +260,10 @@ export default function CROPage() {
             {/* Gate 3 */}
             <div className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-7 transition-all hover:border-white/20">
               <div className="mb-5">
-                <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/70">
+                <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-white/70">
                   Gate 3
                 </span>
-                <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
                   CONTRIBUTION COMMITMENT
                 </p>
               </div>
@@ -319,7 +319,7 @@ export default function CROPage() {
       {/* ═══ PREREQUISITES ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ PREREQUISITES ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -369,7 +369,7 @@ export default function CROPage() {
       {/* ═══ CRO COUNCIL ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
             [ THE COUNCIL ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -413,7 +413,7 @@ export default function CROPage() {
       {/* ═══ TIMELINE ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ TIMELINE ]
           </p>
           <h2 className="mb-10 text-center font-display text-2xl font-bold">
@@ -452,7 +452,7 @@ export default function CROPage() {
       <section className="px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-white/60">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/60">
               [ THE ELON TEST ]
             </p>
             <h3 className="mt-4 font-display text-xl font-bold text-white sm:text-2xl">

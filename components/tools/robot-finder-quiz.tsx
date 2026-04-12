@@ -322,10 +322,10 @@ export function RobotFinderQuiz() {
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-electric-blue">
+                    <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] font-semibold text-electric-blue">
                       #{i + 1}
                     </span>
-                    <span className="rounded bg-blue-600/10 px-2 py-0.5 font-mono text-[10px] font-bold text-blue-400">
+                    <span className="rounded bg-blue-600/10 px-2 py-0.5 font-mono text-[13px] font-bold text-blue-400">
                       {robot.matchPct}% MATCH
                     </span>
                   </div>
@@ -358,7 +358,7 @@ export function RobotFinderQuiz() {
                 </div>
               </div>
               <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
-                <span className="font-mono text-[10px] text-text-ghost">
+                <span className="font-mono text-[13px] text-text-ghost">
                   Est. maintenance: {robot.maintenance_est != null ? `$${robot.maintenance_est.toLocaleString()}/yr` : "—"}
                 </span>
                 <span className="text-xs text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
@@ -379,13 +379,13 @@ export function RobotFinderQuiz() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="py-2 pr-4 text-left font-mono text-[10px] uppercase tracking-wider text-text-ghost">
+                    <th className="py-2 pr-4 text-left font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                       Cost
                     </th>
                     {top3.map((r) => (
                       <th
                         key={r.slug}
-                        className="py-2 px-3 text-right font-mono text-[10px] uppercase tracking-wider text-text-secondary"
+                        className="py-2 px-3 text-right font-mono text-[13px] uppercase tracking-wider text-text-secondary"
                       >
                         {r.name.length > 20 ? r.name.slice(0, 18) + "..." : r.name}
                       </th>
@@ -647,7 +647,7 @@ function StepLayout({
 }) {
   return (
     <div>
-      <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-text-ghost">
+      <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
         Question {stepNum} of 7
       </p>
       <h2 className="mb-6 text-xl font-bold text-text-primary">{question}</h2>
@@ -672,7 +672,7 @@ function OptionCard({
     >
       <div className="flex items-center gap-3">
         {badge && (
-          <span className="rounded bg-electric-blue/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-electric-blue">
+          <span className="rounded bg-electric-blue/10 px-1.5 py-0.5 font-mono text-[13px] font-bold text-electric-blue">
             {badge}
           </span>
         )}

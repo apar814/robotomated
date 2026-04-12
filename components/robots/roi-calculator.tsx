@@ -102,7 +102,7 @@ export function RoiCalculator({
         </div>
       </div>
 
-      <p className="mt-4 text-[10px] text-muted/50">
+      <p className="mt-4 text-[13px] text-muted/50">
         Estimates based on {fte} FTE replaced. Actual results vary by deployment. Does not include tax benefits or depreciation.
       </p>
     </div>
@@ -132,7 +132,7 @@ function ResultRow({ label, value, color, detail }: { label: string; value: numb
     <div className="flex items-center justify-between">
       <div>
         <span className="text-sm text-muted">{label}</span>
-        {detail && <span className="ml-1 text-[10px] text-muted/50">{detail}</span>}
+        {detail && <span className="ml-1 text-[13px] text-muted/50">{detail}</span>}
       </div>
       <span className={cn("font-mono text-sm font-semibold", color)}>{formatCurrency(value)}</span>
     </div>

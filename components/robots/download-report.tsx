@@ -210,7 +210,7 @@ export function DownloadReport({ robot }: DownloadReportProps) {
     <button
       type="button"
       onClick={handleDownload}
-      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[10px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
+      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1.5 font-mono text-[13px] text-text-secondary transition-colors hover:bg-white/10 hover:text-text-primary"
     >
       <svg
         width="14"

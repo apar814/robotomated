@@ -58,7 +58,7 @@ export function RoboWorkSection() {
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
           <span className="inline-block h-px w-6 bg-[#2563EB]" />
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             Deploy Channel
           </span>
         </div>
@@ -87,7 +87,7 @@ export function RoboWorkSection() {
                   {job.title}
                 </h3>
                 {job.urgent && (
-                  <span className="shrink-0 rounded bg-red-500/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.06em] text-red-400">
+                  <span className="shrink-0 rounded bg-red-500/15 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.06em] text-red-400">
                     Urgent
                   </span>
                 )}
@@ -98,7 +98,7 @@ export function RoboWorkSection() {
                 {job.tags.map((tag) => (
                   <span
                     key={tag.label}
-                    className={`rounded-full px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.06em] ${tag.color}`}
+                    className={`rounded-full px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.06em] ${tag.color}`}
                   >
                     {tag.label}
                   </span>

@@ -117,7 +117,7 @@ export function PostJobForm() {
 
   const inputClass =
     "w-full rounded border border-border bg-obsidian-elevated px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-electric-blue placeholder:text-text-tertiary";
-  const labelClass = "mb-1.5 block font-mono text-[9px] uppercase tracking-widest text-text-ghost";
+  const labelClass = "mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost";
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -195,7 +195,7 @@ export function PostJobForm() {
                     )}
                   >
                     {(() => { const Icon = TASK_TYPE_ICONS[t.value]; return Icon ? <Icon size={18} /> : null; })()}
-                    <span className="text-[10px] leading-tight">{t.label}</span>
+                    <span className="text-[13px] leading-tight">{t.label}</span>
                   </button>
                 ))}
               </div>
@@ -535,7 +535,7 @@ export function PostJobForm() {
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex gap-4">
-      <span className="w-28 shrink-0 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+      <span className="w-28 shrink-0 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
         {label}
       </span>
       <span className="text-sm text-text-primary">{value}</span>

@@ -55,15 +55,15 @@ export default function AdminNewsletterPage() {
       {/* Stats */}
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Total Subscribers</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Total Subscribers</p>
           <p className="mt-1 text-2xl font-bold">{stats?.totalSubscribers || 0}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">Active</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">Active</p>
           <p className="mt-1 text-2xl font-bold text-[#00E5A0]">{stats?.activeSubscribers || 0}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
-          <p className="text-[10px] uppercase tracking-wider text-white/40">New This Week</p>
+          <p className="text-[13px] uppercase tracking-wider text-white/40">New This Week</p>
           <p className="mt-1 text-2xl font-bold text-[#2563EB]">
             {stats?.byDay?.reduce((s, d) => s + d.count, 0) || 0}
           </p>
@@ -100,7 +100,7 @@ export default function AdminNewsletterPage() {
           {(stats?.recentSubscribers || []).map((s, i) => (
             <div key={i} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] px-4 py-2">
               <span className="text-sm">{s.email}</span>
-              <span className="text-[10px] text-white/50">
+              <span className="text-[13px] text-white/50">
                 {s.source || "direct"} -- {new Date(s.created_at).toLocaleDateString()}
               </span>
             </div>

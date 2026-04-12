@@ -64,11 +64,11 @@ export default function AdminContentPage() {
           >
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm">{a.title}</p>
-              <p className="text-[10px] text-white/50">
+              <p className="text-[13px] text-white/50">
                 {a.category} -- {a.word_count} words -- {a.read_time} min
               </p>
             </div>
-            <span className={`ml-3 rounded px-2 py-0.5 text-[10px] font-mono ${
+            <span className={`ml-3 rounded px-2 py-0.5 text-[13px] font-mono ${
               a.published_at ? "bg-[#00E5A0]/10 text-[#00E5A0]" : "bg-white/10 text-white/40"
             }`}>
               {a.published_at ? "Published" : "Draft"}

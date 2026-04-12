@@ -207,7 +207,7 @@ export default async function HumanoidHubPage() {
       {/* ── Section 1: Hero ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ HUMANOID INTELLIGENCE ]
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl">
@@ -241,7 +241,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#7B2FFF]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Why Now
             </span>
           </div>
@@ -276,7 +276,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#00E5A0]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Economics
             </span>
           </div>
@@ -349,7 +349,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#00C2FF]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Timeline
             </span>
           </div>
@@ -389,7 +389,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#FF6B6B]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Geopolitics
             </span>
           </div>
@@ -441,7 +441,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#00E5A0]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Markets
             </span>
           </div>
@@ -462,7 +462,7 @@ export default async function HumanoidHubPage() {
                       {sector.name}
                     </h3>
                     <span
-                      className={`rounded px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.06em] ${statusStyle.bg} ${statusStyle.text}`}
+                      className={`rounded px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.06em] ${statusStyle.bg} ${statusStyle.text}`}
                     >
                       {statusStyle.label}
                     </span>
@@ -483,7 +483,7 @@ export default async function HumanoidHubPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-[#00C2FF]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-muted">
+            <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-muted">
               Directory
             </span>
           </div>
@@ -514,7 +514,7 @@ export default async function HumanoidHubPage() {
                           <p className="mt-0.5 font-[family-name:var(--font-ui)] text-xs text-muted">
                             {mfr.name}
                             {mfr.country && (
-                              <span className="ml-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] opacity-60">
+                              <span className="ml-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] opacity-60">
                                 {mfr.country}
                               </span>
                             )}

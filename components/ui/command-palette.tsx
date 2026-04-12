@@ -439,7 +439,7 @@ export function CommandPalette() {
                             {m.name[0]}
                           </div>
                           <span className="flex-1 text-sm font-medium text-white">{m.name}</span>
-                          <span className="font-mono text-[10px]" style={{ color: "rgba(255,255,255,0.2)" }}>
+                          <span className="font-mono text-[13px]" style={{ color: "rgba(255,255,255,0.2)" }}>
                             /{m.slug}
                           </span>
                         </ResultRow>

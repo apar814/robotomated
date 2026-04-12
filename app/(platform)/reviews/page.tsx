@@ -170,7 +170,7 @@ export default async function ReviewsPage() {
                     <div className="mt-1 flex items-center gap-2">
                       {review.robo_score != null && <RoboScoreBadge score={review.robo_score} />}
                       {review.verified_purchase && (
-                        <span className="rounded-full bg-green/10 px-2 py-0.5 text-[10px] font-medium text-green">Verified</span>
+                        <span className="rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-medium text-green">Verified</span>
                       )}
                     </div>
                     <p className="mt-2 line-clamp-3 text-sm text-muted">{review.body}</p>

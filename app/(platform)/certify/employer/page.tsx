@@ -93,7 +93,7 @@ export default function EmployerPortalPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ EMPLOYER PORTAL ]
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">
@@ -141,7 +141,7 @@ export default function EmployerPortalPage() {
                 }`}
               >
                 {tier.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue px-4 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue px-4 py-1 text-[13px] font-bold uppercase tracking-wider text-white">
                     Most Popular
                   </span>
                 )}

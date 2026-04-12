@@ -173,7 +173,7 @@ export default function CareerPathPage() {
             </ol>
           </nav>
 
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00C2FF]">
+          <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.2em] text-[#00C2FF]">
             Career Path Tool
           </p>
           <h1 className="mt-3 text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
@@ -273,7 +273,7 @@ export default function CareerPathPage() {
               <div className="absolute left-4 top-6 h-4 w-4 rounded-full border-2 border-white/30 bg-[#0A0F1E] sm:left-6" />
               <div className="ml-14 sm:ml-20">
                 <div className="rounded-xl border border-white/20 bg-[#0A0A0A] p-6">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/40">
+                  <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-white/40">
                     Now
                   </p>
                   <p className="mt-2 text-lg font-bold text-white">
@@ -303,10 +303,10 @@ export default function CareerPathPage() {
                     <div className="rounded-xl border border-[#00C2FF]/20 bg-[#0A0A0A] p-6">
                       {/* header row */}
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="rounded-md border border-[#00C2FF]/30 bg-[#00C2FF]/10 px-2 py-0.5 font-mono text-[10px] font-bold text-[#00C2FF]">
+                        <span className="rounded-md border border-[#00C2FF]/30 bg-[#00C2FF]/10 px-2 py-0.5 font-mono text-[13px] font-bold text-[#00C2FF]">
                           {stage.badge}
                         </span>
-                        <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-white/40">
+                        <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-white/40">
                           {stage.label}
                         </p>
                       </div>
@@ -336,7 +336,7 @@ export default function CareerPathPage() {
 
                       {/* job titles */}
                       <div className="mt-4">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-white/50">
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-white/50">
                           Unlocked Roles
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -438,7 +438,7 @@ export default function CareerPathPage() {
                 href={job.href}
                 className="group rounded-xl border border-white/[0.08] bg-[#0A0A0A] p-6 transition-colors hover:border-[#00C2FF]/30"
               >
-                <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#00C2FF]">
+                <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-[#00C2FF]">
                   {job.level}
                 </p>
                 <p className="mt-2 text-lg font-bold text-white group-hover:text-[#00C2FF] transition-colors">

@@ -278,9 +278,9 @@ function StatCard({ label, value, detail, delta }: { label: string; value: strin
       <p className="text-xs text-muted">{label}</p>
       <p className="mt-1 text-2xl font-bold">{value}</p>
       <div className="mt-1 flex items-center gap-2">
-        {detail && <span className="text-[10px] text-muted">{detail}</span>}
+        {detail && <span className="text-[13px] text-muted">{detail}</span>}
         {delta !== undefined && delta !== 0 && (
-          <span className={cn("text-[10px] font-medium", delta > 0 ? "text-green" : "text-orange")}>
+          <span className={cn("text-[13px] font-medium", delta > 0 ? "text-green" : "text-orange")}>
             {delta > 0 ? "+" : ""}{delta} vs yesterday
           </span>
         )}

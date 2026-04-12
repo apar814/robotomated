@@ -48,7 +48,7 @@ export default function AdminManufacturerLogoPage() {
           <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} height={64} />
         </div>
       </div>
-      <p className="mt-2 text-[10px] text-white/45">Preview on dark and light backgrounds</p>
+      <p className="mt-2 text-[13px] text-white/45">Preview on dark and light backgrounds</p>
 
       <div className="mt-6">
         <label className="mb-1 block text-xs text-white/40">Logo URL</label>

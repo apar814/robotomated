@@ -19,20 +19,20 @@ function TickerItem({ sym, score, delta, price, up }: (typeof TICKER_DATA)[numbe
       className="flex h-[30px] items-center gap-1.5 px-3.5"
       style={{ borderRight: "1px solid #131313" }}
     >
-      <span className="font-mono text-[10px] font-bold tracking-wider text-data">
+      <span className="font-mono text-[13px] font-bold tracking-wider text-data">
         {sym}
       </span>
-      <span className="font-mono text-[10px] font-medium text-secondary">
+      <span className="font-mono text-[13px] font-medium text-secondary">
         {score}
       </span>
       <span
-        className={`font-mono text-[9px] font-semibold ${
+        className={`font-mono text-[13px] font-semibold ${
           up ? "text-blue-400" : "text-magenta"
         }`}
       >
         {delta}
       </span>
-      <span className="font-mono text-[9px] text-tertiary">{price}</span>
+      <span className="font-mono text-[13px] text-tertiary">{price}</span>
     </div>
   );
 }

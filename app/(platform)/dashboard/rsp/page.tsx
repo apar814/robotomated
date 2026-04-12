@@ -262,7 +262,7 @@ function OverviewTab() {
             key={stat.label}
             className="rounded-lg border border-border bg-obsidian-surface p-5"
           >
-            <p className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+            <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
               {stat.label}
             </p>
             <p className="mt-1 font-mono text-2xl font-extrabold text-text-primary">
@@ -288,7 +288,7 @@ function OverviewTab() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Recent Reviews
           </span>
         </div>
@@ -313,10 +313,10 @@ function OverviewTab() {
                     <span className="font-mono text-sm font-bold text-electric-blue">
                       {review.rating}
                     </span>
-                    <span className="text-[10px] text-text-tertiary">/5</span>
+                    <span className="text-[13px] text-text-tertiary">/5</span>
                   </div>
                 </div>
-                <p className="mt-1 text-[10px] text-text-tertiary">{review.date}</p>
+                <p className="mt-1 text-[13px] text-text-tertiary">{review.date}</p>
               </div>
             ))}
           </div>
@@ -329,7 +329,7 @@ function OverviewTab() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-amber" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Upcoming Maintenance
           </span>
         </div>
@@ -371,13 +371,13 @@ function JobsTab() {
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Open Jobs in Your Market
             </span>
           </div>
           <Link
             href="/robowork/jobs"
-            className="font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+            className="font-mono text-[13px] text-electric-blue transition-colors hover:underline"
           >
             Browse all jobs &rarr;
           </Link>
@@ -389,7 +389,7 @@ function JobsTab() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-violet" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Active Bids
           </span>
         </div>
@@ -400,7 +400,7 @@ function JobsTab() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Completed Jobs
           </span>
         </div>
@@ -418,7 +418,7 @@ function FleetTab() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Your Fleet
           </span>
         </div>
@@ -442,7 +442,7 @@ function FleetTab() {
                     </h3>
                     <span
                       className={cn(
-                        "rounded border px-2 py-0.5 text-[10px] font-semibold capitalize",
+                        "rounded border px-2 py-0.5 text-[13px] font-semibold capitalize",
                         STATUS_BADGE[robot.status]
                       )}
                     >
@@ -462,11 +462,11 @@ function FleetTab() {
                   <p className="font-mono text-lg font-bold text-text-primary">
                     {robot.utilization}%
                   </p>
-                  <p className="text-[10px] text-text-tertiary">utilization</p>
+                  <p className="text-[13px] text-text-tertiary">utilization</p>
                 </div>
               </div>
               <div className="mt-3 flex items-center gap-4 border-t border-border pt-3">
-                <span className="text-[10px] text-text-tertiary">
+                <span className="text-[13px] text-text-tertiary">
                   Last maintenance: {robot.lastMaintenance}
                 </span>
               </div>
@@ -490,7 +490,7 @@ function MaintenanceTab() {
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-amber" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Maintenance Log
             </span>
           </div>
@@ -504,22 +504,22 @@ function MaintenanceTab() {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Robot
                   </th>
-                  <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Type
                   </th>
-                  <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Description
                   </th>
-                  <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Cost
                   </th>
-                  <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Date
                   </th>
-                  <th className="pb-2 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                  <th className="pb-2 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                     Status
                   </th>
                 </tr>
@@ -533,7 +533,7 @@ function MaintenanceTab() {
                     <td className="py-3 pr-4">
                       <span
                         className={cn(
-                          "rounded px-2 py-0.5 text-[10px] font-semibold capitalize",
+                          "rounded px-2 py-0.5 text-[13px] font-semibold capitalize",
                           MAINT_TYPE_BADGE[log.type]
                         )}
                       >
@@ -552,7 +552,7 @@ function MaintenanceTab() {
                     <td className="py-3">
                       <span
                         className={cn(
-                          "rounded px-2 py-0.5 text-[10px] font-semibold capitalize",
+                          "rounded px-2 py-0.5 text-[13px] font-semibold capitalize",
                           log.status === "completed" && "bg-blue-600/15 text-blue-400",
                           log.status === "pending" && "bg-text-tertiary/15 text-text-secondary",
                           log.status === "in_progress" && "bg-amber/15 text-amber"
@@ -575,7 +575,7 @@ function MaintenanceTab() {
       <div>
         <div className="mb-4 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Cost Summary
           </span>
         </div>
@@ -590,7 +590,7 @@ function MaintenanceTab() {
               key={item.label}
               className="rounded-lg border border-border bg-obsidian-surface p-4"
             >
-              <p className="font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+              <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                 {item.label}
               </p>
               <p className="mt-1 font-mono text-xl font-bold text-text-primary">
@@ -617,7 +617,7 @@ function InvoicesTab() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+          <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Invoices
           </span>
         </div>
@@ -628,7 +628,7 @@ function InvoicesTab() {
 
       {/* Outstanding Summary */}
       <div className="rounded-lg border border-amber/20 bg-amber/5 p-5">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-amber">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-amber">
           Outstanding Amount
         </p>
         <p className="mt-1 font-mono text-2xl font-extrabold text-text-primary">
@@ -645,19 +645,19 @@ function InvoicesTab() {
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-border">
-                <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                   Invoice
                 </th>
-                <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                   Client
                 </th>
-                <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                   Amount
                 </th>
-                <th className="pb-2 pr-4 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                <th className="pb-2 pr-4 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                   Due Date
                 </th>
-                <th className="pb-2 font-mono text-[10px] uppercase tracking-wider text-text-tertiary">
+                <th className="pb-2 font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
                   Status
                 </th>
               </tr>
@@ -680,7 +680,7 @@ function InvoicesTab() {
                   <td className="py-3">
                     <span
                       className={cn(
-                        "rounded px-2 py-0.5 text-[10px] font-semibold capitalize",
+                        "rounded px-2 py-0.5 text-[13px] font-semibold capitalize",
                         INVOICE_STATUS_BADGE[inv.status]
                       )}
                     >

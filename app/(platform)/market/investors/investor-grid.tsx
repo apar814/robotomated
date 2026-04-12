@@ -47,7 +47,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
       <div className="mx-auto max-w-7xl">
         {/* Sort controls */}
         <div className="mb-6 flex items-center gap-4">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-ghost">Sort by</span>
+          <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">Sort by</span>
           <button
             onClick={() => setSortBy("deals")}
             className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors ${
@@ -91,7 +91,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
                       {investor.categories.slice(0, 3).map((cat) => (
                         <span
                           key={cat}
-                          className="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium"
+                          className="inline-block rounded px-1.5 py-0.5 text-[13px] font-medium"
                           style={{
                             background: (CATEGORY_COLORS[cat] || "#00C2FF") + "15",
                             color: CATEGORY_COLORS[cat] || "#00C2FF",
@@ -101,7 +101,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
                         </span>
                       ))}
                       {investor.categories.length > 3 && (
-                        <span className="text-[10px] text-ghost">
+                        <span className="text-[13px] text-ghost">
                           +{investor.categories.length - 3}
                         </span>
                       )}
@@ -112,11 +112,11 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
                 {/* Stats */}
                 <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded bg-border-subtle">
                   <div className="bg-obsidian-surface p-3">
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Deals</p>
+                    <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">Deals</p>
                     <p className="mt-1 font-mono text-lg font-bold text-data">{investor.totalDeals}</p>
                   </div>
                   <div className="bg-obsidian-surface p-3">
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Deployed</p>
+                    <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">Deployed</p>
                     <p className="mt-1 font-mono text-lg font-bold text-blue-400">
                       {formatDeployed(investor.totalDeployed)}
                     </p>
@@ -125,7 +125,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
 
                 {/* Portfolio companies */}
                 <div className="mt-3">
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Portfolio</p>
+                  <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">Portfolio</p>
                   <p className="mt-1 text-xs text-tertiary">
                     {investor.portfolioCompanies.join(", ")}
                   </p>

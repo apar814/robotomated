@@ -155,7 +155,7 @@ export default async function IntelligencePage() {
           <p className="mt-3 max-w-xl text-lg text-white/40">
             Funding moves. Product launches. Market signals. Updated every 2 hours.
           </p>
-          <p className="mt-2 font-mono text-[10px] text-white/45">
+          <p className="mt-2 font-mono text-[13px] text-white/45">
             Last updated: {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" })}
           </p>
         </div>
@@ -184,7 +184,7 @@ export default async function IntelligencePage() {
             {/* Featured items */}
             {featured.length > 0 && (
               <div className="space-y-4">
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
                   [ FEATURED ]
                 </p>
                 {featured.slice(0, 5).map((item) => (
@@ -193,23 +193,23 @@ export default async function IntelligencePage() {
                     className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-6"
                   >
                     <div className="mb-3 flex items-center gap-2">
-                      <span className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
+                      <span className={`rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
                         {CATEGORY_LABELS[item.category] || item.category}
                       </span>
-                      <span className="text-[10px] text-white/45">{item.source_name || item.source}</span>
-                      <span className="text-[10px] text-white/30">{timeAgo(item.published_at)}</span>
+                      <span className="text-[13px] text-white/45">{item.source_name || item.source}</span>
+                      <span className="text-[13px] text-white/30">{timeAgo(item.published_at)}</span>
                     </div>
                     <h3 className="text-lg font-bold text-white">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/50">{item.summary}</p>
                     {item.what_it_means && (
                       <div className="mt-3 rounded-lg border border-[#2563EB]/10 bg-[#2563EB]/[0.03] px-4 py-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#2563EB]">What this means</p>
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-[#2563EB]">What this means</p>
                         <p className="mt-1 text-sm text-white/60">{item.what_it_means}</p>
                       </div>
                     )}
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {(item.tags || []).map((tag) => (
-                        <span key={tag} className="rounded-full border border-white/[0.06] px-2 py-0.5 text-[10px] text-white/45">
+                        <span key={tag} className="rounded-full border border-white/[0.06] px-2 py-0.5 text-[13px] text-white/45">
                           {tag}
                         </span>
                       ))}
@@ -222,7 +222,7 @@ export default async function IntelligencePage() {
             {/* Standard items */}
             {standard.length > 0 && (
               <div className="space-y-3">
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/50">
                   [ ALL SIGNALS ]
                 </p>
                 {standard.map((item) => (
@@ -231,17 +231,17 @@ export default async function IntelligencePage() {
                     className="rounded-lg border border-white/[0.04] bg-[#0A0A0A] p-4"
                   >
                     <div className="flex items-start gap-3">
-                      <span className={`mt-0.5 shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
+                      <span className={`mt-0.5 shrink-0 rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
                         {CATEGORY_LABELS[item.category] || item.category}
                       </span>
                       <div className="min-w-0 flex-1">
                         <h3 className="text-sm font-semibold text-white">{item.title}</h3>
                         <p className="mt-1 text-xs text-white/35 line-clamp-2">{item.summary}</p>
-                        <p className="mt-1.5 text-[10px] text-white/30">
+                        <p className="mt-1.5 text-[13px] text-white/30">
                           {item.source_name || item.source} &middot; {timeAgo(item.published_at)}
                         </p>
                       </div>
-                      <span className="shrink-0 font-mono text-[10px] text-white/28">
+                      <span className="shrink-0 font-mono text-[13px] text-white/28">
                         {item.relevance_score}
                       </span>
                     </div>
@@ -256,13 +256,13 @@ export default async function IntelligencePage() {
             {/* Funding summary */}
             {funding.length > 0 && (
               <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-5">
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#00E5A0]">
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#00E5A0]">
                   This Week in Funding
                 </p>
                 <p className="mt-2 font-[family-name:var(--font-brand)] text-2xl font-bold text-[#00E5A0]">
                   {formatAmount(totalFunding)}
                 </p>
-                <p className="text-[10px] text-white/45">raised across {funding.length} rounds</p>
+                <p className="text-[13px] text-white/45">raised across {funding.length} rounds</p>
                 <div className="mt-4 space-y-3">
                   {funding.slice(0, 5).map((r) => (
                     <div key={r.announced_at + r.company} className="border-t border-white/[0.04] pt-2">
@@ -271,7 +271,7 @@ export default async function IntelligencePage() {
                         <p className="font-mono text-xs font-bold text-[#2563EB]">{formatAmount(r.amount_usd)}</p>
                       </div>
                       {r.round_type && (
-                        <p className="text-[10px] text-white/45">{r.round_type}</p>
+                        <p className="text-[13px] text-white/45">{r.round_type}</p>
                       )}
                     </div>
                   ))}
@@ -282,12 +282,12 @@ export default async function IntelligencePage() {
             {/* Trending topics */}
             {trendingTags.length > 0 && (
               <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-5">
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/50">
                   Trending Topics
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {trendingTags.map(([tag, count]) => (
-                    <span key={tag} className="flex items-center gap-1 rounded-full border border-white/[0.06] px-2.5 py-1 text-[10px] text-white/40">
+                    <span key={tag} className="flex items-center gap-1 rounded-full border border-white/[0.06] px-2.5 py-1 text-[13px] text-white/40">
                       {tag}
                       <span className="font-mono text-[#2563EB]">{count}</span>
                     </span>

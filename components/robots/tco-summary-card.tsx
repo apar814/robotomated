@@ -46,12 +46,12 @@ export function TcoSummaryCard({
     <div className="rounded-md border border-border border-l-2 border-l-blue-500 bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label green mb-3">
-        <span className="font-mono text-[9px] tracking-widest">[TCO] TOTAL COST</span>
+        <span className="font-mono text-[13px] tracking-widest">[TCO] TOTAL COST</span>
       </div>
 
       {/* Purchase Price */}
       <div className="mb-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Purchase Price
         </p>
         {price != null ? (
@@ -65,7 +65,7 @@ export function TcoSummaryCard({
 
       {/* Annual Maintenance */}
       <div className="mb-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Est. Annual Maintenance
         </p>
         <p className="font-mono text-sm text-text-secondary">
@@ -83,7 +83,7 @@ export function TcoSummaryCard({
 
       {/* 5-Year Total */}
       <div className="mb-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           5-Year Total
         </p>
         <p className="font-mono text-lg font-bold text-text-primary">
@@ -93,7 +93,7 @@ export function TcoSummaryCard({
 
       {/* Cost per Shift */}
       <div className="mb-2">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Cost per Shift
         </p>
         <p className="font-mono text-sm text-text-tertiary">
@@ -105,7 +105,7 @@ export function TcoSummaryCard({
 
       {/* Cost per Hour */}
       <div className="mb-3">
-        <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+        <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
           Cost per Hour
         </p>
         <p className="font-mono text-sm text-text-tertiary">
@@ -116,7 +116,7 @@ export function TcoSummaryCard({
       </div>
 
       {/* Disclaimer */}
-      <p className="text-[9px] text-text-ghost">
+      <p className="text-[13px] text-text-ghost">
         Based on industry averages. Actual costs vary.
       </p>
     </div>

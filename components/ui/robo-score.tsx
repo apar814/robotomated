@@ -62,14 +62,14 @@ function RoboScoreTooltip() {
         "group-hover:pointer-events-auto group-hover:opacity-100"
       )}
     >
-      <p className="font-mono text-[10px] font-bold tracking-wider text-text-secondary">
+      <p className="font-mono text-[13px] font-bold tracking-wider text-text-secondary">
         ROBOSCORE&trade; METHODOLOGY &mdash; 9 DIMENSIONS
       </p>
       <div className="my-2 border-t border-border" />
 
       <div className="space-y-1.5">
         {DIMENSIONS.map((d) => (
-          <div key={d.key} className="flex items-center gap-2 font-mono text-[10px]">
+          <div key={d.key} className="flex items-center gap-2 font-mono text-[13px]">
             <span className="w-[100px] shrink-0 text-text-tertiary">{d.name}</span>
             <span className="w-[28px] shrink-0 text-right text-text-secondary">
               {d.weight}%
@@ -85,7 +85,7 @@ function RoboScoreTooltip() {
       </div>
 
       <div className="mt-2 border-t border-border" />
-      <p className="mt-2 font-mono text-[10px] leading-relaxed text-text-tertiary">
+      <p className="mt-2 font-mono text-[13px] leading-relaxed text-text-tertiary">
         Independently verified.
         <br />
         Not manufacturer-provided.
@@ -178,7 +178,7 @@ export function RoboScoreRing({
         >
           {score.toFixed(1)}
         </span>
-        <span className="text-[9px] tracking-wider text-text-tertiary">
+        <span className="text-[13px] tracking-wider text-text-tertiary">
           / 100
         </span>
       </div>
@@ -214,7 +214,7 @@ export function ScoreBar({
         {score}
       </span>
       {weight && (
-        <span className="w-10 text-right font-mono text-[10px] text-text-tertiary">
+        <span className="w-10 text-right font-mono text-[13px] text-text-tertiary">
           {weight}
         </span>
       )}

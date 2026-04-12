@@ -565,11 +565,11 @@ export default async function CertificationDetailPage({
           </Link>
           <div className="mt-6 flex items-center gap-3">
             <span
-              className={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] ${colors.badge}`}
+              className={`inline-flex items-center rounded-full px-3 py-1 text-[13px] font-bold uppercase tracking-[0.1em] ${colors.badge}`}
             >
               Level {cert.level}
             </span>
-            <span className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+            <span className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
               {cert.tag}
             </span>
           </div>
@@ -586,7 +586,7 @@ export default async function CertificationDetailPage({
               <p className="font-display text-xl font-bold text-white">
                 ${cert.price}
               </p>
-              <p className="text-[10px] text-muted">RSP: ${cert.rspPrice}</p>
+              <p className="text-[13px] text-muted">RSP: ${cert.rspPrice}</p>
             </div>
             <div>
               <p className="text-xs text-muted">Questions</p>

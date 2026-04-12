@@ -17,7 +17,7 @@ interface DeploymentGuideProps {
 function DataItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+      <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
         {label}
       </p>
       <p className="mt-0.5 font-mono text-[13px] text-text-data">{value}</p>
@@ -55,7 +55,7 @@ export function DeploymentGuide({
         className="flex w-full items-center justify-between p-4 text-left"
       >
         <div className="section-label mb-0">
-          <span className="font-mono text-[9px] tracking-widest">
+          <span className="font-mono text-[13px] tracking-widest">
             [DEPLOYMENT] GUIDE
           </span>
         </div>
@@ -73,7 +73,7 @@ export function DeploymentGuide({
           </p>
 
           {/* Infrastructure Requirements */}
-          <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             Infrastructure Requirements
           </p>
           <div className="mb-4 grid grid-cols-2 gap-3">
@@ -94,13 +94,13 @@ export function DeploymentGuide({
           </div>
 
           {/* Integrations */}
-          <p className="mb-2 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="mb-2 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             Integrations
           </p>
           <div className="space-y-2">
             {/* WMS */}
             <div>
-              <span className="font-mono text-[9px] text-text-tertiary">
+              <span className="font-mono text-[13px] text-text-tertiary">
                 WMS:{" "}
               </span>
               {hasWms ? (
@@ -116,7 +116,7 @@ export function DeploymentGuide({
 
             {/* ERP */}
             <div>
-              <span className="font-mono text-[9px] text-text-tertiary">
+              <span className="font-mono text-[13px] text-text-tertiary">
                 ERP:{" "}
               </span>
               {hasErp ? (
@@ -132,15 +132,15 @@ export function DeploymentGuide({
 
             {/* API */}
             <div>
-              <span className="font-mono text-[9px] text-text-tertiary">
+              <span className="font-mono text-[13px] text-text-tertiary">
                 API:{" "}
               </span>
               {apiAvailable === true ? (
-                <span className="inline-block rounded-[2px] border border-[rgba(200,255,0,0.08)] bg-blue-600-dim px-1.5 py-0.5 font-mono text-[9px] text-blue-400">
+                <span className="inline-block rounded-[2px] border border-[rgba(200,255,0,0.08)] bg-blue-600-dim px-1.5 py-0.5 font-mono text-[13px] text-blue-400">
                   AVAILABLE
                 </span>
               ) : apiAvailable === false ? (
-                <span className="inline-block rounded-[2px] border border-[rgba(255,0,110,0.08)] bg-magenta-dim px-1.5 py-0.5 font-mono text-[9px] text-magenta">
+                <span className="inline-block rounded-[2px] border border-[rgba(255,0,110,0.08)] bg-magenta-dim px-1.5 py-0.5 font-mono text-[13px] text-magenta">
                   UNAVAILABLE
                 </span>
               ) : (

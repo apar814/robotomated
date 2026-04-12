@@ -209,7 +209,7 @@ export default function StandardsPage() {
               { name: "Standards", href: "/standards" },
             ]}
           />
-          <p className="mt-8 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ SAFETY STANDARDS ]
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
@@ -245,7 +245,7 @@ export default function StandardsPage() {
       {/* ── TIMELINE ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ TIMELINE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ TIMELINE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Collaborative Standards Timeline
           </h2>
@@ -278,7 +278,7 @@ export default function StandardsPage() {
                 >
                   {step.year}
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-white/60">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-white/60">
                   {step.label}
                 </p>
                 <p className="mt-2 hidden text-xs leading-snug text-white/50 sm:block">
@@ -296,7 +296,7 @@ export default function StandardsPage() {
           {/* Ratified */}
           <div>
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-[var(--theme-green,#00E5A0)]/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-widest text-[var(--theme-green,#00E5A0)]">
+              <span className="inline-flex items-center rounded-full bg-[var(--theme-green,#00E5A0)]/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-widest text-[var(--theme-green,#00E5A0)]">
                 Ratified
               </span>
               <span className="text-sm text-white/50">
@@ -313,7 +313,7 @@ export default function StandardsPage() {
                     <h3 className="font-mono text-base font-bold text-white">
                       {s.name}
                     </h3>
-                    <span className="ml-2 shrink-0 rounded-md bg-white/[0.06] px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                    <span className="ml-2 shrink-0 rounded-md bg-white/[0.06] px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-white/40">
                       {s.body}
                     </span>
                   </div>
@@ -324,7 +324,7 @@ export default function StandardsPage() {
                     {s.appliesTo.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium text-white/40"
+                        className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[13px] font-medium text-white/40"
                       >
                         {tag}
                       </span>
@@ -338,7 +338,7 @@ export default function StandardsPage() {
           {/* In Development */}
           <div className="mt-16">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-widest text-amber-400">
+              <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-widest text-amber-400">
                 In Development
               </span>
               <span className="text-sm text-white/50">
@@ -355,7 +355,7 @@ export default function StandardsPage() {
                     <h3 className="font-mono text-base font-bold text-white">
                       {s.name}
                     </h3>
-                    <span className="ml-2 shrink-0 rounded-md bg-white/[0.06] px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                    <span className="ml-2 shrink-0 rounded-md bg-white/[0.06] px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-white/40">
                       {s.body}
                     </span>
                   </div>
@@ -366,7 +366,7 @@ export default function StandardsPage() {
                     {s.appliesTo.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-medium text-white/40"
+                        className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[13px] font-medium text-white/40"
                       >
                         {tag}
                       </span>
@@ -382,7 +382,7 @@ export default function StandardsPage() {
       {/* ── ENTERPRISE BUYER GUIDANCE ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ BUYER GUIDANCE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ BUYER GUIDANCE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             What Certifications Do You Need?
           </h2>
@@ -401,7 +401,7 @@ export default function StandardsPage() {
                   {env.description}
                 </p>
                 <div className="mt-6 border-t border-white/[0.06] pt-4">
-                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-widest text-white/50">
+                  <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-widest text-white/50">
                     Required Standards
                   </p>
                   <ul className="mt-3 space-y-2">
@@ -425,7 +425,7 @@ export default function StandardsPage() {
       {/* ── EMAIL ALERT CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-blue,#00C2FF)]/20 bg-[var(--theme-blue,#00C2FF)]/[0.03] p-10 text-center backdrop-blur-sm">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ ALERTS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ ALERTS ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
             Get Notified When Standards Change
           </h2>
@@ -456,7 +456,7 @@ export default function StandardsPage() {
       {/* ── EXPLORE CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ EXPLORE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ EXPLORE ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
             Find Certified Robots
           </h2>

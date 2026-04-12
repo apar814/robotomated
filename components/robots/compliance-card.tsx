@@ -5,7 +5,7 @@ interface ComplianceCardProps {
 
 function CertBadge({ label }: { label: string }) {
   return (
-    <span className="inline-block rounded-[2px] border border-[rgba(37,99,235,0.08)] bg-electric-blue-dim px-1.5 py-0.5 font-mono text-[9px] text-electric-blue">
+    <span className="inline-block rounded-[2px] border border-[rgba(37,99,235,0.08)] bg-electric-blue-dim px-1.5 py-0.5 font-mono text-[13px] text-electric-blue">
       {label}
     </span>
   );
@@ -20,7 +20,7 @@ export function ComplianceCard({ safetyCerts, industryCerts }: ComplianceCardPro
     <div className="rounded-md border border-border bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label mb-3">
-        <span className="font-mono text-[9px] tracking-widest">
+        <span className="font-mono text-[13px] tracking-widest">
           [COMPLIANCE] CERTIFICATIONS
         </span>
       </div>
@@ -34,7 +34,7 @@ export function ComplianceCard({ safetyCerts, industryCerts }: ComplianceCardPro
       {/* Safety Certifications */}
       {hasSafety && (
         <div className="mb-3">
-          <p className="mb-1.5 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="mb-1.5 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             Safety
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -48,7 +48,7 @@ export function ComplianceCard({ safetyCerts, industryCerts }: ComplianceCardPro
       {/* Industry Certifications */}
       {hasIndustry && (
         <div>
-          <p className="mb-1.5 font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="mb-1.5 font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             Industry
           </p>
           <div className="flex flex-wrap gap-1.5">

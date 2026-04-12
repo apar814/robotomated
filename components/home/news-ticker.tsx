@@ -22,7 +22,7 @@ const NEWS_ITEMS = [
 export function NewsTicker() {
   return (
     <div className="hidden w-[260px] flex-shrink-0 flex-col md:flex">
-      <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#C8A84E]">
+      <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-[#C8A84E]">
         Industry Pulse
       </p>
       <div className="relative flex-1 overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] backdrop-blur-sm" style={{ maxHeight: 340 }}>
@@ -33,11 +33,11 @@ export function NewsTicker() {
         <div className="news-ticker px-4 py-2">
           {[...NEWS_ITEMS, ...NEWS_ITEMS].map((item, i) => (
             <div key={i} className="border-b border-white/[0.04] py-3 last:border-0">
-              <span className="font-mono text-[10px] text-[#C8A84E]">{item.date}</span>
+              <span className="font-mono text-[13px] text-[#C8A84E]">{item.date}</span>
               <p className="mt-0.5 text-[13px] font-medium leading-snug text-white/85">
                 {item.headline}
               </p>
-              <span className="mt-0.5 block text-[10px] text-white/50">{item.source}</span>
+              <span className="mt-0.5 block text-[13px] text-white/50">{item.source}</span>
             </div>
           ))}
         </div>

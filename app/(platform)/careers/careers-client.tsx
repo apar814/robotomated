@@ -68,7 +68,7 @@ function WorkerColumn() {
 
       {/* Roles */}
       <div className="mt-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">
+        <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-white/50">
           Available Tracks
         </p>
         <div className="mt-3 space-y-1.5">
@@ -203,7 +203,7 @@ function ManufacturerCTA() {
       <div className="mx-auto max-w-5xl">
         <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-electric-blue/[0.04] to-violet/[0.04] p-8 sm:p-12">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
               Manufacturer Partners
             </p>
             <h2 className="mt-3 text-2xl font-bold text-white">

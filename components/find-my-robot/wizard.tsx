@@ -201,7 +201,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
   return (
     <div className="mb-10">
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-text-muted">
+        <span className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-text-muted">
           Step {step} of {total}
         </span>
         <span className="font-[family-name:var(--font-brand)] text-xs text-text-muted">
@@ -476,7 +476,7 @@ function StepBudget({
               {opt.label}
             </span>
             <span
-              className={`rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] ${
+              className={`rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] ${
                 value === opt.value
                   ? "bg-[#00E5A0]/10 text-[#00E5A0]"
                   : "bg-white/5 text-white/40"
@@ -547,7 +547,7 @@ function StepResults({
                   </h3>
                 </div>
                 <div className="mb-2 ml-9 flex flex-wrap items-center gap-3">
-                  <span className="rounded-full bg-white/5 px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-white/50">
+                  <span className="rounded-full bg-white/5 px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-white/50">
                     {rec.category}
                   </span>
                   <span className="font-[family-name:var(--font-mono)] text-xs text-[#00E5A0]">
@@ -564,7 +564,7 @@ function StepResults({
                     {rec.score}
                   </span>
                 </div>
-                <span className="mt-1 font-[family-name:var(--font-ui)] text-[9px] uppercase tracking-[0.12em] text-white/50">
+                <span className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.12em] text-white/50">
                   MATCH
                 </span>
               </div>
@@ -638,7 +638,7 @@ function StepResults({
               RoboWork lets you try before you commit.
             </p>
           </div>
-          <span className="ml-4 shrink-0 rounded-full bg-[#00E5A0]/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.08em] text-[#00E5A0]">
+          <span className="ml-4 shrink-0 rounded-full bg-[#00E5A0]/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-[#00E5A0]">
             RoboWork
           </span>
         </Link>

@@ -129,7 +129,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
       {/* Channel number */}
       <span
-        className="relative mb-4 font-[family-name:var(--font-brand)] text-[10px] font-medium tracking-[0.15em]"
+        className="relative mb-4 font-[family-name:var(--font-brand)] text-[13px] font-medium tracking-[0.15em]"
         style={{ color: channel.accent }}
       >
         {channel.number}
@@ -201,7 +201,7 @@ export default function ChannelShowcase() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 max-w-2xl">
-          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             <span className="inline-block h-px w-6 bg-[#2563EB]" />
             Platform Channels
           </p>

@@ -94,7 +94,7 @@ export function RspReferralDashboard({
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Your Referral Link
             </span>
           </div>
@@ -196,7 +196,7 @@ export function RspReferralDashboard({
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
             <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Your Referrals
             </span>
           </div>
@@ -206,16 +206,16 @@ export function RspReferralDashboard({
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-border bg-obsidian-surface">
-                    <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-text-ghost">
+                    <th className="px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                       Company
                     </th>
-                    <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-text-ghost">
+                    <th className="px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                       Date
                     </th>
-                    <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-text-ghost">
+                    <th className="px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                       Status
                     </th>
-                    <th className="px-4 py-3 text-right font-mono text-[10px] uppercase tracking-widest text-text-ghost">
+                    <th className="px-4 py-3 text-right font-mono text-[13px] uppercase tracking-widest text-text-ghost">
                       Reward
                     </th>
                   </tr>
@@ -240,7 +240,7 @@ export function RspReferralDashboard({
                         </td>
                         <td className="px-4 py-3">
                           <span
-                            className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${style.bg} ${style.text}`}
+                            className={`inline-flex rounded-full px-2.5 py-0.5 text-[13px] font-semibold uppercase tracking-wider ${style.bg} ${style.text}`}
                           >
                             {style.label}
                           </span>

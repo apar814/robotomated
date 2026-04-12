@@ -157,7 +157,7 @@ export function GuidedEntry() {
                     : "border-border bg-obsidian-surface"
                 }`}
               >
-                <span className="inline-block rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[10px] font-bold text-electric-blue">
+                <span className="inline-block rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] font-bold text-electric-blue">
                   {ind.icon}
                 </span>
                 <p className="mt-2 text-sm font-semibold text-primary">{ind.label}</p>

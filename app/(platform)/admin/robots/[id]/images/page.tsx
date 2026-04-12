@@ -93,13 +93,13 @@ export default function AdminRobotImagesPage() {
                 <div className="relative h-48">
                   <Image src={img.url} alt={img.alt} fill sizes="50vw" className="object-cover" unoptimized />
                   {i === 0 && (
-                    <span className="absolute left-2 top-2 rounded bg-blue/80 px-2 py-0.5 text-[10px] font-bold text-navy">PRIMARY</span>
+                    <span className="absolute left-2 top-2 rounded bg-blue/80 px-2 py-0.5 text-[13px] font-bold text-navy">PRIMARY</span>
                   )}
                 </div>
                 <div className="flex items-center justify-between p-3">
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-xs text-white/40">{img.url}</p>
-                    <p className="text-[10px] text-white/45">{img.alt}</p>
+                    <p className="text-[13px] text-white/45">{img.alt}</p>
                   </div>
                   <div className="flex gap-1">
                     <button onClick={() => moveImage(i, -1)} disabled={i === 0} className="rounded p-1 text-white/50 hover:text-white disabled:opacity-20">&#9650;</button>

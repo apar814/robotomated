@@ -103,12 +103,12 @@ export default function AdminManufacturersPage() {
           >
             {t}
             {t === "claims" && pendingClaims.length > 0 && (
-              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#FF006E] px-1 text-[10px] font-bold text-white">
+              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#FF006E] px-1 text-[13px] font-bold text-white">
                 {pendingClaims.length}
               </span>
             )}
             {t === "partnerships" && pendingPartnerships.length > 0 && (
-              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#60A5FA] px-1 text-[10px] font-bold text-black">
+              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#60A5FA] px-1 text-[13px] font-bold text-black">
                 {pendingPartnerships.length}
               </span>
             )}
@@ -130,7 +130,7 @@ export default function AdminManufacturersPage() {
                   <p className="text-xs text-white/40">
                     {c.contact_name} ({c.job_title}) -- {c.contact_email}
                   </p>
-                  <p className="text-[10px] text-white/45">{new Date(c.created_at).toLocaleDateString()}</p>
+                  <p className="text-[13px] text-white/45">{new Date(c.created_at).toLocaleDateString()}</p>
                 </div>
                 <div className="flex gap-2">
                   <button
@@ -205,7 +205,7 @@ export default function AdminManufacturersPage() {
               <CompanyLogo logoUrl={m.logo_url} name={m.name} height={40} />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{m.name}</p>
-                <p className="text-[10px] text-white/50">
+                <p className="text-[13px] text-white/50">
                   {m.logo_url ? "Logo set" : "No logo"}
                   {m.claimed_profile && " | Claimed"}
                   {m.partnership_tier && ` | ${m.partnership_tier}`}

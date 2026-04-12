@@ -71,7 +71,7 @@ export function MaintenanceCalendar({ schedules, assets }: MaintenanceCalendarPr
                   </p>
                 </div>
                 {s.requires_professional && (
-                  <span className="shrink-0 rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[10px] font-medium text-[#7B2FFF]">
+                  <span className="shrink-0 rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[13px] font-medium text-[#7B2FFF]">
                     PRO
                   </span>
                 )}
@@ -114,7 +114,7 @@ export function MaintenanceCalendar({ schedules, assets }: MaintenanceCalendarPr
                     ~{s.estimated_hours}h
                   </p>
                   {s.requires_professional && (
-                    <span className="rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[10px] font-medium text-[#7B2FFF]">
+                    <span className="rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[13px] font-medium text-[#7B2FFF]">
                       PRO
                     </span>
                   )}

@@ -105,7 +105,7 @@ export default async function RoboWorkPage() {
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <p className="mb-3 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ DEPLOY CHANNEL ]</p>
+          <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ DEPLOY CHANNEL ]</p>
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Don&apos;t want to own a robot?{" "}
@@ -136,7 +136,7 @@ export default async function RoboWorkPage() {
       {/* ── HOW IT WORKS ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ FROM POST TO DEPLOY IN 72 HOURS ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ FROM POST TO DEPLOY IN 72 HOURS ]</p>
           <h2 className="mb-3 text-lg font-bold text-text-primary">Three Steps to a Working Robot</h2>
           <p className="mb-10 max-w-xl text-sm text-text-secondary">No hardware purchase. No integration timeline. Describe the job, pick a provider, and deploy.</p>
 
@@ -219,7 +219,7 @@ export default async function RoboWorkPage() {
       {/* ── WHAT KIND OF WORK ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ PRESET DEPLOYMENTS ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ PRESET DEPLOYMENTS ]</p>
           <h2 className="mb-3 text-lg font-bold text-text-primary">What Kind of Work Can Robots Do for You?</h2>
           <p className="mb-10 max-w-xl text-sm text-text-secondary">Pick a job template. We fill in the details. You get bids from certified providers.</p>
 
@@ -243,10 +243,10 @@ export default async function RoboWorkPage() {
                   {job.icon}
                 </div>
                 <h3 className="text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">{job.task}</h3>
-                <p className="mt-1 text-[10px] text-text-tertiary">{job.robot}</p>
+                <p className="mt-1 text-[13px] text-text-tertiary">{job.robot}</p>
                 <div className="mt-auto pt-3">
                   <p className="font-mono text-sm font-bold text-[#00E5A0]">{job.price}</p>
-                  <p className="text-[10px] text-text-tertiary">{job.time}</p>
+                  <p className="text-[13px] text-text-tertiary">{job.time}</p>
                 </div>
                 <span className="mt-3 text-[11px] font-semibold text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">Post This Job &rarr;</span>
               </Link>
@@ -267,12 +267,12 @@ export default async function RoboWorkPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ 8 INDUSTRIES &middot; VERIFIED PROVIDERS ]</p>
+              <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ 8 INDUSTRIES &middot; VERIFIED PROVIDERS ]</p>
               <h2 className="text-lg font-bold text-text-primary">What Can a Robot Do for You?</h2>
             </div>
             <Link
               href="/robowork/jobs"
-              className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
+              className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
             >
               Browse All Jobs &rarr;
             </Link>
@@ -303,7 +303,7 @@ export default async function RoboWorkPage() {
       {/* ── STATS BAR ── */}
       <section className="border-b border-border px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKETPLACE PULSE &middot; LIVE ]</p>
+          <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKETPLACE PULSE &middot; LIVE ]</p>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {[
               { label: "Active Jobs", value: stats.activeJobs },
@@ -315,7 +315,7 @@ export default async function RoboWorkPage() {
                 <p className="font-[family-name:var(--font-brand)] text-3xl font-extrabold text-electric-blue">
                   {stat.value}
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.12em] text-text-tertiary">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.12em] text-text-tertiary">
                   {stat.label}
                 </p>
               </div>
@@ -327,7 +327,7 @@ export default async function RoboWorkPage() {
       {/* ── MARKET RATES ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET RATES &middot; Q2 2026 ]</p>
+          <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET RATES &middot; Q2 2026 ]</p>
           <h2 className="mb-6 text-lg font-bold text-text-primary">What Are Businesses Paying Right Now?</h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -337,10 +337,10 @@ export default async function RoboWorkPage() {
               { category: "Hospital Logistics", rate: "$5,800/mo", unit: "avg monthly contract", trend: "+15% vs Q1" },
             ].map((r) => (
               <div key={r.category} className="rounded-lg border border-border bg-obsidian-surface p-4">
-                <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-text-tertiary">{r.category}</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.08em] text-text-tertiary">{r.category}</p>
                 <p className="mt-1 font-[family-name:var(--font-mono)] text-xl font-bold text-[#2563EB]">{r.rate}</p>
-                <p className="mt-0.5 text-[10px] text-text-ghost">{r.unit}</p>
-                <p className="mt-2 text-[10px] font-medium text-[#00E5A0]">{r.trend}</p>
+                <p className="mt-0.5 text-[13px] text-text-ghost">{r.unit}</p>
+                <p className="mt-2 text-[13px] font-medium text-[#00E5A0]">{r.trend}</p>
               </div>
             ))}
           </div>
@@ -356,12 +356,12 @@ export default async function RoboWorkPage() {
           <div className="mx-auto max-w-5xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <p className="mb-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ LIVE FEED ]</p>
+                <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ LIVE FEED ]</p>
                 <h2 className="text-lg font-bold text-text-primary">Jobs Being Posted Right Now</h2>
               </div>
               <Link
                 href="/robowork/jobs"
-                className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
+                className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-electric-blue transition-colors hover:underline"
               >
                 View All &rarr;
               </Link>
@@ -383,12 +383,12 @@ export default async function RoboWorkPage() {
                     className="group flex flex-col rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:-translate-y-0.5 hover:border-border-active"
                   >
                     <div className="mb-3 flex items-center gap-2">
-                      <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-electric-blue">
+                      <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.08em] text-electric-blue">
                         {job.industry}
                       </span>
                       <span
                         className={cn(
-                          "rounded border px-2 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em]",
+                          "rounded border px-2 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.08em]",
                           urgencyConf.color
                         )}
                       >
@@ -405,10 +405,10 @@ export default async function RoboWorkPage() {
                       </span>
                     </div>
                     <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
-                      <span className="text-[10px] text-text-tertiary">
+                      <span className="text-[13px] text-text-tertiary">
                         {relativeTime(job.created_at)}
                       </span>
-                      <span className="font-[family-name:var(--font-brand)] text-[10px] text-text-secondary">
+                      <span className="font-[family-name:var(--font-brand)] text-[13px] text-text-secondary">
                         {job.bid_count} bid{job.bid_count !== 1 ? "s" : ""}
                       </span>
                     </div>
@@ -422,7 +422,7 @@ export default async function RoboWorkPage() {
 
       {/* ── TRUST SIGNALS ── */}
       <section className="border-t border-border px-4 py-12 sm:px-6 lg:px-8">
-        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ TRUST LAYER ]</p>
+        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ TRUST LAYER ]</p>
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-6">
           {[
             {
@@ -457,7 +457,7 @@ export default async function RoboWorkPage() {
               <div className="text-electric-blue">{signal.icon}</div>
               <div>
                 <p className="font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-[0.08em] text-text-primary">{signal.label}</p>
-                <p className="text-[10px] text-text-tertiary">{signal.desc}</p>
+                <p className="text-[13px] text-text-tertiary">{signal.desc}</p>
               </div>
             </div>
           ))}
@@ -467,7 +467,7 @@ export default async function RoboWorkPage() {
       {/* ── NEXT STEP ── */}
       <section className="border-t border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ NEXT STEP ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ NEXT STEP ]</p>
           <h2 className="mt-4 text-2xl font-bold text-text-primary">Not sure where to start?</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-text-secondary">
             Tell Robotimus your budget, use case, and timeline. Get a deployment recommendation in 60 seconds.

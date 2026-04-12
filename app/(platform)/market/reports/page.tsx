@@ -109,12 +109,12 @@ export default async function MarketReportsPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/market"
-              className="font-mono text-[10px] text-ghost transition-colors hover:text-electric-blue"
+              className="font-mono text-[13px] text-ghost transition-colors hover:text-electric-blue"
             >
               Market
             </Link>
             <span className="text-ghost">/</span>
-            <span className="font-mono text-[10px] text-electric-blue">
+            <span className="font-mono text-[13px] text-electric-blue">
               Reports
             </span>
           </div>
@@ -131,7 +131,7 @@ export default async function MarketReportsPage() {
           {/* Stats row */}
           <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-border-subtle sm:grid-cols-3">
             <div className="bg-obsidian-surface p-4">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                 Total Reports
               </p>
               <p className="mt-2 font-mono text-2xl font-bold text-data">
@@ -142,7 +142,7 @@ export default async function MarketReportsPage() {
               </p>
             </div>
             <div className="bg-obsidian-surface p-4">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                 Largest Market
               </p>
               <p className="mt-2 font-mono text-2xl font-bold text-blue-400">
@@ -153,7 +153,7 @@ export default async function MarketReportsPage() {
               </p>
             </div>
             <div className="col-span-2 bg-obsidian-surface p-4 sm:col-span-1">
-              <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+              <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                 Highest CAGR
               </p>
               <p className="mt-2 font-mono text-2xl font-bold text-data">

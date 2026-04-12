@@ -46,7 +46,7 @@ export function CommunityReviewCard({
               by {authorName || "Anonymous"}
             </span>
             {verifiedPurchase && (
-              <span className="flex items-center gap-1 rounded-full bg-green/10 px-2 py-0.5 text-[10px] font-medium text-green">
+              <span className="flex items-center gap-1 rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-medium text-green">
                 <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -54,7 +54,7 @@ export function CommunityReviewCard({
               </span>
             )}
             {publishedAt && (
-              <span className="text-[10px] text-muted">
+              <span className="text-[13px] text-muted">
                 {new Date(publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
               </span>
             )}
@@ -62,7 +62,7 @@ export function CommunityReviewCard({
         </div>
         <div className="flex flex-col items-end gap-1">
           {roboScore != null && <StarRating score={roboScore} />}
-          {roboScore != null && <RoboScoreBadge score={roboScore} className="text-[9px]" />}
+          {roboScore != null && <RoboScoreBadge score={roboScore} className="text-[13px]" />}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 /** Inline disclosure shown on robot detail pages */
 export function AffiliateDisclosureInline() {
   return (
-    <p className="mt-3 text-[10px] text-muted">
+    <p className="mt-3 text-[13px] text-muted">
       Robotomated earns a commission on purchases made through our links at no extra cost to you.
       This never influences our scores or recommendations.{" "}
       <a href="/methodology" className="text-blue hover:underline">Learn more</a>.

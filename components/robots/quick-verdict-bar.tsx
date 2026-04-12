@@ -29,7 +29,7 @@ export function QuickVerdictBar({
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {/* Best For */}
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             BEST FOR
           </p>
           <p className="mt-0.5 text-sm text-text-primary">{bestFor}</p>
@@ -37,7 +37,7 @@ export function QuickVerdictBar({
 
         {/* Avoid If */}
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             AVOID IF
           </p>
           <p className="mt-0.5 text-sm text-text-primary">{avoidIf}</p>
@@ -45,7 +45,7 @@ export function QuickVerdictBar({
 
         {/* Payback */}
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             PAYBACK
           </p>
           <p className="mt-0.5 font-mono text-sm">
@@ -59,7 +59,7 @@ export function QuickVerdictBar({
 
         {/* Complexity */}
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
+          <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
             COMPLEXITY
           </p>
           <p className="mt-0.5 font-mono text-sm">

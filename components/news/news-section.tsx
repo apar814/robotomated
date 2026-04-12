@@ -95,7 +95,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
     return (
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="mb-6">
-          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
           <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 text-center">
@@ -112,7 +112,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="mb-8 flex items-baseline justify-between">
         <div>
-          <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
           <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
         <Link href="/news" className="text-sm text-blue hover:underline">All news →</Link>

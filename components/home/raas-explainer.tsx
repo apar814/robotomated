@@ -12,7 +12,7 @@ export function RaaSExplainer() {
   return (
     <section className="px-6 py-20" style={{ background: "var(--theme-section-alt)" }}>
       <div className="mx-auto max-w-7xl">
-        <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
+        <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
           <span className="inline-block h-px w-6 bg-[var(--theme-accent-blue)]" />
           Deploy Channel
         </p>
@@ -49,7 +49,7 @@ export function RaaSExplainer() {
             {/* VS Compare */}
             <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg" style={{ background: "var(--theme-border)" }}>
               <div className="p-4" style={{ background: "#FEF5F5" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-bold uppercase tracking-wider text-red-600">
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-red-600">
                   Traditional Ownership
                 </p>
                 <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-body, #2D3E55)" }}>
@@ -61,7 +61,7 @@ export function RaaSExplainer() {
                 </ul>
               </div>
               <div className="p-4" style={{ background: "#F0FAFB" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[10px] font-bold uppercase tracking-wider" style={{ color: "#007A8C" }}>
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider" style={{ color: "#007A8C" }}>
                   RaaS via RoboWork
                 </p>
                 <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-body, #2D3E55)" }}>
@@ -86,7 +86,7 @@ export function RaaSExplainer() {
             className="rounded-xl p-7"
             style={{ background: "#0A1628", color: "rgba(255,255,255,0.8)" }}
           >
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-bold uppercase tracking-wider text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-[#2563EB]">
               Real-World Example
             </p>
             <h3 className="mt-2 font-display text-lg font-bold text-white">
@@ -103,7 +103,7 @@ export function RaaSExplainer() {
                   key={i}
                   className="flex gap-3 border-b border-white/[0.06] py-2.5 text-sm text-white/70 last:border-0"
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2563EB]/20 font-[family-name:var(--font-brand)] text-[10px] font-bold text-[#2563EB]">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2563EB]/20 font-[family-name:var(--font-brand)] text-[13px] font-bold text-[#2563EB]">
                     {i + 1}
                   </span>
                   {step}

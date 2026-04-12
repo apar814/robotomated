@@ -316,7 +316,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <span className="mb-1 block font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ {title} ]</span>
+      <span className="mb-1 block font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ {title} ]</span>
       <div className="space-y-0.5">{children}</div>
     </div>
   );

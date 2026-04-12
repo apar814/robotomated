@@ -90,7 +90,7 @@ export default async function AffiliateAnalyticsPage() {
           <div key={stat.label} className="rounded-xl border border-border bg-navy-light p-5 text-center">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted">{stat.label}</p>
             <p className={`mt-1 font-mono text-2xl font-bold ${stat.color}`}>{stat.value.toLocaleString()}</p>
-            <p className="text-[10px] text-muted">clicks</p>
+            <p className="text-[13px] text-muted">clicks</p>
           </div>
         ))}
       </div>

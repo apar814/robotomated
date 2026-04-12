@@ -63,7 +63,7 @@ export function SafeImage({
         <span className="mt-1 text-sm font-semibold text-white/50">
           {fallbackSublabel || alt}
         </span>
-        <span className="absolute bottom-2 right-3 text-[9px] text-white/45">
+        <span className="absolute bottom-2 right-3 text-[13px] text-white/45">
           Image coming soon
         </span>
       </div>

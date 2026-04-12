@@ -195,7 +195,7 @@ export function Header() {
             <div className="grid grid-cols-3 gap-6">
               {/* Column 1: By Category */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Category</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Category</p>
                 <div className="space-y-0.5">
                   {exploreCategories.map((cat) => (
                     <Link
@@ -216,7 +216,7 @@ export function Header() {
 
               {/* Column 2: By Need */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Need</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Need</p>
                 <div className="space-y-0.5">
                   {exploreNeeds.map((need) => (
                     <Link
@@ -237,7 +237,7 @@ export function Header() {
 
               {/* Column 3: Featured */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">Featured</p>
+                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">Featured</p>
                 <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
                   <p className="text-[11px] font-medium uppercase tracking-widest text-[#2563EB]">Robot of the Week</p>
                   <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
@@ -346,7 +346,7 @@ export function Header() {
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
               </svg>
               <span className="flex-1 truncate text-[13px]">Search robots...</span>
-              <kbd className="shrink-0 rounded px-1.5 py-0.5 font-mono text-[10px]" style={{ background: "var(--theme-tag-bg)", color: "var(--theme-text-muted)", border: "1px solid var(--theme-border)" }}>
+              <kbd className="shrink-0 rounded px-1.5 py-0.5 font-mono text-[13px]" style={{ background: "var(--theme-tag-bg)", color: "var(--theme-text-muted)", border: "1px solid var(--theme-border)" }}>
                 &#8984;K
               </kbd>
             </button>

@@ -30,7 +30,7 @@ export function TrustBar() {
         {TRUST_ITEMS.map((item) => (
           <div key={item.prefix} className="flex items-center gap-2">
             <div className="h-1 w-1 shrink-0 rounded-full bg-electric-blue" />
-            <span className="font-mono text-[9px] uppercase tracking-wider text-tertiary">
+            <span className="font-mono text-[13px] uppercase tracking-wider text-tertiary">
               <span className="text-secondary">{item.prefix}</span>
               {item.suffix}
             </span>

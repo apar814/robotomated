@@ -43,7 +43,7 @@ export default async function ManufacturersPage() {
       <section className="border-b border-white/[0.06] px-4 py-12">
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Manufacturers", href: "/manufacturers" }]} />
-          <p className="mt-6 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MANUFACTURERS ]</p>
+          <p className="mt-6 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MANUFACTURERS ]</p>
           <h1 className="mt-2 font-display text-3xl font-bold">Robot Manufacturers</h1>
           <p className="mt-3 text-muted">{manufacturers.length} companies building the future of robotics.</p>
         </div>

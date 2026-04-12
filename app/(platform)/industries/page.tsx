@@ -190,13 +190,13 @@ export default async function IndustriesHubPage() {
                         {industry.types.slice(0, 3).map((type) => (
                           <span
                             key={type.id}
-                            className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[10px] text-white/50 backdrop-blur-sm"
+                            className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[13px] text-white/50 backdrop-blur-sm"
                           >
                             {type.label}
                           </span>
                         ))}
                         {industry.types.length > 3 && (
-                          <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[10px] text-white/50">
+                          <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[13px] text-white/50">
                             +{industry.types.length - 3}
                           </span>
                         )}

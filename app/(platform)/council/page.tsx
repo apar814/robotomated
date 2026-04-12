@@ -96,7 +96,7 @@ export default function CouncilPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
             [ THE COUNCIL ]
           </p>
 
@@ -121,7 +121,7 @@ export default function CouncilPage() {
       {/* ═══ HOW IT WORKS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ HOW IT WORKS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -162,7 +162,7 @@ export default function CouncilPage() {
                 key={item.label}
                 className="rounded-lg border border-border bg-[#0A0A0A] px-5 py-4 text-center"
               >
-                <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                   {item.label}
                 </p>
                 <p className="mt-1 text-sm font-semibold text-white">
@@ -177,7 +177,7 @@ export default function CouncilPage() {
       {/* ═══ COUNCIL MEMBERS ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
             [ COUNCIL MEMBERS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -211,7 +211,7 @@ export default function CouncilPage() {
       {/* ═══ PUBLISHED DECISIONS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ PUBLISHED DECISIONS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -234,7 +234,7 @@ export default function CouncilPage() {
 
             {/* Future format preview */}
             <div className="mx-auto mt-8 max-w-md">
-              <p className="mb-3 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+              <p className="mb-3 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                 Future decision format
               </p>
               <div className="rounded-lg border border-border bg-[#0A0A0A] p-4 text-left">
@@ -242,7 +242,7 @@ export default function CouncilPage() {
                   <span className="font-[family-name:var(--font-mono)] text-xs text-muted">
                     2026-XX-XX
                   </span>
-                  <span className="rounded-full bg-green/10 px-2.5 py-0.5 text-[10px] font-bold text-green">
+                  <span className="rounded-full bg-green/10 px-2.5 py-0.5 text-[13px] font-bold text-green">
                     APPROVED
                   </span>
                 </div>
@@ -261,7 +261,7 @@ export default function CouncilPage() {
       {/* ═══ HOW TO JOIN ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
             [ HOW TO JOIN ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">

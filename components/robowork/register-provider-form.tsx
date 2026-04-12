@@ -61,7 +61,7 @@ function emptyRobot(): RobotEntry {
 
 const inputClasses =
   "w-full rounded-lg border border-border bg-obsidian-surface px-3 py-2.5 font-sans text-sm text-text-primary placeholder:text-text-ghost focus:border-[#2563EB]/50 focus:outline-none transition-colors";
-const labelClasses = "font-mono text-[9px] tracking-widest uppercase text-text-ghost";
+const labelClasses = "font-mono text-[13px] tracking-widest uppercase text-text-ghost";
 
 export function RegisterProviderForm() {
   const [step, setStep] = useState(1);
@@ -194,7 +194,7 @@ export function RegisterProviderForm() {
         </p>
         <a
           href="/robowork/providers"
-          className="mt-6 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black"
+          className="mt-6 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black"
         >
           BROWSE PROVIDERS
         </a>
@@ -219,7 +219,7 @@ export function RegisterProviderForm() {
                 type="button"
                 onClick={() => stepNum < step && setStep(stepNum)}
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-[9px] tracking-wider transition-colors",
+                  "flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-[13px] tracking-wider transition-colors",
                   isActive && "bg-[#2563EB]/10 text-[#2563EB]",
                   isComplete && "bg-[#00E5A0]/10 text-[#00E5A0] cursor-pointer",
                   !isActive && !isComplete && "bg-white/[0.02] text-text-ghost"
@@ -227,7 +227,7 @@ export function RegisterProviderForm() {
               >
                 <span
                   className={cn(
-                    "flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold",
+                    "flex h-5 w-5 items-center justify-center rounded-full text-[13px] font-bold",
                     isActive && "bg-[#2563EB] text-black",
                     isComplete && "bg-[#00E5A0] text-black",
                     !isActive && !isComplete && "bg-white/[0.06] text-text-ghost"
@@ -350,7 +350,7 @@ export function RegisterProviderForm() {
                 setError(null);
                 setStep(2);
               }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
             >
               NEXT: SPECIALIZATIONS
             </button>
@@ -416,14 +416,14 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
+              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
             >
               BACK
             </button>
             <button
               type="button"
               onClick={() => { setError(null); setStep(3); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
             >
               NEXT: ROBOT FLEET
             </button>
@@ -462,7 +462,7 @@ export function RegisterProviderForm() {
                   <button
                     type="button"
                     onClick={() => removeRobot(r.id)}
-                    className="rounded-lg border border-red-500/20 px-3 py-1.5 font-mono text-[9px] tracking-wider text-red-400 transition-colors hover:bg-red-500/10"
+                    className="rounded-lg border border-red-500/20 px-3 py-1.5 font-mono text-[13px] tracking-wider text-red-400 transition-colors hover:bg-red-500/10"
                   >
                     REMOVE
                   </button>
@@ -583,14 +583,14 @@ export function RegisterProviderForm() {
                   type="button"
                   onClick={addRobot}
                   disabled={!currentRobot.custom_name.trim()}
-                  className="rounded-lg bg-[#60A5FA] px-5 py-2 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+                  className="rounded-lg bg-[#60A5FA] px-5 py-2 font-mono text-[13px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
                 >
                   ADD ROBOT
                 </button>
                 <button
                   type="button"
                   onClick={() => { setShowRobotForm(false); setCurrentRobot(emptyRobot()); }}
-                  className="rounded-lg border border-border px-5 py-2 font-mono text-[10px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
+                  className="rounded-lg border border-border px-5 py-2 font-mono text-[13px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
                 >
                   CANCEL
                 </button>
@@ -613,14 +613,14 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
+              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
             >
               BACK
             </button>
             <button
               type="button"
               onClick={() => { setError(null); setStep(4); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
             >
               NEXT: VERIFICATION
             </button>
@@ -644,7 +644,7 @@ export function RegisterProviderForm() {
               rows={3}
               className={cn(inputClasses, "mt-1 resize-none")}
             />
-            <p className="mt-1 font-sans text-[10px] text-text-ghost">
+            <p className="mt-1 font-sans text-[13px] text-text-ghost">
               Document upload will be available in Phase 2.
             </p>
           </div>
@@ -677,14 +677,14 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => setStep(3)}
-              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
+              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
             >
               BACK
             </button>
             <button
               type="button"
               onClick={() => { setError(null); setStep(5); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
             >
               NEXT: SUBMIT
             </button>
@@ -737,7 +737,7 @@ export function RegisterProviderForm() {
 
           {/* Summary */}
           <div className="rounded-xl border border-border bg-obsidian-surface p-5">
-            <h3 className="font-mono text-[9px] tracking-widest uppercase text-text-ghost">Registration Summary</h3>
+            <h3 className="font-mono text-[13px] tracking-widest uppercase text-text-ghost">Registration Summary</h3>
             <div className="mt-3 space-y-2 font-sans text-xs text-text-secondary">
               <p><span className="text-text-ghost">Company:</span> {companyName}</p>
               <p><span className="text-text-ghost">Location:</span> {[city, state, country].filter(Boolean).join(", ") || "Not specified"}</p>
@@ -751,7 +751,7 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => setStep(4)}
-              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
+              className="rounded-lg border border-border px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-text-secondary transition-colors hover:border-text-ghost"
             >
               BACK
             </button>
@@ -759,7 +759,7 @@ export function RegisterProviderForm() {
               type="button"
               onClick={handleSubmit}
               disabled={submitting || !termsAccepted || !email.trim()}
-              className="rounded-lg bg-[#60A5FA] px-8 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+              className="rounded-lg bg-[#60A5FA] px-8 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
             >
               {submitting ? "SUBMITTING..." : "REGISTER AS PROVIDER"}
             </button>

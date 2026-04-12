@@ -46,7 +46,7 @@ export function OpportunityBanner() {
       style={{ borderColor: "var(--theme-border)", background: "var(--theme-bg)", color: "var(--theme-text-primary)" }}
     >
       <div className="mx-auto max-w-7xl">
-        <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
+        <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
           <span className="inline-block h-px w-8 bg-[var(--theme-accent-blue)]" />
           The $24 Trillion Shift
         </p>

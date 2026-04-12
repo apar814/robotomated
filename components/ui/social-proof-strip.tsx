@@ -13,7 +13,7 @@ export function SocialProofStrip() {
       className="flex items-center gap-3 overflow-hidden px-6 py-2"
       style={{ borderBottom: "1px solid #131313" }}
     >
-      <span className="shrink-0 font-mono text-[9px] uppercase tracking-widest text-ghost">
+      <span className="shrink-0 font-mono text-[13px] uppercase tracking-widest text-ghost">
         USED BY TEAMS IN
       </span>
       <span className="truncate text-[11px]">

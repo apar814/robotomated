@@ -130,7 +130,7 @@ export default function AwarenessPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
             [ FREE CERTIFICATION ]
           </p>
 
@@ -185,7 +185,7 @@ export default function AwarenessPage() {
       {/* ═══ 5 MODULES ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
             [ 5 MODULES ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -246,7 +246,7 @@ export default function AwarenessPage() {
       {/* ═══ THE EXAM ═══ */}
       <section className="border-y border-green/10 bg-gradient-to-b from-green/[0.02] to-transparent px-4 py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
             [ THE EXAM ]
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
@@ -274,7 +274,7 @@ export default function AwarenessPage() {
                 <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {stat.value}
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+                <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
                   {stat.label}
                 </p>
               </div>
@@ -291,7 +291,7 @@ export default function AwarenessPage() {
       {/* ═══ WHO IS THIS FOR ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ WHO IS THIS FOR ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -319,7 +319,7 @@ export default function AwarenessPage() {
       {/* ═══ CAREER PATH ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
             [ WHAT COMES NEXT ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">

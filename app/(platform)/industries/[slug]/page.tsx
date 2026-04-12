@@ -278,12 +278,12 @@ export default async function IndustryPage({ params }: Props) {
               <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
                 <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
                   <div className="flex items-start gap-3">
-                    <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${item.required ? "bg-blue/20 text-blue" : "bg-white/10 text-white/40"}`}>
+                    <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[13px] font-bold ${item.required ? "bg-blue/20 text-blue" : "bg-white/10 text-white/40"}`}>
                       {item.required ? "\u2713" : "\u25CB"}
                     </span>
                     <div>
                       <h3 className="font-semibold text-white">{item.name}</h3>
-                      <span className={`mt-0.5 inline-block text-[10px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/50"}`}>
+                      <span className={`mt-0.5 inline-block text-[13px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/50"}`}>
                         {item.required ? "Required" : "Recommended"}
                       </span>
                       <p className="mt-1.5 text-sm leading-[1.7] text-white/50">{item.description}</p>
@@ -313,16 +313,16 @@ export default async function IndustryPage({ params }: Props) {
               <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
                 <div className="flex h-full flex-col rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
                   <div className="mb-4">
-                    <p className="text-[10px] font-medium uppercase tracking-widest text-blue">{cs.industry}</p>
+                    <p className="text-[13px] font-medium uppercase tracking-widest text-blue">{cs.industry}</p>
                     <h3 className="mt-1 font-display text-lg font-bold text-white">{cs.company}</h3>
                   </div>
                   <div className="mb-4 space-y-2">
                     <div>
-                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/50">Challenge</p>
+                      <p className="text-[13px] font-medium uppercase tracking-wider text-white/50">Challenge</p>
                       <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.challenge}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/50">Solution</p>
+                      <p className="text-[13px] font-medium uppercase tracking-wider text-white/50">Solution</p>
                       <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.solution}</p>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ export default async function IndustryPage({ params }: Props) {
                     {cs.metrics.map((m) => (
                       <div key={m.label} className="text-center">
                         <p className="font-mono text-sm font-bold text-green">{m.value}</p>
-                        <p className="mt-0.5 text-[9px] uppercase tracking-wider text-white/50">{m.label}</p>
+                        <p className="mt-0.5 text-[13px] uppercase tracking-wider text-white/50">{m.label}</p>
                       </div>
                     ))}
                   </div>
@@ -413,13 +413,13 @@ function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug
           <SafeImage src={realImg} alt={robot.name} sizes="33vw" className="object-cover" fallbackLabel={mfr} fallbackSublabel={robot.name} />
         ) : (
           <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] text-center">
-            <span className="text-[10px] text-white/45">{mfr}</span>
+            <span className="text-[13px] text-white/45">{mfr}</span>
             <span className="text-xs font-semibold text-white/50">{robot.name}</span>
           </div>
         )}
       </div>
       <div className="p-4">
-        <p className="text-[10px] text-white/50">{mfr}</p>
+        <p className="text-[13px] text-white/50">{mfr}</p>
         <h3 className="font-semibold text-white transition-colors group-hover:text-blue">{robot.name}</h3>
         {robot.description_short && (
           <p className="mt-1 line-clamp-2 text-xs text-white/40">{robot.description_short}</p>

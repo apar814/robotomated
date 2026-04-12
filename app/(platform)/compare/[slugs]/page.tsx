@@ -411,7 +411,7 @@ export default async function ComparePage({ params }: Props) {
                     {robotA.safety_certifications && robotA.safety_certifications.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {robotA.safety_certifications.map((cert) => (
-                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[10px] text-green">
+                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[13px] text-green">
                             {cert}
                           </span>
                         ))}
@@ -422,7 +422,7 @@ export default async function ComparePage({ params }: Props) {
                     {robotB.safety_certifications && robotB.safety_certifications.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {robotB.safety_certifications.map((cert) => (
-                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[10px] text-green">
+                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[13px] text-green">
                             {cert}
                           </span>
                         ))}

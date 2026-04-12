@@ -32,7 +32,7 @@ export default function FutureOfRoboticsPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ INDUSTRY INTELLIGENCE ]
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
@@ -54,7 +54,7 @@ export default function FutureOfRoboticsPage() {
       {/* Autonomy Framework */}
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE AUTONOMY FRAMEWORK ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -80,7 +80,7 @@ export default function FutureOfRoboticsPage() {
                       <h3 className="font-display text-lg font-bold text-white">
                         {level.name}
                       </h3>
-                      <span className="rounded-full bg-violet/10 px-2.5 py-0.5 text-[10px] font-semibold text-violet">
+                      <span className="rounded-full bg-violet/10 px-2.5 py-0.5 text-[13px] font-semibold text-violet">
                         RCO: {level.rcoLevelRequired}
                       </span>
                     </div>
@@ -89,7 +89,7 @@ export default function FutureOfRoboticsPage() {
                     </p>
                     <div className="mt-3 grid gap-2 sm:grid-cols-2">
                       <div className="rounded-lg border border-border/50 bg-[#0C0C0C] px-3 py-2">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-green">
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-green">
                           Human Role
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
@@ -97,7 +97,7 @@ export default function FutureOfRoboticsPage() {
                         </p>
                       </div>
                       <div className="rounded-lg border border-border/50 bg-[#0C0C0C] px-3 py-2">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-blue">
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-blue">
                           Failure Mode
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
@@ -109,7 +109,7 @@ export default function FutureOfRoboticsPage() {
                       {level.examples.map((ex) => (
                         <span
                           key={ex}
-                          className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted"
+                          className="rounded-full border border-border px-2 py-0.5 text-[13px] text-muted"
                         >
                           {ex}
                         </span>
@@ -126,7 +126,7 @@ export default function FutureOfRoboticsPage() {
       {/* 12 Megatrends */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 12 MEGATRENDS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -154,7 +154,7 @@ export default function FutureOfRoboticsPage() {
                         {trend.name}
                       </h3>
                       <span
-                        className={`rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${IMPACT_COLORS[trend.impactLevel]}`}
+                        className={`rounded-full border px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider ${IMPACT_COLORS[trend.impactLevel]}`}
                       >
                         {trend.impactLevel}
                       </span>
@@ -167,7 +167,7 @@ export default function FutureOfRoboticsPage() {
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    <p className="text-[13px] font-semibold uppercase tracking-wider text-muted">
                       Timeframe
                     </p>
                     <p className="text-xs text-white">{trend.timeframe}</p>
@@ -176,7 +176,7 @@ export default function FutureOfRoboticsPage() {
 
                 {/* What operators need to know */}
                 <div className="mt-5 border-t border-border pt-5">
-                  <p className="mb-3 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-blue">
+                  <p className="mb-3 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-blue">
                     What Operators Need to Know
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2">
@@ -195,14 +195,14 @@ export default function FutureOfRoboticsPage() {
                 {/* Key tech + companies */}
                 <div className="mt-4 flex flex-wrap gap-4 border-t border-border pt-4">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    <p className="text-[13px] font-semibold uppercase tracking-wider text-muted">
                       Key Tech
                     </p>
                     <div className="mt-1 flex flex-wrap gap-1">
                       {trend.keyTechnologies.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full border border-border px-2 py-0.5 text-[10px] text-muted"
+                          className="rounded-full border border-border px-2 py-0.5 text-[13px] text-muted"
                         >
                           {t}
                         </span>
@@ -210,14 +210,14 @@ export default function FutureOfRoboticsPage() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    <p className="text-[13px] font-semibold uppercase tracking-wider text-muted">
                       Key Companies
                     </p>
                     <div className="mt-1 flex flex-wrap gap-1">
                       {trend.keyCompanies.map((c) => (
                         <span
                           key={c}
-                          className="rounded-full border border-violet/20 bg-violet/5 px-2 py-0.5 text-[10px] text-violet"
+                          className="rounded-full border border-violet/20 bg-violet/5 px-2 py-0.5 text-[13px] text-violet"
                         >
                           {c}
                         </span>
@@ -231,7 +231,7 @@ export default function FutureOfRoboticsPage() {
                   {trend.relevantLevels.map((l) => (
                     <span
                       key={l}
-                      className="rounded-full bg-green/10 px-2 py-0.5 text-[10px] font-semibold text-green"
+                      className="rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-semibold text-green"
                     >
                       {l.replace("_", " ")}
                     </span>

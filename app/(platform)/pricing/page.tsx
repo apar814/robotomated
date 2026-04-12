@@ -35,7 +35,7 @@ export default function PricingPage() {
     <div className="min-h-screen" style={{ background: "var(--theme-bg)" }}>
       {/* ── HEADER ── */}
       <section className="px-4 pb-12 pt-20 text-center sm:px-6">
-        <span className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.2em] text-[#2563EB]">
+        <span className="font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.2em] text-[#2563EB]">
           [ PRICING ]
         </span>
         <h1

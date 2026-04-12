@@ -92,7 +92,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── TRENDS: Why this is getting worse ── */}
       <section className="bg-[#0A0F1E] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-orange">The Trend</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-orange">The Trend</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             {problem.trends.heading}
           </h2>
@@ -110,7 +110,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── HOW AUTOMATION SOLVES IT ── */}
       <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-blue">The Solution</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-blue">The Solution</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             {problem.automationSolution.heading}
           </h2>
@@ -136,7 +136,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── ROBOT CATEGORIES ── */}
       <section className="bg-[#0A0F1E] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-green">Robot Categories</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-green">Robot Categories</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             Which robots address this?
           </h2>
@@ -161,7 +161,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── ROI DATA ── */}
       <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-blue-400">ROI Data</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-blue-400">ROI Data</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             What does the data say?
           </h2>
@@ -189,7 +189,7 @@ export default async function ProblemPage({ params }: Props) {
                 <span className="text-sm text-white/60">{stat.label}</span>
                 <div className="text-right">
                   <span className="font-mono text-sm font-semibold text-white">{stat.value}</span>
-                  <p className="text-[10px] text-white/50">{stat.source}</p>
+                  <p className="text-[13px] text-white/50">{stat.source}</p>
                 </div>
               </div>
             ))}
@@ -209,7 +209,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── FAQ ── */}
       <section className="bg-[#0A0F1E] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-violet">FAQ</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-violet">FAQ</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             Common questions
           </h2>

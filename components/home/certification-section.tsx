@@ -29,7 +29,7 @@ export function CertificationSection() {
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-          <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             Certification
           </span>
         </div>
@@ -48,7 +48,7 @@ export function CertificationSection() {
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* LEFT -- For Professionals */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Professionals
             </p>
             <p className="mt-2 text-lg font-bold text-primary">
@@ -122,7 +122,7 @@ export function CertificationSection() {
 
           {/* RIGHT -- For Businesses */}
           <div className="rounded-lg border border-border bg-obsidian-surface p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Businesses
             </p>
             <p className="mt-2 text-lg font-bold text-primary">

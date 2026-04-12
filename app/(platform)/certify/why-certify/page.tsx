@@ -100,7 +100,7 @@ export default function WhyCertifyPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE CASE FOR CERTIFICATION ]
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
@@ -142,7 +142,7 @@ export default function WhyCertifyPage() {
                 >
                   <div className="flex items-center justify-between">
                     <span
-                      className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${c.badge}`}
+                      className={`rounded-full px-3 py-1 text-[13px] font-bold uppercase tracking-wider ${c.badge}`}
                     >
                       Level {s.levelNum}
                     </span>
@@ -233,7 +233,7 @@ export default function WhyCertifyPage() {
       {/* The Living Certification */}
       <section className="border-b border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE LIVING CERTIFICATION ]
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold">

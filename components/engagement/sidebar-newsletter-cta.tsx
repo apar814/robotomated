@@ -27,7 +27,7 @@ export function SidebarNewsletterCta({ robotName }: { robotName: string }) {
   return (
     <div className="rounded-md border border-border bg-obsidian-surface p-4">
       <div className="section-label mb-3">
-        <span className="font-mono text-[9px] tracking-widest">[INTEL] WEEKLY BRIEF</span>
+        <span className="font-mono text-[13px] tracking-widest">[INTEL] WEEKLY BRIEF</span>
       </div>
       {status === "success" ? (
         <p className="text-sm font-medium text-neon-green">

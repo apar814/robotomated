@@ -104,7 +104,7 @@ export default async function BrowseJobsPage({
         <div className="mb-8">
           <Link
             href="/robowork"
-            className="mb-3 inline-block font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+            className="mb-3 inline-block font-mono text-[13px] text-electric-blue transition-colors hover:underline"
           >
             &larr; RoboWork
           </Link>

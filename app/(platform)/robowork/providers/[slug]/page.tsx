@@ -173,9 +173,9 @@ function RspScoreBadge({ score, percentile }: { score: number; percentile?: numb
     <div className={`flex items-center gap-2 rounded-xl border px-4 py-3 ${color}`}>
       <span className="font-[family-name:var(--font-brand)] text-3xl font-bold">{score}</span>
       <div className="text-left">
-        <p className="font-[family-name:var(--font-ui)] text-[9px] font-bold uppercase tracking-wider opacity-70">RSP Score</p>
+        <p className="font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-wider opacity-70">RSP Score</p>
         {percentile && percentile >= 90 && (
-          <p className="text-[10px] font-semibold">Top {100 - percentile}%</p>
+          <p className="text-[13px] font-semibold">Top {100 - percentile}%</p>
         )}
       </div>
     </div>
@@ -208,7 +208,7 @@ function AvailabilityBadge({ status }: { status: string }) {
   };
   const c = config[status] || config.available;
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-[family-name:var(--font-mono)] text-[9px] font-medium tracking-wider ${c.color}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-[family-name:var(--font-mono)] text-[13px] font-medium tracking-wider ${c.color}`}>
       <span className={cn("h-1.5 w-1.5 rounded-full", status === "available" ? "bg-[#00E5A0] animate-pulse" : "bg-current")} />
       {c.label}
     </span>
@@ -379,12 +379,12 @@ export default async function ProviderProfilePage({ params }: Props) {
           <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <p className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">
+                <p className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">
                   ROBOT SERVICE PROVIDER
                 </p>
                 {provider.is_founding_rsp && provider.founding_rsp_number && (
                   <span
-                    className="rounded-full px-2.5 py-0.5 text-[9px] font-bold tracking-wider"
+                    className="rounded-full px-2.5 py-0.5 text-[13px] font-bold tracking-wider"
                     style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", color: "#000" }}
                   >
                     FOUNDING RSP #{provider.founding_rsp_number}
@@ -431,7 +431,7 @@ export default async function ProviderProfilePage({ params }: Props) {
               )}
               <Link
                 href={`mailto:?subject=RoboWork inquiry: ${provider.company_name}`}
-                className="rounded-lg bg-blue px-6 py-3 font-[family-name:var(--font-mono)] text-[10px] font-semibold tracking-wider text-white transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+                className="rounded-lg bg-blue px-6 py-3 font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-wider text-white transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
               >
                 CONTACT PROVIDER
               </Link>
@@ -447,7 +447,7 @@ export default async function ProviderProfilePage({ params }: Props) {
           <div className="space-y-10 lg:col-span-2">
             {/* About */}
             <section>
-              <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">About</h2>
+              <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">About</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 {provider.description || provider.bio || "This provider has not added a description yet."}
               </p>
@@ -465,7 +465,7 @@ export default async function ProviderProfilePage({ params }: Props) {
             {/* Certifications */}
             {allCertifications.length > 0 && (
               <section>
-                <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">
+                <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">
                   RCO Certifications
                 </h2>
                 <div className="mt-3 space-y-2">
@@ -484,7 +484,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                         <div>
                           <p className="text-sm font-medium text-white">{cert.certification_name}</p>
                           {cert.specialization && (
-                            <p className="text-[10px] text-muted">{cert.specialization}</p>
+                            <p className="text-[13px] text-muted">{cert.specialization}</p>
                           )}
                         </div>
                       </div>
@@ -498,7 +498,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           </svg>
                         )}
                         {cert.credential_id && (
-                          <Link href={`/verify/${cert.credential_id}`} className="text-[10px] text-blue hover:underline">
+                          <Link href={`/verify/${cert.credential_id}`} className="text-[13px] text-blue hover:underline">
                             Verify
                           </Link>
                         )}
@@ -512,7 +512,7 @@ export default async function ProviderProfilePage({ params }: Props) {
             {/* Robot Familiarity */}
             {allFamiliarity.length > 0 && (
               <section>
-                <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">
+                <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">
                   Robot Familiarity
                 </h2>
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -522,13 +522,13 @@ export default async function ProviderProfilePage({ params }: Props) {
                         <p className="text-sm font-medium text-white">
                           {f.robot_manufacturer ? `${f.robot_manufacturer} — ` : ""}{f.robot_category}
                         </p>
-                        <p className="text-[10px] text-muted">
+                        <p className="text-[13px] text-muted">
                           {f.years_experience > 0 ? `${f.years_experience}yr` : ""}{f.total_deployments > 0 ? ` · ${f.total_deployments} deployments` : ""}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
                         <TierDots tier={f.tier} />
-                        <span className="font-[family-name:var(--font-ui)] text-[9px] font-bold uppercase tracking-wider text-muted">
+                        <span className="font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-wider text-muted">
                           {f.tier}
                         </span>
                         {f.verified ? (
@@ -546,12 +546,12 @@ export default async function ProviderProfilePage({ params }: Props) {
             {/* Capabilities */}
             {allCapabilities.length > 0 && (
               <section>
-                <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">
+                <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">
                   Capabilities
                 </h2>
                 {verifiedCaps.length > 0 && (
                   <div className="mt-3">
-                    <p className="mb-2 text-[10px] font-semibold text-[#00E5A0]">Verified by Robotomated Jobs</p>
+                    <p className="mb-2 text-[13px] font-semibold text-[#00E5A0]">Verified by Robotomated Jobs</p>
                     <div className="flex flex-wrap gap-1.5">
                       {verifiedCaps.map((c) => (
                         <span key={c.id} className="flex items-center gap-1 rounded-full border border-[#00E5A0]/20 bg-[#00E5A0]/5 px-3 py-1 text-xs text-[#00E5A0]">
@@ -564,7 +564,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                 )}
                 {selfReportedCaps.length > 0 && (
                   <div className="mt-3">
-                    <p className="mb-2 text-[10px] text-muted">Self-Reported</p>
+                    <p className="mb-2 text-[13px] text-muted">Self-Reported</p>
                     <div className="flex flex-wrap gap-1.5">
                       {selfReportedCaps.map((c) => (
                         <span key={c.id} className="rounded-full border border-border px-3 py-1 text-xs text-muted">
@@ -579,7 +579,7 @@ export default async function ProviderProfilePage({ params }: Props) {
 
             {/* Robot Fleet */}
             <section>
-              <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Robot Fleet</h2>
+              <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Robot Fleet</h2>
               <p className="mt-1 text-lg font-semibold text-white">
                 {allRobots.length} Robot{allRobots.length !== 1 ? "s" : ""}
               </p>
@@ -595,7 +595,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           {robot.custom_manufacturer && <p className="text-[11px] text-muted">{robot.custom_manufacturer}</p>}
                         </div>
                         <span className={cn(
-                          "rounded-full px-2 py-0.5 font-[family-name:var(--font-mono)] text-[9px] tracking-wider",
+                          "rounded-full px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider",
                           robot.available ? "bg-[#00E5A0]/10 text-[#00E5A0]" : "bg-white/5 text-muted"
                         )}>
                           {robot.available ? "AVAILABLE" : "UNAVAILABLE"}
@@ -606,18 +606,18 @@ export default async function ProviderProfilePage({ params }: Props) {
                       )}
                       <div className="mt-3 flex flex-wrap gap-3">
                         {robot.daily_rate != null && (
-                          <div><p className="font-[family-name:var(--font-mono)] text-[9px] text-muted">DAILY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.daily_rate)}</p></div>
+                          <div><p className="font-[family-name:var(--font-mono)] text-[13px] text-muted">DAILY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.daily_rate)}</p></div>
                         )}
                         {robot.weekly_rate != null && (
-                          <div><p className="font-[family-name:var(--font-mono)] text-[9px] text-muted">WEEKLY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.weekly_rate)}</p></div>
+                          <div><p className="font-[family-name:var(--font-mono)] text-[13px] text-muted">WEEKLY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.weekly_rate)}</p></div>
                         )}
                         {robot.monthly_rate != null && (
-                          <div><p className="font-[family-name:var(--font-mono)] text-[9px] text-muted">MONTHLY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.monthly_rate)}</p></div>
+                          <div><p className="font-[family-name:var(--font-mono)] text-[13px] text-muted">MONTHLY</p><p className="font-[family-name:var(--font-mono)] text-sm font-medium text-white">{formatRate(robot.monthly_rate)}</p></div>
                         )}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-1.5">
-                        {robot.operator_included && <span className="rounded-full bg-violet/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[9px] tracking-wider text-violet">OPERATOR INCLUDED</span>}
-                        {robot.remote_capable && <span className="rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[9px] tracking-wider text-[#14B8A6]">REMOTE CAPABLE</span>}
+                        {robot.operator_included && <span className="rounded-full bg-violet/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-violet">OPERATOR INCLUDED</span>}
+                        {robot.remote_capable && <span className="rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-[#14B8A6]">REMOTE CAPABLE</span>}
                       </div>
                       <button className="mt-4 w-full rounded-lg border border-[#60A5FA]/30 bg-[#60A5FA]/5 py-2 text-xs font-medium text-[#60A5FA] transition-colors hover:bg-[#60A5FA]/10">
                         Request Booking
@@ -631,28 +631,28 @@ export default async function ProviderProfilePage({ params }: Props) {
             {/* Case Studies */}
             {allCaseStudies.length > 0 && (
               <section>
-                <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Case Studies</h2>
+                <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Case Studies</h2>
                 <div className="mt-4 space-y-4">
                   {allCaseStudies.map((cs) => (
                     <div key={cs.id} className="rounded-xl border border-border bg-[#0A0A0A] p-6">
                       <div className="flex items-start justify-between">
                         <h3 className="font-display text-base font-bold text-white">{cs.title}</h3>
                         {cs.client_industry && (
-                          <span className="rounded-full bg-blue/10 px-2.5 py-0.5 text-[10px] text-blue">{cs.client_industry}</span>
+                          <span className="rounded-full bg-blue/10 px-2.5 py-0.5 text-[13px] text-blue">{cs.client_industry}</span>
                         )}
                       </div>
                       <p className="mt-2 text-sm text-muted">{cs.summary}</p>
                       <div className="mt-4 grid gap-3 sm:grid-cols-3">
                         <div className="rounded-lg border border-border/50 bg-[#0C0C0C] p-3">
-                          <p className="text-[9px] font-bold uppercase tracking-wider text-red-400">Challenge</p>
+                          <p className="text-[13px] font-bold uppercase tracking-wider text-red-400">Challenge</p>
                           <p className="mt-1 text-xs text-muted">{cs.challenge}</p>
                         </div>
                         <div className="rounded-lg border border-border/50 bg-[#0C0C0C] p-3">
-                          <p className="text-[9px] font-bold uppercase tracking-wider text-blue">Solution</p>
+                          <p className="text-[13px] font-bold uppercase tracking-wider text-blue">Solution</p>
                           <p className="mt-1 text-xs text-muted">{cs.solution}</p>
                         </div>
                         <div className="rounded-lg border border-border/50 bg-[#0C0C0C] p-3">
-                          <p className="text-[9px] font-bold uppercase tracking-wider text-[#00E5A0]">Results</p>
+                          <p className="text-[13px] font-bold uppercase tracking-wider text-[#00E5A0]">Results</p>
                           <p className="mt-1 text-xs text-muted">{cs.results}</p>
                         </div>
                       </div>
@@ -661,7 +661,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           {Object.entries(cs.metrics).map(([key, value]) => (
                             <div key={key} className="text-center">
                               <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">{value}</p>
-                              <p className="text-[9px] uppercase text-muted">{key}</p>
+                              <p className="text-[13px] uppercase text-muted">{key}</p>
                             </div>
                           ))}
                         </div>
@@ -674,7 +674,7 @@ export default async function ProviderProfilePage({ params }: Props) {
 
             {/* Reviews */}
             <section>
-              <h2 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Reviews</h2>
+              <h2 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Reviews</h2>
               <p className="mt-1 text-lg font-semibold text-white">
                 {allReviews.length} Review{allReviews.length !== 1 ? "s" : ""}
               </p>
@@ -684,18 +684,18 @@ export default async function ProviderProfilePage({ params }: Props) {
                 <div className="mt-4 flex flex-wrap gap-4">
                   <div className="rounded-lg border border-border bg-[#0A0A0A] px-4 py-2.5 text-center">
                     <p className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">{hireAgainPct}%</p>
-                    <p className="text-[9px] uppercase text-muted">Would Hire Again</p>
+                    <p className="text-[13px] uppercase text-muted">Would Hire Again</p>
                   </div>
                   {onTimePct !== null && (
                     <div className="rounded-lg border border-border bg-[#0A0A0A] px-4 py-2.5 text-center">
                       <p className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">{onTimePct}%</p>
-                      <p className="text-[9px] uppercase text-muted">On-Time Delivery</p>
+                      <p className="text-[13px] uppercase text-muted">On-Time Delivery</p>
                     </div>
                   )}
                   {avgUptime && (
                     <div className="rounded-lg border border-border bg-[#0A0A0A] px-4 py-2.5 text-center">
                       <p className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">{avgUptime}%</p>
-                      <p className="text-[9px] uppercase text-muted">Avg Uptime</p>
+                      <p className="text-[13px] uppercase text-muted">Avg Uptime</p>
                     </div>
                   )}
                 </div>
@@ -738,19 +738,19 @@ export default async function ProviderProfilePage({ params }: Props) {
                       {/* Review metrics */}
                       <div className="mt-3 flex flex-wrap gap-2">
                         {review.robot_used && (
-                          <span className="rounded-full border border-border px-2 py-0.5 text-[9px] text-muted">Robot: {review.robot_used}</span>
+                          <span className="rounded-full border border-border px-2 py-0.5 text-[13px] text-muted">Robot: {review.robot_used}</span>
                         )}
                         {review.job_type && (
-                          <span className="rounded-full border border-border px-2 py-0.5 text-[9px] text-muted">{review.job_type}</span>
+                          <span className="rounded-full border border-border px-2 py-0.5 text-[13px] text-muted">{review.job_type}</span>
                         )}
                         {review.job_duration_days && (
-                          <span className="rounded-full border border-border px-2 py-0.5 text-[9px] text-muted">{review.job_duration_days} days</span>
+                          <span className="rounded-full border border-border px-2 py-0.5 text-[13px] text-muted">{review.job_duration_days} days</span>
                         )}
                         {review.delivery_on_time === true && (
-                          <span className="rounded-full bg-[#00E5A0]/10 px-2 py-0.5 text-[9px] text-[#00E5A0]">On Time</span>
+                          <span className="rounded-full bg-[#00E5A0]/10 px-2 py-0.5 text-[13px] text-[#00E5A0]">On Time</span>
                         )}
                         {review.uptime_achieved != null && (
-                          <span className="rounded-full bg-blue/10 px-2 py-0.5 text-[9px] text-blue">{review.uptime_achieved}% uptime</span>
+                          <span className="rounded-full bg-blue/10 px-2 py-0.5 text-[13px] text-blue">{review.uptime_achieved}% uptime</span>
                         )}
                       </div>
 
@@ -773,7 +773,7 @@ export default async function ProviderProfilePage({ params }: Props) {
           <div className="space-y-6 lg:sticky lg:top-20 lg:self-start">
             {/* Verification badges */}
             <div className="rounded-xl border border-border bg-[#0A0A0A] p-5">
-              <h3 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Verification</h3>
+              <h3 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Verification</h3>
               <div className="mt-3 space-y-2">
                 <div className={cn("flex items-center gap-2 text-xs", provider.verified ? "text-blue" : "text-muted")}>
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
@@ -792,7 +792,7 @@ export default async function ProviderProfilePage({ params }: Props) {
 
             {/* Stats */}
             <div className="rounded-xl border border-border bg-[#0A0A0A] p-5">
-              <h3 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Stats</h3>
+              <h3 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Stats</h3>
               <div className="mt-3 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-muted">Jobs Completed</span>
@@ -826,7 +826,7 @@ export default async function ProviderProfilePage({ params }: Props) {
             {/* RSP Score Breakdown */}
             {rspScore > 0 && provider.rsp_score_breakdown && Object.keys(provider.rsp_score_breakdown).length > 0 && (
               <div className="rounded-xl border border-border bg-[#0A0A0A] p-5">
-                <h3 className="font-[family-name:var(--font-mono)] text-[9px] tracking-widest uppercase text-muted">Score Breakdown</h3>
+                <h3 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Score Breakdown</h3>
                 <div className="mt-3 space-y-2">
                   {Object.entries(provider.rsp_score_breakdown).map(([key, val]) => (
                     <div key={key}>
@@ -863,7 +863,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                   href={provider.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 block text-[10px] text-blue hover:underline"
+                  className="mt-2 block text-[13px] text-blue hover:underline"
                 >
                   Visit Website
                 </a>

@@ -83,7 +83,7 @@ export function JobFilters() {
 
         <button
           onClick={() => setExpanded(!expanded)}
-          className="ml-auto rounded border border-border px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+          className="ml-auto rounded border border-border px-3 py-2 font-mono text-[13px] uppercase tracking-wider text-text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
         >
           {expanded ? "Less Filters" : "More Filters"}
         </button>
@@ -93,7 +93,7 @@ export function JobFilters() {
       {expanded && (
         <div className="mt-4 grid grid-cols-2 gap-3 border-t border-border pt-4 sm:grid-cols-3 lg:grid-cols-6">
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               City
             </label>
             <input
@@ -107,7 +107,7 @@ export function JobFilters() {
             />
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               State
             </label>
             <input
@@ -121,7 +121,7 @@ export function JobFilters() {
             />
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Budget Min
             </label>
             <input
@@ -133,7 +133,7 @@ export function JobFilters() {
             />
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Budget Max
             </label>
             <input
@@ -145,7 +145,7 @@ export function JobFilters() {
             />
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Fulfillment
             </label>
             <select
@@ -162,7 +162,7 @@ export function JobFilters() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block font-mono text-[9px] uppercase tracking-widest text-text-ghost">
+            <label className="mb-1 block font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Urgency
             </label>
             <select

@@ -225,7 +225,7 @@ export function RobotimusHeroPanel() {
                 ROBOTIMUS
               </p>
               <p
-                className="font-[family-name:var(--font-ui)] text-[9px] tracking-[0.12em]"
+                className="font-[family-name:var(--font-ui)] text-[13px] tracking-[0.12em]"
                 style={{ color: "rgba(255,255,255,0.4)" }}
               >
                 AI ROBOTICS ADVISOR
@@ -240,7 +240,7 @@ export function RobotimusHeroPanel() {
                 }}
               />
               <span
-                className="font-[family-name:var(--font-ui)] text-[9px] tracking-[0.08em]"
+                className="font-[family-name:var(--font-ui)] text-[13px] tracking-[0.08em]"
                 style={{ color: "#10B981" }}
               >
                 ONLINE
@@ -339,7 +339,7 @@ export function RobotimusHeroPanel() {
                       />
                     </div>
                     <span
-                      className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.15em]"
+                      className="font-[family-name:var(--font-brand)] text-[13px] tracking-[0.15em]"
                       style={{ color: "rgba(37,99,235,0.6)" }}
                     >
                       PROCESSING...
@@ -360,7 +360,7 @@ export function RobotimusHeroPanel() {
             }}
           >
             <div
-              className="absolute top-0 flex h-full items-center whitespace-nowrap font-[family-name:var(--font-mono)] text-[9px]"
+              className="absolute top-0 flex h-full items-center whitespace-nowrap font-[family-name:var(--font-mono)] text-[13px]"
               style={{
                 color: "rgba(37,99,235,0.5)",
                 animation: "ticker 30s linear infinite",

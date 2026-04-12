@@ -51,7 +51,7 @@ export default async function NotFound() {
       {/* Top-rated robot suggestions */}
       {suggestions.length > 0 && (
         <div className="mt-12 w-full max-w-2xl">
-          <p className="mb-4 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.12em] text-white/45">
+          <p className="mb-4 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.12em] text-white/45">
             Highest-rated robots right now
           </p>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -64,7 +64,7 @@ export default async function NotFound() {
                   href={`/explore/${catSlug}/${r.slug}`}
                   className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left transition-all hover:border-[#2563EB]/20"
                 >
-                  <p className="text-[10px] text-[#2563EB]">{mfr}</p>
+                  <p className="text-[13px] text-[#2563EB]">{mfr}</p>
                   <p className="mt-0.5 text-sm font-semibold text-white transition-colors group-hover:text-[#2563EB]">
                     {r.name as string}
                   </p>

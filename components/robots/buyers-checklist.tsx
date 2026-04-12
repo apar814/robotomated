@@ -56,7 +56,7 @@ export function BuyersChecklist({ robotName, robotSlug }: BuyersChecklistProps) 
     <div className="rounded-md border border-border border-l-2 border-l-lime bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label green mb-3">
-        <span className="font-mono text-[9px] tracking-widest">
+        <span className="font-mono text-[13px] tracking-widest">
           [BUYER&apos;S GUIDE] 20 QUESTIONS TO ASK
         </span>
       </div>

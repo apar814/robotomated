@@ -79,7 +79,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
         {/* ── Filter bar ── */}
         <div className="mb-6 flex flex-wrap items-center gap-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-ghost">Round</span>
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">Round</span>
             <select
               value={roundFilter}
               onChange={(e) => setRoundFilter(e.target.value)}
@@ -93,7 +93,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-ghost">Category</span>
+            <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">Category</span>
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
@@ -106,7 +106,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             </select>
           </div>
 
-          <span className="ml-auto font-mono text-[10px] text-ghost">
+          <span className="ml-auto font-mono text-[13px] text-ghost">
             {filtered.length} {filtered.length === 1 ? "round" : "rounds"}
           </span>
         </div>
@@ -117,33 +117,33 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             <thead>
               <tr className="border-b border-border bg-obsidian-surface">
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
                   onClick={() => toggleSort("company")}
                 >
                   Company{sortIcon("company")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
                   onClick={() => toggleSort("amount")}
                 >
                   Amount{sortIcon("amount")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
                   onClick={() => toggleSort("round")}
                 >
                   Round{sortIcon("round")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
                   onClick={() => toggleSort("date")}
                 >
                   Date{sortIcon("date")}
                 </th>
-                <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost">
+                <th className="px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost">
                   Lead Investor
                 </th>
-                <th className="px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-ghost">
+                <th className="px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost">
                   Category
                 </th>
               </tr>

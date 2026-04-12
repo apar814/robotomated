@@ -97,7 +97,7 @@ export function ExitIntentPopup() {
         </button>
 
         <div className="text-center">
-          <div className="mb-1 font-mono text-[9px] uppercase tracking-widest text-electric-blue">
+          <div className="mb-1 font-mono text-[13px] uppercase tracking-widest text-electric-blue">
             [INTEL] WEEKLY BRIEF
           </div>
           <h2 className="text-xl font-bold text-text-primary">

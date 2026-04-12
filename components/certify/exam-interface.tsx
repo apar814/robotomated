@@ -602,16 +602,16 @@ export default function ExamInterface({
         {/* Type + difficulty badges */}
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <span
-            className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${typeBadge.color}`}
+            className={`rounded-full px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider ${typeBadge.color}`}
           >
             {typeBadge.label}
           </span>
           {currentQuestion.domain_code && (
-            <span className="rounded-full bg-[var(--theme-border)]/50 px-2.5 py-0.5 text-[10px] text-[var(--theme-muted)]">
+            <span className="rounded-full bg-[var(--theme-border)]/50 px-2.5 py-0.5 text-[13px] text-[var(--theme-muted)]">
               {currentQuestion.domain_code.replace(/_/g, " ")}
             </span>
           )}
-          <span className="text-[10px] text-[var(--theme-muted)]">
+          <span className="text-[13px] text-[var(--theme-muted)]">
             Difficulty: {"*".repeat(currentQuestion.difficulty)}
             {"·".repeat(5 - currentQuestion.difficulty)}
           </span>
@@ -620,7 +620,7 @@ export default function ExamInterface({
         {/* Scenario context */}
         {currentQuestion.scenario_context && (
           <div className="mb-6 rounded-lg border border-[var(--theme-border)] bg-[#0C0C0C] p-4 text-sm leading-relaxed text-[var(--theme-muted)]">
-            <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-[var(--theme-blue)]">
+            <p className="mb-1 text-[13px] font-bold uppercase tracking-wider text-[var(--theme-blue)]">
               Scenario
             </p>
             <p className="whitespace-pre-line">
@@ -632,7 +632,7 @@ export default function ExamInterface({
         {/* Code snippet */}
         {currentQuestion.code_snippet && (
           <div className="mb-6 overflow-x-auto rounded-lg border border-[var(--theme-border)] bg-[#0C0C0C] p-4">
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-amber-400">
+            <p className="mb-2 text-[13px] font-bold uppercase tracking-wider text-amber-400">
               Code
             </p>
             <pre className="font-mono text-sm leading-relaxed text-[var(--theme-muted)]">

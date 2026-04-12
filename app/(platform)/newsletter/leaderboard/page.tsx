@@ -40,7 +40,7 @@ export default async function LeaderboardPage() {
     <div className="min-h-screen bg-[#080808]">
       <section className="px-4 pb-16 pt-12">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-[#2563EB]">
             Newsletter Community
           </p>
           <h1 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">

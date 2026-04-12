@@ -102,7 +102,7 @@ export function ReportsGrid({
                 {/* Header */}
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <span
-                    className="inline-block rounded px-2 py-0.5 text-[10px] font-medium"
+                    className="inline-block rounded px-2 py-0.5 text-[13px] font-medium"
                     style={{
                       background: color + "18",
                       color: color,
@@ -110,7 +110,7 @@ export function ReportsGrid({
                   >
                     {catLabel(report.category)}
                   </span>
-                  <span className="shrink-0 font-mono text-[10px] text-ghost">
+                  <span className="shrink-0 font-mono text-[13px] text-ghost">
                     {formatDate(report.report_date)}
                   </span>
                 </div>
@@ -126,7 +126,7 @@ export function ReportsGrid({
                 {/* Market metrics */}
                 <div className="mt-4 flex gap-4">
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+                    <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                       Market Size
                     </p>
                     <p className="mt-1 font-mono text-lg font-bold text-blue-400">
@@ -134,7 +134,7 @@ export function ReportsGrid({
                     </p>
                   </div>
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+                    <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                       CAGR
                     </p>
                     <p className="mt-1 font-mono text-lg font-bold text-data">
@@ -142,7 +142,7 @@ export function ReportsGrid({
                     </p>
                   </div>
                   <div>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
+                    <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                       Forecast
                     </p>
                     <p className="mt-1 font-mono text-lg font-bold text-foreground">

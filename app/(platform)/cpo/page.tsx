@@ -67,7 +67,7 @@ function CpoCard({ listing }: { listing: CpoListing }) {
           </p>
         </div>
         {listing.certified && (
-          <span className="rounded-full bg-[#00E5A0]/20 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[#00E5A0]">
+          <span className="rounded-full bg-[#00E5A0]/20 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.08em] text-[#00E5A0]">
             CPO Certified
           </span>
         )}
@@ -147,7 +147,7 @@ export default async function CpoPage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
           [ CPO MARKETPLACE ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -202,7 +202,7 @@ export default async function CpoPage() {
 
       <section id="list" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
             [ SELLER PORTAL ]
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-white">

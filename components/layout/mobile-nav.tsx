@@ -68,7 +68,7 @@ export function MobileNav() {
               }`}
             >
               {item.icon}
-              <span className="text-[10px] font-medium">{item.label}</span>
+              <span className="text-[13px] font-medium">{item.label}</span>
             </Link>
           );
         })}

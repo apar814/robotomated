@@ -32,7 +32,7 @@ export default function MarketplacePage() {
       {/* ── Hero ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET INTELLIGENCE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET INTELLIGENCE ]</p>
           <h1 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">Marketplace</h1>
           <p className="mt-2 text-muted">
             Buy and sell robots from verified dealers. Track funding rounds, investors, and market intelligence.
@@ -68,13 +68,13 @@ export default function MarketplacePage() {
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
-              <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-widest text-ghost">
+              <span className="font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-widest text-ghost">
                 Recently Funded
               </span>
             </div>
             <Link
               href="/market/funding"
-              className="font-mono text-[10px] text-electric-blue transition-colors hover:underline"
+              className="font-mono text-[13px] text-electric-blue transition-colors hover:underline"
             >
               View All Funding &rarr;
             </Link>
@@ -97,7 +97,7 @@ export default function MarketplacePage() {
                       {round.company}
                     </span>
                     <span
-                      className="inline-block rounded px-1.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] font-medium"
+                      className="inline-block rounded px-1.5 py-0.5 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] font-medium"
                       style={{
                         background: (ROUND_COLORS[round.round] || "#00C2FF") + "18",
                         color: ROUND_COLORS[round.round] || "#00C2FF",
@@ -110,7 +110,7 @@ export default function MarketplacePage() {
                 </div>
                 <div className="flex shrink-0 items-center gap-4">
                   <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-blue-400">{round.amount}</span>
-                  <span className="hidden font-mono text-[10px] text-ghost sm:block">
+                  <span className="hidden font-mono text-[13px] text-ghost sm:block">
                     {formatDate(round.date)}
                   </span>
                 </div>

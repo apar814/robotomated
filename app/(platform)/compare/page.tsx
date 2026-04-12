@@ -128,7 +128,7 @@ function ComparePageInner() {
       {/* Header */}
       <div className="border-b border-border px-4 py-8">
         <div className="mx-auto max-w-6xl">
-          <nav className="mb-4 flex items-center gap-1 font-mono text-[10px]">
+          <nav className="mb-4 flex items-center gap-1 font-mono text-[13px]">
             <a href="/explore" className="text-white/45 transition-colors hover:text-white/50">Explore</a>
             <span className="text-white/30">/</span>
             <span className="text-white/40">Compare</span>
@@ -151,12 +151,12 @@ function ComparePageInner() {
                   <SafeImage src={r.image_url} alt={r.name} sizes="280px" className="object-cover" fallbackLabel={r.manufacturer_name} fallbackSublabel={r.name} />
                 ) : (
                   <div className="flex h-full flex-col items-center justify-center text-center">
-                    <span className="text-[10px] text-white/45">{r.manufacturer_name}</span>
+                    <span className="text-[13px] text-white/45">{r.manufacturer_name}</span>
                     <span className="text-xs font-semibold text-white/50">{r.name}</span>
                   </div>
                 )}
               </div>
-              <p className="text-[10px] text-white/50">{r.manufacturer_name}</p>
+              <p className="text-[13px] text-white/50">{r.manufacturer_name}</p>
               <h3 className="font-semibold text-foreground">{r.name}</h3>
               <div className="mt-2 flex items-center justify-between">
                 {r.price_current != null ? (

@@ -360,7 +360,7 @@ export default function CertifyPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ CERTIFICATION PROGRAM ]
           </p>
 
@@ -421,7 +421,7 @@ export default function CertifyPage() {
       {/* ═══ CERTIFICATION LEVELS ═══ */}
       <section id="levels" className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 6 LEVELS &middot; FROM LITERACY TO LEADERSHIP ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -456,11 +456,11 @@ export default function CertifyPage() {
                 <div className="mb-5 flex items-start justify-between">
                   <div>
                     <span
-                      className={`inline-flex items-center rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] ${lvl.badge}`}
+                      className={`inline-flex items-center rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] ${lvl.badge}`}
                     >
                       Level {lvl.level}
                     </span>
-                    <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.1em] text-muted">
+                    <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
                       {lvl.tag}
                     </p>
                   </div>
@@ -469,7 +469,7 @@ export default function CertifyPage() {
                       {lvl.price === 0 ? "FREE" : `$${lvl.price.toLocaleString()}`}
                     </p>
                     {lvl.price > 0 && lvl.rspPrice !== lvl.price && (
-                      <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-muted">
+                      <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] text-muted">
                         RSP: ${lvl.rspPrice}
                       </p>
                     )}
@@ -486,7 +486,7 @@ export default function CertifyPage() {
 
                 {/* What you'll be able to do */}
                 <div className="mt-4">
-                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                  <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                     What you&apos;ll be able to do
                   </p>
                   <ul className="mt-2 space-y-1.5">
@@ -505,25 +505,25 @@ export default function CertifyPage() {
                     <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.questions}
                     </p>
-                    <p className="text-[10px] text-muted">Questions</p>
+                    <p className="text-[13px] text-muted">Questions</p>
                   </div>
                   <div className="rounded-md border border-border px-2.5 py-2 text-center">
                     <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.duration}
                     </p>
-                    <p className="text-[10px] text-muted">Minutes</p>
+                    <p className="text-[13px] text-muted">Minutes</p>
                   </div>
                   <div className="rounded-md border border-border px-2.5 py-2 text-center">
                     <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.passScore}%
                     </p>
-                    <p className="text-[10px] text-muted">Pass Score</p>
+                    <p className="text-[13px] text-muted">Pass Score</p>
                   </div>
                   <div className="rounded-md border border-border px-2.5 py-2 text-center">
                     <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                       {lvl.studyHours}
                     </p>
-                    <p className="text-[10px] text-muted">Study Hours</p>
+                    <p className="text-[13px] text-muted">Study Hours</p>
                   </div>
                 </div>
 
@@ -546,7 +546,7 @@ export default function CertifyPage() {
 
                 {/* Domain weights — labeled progress bars */}
                 <div className="mt-5">
-                  <p className="mb-2 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                  <p className="mb-2 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                     Exam Domain Weights
                   </p>
                   <div className="space-y-1.5">
@@ -584,14 +584,14 @@ export default function CertifyPage() {
                 {/* Career outcomes + salary */}
                 <div className="mt-5 border-t border-border pt-4">
                   <div className="flex items-baseline justify-between">
-                    <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">
+                    <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                       Career Outcome
                     </p>
                     <p className={`text-base font-bold ${lvl.accent}`}>
                       {lvl.salaryBump}
                     </p>
                   </div>
-                  <p className="mt-0.5 text-right text-[10px] text-muted">avg. salary increase</p>
+                  <p className="mt-0.5 text-right text-[13px] text-muted">avg. salary increase</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {lvl.careers.map((c) => (
                       <span
@@ -630,7 +630,7 @@ export default function CertifyPage() {
       {/* ═══ THE GAUNTLET ═══ */}
       <section className="border-y border-red-500/10 bg-gradient-to-b from-red-500/[0.02] to-transparent px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-red-400">
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-red-400">
             [ MASTER LEVEL ASSESSMENT ]
           </p>
           <h2 className="mt-4 text-center font-display text-3xl font-bold sm:text-5xl">
@@ -676,7 +676,7 @@ export default function CertifyPage() {
       {/* ═══ SPECIALIZATIONS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ 7 SPECIALIZATION TRACKS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -694,7 +694,7 @@ export default function CertifyPage() {
                 className="group relative rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-green/30"
               >
                 {spec.isNew && (
-                  <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                  <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
                     New
                   </span>
                 )}
@@ -729,7 +729,7 @@ export default function CertifyPage() {
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
                 [ FOR EMPLOYERS ]
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold">
@@ -816,7 +816,7 @@ export default function CertifyPage() {
       {/* ═══ EMERGING SPECIALIZATIONS ═══ */}
       <section className="border-y border-violet/10 bg-gradient-to-b from-violet/[0.02] to-transparent px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
             [ COMING 2026 ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -861,7 +861,7 @@ export default function CertifyPage() {
                 key={track.name}
                 className="group relative rounded-xl border border-violet/20 bg-[#0A0A0A] p-6 transition-all hover:border-violet/40"
               >
-                <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
                   2026
                 </span>
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-violet/20 bg-violet/5 font-[family-name:var(--font-brand)] text-lg font-bold text-violet">
@@ -893,7 +893,7 @@ export default function CertifyPage() {
       {/* ═══ LIVING CERTIFICATION ═══ */}
       <section className="bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE LIVING CERTIFICATION ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -924,7 +924,7 @@ export default function CertifyPage() {
       {/* ═══ VERIFICATION ═══ */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-md text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ VERIFY A CREDENTIAL ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -956,7 +956,7 @@ export default function CertifyPage() {
       {/* ═══ WHY RCO ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ THE STANDARD ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold">
@@ -1013,7 +1013,7 @@ export default function CertifyPage() {
       {/* ═══ YOUR ROI ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
             [ YOUR ROI ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
