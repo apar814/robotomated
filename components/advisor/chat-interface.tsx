@@ -125,7 +125,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   }, [messages, streaming]);
 
   const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, []);
 
   useEffect(() => {
