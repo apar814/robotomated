@@ -30,6 +30,16 @@ export const RSS_FEEDS = [
     name: "Wired Robots",
     url: "https://www.wired.com/feed/tag/robots/rss",
   },
+  {
+    name: "KR Asia",
+    url: "https://kr-asia.com/feed",
+    filter: "robot",
+  },
+  {
+    name: "TechNode",
+    url: "https://technode.com/feed/",
+    filter: "robot",
+  },
 ];
 
 export interface RawFeedItem {
