@@ -16,30 +16,74 @@ const JOB_PILLS = [
 export function HeroPills() {
   return (
     <div>
-      <p className="mb-2 text-[0.72rem] font-bold uppercase tracking-[0.1em]" style={{ color: "rgba(240,244,255,0.35)" }}>
-        Or pick a job type:
+      <p
+        style={{
+          fontSize: "0.72rem",
+          fontWeight: 700,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase" as const,
+          color: "rgba(240,244,255,0.35)",
+          marginBottom: "0.75rem",
+        }}
+      >
+        Or choose a job type
       </p>
-      <div className="flex flex-wrap gap-2">
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
         {JOB_PILLS.map((pill) => (
           <Link
             key={pill.label}
             href={pill.href}
-            className="inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-sm px-[1.1rem] py-[0.5rem] text-[0.72rem] font-bold uppercase tracking-[0.04em] transition-all duration-150 hover:scale-[1.02] active:scale-[0.97]"
+            className="group"
             style={{
-              background: "rgba(37,99,235,0.08)",
-              border: "1px solid rgba(37,99,235,0.25)",
-              color: "#60A5FA",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.65rem 1.4rem",
+              minHeight: "42px",
+              minWidth: "140px",
+              background: "#1E3A5F",
+              border: "1px solid #2563EB",
+              borderRadius: "4px",
+              color: "#F0F4FF",
+              fontSize: "0.78rem",
+              fontWeight: 700,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase" as const,
+              textDecoration: "none",
+              cursor: "pointer",
+              transition: "all 0.15s ease",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.background = "rgba(37,99,235,0.18)";
-              e.currentTarget.style.borderColor = "rgba(37,99,235,0.5)";
+              const t = e.currentTarget;
+              t.style.background = "#2563EB";
+              t.style.borderColor = "#2563EB";
+              t.style.color = "#FFFFFF";
+              t.style.transform = "translateY(-1px)";
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.background = "rgba(37,99,235,0.08)";
-              e.currentTarget.style.borderColor = "rgba(37,99,235,0.25)";
+              const t = e.currentTarget;
+              t.style.background = "#1E3A5F";
+              t.style.borderColor = "#2563EB";
+              t.style.color = "#F0F4FF";
+              t.style.transform = "translateY(0)";
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "scale(0.97)";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "translateY(-1px)";
             }}
           >
-            {pill.label} &rarr;
+            {pill.label}
+            <span
+              style={{
+                display: "inline-block",
+                transition: "transform 0.15s ease",
+              }}
+              className="group-hover:translate-x-[3px]"
+            >
+              &rarr;
+            </span>
           </Link>
         ))}
       </div>
