@@ -12,7 +12,6 @@ import { RobotimusHeroPanel } from "@/components/home/robotimus-hero-panel";
 import { CertificationSection } from "@/components/home/certification-section";
 import { OpportunityBanner } from "@/components/home/opportunity-banner";
 import { RaaSExplainer } from "@/components/home/raas-explainer";
-import { RoboWorkSection } from "@/components/home/robowork-section";
 import { RecentlyFunded } from "@/components/home/recently-funded";
 import { LiveActivity } from "@/components/home/live-activity";
 import { RecentlyViewed } from "@/components/home/recently-viewed";
@@ -307,12 +306,7 @@ export default async function HomePage() {
       <CertificationSection />
 
       {/* ══════════════════════════════════════════
-          7. ROBOWORK PREVIEW
-          ══════════════════════════════════════════ */}
-      <RoboWorkSection />
-
-      {/* ══════════════════════════════════════════
-          7.5. RAAS EXPLAINER
+          7. RAAS / DEPLOY SECTION
           ══════════════════════════════════════════ */}
       <RaaSExplainer />
 
