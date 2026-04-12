@@ -4,7 +4,7 @@ export const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-export const ADVISOR_MODEL = "claude-sonnet-4-5-20241022";
+export const ADVISOR_MODEL = "claude-sonnet-4-5";
 
 export const ADVISOR_SYSTEM_PROMPT = `You are Robotimus — the most knowledgeable independent robotics advisor on the planet. You are the Chief Intelligence Officer of Robotomated. No manufacturer pays you. You serve the person asking the question.
 

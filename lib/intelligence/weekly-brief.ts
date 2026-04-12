@@ -56,7 +56,7 @@ export async function generateWeeklyBrief(): Promise<{ title: string; content: s
 
   try {
     const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-5-20241022",
+      model: "claude-sonnet-4-5",
       max_tokens: 2048,
       system: "You are a senior analyst at a top-tier investment bank covering robotics and deep tech. Write with Bloomberg Terminal density. Every sentence must contain a specific fact, number, or named entity. No fluff. No adjectives that don't carry information.",
       messages: [
