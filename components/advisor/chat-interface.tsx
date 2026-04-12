@@ -352,17 +352,21 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 className={cn(
                   "max-w-[85%] rounded-2xl px-4 py-3 text-sm",
                   msg.role === "user"
-                    ? "bg-[#0EA5E9] text-[#0A0F1E]"
+                    ? "bg-[#2563EB] text-white"
                     : "bg-white/[0.04] text-white/90"
                 )}
               >
-                {msg.role === "assistant" ? (
-                  <MessageContent content={msg.content} enriched={enrichedRobots} />
-                ) : (
+                {msg.role === "user" ? (
                   <p className="whitespace-pre-wrap">{msg.content}</p>
-                )}
-                {msg.role === "assistant" && streaming && i === messages.length - 1 && (
-                  <TypingIndicator />
+                ) : streaming && i === messages.length - 1 ? (
+                  /* During streaming: render raw text only — no markdown parsing on partial content */
+                  <>
+                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    <TypingIndicator />
+                  </>
+                ) : (
+                  /* After streaming complete: render with markdown + robot cards */
+                  <MessageContent content={msg.content} enriched={enrichedRobots} />
                 )}
               </div>
             </div>
