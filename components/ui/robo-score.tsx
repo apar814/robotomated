@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils/cn";
 function getScoreColor(score: number) {
   if (score >= 90)
     return {
-      text: "text-lime",
-      bg: "bg-lime",
-      border: "border-lime/10",
+      text: "text-blue-400",
+      bg: "bg-blue-600",
+      border: "border-blue-600/10",
       ring: "stroke-lime",
-      dimBg: "bg-lime-dim",
-      hex: "#C8FF00",
+      dimBg: "bg-blue-600-dim",
+      hex: "#60A5FA",
     };
   if (score >= 80)
     return {

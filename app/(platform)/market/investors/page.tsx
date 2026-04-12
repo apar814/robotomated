@@ -66,7 +66,7 @@ export default function InvestorsPage() {
             </div>
             <div className="bg-obsidian-surface p-4">
               <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Capital Tracked</p>
-              <p className="mt-2 font-mono text-2xl font-bold text-lime">
+              <p className="mt-2 font-mono text-2xl font-bold text-blue-400">
                 ${(totalDeployed / 1000).toFixed(1)}B
               </p>
               <p className="mt-1 text-xs text-tertiary">Estimated deployment</p>

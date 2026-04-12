@@ -56,14 +56,14 @@ export function SafeImage({
       >
         <RobotSilhouette />
         {fallbackLabel && (
-          <span className="mt-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white/30">
+          <span className="mt-3 text-[11px] font-medium uppercase tracking-[0.1em] text-white/50">
             {fallbackLabel}
           </span>
         )}
         <span className="mt-1 text-sm font-semibold text-white/50">
           {fallbackSublabel || alt}
         </span>
-        <span className="absolute bottom-2 right-3 text-[9px] text-white/20">
+        <span className="absolute bottom-2 right-3 text-[9px] text-white/45">
           Image coming soon
         </span>
       </div>

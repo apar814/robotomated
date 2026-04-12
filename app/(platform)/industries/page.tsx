@@ -196,7 +196,7 @@ export default async function IndustriesHubPage() {
                           </span>
                         ))}
                         {industry.types.length > 3 && (
-                          <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[10px] text-white/30">
+                          <span className="rounded-full bg-white/[0.08] px-2.5 py-0.5 text-[10px] text-white/50">
                             +{industry.types.length - 3}
                           </span>
                         )}

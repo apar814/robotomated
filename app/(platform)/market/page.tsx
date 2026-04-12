@@ -109,7 +109,7 @@ export default function MarketplacePage() {
                   <p className="mt-0.5 text-xs text-ghost">{round.leadInvestor}</p>
                 </div>
                 <div className="flex shrink-0 items-center gap-4">
-                  <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-lime">{round.amount}</span>
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-blue-400">{round.amount}</span>
                   <span className="hidden font-mono text-[10px] text-ghost sm:block">
                     {formatDate(round.date)}
                   </span>

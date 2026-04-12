@@ -36,7 +36,7 @@ export function BuyerJourneyBar() {
   return (
     <div className="border-b border-white/[0.05] bg-[#060608] px-4 py-2.5">
       <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto">
-        <span className="mr-2 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-white/20">
+        <span className="mr-2 shrink-0 text-[10px] font-semibold uppercase tracking-widest text-white/45">
           Your Journey
         </span>
         {STAGES.map((stage, i) => {
@@ -54,7 +54,7 @@ export function BuyerJourneyBar() {
                     ? "bg-blue/10 text-blue"
                     : isPast
                       ? "text-white/40 hover:text-white/60"
-                      : "text-white/20 hover:text-white/40"
+                      : "text-white/45 hover:text-white/40"
                 }`}
               >
                 {stage.label}

@@ -139,7 +139,7 @@ export default function TradeInPage() {
                   value={manufacturer}
                   onChange={(e) => setManufacturer(e.target.value)}
                   placeholder="e.g. Fanuc, ABB, KUKA"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -154,7 +154,7 @@ export default function TradeInPage() {
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   placeholder="e.g. CRX-10iA, UR10e"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export default function TradeInPage() {
                   value={yearPurchased}
                   onChange={(e) => setYearPurchased(e.target.value)}
                   placeholder="2022"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function TradeInPage() {
                   value={purchasePrice}
                   onChange={(e) => setPurchasePrice(e.target.value)}
                   placeholder="50000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function TradeInPage() {
                   value={operatingHours}
                   onChange={(e) => setOperatingHours(e.target.value)}
                   placeholder="12000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -217,7 +217,7 @@ export default function TradeInPage() {
                   value={softwareVersion}
                   onChange={(e) => setSoftwareVersion(e.target.value)}
                   placeholder="Optional"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -256,7 +256,7 @@ export default function TradeInPage() {
                   value={knownIssues}
                   onChange={(e) => setKnownIssues(e.target.value)}
                   placeholder="Describe any known issues or repairs needed (optional)"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -271,7 +271,7 @@ export default function TradeInPage() {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="City, State"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -439,7 +439,7 @@ export default function TradeInPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
                 <button
                   type="submit"

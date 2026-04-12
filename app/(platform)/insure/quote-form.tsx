@@ -94,7 +94,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="e.g. Fanuc, ABB"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -108,7 +108,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="e.g. CRX-10iA"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -123,7 +123,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           required
           min="0"
           placeholder="50000"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -137,7 +137,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="number"
           min="1"
           defaultValue={1}
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -194,7 +194,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="City, State"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -225,7 +225,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="Jane Smith"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -239,7 +239,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="email"
           required
           placeholder="jane@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -252,7 +252,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           name="contact_phone"
           type="tel"
           placeholder="+1 (555) 000-0000"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 

@@ -82,7 +82,7 @@ export function ProWaitlistClient() {
             <span className="font-mono text-4xl font-bold text-foreground">$29</span>
             <span className="text-muted">/month</span>
           </div>
-          <p className="mt-2 text-sm text-lime font-semibold">
+          <p className="mt-2 text-sm text-blue-400 font-semibold">
             Waitlist gets 40% off forever &rarr; $17/month
           </p>
         </div>
@@ -92,8 +92,8 @@ export function ProWaitlistClient() {
       <section className="px-4 pb-12">
         <div className="mx-auto max-w-md">
           {status === "success" ? (
-            <div className="rounded-md border border-lime/20 bg-lime/5 p-8 text-center">
-              <p className="text-lg font-bold text-lime">You&apos;re on the list!</p>
+            <div className="rounded-md border border-blue-600/20 bg-blue-600/5 p-8 text-center">
+              <p className="text-lg font-bold text-blue-400">You&apos;re on the list!</p>
               {position && (
                 <p className="mt-2 text-3xl font-mono font-bold text-foreground">#{position}</p>
               )}
@@ -112,7 +112,7 @@ export function ProWaitlistClient() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="flex-1 rounded-md border border-border bg-transparent px-5 py-4 text-sm text-white placeholder:text-white/25 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
+                className="flex-1 rounded-md border border-border bg-transparent px-5 py-4 text-sm text-white placeholder:text-white/45 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
               />
               <button
                 type="submit"

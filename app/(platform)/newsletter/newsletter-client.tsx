@@ -181,7 +181,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
-                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-white/25 focus:border-blue focus:outline-none sm:rounded-r-none"
+                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none sm:rounded-r-none"
                   />
                   <Button type="submit" disabled={status === "loading"} className="px-8 py-4 sm:rounded-l-none">
                     {status === "loading" ? "Subscribing..." : "Subscribe Free"}

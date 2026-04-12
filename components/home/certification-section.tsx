@@ -76,7 +76,7 @@ export function CertificationSection() {
                       <span className="text-[14px] font-semibold text-primary">
                         {cert.name}
                       </span>
-                      <span className="font-[family-name:var(--font-mono)] text-[13px] font-bold text-lime">
+                      <span className="font-[family-name:var(--font-mono)] text-[13px] font-bold text-blue-400">
                         {cert.price}
                       </span>
                     </div>
@@ -89,7 +89,7 @@ export function CertificationSection() {
             <ul className="mt-6 space-y-2.5">
               {PRO_BENEFITS.map((b) => (
                 <li key={b} className="flex items-start gap-2.5">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-lime" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
                   <span className="text-[14px] leading-[1.6] text-secondary">
                     {b}
                   </span>
@@ -133,7 +133,7 @@ export function CertificationSection() {
             <ul className="mt-8 space-y-2.5">
               {BIZ_BENEFITS.map((b) => (
                 <li key={b} className="flex items-start gap-2.5">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-lime" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
                   <span className="text-[14px] leading-[1.6] text-secondary">
                     {b}
                   </span>
@@ -144,13 +144,13 @@ export function CertificationSection() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-lime">73%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400">73%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   Certified operators reduce incidents by 73%
                 </p>
               </div>
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-lime">+34%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400">+34%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   RCO holders earn 34% more on RoboWork
                 </p>

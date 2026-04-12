@@ -139,7 +139,7 @@ function StarRating({ rating, size = "sm" }: { rating: number; size?: "sm" | "lg
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={cn(dim, star <= Math.round(rating) ? "text-[#C8FF00]" : "text-white/10")}
+          className={cn(dim, star <= Math.round(rating) ? "text-[#60A5FA]" : "text-white/28")}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -619,7 +619,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                         {robot.operator_included && <span className="rounded-full bg-violet/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[9px] tracking-wider text-violet">OPERATOR INCLUDED</span>}
                         {robot.remote_capable && <span className="rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[9px] tracking-wider text-[#14B8A6]">REMOTE CAPABLE</span>}
                       </div>
-                      <button className="mt-4 w-full rounded-lg border border-[#C8FF00]/30 bg-[#C8FF00]/5 py-2 text-xs font-medium text-[#C8FF00] transition-colors hover:bg-[#C8FF00]/10">
+                      <button className="mt-4 w-full rounded-lg border border-[#60A5FA]/30 bg-[#60A5FA]/5 py-2 text-xs font-medium text-[#60A5FA] transition-colors hover:bg-[#60A5FA]/10">
                         Request Booking
                       </button>
                     </div>

@@ -61,7 +61,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
 
   if (submitted) {
     return (
-      <div className="rounded-lg border border-lime/20 bg-lime/5 p-8 text-center">
+      <div className="rounded-lg border border-blue-600/20 bg-blue-600/5 p-8 text-center">
         <div className="mb-3 text-3xl">&#10003;</div>
         <h3 className="text-lg font-bold text-text-primary">Bid Submitted</h3>
         <p className="mt-2 text-sm text-text-secondary">

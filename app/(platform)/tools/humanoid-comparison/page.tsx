@@ -126,7 +126,7 @@ function AvailabilityBadge({ status }: { status: string }) {
   let colorClasses: string;
   switch (status) {
     case "Available":
-      colorClasses = "bg-lime/15 text-lime border-lime/30";
+      colorClasses = "bg-blue-600/15 text-blue-400 border-blue-600/30";
       break;
     case "Pre-order":
       colorClasses =
@@ -362,7 +362,7 @@ export default function HumanoidComparisonPage() {
                 <div
                   className={`inline-flex rounded px-2 py-1 text-xs font-semibold ${
                     card.accent === "lime"
-                      ? "bg-lime/15 text-lime"
+                      ? "bg-blue-600/15 text-blue-400"
                       : card.accent === "electric-blue"
                         ? "bg-electric-blue/15 text-electric-blue"
                         : "bg-magenta/15 text-magenta"

@@ -70,7 +70,7 @@ export function BuyersChecklist({ robotName, robotSlug }: BuyersChecklistProps) 
       <ol className="mb-3 space-y-2">
         {VISIBLE_QUESTIONS.map((q, i) => (
           <li key={i} className="flex gap-2 text-sm">
-            <span className="shrink-0 font-mono text-[11px] font-bold text-lime">
+            <span className="shrink-0 font-mono text-[11px] font-bold text-blue-400">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-text-primary">{q}</span>
@@ -84,8 +84,8 @@ export function BuyersChecklist({ robotName, robotSlug }: BuyersChecklistProps) 
 
       {/* Email Form */}
       {status === "success" ? (
-        <div className="rounded-md border border-[rgba(200,255,0,0.08)] bg-lime-dim px-3 py-2">
-          <p className="font-mono text-sm text-lime">{message}</p>
+        <div className="rounded-md border border-[rgba(200,255,0,0.08)] bg-blue-600-dim px-3 py-2">
+          <p className="font-mono text-sm text-blue-400">{message}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">

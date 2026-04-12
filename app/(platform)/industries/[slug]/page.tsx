@@ -211,7 +211,7 @@ export default async function IndustryPage({ params }: Props) {
         <section className="bg-[#0A0F1E] px-4 py-16">
           <div className="mx-auto max-w-6xl text-center">
             <p className="text-lg text-white/40">Robot listings for {industry.name.toLowerCase()} are coming soon.</p>
-            <p className="mt-2 text-sm text-white/30">Subscribe below to be notified when we add robots for this industry.</p>
+            <p className="mt-2 text-sm text-white/50">Subscribe below to be notified when we add robots for this industry.</p>
           </div>
         </section>
       )}
@@ -283,7 +283,7 @@ export default async function IndustryPage({ params }: Props) {
                     </span>
                     <div>
                       <h3 className="font-semibold text-white">{item.name}</h3>
-                      <span className={`mt-0.5 inline-block text-[10px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/30"}`}>
+                      <span className={`mt-0.5 inline-block text-[10px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/50"}`}>
                         {item.required ? "Required" : "Recommended"}
                       </span>
                       <p className="mt-1.5 text-sm leading-[1.7] text-white/50">{item.description}</p>
@@ -318,11 +318,11 @@ export default async function IndustryPage({ params }: Props) {
                   </div>
                   <div className="mb-4 space-y-2">
                     <div>
-                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">Challenge</p>
+                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/50">Challenge</p>
                       <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.challenge}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/30">Solution</p>
+                      <p className="text-[10px] font-medium uppercase tracking-wider text-white/50">Solution</p>
                       <p className="mt-0.5 text-sm leading-[1.6] text-white/50">{cs.solution}</p>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ export default async function IndustryPage({ params }: Props) {
                     {cs.metrics.map((m) => (
                       <div key={m.label} className="text-center">
                         <p className="font-mono text-sm font-bold text-green">{m.value}</p>
-                        <p className="mt-0.5 text-[9px] uppercase tracking-wider text-white/30">{m.label}</p>
+                        <p className="mt-0.5 text-[9px] uppercase tracking-wider text-white/50">{m.label}</p>
                       </div>
                     ))}
                   </div>
@@ -413,13 +413,13 @@ function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug
           <SafeImage src={realImg} alt={robot.name} sizes="33vw" className="object-cover" fallbackLabel={mfr} fallbackSublabel={robot.name} />
         ) : (
           <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.04] text-center">
-            <span className="text-[10px] text-white/20">{mfr}</span>
-            <span className="text-xs font-semibold text-white/30">{robot.name}</span>
+            <span className="text-[10px] text-white/45">{mfr}</span>
+            <span className="text-xs font-semibold text-white/50">{robot.name}</span>
           </div>
         )}
       </div>
       <div className="p-4">
-        <p className="text-[10px] text-white/30">{mfr}</p>
+        <p className="text-[10px] text-white/50">{mfr}</p>
         <h3 className="font-semibold text-white transition-colors group-hover:text-blue">{robot.name}</h3>
         {robot.description_short && (
           <p className="mt-1 line-clamp-2 text-xs text-white/40">{robot.description_short}</p>

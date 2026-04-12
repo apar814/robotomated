@@ -33,7 +33,7 @@ const SAMPLE_JOBS: JobCard[] = [
     bids: "2 bids",
     posted: "1 day ago",
     tags: [
-      { label: "CLEANING", color: "bg-lime/15 text-lime" },
+      { label: "CLEANING", color: "bg-blue-600/15 text-blue-400" },
       { label: "AUTONOMOUS", color: "bg-electric-blue/15 text-electric-blue" },
     ],
   },
@@ -45,7 +45,7 @@ const SAMPLE_JOBS: JobCard[] = [
     bids: "1 bid",
     posted: "3 days ago",
     tags: [
-      { label: "AGR", color: "bg-lime/15 text-lime" },
+      { label: "AGR", color: "bg-blue-600/15 text-blue-400" },
       { label: "WITH OPERATOR", color: "bg-violet/15 text-violet" },
     ],
   },
@@ -131,7 +131,7 @@ export function RoboWorkSection() {
                   <span>{job.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-[family-name:var(--font-mono)] text-[14px] font-bold text-lime">
+                  <span className="font-[family-name:var(--font-mono)] text-[14px] font-bold text-blue-400">
                     {job.budget}
                   </span>
                 </div>

@@ -210,9 +210,10 @@ export function FilterBar({
                 key={f.key}
                 className={cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium", f.key === "price" && "font-[family-name:var(--font-mono)]")}
                 style={{
-                  background: "rgba(37,99,235,0.1)",
-                  border: "1px solid rgba(37,99,235,0.3)",
-                  color: "#2563EB",
+                  background: "#2563EB",
+                  border: "1px solid #2563EB",
+                  color: "#FFFFFF",
+                  fontWeight: 600,
                 }}
               >
                 {f.label}

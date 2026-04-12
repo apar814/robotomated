@@ -94,7 +94,7 @@ export function JobInput() {
         />
         {/* Animated placeholder overlay */}
         {!value && (
-          <div className="pointer-events-none absolute left-5 top-4 font-[family-name:var(--font-ui)] text-[15px] text-white/25">
+          <div className="pointer-events-none absolute left-5 top-4 font-[family-name:var(--font-ui)] text-[15px] text-white/45">
             {currentPlaceholder}
             <span className="animate-pulse">|</span>
           </div>
@@ -120,7 +120,7 @@ export function JobInput() {
             onClick={() => handleCategory(cat.id)}
             className="flex shrink-0 items-center gap-1.5 rounded-full border border-white/[0.06] px-3 py-1.5 text-[11px] font-medium text-white/40 transition-all hover:border-[#2563EB]/30 hover:text-[#2563EB]"
           >
-            <span className="text-white/20 transition-colors group-hover:text-[#2563EB]">{cat.icon}</span>
+            <span className="text-white/45 transition-colors group-hover:text-[#2563EB]">{cat.icon}</span>
             {cat.label}
           </button>
         ))}

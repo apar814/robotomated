@@ -32,7 +32,7 @@ export function UpgradePrompt({ feature, description, inline }: UpgradePromptPro
             </Link>
             <button
               onClick={() => setDismissed(true)}
-              className="text-xs text-white/20 transition-colors hover:text-white/40"
+              className="text-xs text-white/45 transition-colors hover:text-white/40"
               aria-label="Dismiss"
             >
               &times;
@@ -68,7 +68,7 @@ export function UpgradeModal({
         </div>
         <h2 className="text-xl font-bold text-white">{feature}</h2>
         <p className="mt-3 text-sm text-white/40">{description}</p>
-        <p className="mt-4 text-xs text-white/25">$49/month &middot; 7-day free trial &middot; Cancel anytime</p>
+        <p className="mt-4 text-xs text-white/45">$49/month &middot; 7-day free trial &middot; Cancel anytime</p>
         <div className="mt-6 flex flex-col gap-3">
           <Link
             href="/pro"
@@ -76,7 +76,7 @@ export function UpgradeModal({
           >
             Start Free Trial
           </Link>
-          <button onClick={onClose} className="text-sm text-white/25 transition-colors hover:text-white/40">
+          <button onClick={onClose} className="text-sm text-white/45 transition-colors hover:text-white/40">
             Not now
           </button>
         </div>

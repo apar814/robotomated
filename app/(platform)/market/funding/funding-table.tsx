@@ -170,7 +170,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
                     </a>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="font-mono text-sm font-bold text-lime">{round.amount}</span>
+                    <span className="font-mono text-sm font-bold text-blue-400">{round.amount}</span>
                   </td>
                   <td className="px-4 py-3">
                     <span

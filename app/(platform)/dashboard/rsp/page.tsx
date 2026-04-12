@@ -180,7 +180,7 @@ const MOCK_ALERTS: MaintenanceAlert[] = [
 // ── Status Config ──
 
 const STATUS_BADGE: Record<string, string> = {
-  operational: "bg-lime/15 text-lime border-lime/20",
+  operational: "bg-blue-600/15 text-blue-400 border-blue-600/20",
   deployed: "bg-electric-blue/15 text-electric-blue border-electric-blue/20",
   maintenance: "bg-amber/15 text-amber border-amber/20",
   idle: "bg-text-tertiary/15 text-text-secondary border-text-tertiary/20",
@@ -189,7 +189,7 @@ const STATUS_BADGE: Record<string, string> = {
 const INVOICE_STATUS_BADGE: Record<string, string> = {
   draft: "bg-text-tertiary/15 text-text-secondary",
   sent: "bg-electric-blue/15 text-electric-blue",
-  paid: "bg-lime/15 text-lime",
+  paid: "bg-blue-600/15 text-blue-400",
   overdue: "bg-magenta/15 text-magenta",
   cancelled: "bg-text-tertiary/15 text-text-secondary",
 };
@@ -197,7 +197,7 @@ const INVOICE_STATUS_BADGE: Record<string, string> = {
 const MAINT_TYPE_BADGE: Record<string, string> = {
   scheduled: "bg-electric-blue/15 text-electric-blue",
   emergency: "bg-magenta/15 text-magenta",
-  preventive: "bg-lime/15 text-lime",
+  preventive: "bg-blue-600/15 text-blue-400",
 };
 
 const TABS = ["Overview", "Jobs", "Fleet", "Maintenance", "Invoices"] as const;
@@ -272,7 +272,7 @@ function OverviewTab() {
               <p
                 className={cn(
                   "mt-1 text-[11px]",
-                  stat.changeType === "up" && "text-lime",
+                  stat.changeType === "up" && "text-blue-400",
                   stat.changeType === "down" && "text-magenta",
                   stat.changeType === "neutral" && "text-text-secondary"
                 )}
@@ -287,7 +287,7 @@ function OverviewTab() {
       {/* Recent Reviews */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-lime" />
+          <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
           <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
             Recent Reviews
           </span>
@@ -399,7 +399,7 @@ function JobsTab() {
       {/* Completed Jobs */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-lime" />
+          <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
           <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
             Completed Jobs
           </span>
@@ -553,7 +553,7 @@ function MaintenanceTab() {
                       <span
                         className={cn(
                           "rounded px-2 py-0.5 text-[10px] font-semibold capitalize",
-                          log.status === "completed" && "bg-lime/15 text-lime",
+                          log.status === "completed" && "bg-blue-600/15 text-blue-400",
                           log.status === "pending" && "bg-text-tertiary/15 text-text-secondary",
                           log.status === "in_progress" && "bg-amber/15 text-amber"
                         )}

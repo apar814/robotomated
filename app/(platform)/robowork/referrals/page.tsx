@@ -80,15 +80,15 @@ export default async function RspReferralsPage() {
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <div className="mb-4 inline-block rounded-full border border-lime/20 bg-lime/5 px-4 py-1.5">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-lime">
+          <div className="mb-4 inline-block rounded-full border border-blue-600/20 bg-blue-600/5 px-4 py-1.5">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-blue-400">
               RSP Referral Program
             </span>
           </div>
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Refer an RSP.{" "}
-            <span className="text-lime">Earn $500.</span>
+            <span className="text-blue-400">Earn $500.</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
@@ -179,7 +179,7 @@ export default async function RspReferralsPage() {
                 )}
                 <a
                   href="/robowork/providers/register"
-                  className="inline-flex items-center rounded-md bg-lime px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-lime/90"
+                  className="inline-flex items-center rounded-md bg-blue-600 px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-blue-600/90"
                 >
                   Register as RSP
                 </a>

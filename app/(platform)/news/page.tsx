@@ -33,7 +33,7 @@ function ArticleCard({ article }: { article: NewsArticle }) {
       <div className="flex flex-1 flex-col gap-2.5 p-4">
         <div className="flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-[11px] text-white/30">{relativeTime(article.publishedAt)}</span>
+          <span className="text-[11px] text-white/50">{relativeTime(article.publishedAt)}</span>
         </div>
         <h3 className="line-clamp-3 text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-blue">
           {article.title}
@@ -41,7 +41,7 @@ function ArticleCard({ article }: { article: NewsArticle }) {
         <p className="line-clamp-3 flex-1 text-xs leading-relaxed text-white/35">{article.summary}</p>
         <div className="mt-auto flex items-center justify-between border-t border-border pt-2">
           <span className="text-xs font-medium text-white/35">{article.source}</span>
-          <span className="text-[11px] text-white/30 transition-colors group-hover:text-blue">Read →</span>
+          <span className="text-[11px] text-white/50 transition-colors group-hover:text-blue">Read →</span>
         </div>
       </div>
     </a>
@@ -76,7 +76,7 @@ export default function NewsPage() {
       <div className="sticky top-[57px] z-20 border-b border-border bg-navy/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-6 py-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-white/30">Category</span>
+            <span className="text-xs text-white/50">Category</span>
             {["All", ...NEWS_CATEGORIES].map(cat => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
@@ -87,7 +87,7 @@ export default function NewsPage() {
             ))}
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
-            <span className="text-xs text-white/30">Source</span>
+            <span className="text-xs text-white/50">Source</span>
             {sources.map(src => (
               <button key={src} onClick={() => setActiveSource(src)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
@@ -139,7 +139,7 @@ export default function NewsPage() {
 
         {filtered.length === 0 && (
           <div className="py-20 text-center">
-            <svg className="mx-auto mb-4 h-8 w-8 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
+            <svg className="mx-auto mb-4 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
             <p className="text-lg font-semibold">No articles match these filters</p>
             <p className="mt-2 text-sm text-white/35">Try a broader category or clear the source filter to see all coverage.</p>
           </div>

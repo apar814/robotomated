@@ -47,7 +47,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <SourceBadge source={article.source} />
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-xs text-white/20">{relativeTime(article.publishedAt)}</span>
+          <span className="text-xs text-white/45">{relativeTime(article.publishedAt)}</span>
         </div>
         <h3 className="mb-3 text-xl font-bold leading-snug text-white/90 transition-colors group-hover:text-blue">
           {article.title}
@@ -57,7 +57,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
         </p>
       </div>
       <div className="mt-4 flex items-center justify-between border-t border-white/[0.05] pt-4">
-        <span className="text-[11px] text-white/25">{article.category}</span>
+        <span className="text-[11px] text-white/45">{article.category}</span>
         <span className="text-xs font-medium text-blue group-hover:underline">Read article →</span>
       </div>
     </a>
@@ -76,7 +76,7 @@ function ArticleRow({ article }: { article: NewsArticle }) {
       <div className="min-w-0 flex-1">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           <TagPill label={article.tag} color={article.tagColor} />
-          <span className="text-[11px] text-white/25">{relativeTime(article.publishedAt)}</span>
+          <span className="text-[11px] text-white/45">{relativeTime(article.publishedAt)}</span>
         </div>
         <p className="line-clamp-2 text-sm font-medium leading-snug text-white/80 transition-colors group-hover:text-blue">
           {article.title}
@@ -85,7 +85,7 @@ function ArticleRow({ article }: { article: NewsArticle }) {
           <SourceBadge source={article.source} />
         </div>
       </div>
-      <span className="mt-2 shrink-0 text-sm text-white/15 transition-colors group-hover:text-blue">→</span>
+      <span className="mt-2 shrink-0 text-sm text-white/30 transition-colors group-hover:text-blue">→</span>
     </a>
   );
 }
@@ -99,7 +99,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
           <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 text-center">
-          <p className="text-sm text-white/25">News feed loading — check back shortly.</p>
+          <p className="text-sm text-white/45">News feed loading — check back shortly.</p>
         </div>
       </section>
     );
@@ -121,7 +121,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
         <HeroArticle article={featured} />
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
-          <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wide text-white/20">Recent</p>
+          <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wide text-white/45">Recent</p>
           {secondary.map((a) => <ArticleRow key={a.id} article={a} />)}
           <Link href="/news" className="mt-3 block text-center text-xs text-blue hover:underline">View all news →</Link>
         </div>

@@ -63,7 +63,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="e.g. Fanuc, ABB, Universal Robots"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -77,7 +77,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="e.g. CRX-10iA, UR10e"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -134,7 +134,7 @@ function ServiceRequestForm() {
           required
           rows={4}
           placeholder="Describe the issue or service needed..."
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -148,7 +148,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="City, State or ZIP"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -162,7 +162,7 @@ function ServiceRequestForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 

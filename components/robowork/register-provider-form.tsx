@@ -393,8 +393,8 @@ export function RegisterProviderForm() {
                   className={cn(
                     "rounded-full px-4 py-2 font-sans text-xs font-medium transition-colors",
                     fulfillmentTypes.includes(f.value)
-                      ? "bg-[#C8FF00]/20 text-[#C8FF00] border border-[#C8FF00]/30"
-                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-[#C8FF00]/20"
+                      ? "bg-[#60A5FA]/20 text-[#60A5FA] border border-[#60A5FA]/30"
+                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-[#60A5FA]/20"
                   )}
                 >
                   {f.label}
@@ -583,7 +583,7 @@ export function RegisterProviderForm() {
                   type="button"
                   onClick={addRobot}
                   disabled={!currentRobot.custom_name.trim()}
-                  className="rounded-lg bg-[#C8FF00] px-5 py-2 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+                  className="rounded-lg bg-[#60A5FA] px-5 py-2 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
                 >
                   ADD ROBOT
                 </button>
@@ -759,7 +759,7 @@ export function RegisterProviderForm() {
               type="button"
               onClick={handleSubmit}
               disabled={submitting || !termsAccepted || !email.trim()}
-              className="rounded-lg bg-[#C8FF00] px-8 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+              className="rounded-lg bg-[#60A5FA] px-8 py-2.5 font-mono text-[10px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
             >
               {submitting ? "SUBMITTING..." : "REGISTER AS PROVIDER"}
             </button>

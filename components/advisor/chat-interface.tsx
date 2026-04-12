@@ -433,7 +433,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               placeholder="Ask Robotimus about robots..."
               rows={1}
               disabled={streaming}
-              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#2563EB]/40 focus:outline-none disabled:opacity-50"
+              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#2563EB]/40 focus:outline-none disabled:opacity-50"
             />
             <button
               type="submit"
@@ -447,7 +447,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           </form>
           {messages.length > 0 && (
             <div className="mt-2 text-center">
-              <button onClick={startOver} className="text-xs text-white/30 hover:text-white/60">
+              <button onClick={startOver} className="text-xs text-white/50 hover:text-white/60">
                 Start over
               </button>
             </div>

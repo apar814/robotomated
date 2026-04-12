@@ -31,14 +31,14 @@ const INDUSTRY_COLORS: Record<string, string> = {
   "Warehouse & Logistics": "bg-electric-blue/10 text-electric-blue",
   Manufacturing: "bg-violet/10 text-violet",
   Construction: "bg-amber/10 text-amber",
-  Agriculture: "bg-lime/10 text-lime",
+  Agriculture: "bg-blue-600/10 text-blue-400",
   Healthcare: "bg-magenta/10 text-magenta",
   Hospitality: "bg-electric-blue/10 text-electric-blue",
   Security: "bg-magenta/10 text-magenta",
   Retail: "bg-violet/10 text-violet",
   "Food & Beverage": "bg-amber/10 text-amber",
   Mining: "bg-amber/10 text-amber",
-  Energy: "bg-lime/10 text-lime",
+  Energy: "bg-blue-600/10 text-blue-400",
   Education: "bg-electric-blue/10 text-electric-blue",
 };
 

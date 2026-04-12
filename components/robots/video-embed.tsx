@@ -27,7 +27,7 @@ export function VideoEmbed({ youtubeUrl, robotName }: VideoEmbedProps) {
     <div className="relative overflow-hidden rounded-md border border-border bg-obsidian-surface">
       {/* Badge */}
       <div className="absolute left-3 top-3 z-10">
-        <span className="inline-flex items-center gap-1.5 rounded bg-black/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lime backdrop-blur-sm">
+        <span className="inline-flex items-center gap-1.5 rounded bg-black/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-blue-400 backdrop-blur-sm">
           <svg
             className="h-3 w-3"
             fill="currentColor"

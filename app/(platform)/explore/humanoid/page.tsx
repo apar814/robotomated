@@ -188,7 +188,7 @@ export default async function HumanoidPage() {
                     </p>
                   )}
                   {robot.price_current != null && (
-                    <p className="mt-3 text-sm font-semibold text-lime">
+                    <p className="mt-3 text-sm font-semibold text-blue-400">
                       ${robot.price_current.toLocaleString()}
                     </p>
                   )}

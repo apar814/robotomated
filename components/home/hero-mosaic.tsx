@@ -43,8 +43,8 @@ export function HeroMosaic({ robots }: { robots: MosaicRobot[] }) {
               />
             ) : (
               <div className="flex h-full flex-col items-center justify-center px-3 text-center">
-                <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-white/15">{robot.manufacturer_name}</span>
-                <span className="mt-1 text-sm font-bold text-white/25">{robot.name}</span>
+                <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-white/30">{robot.manufacturer_name}</span>
+                <span className="mt-1 text-sm font-bold text-white/45">{robot.name}</span>
               </div>
             )}
 
@@ -55,7 +55,7 @@ export function HeroMosaic({ robots }: { robots: MosaicRobot[] }) {
             <div className="absolute inset-x-0 bottom-0 p-3">
               <div className="flex items-end justify-between gap-2">
                 <div className="min-w-0">
-                  <p className="truncate text-[10px] text-white/30">{robot.manufacturer_name}</p>
+                  <p className="truncate text-[10px] text-white/50">{robot.manufacturer_name}</p>
                   <p className="truncate text-xs font-semibold text-white/90">{robot.name}</p>
                 </div>
                 {robot.robo_score != null && robot.robo_score > 0 && (

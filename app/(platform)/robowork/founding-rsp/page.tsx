@@ -182,7 +182,7 @@ export default async function FoundingRspPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-lime" />
+            <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
             <span className="font-mono text-[9px] uppercase tracking-widest text-text-ghost">
               Apply Now
             </span>

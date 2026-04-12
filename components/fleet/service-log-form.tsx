@@ -140,7 +140,7 @@ export function ServiceLogForm({ assetId, assetName }: ServiceLogFormProps) {
           onChange={(e) => update("description", e.target.value)}
           rows={4}
           placeholder="What was done during this service?"
-          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none resize-none"
+          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none resize-none"
         />
       </div>
 
@@ -154,7 +154,7 @@ export function ServiceLogForm({ assetId, assetName }: ServiceLogFormProps) {
             value={form.technician}
             onChange={(e) => update("technician", e.target.value)}
             placeholder="Name of technician"
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
           />
         </div>
         <div>
@@ -168,7 +168,7 @@ export function ServiceLogForm({ assetId, assetName }: ServiceLogFormProps) {
             placeholder="0"
             min="0"
             step="0.01"
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
           />
         </div>
         <div>
@@ -182,7 +182,7 @@ export function ServiceLogForm({ assetId, assetName }: ServiceLogFormProps) {
             placeholder="0"
             min="0"
             step="0.5"
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
           />
         </div>
       </div>
@@ -196,9 +196,9 @@ export function ServiceLogForm({ assetId, assetName }: ServiceLogFormProps) {
           value={form.parts_replaced}
           onChange={(e) => update("parts_replaced", e.target.value)}
           placeholder="Comma-separated: Drive belt, Air filter, Sensor module"
-          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
         />
-        <p className="mt-1 text-xs text-white/30">Separate multiple parts with commas</p>
+        <p className="mt-1 text-xs text-white/50">Separate multiple parts with commas</p>
       </div>
 
       <div>

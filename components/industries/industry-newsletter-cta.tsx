@@ -54,7 +54,7 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
             placeholder="you@company.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/25 focus:border-blue focus:outline-none sm:rounded-r-none"
+            className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none sm:rounded-r-none"
           />
           <button
             type="submit"
@@ -70,7 +70,7 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
         {status === "error" && (
           <p className="mt-3 text-sm text-orange-400">{message}</p>
         )}
-        <p className="mt-3 text-[11px] text-white/30">No spam. Unsubscribe anytime. Join 2,000+ industry professionals.</p>
+        <p className="mt-3 text-[11px] text-white/50">No spam. Unsubscribe anytime. Join 2,000+ industry professionals.</p>
       </div>
     </div>
   );

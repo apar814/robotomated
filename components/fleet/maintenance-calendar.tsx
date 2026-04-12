@@ -110,7 +110,7 @@ export function MaintenanceCalendar({ schedules, assets }: MaintenanceCalendarPr
                   </p>
                 </div>
                 <div className="shrink-0 text-right">
-                  <p className="text-xs text-white/30 font-mono">
+                  <p className="text-xs text-white/50 font-mono">
                     ~{s.estimated_hours}h
                   </p>
                   {s.requires_professional && (
@@ -124,13 +124,13 @@ export function MaintenanceCalendar({ schedules, assets }: MaintenanceCalendarPr
           })}
         </div>
       ) : overdue.length === 0 ? (
-        <p className="text-sm text-white/30 py-4 text-center">
+        <p className="text-sm text-white/50 py-4 text-center">
           No upcoming maintenance this month
         </p>
       ) : null}
 
       <div className="mt-4 pt-3 border-t border-white/[0.06]">
-        <p className="text-xs text-white/30">
+        <p className="text-xs text-white/50">
           {upcoming.length + overdue.length} task{upcoming.length + overdue.length !== 1 ? "s" : ""} total &middot;{" "}
           Est. cost: $
           {[...upcoming, ...overdue]

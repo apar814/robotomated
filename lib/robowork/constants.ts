@@ -34,19 +34,19 @@ export const INDUSTRIES = [
 ] as const;
 
 export const URGENCY_CONFIG = {
-  asap: { label: "ASAP", color: "bg-magenta/15 text-magenta border-magenta/20" },
+  asap: { label: "ASAP", color: "bg-red-500/15 text-red-400 border-red-500/20" },
   within_week: { label: "Within a Week", color: "bg-amber/15 text-amber border-amber/20" },
-  within_month: { label: "Within a Month", color: "bg-lime/15 text-lime border-lime/20" },
+  within_month: { label: "Within a Month", color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20" },
   flexible: { label: "Flexible", color: "bg-text-tertiary/15 text-text-secondary border-text-tertiary/20" },
 } as const;
 
 export const STATUS_CONFIG = {
   draft: { label: "Draft", color: "bg-text-tertiary/15 text-text-secondary" },
-  open: { label: "Open", color: "bg-electric-blue/15 text-electric-blue" },
+  open: { label: "Open", color: "bg-blue-600/15 text-blue-400" },
   in_review: { label: "In Review", color: "bg-amber/15 text-amber" },
-  filled: { label: "Filled", color: "bg-lime/15 text-lime" },
-  completed: { label: "Completed", color: "bg-lime/15 text-lime" },
-  cancelled: { label: "Cancelled", color: "bg-magenta/15 text-magenta" },
+  filled: { label: "Filled", color: "bg-emerald-500/15 text-emerald-400" },
+  completed: { label: "Completed", color: "bg-emerald-500/15 text-emerald-400" },
+  cancelled: { label: "Cancelled", color: "bg-red-500/15 text-red-400" },
 } as const;
 
 export const FULFILLMENT_OPTIONS = [

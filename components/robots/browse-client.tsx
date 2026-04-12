@@ -208,7 +208,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
             )}
 
             {hasFilters && (
-              <button onClick={clearFilters} className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-wide" style={{ color: "#FF006E" }}>
+              <button onClick={clearFilters} className="font-[family-name:var(--font-ui)] text-[11px] font-bold uppercase tracking-wide hover:underline" style={{ color: "#2563EB" }}>
                 Clear all filters
               </button>
             )}

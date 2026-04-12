@@ -62,7 +62,7 @@ export async function PATCH(request: NextRequest) {
           : `Update on your partnership inquiry`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: ${action === "approve" ? "#C8FF00" : "#FF006E"}; font-size: 20px;">
+          <h1 style="color: ${action === "approve" ? "#60A5FA" : "#FF006E"}; font-size: 20px;">
             Partnership ${action === "approve" ? "Inquiry Accepted" : "Update"}
           </h1>
           <p>Hi ${partnership.contact_name},</p>

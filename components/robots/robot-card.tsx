@@ -27,9 +27,27 @@ function formatPrice(price: number): string {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 80) return "#10B981";
-  if (score >= 60) return "#F59E0B";
-  return "#EF4444";
+  if (score >= 80) return "#60A5FA";
+  if (score >= 70) return "#60A5FA";
+  return "#F87171";
+}
+
+function getScoreBg(score: number): string {
+  if (score >= 80) return "#2563EB";
+  if (score >= 70) return "rgba(37,99,235,0.15)";
+  return "rgba(220,38,38,0.1)";
+}
+
+function getScoreBorder(score: number): string {
+  if (score >= 80) return "transparent";
+  if (score >= 70) return "rgba(37,99,235,0.3)";
+  return "rgba(220,38,38,0.2)";
+}
+
+function getScoreText(score: number): string {
+  if (score >= 80) return "#FFFFFF";
+  if (score >= 70) return "#60A5FA";
+  return "#F87171";
 }
 
 function getKeySpec(specs: Record<string, unknown> | null): { label: string; value: string } | null {
@@ -91,9 +109,9 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
             />
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-4 text-center">
-              <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
-              <span className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-white/25">{robot.manufacturer_name}</span>
-              <span className="mt-0.5 font-[family-name:var(--font-ui)] text-sm font-semibold text-white/45">{robot.name}</span>
+              <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10" style={{ color: "rgba(37,99,235,0.3)" }}><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/><rect x="18" y="28" width="12" height="8" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="14" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="34" cy="40" r="3" stroke="currentColor" strokeWidth="1.5"/></svg>
+              <span className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.1em] text-white/65">{robot.manufacturer_name}</span>
+              <span className="mt-0.5 font-[family-name:var(--font-ui)] text-sm font-bold text-white">{robot.name}</span>
             </div>
           )}
 
@@ -108,16 +126,15 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
 
           {/* RoboScore badge - top right */}
           {robot.robo_score != null && robot.robo_score > 0 && (
-            <div className="absolute right-3 top-3 rounded-md bg-black/70 px-2.5 py-1.5 backdrop-blur-sm">
-              <div
-                className="font-[family-name:var(--font-brand)] text-lg font-bold leading-none"
-                style={{ color: getScoreColor(robot.robo_score) }}
-              >
-                {robot.robo_score}
-              </div>
-              <div className="mt-0.5 font-[family-name:var(--font-ui)] text-[8px] uppercase tracking-[0.12em] text-white/40">
-                Score
-              </div>
+            <div
+              className="absolute right-3 top-3 rounded-md px-2.5 py-1.5 font-[family-name:var(--font-brand)] text-sm font-bold backdrop-blur-sm"
+              style={{
+                background: getScoreBg(robot.robo_score),
+                color: getScoreText(robot.robo_score),
+                border: `1px solid ${getScoreBorder(robot.robo_score)}`,
+              }}
+            >
+              {robot.robo_score}
             </div>
           )}
         </div>
@@ -152,7 +169,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
         {/* Bottom row: price + action */}
         <div className="mt-auto flex items-center justify-between">
           {robot.price_current != null ? (
-            <span className="font-[family-name:var(--font-mono)] text-base font-bold text-[#C8FF00]">
+            <span className="font-[family-name:var(--font-mono)] text-base font-bold text-[#60A5FA]">
               {formatPrice(robot.price_current)}
             </span>
           ) : (

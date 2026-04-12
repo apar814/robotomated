@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
           <div style="font-weight: 600; font-size: 14px;">${r.name}</div>
           <div style="color: #888; font-size: 12px; margin-top: 2px;">${r.category}</div>
         </td>
-        <td style="padding: 12px 8px; color: #C8FF00; font-family: monospace; font-size: 14px;">${r.score}/100</td>
+        <td style="padding: 12px 8px; color: #60A5FA; font-family: monospace; font-size: 14px;">${r.score}/100</td>
         <td style="padding: 12px 8px; color: #ccc; font-size: 13px;">${r.priceRange}</td>
       </tr>
     `

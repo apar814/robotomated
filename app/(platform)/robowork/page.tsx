@@ -179,7 +179,7 @@ export default async function RoboWorkPage() {
 
             {/* For Providers */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-6">
-              <h3 className="mb-5 font-[family-name:var(--font-ui)] text-xs font-bold uppercase tracking-[0.12em] text-lime">
+              <h3 className="mb-5 font-[family-name:var(--font-ui)] text-xs font-bold uppercase tracking-[0.12em] text-blue-400">
                 For Providers
               </h3>
               <ol className="space-y-5">
@@ -201,7 +201,7 @@ export default async function RoboWorkPage() {
                   },
                 ].map((item) => (
                   <li key={item.step} className="flex gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-lime/10 font-[family-name:var(--font-brand)] text-xs font-bold text-lime">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-blue-600/10 font-[family-name:var(--font-brand)] text-xs font-bold text-blue-400">
                       {item.step}
                     </span>
                     <div>

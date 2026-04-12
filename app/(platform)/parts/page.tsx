@@ -19,7 +19,7 @@ function PartsSearchBar() {
       <input
         type="text"
         placeholder="Search parts by name, part number, or robot model..."
-        className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+        className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
       />
       <button
         type="button"
@@ -48,7 +48,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="e.g. Servo Motor, Gripper Assembly"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -61,7 +61,7 @@ function ListPartForm() {
           name="part_number"
           type="text"
           placeholder="OEM or aftermarket part number"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -78,7 +78,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="e.g. Fanuc CRX-10iA, UR10e"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -113,7 +113,7 @@ function ListPartForm() {
           step="0.01"
           required
           placeholder="0.00"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -127,7 +127,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="City, State"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -144,7 +144,7 @@ function ListPartForm() {
           rows={3}
           required
           placeholder="Describe the part, its condition, and any relevant details..."
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -158,7 +158,7 @@ function ListPartForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
         />
       </div>
 
@@ -225,7 +225,7 @@ export default function PartsPage() {
       <section className="mt-12">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="glass col-span-full flex flex-col items-center justify-center rounded-xl border border-white/10 py-20 text-center">
-            <div className="text-4xl text-white/20">--</div>
+            <div className="text-4xl text-white/45">--</div>
             <h3 className="mt-4 font-display text-lg font-semibold text-white/60">
               No parts listed yet
             </h3>

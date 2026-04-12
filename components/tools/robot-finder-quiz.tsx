@@ -325,7 +325,7 @@ export function RobotFinderQuiz() {
                     <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-electric-blue">
                       #{i + 1}
                     </span>
-                    <span className="rounded bg-lime/10 px-2 py-0.5 font-mono text-[10px] font-bold text-lime">
+                    <span className="rounded bg-blue-600/10 px-2 py-0.5 font-mono text-[10px] font-bold text-blue-400">
                       {robot.matchPct}% MATCH
                     </span>
                   </div>
@@ -347,7 +347,7 @@ export function RobotFinderQuiz() {
                     <RoboScoreBadge score={robot.robo_score} />
                   )}
                   {robot.price_current != null ? (
-                    <span className="font-mono text-sm font-bold text-lime">
+                    <span className="font-mono text-sm font-bold text-blue-400">
                       ${robot.price_current.toLocaleString()}
                     </span>
                   ) : (
@@ -431,7 +431,7 @@ export function RobotFinderQuiz() {
                       return (
                         <td
                           key={r.slug}
-                          className="py-2 px-3 text-right font-mono font-bold text-lime"
+                          className="py-2 px-3 text-right font-mono font-bold text-blue-400"
                         >
                           {total != null ? `$${total.toLocaleString()}` : "—"}
                         </td>
@@ -454,7 +454,7 @@ export function RobotFinderQuiz() {
             and deployment timelines.
           </p>
           {emailStatus === "success" ? (
-            <p className="mt-4 font-mono text-sm text-lime">
+            <p className="mt-4 font-mono text-sm text-blue-400">
               Report sent to your inbox.
             </p>
           ) : (

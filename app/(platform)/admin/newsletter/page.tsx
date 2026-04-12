@@ -80,7 +80,7 @@ export default function AdminNewsletterPage() {
             onChange={(e) => setTestEmail(e.target.value)}
             placeholder="test@example.com"
             required
-            className="flex-1 rounded border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-white placeholder:text-white/20"
+            className="flex-1 rounded border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-white placeholder:text-white/45"
           />
           <button
             type="submit"
@@ -100,13 +100,13 @@ export default function AdminNewsletterPage() {
           {(stats?.recentSubscribers || []).map((s, i) => (
             <div key={i} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] px-4 py-2">
               <span className="text-sm">{s.email}</span>
-              <span className="text-[10px] text-white/30">
+              <span className="text-[10px] text-white/50">
                 {s.source || "direct"} -- {new Date(s.created_at).toLocaleDateString()}
               </span>
             </div>
           ))}
           {(!stats?.recentSubscribers || stats.recentSubscribers.length === 0) && (
-            <p className="py-6 text-center text-sm text-white/30">No subscribers yet</p>
+            <p className="py-6 text-center text-sm text-white/50">No subscribers yet</p>
           )}
         </div>
       </div>

@@ -52,7 +52,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={cn("h-3.5 w-3.5", star <= Math.round(rating) ? "text-[#C8FF00]" : "text-white/10")}
+          className={cn("h-3.5 w-3.5", star <= Math.round(rating) ? "text-[#60A5FA]" : "text-white/28")}
           fill="currentColor"
           viewBox="0 0 20 20"
         >

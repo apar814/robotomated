@@ -60,7 +60,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="mt-8 flex flex-wrap gap-4">
             {cs.results.metrics.map((m) => (
               <div key={m.label} className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-6 py-4">
-                <p className="font-mono text-2xl font-bold text-lime">{m.value}</p>
+                <p className="font-mono text-2xl font-bold text-blue-400">{m.value}</p>
                 <p className="text-[10px] uppercase tracking-wider text-white/40">{m.label}</p>
               </div>
             ))}
@@ -92,7 +92,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">What they deployed</h2>
           <p className="mt-4 text-base leading-relaxed text-white/60">{cs.solution.summary}</p>
           <div className="mt-4 rounded-lg border border-white/[0.07] bg-white/[0.02] px-5 py-3">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-white/30">Robot/System</span>
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-white/50">Robot/System</span>
             <p className="mt-1 text-sm font-semibold text-white">{cs.solution.robots}</p>
           </div>
           <ul className="mt-6 space-y-3">
@@ -122,7 +122,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <div>
                   <div className="flex items-baseline gap-2">
                     <h3 className="font-semibold text-white">{phase.name}</h3>
-                    <span className="font-mono text-xs text-white/30">{phase.duration}</span>
+                    <span className="font-mono text-xs text-white/50">{phase.duration}</span>
                   </div>
                   <p className="mt-1 text-sm text-white/50">{phase.description}</p>
                 </div>
@@ -135,13 +135,13 @@ export default async function CaseStudyPage({ params }: Props) {
       {/* ── RESULTS ── */}
       <section className="bg-[#0F1628] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-lime">Results</span>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-blue-400">Results</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">What they achieved</h2>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {cs.results.metrics.map((m) => (
               <div key={m.label} className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
-                <p className="font-mono text-3xl font-bold text-lime">{m.value}</p>
+                <p className="font-mono text-3xl font-bold text-blue-400">{m.value}</p>
                 <p className="mt-1 text-sm font-semibold text-white">{m.label}</p>
                 <p className="mt-1 text-xs text-white/40">{m.detail}</p>
               </div>
@@ -149,8 +149,8 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
 
           <div className="mt-6 rounded-lg border border-white/[0.07] bg-white/[0.02] px-5 py-3">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-white/30">Payback Period</span>
-            <p className="mt-1 font-mono text-lg font-bold text-lime">{cs.results.paybackPeriod}</p>
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-white/50">Payback Period</span>
+            <p className="mt-1 font-mono text-lg font-bold text-blue-400">{cs.results.paybackPeriod}</p>
           </div>
 
           {cs.results.quote && (

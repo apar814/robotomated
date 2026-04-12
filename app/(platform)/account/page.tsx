@@ -85,7 +85,7 @@ export default async function AccountPage() {
         </div>
         {!saved?.length ? (
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
-            <svg className="mx-auto mb-3 h-8 w-8 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4M7 8V6M17 8V6" /></svg>
+            <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4M7 8V6M17 8V6" /></svg>
             <p className="text-sm text-muted">Save robots while you research to build your shortlist.</p>
             <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
               Start exploring robots
@@ -119,7 +119,7 @@ export default async function AccountPage() {
         <h2 className="text-xl font-bold">Advisor Conversations</h2>
         {!conversations?.length ? (
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
-            <svg className="mx-auto mb-3 h-8 w-8 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
+            <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
             <p className="text-sm text-muted">Robotimus is your AI advisor for robot selection, pricing, and deployment strategy.</p>
             <Link href="/advisor" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
               Get a recommendation
@@ -149,7 +149,7 @@ export default async function AccountPage() {
         <h2 className="text-xl font-bold">Reviews You&apos;ve Written</h2>
         {!reviews?.length ? (
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
-            <svg className="mx-auto mb-3 h-8 w-8 text-white/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
             <p className="text-sm text-muted">Share your hands-on experience to help others make better automation decisions.</p>
             <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
               Review a robot you&apos;ve used

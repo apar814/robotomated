@@ -37,7 +37,7 @@ export function NewsTicker() {
               <p className="mt-0.5 text-[13px] font-medium leading-snug text-white/85">
                 {item.headline}
               </p>
-              <span className="mt-0.5 block text-[10px] text-white/30">{item.source}</span>
+              <span className="mt-0.5 block text-[10px] text-white/50">{item.source}</span>
             </div>
           ))}
         </div>

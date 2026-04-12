@@ -129,7 +129,7 @@ export function ReportsGrid({
                     <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
                       Market Size
                     </p>
-                    <p className="mt-1 font-mono text-lg font-bold text-lime">
+                    <p className="mt-1 font-mono text-lg font-bold text-blue-400">
                       ${report.market_size_usd_billions}B
                     </p>
                   </div>

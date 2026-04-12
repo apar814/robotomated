@@ -73,7 +73,7 @@ export default function AdminRoboWorkPage() {
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[10px] uppercase tracking-wider text-white/40">Verified</p>
-          <p className="mt-1 text-2xl font-bold text-[#C8FF00]">{stats.verifiedProviders}</p>
+          <p className="mt-1 text-2xl font-bold text-[#60A5FA]">{stats.verifiedProviders}</p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
           <p className="text-[10px] uppercase tracking-wider text-white/40">Total Bids</p>
@@ -101,7 +101,7 @@ export default function AdminRoboWorkPage() {
       {tab === "jobs" && (
         <div className="mt-4 space-y-2">
           {jobs.length === 0 ? (
-            <p className="py-10 text-center text-sm text-white/30">No jobs posted yet</p>
+            <p className="py-10 text-center text-sm text-white/50">No jobs posted yet</p>
           ) : (
             jobs.map((j) => (
               <Link
@@ -139,7 +139,7 @@ export default function AdminRoboWorkPage() {
       {tab === "providers" && (
         <div className="mt-4 space-y-2">
           {providers.length === 0 ? (
-            <p className="py-10 text-center text-sm text-white/30">No providers registered yet</p>
+            <p className="py-10 text-center text-sm text-white/50">No providers registered yet</p>
           ) : (
             providers.map((p) => (
               <Link
@@ -155,7 +155,7 @@ export default function AdminRoboWorkPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   {p.verified && (
-                    <span className="rounded bg-[#C8FF00]/10 px-2 py-0.5 text-[10px] font-semibold text-[#C8FF00]">
+                    <span className="rounded bg-[#60A5FA]/10 px-2 py-0.5 text-[10px] font-semibold text-[#60A5FA]">
                       Verified
                     </span>
                   )}

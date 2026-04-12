@@ -55,7 +55,7 @@ export function TcoSummaryCard({
           Purchase Price
         </p>
         {price != null ? (
-          <p className="font-mono text-2xl font-bold text-lime">
+          <p className="font-mono text-2xl font-bold text-blue-400">
             {formatCurrency(price)}
           </p>
         ) : (

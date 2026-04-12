@@ -145,7 +145,7 @@ export default async function MarketReportsPage() {
               <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">
                 Largest Market
               </p>
-              <p className="mt-2 font-mono text-2xl font-bold text-lime">
+              <p className="mt-2 font-mono text-2xl font-bold text-blue-400">
                 ${largestMarket.market_size_usd_billions}B
               </p>
               <p className="mt-1 text-xs text-tertiary">

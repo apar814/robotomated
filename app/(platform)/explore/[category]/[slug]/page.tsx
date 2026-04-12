@@ -263,7 +263,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Price */}
             <div className="mt-4">
               {robot.price_current != null ? (
-                <p className="font-mono text-2xl font-bold text-lime">
+                <p className="font-mono text-2xl font-bold text-blue-400">
                   {fmtPrice(robot.price_current)}
                 </p>
               ) : (
@@ -535,7 +535,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     </div>
                     <div>
                       <p className="font-mono text-[9px] text-text-ghost">CURRENT</p>
-                      <p className="font-mono text-sm font-bold text-lime">
+                      <p className="font-mono text-sm font-bold text-blue-400">
                         {robot.price_current != null ? fmtPrice(robot.price_current) : "RFQ"}
                       </p>
                     </div>

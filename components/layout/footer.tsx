@@ -47,7 +47,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="mb-4 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-white/25">
+      <h3 className="mb-4 font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-white/45">
         {heading}
       </h3>
       <ul className="space-y-0">
@@ -122,13 +122,13 @@ export function Footer() {
               The operating system for robotics.
             </p>
             <div className="mt-5 flex items-center gap-4">
-              <a href="#" className="text-white/30 transition-colors hover:text-white" aria-label="Twitter / X">
+              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="Twitter / X">
                 <TwitterIcon />
               </a>
-              <a href="#" className="text-white/30 transition-colors hover:text-white" aria-label="LinkedIn">
+              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="LinkedIn">
                 <LinkedInIcon />
               </a>
-              <a href="#" className="text-white/30 transition-colors hover:text-white" aria-label="YouTube">
+              <a href="#" className="text-white/50 transition-colors hover:text-white" aria-label="YouTube">
                 <YouTubeIcon />
               </a>
             </div>
@@ -142,17 +142,17 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/[0.06] pt-8 text-center">
-          <p className="font-[family-name:var(--font-ui)] text-[12px] text-white/25">
+          <p className="font-[family-name:var(--font-ui)] text-[12px] text-white/45">
             &copy; 2026 Robotomated. The operating system for robotics. Built for buyers, not sellers.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/25 transition-colors hover:text-white">
+            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
               Privacy
             </Link>
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/25 transition-colors hover:text-white">
+            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
               Terms
             </Link>
-            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/25 transition-colors hover:text-white">
+            <Link href="#" className="font-[family-name:var(--font-ui)] text-[12px] text-white/45 transition-colors hover:text-white">
               Cookie Policy
             </Link>
           </div>

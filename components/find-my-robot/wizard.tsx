@@ -223,7 +223,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
                   ? "border-[#00E5A0] bg-[#00E5A0]/10 text-[#00E5A0]"
                   : i + 1 === step
                   ? "border-[#00C2FF] bg-[#00C2FF]/10 text-[#00C2FF]"
-                  : "border-white/10 text-white/20"
+                  : "border-white/10 text-white/45"
               }`}
             >
               {i + 1 < step ? "\u2713" : i + 1}
@@ -417,7 +417,7 @@ function StepPriorities({
                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-bold font-mono transition-colors ${
                   isSelected
                     ? "border-[#7B2FFF] bg-[#7B2FFF]/20 text-[#7B2FFF]"
-                    : "border-white/10 text-white/20"
+                    : "border-white/10 text-white/45"
                 }`}
               >
                 {isSelected ? rank + 1 : "-"}
@@ -564,7 +564,7 @@ function StepResults({
                     {rec.score}
                   </span>
                 </div>
-                <span className="mt-1 font-[family-name:var(--font-ui)] text-[9px] uppercase tracking-[0.12em] text-white/30">
+                <span className="mt-1 font-[family-name:var(--font-ui)] text-[9px] uppercase tracking-[0.12em] text-white/50">
                   MATCH
                 </span>
               </div>
@@ -805,7 +805,7 @@ export function FindMyRobotWizard() {
             disabled={step === 1}
             className={`rounded-lg px-5 py-2.5 text-sm font-medium transition-colors ${
               step === 1
-                ? "cursor-not-allowed text-white/10"
+                ? "cursor-not-allowed text-white/28"
                 : "text-white/50 hover:text-white"
             }`}
           >
@@ -817,7 +817,7 @@ export function FindMyRobotWizard() {
             className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all duration-200 ${
               canProceed()
                 ? "bg-[#00C2FF] text-[#0A0F1E] hover:opacity-90"
-                : "cursor-not-allowed bg-white/5 text-white/20"
+                : "cursor-not-allowed bg-white/5 text-white/45"
             }`}
           >
             {step === 4 ? "See my matches" : "Continue"}
@@ -834,7 +834,7 @@ export function FindMyRobotWizard() {
               setStep(1);
               setRecommendations([]);
             }}
-            className="text-sm text-white/30 transition-colors hover:text-white/60"
+            className="text-sm text-white/50 transition-colors hover:text-white/60"
           >
             Start over
           </button>

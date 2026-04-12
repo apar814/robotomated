@@ -127,8 +127,8 @@ export default async function ManufacturerDetailPage({ params }: Props) {
               )}
               {minPrice != null && (
                 <p className="mt-2 text-sm text-muted">
-                  Price range: <span className="font-mono font-semibold text-lime">${minPrice.toLocaleString()}</span>
-                  {maxPrice != null && maxPrice !== minPrice && <span className="font-mono font-semibold text-lime"> – ${maxPrice.toLocaleString()}</span>}
+                  Price range: <span className="font-mono font-semibold text-blue-400">${minPrice.toLocaleString()}</span>
+                  {maxPrice != null && maxPrice !== minPrice && <span className="font-mono font-semibold text-blue-400"> – ${maxPrice.toLocaleString()}</span>}
                 </p>
               )}
             </div>
@@ -177,7 +177,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                 <div className="mt-3 flex items-center gap-4">
                   {bestRobot.robo_score != null && <RoboScoreBadge score={bestRobot.robo_score} />}
                   {bestRobot.price_current != null && (
-                    <span className="font-mono text-sm font-bold text-lime">${bestRobot.price_current.toLocaleString()}</span>
+                    <span className="font-mono text-sm font-bold text-blue-400">${bestRobot.price_current.toLocaleString()}</span>
                   )}
                   <span className="ml-auto text-xs font-semibold text-electric-blue group-hover:underline">
                     View Details &rarr;
@@ -214,7 +214,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                     <p className="mt-1 line-clamp-2 text-xs text-muted/70">{robot.description_short}</p>
                     <div className="mt-3 flex items-center justify-between">
                       {robot.price_current != null ? (
-                        <span className="font-mono text-sm font-bold text-lime">${robot.price_current.toLocaleString()}</span>
+                        <span className="font-mono text-sm font-bold text-blue-400">${robot.price_current.toLocaleString()}</span>
                       ) : (
                         <span className="text-xs text-orange">Request Quote</span>
                       )}

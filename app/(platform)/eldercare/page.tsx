@@ -365,14 +365,14 @@ export default function EldercarePage() {
             delivery, cleaning, companionship, and mobility assistance. Includes
             pricing, ROI calculators, and compliance checklists.
           </p>
-          <p className="mt-4 text-xs text-white/30">
+          <p className="mt-4 text-xs text-white/50">
             Enter your email to download -- no spam, unsubscribe anytime.
           </p>
           <div className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
             <input
               type="email"
               placeholder="work@facility.com"
-              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]/50"
+              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]/50"
             />
             <button
               type="button"

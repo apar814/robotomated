@@ -72,7 +72,7 @@ export async function sendBidReceivedNotification(bid: {
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
             <tr><td style="padding: 8px 0; color: #888;">Job</td><td style="padding: 8px 0;">${bid.job_title}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Provider</td><td style="padding: 8px 0;">${bid.provider_name}</td></tr>
-            <tr><td style="padding: 8px 0; color: #888;">Proposed Price</td><td style="padding: 8px 0; color: #C8FF00; font-weight: 600;">$${bid.proposed_price.toLocaleString()}</td></tr>
+            <tr><td style="padding: 8px 0; color: #888;">Proposed Price</td><td style="padding: 8px 0; color: #60A5FA; font-weight: 600;">$${bid.proposed_price.toLocaleString()}</td></tr>
             ${bid.message ? `<tr><td style="padding: 8px 0; color: #888;">Message</td><td style="padding: 8px 0;">${bid.message}</td></tr>` : ""}
           </table>
           <a href="${BASE_URL}/robowork/jobs/${bid.job_slug}" style="display: inline-block; background: #2563EB; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">View Bids</a>
@@ -99,13 +99,13 @@ export async function sendProviderRegisteredNotification(provider: {
       subject: `[RoboWork] New provider registered: ${provider.company_name}`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #C8FF00; font-size: 20px;">New Provider Registration</h1>
+          <h1 style="color: #60A5FA; font-size: 20px;">New Provider Registration</h1>
           <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
             <tr><td style="padding: 8px 0; color: #888;">Company</td><td style="padding: 8px 0;">${provider.company_name}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Email</td><td style="padding: 8px 0;">${provider.contact_email}</td></tr>
             <tr><td style="padding: 8px 0; color: #888;">Location</td><td style="padding: 8px 0;">${[provider.city, provider.state].filter(Boolean).join(", ") || "Not specified"}</td></tr>
           </table>
-          <a href="${BASE_URL}/admin/robowork" style="display: inline-block; background: #C8FF00; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">Review in Admin</a>
+          <a href="${BASE_URL}/admin/robowork" style="display: inline-block; background: #60A5FA; color: #000; padding: 10px 24px; text-decoration: none; font-weight: 600; border-radius: 4px;">Review in Admin</a>
         </div>
       `,
     });
@@ -117,7 +117,7 @@ export async function sendProviderRegisteredNotification(provider: {
       subject: `Welcome to RoboWork, ${provider.company_name}!`,
       html: `
         <div style="font-family: 'Space Grotesk', sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
-          <h1 style="color: #C8FF00; font-size: 20px;">Welcome to RoboWork</h1>
+          <h1 style="color: #60A5FA; font-size: 20px;">Welcome to RoboWork</h1>
           <p>Your provider profile for <strong>${provider.company_name}</strong> has been created.</p>
           <p style="color: #888;">Here's what you can do next:</p>
           <ul style="color: #ccc; line-height: 1.8;">

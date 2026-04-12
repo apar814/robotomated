@@ -75,7 +75,7 @@ function ProPageContent() {
               <span className="text-5xl font-bold">$49</span>
               <span className="text-muted">/month</span>
             </div>
-            <p className="text-sm text-lime">7-day free trial included</p>
+            <p className="text-sm text-blue-400">7-day free trial included</p>
           </div>
           <Button onClick={handleCheckout} disabled={loading} className="mt-6 px-8 py-3 text-base">
             {loading ? "Processing..." : "Start Free Trial"}
@@ -156,7 +156,7 @@ function ProPageContent() {
 function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }) {
   if (value === true) {
     return (
-      <svg className={cn("mx-auto h-5 w-5", pro ? "text-electric-blue" : "text-lime")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <svg className={cn("mx-auto h-5 w-5", pro ? "text-electric-blue" : "text-blue-400")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>
     );

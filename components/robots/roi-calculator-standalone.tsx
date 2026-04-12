@@ -87,7 +87,7 @@ function SliderInput({ label, value, min, max, step, onChange, prefix = "", suff
 function OutputCard({ label, value, color, large }: { label: string; value: string; color: string; large?: boolean }) {
   return (
     <div className="rounded-xl bg-white/[0.04] px-4 py-4">
-      <p className="text-[10px] font-medium uppercase tracking-widest text-white/30">{label}</p>
+      <p className="text-[10px] font-medium uppercase tracking-widest text-white/50">{label}</p>
       <p className={cn("mt-1 font-mono font-bold", large ? "text-[clamp(24px,3vw,40px)]" : "text-xl", color)}>{value}</p>
     </div>
   );

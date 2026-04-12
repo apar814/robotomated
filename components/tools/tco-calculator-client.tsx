@@ -28,7 +28,7 @@ interface SelectedRobot {
   installationCost: number;
 }
 
-const COLORS = ["#2563EB", "#6366F1", "#C8FF00"];
+const COLORS = ["#2563EB", "#6366F1", "#60A5FA"];
 
 export function TcoCalculatorClient() {
   // ─── Robot Search ───
@@ -257,7 +257,7 @@ export function TcoCalculatorClient() {
                     </span>
                   </span>
                   {robot.price_current != null && (
-                    <span className="font-mono text-xs text-lime">
+                    <span className="font-mono text-xs text-blue-400">
                       ${robot.price_current.toLocaleString()}
                     </span>
                   )}
@@ -470,7 +470,7 @@ export function TcoCalculatorClient() {
                 <tr className="border-b border-border/50">
                   <td className="py-2 pr-4 text-text-secondary">
                     <span className="flex items-center gap-2">
-                      <span className="inline-block h-2 w-2 rounded-full bg-lime" />
+                      <span className="inline-block h-2 w-2 rounded-full bg-blue-600" />
                       Human Labor
                     </span>
                   </td>
@@ -506,7 +506,7 @@ export function TcoCalculatorClient() {
                           key={y}
                           className={cn(
                             "px-3 py-2 text-right font-mono text-sm",
-                            saving > 0 ? "text-lime" : "text-magenta",
+                            saving > 0 ? "text-blue-400" : "text-magenta",
                           )}
                         >
                           {saving > 0 ? "+" : ""}${saving.toLocaleString()}
@@ -516,7 +516,7 @@ export function TcoCalculatorClient() {
                     <td
                       className={cn(
                         "px-3 py-2 text-right font-mono font-bold",
-                        rc.fiveYearSavings > 0 ? "text-lime" : "text-magenta",
+                        rc.fiveYearSavings > 0 ? "text-blue-400" : "text-magenta",
                       )}
                     >
                       {rc.fiveYearSavings > 0 ? "+" : ""}$
@@ -579,9 +579,9 @@ export function TcoCalculatorClient() {
                   type="monotone"
                   dataKey="human"
                   name="Human Labor"
-                  stroke="#C8FF00"
+                  stroke="#60A5FA"
                   strokeWidth={2}
-                  dot={{ fill: "#C8FF00", r: 3 }}
+                  dot={{ fill: "#60A5FA", r: 3 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -599,7 +599,7 @@ export function TcoCalculatorClient() {
               </span>
             ))}
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-lime" />
+              <span className="h-2 w-2 rounded-full bg-blue-600" />
               Human Labor
             </span>
           </div>
@@ -618,7 +618,7 @@ export function TcoCalculatorClient() {
                   <p className="font-mono text-[9px] uppercase tracking-wider text-text-ghost">
                     Payback Period
                   </p>
-                  <p className="mt-1 font-mono text-2xl font-bold text-lime">
+                  <p className="mt-1 font-mono text-2xl font-bold text-blue-400">
                     {rc.breakEvenMonths != null && rc.breakEvenMonths <= 60
                       ? `${rc.breakEvenMonths}mo`
                       : "> 5yr"}
@@ -631,7 +631,7 @@ export function TcoCalculatorClient() {
                   <p
                     className={cn(
                       "mt-1 font-mono text-2xl font-bold",
-                      rc.roi > 0 ? "text-lime" : "text-magenta",
+                      rc.roi > 0 ? "text-blue-400" : "text-magenta",
                     )}
                   >
                     {rc.roi}%
@@ -678,7 +678,7 @@ export function TcoCalculatorClient() {
           Get a detailed TCO report with financing scenarios and ROI projections.
         </p>
         {emailStatus === "success" ? (
-          <p className="mt-4 font-mono text-sm text-lime">Report sent to your inbox.</p>
+          <p className="mt-4 font-mono text-sm text-blue-400">Report sent to your inbox.</p>
         ) : (
           <form
             onSubmit={handleEmailSubmit}

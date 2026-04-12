@@ -304,7 +304,7 @@ function EnterpriseContactForm() {
           name="name"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
           placeholder="Jane Doe"
         />
       </div>
@@ -320,7 +320,7 @@ function EnterpriseContactForm() {
           name="email"
           type="email"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
           placeholder="jane@company.com"
         />
       </div>
@@ -336,7 +336,7 @@ function EnterpriseContactForm() {
           name="company"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
           placeholder="Acme Robotics Inc."
         />
       </div>
@@ -371,7 +371,7 @@ function EnterpriseContactForm() {
           id="ent-spend"
           name="annual_robot_spend"
           type="text"
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
           placeholder="$500,000"
         />
       </div>

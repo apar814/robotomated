@@ -68,7 +68,7 @@ function WorkerColumn() {
 
       {/* Roles */}
       <div className="mt-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-white/30">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">
           Available Tracks
         </p>
         <div className="mt-3 space-y-1.5">
@@ -94,8 +94,8 @@ function WorkerColumn() {
 
       {/* Form */}
       {status === "success" ? (
-        <div className="mt-6 rounded-xl border border-lime/20 bg-lime/5 p-6">
-          <p className="text-sm font-semibold text-lime">You&apos;re on the list.</p>
+        <div className="mt-6 rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
+          <p className="text-sm font-semibold text-blue-400">You&apos;re on the list.</p>
           <p className="mt-1 text-xs text-white/50">{message}</p>
         </div>
       ) : (
@@ -106,12 +106,12 @@ function WorkerColumn() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
-            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/25 focus:border-electric-blue focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-electric-blue focus:outline-none"
           />
           <Button type="submit" disabled={status === "loading"} className="mt-3 w-full">
             {status === "loading" ? "Submitting..." : "Join the Waitlist"}
           </Button>
-          <p className="mt-2 text-[11px] text-white/30">
+          <p className="mt-2 text-[11px] text-white/50">
             Training programs launching 2026. No commitment required.
           </p>
           {status === "error" && <p className="mt-2 text-xs text-orange">{message}</p>}
@@ -162,8 +162,8 @@ function EmployerColumn() {
 
       {/* Form */}
       {status === "success" ? (
-        <div className="mt-6 rounded-xl border border-lime/20 bg-lime/5 p-6">
-          <p className="text-sm font-semibold text-lime">Request received.</p>
+        <div className="mt-6 rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
+          <p className="text-sm font-semibold text-blue-400">Request received.</p>
           <p className="mt-1 text-xs text-white/50">{message}</p>
         </div>
       ) : (
@@ -174,12 +174,12 @@ function EmployerColumn() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="hiring@company.com"
-            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/25 focus:border-violet focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-violet focus:outline-none"
           />
           <Button type="submit" variant="secondary" disabled={status === "loading"} className="mt-3 w-full">
             {status === "loading" ? "Submitting..." : "Get Early Access"}
           </Button>
-          <p className="mt-2 text-[11px] text-white/30">
+          <p className="mt-2 text-[11px] text-white/50">
             Talent network opens Q3 2026. Priority access for early signups.
           </p>
           {status === "error" && <p className="mt-2 text-xs text-orange">{message}</p>}
@@ -216,8 +216,8 @@ function ManufacturerCTA() {
             </p>
 
             {status === "success" ? (
-              <div className="mx-auto mt-6 max-w-md rounded-xl border border-lime/20 bg-lime/5 p-6">
-                <p className="text-sm font-semibold text-lime">Partnership request submitted.</p>
+              <div className="mx-auto mt-6 max-w-md rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
+                <p className="text-sm font-semibold text-blue-400">Partnership request submitted.</p>
                 <p className="mt-1 text-xs text-white/50">{message}</p>
               </div>
             ) : (
@@ -229,7 +229,7 @@ function ManufacturerCTA() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="partnerships@manufacturer.com"
-                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/25 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
+                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
                   />
                   <Button type="submit" disabled={status === "loading"} className="px-6 py-3 sm:rounded-l-none">
                     {status === "loading" ? "Sending..." : "Partner With Us"}

@@ -43,7 +43,7 @@ export function EnrollButton({ level, price, rspPrice, className }: EnrollButton
       >
         {loading ? "Processing..." : `Enroll Now — $${price}`}
       </button>
-      <p className="text-xs text-white/30">
+      <p className="text-xs text-white/50">
         RSP members: ${rspPrice} &middot; Team pricing available for 5+ seats
       </p>
     </div>

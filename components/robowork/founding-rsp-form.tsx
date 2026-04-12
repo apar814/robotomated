@@ -82,8 +82,8 @@ export function FoundingRspForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-lg border border-lime/20 bg-lime/5 p-8 text-center">
-        <div className="mb-3 text-4xl text-lime">&#10003;</div>
+      <div className="rounded-lg border border-blue-600/20 bg-blue-600/5 p-8 text-center">
+        <div className="mb-3 text-4xl text-blue-400">&#10003;</div>
         <h3 className="text-lg font-bold text-text-primary">
           Application received!
         </h3>

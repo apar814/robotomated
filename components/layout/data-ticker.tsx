@@ -27,7 +27,7 @@ function TickerItem({ sym, score, delta, price, up }: (typeof TICKER_DATA)[numbe
       </span>
       <span
         className={`font-mono text-[9px] font-semibold ${
-          up ? "text-lime" : "text-magenta"
+          up ? "text-blue-400" : "text-magenta"
         }`}
       >
         {delta}

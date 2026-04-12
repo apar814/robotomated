@@ -281,7 +281,7 @@ export default function StandardsPage() {
                 <p className="mt-1 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-wider text-white/60">
                   {step.label}
                 </p>
-                <p className="mt-2 hidden text-xs leading-snug text-white/30 sm:block">
+                <p className="mt-2 hidden text-xs leading-snug text-white/50 sm:block">
                   {step.description}
                 </p>
               </div>
@@ -299,7 +299,7 @@ export default function StandardsPage() {
               <span className="inline-flex items-center rounded-full bg-[var(--theme-green,#00E5A0)]/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-widest text-[var(--theme-green,#00E5A0)]">
                 Ratified
               </span>
-              <span className="text-sm text-white/30">
+              <span className="text-sm text-white/50">
                 {ratified.length} standards
               </span>
             </div>
@@ -341,7 +341,7 @@ export default function StandardsPage() {
               <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-widest text-amber-400">
                 In Development
               </span>
-              <span className="text-sm text-white/30">
+              <span className="text-sm text-white/50">
                 {inDevelopment.length} standards
               </span>
             </div>
@@ -401,7 +401,7 @@ export default function StandardsPage() {
                   {env.description}
                 </p>
                 <div className="mt-6 border-t border-white/[0.06] pt-4">
-                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-widest text-white/30">
+                  <p className="font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-widest text-white/50">
                     Required Standards
                   </p>
                   <ul className="mt-3 space-y-2">
@@ -438,7 +438,7 @@ export default function StandardsPage() {
             <input
               type="email"
               placeholder="safety@yourcompany.com"
-              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[var(--theme-blue,#00C2FF)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]/50"
+              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]/50"
             />
             <button
               type="button"
@@ -447,7 +447,7 @@ export default function StandardsPage() {
               Subscribe to Alerts
             </button>
           </div>
-          <p className="mt-3 text-xs text-white/25">
+          <p className="mt-3 text-xs text-white/45">
             Compliance updates only. No marketing. Unsubscribe anytime.
           </p>
         </div>

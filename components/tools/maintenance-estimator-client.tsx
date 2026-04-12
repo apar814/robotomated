@@ -164,11 +164,11 @@ export function MaintenanceEstimatorClient() {
           Annual Maintenance Cost Estimate
         </h3>
         <div className="flex items-end justify-center gap-2">
-          <span className="font-mono text-3xl font-bold text-lime">
+          <span className="font-mono text-3xl font-bold text-blue-400">
             ${results.annualLow.toLocaleString()}
           </span>
           <span className="pb-1 font-mono text-sm text-text-tertiary">to</span>
-          <span className="font-mono text-3xl font-bold text-lime">
+          <span className="font-mono text-3xl font-bold text-blue-400">
             ${results.annualHigh.toLocaleString()}
           </span>
           <span className="pb-1 font-mono text-sm text-text-ghost">/year</span>
@@ -280,7 +280,7 @@ export function MaintenanceEstimatorClient() {
             <span className="font-mono font-bold text-text-data">{fleetSize}</span>{" "}
             robots, you need
           </p>
-          <p className="mt-2 font-mono text-4xl font-bold text-lime">
+          <p className="mt-2 font-mono text-4xl font-bold text-blue-400">
             {results.techsNeeded}
           </p>
           <p className="mt-1 text-sm text-text-secondary">

@@ -26,8 +26,8 @@ export function RecentlyFunded() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="inline-block h-px w-6 bg-[#C8FF00]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#C8FF00]">
+            <span className="inline-block h-px w-6 bg-[#60A5FA]" />
+            <span className="font-[family-name:var(--font-brand)] text-[10px] font-medium uppercase tracking-[0.15em] text-[#60A5FA]">
               Recently Funded
             </span>
           </div>
@@ -56,7 +56,7 @@ export function RecentlyFunded() {
                 <h3 className="text-sm font-semibold text-primary transition-colors group-hover:text-electric-blue">
                   {round.company}
                 </h3>
-                <span className="shrink-0 font-mono text-sm font-bold text-lime">{round.amount}</span>
+                <span className="shrink-0 font-mono text-sm font-bold text-blue-400">{round.amount}</span>
               </div>
 
               {/* Round badge */}

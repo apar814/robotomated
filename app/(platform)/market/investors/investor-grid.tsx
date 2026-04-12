@@ -117,7 +117,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
                   </div>
                   <div className="bg-obsidian-surface p-3">
                     <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Deployed</p>
-                    <p className="mt-1 font-mono text-lg font-bold text-lime">
+                    <p className="mt-1 font-mono text-lg font-bold text-blue-400">
                       {formatDeployed(investor.totalDeployed)}
                     </p>
                   </div>

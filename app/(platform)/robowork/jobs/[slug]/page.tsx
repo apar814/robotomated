@@ -216,7 +216,7 @@ export default async function JobDetailPage({
             {j.site_details && (
               <div className="rounded-lg border border-border bg-obsidian-surface p-6">
                 <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-text-primary">
-                  <div className="h-1.5 w-1.5 rounded-full bg-lime" />
+                  <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
                   Site Details
                 </h2>
                 <div className="whitespace-pre-wrap text-sm leading-relaxed text-text-secondary">

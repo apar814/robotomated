@@ -12,7 +12,7 @@ interface VendorHealthCardProps {
 }
 
 function getHealthColor(score: number): { bar: string; text: string } {
-  if (score >= 8) return { bar: "bg-lime", text: "text-lime" };
+  if (score >= 8) return { bar: "bg-blue-600", text: "text-blue-400" };
   if (score >= 6) return { bar: "bg-electric-blue", text: "text-electric-blue" };
   if (score >= 4) return { bar: "bg-amber", text: "text-amber" };
   return { bar: "bg-magenta", text: "text-magenta" };

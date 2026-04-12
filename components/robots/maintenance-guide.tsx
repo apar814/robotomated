@@ -10,7 +10,7 @@ interface MaintenanceGuideProps {
 
 function SupportBadge({ model }: { model: string }) {
   const colorMap: Record<string, string> = {
-    "on-site": "text-lime border-[rgba(200,255,0,0.08)] bg-lime-dim",
+    "on-site": "text-blue-400 border-[rgba(200,255,0,0.08)] bg-blue-600-dim",
     remote: "text-electric-blue border-[rgba(37,99,235,0.08)] bg-electric-blue-dim",
     partner: "text-amber border-[rgba(251,191,36,0.08)] bg-[rgba(251,191,36,0.05)]",
     none: "text-magenta border-[rgba(255,0,110,0.08)] bg-magenta-dim",
@@ -30,7 +30,7 @@ function SupportBadge({ model }: { model: string }) {
 
 function PartsBadge({ availability }: { availability: string }) {
   const colorMap: Record<string, string> = {
-    stocked: "text-lime border-[rgba(200,255,0,0.08)] bg-lime-dim",
+    stocked: "text-blue-400 border-[rgba(200,255,0,0.08)] bg-blue-600-dim",
     order: "text-electric-blue border-[rgba(37,99,235,0.08)] bg-electric-blue-dim",
     custom: "text-amber border-[rgba(251,191,36,0.08)] bg-[rgba(251,191,36,0.05)]",
     proprietary: "text-magenta border-[rgba(255,0,110,0.08)] bg-magenta-dim",

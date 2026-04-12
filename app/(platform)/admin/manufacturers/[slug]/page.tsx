@@ -33,11 +33,11 @@ export default function AdminManufacturerLogoPage() {
     if (res.ok && mfr) setMfr({ ...mfr, logo_url: logoUrl.trim() || null });
   }
 
-  if (!mfr) return <div className="py-20 text-center text-white/30">Loading...</div>;
+  if (!mfr) return <div className="py-20 text-center text-white/50">Loading...</div>;
 
   return (
     <div className="mx-auto max-w-xl px-4 py-12">
-      <Link href="/admin/manufacturers" className="text-sm text-white/30 hover:text-white">&larr; All Manufacturers</Link>
+      <Link href="/admin/manufacturers" className="text-sm text-white/50 hover:text-white">&larr; All Manufacturers</Link>
       <h1 className="mt-4 font-display text-2xl font-bold">{mfr.name} Logo</h1>
 
       <div className="mt-6 flex gap-6">
@@ -48,12 +48,12 @@ export default function AdminManufacturerLogoPage() {
           <CompanyLogo logoUrl={logoUrl || null} name={mfr.name} height={64} />
         </div>
       </div>
-      <p className="mt-2 text-[10px] text-white/20">Preview on dark and light backgrounds</p>
+      <p className="mt-2 text-[10px] text-white/45">Preview on dark and light backgrounds</p>
 
       <div className="mt-6">
         <label className="mb-1 block text-xs text-white/40">Logo URL</label>
         <input type="url" value={logoUrl} onChange={e => setLogoUrl(e.target.value)} placeholder="https://example.com/logo.png"
-          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/20 focus:border-blue focus:outline-none" />
+          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none" />
       </div>
 
       <div className="mt-4 flex items-center gap-3">

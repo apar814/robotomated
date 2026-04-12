@@ -136,7 +136,7 @@ export function DeploymentGuide({
                 API:{" "}
               </span>
               {apiAvailable === true ? (
-                <span className="inline-block rounded-[2px] border border-[rgba(200,255,0,0.08)] bg-lime-dim px-1.5 py-0.5 font-mono text-[9px] text-lime">
+                <span className="inline-block rounded-[2px] border border-[rgba(200,255,0,0.08)] bg-blue-600-dim px-1.5 py-0.5 font-mono text-[9px] text-blue-400">
                   AVAILABLE
                 </span>
               ) : apiAvailable === false ? (

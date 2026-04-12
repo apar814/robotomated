@@ -108,7 +108,7 @@ export default function AdminManufacturersPage() {
               </span>
             )}
             {t === "partnerships" && pendingPartnerships.length > 0 && (
-              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#C8FF00] px-1 text-[10px] font-bold text-black">
+              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#60A5FA] px-1 text-[10px] font-bold text-black">
                 {pendingPartnerships.length}
               </span>
             )}
@@ -121,7 +121,7 @@ export default function AdminManufacturersPage() {
       {tab === "claims" && (
         <div className="mt-6 space-y-3">
           {pendingClaims.length === 0 ? (
-            <p className="py-10 text-center text-sm text-white/30">No pending claims</p>
+            <p className="py-10 text-center text-sm text-white/50">No pending claims</p>
           ) : (
             pendingClaims.map((c) => (
               <div key={c.id} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] p-4">
@@ -130,7 +130,7 @@ export default function AdminManufacturersPage() {
                   <p className="text-xs text-white/40">
                     {c.contact_name} ({c.job_title}) -- {c.contact_email}
                   </p>
-                  <p className="text-[10px] text-white/20">{new Date(c.created_at).toLocaleDateString()}</p>
+                  <p className="text-[10px] text-white/45">{new Date(c.created_at).toLocaleDateString()}</p>
                 </div>
                 <div className="flex gap-2">
                   <button
@@ -156,7 +156,7 @@ export default function AdminManufacturersPage() {
       {tab === "partnerships" && (
         <div className="mt-6 space-y-3">
           {pendingPartnerships.length === 0 ? (
-            <p className="py-10 text-center text-sm text-white/30">No pending partnership inquiries</p>
+            <p className="py-10 text-center text-sm text-white/50">No pending partnership inquiries</p>
           ) : (
             pendingPartnerships.map((p) => (
               <div key={p.id} className="rounded-lg border border-white/10 bg-white/[0.02] p-4">
@@ -168,7 +168,7 @@ export default function AdminManufacturersPage() {
                     </p>
                     <p className="mt-1 text-xs">
                       Tier interest:{" "}
-                      <span className="font-mono font-semibold text-[#C8FF00]">{p.tier_interest}</span>
+                      <span className="font-mono font-semibold text-[#60A5FA]">{p.tier_interest}</span>
                     </p>
                     {p.message && <p className="mt-1 text-xs text-white/50">{p.message}</p>}
                   </div>
@@ -205,7 +205,7 @@ export default function AdminManufacturersPage() {
               <CompanyLogo logoUrl={m.logo_url} name={m.name} height={40} />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{m.name}</p>
-                <p className="text-[10px] text-white/30">
+                <p className="text-[10px] text-white/50">
                   {m.logo_url ? "Logo set" : "No logo"}
                   {m.claimed_profile && " | Claimed"}
                   {m.partnership_tier && ` | ${m.partnership_tier}`}

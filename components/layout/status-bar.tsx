@@ -30,8 +30,8 @@ export function StatusBar() {
       <div className="hidden items-center gap-5 md:flex">
         {/* ACTIVE indicator */}
         <span className="flex items-center gap-1.5">
-          <span className="animate-pulse-live h-1 w-1 rounded-full bg-lime shadow-[0_0_4px_rgba(200,255,0,0.6)]" />
-          <span className="text-lime">ACTIVE</span>
+          <span className="animate-pulse-live h-1 w-1 rounded-full bg-blue-600 shadow-[0_0_4px_rgba(200,255,0,0.6)]" />
+          <span className="text-blue-400">ACTIVE</span>
         </span>
 
         <span className="flex items-center gap-1.5">

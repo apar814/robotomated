@@ -51,7 +51,7 @@ export default async function NotFound() {
       {/* Top-rated robot suggestions */}
       {suggestions.length > 0 && (
         <div className="mt-12 w-full max-w-2xl">
-          <p className="mb-4 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.12em] text-white/25">
+          <p className="mb-4 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.12em] text-white/45">
             Highest-rated robots right now
           </p>
           <div className="grid gap-3 sm:grid-cols-3">

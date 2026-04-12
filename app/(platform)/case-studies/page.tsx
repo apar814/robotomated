@@ -49,8 +49,8 @@ export default function CaseStudiesPage() {
                   <div className="mt-4 flex flex-wrap gap-3">
                     {cs.results.metrics.slice(0, 2).map((m) => (
                       <div key={m.label}>
-                        <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-lime">{m.value}</p>
-                        <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-white/30">{m.label}</p>
+                        <p className="font-[family-name:var(--font-brand)] text-lg font-bold text-blue-400">{m.value}</p>
+                        <p className="font-[family-name:var(--font-ui)] text-[10px] uppercase tracking-[0.06em] text-white/50">{m.label}</p>
                       </div>
                     ))}
                   </div>

@@ -64,7 +64,7 @@ export default function AdminContentPage() {
           >
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm">{a.title}</p>
-              <p className="text-[10px] text-white/30">
+              <p className="text-[10px] text-white/50">
                 {a.category} -- {a.word_count} words -- {a.read_time} min
               </p>
             </div>
@@ -76,7 +76,7 @@ export default function AdminContentPage() {
           </Link>
         ))}
         {filtered.length === 0 && (
-          <p className="py-10 text-center text-sm text-white/30">No articles found</p>
+          <p className="py-10 text-center text-sm text-white/50">No articles found</p>
         )}
       </div>
     </div>

@@ -49,13 +49,13 @@ function buildOgSvg(opts: {
   <text x="80" y="300" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="700" fill="#E8E8E8" letter-spacing="-2">ROBOTOMATED</text>
   <text x="80" y="355" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="#2563EB">${esc(subtitle)}</text>
   <rect x="80" y="390" width="1040" height="1" fill="#ffffff" fill-opacity="0.08"/>
-  <text x="80" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#C8FF00">${esc(stat1)}</text>
+  <text x="80" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#60A5FA">${esc(stat1)}</text>
   <text x="${80 + stat1.length * 15}" y="445" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#888888"> ${esc(stat1Label)}</text>
   <text x="380" y="445" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#333333">|</text>
-  <text x="420" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#C8FF00">${esc(stat2)}</text>
+  <text x="420" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#60A5FA">${esc(stat2)}</text>
   <text x="${420 + stat2.length * 15}" y="445" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#888888"> ${esc(stat2Label)}</text>
   <text x="690" y="445" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#333333">|</text>
-  <text x="730" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#C8FF00">${esc(stat3)}</text>
+  <text x="730" y="445" font-family="monospace" font-size="22" font-weight="700" fill="#60A5FA">${esc(stat3)}</text>
   <text x="${730 + stat3.length * 15}" y="445" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#888888"> ${esc(stat3Label)}</text>
   <text x="80" y="540" font-family="monospace" font-size="16" fill="#555555">robotomated.com</text>
   <g fill="none" stroke="#2563EB" stroke-opacity="0.08" stroke-width="0.5">

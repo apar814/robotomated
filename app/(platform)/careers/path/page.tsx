@@ -281,7 +281,7 @@ export default function CareerPathPage() {
                   </p>
                   <p className="mt-1 font-mono text-2xl font-bold text-white/70">
                     {fmt(currentSalary)}
-                    <span className="ml-1 text-xs font-normal text-white/30">
+                    <span className="ml-1 text-xs font-normal text-white/50">
                       /year
                     </span>
                   </p>
@@ -314,7 +314,7 @@ export default function CareerPathPage() {
                       {/* salary */}
                       <p className="mt-3 font-mono text-2xl font-bold text-[#00C2FF]">
                         {fmt(projected)}
-                        <span className="ml-1 text-xs font-normal text-white/30">
+                        <span className="ml-1 text-xs font-normal text-white/50">
                           /year
                         </span>
                       </p>
@@ -336,7 +336,7 @@ export default function CareerPathPage() {
 
                       {/* job titles */}
                       <div className="mt-4">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-white/30">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-white/50">
                           Unlocked Roles
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -384,7 +384,7 @@ export default function CareerPathPage() {
                 <p className="text-xs text-white/40">Payback Period</p>
                 <p className="mt-1 font-mono text-2xl font-bold text-[#00C2FF]">
                   {paybackMonths}{" "}
-                  <span className="text-sm font-normal text-white/30">
+                  <span className="text-sm font-normal text-white/50">
                     months
                   </span>
                 </p>
@@ -393,7 +393,7 @@ export default function CareerPathPage() {
                 <p className="text-xs text-white/40">Projected Salary</p>
                 <p className="mt-1 font-mono text-2xl font-bold text-white">
                   {fmt(projectedSalary)}
-                  <span className="ml-1 text-xs font-normal text-white/30">
+                  <span className="ml-1 text-xs font-normal text-white/50">
                     /yr
                   </span>
                 </p>

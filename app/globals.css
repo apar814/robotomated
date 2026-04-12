@@ -167,7 +167,7 @@ body::before {
   height: 1px;
   background: currentColor;
 }
-.section-label.green { color: #C8FF00; }
+.section-label.green { color: #60A5FA; }
 .section-label.violet { color: #6366F1; }
 
 /* ═══════════════════════════════════════
@@ -538,9 +538,10 @@ html {
   --theme-section-alt: #F8F9FF;
   --theme-nav-bg: rgba(255,255,255,0.97);
   --theme-nav-border: rgba(5,5,16,0.08);
-  --theme-text-primary: #050510;
-  --theme-text-secondary: rgba(5,5,16,0.55);
-  --theme-text-muted: rgba(5,5,16,0.35);
+  --theme-text-primary: #0A1220;
+  --theme-text-secondary: rgba(10,18,32,0.65);
+  --theme-text-muted: rgba(10,18,32,0.45);
+  --theme-text-ghost: rgba(10,18,32,0.3);
   --theme-text-inverse: #FFFFFF;
   --theme-accent-blue: #1D4ED8;
   --theme-accent-lime: #1D4ED8;
@@ -572,8 +573,9 @@ html {
   --theme-nav-bg: rgba(2,2,10,0.9);
   --theme-nav-border: rgba(255,255,255,0.06);
   --theme-text-primary: #F0F4FF;
-  --theme-text-secondary: rgba(240,244,255,0.5);
-  --theme-text-muted: rgba(240,244,255,0.25);
+  --theme-text-secondary: rgba(240,244,255,0.65);
+  --theme-text-muted: rgba(240,244,255,0.45);
+  --theme-text-ghost: rgba(240,244,255,0.28);
   --theme-text-inverse: #02020A;
   --theme-accent-blue: #2563EB;
   --theme-accent-lime: #2563EB;

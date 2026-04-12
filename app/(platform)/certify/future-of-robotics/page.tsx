@@ -147,7 +147,7 @@ export default function FutureOfRoboticsPage() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white/20">
+                      <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white/45">
                         {String(trend.number).padStart(2, "0")}
                       </span>
                       <h3 className="font-display text-xl font-bold text-white">

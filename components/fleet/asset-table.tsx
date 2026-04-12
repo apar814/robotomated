@@ -152,7 +152,7 @@ export function AssetTable({ assets, logs, schedules, isDemo }: AssetTableProps)
               </td>
               <td className="px-4 py-3 hidden sm:table-cell">
                 <p className="text-white/60">{asset.site_location}</p>
-                <p className="text-xs text-white/30">{asset.department}</p>
+                <p className="text-xs text-white/50">{asset.department}</p>
               </td>
               <td className="px-4 py-3">
                 <span

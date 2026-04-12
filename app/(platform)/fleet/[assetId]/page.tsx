@@ -203,7 +203,7 @@ export default async function AssetDetailPage({
             {asset.robot_name}
             {asset.serial_number ? ` \u00b7 S/N: ${asset.serial_number}` : ""}
           </p>
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-white/50">
             {asset.site_location}
             {asset.department ? ` \u00b7 ${asset.department}` : ""}
           </p>
@@ -249,21 +249,21 @@ export default async function AssetDetailPage({
           <p className="mt-1 text-2xl font-bold text-[#00C2FF]">
             ${(asset.purchase_price + totalMaintenanceCost).toLocaleString()}
           </p>
-          <p className="text-[10px] text-white/30">Purchase + maintenance</p>
+          <p className="text-[10px] text-white/50">Purchase + maintenance</p>
         </div>
         <div className="rounded-xl border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Maintenance</p>
           <p className="mt-1 text-2xl font-bold text-[#7B2FFF]">
             ${totalMaintenanceCost.toLocaleString()}
           </p>
-          <p className="text-[10px] text-white/30">{logs.length} service events</p>
+          <p className="text-[10px] text-white/50">{logs.length} service events</p>
         </div>
         <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Age</p>
           <p className="mt-1 text-2xl font-bold text-white/80">
             {ageMonths !== null ? (ageMonths >= 12 ? `${Math.floor(ageMonths / 12)}y ${ageMonths % 12}m` : `${ageMonths}m`) : "--"}
           </p>
-          <p className="text-[10px] text-white/30">
+          <p className="text-[10px] text-white/50">
             {purchaseDate ? `Since ${formatDate(asset.purchase_date)}` : "No purchase date"}
           </p>
         </div>
@@ -308,13 +308,13 @@ export default async function AssetDetailPage({
                       </div>
                     </div>
                     {s.task_description && (
-                      <p className="mt-1 text-xs text-white/30">{s.task_description}</p>
+                      <p className="mt-1 text-xs text-white/50">{s.task_description}</p>
                     )}
                   </div>
                 );
               })
             ) : (
-              <div className="px-4 py-8 text-center text-sm text-white/30">
+              <div className="px-4 py-8 text-center text-sm text-white/50">
                 No maintenance schedules configured
               </div>
             )}
@@ -367,7 +367,7 @@ export default async function AssetDetailPage({
                         </span>
                       )}
                     </div>
-                    <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/30">
+                    <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/50">
                       {log.technician && <span>Tech: {log.technician}</span>}
                       {log.downtime_hours > 0 && (
                         <span>Downtime: {log.downtime_hours}h</span>
@@ -380,7 +380,7 @@ export default async function AssetDetailPage({
                 </div>
               ))
             ) : (
-              <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-8 text-center text-sm text-white/30">
+              <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-8 text-center text-sm text-white/50">
                 No service logs yet
               </div>
             )}

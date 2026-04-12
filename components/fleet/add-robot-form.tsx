@@ -200,7 +200,7 @@ export function AddRobotForm() {
                   ? "bg-[#00C2FF] text-[#0A0F1E]"
                   : s < step
                   ? "bg-[#00E5A0]/20 text-[#00E5A0]"
-                  : "bg-white/[0.06] text-white/30"
+                  : "bg-white/[0.06] text-white/50"
               }`}
             >
               {s < step ? (
@@ -241,7 +241,7 @@ export function AddRobotForm() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="e.g., Universal Robots UR10e, Locus Origin..."
-              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
             />
 
             {showDropdown && searchResults.length > 0 && (
@@ -290,7 +290,7 @@ export function AddRobotForm() {
               value={form.robot_name}
               onChange={(e) => update("robot_name", e.target.value)}
               placeholder="Custom robot model name"
-              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
             />
           </div>
         </div>
@@ -316,7 +316,7 @@ export function AddRobotForm() {
                 value={form.custom_name}
                 onChange={(e) => update("custom_name", e.target.value)}
                 placeholder='e.g., "Picker Alpha"'
-                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
               />
             </div>
             <div>
@@ -328,7 +328,7 @@ export function AddRobotForm() {
                 value={form.serial_number}
                 onChange={(e) => update("serial_number", e.target.value)}
                 placeholder="e.g., LR-2024-00847"
-                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
               />
             </div>
             <div>
@@ -351,7 +351,7 @@ export function AddRobotForm() {
                 value={form.purchase_price}
                 onChange={(e) => update("purchase_price", e.target.value)}
                 placeholder="35000"
-                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
               />
             </div>
             <div>
@@ -363,7 +363,7 @@ export function AddRobotForm() {
                 value={form.site_location}
                 onChange={(e) => update("site_location", e.target.value)}
                 placeholder='e.g., "Warehouse A — Dallas, TX"'
-                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
               />
             </div>
             <div>
@@ -375,7 +375,7 @@ export function AddRobotForm() {
                 value={form.department}
                 onChange={(e) => update("department", e.target.value)}
                 placeholder='e.g., "Fulfillment"'
-                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none"
+                className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none"
               />
             </div>
           </div>
@@ -389,7 +389,7 @@ export function AddRobotForm() {
               onChange={(e) => update("notes", e.target.value)}
               rows={3}
               placeholder="Any additional notes about this unit..."
-              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00C2FF]/50 focus:outline-none resize-none"
+              className="w-full rounded-lg border border-white/[0.12] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#00C2FF]/50 focus:outline-none resize-none"
             />
           </div>
         </div>
@@ -435,7 +435,7 @@ export function AddRobotForm() {
             ))}
           </div>
 
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-white/50">
             These schedules will be automatically created. You can edit or remove them from the asset detail page.
           </p>
         </div>

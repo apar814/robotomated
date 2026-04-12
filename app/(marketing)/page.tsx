@@ -127,7 +127,7 @@ export default async function HomePage() {
               </div>
 
               {/* Stats inline */}
-              <p className="mt-6 font-mono text-[11px] text-white/20">
+              <p className="mt-6 font-mono text-[11px] text-white/45">
                 {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independently scored
               </p>
             </div>
@@ -152,7 +152,7 @@ export default async function HomePage() {
             { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Deployment Channels" },
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-3">
-              {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/10">//</span>}
+              {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/28">//</span>}
               <span className="font-[family-name:var(--font-brand)] font-bold text-[var(--theme-accent-blue)]" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>{s.value}</span>
               <span className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
             </div>
@@ -202,13 +202,13 @@ export default async function HomePage() {
             href="/explore"
             className="mt-8 flex items-center gap-3 rounded-lg border border-white/[0.08] bg-transparent px-5 py-4 transition-colors hover:border-[#2563EB]/30"
           >
-            <svg className="h-5 w-5 shrink-0 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 shrink-0 text-white/45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
-            <span className="flex-1 text-[15px] text-white/30">
+            <span className="flex-1 text-[15px] text-white/50">
               Search by name, manufacturer, use case, or spec...
             </span>
-            <kbd className="hidden rounded border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 font-mono text-[13px] text-white/20 sm:inline">
+            <kbd className="hidden rounded border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 font-mono text-[13px] text-white/45 sm:inline">
               &#8984;K
             </kbd>
           </Link>
@@ -252,7 +252,7 @@ export default async function HomePage() {
                       ) : (
                         <div className="flex h-full flex-col items-center justify-center">
                           <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/></svg>
-                          <span className="mt-1 text-xs font-medium text-white/20">{robot.name}</span>
+                          <span className="mt-1 text-xs font-medium text-white/45">{robot.name}</span>
                         </div>
                       )}
                       {/* RoboScore overlay */}
@@ -268,11 +268,11 @@ export default async function HomePage() {
                       <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#2563EB]">{robot.name}</p>
                       <div className="mt-3 flex items-center justify-between">
                         {robot.price_current != null ? (
-                          <span className="font-mono text-base font-bold text-[#C8FF00]">
+                          <span className="font-mono text-base font-bold text-[#60A5FA]">
                             {formatPrice(robot.price_current)}
                           </span>
                         ) : (
-                          <span className="font-mono text-[11px] text-white/30">Contact for pricing</span>
+                          <span className="font-mono text-[11px] text-white/50">Contact for pricing</span>
                         )}
                         <span className="text-[12px] font-medium text-[#2563EB] opacity-0 transition-opacity group-hover:opacity-100">
                           Full Analysis &rarr;
@@ -331,7 +331,7 @@ export default async function HomePage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-[family-name:var(--font-ui)] text-sm text-white/60">Robot (leased, amortized)</span>
-                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#C8FF00]">$0.45/hour</span>
+                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#60A5FA]">$0.45/hour</span>
                 </div>
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">

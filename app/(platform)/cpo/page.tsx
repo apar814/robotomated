@@ -30,7 +30,7 @@ function ConditionStars({ rating }: { rating: number }) {
         <svg
           key={star}
           className={`h-4 w-4 ${
-            star <= rating ? "text-[#00E5A0]" : "text-white/20"
+            star <= rating ? "text-[#00E5A0]" : "text-white/45"
           }`}
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -182,7 +182,7 @@ export default async function CpoPage() {
           </div>
         ) : (
           <div className="glass flex flex-col items-center justify-center rounded-xl border border-white/10 py-20 text-center">
-            <div className="text-4xl text-white/20">--</div>
+            <div className="text-4xl text-white/45">--</div>
             <h3 className="mt-4 font-display text-lg font-semibold text-white/60">
               No CPO listings yet
             </h3>
@@ -231,7 +231,7 @@ export default async function CpoPage() {
                   type="text"
                   required
                   placeholder="e.g. Fanuc CRX-10iA"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -248,7 +248,7 @@ export default async function CpoPage() {
                   type="text"
                   required
                   placeholder="e.g. Fanuc"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -267,7 +267,7 @@ export default async function CpoPage() {
                   min="2000"
                   max="2026"
                   placeholder="2022"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -285,7 +285,7 @@ export default async function CpoPage() {
                   required
                   min="0"
                   placeholder="12000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -303,7 +303,7 @@ export default async function CpoPage() {
                   required
                   min="0"
                   placeholder="35000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -320,7 +320,7 @@ export default async function CpoPage() {
                   type="text"
                   required
                   placeholder="City, State"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -337,7 +337,7 @@ export default async function CpoPage() {
                   rows={3}
                   required
                   placeholder="Describe the robot, its history, and any upgrades or known issues..."
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 
@@ -354,7 +354,7 @@ export default async function CpoPage() {
                   type="email"
                   required
                   placeholder="you@company.com"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/30 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
                 />
               </div>
 

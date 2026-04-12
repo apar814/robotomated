@@ -10,7 +10,7 @@ interface QuickVerdictBarProps {
 function getComplexityColor(complexity: "Low" | "Medium" | "High"): string {
   switch (complexity) {
     case "Low":
-      return "text-lime";
+      return "text-blue-400";
     case "Medium":
       return "text-amber";
     case "High":
@@ -50,7 +50,7 @@ export function QuickVerdictBar({
           </p>
           <p className="mt-0.5 font-mono text-sm">
             {paybackMonths != null ? (
-              <span className="text-lime">{paybackMonths} months</span>
+              <span className="text-blue-400">{paybackMonths} months</span>
             ) : (
               <span className="text-text-ghost">TBD</span>
             )}

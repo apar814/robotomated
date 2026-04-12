@@ -95,7 +95,7 @@ export default function FundingTrackerPage() {
             </div>
             <div className="bg-obsidian-surface p-4">
               <p className="font-mono text-[9px] uppercase tracking-widest text-ghost">Raised YTD</p>
-              <p className="mt-2 font-mono text-2xl font-bold text-lime">{ytd.formatted}</p>
+              <p className="mt-2 font-mono text-2xl font-bold text-blue-400">{ytd.formatted}</p>
               <p className="mt-1 text-xs text-tertiary">{ytd.dealCount} deals in {new Date().getFullYear()}</p>
             </div>
             <div className="bg-obsidian-surface p-4">
