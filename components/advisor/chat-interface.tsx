@@ -371,7 +371,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 ) : streaming && i === messages.length - 1 ? (
                   /* During streaming: render raw text only — no markdown parsing on partial content */
                   <>
-                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    <p style={{ whiteSpace: "pre-wrap", color: "rgba(240,244,255,0.9)", lineHeight: 1.65, fontSize: "0.9rem" }}>{msg.content}</p>
                     <TypingIndicator />
                   </>
                 ) : (
@@ -484,6 +484,22 @@ function TypingIndicator() {
   );
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const mdComponents = {
+  p: ({ children }: any) => <p style={{ marginBottom: "0.65rem", lineHeight: 1.65, color: "rgba(240,244,255,0.9)", fontSize: "0.9rem" }}>{children}</p>,
+  strong: ({ children }: any) => <strong style={{ fontWeight: 700, color: "#F0F4FF" }}>{children}</strong>,
+  em: ({ children }: any) => <em style={{ color: "rgba(240,244,255,0.85)" }}>{children}</em>,
+  h2: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "#F0F4FF", marginBottom: "0.4rem", marginTop: "0.85rem" }}>{children}</p>,
+  h3: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "0.88rem", color: "#F0F4FF", marginBottom: "0.3rem", marginTop: "0.65rem" }}>{children}</p>,
+  ul: ({ children }: any) => <ul style={{ marginLeft: "1.1rem", marginBottom: "0.65rem", listStyleType: "disc" }}>{children}</ul>,
+  ol: ({ children }: any) => <ol style={{ marginLeft: "1.1rem", marginBottom: "0.65rem", listStyleType: "decimal" }}>{children}</ol>,
+  li: ({ children }: any) => <li style={{ marginBottom: "0.25rem", lineHeight: 1.6, color: "rgba(240,244,255,0.85)" }}>{children}</li>,
+  hr: () => <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.1)", margin: "0.85rem 0" }} />,
+  code: ({ children }: any) => <code style={{ background: "rgba(255,255,255,0.08)", padding: "0.15rem 0.35rem", borderRadius: "3px", fontSize: "0.82rem", color: "#60A5FA" }}>{children}</code>,
+  blockquote: ({ children }: any) => <blockquote style={{ borderLeft: "2px solid #2563EB", paddingLeft: "1rem", margin: "0.5rem 0", color: "rgba(240,244,255,0.65)" }}>{children}</blockquote>,
+};
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
 /** Render message content with inline robot cards, enriched with DB data */
 function MessageContent({ content, enriched }: { content: string; enriched: Record<string, RobotLookupResult> }) {
   const { segments } = parseRobotCards(content);
@@ -503,8 +519,8 @@ function MessageContent({ content, enriched }: { content: string; enriched: Reco
           return <RobotCardInline key={i} robot={merged} />;
         }
         return (
-          <div key={i} className="prose-robotimus">
-            <ReactMarkdown>{seg.content}</ReactMarkdown>
+          <div key={i}>
+            <ReactMarkdown components={mdComponents}>{seg.content}</ReactMarkdown>
           </div>
         );
       })}
