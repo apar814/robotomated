@@ -166,11 +166,19 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        if (data.upgrade) {
-          setShowUpgrade(true);
+        try {
+          const data = await res.json();
+          if (data.upgrade) {
+            setShowUpgrade(true);
+          }
+          // Clean up raw API errors for the user
+          const errMsg = typeof data.error === "string" && data.error.length < 200
+            ? data.error
+            : "Robotimus is temporarily unavailable. Please try again in a moment.";
+          setError(errMsg);
+        } catch {
+          setError("Robotimus is temporarily unavailable. Please try again in a moment.");
         }
-        setError(data.error || "Something went wrong");
         setMessages(newMessages);
         setStreaming(false);
         return;
@@ -195,7 +203,9 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               const data = JSON.parse(line.slice(6));
               if (data.done) break;
               if (data.error) {
-                setError(data.error);
+                setError(typeof data.error === "string" && data.error.length < 200
+                  ? data.error
+                  : "Robotimus encountered an issue. Please try again.");
                 break;
               }
               if (data.text) {
@@ -412,7 +422,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           )}
 
           {error && (
-            <div className="mb-4 rounded-lg border border-orange/20 bg-orange/5 p-3 text-center text-sm text-orange">
+            <div className="mb-4 rounded-lg border border-red-500/20 bg-red-500/5 p-3 text-center text-sm text-red-400">
               {error}
             </div>
           )}

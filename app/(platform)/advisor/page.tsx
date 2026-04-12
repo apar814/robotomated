@@ -53,12 +53,12 @@ const ROBOTIMUS_FAQS = [
 ];
 
 const USE_CASES = [
-  { label: "Warehouse Automation", query: "I need to automate my warehouse \u2014 where do I start?", icon: "\ud83d\udce6" },
-  { label: "ROI Analysis", query: "What's the ROI on a $150K robot for my operation?", icon: "\ud83d\udcb0" },
-  { label: "Buy vs Lease", query: "Should I buy, lease, or hire a robot?", icon: "\ud83e\udd14" },
-  { label: "Hospital Delivery", query: "Which robot is best for hospital delivery?", icon: "\ud83c\udfe5" },
-  { label: "Budget Planning", query: "I have a 50,000 sq ft warehouse and $200K budget", icon: "\ud83d\udcca" },
-  { label: "CFO Business Case", query: "Help me build a case for my CFO", icon: "\ud83d\udcc4" },
+  { label: "Warehouse Automation", query: "I need to automate my warehouse \u2014 where do I start?" },
+  { label: "ROI Analysis", query: "What's the ROI on a $150K robot for my operation?" },
+  { label: "Buy vs Lease", query: "Should I buy, lease, or hire a robot?" },
+  { label: "Hospital Delivery", query: "Which robot is best for hospital delivery?" },
+  { label: "Budget Planning", query: "I have a 50,000 sq ft warehouse and $200K budget" },
+  { label: "CFO Business Case", query: "Help me build a case for my CFO" },
 ];
 
 export default function AdvisorPage() {
@@ -123,9 +123,8 @@ export default function AdvisorPage() {
                 href={`/advisor?q=${encodeURIComponent(uc.query)}`}
                 className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-left transition-all hover:border-[#2563EB]/30 hover:bg-white/[0.06]"
               >
-                <span className="text-lg">{uc.icon}</span>
-                <p className="mt-1 text-sm font-medium text-white">{uc.label}</p>
-                <p className="mt-0.5 text-xs text-white/40">{uc.query}</p>
+                <p className="text-sm font-bold text-white">{uc.label}</p>
+                <p className="mt-1 text-xs text-white/50">{uc.query}</p>
               </Link>
             ))}
           </div>
