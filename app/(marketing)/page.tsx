@@ -179,8 +179,14 @@ export default async function HomePage() {
       <ChannelShowcase />
 
       {/* ══════════════════════════════════════════
-          4. FEATURED ROBOTS
+          3.5. TRUST STATEMENT BAR
           ══════════════════════════════════════════ */}
+      <div className="border-y px-6 py-5" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+        <p className="mx-auto max-w-4xl text-center text-[0.85rem] font-bold uppercase tracking-[0.08em]" style={{ color: "var(--theme-text-muted)" }}>
+          {totalRobots} robots tracked &middot; {manufacturerCount} manufacturers &middot; Every score is independent &middot; No manufacturer has ever paid for placement
+        </p>
+      </div>
+
       {/* ══════════════════════════════════════════
           5. TRENDING ROBOTS
           ══════════════════════════════════════════ */}

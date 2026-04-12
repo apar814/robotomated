@@ -26,8 +26,8 @@ export function ComplianceCard({ safetyCerts, industryCerts }: ComplianceCardPro
       </div>
 
       {!hasAny && (
-        <p className="font-mono text-sm text-text-ghost">
-          No certifications listed
+        <p className="text-sm text-white/50">
+          Certifications data being verified. Contact manufacturer for compliance documentation.
         </p>
       )}
 

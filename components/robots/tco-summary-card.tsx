@@ -43,7 +43,7 @@ export function TcoSummaryCard({
   const costPerHour = costPerShift != null ? costPerShift / 8 : null;
 
   return (
-    <div className="rounded-md border border-border border-l-2 border-l-lime bg-obsidian-surface p-4">
+    <div className="rounded-md border border-border border-l-2 border-l-blue-500 bg-obsidian-surface p-4">
       {/* Label */}
       <div className="section-label green mb-3">
         <span className="font-mono text-[9px] tracking-widest">[TCO] TOTAL COST</span>
@@ -69,7 +69,15 @@ export function TcoSummaryCard({
           Est. Annual Maintenance
         </p>
         <p className="font-mono text-sm text-text-secondary">
-          {maintenanceDisplay ?? "Contact Vendor"}
+          {maintenanceDisplay ?? (
+            price != null
+              ? price < 5000
+                ? "Est. $50–200/year"
+                : price < 100000
+                  ? `Est. ${formatCurrency(Math.round(price * 0.08))}–${formatCurrency(Math.round(price * 0.12))}/year (8–12%)`
+                  : `Est. ${formatCurrency(Math.round(price * 0.15))}–${formatCurrency(Math.round(price * 0.20))}/year (15–20%)`
+              : "Contact manufacturer for maintenance pricing"
+          )}
         </p>
       </div>
 
@@ -79,7 +87,7 @@ export function TcoSummaryCard({
           5-Year Total
         </p>
         <p className="font-mono text-lg font-bold text-text-primary">
-          {fiveYearTotal != null ? formatCurrency(fiveYearTotal) : "—"}
+          {fiveYearTotal != null ? formatCurrency(fiveYearTotal) : "Requires pricing data"}
         </p>
       </div>
 

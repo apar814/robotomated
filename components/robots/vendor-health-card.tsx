@@ -60,7 +60,7 @@ export function VendorHealthCard({
               )}
             </>
           ) : (
-            <span className="text-text-ghost">NOT DISCLOSED</span>
+            <span className="text-white/45">Undisclosed</span>
           )}
         </p>
       </div>
@@ -72,7 +72,7 @@ export function VendorHealthCard({
         </p>
         <p className="font-mono text-sm text-text-data">
           {fundingTotal ?? (
-            <span className="text-text-ghost">NOT DISCLOSED</span>
+            <span className="text-white/45">Undisclosed</span>
           )}
         </p>
       </div>
@@ -86,7 +86,7 @@ export function VendorHealthCard({
           {employeesRange ? (
             `~${employeesRange} employees`
           ) : (
-            <span className="text-text-ghost">NOT DISCLOSED</span>
+            <span className="text-white/45">Undisclosed</span>
           )}
         </p>
       </div>
@@ -124,7 +124,7 @@ export function VendorHealthCard({
             </div>
           </div>
         ) : (
-          <p className="mt-1 font-mono text-sm text-text-ghost">NOT RATED</p>
+          <p className="mt-1 text-sm text-white/50">Health score pending verification</p>
         )}
       </div>
     </div>
