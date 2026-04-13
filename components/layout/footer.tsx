@@ -155,6 +155,9 @@ export function Footer() {
             <Link href="/pricing" className="text-[12px] text-white/45 transition-colors hover:text-white">
               Pricing
             </Link>
+            <Link href="/independence" className="text-[12px] text-white/45 transition-colors hover:text-white">
+              Independence
+            </Link>
           </div>
         </div>
       </div>
