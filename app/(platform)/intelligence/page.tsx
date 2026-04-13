@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     "Funding moves. Product launches. Market signals. The data that drives automation decisions. Updated every 2 hours.",
 };
 
-export const revalidate = 1800; // revalidate every 30 minutes
+export const revalidate = 1800;
 
 interface IntelItem {
   id?: string;
   title: string;
   url: string;
   source_name?: string;
-  source?: string; // DB column name
+  source?: string;
   summary: string;
   what_it_means: string | null;
   published_at: string;
@@ -45,43 +45,18 @@ interface FundingRound {
 async function getIntelligenceData() {
   try {
     const supabase = createServerClient();
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sb = supabase as any;
     const [itemsResult, fundingResult] = await Promise.all([
-      sb
-        .from("news_items")
-        .select("*")
-        .order("published_at", { ascending: false })
-        .limit(30),
-      sb
-        .from("funding_rounds")
-        .select("*")
-        .order("announced_at", { ascending: false })
-        .limit(10),
+      sb.from("news_items").select("*").order("published_at", { ascending: false }).limit(30),
+      sb.from("funding_rounds").select("*").order("announced_at", { ascending: false }).limit(10),
     ]);
-
     const items = (itemsResult.data || []) as IntelItem[];
     const funding = (fundingResult.data || []) as FundingRound[];
-
-    // If DB has items, use them
-    if (items.length > 0) {
-      return { items, funding, fromDb: true };
-    }
-
-    // Fallback to seed data
-    return {
-      items: SEED_ITEMS as unknown as IntelItem[],
-      funding: [] as FundingRound[],
-      fromDb: false,
-    };
+    if (items.length > 0) return { items, funding, fromDb: true };
+    return { items: SEED_ITEMS as unknown as IntelItem[], funding: [] as FundingRound[], fromDb: false };
   } catch {
-    // DB unavailable — use seed data
-    return {
-      items: SEED_ITEMS as unknown as IntelItem[],
-      funding: [] as FundingRound[],
-      fromDb: false,
-    };
+    return { items: SEED_ITEMS as unknown as IntelItem[], funding: [] as FundingRound[], fromDb: false };
   }
 }
 
@@ -113,15 +88,49 @@ const CATEGORY_LABELS: Record<string, string> = {
   brief: "Weekly Brief",
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  funding: "text-[#00E5A0] bg-[#00E5A0]/10 border-[#00E5A0]/20",
-  product: "text-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/20",
-  research: "text-[#7B2FFF] bg-[#7B2FFF]/10 border-[#7B2FFF]/20",
-  regulation: "text-amber-400 bg-amber-400/10 border-amber-400/20",
-  market: "text-white/70 bg-white/5 border-white/10",
-  partnership: "text-[#2563EB] bg-[#2563EB]/10 border-[#2563EB]/20",
-  brief: "text-white bg-white/10 border-white/20",
-};
+/* Category badge inline styles for proper rendering */
+function getCategoryStyle(cat: string): React.CSSProperties {
+  switch (cat) {
+    case "funding":
+      return { background: "rgba(37,99,235,0.2)", color: "#60A5FA", border: "1px solid rgba(37,99,235,0.35)" };
+    case "product":
+      return { background: "rgba(34,197,94,0.15)", color: "#4ADE80", border: "1px solid rgba(34,197,94,0.3)" };
+    case "market":
+      return { background: "rgba(245,158,11,0.15)", color: "#FCD34D", border: "1px solid rgba(245,158,11,0.3)" };
+    case "research":
+      return { background: "rgba(168,85,247,0.15)", color: "#C084FC", border: "1px solid rgba(168,85,247,0.3)" };
+    case "regulation":
+      return { background: "rgba(239,68,68,0.15)", color: "#F87171", border: "1px solid rgba(239,68,68,0.3)" };
+    case "partnership":
+      return { background: "rgba(34,197,94,0.15)", color: "#4ADE80", border: "1px solid rgba(34,197,94,0.3)" };
+    case "brief":
+      return { background: "rgba(255,255,255,0.1)", color: "#F0F4FF", border: "1px solid rgba(255,255,255,0.2)" };
+    default:
+      return { background: "rgba(255,255,255,0.05)", color: "rgba(240,244,255,0.6)", border: "1px solid rgba(255,255,255,0.1)" };
+  }
+}
+
+/* ── Section header with extending line ── */
+function SectionHeader({ label }: { label: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+      <span
+        style={{
+          fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+          fontWeight: 700,
+          fontSize: "0.65rem",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          color: "#60A5FA",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {label}
+      </span>
+      <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, rgba(37,99,235,0.4), transparent)" }} />
+    </div>
+  );
+}
 
 export default async function IntelligencePage() {
   const { items, funding } = await getIntelligenceData();
@@ -135,10 +144,21 @@ export default async function IntelligencePage() {
   items.forEach((i) => (i.tags || []).forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
   const trendingTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
 
+  // Manufacturer mentions
+  const mfrCounts: Record<string, number> = {};
+  items.forEach((i) => (i.manufacturers_mentioned || []).forEach((m) => { mfrCounts[m] = (mfrCounts[m] || 0) + 1; }));
+  const trendingMfrs = Object.entries(mfrCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+
   return (
-    <div style={{ background: "linear-gradient(180deg, rgba(6,8,24,0.98) 0%, #02020A 100%)" }}>
-      {/* Hero */}
-      <section className="border-b border-white/[0.06] px-4 py-16 sm:py-20">
+    <div style={{ background: "linear-gradient(180deg, #030310 0%, #02020A 100%)" }}>
+
+      {/* ═══ HERO ═══ */}
+      <section
+        className="border-b border-white/[0.06] px-4 py-16 sm:py-20"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 60%), #02020A",
+        }}
+      >
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs
             items={[
@@ -146,28 +166,89 @@ export default async function IntelligencePage() {
               { name: "Intelligence", href: "/intelligence" },
             ]}
           />
+
           <h1
-            className="mt-6 font-display font-bold tracking-[-0.03em]"
-            style={{ fontSize: "clamp(32px, 4vw, 56px)" }}
+            className="mt-6 font-display"
+            style={{ fontWeight: 700, fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#F0F4FF", letterSpacing: "-0.03em" }}
           >
             Robotics Intelligence
           </h1>
-          <p className="mt-3 max-w-xl text-lg text-white/40">
+          <p
+            className="mt-3 max-w-xl"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 500, fontSize: "1.05rem", color: "rgba(240,244,255,0.65)", lineHeight: 1.6 }}
+          >
             Funding moves. Product launches. Market signals. Updated every 2 hours.
           </p>
-          <p className="mt-2 font-mono text-[13px] text-white/45">
+          <p
+            className="mt-2"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: "0.78rem", color: "rgba(240,244,255,0.4)" }}
+          >
             Last updated: {new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" })}
           </p>
+
+          {/* Stat pills */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            {[
+              `${items.length} signals this week`,
+              `${funding.length} funding rounds`,
+              `Updated ${timeAgo(items[0]?.published_at || new Date().toISOString())}`,
+            ].map((pill) => (
+              <span
+                key={pill}
+                className="rounded-full px-3.5 py-1.5"
+                style={{
+                  border: "1px solid rgba(37,99,235,0.25)",
+                  background: "rgba(37,99,235,0.08)",
+                  color: "#60A5FA",
+                  fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                  fontWeight: 600,
+                  fontSize: "0.78rem",
+                }}
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Subscribe */}
+      {/* ═══ NEWSLETTER SIGNUP ═══ */}
       <section className="border-b border-white/[0.06] px-4 py-8">
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-xl border border-[#2563EB]/15 bg-[#2563EB]/[0.03] p-6 sm:flex sm:items-center sm:justify-between">
+          <div
+            className="rounded-xl sm:flex sm:items-center sm:justify-between"
+            style={{
+              background: "linear-gradient(135deg, rgba(37,99,235,0.12) 0%, rgba(37,99,235,0.04) 100%)",
+              border: "1px solid rgba(37,99,235,0.25)",
+              borderLeft: "3px solid #2563EB",
+              padding: "1.75rem 2rem",
+            }}
+          >
             <div>
-              <p className="text-sm font-semibold text-white">Get the weekly brief in your inbox</p>
-              <p className="mt-0.5 text-xs text-white/50">Every Monday. 500 words. The only robotics email worth reading.</p>
+              <p
+                style={{
+                  fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                  fontWeight: 700,
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "#60A5FA",
+                }}
+              >
+                The Automation Intelligence Brief
+              </p>
+              <p
+                className="mt-1.5"
+                style={{ fontWeight: 500, fontSize: "0.95rem", color: "rgba(240,244,255,0.75)" }}
+              >
+                Every Monday. 500 words. The only robotics email worth reading.
+              </p>
+              <p
+                className="mt-0.5"
+                style={{ fontWeight: 500, fontSize: "0.82rem", color: "rgba(240,244,255,0.45)" }}
+              >
+                Join 2,400+ operations leaders and robotics professionals.
+              </p>
             </div>
             <div className="mt-4 sm:mt-0 sm:w-80">
               <NewsletterForm />
@@ -176,102 +257,283 @@ export default async function IntelligencePage() {
         </div>
       </section>
 
-      {/* Main content */}
+      {/* ═══ MAIN CONTENT ═══ */}
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="flex flex-col gap-10 lg:flex-row">
-          {/* Left column — feed */}
-          <div className="min-w-0 flex-1 space-y-6">
+
+          {/* LEFT — Feed (2/3) */}
+          <div className="min-w-0 flex-1 lg:flex-[2]">
+
             {/* Featured items */}
             {featured.length > 0 && (
-              <div className="space-y-4">
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
-                  [ FEATURED ]
-                </p>
-                {featured.slice(0, 5).map((item) => (
-                  <article
-                    key={item.url}
-                    className="rounded-xl p-6" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 16px rgba(0,0,0,0.3)" }}
-                  >
-                    <div className="mb-3 flex items-center gap-2">
-                      <span className={`rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
-                        {CATEGORY_LABELS[item.category] || item.category}
-                      </span>
-                      <span className="text-[13px] text-white/45">{item.source_name || item.source}</span>
-                      <span className="text-[13px] text-white/30">{timeAgo(item.published_at)}</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/50">{item.summary}</p>
-                    {item.what_it_means && (
-                      <div className="mt-3 rounded-lg px-4 py-3" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0.05) 100%)", borderLeft: "2px solid #2563EB" }}>
-                        <p className="text-[13px] font-semibold uppercase tracking-wider text-[#2563EB]">What this means</p>
-                        <p className="mt-1 text-sm text-white/60">{item.what_it_means}</p>
-                      </div>
-                    )}
-                    <div className="mt-3 flex flex-wrap gap-1.5">
-                      {(item.tags || []).map((tag) => (
-                        <span key={tag} className="rounded-full border border-white/[0.06] px-2 py-0.5 text-[13px] text-white/45">
-                          {tag}
+              <div className="mb-10">
+                <SectionHeader label="Featured" />
+                <div className="space-y-4">
+                  {featured.slice(0, 5).map((item) => (
+                    <article
+                      key={item.url}
+                      className="rounded-[10px] transition-all duration-200 hover:border-[rgba(37,99,235,0.25)]"
+                      style={{
+                        background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        borderRadius: 10,
+                        padding: "1.5rem",
+                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+                      }}
+                    >
+                      {/* Row 1: Category + source */}
+                      <div className="flex items-center justify-between">
+                        <span
+                          className="rounded-full px-2.5 py-0.5"
+                          style={{ ...getCategoryStyle(item.category), fontSize: "0.72rem", fontWeight: 700 }}
+                        >
+                          {CATEGORY_LABELS[item.category] || item.category}
                         </span>
-                      ))}
-                    </div>
-                  </article>
-                ))}
+                        <span style={{ fontSize: "0.78rem", color: "rgba(240,244,255,0.35)" }}>
+                          {item.source_name || item.source} &middot; {timeAgo(item.published_at)}
+                        </span>
+                      </div>
+
+                      {/* Row 2: Headline */}
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-sans)",
+                          fontWeight: 700,
+                          fontSize: "1.05rem",
+                          color: "#F0F4FF",
+                          lineHeight: 1.35,
+                          marginTop: "0.6rem",
+                        }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      {/* Row 3: Summary */}
+                      <p
+                        className="line-clamp-3"
+                        style={{
+                          fontWeight: 500,
+                          fontSize: "0.88rem",
+                          color: "rgba(240,244,255,0.6)",
+                          lineHeight: 1.65,
+                          marginTop: "0.4rem",
+                        }}
+                      >
+                        {item.summary}
+                      </p>
+
+                      {/* Row 4: What this means */}
+                      {item.what_it_means && (
+                        <div
+                          style={{
+                            background: "rgba(37,99,235,0.06)",
+                            borderLeft: "2px solid #2563EB",
+                            padding: "0.6rem 0.85rem",
+                            marginTop: "0.75rem",
+                            borderRadius: "0 6px 6px 0",
+                          }}
+                        >
+                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2563EB" }}>
+                            Signal
+                          </p>
+                          <p style={{ fontWeight: 500, fontSize: "0.82rem", color: "rgba(240,244,255,0.7)", lineHeight: 1.6, marginTop: "0.15rem" }}>
+                            {item.what_it_means}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Row 5: Tags + read more */}
+                      <div className="mt-3 flex items-center justify-between">
+                        <div className="flex flex-wrap gap-1.5">
+                          {(item.tags || []).slice(0, 4).map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full px-2 py-0.5"
+                              style={{ border: "1px solid rgba(255,255,255,0.06)", fontSize: "0.72rem", color: "rgba(240,244,255,0.35)" }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors hover:text-[#60A5FA]"
+                          style={{ fontWeight: 600, fontSize: "0.75rem", color: "rgba(240,244,255,0.3)" }}
+                        >
+                          Read more &rarr;
+                        </a>
+                      </div>
+                    </article>
+                  ))}
+                </div>
               </div>
             )}
 
             {/* Standard items */}
             {standard.length > 0 && (
-              <div className="space-y-3">
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/50">
-                  [ ALL SIGNALS ]
-                </p>
-                {standard.map((item) => (
-                  <article
-                    key={item.url}
-                    className="rounded-lg p-4" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className={`mt-0.5 shrink-0 rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
-                        {CATEGORY_LABELS[item.category] || item.category}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-sm font-semibold text-white">{item.title}</h3>
-                        <p className="mt-1 text-xs text-white/35 line-clamp-2">{item.summary}</p>
-                        <p className="mt-1.5 text-[13px] text-white/30">
+              <div>
+                <SectionHeader label="All Signals" />
+                <div className="space-y-3">
+                  {standard.map((item) => (
+                    <article
+                      key={item.url}
+                      className="transition-all duration-200 hover:border-[rgba(37,99,235,0.25)]"
+                      style={{
+                        background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        borderRadius: 10,
+                        padding: "1.5rem",
+                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+                      }}
+                    >
+                      {/* Row 1: Category + source */}
+                      <div className="flex items-center justify-between">
+                        <span
+                          className="rounded-full px-2.5 py-0.5"
+                          style={{ ...getCategoryStyle(item.category), fontSize: "0.72rem", fontWeight: 700 }}
+                        >
+                          {CATEGORY_LABELS[item.category] || item.category}
+                        </span>
+                        <span style={{ fontSize: "0.75rem", color: "rgba(240,244,255,0.3)" }}>
                           {item.source_name || item.source} &middot; {timeAgo(item.published_at)}
-                        </p>
+                        </span>
                       </div>
-                      <span className="shrink-0 font-mono text-[13px] text-white/28">
-                        {item.relevance_score}
-                      </span>
-                    </div>
-                  </article>
-                ))}
+
+                      {/* Headline */}
+                      <h3
+                        style={{
+                          fontWeight: 700,
+                          fontSize: "1.05rem",
+                          color: "#F0F4FF",
+                          lineHeight: 1.35,
+                          marginTop: "0.6rem",
+                        }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      {/* Summary */}
+                      <p
+                        className="line-clamp-3"
+                        style={{
+                          fontWeight: 500,
+                          fontSize: "0.88rem",
+                          color: "rgba(240,244,255,0.6)",
+                          lineHeight: 1.65,
+                          marginTop: "0.4rem",
+                        }}
+                      >
+                        {item.summary}
+                      </p>
+
+                      {/* What this means */}
+                      {item.what_it_means && (
+                        <div
+                          style={{
+                            background: "rgba(37,99,235,0.06)",
+                            borderLeft: "2px solid #2563EB",
+                            padding: "0.6rem 0.85rem",
+                            marginTop: "0.75rem",
+                            borderRadius: "0 6px 6px 0",
+                          }}
+                        >
+                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2563EB" }}>
+                            Signal
+                          </p>
+                          <p style={{ fontWeight: 500, fontSize: "0.82rem", color: "rgba(240,244,255,0.7)", lineHeight: 1.6, marginTop: "0.15rem" }}>
+                            {item.what_it_means}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Footer */}
+                      <div className="mt-2.5 flex justify-end">
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="transition-colors hover:text-[#60A5FA]"
+                          style={{ fontWeight: 600, fontSize: "0.75rem", color: "rgba(240,244,255,0.3)" }}
+                        >
+                          Read more &rarr;
+                        </a>
+                      </div>
+                    </article>
+                  ))}
+                </div>
               </div>
             )}
           </div>
 
-          {/* Right sidebar */}
-          <div className="w-full space-y-6 lg:w-72">
-            {/* Funding summary */}
+          {/* RIGHT — Sidebar (1/3) */}
+          <div className="w-full space-y-6 lg:w-80 lg:flex-[1]">
+
+            {/* Ask Robotimus */}
+            <div
+              className="rounded-[10px]"
+              style={{
+                background: "linear-gradient(145deg, rgba(14,18,38,0.95) 0%, rgba(8,10,20,0.98) 100%)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                padding: "1.5rem",
+              }}
+            >
+              <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                Ask About This Feed
+              </p>
+              <p className="mt-2" style={{ fontSize: "0.85rem", color: "rgba(240,244,255,0.6)", lineHeight: 1.6 }}>
+                Robotimus can analyze any story, explain its market implications, or connect it to robots in our database.
+              </p>
+              <Link
+                href="/advisor"
+                className="mt-4 block rounded-lg py-2.5 text-center transition-opacity hover:opacity-90"
+                style={{ background: "#2563EB", fontWeight: 700, fontSize: "0.82rem", color: "#F0F4FF" }}
+              >
+                Ask Robotimus
+              </Link>
+            </div>
+
+            {/* This Week in Funding */}
             {funding.length > 0 && (
-              <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(14,18,40,0.95) 0%, rgba(8,10,24,0.98) 100%)", border: "1px solid rgba(37,99,235,0.2)", borderLeft: "3px solid #2563EB", boxShadow: "inset 0 1px 0 rgba(37,99,235,0.06), -4px 0 20px rgba(37,99,235,0.06)" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#00E5A0]">
+              <div
+                className="rounded-[10px]"
+                style={{
+                  background: "linear-gradient(145deg, rgba(14,18,38,0.95) 0%, rgba(8,10,20,0.98) 100%)",
+                  border: "1px solid rgba(37,99,235,0.2)",
+                  borderLeft: "3px solid #2563EB",
+                  padding: "1.5rem",
+                  boxShadow: "inset 0 1px 0 rgba(37,99,235,0.06)",
+                }}
+              >
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
                   This Week in Funding
                 </p>
-                <p className="mt-2 font-[family-name:var(--font-brand)] text-2xl font-bold text-[#00E5A0]">
+                <p
+                  className="mt-2"
+                  style={{ fontFamily: "var(--font-brand)", fontWeight: 700, fontSize: "1.4rem", color: "#2563EB", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}
+                >
                   {formatAmount(totalFunding)}
                 </p>
-                <p className="text-[13px] text-white/45">raised across {funding.length} rounds</p>
+                <p style={{ fontSize: "0.78rem", color: "rgba(240,244,255,0.45)" }}>
+                  raised across {funding.length} rounds this week
+                </p>
                 <div className="mt-4 space-y-3">
                   {funding.slice(0, 5).map((r) => (
-                    <div key={r.announced_at + r.company} className="border-t border-white/[0.04] pt-2">
+                    <div key={r.announced_at + r.company} className="border-t border-white/[0.06] pt-2.5">
                       <div className="flex items-center justify-between">
-                        <p className="text-xs font-semibold text-white">{r.company}</p>
-                        <p className="font-mono text-xs font-bold text-[#2563EB]">{formatAmount(r.amount_usd)}</p>
+                        <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "#F0F4FF" }}>{r.company}</p>
+                        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", fontWeight: 700, color: "#2563EB" }}>
+                          {formatAmount(r.amount_usd)}
+                        </p>
                       </div>
                       {r.round_type && (
-                        <p className="text-[13px] text-white/45">{r.round_type}</p>
+                        <span
+                          className="mt-1 inline-block rounded-full px-2 py-0.5"
+                          style={{ fontSize: "0.65rem", fontWeight: 600, background: "rgba(37,99,235,0.12)", color: "#60A5FA", border: "1px solid rgba(37,99,235,0.25)" }}
+                        >
+                          {r.round_type}
+                        </span>
                       )}
                     </div>
                   ))}
@@ -279,34 +541,63 @@ export default async function IntelligencePage() {
               </div>
             )}
 
-            {/* Trending topics */}
-            {trendingTags.length > 0 && (
-              <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/50">
-                  Trending Topics
+            {/* Trending Manufacturers */}
+            {trendingMfrs.length > 0 && (
+              <div
+                className="rounded-[10px]"
+                style={{
+                  background: "linear-gradient(145deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  padding: "1.5rem",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+                }}
+              >
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                  Trending Manufacturers
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {trendingTags.map(([tag, count]) => (
-                    <span key={tag} className="flex items-center gap-1 rounded-full border border-white/[0.06] px-2.5 py-1 text-[13px] text-white/40">
-                      {tag}
-                      <span className="font-mono text-[#2563EB]">{count}</span>
-                    </span>
+                <div className="mt-3 space-y-2">
+                  {trendingMfrs.map(([mfr, count]) => (
+                    <div key={mfr} className="flex items-center justify-between">
+                      <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(240,244,255,0.8)" }}>{mfr}</span>
+                      <span className="flex items-center gap-2">
+                        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.72rem", color: "rgba(240,244,255,0.35)" }}>
+                          {count} mentions
+                        </span>
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Robotimus CTA */}
-            <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}>
-              <p className="text-sm font-semibold text-white">Questions about this week?</p>
-              <p className="mt-1 text-xs text-white/50">Robotimus can analyze any item in this feed.</p>
-              <Link
-                href="/advisor"
-                className="mt-3 block rounded-lg bg-[#2563EB] px-4 py-2.5 text-center text-xs font-semibold text-black transition-opacity hover:opacity-90"
+            {/* Trending Topics */}
+            {trendingTags.length > 0 && (
+              <div
+                className="rounded-[10px]"
+                style={{
+                  background: "linear-gradient(145deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  padding: "1.5rem",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+                }}
               >
-                Ask Robotimus
-              </Link>
-            </div>
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                  Trending Topics
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {trendingTags.map(([tag, count]) => (
+                    <span
+                      key={tag}
+                      className="flex items-center gap-1.5 rounded-full px-2.5 py-1"
+                      style={{ border: "1px solid rgba(255,255,255,0.06)", fontSize: "0.78rem", color: "rgba(240,244,255,0.4)" }}
+                    >
+                      {tag}
+                      <span style={{ fontFamily: "var(--font-mono)", color: "#2563EB", fontSize: "0.72rem" }}>{count}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
