@@ -13,6 +13,7 @@ import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
 import { ExitIntentPopup } from "@/components/engagement/exit-intent-popup";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { Toaster } from "sonner";
 import { BuyerJourneyBar } from "@/components/ui/buyer-journey-bar";
 import { SiteStatsProvider } from "@/lib/context/site-stats";
 import { getSiteStats } from "@/lib/data/site-stats";
@@ -98,6 +99,20 @@ export default async function RootLayout({
             <CompareBar />
             <ExitIntentPopup />
             <MobileNav />
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                style: {
+                  background: "rgba(6,8,20,0.97)",
+                  border: "1px solid rgba(37,99,235,0.25)",
+                  borderLeft: "3px solid #2563EB",
+                  color: "#F0F4FF",
+                  fontSize: "0.85rem",
+                  fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                },
+              }}
+              duration={3000}
+            />
           </PostHogProvider>
           </SiteStatsProvider>
         </Providers>

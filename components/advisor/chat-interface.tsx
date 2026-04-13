@@ -26,19 +26,47 @@ const STORAGE_KEY = "robotomated-advisor-history";
 const MAX_STORED_MESSAGES = 20;
 
 const STARTER_PROMPTS = [
-  "I have $150K and need to automate my warehouse. Where do I start?",
-  "Is Boston Dynamics Spot actually worth $74,500?",
-  "What\u2019s the cheapest robot that can replace a security guard?",
-  "I\u2019m a forklift operator. Will robots take my job?",
-  "Build me a CFO-ready business case for AMR deployment",
-  "What\u2019s actually happening in humanoid robotics right now?",
+  { text: "I have $150K and need to automate my warehouse. Where do I start?", subtitle: "Get a ranked shortlist with TCO analysis" },
+  { text: "Is Boston Dynamics Spot actually worth $74,500?", subtitle: "Independent verdict on Boston Dynamics\u2019 flagship" },
+  { text: "What\u2019s the cheapest robot that can replace a security guard?", subtitle: "Find the cheapest capable option" },
+  { text: "I\u2019m a forklift operator. Will robots take my job?", subtitle: "Honest answer + what skills to build" },
+  { text: "Build me a CFO-ready business case for AMR deployment", subtitle: "ROI model you can present to leadership" },
+  { text: "What\u2019s actually happening in humanoid robotics right now?", subtitle: "What\u2019s real vs what\u2019s hype in 2026" },
 ];
 
-const DEFAULT_FOLLOWUPS = [
-  "What does this cost to deploy?",
-  "Which alternative should I consider?",
-  "How long does deployment take?",
-];
+/** Generate contextual follow-up chips based on response content */
+function generateFollowUps(content: string): string[] {
+  const chips: string[] = [];
+  const lower = content.toLowerCase();
+
+  if (lower.includes("price") || lower.includes("cost") || lower.includes("$"))
+    chips.push("What\u2019s the 5-year total cost of ownership?");
+  if (lower.includes("deploy") || lower.includes("install") || lower.includes("setup"))
+    chips.push("What certification do operators need?");
+  if (/warehouse|amr|agv|mobile robot/i.test(lower))
+    chips.push("Show me the top 5 warehouse robots");
+  if (/cobot|collaborative|universal robots|fanuc/i.test(lower))
+    chips.push("How does it compare to alternatives?");
+  if (lower.includes("humanoid") || lower.includes("figure") || lower.includes("unitree"))
+    chips.push("Which humanoid robots can I actually buy today?");
+  if (lower.includes("security") || lower.includes("patrol"))
+    chips.push("What\u2019s the ROI vs hiring a guard?");
+  if (lower.includes("cleaning") || lower.includes("scrub"))
+    chips.push("Show me the top 5 cleaning robots");
+
+  // Fill to 3 with defaults
+  const defaults = [
+    "What does this cost to deploy?",
+    "Which alternative should I consider?",
+    "How long does deployment take?",
+  ];
+  for (const d of defaults) {
+    if (chips.length >= 3) break;
+    if (!chips.includes(d)) chips.push(d);
+  }
+
+  return chips.slice(0, 3);
+}
 
 /** Extract follow-up question suggestions from Robotimus responses */
 function extractFollowUps(content: string): string[] {
@@ -296,7 +324,9 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
   const extracted = lastMessage?.role === "assistant" && !streaming
     ? extractFollowUps(lastMessage.content)
     : [];
-  const followUps = extracted.length > 0 ? extracted : (lastMessage?.role === "assistant" && !streaming ? DEFAULT_FOLLOWUPS : []);
+  const followUps = lastMessage?.role === "assistant" && !streaming
+    ? (extracted.length > 0 ? extracted : generateFollowUps(lastMessage.content))
+    : [];
 
   return (
     <div className="flex h-full flex-col bg-[#0A0F1E]">
@@ -332,8 +362,8 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               <div className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {STARTER_PROMPTS.map((prompt) => (
                   <button
-                    key={prompt}
-                    onClick={() => sendMessage(prompt)}
+                    key={prompt.text}
+                    onClick={() => sendMessage(prompt.text)}
                     className="w-full rounded-[10px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(37,99,235,0.3)] hover:bg-[rgba(14,18,38,0.95)]"
                     style={{
                       background: "rgba(10,12,28,0.9)",
@@ -347,8 +377,19 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                       fontSize: "0.88rem",
                       color: "#F0F4FF",
                       lineHeight: 1.4,
+                      display: "block",
                     }}>
-                      {prompt}
+                      {prompt.text}
+                    </span>
+                    <span style={{
+                      fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                      fontWeight: 500,
+                      fontSize: "0.75rem",
+                      color: "rgba(240,244,255,0.4)",
+                      marginTop: "0.3rem",
+                      display: "block",
+                    }}>
+                      {prompt.subtitle}
                     </span>
                   </button>
                 ))}
