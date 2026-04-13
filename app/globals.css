@@ -929,6 +929,49 @@ html {
   }
 }
 
+@media (max-width: 640px) {
+  /* Chat input stays above keyboard */
+  .chat-input-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+  }
+
+  /* Force hero text to reasonable size */
+  .hero-title-mobile {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════ */
+@media print {
+  header, footer, .compare-bar, .cursor-glow,
+  nav, .chat-input-bar, button[type="submit"],
+  .btn-glow, .hide-print { display: none !important; }
+
+  body {
+    background: white !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #ccc !important;
+  }
+
+  a { text-decoration: underline; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666 !important; }
+
+  img { max-width: 100% !important; }
+}
+
 /* ═══════════════════════════════════════
    LIGHT MODE PREMIUM OVERRIDES
    ═══════════════════════════════════════ */
