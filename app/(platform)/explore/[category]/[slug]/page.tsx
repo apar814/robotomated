@@ -15,6 +15,7 @@ import { SaveRobotButton } from "@/components/auth/save-robot-button";
 import { RoiCalculatorStandalone } from "@/components/robots/roi-calculator-standalone";
 import { DIMENSIONS } from "@/lib/scoring/roboscore";
 import type { RoboScoreBreakdown } from "@/lib/supabase/types";
+import { generateVerdict } from "@/lib/robots/verdict";
 import { SafeImage } from "@/components/ui/safe-image";
 import { AddToCompareButton } from "@/components/compare/add-to-compare-button";
 import { PriceAlertForm } from "@/components/commerce/price-alert-form";
@@ -117,12 +118,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${data.name} Review & ROI Calculator (${YEAR}) | Robotomated`,
     description: `${data.name} by ${data.manufacturers?.name} — ${scoreStr}. ${priceStr}. ${data.description_short || "Expert review, specs, ROI calculator, and pricing."}`,
     openGraph: {
-      title: `${data.name} — ${scoreStr || "RoboScore Pending"} | Robotomated`,
-      description: `${data.name} by ${data.manufacturers?.name}. ${priceStr}. ${data.description_short || "Expert review, specs, ROI calculator, and pricing."}`,
+      title: `${data.name} — RoboScore ${data.robo_score}/100 | Robotomated`,
+      description: data.description_short || `Independent review of ${data.name}`,
+      type: "website",
       images: [`/api/og/robot/${slug}`],
     },
     twitter: {
       card: "summary_large_image",
+      title: `${data.name} — RoboScore ${data.robo_score}/100`,
+      description: data.description_short || `Independent review of ${data.name}`,
       images: [`/api/og/robot/${slug}`],
     },
   };
@@ -143,7 +147,7 @@ export default async function RobotDetailPage({ params }: Props) {
   });
   if (!robot) notFound();
 
-  const [reviews, priceHistory, similarData] = await Promise.all([
+  const [reviews, priceHistory, similarData, bestAlternatives] = await Promise.all([
     cached<ReviewRow[]>(`robot:${slug}:reviews`, 1800, async () => {
       const { data } = await supabase.from("reviews").select("id, review_type, title, body, robo_score, score_breakdown, pros, cons, verdict, verified_purchase, published_at, users(name)")
         .eq("robot_id", robot.id).not("published_at", "is", null).order("published_at", { ascending: false }).returns<ReviewRow[]>();
@@ -160,6 +164,20 @@ export default async function RobotDetailPage({ params }: Props) {
         .order("robo_score", { ascending: false, nullsFirst: false }).limit(3).returns<SimilarRobot[]>();
       return data || [];
     }),
+    // Best alternatives: same category, similar price range
+    cached<SimilarRobot[]>(`robot:${slug}:alts`, 3600, async () => {
+      const priceLow = robot.price_current != null ? Math.round(robot.price_current * 0.5) : 0;
+      const priceHigh = robot.price_current != null ? Math.round(robot.price_current * 2.0) : 999999999;
+      let query = supabase.from("robots")
+        .select("id, slug, name, robo_score, price_current, description_short, images, manufacturers(name), robot_categories(slug)")
+        .eq("category_id", robot.category_id).neq("id", robot.id).eq("status", "active");
+      if (robot.price_current != null) {
+        query = query.gte("price_current", priceLow).lte("price_current", priceHigh);
+      }
+      const { data } = await query
+        .order("robo_score", { ascending: false, nullsFirst: false }).limit(3).returns<SimilarRobot[]>();
+      return data || [];
+    }),
   ]);
 
   const breakdown = robot.score_breakdown as RoboScoreBreakdown | null;
@@ -172,6 +190,16 @@ export default async function RobotDetailPage({ params }: Props) {
   const similar = similarData;
 
   const hasRealImage = robotImages.length > 0 && robotImages[0].url && !robotImages[0].url.includes("unsplash");
+
+  // Editorial verdict
+  const verdict = generateVerdict({
+    name: robot.name,
+    robo_score: robot.robo_score,
+    price_current: robot.price_current,
+    category_name: cat?.slug || "",
+    manufacturer_name: mfr?.name || "Unknown",
+    specs: specs,
+  });
 
   // Spec grouping for full specs table
   const specGroups = groupSpecs(specs);
@@ -210,6 +238,34 @@ export default async function RobotDetailPage({ params }: Props) {
 
   return (
     <div className="bg-obsidian">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: robot.name,
+            description: robot.description_short || `${robot.name} by ${mfr?.name || "Unknown"}`,
+            brand: { "@type": "Brand", name: mfr?.name || "Unknown" },
+            ...(robot.price_current && {
+              offers: {
+                "@type": "Offer",
+                price: robot.price_current,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+              },
+            }),
+            ...(robot.robo_score && {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: (robot.robo_score / 10).toFixed(1),
+                bestRating: "10",
+                ratingCount: "1",
+              },
+            }),
+          }),
+        }}
+      />
       <TrackView slug={robot.slug} category={cat?.slug || categorySlug} name={robot.name} />
       <AskAiButton robotName={robot.name} />
       <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} score={robot.robo_score} categorySlug={categorySlug} model={robot.model_number} status={robot.status} />
@@ -432,6 +488,153 @@ export default async function RobotDetailPage({ params }: Props) {
               </section>
             )}
 
+            {/* Robotomated Verdict */}
+            <section className="border-t border-border pt-6">
+              <div className="section-label mb-3">
+                <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] ROBOTOMATED VERDICT</span>
+              </div>
+              <div className="rounded-md border border-border border-l-2 border-l-[#2563EB] bg-obsidian-surface p-5">
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  {verdict.verdict}
+                </p>
+              </div>
+            </section>
+
+            {/* Who This Robot Is For */}
+            <section className="border-t border-border pt-6">
+              <div className="section-label mb-3">
+                <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] WHO THIS ROBOT IS FOR</span>
+              </div>
+              <div className="rounded-md border border-border bg-obsidian-surface p-5">
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  {verdict.whoNeedsThis}
+                </p>
+              </div>
+            </section>
+
+            {/* Who Should Look Elsewhere */}
+            <section className="border-t border-border pt-6">
+              <div className="section-label mb-3">
+                <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] WHO SHOULD LOOK ELSEWHERE</span>
+              </div>
+              <div className="rounded-md border border-border bg-obsidian-surface p-5">
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  {verdict.whoDoesnt}
+                </p>
+              </div>
+            </section>
+
+            {/* Best Alternatives */}
+            {bestAlternatives.length > 0 && (
+              <section className="border-t border-border pt-6">
+                <div className="section-label mb-3">
+                  <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] BEST ALTERNATIVES</span>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {bestAlternatives.map((alt) => {
+                    const altCatSlug = (alt.robot_categories as { slug: string } | null)?.slug || categorySlug;
+                    const altMfr = (alt.manufacturers as { name: string } | null)?.name || "";
+                    return (
+                      <Link
+                        key={alt.id}
+                        href={`/explore/${altCatSlug}/${alt.slug}`}
+                        className="group rounded-md border border-border bg-obsidian-surface p-4 transition-all hover:border-[#2563EB]/30"
+                      >
+                        <p className="font-mono text-[11px] uppercase tracking-widest text-text-ghost">{altMfr}</p>
+                        <h4 className="mt-1 text-sm font-semibold text-text-primary transition-colors group-hover:text-[#2563EB]">
+                          {alt.name}
+                        </h4>
+                        <div className="mt-2 flex items-center justify-between">
+                          <span className="font-mono text-[13px] font-bold text-text-secondary">
+                            {alt.price_current != null ? fmtPrice(alt.price_current) : "RFQ"}
+                          </span>
+                          {alt.robo_score != null && alt.robo_score > 0 && (
+                            <RoboScoreBadge score={alt.robo_score} />
+                          )}
+                        </div>
+                        {alt.description_short && (
+                          <p className="mt-2 line-clamp-2 text-xs text-text-tertiary">
+                            {alt.description_short}
+                          </p>
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            {/* Deployment Checklist */}
+            {(robot.deployment_weeks_min != null || robot.floor_space_sqft != null || robot.power_requirements != null || (robot.safety_certifications && robot.safety_certifications.length > 0) || robot.operator_training_hours != null) && (
+              <section className="border-t border-border pt-6">
+                <div className="section-label mb-3">
+                  <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] DEPLOYMENT CHECKLIST</span>
+                </div>
+                <div className="rounded-md border border-border bg-obsidian-surface p-5">
+                  <p className="mb-4 text-xs text-text-ghost">
+                    Key requirements before deploying the {robot.name}.
+                  </p>
+                  <ul className="space-y-3">
+                    {robot.deployment_weeks_min != null && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border bg-obsidian font-mono text-[10px] text-text-ghost">1</span>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Deployment Timeline</p>
+                          <p className="text-xs text-text-secondary">
+                            Plan for {robot.deployment_weeks_min}{robot.deployment_weeks_max ? `-${robot.deployment_weeks_max}` : ""} weeks from order to operational status.
+                          </p>
+                        </div>
+                      </li>
+                    )}
+                    {robot.floor_space_sqft != null && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border bg-obsidian font-mono text-[10px] text-text-ghost">2</span>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Floor Space</p>
+                          <p className="text-xs text-text-secondary">
+                            Minimum {robot.floor_space_sqft.toLocaleString()} sq ft of clear operational area required.
+                          </p>
+                        </div>
+                      </li>
+                    )}
+                    {robot.power_requirements != null && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border bg-obsidian font-mono text-[10px] text-text-ghost">3</span>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Power Requirements</p>
+                          <p className="text-xs text-text-secondary">
+                            {robot.power_requirements}. Verify your facility can supply this before ordering.
+                          </p>
+                        </div>
+                      </li>
+                    )}
+                    {robot.safety_certifications && robot.safety_certifications.length > 0 && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border bg-obsidian font-mono text-[10px] text-text-ghost">4</span>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Required Certifications</p>
+                          <p className="text-xs text-text-secondary">
+                            {robot.safety_certifications.join(", ")}. Confirm your facility meets these compliance requirements.
+                          </p>
+                        </div>
+                      </li>
+                    )}
+                    {robot.operator_training_hours != null && (
+                      <li className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-border bg-obsidian font-mono text-[10px] text-text-ghost">5</span>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Operator Training</p>
+                          <p className="text-xs text-text-secondary">
+                            Budget {robot.operator_training_hours} hours of training per operator before deployment.
+                          </p>
+                        </div>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </section>
+            )}
+
             {/* Full Review */}
             {expertReviews.length > 0 && (
               <section className="border-t border-border pt-6">
@@ -505,6 +708,11 @@ export default async function RobotDetailPage({ params }: Props) {
                                   <span className="font-mono text-text-primary">{fmtVal(value)}</span>
                                   {specTranslation(key, value) && (
                                     <span className="ml-2 text-xs text-white/45"> — {specTranslation(key, value)}</span>
+                                  )}
+                                  {translateSpec(key, value) && (
+                                    <span style={{ fontSize: "0.78rem", color: "rgba(240,244,255,0.45)", display: "block", marginTop: 2 }}>
+                                      {translateSpec(key, value)}
+                                    </span>
                                   )}
                                 </td>
                               </tr>
@@ -1029,6 +1237,29 @@ function specTranslation(key: string, value: unknown): string | null {
       return s === "true" || s === "yes" ? "Safe to work alongside humans without safety caging" : "Requires safety fencing or separation monitoring";
     case "charge_time_hrs":
       return v <= 1 ? "Fast charge — minimal downtime" : v <= 3 ? "Standard charge time" : "Extended charge — plan for overnight";
+    default:
+      return null;
+  }
+}
+
+function translateSpec(key: string, value: unknown): string | null {
+  const num = typeof value === "number" ? value : parseFloat(String(value));
+  if (isNaN(num)) return null;
+  switch (key) {
+    case "payload_kg":
+      if (num < 1) return "handles light assembly and inspection tasks";
+      if (num <= 5) return "handles most pick-and-place and assembly tasks";
+      if (num <= 20) return "handles heavy parts and pallets for most operations";
+      return "handles industrial heavy loads and large components";
+    case "repeatability_mm":
+      if (num < 0.05) return "sub-human precision — suitable for surgical and microelectronics";
+      if (num <= 0.5) return "high precision — suitable for assembly and quality inspection";
+      if (num <= 2) return "standard precision — suitable for most manufacturing tasks";
+      return "general purpose — suitable for material handling and logistics";
+    case "battery_hrs":
+      if (num < 4) return "short shifts — requires charging mid-shift";
+      if (num <= 8) return "standard shift — covers most work shifts without recharging";
+      return "extended operation — full shift plus with charge to spare";
     default:
       return null;
   }
