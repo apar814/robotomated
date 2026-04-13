@@ -26,12 +26,18 @@ const STORAGE_KEY = "robotomated-advisor-history";
 const MAX_STORED_MESSAGES = 20;
 
 const STARTER_PROMPTS = [
-  { label: "I have $150K and need to automate my warehouse. Where do I start?", icon: "warehouse" },
-  { label: "Is Boston Dynamics Spot actually worth $74,500?", icon: "consumer" },
-  { label: "What\u2019s the cheapest robot that can replace a security guard?", icon: "cobot" },
-  { label: "I\u2019m a forklift operator. Will robots take my job?", icon: "warehouse" },
-  { label: "Help me build a CFO-ready business case for AMR deployment", icon: "manufacturing" },
-  { label: "What\u2019s actually happening in humanoid robotics right now?", icon: "medical" },
+  "I have $150K and need to automate my warehouse. Where do I start?",
+  "Is Boston Dynamics Spot actually worth $74,500?",
+  "What\u2019s the cheapest robot that can replace a security guard?",
+  "I\u2019m a forklift operator. Will robots take my job?",
+  "Build me a CFO-ready business case for AMR deployment",
+  "What\u2019s actually happening in humanoid robotics right now?",
+];
+
+const DEFAULT_FOLLOWUPS = [
+  "What does this cost to deploy?",
+  "Which alternative should I consider?",
+  "How long does deployment take?",
 ];
 
 /** Extract follow-up question suggestions from Robotimus responses */
@@ -287,9 +293,10 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
 
   const showStarters = messages.length === 0 && !initialMessage;
   const lastMessage = messages[messages.length - 1];
-  const followUps = lastMessage?.role === "assistant" && !streaming
+  const extracted = lastMessage?.role === "assistant" && !streaming
     ? extractFollowUps(lastMessage.content)
     : [];
+  const followUps = extracted.length > 0 ? extracted : (lastMessage?.role === "assistant" && !streaming ? DEFAULT_FOLLOWUPS : []);
 
   return (
     <div className="flex h-full flex-col bg-[#0A0F1E]">
@@ -322,15 +329,27 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               <p className="mt-3 max-w-md text-sm text-white/50">
                 Tell me what you need and I&apos;ll recommend the perfect robot. I know every robot in our database and I&apos;ll tell you straight whether to buy, lease, or hire.
               </p>
-              <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {STARTER_PROMPTS.map((prompt) => (
                   <button
-                    key={prompt.label}
-                    onClick={() => sendMessage(prompt.label)}
-                    className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-left text-sm text-white/50 transition-all hover:border-[#2563EB]/30 hover:bg-white/[0.04] hover:text-white/80"
+                    key={prompt}
+                    onClick={() => sendMessage(prompt)}
+                    className="w-full rounded-[10px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(37,99,235,0.3)] hover:bg-[rgba(14,18,38,0.95)]"
+                    style={{
+                      background: "rgba(10,12,28,0.9)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      padding: "1rem 1.25rem",
+                    }}
                   >
-                    <PromptIcon type={prompt.icon} />
-                    <span>{prompt.label}</span>
+                    <span style={{
+                      fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                      fontWeight: 700,
+                      fontSize: "0.88rem",
+                      color: "#F0F4FF",
+                      lineHeight: 1.4,
+                    }}>
+                      {prompt}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -359,21 +378,34 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 </div>
               )}
               <div
-                className={cn(
-                  "max-w-[85%] rounded-2xl px-4 py-3 text-sm",
-                  msg.role === "user"
-                    ? "bg-[#2563EB] text-white"
-                    : "bg-white/[0.04] text-white/90"
-                )}
+                style={msg.role === "user"
+                  ? {
+                      background: "#2563EB",
+                      borderRadius: "12px 12px 4px 12px",
+                      padding: "0.85rem 1.25rem",
+                      color: "#FFFFFF",
+                      maxWidth: "75%",
+                      fontSize: "0.92rem",
+                    }
+                  : {
+                      background: "linear-gradient(160deg, rgba(10,12,28,0.95) 0%, rgba(6,8,20,0.98) 100%)",
+                      border: "1px solid rgba(255,255,255,0.07)",
+                      borderRadius: "12px 12px 12px 4px",
+                      padding: "1.25rem 1.5rem",
+                      color: "rgba(240,244,255,0.88)",
+                      maxWidth: "85%",
+                      fontSize: "0.92rem",
+                    }
+                }
               >
                 {msg.role === "user" ? (
                   <p className="whitespace-pre-wrap">{msg.content}</p>
                 ) : streaming && i === messages.length - 1 ? (
                   /* During streaming: render raw text only — no markdown parsing on partial content */
-                  <>
-                    <p style={{ whiteSpace: "pre-wrap", color: "rgba(240,244,255,0.9)", lineHeight: 1.65, fontSize: "0.9rem" }}>{msg.content}</p>
-                    <TypingIndicator />
-                  </>
+                  <div style={{ fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif", fontSize: "0.92rem", fontWeight: 500, lineHeight: 1.7, color: "rgba(240,244,255,0.9)", whiteSpace: "pre-wrap" }}>
+                    {msg.content}
+                    <span style={{ display: "inline-block", width: 2, height: "1em", background: "#2563EB", marginLeft: 2, verticalAlign: "text-bottom", animation: "blink 1s step-end infinite" }} />
+                  </div>
                 ) : (
                   /* After streaming complete: render with markdown + robot cards */
                   <MessageContent content={msg.content} enriched={enrichedRobots} />
@@ -389,7 +421,19 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-white/50 transition-all hover:border-[#2563EB]/30 hover:text-white/80"
+                  className="transition-all hover:bg-[rgba(37,99,235,0.15)]"
+                  style={{
+                    background: "rgba(37,99,235,0.08)",
+                    border: "1px solid rgba(37,99,235,0.25)",
+                    color: "#60A5FA",
+                    fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                    fontWeight: 600,
+                    fontSize: "0.78rem",
+                    padding: "0.4rem 0.85rem",
+                    borderRadius: 20,
+                    cursor: "pointer",
+                    minHeight: "auto",
+                  }}
                 >
                   {q}
                 </button>
@@ -422,8 +466,19 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
           )}
 
           {error && (
-            <div className="mb-4 rounded-lg border border-red-500/20 bg-red-500/5 p-3 text-center text-sm text-red-400">
-              {error}
+            <div style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)", borderRadius: 10, padding: "1rem 1.25rem", marginBottom: "1rem" }}>
+              <p style={{ fontSize: "0.88rem", fontWeight: 600, color: "#F87171" }}>
+                Robotimus is thinking hard about that one.
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "rgba(240,244,255,0.5)", marginTop: "0.25rem" }}>
+                Try again in a moment.
+              </p>
+              <button
+                onClick={() => { setError(""); if (messages.length > 0) { const lastUser = [...messages].reverse().find(m => m.role === "user"); if (lastUser) sendMessage(lastUser.content); } }}
+                style={{ marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 700, color: "#60A5FA", background: "none", border: "none", cursor: "pointer", padding: 0, textTransform: "uppercase", letterSpacing: "0.08em", minHeight: "auto", minWidth: "auto" }}
+              >
+                Try Again
+              </button>
             </div>
           )}
 
@@ -473,30 +528,36 @@ function hasRobotCards(content: string): boolean {
   return content.includes(":::robot{");
 }
 
-/** Animated typing indicator */
-function TypingIndicator() {
-  return (
-    <span className="ml-1 inline-flex items-center gap-0.5">
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "0ms" }} />
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "150ms" }} />
-      <span className="inline-block h-1.5 w-1.5 animate-bounce rounded-full bg-[#2563EB]" style={{ animationDelay: "300ms" }} />
-    </span>
-  );
-}
+/* TypingIndicator removed — streaming now shows blinking cursor inline */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const mdComponents = {
-  p: ({ children }: any) => <p style={{ marginBottom: "0.65rem", lineHeight: 1.65, color: "rgba(240,244,255,0.9)", fontSize: "0.9rem" }}>{children}</p>,
+  p: ({ children }: any) => <p style={{ marginBottom: "0.7rem", lineHeight: 1.7, color: "rgba(240,244,255,0.88)", fontSize: "0.92rem", fontWeight: 500 }}>{children}</p>,
   strong: ({ children }: any) => <strong style={{ fontWeight: 700, color: "#F0F4FF" }}>{children}</strong>,
-  em: ({ children }: any) => <em style={{ color: "rgba(240,244,255,0.85)" }}>{children}</em>,
-  h2: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "#F0F4FF", marginBottom: "0.4rem", marginTop: "0.85rem" }}>{children}</p>,
-  h3: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "0.88rem", color: "#F0F4FF", marginBottom: "0.3rem", marginTop: "0.65rem" }}>{children}</p>,
-  ul: ({ children }: any) => <ul style={{ marginLeft: "1.1rem", marginBottom: "0.65rem", listStyleType: "disc" }}>{children}</ul>,
-  ol: ({ children }: any) => <ol style={{ marginLeft: "1.1rem", marginBottom: "0.65rem", listStyleType: "decimal" }}>{children}</ol>,
-  li: ({ children }: any) => <li style={{ marginBottom: "0.25rem", lineHeight: 1.6, color: "rgba(240,244,255,0.85)" }}>{children}</li>,
+  em: ({ children }: any) => <em style={{ color: "rgba(240,244,255,0.8)", fontStyle: "italic" }}>{children}</em>,
+  h1: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "1.1rem", color: "#F0F4FF", marginBottom: "0.5rem", marginTop: "1rem" }}>{children}</p>,
+  h2: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "1rem", color: "#F0F4FF", marginBottom: "0.4rem", marginTop: "0.9rem" }}>{children}</p>,
+  h3: ({ children }: any) => <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "#F0F4FF", marginBottom: "0.35rem", marginTop: "0.75rem" }}>{children}</p>,
+  ul: ({ children }: any) => <ul style={{ marginLeft: "1.25rem", marginBottom: "0.7rem", listStyleType: "disc" }}>{children}</ul>,
+  ol: ({ children }: any) => <ol style={{ marginLeft: "1.25rem", marginBottom: "0.7rem", listStyleType: "decimal" }}>{children}</ol>,
+  li: ({ children }: any) => <li style={{ marginBottom: "0.3rem", lineHeight: 1.65, color: "rgba(240,244,255,0.85)", fontSize: "0.92rem" }}>{children}</li>,
   hr: () => <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.1)", margin: "0.85rem 0" }} />,
-  code: ({ children }: any) => <code style={{ background: "rgba(255,255,255,0.08)", padding: "0.15rem 0.35rem", borderRadius: "3px", fontSize: "0.82rem", color: "#60A5FA" }}>{children}</code>,
+  code: ({ children, className }: any) => {
+    const isBlock = className?.includes("language-");
+    if (isBlock) {
+      return (
+        <pre style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 6, padding: "0.75rem 1rem", overflowX: "auto", margin: "0.75rem 0" }}>
+          <code style={{ fontSize: "0.82rem", color: "#60A5FA", fontFamily: "monospace" }}>{children}</code>
+        </pre>
+      );
+    }
+    return <code style={{ background: "rgba(255,255,255,0.08)", padding: "0.1rem 0.35rem", borderRadius: 3, fontSize: "0.85rem", color: "#60A5FA", fontFamily: "monospace" }}>{children}</code>;
+  },
   blockquote: ({ children }: any) => <blockquote style={{ borderLeft: "2px solid #2563EB", paddingLeft: "1rem", margin: "0.5rem 0", color: "rgba(240,244,255,0.65)" }}>{children}</blockquote>,
+  a: ({ children, href }: any) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: "#60A5FA", textDecoration: "underline" }}>{children}</a>,
+  table: ({ children }: any) => <div style={{ overflowX: "auto", margin: "0.75rem 0" }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>{children}</table></div>,
+  th: ({ children }: any) => <th style={{ padding: "0.5rem 0.75rem", background: "rgba(37,99,235,0.15)", color: "#F0F4FF", fontWeight: 700, textAlign: "left", borderBottom: "1px solid rgba(37,99,235,0.3)" }}>{children}</th>,
+  td: ({ children }: any) => <td style={{ padding: "0.5rem 0.75rem", color: "rgba(240,244,255,0.75)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>{children}</td>,
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
@@ -528,41 +589,4 @@ function MessageContent({ content, enriched }: { content: string; enriched: Reco
   );
 }
 
-/** Small icon for prompt chips */
-function PromptIcon({ type }: { type: string }) {
-  const cls = "h-5 w-5 shrink-0 text-[#60A5FA]/50 group-hover:text-[#60A5FA] transition-colors";
-  switch (type) {
-    case "warehouse":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path d="M3 21V8l9-5 9 5v13" /><rect x="7" y="13" width="4" height="8" /><rect x="13" y="13" width="4" height="8" />
-        </svg>
-      );
-    case "medical":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path d="M12 2v20M2 12h20" strokeLinecap="round" />
-        </svg>
-      );
-    case "manufacturing":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path d="M4 20h16M6 20V10l4 3V7l4 3V4l4 3v13" />
-        </svg>
-      );
-    case "consumer":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <rect x="4" y="4" width="16" height="12" rx="2" /><circle cx="9" cy="10" r="1.5" /><circle cx="15" cy="10" r="1.5" /><path d="M8 20h8 M10 16v4 M14 16v4" />
-        </svg>
-      );
-    case "cobot":
-      return (
-        <svg className={cls} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
+/* PromptIcon removed — starters now use text-only cards */

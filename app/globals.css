@@ -781,7 +781,11 @@ html {
 }
 
 /* Blinking cursor for terminal-style text */
-/* blink-cursor removed — was causing flicker on hero eyebrow */
+/* Blink cursor for chat streaming */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* Data readout style */
 .data-readout {
