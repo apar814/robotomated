@@ -9,11 +9,16 @@ export const metadata: Metadata = {
 
 export default function FindMyRobotPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
-        [ ROBOT FINDER ]
-      </p>
-      <FindMyRobotWizard />
+    <div
+      className="min-h-screen"
+      style={{ background: "var(--theme-bg)" }}
+    >
+      <div className="mx-auto max-w-4xl px-4 py-12">
+        <p className="mb-6 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          [ ROBOT FINDER ]
+        </p>
+        <FindMyRobotWizard />
+      </div>
     </div>
   );
 }

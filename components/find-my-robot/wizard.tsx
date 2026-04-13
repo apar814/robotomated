@@ -218,12 +218,12 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
         {Array.from({ length: total }, (_, i) => (
           <div key={i} className="flex flex-col items-center">
             <div
-              className={`flex h-7 w-7 items-center justify-center rounded-full border text-xs font-mono transition-colors duration-300 ${
+              className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-mono font-bold transition-colors duration-300 ${
                 i + 1 < step
-                  ? "border-[#00E5A0] bg-[#00E5A0]/10 text-[#00E5A0]"
+                  ? "bg-[#2563EB] text-white border border-[#2563EB]"
                   : i + 1 === step
-                  ? "border-[#00C2FF] bg-[#00C2FF]/10 text-[#00C2FF]"
-                  : "border-white/10 text-white/45"
+                  ? "bg-[#2563EB] text-white border border-[#2563EB]"
+                  : "border border-white/10 text-white/45"
               }`}
             >
               {i + 1 < step ? "\u2713" : i + 1}
@@ -248,10 +248,13 @@ function StepProblem({
 }) {
   return (
     <div>
-      <h2 className="mb-2 text-2xl font-bold font-display text-white sm:text-3xl">
+      <h2
+        className="mb-2 font-display"
+        style={{ fontSize: "1.8rem", fontWeight: 700, color: "#F0F4FF", letterSpacing: "-0.02em" }}
+      >
         What problem are you trying to solve?
       </h2>
-      <p className="mb-8 text-sm text-text-muted">
+      <p className="mb-8 text-sm" style={{ color: "rgba(240,244,255,0.5)" }}>
         Select the task you need automated. This helps us narrow the right category.
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -757,10 +760,16 @@ export function FindMyRobotWizard() {
     <div className="min-h-[60vh]">
       {/* Header */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold font-display text-white sm:text-4xl">
+        <h1
+          className="font-display font-bold"
+          style={{ fontSize: "2.2rem", color: "#F0F4FF", letterSpacing: "-0.02em" }}
+        >
           Find Your Robot
         </h1>
-        <p className="mt-2 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-text-muted">
+        <p
+          className="mt-2 font-[family-name:var(--font-ui)]"
+          style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(240,244,255,0.45)" }}
+        >
           5 questions. Personalized recommendations. No signup required.
         </p>
       </div>
