@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 
 const ACTIVITIES = [
-  "A logistics manager in Chicago just compared 3 AMRs",
-  "A warehouse in Dallas just posted a RoboWork job",
-  "An operations director is evaluating surgical robots",
-  "A manufacturer in Detroit just ran a TCO analysis",
-  "Someone started RCO Level 1 certification",
-  "A hospital in Boston is comparing delivery robots",
-  "An RSP in Atlanta just submitted a bid on a cleaning job",
-  "47 people are browsing warehouse robots right now",
+  "A logistics manager in Phoenix just compared 3 AMRs",
+  "Someone in Chicago just posted a RoboWork pallet moving job",
+  "A warehouse operator just earned RCO Foundation certification",
+  "47 people browsing warehouse robots right now",
+  "A manufacturer just requested Spot pricing",
+  "Someone just asked Robotimus about humanoid robots",
+  "A hospital in Boston is evaluating delivery robots",
+  "12 new robots added to the database this week",
 ];
 
 export function LiveActivity() {
@@ -32,12 +32,18 @@ export function LiveActivity() {
     <div className="border-b px-6 py-2.5" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
       <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
         <span
-          className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"
-          style={{ animation: "pulse 2s infinite" }}
+          className="inline-block shrink-0 rounded-full animate-pulse-live"
+          style={{ width: 6, height: 6, background: "#22C55E" }}
         />
         <p
-          className="text-[0.75rem] font-medium tracking-wide transition-opacity duration-300"
-          style={{ color: "var(--theme-text-muted)", opacity: visible ? 1 : 0 }}
+          className="transition-opacity duration-300"
+          style={{
+            fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+            fontWeight: 600,
+            fontSize: "0.78rem",
+            color: "rgba(240,244,255,0.5)",
+            opacity: visible ? 1 : 0,
+          }}
         >
           {ACTIVITIES[index]}
         </p>

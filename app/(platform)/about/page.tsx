@@ -546,6 +546,52 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ CONTACT ═══ */}
+      <section className="border-t px-6 py-20" style={{ borderColor: "var(--theme-border)" }}>
+        <div className="mx-auto max-w-4xl text-center">
+          <p
+            className="mb-3 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em]"
+            style={{ color: "var(--theme-accent-blue)" }}
+          >
+            Get in Touch
+          </p>
+          <h2
+            className="font-display text-2xl font-bold sm:text-3xl"
+            style={{ color: "var(--theme-text-primary)" }}
+          >
+            We build in the open.
+          </h2>
+          <p
+            className="mx-auto mt-4 max-w-lg text-base leading-relaxed"
+            style={{ color: "var(--theme-text-secondary)" }}
+          >
+            Robotomated is an independent, distributed team based in the USA. We
+            don&apos;t take manufacturer money for scores or placement. If you have
+            questions, feedback, or partnership inquiries, reach out.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-6">
+            <a
+              href="mailto:team@robotomated.com"
+              className="font-[family-name:var(--font-ui)] text-sm font-semibold transition-colors hover:text-[#2563EB]"
+              style={{ color: "var(--theme-text-primary)" }}
+            >
+              team@robotomated.com
+            </a>
+            <span className="hidden sm:inline" style={{ color: "var(--theme-text-muted)" }}>&middot;</span>
+            <a
+              href="mailto:press@robotomated.com"
+              className="font-[family-name:var(--font-ui)] text-sm font-semibold transition-colors hover:text-[#2563EB]"
+              style={{ color: "var(--theme-text-primary)" }}
+            >
+              press@robotomated.com
+            </a>
+          </div>
+          <p className="mt-4 text-xs" style={{ color: "var(--theme-text-muted)" }}>
+            Distributed team, USA &middot; Independent since 2026
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

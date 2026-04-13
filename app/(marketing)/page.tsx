@@ -335,11 +335,20 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
-                <span className="inline-block h-px w-8 bg-[#2563EB]" />
-                The Abundance Equation
-              </p>
-              <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(24px, 3vw, 40px)" }}>
+              {/* Display text treatment */}
+              <div style={{ marginBottom: "2rem" }}>
+                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#F0F4FF", letterSpacing: "-0.03em" }}>
+                  THE WORLD IS
+                </p>
+                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", WebkitTextStroke: "1.5px rgba(240,244,255,0.4)", color: "transparent" }}>
+                  GOING TO RUN
+                </p>
+                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#60A5FA", letterSpacing: "-0.03em" }}>
+                  ON ROBOTS.
+                </p>
+              </div>
+
+              <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}>
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
               <p className="mt-4 text-sm text-white/50">-- Brett Adcock, Founder &amp; CEO, Figure AI</p>
