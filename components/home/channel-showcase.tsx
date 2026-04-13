@@ -40,7 +40,7 @@ const CHANNELS: Channel[] = [
     tagline: "Buy or lease the right robot.",
     bullets: [
       "Purchase outright from manufacturers",
-      "Lease from $X,XXX/month",
+      "Lease from $1,500/month",
       "Certified pre-owned at 40-60% off",
       "AI-matched to your operation",
     ],

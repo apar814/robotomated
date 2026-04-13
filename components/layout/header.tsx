@@ -31,7 +31,7 @@ const exploreNeeds = [
 
 const acquireItems = [
   { href: "/explore", title: "Buy a Robot", desc: "Research and purchase outright", color: "#2563EB" },
-  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $X,XXX/mo", color: "#2563EB" },
+  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $1,500/mo", color: "#2563EB" },
   { href: "/cpo", title: "Certified Pre-Owned", desc: "Verified robots at 40-60% off new", color: "#2563EB" },
   { href: "/find-my-robot", title: "Find My Robot", desc: "Answer 5 questions, get matched", color: "#2563EB" },
   { href: "/lease/quote", title: "Lease Calculator", desc: "Estimate your monthly payment", color: "#2563EB", divider: true },
