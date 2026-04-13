@@ -70,10 +70,12 @@ export function OpportunityBanner() {
           {CARDS.map((card) => (
             <div
               key={card.title}
-              className="rounded-xl border p-6"
+              className="rounded-xl p-6"
               style={{
-                background: "var(--theme-card)",
-                borderColor: "var(--theme-border)",
+                background: "linear-gradient(145deg, rgba(12,16,32,0.9) 0%, rgba(6,8,18,0.95) 100%)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderBottom: "2px solid transparent",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
               }}
             >
               <div
@@ -84,7 +86,7 @@ export function OpportunityBanner() {
               </div>
               <p
                 className="font-[family-name:var(--font-brand)] text-3xl font-bold"
-                style={{ color: "var(--theme-accent-blue)" }}
+                style={{ color: "#60A5FA", textShadow: "0 0 40px rgba(37,99,235,0.25)" }}
               >
                 {card.stat}
               </p>
@@ -107,9 +109,9 @@ export function OpportunityBanner() {
         <div className="mt-8">
           <Link
             href="/certify"
-            className="inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5"
+            className="btn-glow inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-all"
             style={{
-              background: "var(--theme-accent-blue)",
+              background: "#2563EB",
               color: "#fff",
             }}
           >

@@ -105,7 +105,7 @@ function YouTubeIcon() {
 
 export function Footer() {
   return (
-    <footer className="dark bg-[#080808]">
+    <footer className="dark" style={{ background: "linear-gradient(180deg, rgba(4,6,14,0.98) 0%, #020209 100%)", borderTop: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}>
       {/* Top divider with gradient fade */}
       <div className="mx-auto h-px max-w-7xl bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 

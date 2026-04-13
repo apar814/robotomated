@@ -33,6 +33,7 @@ function getScoreColor(score: number): string {
 }
 
 function getScoreBg(score: number): string {
+  if (score >= 90) return "rgba(37,99,235,0.15)";
   if (score >= 80) return "#2563EB";
   if (score >= 70) return "rgba(37,99,235,0.15)";
   return "rgba(220,38,38,0.1)";
@@ -45,9 +46,15 @@ function getScoreBorder(score: number): string {
 }
 
 function getScoreText(score: number): string {
+  if (score >= 90) return "#60A5FA";
   if (score >= 80) return "#FFFFFF";
   if (score >= 70) return "#60A5FA";
   return "#F87171";
+}
+
+function getScoreGlow(score: number): string {
+  if (score >= 90) return "0 0 12px rgba(37,99,235,0.15)";
+  return "none";
 }
 
 function getKeySpec(specs: Record<string, unknown> | null): { label: string; value: string } | null {
@@ -77,7 +84,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
   const sectorCode = SECTOR_CODES[robot.category_slug];
 
   return (
-    <div className="group flex cursor-pointer flex-col rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-200 ease-out hover:-translate-y-[3px] hover:border-[rgba(37,99,235,0.3)] hover:shadow-[0_0_0_1px_rgba(37,99,235,0.1),0_8px_32px_rgba(0,0,0,0.4)] focus-within:border-[rgba(37,99,235,0.3)] focus-within:shadow-[0_0_0_2px_rgba(37,99,235,0.2)]">
+    <div className="group flex cursor-pointer flex-col overflow-hidden rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] focus-within:border-[rgba(37,99,235,0.3)] focus-within:shadow-[0_0_0_2px_rgba(37,99,235,0.2)]" style={{ background: "linear-gradient(160deg, rgba(12,14,28,0.97) 0%, rgba(8,10,18,0.99) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)" }} onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(37,99,235,0.35)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(37,99,235,0.1), 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(37,99,235,0.08)"; }} onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)"; }}>
       {/* Compare checkbox */}
       {onCompareToggle && (
         <label
@@ -132,6 +139,7 @@ export function RobotCard({ robot, compareSelected, onCompareToggle, compareDisa
                 background: getScoreBg(robot.robo_score),
                 color: getScoreText(robot.robo_score),
                 border: `1px solid ${getScoreBorder(robot.robo_score)}`,
+                boxShadow: getScoreGlow(robot.robo_score),
               }}
             >
               {robot.robo_score}

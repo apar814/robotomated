@@ -370,8 +370,8 @@ export function HeroBackground({ className }: { className?: string }) {
           right: "-50%",
           height: "70%",
           backgroundImage: `
-            linear-gradient(to right, rgba(37,99,235,${0.06 * opacityScale}) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(37,99,235,${0.06 * opacityScale}) 1px, transparent 1px)
+            linear-gradient(to right, rgba(37,99,235,${0.018 * opacityScale}) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(37,99,235,${0.018 * opacityScale}) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
           transform: "perspective(1000px) rotateX(60deg)",

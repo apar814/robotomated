@@ -84,7 +84,7 @@ export function RaaSExplainer() {
           {/* Case Study */}
           <div
             className="rounded-xl p-7"
-            style={{ background: "#0A1628", color: "rgba(255,255,255,0.8)" }}
+            style={{ background: "linear-gradient(160deg, rgba(10,22,40,0.98) 0%, rgba(6,12,28,0.99) 100%)", color: "rgba(255,255,255,0.8)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}
           >
             <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-[#2563EB]">
               Real-World Example

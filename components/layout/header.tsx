@@ -82,7 +82,7 @@ function Chevron({ open }: { open: boolean }) {
 function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClose: () => void }) {
   return (
     <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border p-2 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
-      style={{ borderColor: "var(--theme-border)", background: "var(--theme-card)", animation: "dropIn 150ms ease-out" }}
+      style={{ borderColor: "var(--theme-elevated-border, var(--theme-border))", background: "var(--theme-elevated, var(--theme-card))", animation: "dropIn 150ms ease-out", boxShadow: "var(--theme-elevated-shadow)", backdropFilter: "blur(20px)" }}
     >
       {items.map((item, i) => (
         <div key={item.href}>
@@ -188,7 +188,7 @@ export function Header() {
         {isActive && id === "explore" && (
           <div
             className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
-            style={{ borderColor: "var(--theme-border)", background: "var(--theme-card)", animation: "dropIn 150ms ease-out" }}
+            style={{ borderColor: "var(--theme-elevated-border, var(--theme-border))", background: "var(--theme-elevated, var(--theme-card))", animation: "dropIn 150ms ease-out", boxShadow: "var(--theme-elevated-shadow)", backdropFilter: "blur(20px)" }}
             onMouseEnter={() => handleEnter(id)}
             onMouseLeave={handleLeave}
           >
@@ -293,7 +293,7 @@ export function Header() {
         }
       `}</style>
 
-      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(20px)" }}>
+      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(24px) saturate(180%)", boxShadow: "var(--theme-nav-shadow)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
@@ -354,8 +354,8 @@ export function Header() {
             {/* Robotimus button */}
             <Link
               href="/advisor"
-              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
-              style={{ background: "#2563EB", boxShadow: "0 0 20px rgba(37,99,235,0.4)" }}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
+              style={{ background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)", boxShadow: "0 0 20px rgba(37,99,235,0.35)" }}
             >
               <RobotimusAvatar size={18} />
               Robotimus

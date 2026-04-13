@@ -116,8 +116,15 @@ function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={channel.href}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] p-7 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-white/[0.12]"
-      style={{ borderTop: `2px solid ${channel.accent}` }}
+      className="group relative flex flex-col overflow-hidden rounded-xl p-7 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:shadow-[inset_0_1px_0_rgba(37,99,235,0.08),0_8px_24px_rgba(0,0,0,0.3)]"
+      style={{
+        borderTop: `2px solid ${channel.accent}`,
+        border: `1px solid rgba(255,255,255,0.07)`,
+        borderTopWidth: "2px",
+        borderTopColor: channel.accent,
+        background: "linear-gradient(145deg, rgba(16,20,40,0.95) 0%, rgba(8,10,20,0.98) 100%)",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+      }}
     >
       {/* Glow effect */}
       <div
@@ -137,9 +144,9 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
       {/* Icon wrapper */}
       <div
-        className="relative mb-4 inline-flex rounded-lg p-2.5"
+        className="relative mb-4 inline-flex rounded-[10px] p-2.5"
         style={{
-          background: `${channel.accent}12`,
+          background: `linear-gradient(135deg, ${channel.accent}20 0%, ${channel.accent}08 100%)`,
           border: `1px solid ${channel.accent}25`,
           color: channel.accent,
         }}

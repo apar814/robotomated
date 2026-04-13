@@ -136,7 +136,7 @@ export default async function IntelligencePage() {
   const trendingTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
 
   return (
-    <div style={{ background: "#080808" }}>
+    <div style={{ background: "linear-gradient(180deg, rgba(6,8,24,0.98) 0%, #02020A 100%)" }}>
       {/* Hero */}
       <section className="border-b border-white/[0.06] px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl">
@@ -190,7 +190,7 @@ export default async function IntelligencePage() {
                 {featured.slice(0, 5).map((item) => (
                   <article
                     key={item.url}
-                    className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-6"
+                    className="rounded-xl p-6" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 16px rgba(0,0,0,0.3)" }}
                   >
                     <div className="mb-3 flex items-center gap-2">
                       <span className={`rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
@@ -202,7 +202,7 @@ export default async function IntelligencePage() {
                     <h3 className="text-lg font-bold text-white">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/50">{item.summary}</p>
                     {item.what_it_means && (
-                      <div className="mt-3 rounded-lg border border-[#2563EB]/10 bg-[#2563EB]/[0.03] px-4 py-3">
+                      <div className="mt-3 rounded-lg px-4 py-3" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0.05) 100%)", borderLeft: "2px solid #2563EB" }}>
                         <p className="text-[13px] font-semibold uppercase tracking-wider text-[#2563EB]">What this means</p>
                         <p className="mt-1 text-sm text-white/60">{item.what_it_means}</p>
                       </div>
@@ -228,7 +228,7 @@ export default async function IntelligencePage() {
                 {standard.map((item) => (
                   <article
                     key={item.url}
-                    className="rounded-lg border border-white/[0.04] bg-[#0A0A0A] p-4"
+                    className="rounded-lg p-4" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}
                   >
                     <div className="flex items-start gap-3">
                       <span className={`mt-0.5 shrink-0 rounded-full border px-2 py-0.5 text-[13px] font-semibold ${CATEGORY_COLORS[item.category] || CATEGORY_COLORS.market}`}>
@@ -255,7 +255,7 @@ export default async function IntelligencePage() {
           <div className="w-full space-y-6 lg:w-72">
             {/* Funding summary */}
             {funding.length > 0 && (
-              <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-5">
+              <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(14,18,40,0.95) 0%, rgba(8,10,24,0.98) 100%)", border: "1px solid rgba(37,99,235,0.2)", borderLeft: "3px solid #2563EB", boxShadow: "inset 0 1px 0 rgba(37,99,235,0.06), -4px 0 20px rgba(37,99,235,0.06)" }}>
                 <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#00E5A0]">
                   This Week in Funding
                 </p>
@@ -281,7 +281,7 @@ export default async function IntelligencePage() {
 
             {/* Trending topics */}
             {trendingTags.length > 0 && (
-              <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-5">
+              <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}>
                 <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/50">
                   Trending Topics
                 </p>
@@ -297,7 +297,7 @@ export default async function IntelligencePage() {
             )}
 
             {/* Robotimus CTA */}
-            <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A] p-5">
+            <div className="rounded-xl p-5" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)", border: "1px solid rgba(255,255,255,0.06)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)" }}>
               <p className="text-sm font-semibold text-white">Questions about this week?</p>
               <p className="mt-1 text-xs text-white/50">Robotimus can analyze any item in this feed.</p>
               <Link

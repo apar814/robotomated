@@ -47,7 +47,7 @@ export function CertificationSection() {
 
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* LEFT -- For Professionals */}
-          <div className="rounded-lg border border-border bg-obsidian-surface p-8">
+          <div className="rounded-lg p-8" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.95) 0%, rgba(6,8,16,0.98) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}>
             <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Professionals
             </p>
@@ -101,7 +101,7 @@ export function CertificationSection() {
             <Link
               href="/certify"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5"
-              style={{ background: "#2563EB" }}
+              style={{ background: "#2563EB", boxShadow: "0 0 0 1px rgba(37,99,235,0.5), 0 4px 12px rgba(37,99,235,0.3)" }}
             >
               Start Certification
               <svg
@@ -121,7 +121,7 @@ export function CertificationSection() {
           </div>
 
           {/* RIGHT -- For Businesses */}
-          <div className="rounded-lg border border-border bg-obsidian-surface p-8">
+          <div className="rounded-lg p-8" style={{ background: "linear-gradient(160deg, rgba(10,12,26,0.95) 0%, rgba(6,8,16,0.98) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}>
             <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
               For Businesses
             </p>
@@ -144,13 +144,13 @@ export function CertificationSection() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400">73%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400" style={{ textShadow: "0 0 20px rgba(37,99,235,0.15)" }}>73%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   Certified operators reduce incidents by 73%
                 </p>
               </div>
               <div className="rounded border border-border bg-obsidian-hover px-4 py-4">
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400">+34%</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue-400" style={{ textShadow: "0 0 20px rgba(37,99,235,0.15)" }}>+34%</p>
                 <p className="mt-1 text-[13px] leading-[1.5] text-tertiary">
                   RCO holders earn 34% more on RoboWork
                 </p>

@@ -17,6 +17,10 @@ import { LiveActivity } from "@/components/home/live-activity";
 import { RecentlyViewed } from "@/components/home/recently-viewed";
 import { HeroPills } from "@/components/home/hero-pills";
 import { VideoHero } from "@/components/ui/video-hero";
+import { MarketPulseTicker } from "@/components/home/market-pulse-ticker";
+import { WhyRobotomated } from "@/components/home/why-robotomated";
+import { Typewriter } from "@/components/home/typewriter";
+import { MotionSection } from "@/components/ui/motion-section";
 import type { RobotCategory } from "@/lib/supabase/types";
 
 interface FeaturedRobot {
@@ -91,6 +95,11 @@ export default async function HomePage() {
     <div className="flex flex-col" style={{ background: "var(--theme-bg)" }}>
 
       {/* ══════════════════════════════════════════
+          0. MARKET PULSE TICKER — live market updates
+          ══════════════════════════════════════════ */}
+      <MarketPulseTicker />
+
+      {/* ══════════════════════════════════════════
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
       <VideoHero
@@ -120,6 +129,9 @@ export default async function HomePage() {
               <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
                 Tell us what needs doing. Robotimus will find the right robot, tell you what it costs, and get you deployed.
               </p>
+              <div className="mt-4 h-8 max-w-[480px]">
+                <Typewriter />
+              </div>
 
               {/* Category pills */}
               <div className="mt-8">
@@ -143,7 +155,7 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           2. STATS BAR
           ══════════════════════════════════════════ */}
-      <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)" }}>
+      <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)", background: "rgba(255,255,255,0.02)" }}>
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {[
             { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
@@ -153,7 +165,7 @@ export default async function HomePage() {
           ].map((s, i) => (
             <div key={s.label} className="flex items-center gap-3">
               {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/28">//</span>}
-              <span className="font-[family-name:var(--font-brand)] font-bold text-[var(--theme-accent-blue)]" style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}>{s.value}</span>
+              <span className="font-[family-name:var(--font-brand)] font-bold text-[var(--theme-accent-blue)]" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}>{s.value}</span>
               <span className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
             </div>
           ))}
@@ -181,7 +193,12 @@ export default async function HomePage() {
       <ChannelShowcase />
 
       {/* ══════════════════════════════════════════
-          3.5. TRUST STATEMENT BAR
+          3.5. WHY ROBOTOMATED — Value proposition
+          ══════════════════════════════════════════ */}
+      <WhyRobotomated />
+
+      {/* ══════════════════════════════════════════
+          3.6. TRUST STATEMENT BAR
           ══════════════════════════════════════════ */}
       <div className="border-y px-6 py-5" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
         <p className="mx-auto max-w-4xl text-center text-[0.85rem] font-bold uppercase tracking-[0.08em]" style={{ color: "var(--theme-text-muted)" }}>
@@ -192,7 +209,7 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           5. TRENDING ROBOTS
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-28">
+      <MotionSection as="section" className="px-6 py-28">
         <div className="mx-auto max-w-7xl">
           {/* Section heading — DJI-scale */}
           <h2
@@ -246,7 +263,8 @@ export default async function HomePage() {
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="group block overflow-hidden rounded-xl border border-white/[0.06] bg-[#0D0D0D] transition-all duration-300 hover:-translate-y-1 hover:border-[#2563EB]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                    className="group block overflow-hidden rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px]"
+                    style={{ background: "linear-gradient(160deg, rgba(12,14,28,0.97) 0%, rgba(8,10,18,0.99) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)" }}
                   >
                     {/* Image — 60% of card height */}
                     <div className="relative aspect-[16/10] bg-gradient-to-br from-[#0F1628] to-[#141C33]">
@@ -293,7 +311,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* ══════════════════════════════════════════
           5.5. THE $24T OPPORTUNITY BANNER
@@ -313,7 +331,7 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
-      <section className="border-t border-white/[0.06] px-6 py-32" style={{ background: "#080808" }}>
+      <section className="border-t border-white/[0.06] px-6 py-32" style={{ background: "linear-gradient(180deg, rgba(4,6,14,0.98) 0%, #020209 100%)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
@@ -326,20 +344,20 @@ export default async function HomePage() {
               </blockquote>
               <p className="mt-4 text-sm text-white/50">-- Brett Adcock, Founder &amp; CEO, Figure AI</p>
             </div>
-            <div className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-8">
+            <div className="rounded-xl p-8" style={{ background: "linear-gradient(160deg, rgba(8,10,22,0.98) 0%, rgba(4,6,14,0.99) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.4)" }}>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-white/60">Human labor (fully burdened)</span>
                   <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-white">$46/hour</span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between rounded-md px-3 py-1.5 -mx-3" style={{ background: "rgba(37,99,235,0.06)", borderLeft: "2px solid #2563EB" }}>
                   <span className="font-[family-name:var(--font-ui)] text-sm text-white/60">Robot (leased, amortized)</span>
                   <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#60A5FA]">$0.45/hour</span>
                 </div>
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">
                     <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/80">Cost difference</span>
-                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#2563EB]">100x</span>
+                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#2563EB]" style={{ textShadow: "0 0 30px rgba(37,99,235,0.4)" }}>100×</span>
                   </div>
                 </div>
               </div>
@@ -367,7 +385,7 @@ export default async function HomePage() {
               { value: "137", label: "Humanoid Startups (China Alone)" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-accent-blue)" }}>{s.value}</p>
+                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-accent-blue)", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}>{s.value}</p>
                 <p className="mt-3 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
               </div>
             ))}
