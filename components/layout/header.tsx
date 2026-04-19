@@ -81,8 +81,8 @@ function Chevron({ open }: { open: boolean }) {
 // ── Simple dropdown ──
 function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClose: () => void }) {
   return (
-    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-xl border p-2 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
-      style={{ borderColor: "var(--theme-elevated-border, var(--theme-border))", background: "var(--theme-elevated, var(--theme-card))", animation: "dropIn 150ms ease-out", boxShadow: "var(--theme-elevated-shadow)", backdropFilter: "blur(20px)" }}
+    <div className="hero-grid absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-[14px] border p-2"
+      style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(10,10,10,0.98)", animation: "dropIn 150ms ease-out", boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(14,165,233,0.05)", backdropFilter: "blur(24px)" }}
     >
       {items.map((item, i) => (
         <div key={item.href}>
@@ -90,12 +90,12 @@ function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClos
           <Link
             href={item.href}
             onClick={onClose}
-            className="group flex items-start gap-3 rounded-md px-3 py-2.5 transition-all hover:bg-[var(--theme-tag-bg)]"
+            className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all hover:border-l-2 hover:border-l-[#0EA5E9] hover:bg-[rgba(14,165,233,0.06)]"
           >
-            <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full" style={{ background: item.color }} />
+            <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full" style={{ background: "#0EA5E9" }} />
             <div>
-              <p className="font-[family-name:var(--font-ui)] text-[13px] font-medium" style={{ color: "var(--theme-text-primary)" }}>{item.title}</p>
-              <p className="font-[family-name:var(--font-ui)] text-[11px]" style={{ color: "var(--theme-text-muted)" }}>{item.desc}</p>
+              <p className="font-[family-name:var(--font-ui)] text-[13px] font-medium text-white/90">{item.title}</p>
+              <p className="font-[family-name:var(--font-ui)] text-[11px] text-white/40">{item.desc}</p>
             </div>
           </Link>
         </div>
@@ -177,9 +177,11 @@ export function Header() {
       <div className="relative" onMouseEnter={() => handleEnter(id)} onMouseLeave={handleLeave}>
         <button
           onClick={() => setActiveMenu(isActive ? null : id)}
-          className="flex items-center gap-1.5 rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
-          style={{ color: isActive ? "var(--theme-text-primary)" : "var(--theme-text-secondary)" }}
+          className="relative flex items-center gap-1.5 px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
+          style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.6)" }}
         >
+          {/* Active indicator */}
+          {isActive && <span className="absolute bottom-0 left-1/2 h-[2px] w-full -translate-x-1/2 bg-[#0EA5E9]" style={{ animation: "growWidth 300ms ease forwards" }} />}
           {label}
           <Chevron open={isActive} />
         </button>
@@ -187,22 +189,22 @@ export function Header() {
         {/* Dropdowns */}
         {isActive && id === "explore" && (
           <div
-            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-xl border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
-            style={{ borderColor: "var(--theme-elevated-border, var(--theme-border))", background: "var(--theme-elevated, var(--theme-card))", animation: "dropIn 150ms ease-out", boxShadow: "var(--theme-elevated-shadow)", backdropFilter: "blur(20px)" }}
+            className="hero-grid absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-[14px] border p-6"
+            style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(10,10,10,0.98)", animation: "dropIn 150ms ease-out", boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(14,165,233,0.05)", backdropFilter: "blur(24px)" }}
             onMouseEnter={() => handleEnter(id)}
             onMouseLeave={handleLeave}
           >
             <div className="grid grid-cols-3 gap-6">
               {/* Column 1: By Category */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Category</p>
+                <p className="mb-3 border-b border-white/[0.04] pb-1.5 font-[family-name:var(--font-brand)] text-[8px] uppercase tracking-[0.2em] text-white/20">By Category</p>
                 <div className="space-y-0.5">
                   {exploreCategories.map((cat) => (
                     <Link
                       key={cat.slug}
                       href={`/explore/${cat.slug}`}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(37,99,235,0.08)]"
+                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.06)]"
                     >
                       <NavIcon d={cat.icon} />
                       <span className="text-sm font-semibold text-[var(--theme-text-primary)]">{cat.name}</span>
@@ -216,14 +218,14 @@ export function Header() {
 
               {/* Column 2: By Need */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">By Need</p>
+                <p className="mb-3 border-b border-white/[0.04] pb-1.5 font-[family-name:var(--font-brand)] text-[8px] uppercase tracking-[0.2em] text-white/20">By Need</p>
                 <div className="space-y-0.5">
                   {exploreNeeds.map((need) => (
                     <Link
                       key={need.label}
                       href={need.href}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(37,99,235,0.08)]"
+                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.06)]"
                     >
                       <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563EB]" />
                       <span className="text-sm text-[var(--theme-text-secondary)]">{need.label}</span>
@@ -237,7 +239,7 @@ export function Header() {
 
               {/* Column 3: Featured */}
               <div>
-                <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-[0.15em] text-[var(--theme-text-muted)]">Featured</p>
+                <p className="mb-3 border-b border-white/[0.04] pb-1.5 font-[family-name:var(--font-brand)] text-[8px] uppercase tracking-[0.2em] text-white/20">Featured</p>
                 <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
                   <p className="text-[11px] font-medium uppercase tracking-widest text-[#2563EB]">Robot of the Week</p>
                   <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
@@ -291,15 +293,20 @@ export function Header() {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.7; }
         }
+        @keyframes growWidth {
+          from { width: 0; }
+          to { width: 100%; }
+        }
       `}</style>
 
-      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "var(--theme-nav-border)", background: "var(--theme-nav-bg)", backdropFilter: "blur(24px) saturate(180%)", boxShadow: "var(--theme-nav-shadow)" }}>
+      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "rgba(255,255,255,0.04)", background: "rgba(8,8,8,0.88)", backdropFilter: "blur(24px) saturate(180%)", boxShadow: "var(--theme-nav-shadow)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
+          {/* Logo — ROBOTO + MATED + . */}
           <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
-            <span className="font-brand text-[18px] font-bold tracking-[0.04em]">
-              <span style={{ color: "var(--theme-text-primary)" }}>ROBOTOMATED</span>
-              <span className="logo-dot inline-block text-[#2563EB]">.</span>
+            <span className="font-[family-name:var(--font-brand)] text-[16px] font-extrabold tracking-[0.04em]">
+              <span className="text-white">ROBOTO</span>
+              <span className="text-white">MATED</span>
+              <span className="logo-dot inline-block text-[#0EA5E9]" style={{ filter: "drop-shadow(0 0 6px rgba(14,165,233,0.5))" }}>.</span>
             </span>
           </Link>
 
@@ -354,8 +361,8 @@ export function Header() {
             {/* Robotimus button */}
             <Link
               href="/advisor"
-              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
-              style={{ background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)", boxShadow: "0 0 20px rgba(37,99,235,0.35)" }}
+              className="breathing inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 font-[family-name:var(--font-brand)] text-[11px] font-bold tracking-[0.08em] text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.5)]"
+              style={{ background: "linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)", boxShadow: "0 0 20px rgba(14,165,233,0.35)" }}
             >
               <RobotimusAvatar size={18} />
               Robotimus
