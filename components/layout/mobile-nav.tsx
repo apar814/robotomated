@@ -16,12 +16,12 @@ const NAV_ITEMS = [
     ),
   },
   {
-    label: "Deploy",
+    label: "Hire",
     href: "/robowork",
     match: ["/robowork"],
     icon: (
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
   },
@@ -37,15 +37,22 @@ const NAV_ITEMS = [
     ),
   },
   {
-    label: "Robotimus",
+    label: "Advisor",
     href: "/advisor",
     match: ["/advisor"],
     icon: (
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="8" width="14" height="12" rx="2" />
-        <path d="M9 13h0M15 13h0" strokeWidth={2.5} />
-        <path d="M9 17h6" />
-        <path d="M12 2v4" />
+        <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Profile",
+    href: "/account",
+    match: ["/account", "/login"],
+    icon: (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
       </svg>
     ),
   },
@@ -55,20 +62,34 @@ export function MobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.06] bg-[#080808]/95 backdrop-blur-md lg:hidden">
-      <div className="flex items-center justify-around py-2">
+    <nav
+      className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
+      style={{
+        background: "rgba(8,8,8,0.92)",
+        backdropFilter: "blur(24px) saturate(180%)",
+        borderTop: "1px solid rgba(255,255,255,0.04)",
+      }}
+    >
+      <div className="flex items-center justify-around py-1.5">
         {NAV_ITEMS.map((item) => {
           const isActive = item.match.some((m) => pathname.startsWith(m));
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex min-w-[64px] flex-col items-center gap-0.5 px-3 py-1.5 transition-colors ${
-                isActive ? "text-[#2563EB]" : "text-white/35"
+              className={`relative flex min-w-[56px] flex-col items-center gap-0.5 px-2 py-1.5 transition-all active:scale-[0.97] ${
+                isActive ? "text-[#0EA5E9]" : "text-white/30"
               }`}
             >
+              {/* Active glow indicator */}
+              {isActive && (
+                <span
+                  className="absolute -top-1.5 h-[2px] w-8 rounded-full"
+                  style={{ background: "#0EA5E9", boxShadow: "0 0 8px rgba(14,165,233,0.5)" }}
+                />
+              )}
               {item.icon}
-              <span className="text-[13px] font-medium">{item.label}</span>
+              <span className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.05em]">{item.label}</span>
             </Link>
           );
         })}
