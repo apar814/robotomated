@@ -28,7 +28,7 @@ const CHANNELS: Channel[] = [
     cta: "Explore Robots",
     href: "/explore",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
       </svg>
     ),
@@ -47,7 +47,7 @@ const CHANNELS: Channel[] = [
     cta: "Find My Robot",
     href: "/find-my-robot",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><path d="M3 6h18" /><path d="M16 10a4 4 0 01-8 0" />
       </svg>
     ),
@@ -66,7 +66,7 @@ const CHANNELS: Channel[] = [
     cta: "Post a Job",
     href: "/robowork/post",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
@@ -85,7 +85,7 @@ const CHANNELS: Channel[] = [
     cta: "Find Service",
     href: "/service",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
         <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
       </svg>
@@ -105,49 +105,53 @@ const CHANNELS: Channel[] = [
     cta: "Value My Robot",
     href: "/trade-in",
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M23 4v6h-6" /><path d="M1 20v-6h6" /><path d="M3.51 9a9 9 0 0114.85-3.36L23 10" /><path d="M20.49 15a9 9 0 01-14.85 3.36L1 14" />
       </svg>
     ),
   },
 ];
 
+function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  e.currentTarget.style.setProperty("--holo-x", `${x}%`);
+  e.currentTarget.style.setProperty("--holo-y", `${y}%`);
+  e.currentTarget.style.setProperty("--holo-opacity", "1");
+}
+
+function handleMouseLeave(e: React.MouseEvent<HTMLElement>) {
+  e.currentTarget.style.setProperty("--holo-opacity", "0");
+}
+
 function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={channel.href}
-      className="group relative flex flex-col overflow-hidden rounded-xl p-7 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px] hover:shadow-[inset_0_1px_0_rgba(37,99,235,0.08),0_8px_24px_rgba(0,0,0,0.3)]"
+      className="card-2080 holo-card channel-glow morphing-border group relative flex flex-col overflow-hidden"
       style={{
         borderTop: `2px solid ${channel.accent}`,
-        border: `1px solid rgba(255,255,255,0.07)`,
-        borderTopWidth: "2px",
-        borderTopColor: channel.accent,
-        background: "linear-gradient(145deg, rgba(16,20,40,0.95) 0%, rgba(8,10,20,0.98) 100%)",
-        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
+        padding: "28px 24px",
+        ["--channel-color" as string]: `${channel.accent}1F`,
       }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Glow effect */}
-      <div
-        className="pointer-events-none absolute left-0 top-0 h-[200px] w-full opacity-100 transition-opacity duration-300 group-hover:opacity-150"
-        style={{
-          background: `radial-gradient(ellipse at top, ${channel.accent}12 0%, transparent 70%)`,
-        }}
-      />
-
       {/* Channel number */}
       <span
-        className="relative mb-4 font-[family-name:var(--font-brand)] text-[13px] font-medium tracking-[0.15em]"
-        style={{ color: channel.accent }}
+        className="relative mb-5 font-[family-name:var(--font-brand)] text-[10px] font-medium tracking-[0.15em]"
+        style={{ color: `${channel.accent}99` }}
       >
         {channel.number}
       </span>
 
-      {/* Icon wrapper */}
+      {/* Icon container */}
       <div
-        className="relative mb-4 inline-flex rounded-[10px] p-2.5"
+        className="breathing relative mb-4 inline-flex h-[42px] w-[42px] items-center justify-center rounded-[10px]"
         style={{
-          background: `linear-gradient(135deg, ${channel.accent}20 0%, ${channel.accent}08 100%)`,
-          border: `1px solid ${channel.accent}25`,
+          background: `${channel.accent}1A`,
+          border: `1px solid ${channel.accent}33`,
           color: channel.accent,
         }}
       >
@@ -155,23 +159,26 @@ function ChannelCard({ channel }: { channel: Channel }) {
       </div>
 
       {/* Channel name */}
-      <h3 className="relative mb-2 font-[family-name:var(--font-brand)] text-[14px] font-semibold tracking-[0.08em] text-white">
+      <h3 className="relative mb-2 font-[family-name:var(--font-brand)] text-[13px] font-bold tracking-[0.08em] text-white">
         {channel.name}
       </h3>
 
       {/* Tagline */}
-      <p className="relative mb-5 font-[family-name:var(--font-ui)] text-[13px] text-white/50">
+      <p className="relative mb-5 font-[family-name:var(--font-ui)] text-[13px] text-white/45">
         {channel.tagline}
       </p>
 
-      {/* Bullets with vertical line accent */}
-      <ul className="relative mb-6 flex flex-1 flex-col gap-1.5">
+      {/* Bullet items */}
+      <ul className="relative mb-6 flex flex-1 flex-col gap-0">
         {channel.bullets.map((bullet) => (
           <li
             key={bullet}
-            className="border-l py-0.5 pl-3 font-[family-name:var(--font-ui)] text-[12px] leading-relaxed text-white/60"
-            style={{ borderColor: `${channel.accent}40` }}
+            className="relative pl-3.5 font-[family-name:var(--font-ui)] text-[12px] leading-[2.0] text-white/55"
           >
+            <span
+              className="absolute left-0 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full"
+              style={{ backgroundColor: channel.accent }}
+            />
             {bullet}
           </li>
         ))}
@@ -179,10 +186,20 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
       {/* CTA */}
       <div
-        className="relative mt-auto flex items-center gap-1.5 font-[family-name:var(--font-ui)] text-[12px] font-semibold tracking-[0.05em]"
-        style={{ color: channel.accent }}
+        className="relative mt-auto flex items-center gap-1.5 pt-5"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        {channel.cta}
+        <span
+          className="relative font-[family-name:var(--font-brand)] text-[10px] tracking-[0.1em]"
+          style={{ color: channel.accent }}
+        >
+          {channel.cta}
+          {/* Underline that grows from left on hover */}
+          <span
+            className="absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
+            style={{ backgroundColor: channel.accent }}
+          />
+        </span>
         <svg
           width="14"
           height="14"
@@ -193,6 +210,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
           strokeLinecap="round"
           strokeLinejoin="round"
           className="transition-transform duration-200 group-hover:translate-x-1"
+          style={{ color: channel.accent }}
         >
           <path d="M5 12h14" />
           <path d="M12 5l7 7-7 7" />
