@@ -106,7 +106,7 @@ export default async function HomePage() {
         videoUrl={process.env.HERO_VIDEO_URL || null}
         posterUrl={null}
         overlayOpacity={0.7}
-        className="min-h-[600px] lg:min-h-[700px]"
+        className="hero-grid scan-line-overlay min-h-[600px] lg:min-h-[700px]"
       >
         {/* Fallback background layers (show when no video) */}
         <HeroBackground className="pointer-events-none absolute inset-0" />
@@ -116,21 +116,41 @@ export default async function HomePage() {
           <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
             {/* Left column — job-first messaging + category pills */}
             <div className="relative">
-              <span className="hud-label">
-                The Intelligence Layer for Robotics
+              <span className="font-[family-name:var(--font-brand)] text-[10px] tracking-[0.2em] text-[#0EA5E9] blink-cursor">
+                [ THE OPERATING SYSTEM FOR ROBOTICS ]
               </span>
               <h1
-                className="mt-8 font-display font-extrabold leading-[1.05]"
-                style={{ fontSize: "clamp(36px, 5vw, 72px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(37,99,235,0.12)" }}
+                className="mt-8 leading-[1.0]"
+                style={{ fontSize: "clamp(44px, 5.5vw, 84px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(37,99,235,0.12)" }}
               >
-                What job would you<br />
-                like done by a <span className="hero-accent">robot?</span>
+                <span className="block font-[family-name:var(--font-ui)] font-extrabold">One platform.</span>
+                <span className="block font-[family-name:var(--font-ui)] font-extrabold">The entire robot</span>
+                <span className="shimmer-text block font-[family-name:var(--font-brand)] font-extrabold">lifecycle.</span>
               </h1>
-              <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] text-base leading-[1.75]" style={{ color: "var(--theme-text-secondary)" }}>
+              <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)" }}>
                 Tell us what needs doing. Robotimus will find the right robot, tell you what it costs, and get you deployed.
               </p>
               <div className="mt-4 h-8 max-w-[480px]">
                 <Typewriter />
+              </div>
+
+              {/* CTA buttons */}
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/explore"
+                  className="btn-scan rounded-lg px-7 py-3.5 font-[family-name:var(--font-brand)] text-[11px] font-bold uppercase tracking-[0.1em] text-black transition-all"
+                  style={{ background: "#0EA5E9", boxShadow: "0 0 20px rgba(14,165,233,0.3)" }}
+                >
+                  Explore Robots
+                </Link>
+                <Link
+                  href="/advisor"
+                  className="rounded-lg px-7 py-3.5 font-[family-name:var(--font-brand)] text-[11px] font-bold uppercase tracking-[0.1em] transition-all hover:border-[rgba(255,255,255,0.4)]"
+                  style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)", boxShadow: "none" }}
+                  onMouseEnter={undefined}
+                >
+                  Ask Robotimus
+                </Link>
               </div>
 
               {/* Category pills */}
@@ -145,7 +165,7 @@ export default async function HomePage() {
             </div>
 
             {/* Right column — Robotimus panel */}
-            <div className="flex justify-center lg:justify-end lg:pt-16">
+            <div className="panel-float flex justify-center lg:justify-end lg:pt-16" style={{ boxShadow: "0 0 60px rgba(14,165,233,0.08)" }}>
               <RobotimusHeroPanel />
             </div>
           </div>
@@ -155,30 +175,33 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           2. STATS BAR
           ══════════════════════════════════════════ */}
-      <section className="border-y px-6 py-6" style={{ borderColor: "var(--theme-border)", background: "rgba(255,255,255,0.02)" }}>
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {[
-            { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
-            { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers Indexed" },
-            { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market Today \u2192 $24T by 2040" },
-            { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Ways to Access Robots" },
-          ].map((s, i) => (
-            <div key={s.label} className="flex items-center gap-3">
-              {i > 0 && <span className="mr-4 font-[family-name:var(--font-mono)] text-white/28">//</span>}
-              <span className="font-[family-name:var(--font-brand)] font-bold text-[var(--theme-accent-blue)]" style={{ fontSize: "clamp(28px, 3.5vw, 44px)", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}>{s.value}</span>
-              <span className="font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
-            </div>
-          ))}
+      <section className="px-6 py-0" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 overflow-hidden rounded-xl border lg:grid-cols-4" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(14,165,233,0.02)" }}>
+            {[
+              { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
+              { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers Indexed" },
+              { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market Today" },
+              { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Ways to Access" },
+            ].map((s, i) => (
+              <div key={s.label} className="stat-cell px-6 py-6 text-center transition-colors hover:bg-[rgba(14,165,233,0.04)]" style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
+                <span className="block font-[family-name:var(--font-brand)] font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(28px, 3vw, 44px)" }}>{s.value}</span>
+                <span className="mt-1 block font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.3)" }}>{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <LiveActivity />
 
-      <div className="border-b px-6 py-3" style={{ borderColor: "var(--theme-border)" }}>
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
-          <span className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>Independent</span>
-          <span className="h-1 w-1 rounded-full" style={{ background: "#2563EB" }} />
-          <span className="text-[13px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--theme-text-muted)" }}>No manufacturer pays for scores</span>
+      <div className="px-6 py-4" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-4">
+          <span className="h-px w-6" style={{ background: "rgba(255,255,255,0.1)" }} />
+          <span className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.2em]" style={{ color: "rgba(255,255,255,0.15)" }}>
+            INDEPENDENT · NO MANUFACTURER PAYS FOR SCORES
+          </span>
+          <span className="h-px w-6" style={{ background: "rgba(255,255,255,0.1)" }} />
         </div>
       </div>
 
@@ -200,10 +223,14 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           3.6. TRUST STATEMENT BAR
           ══════════════════════════════════════════ */}
-      <div className="border-y px-6 py-5" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
-        <p className="mx-auto max-w-4xl text-center text-[0.85rem] font-bold uppercase tracking-[0.08em]" style={{ color: "var(--theme-text-muted)" }}>
-          {totalRobots} robots tracked &middot; {manufacturerCount} manufacturers &middot; Every score is independent &middot; No manufacturer has ever paid for placement
-        </p>
+      <div className="px-6 py-5" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
+        <div className="mx-auto flex max-w-4xl items-center justify-center gap-4">
+          <span className="h-px w-10" style={{ background: "rgba(255,255,255,0.06)" }} />
+          <p className="text-center font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(255,255,255,0.15)" }}>
+            {totalRobots} robots tracked · {manufacturerCount} manufacturers · Every score is independent · No manufacturer has ever paid for placement
+          </p>
+          <span className="h-px w-10" style={{ background: "rgba(255,255,255,0.06)" }} />
+        </div>
       </div>
 
       {/* ══════════════════════════════════════════
@@ -211,40 +238,48 @@ export default async function HomePage() {
           ══════════════════════════════════════════ */}
       <MotionSection as="section" className="px-6 py-28">
         <div className="mx-auto max-w-7xl">
-          {/* Section heading — DJI-scale */}
+          {/* Section heading */}
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-px w-6 bg-[#0EA5E9]" />
+            <span className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.2em] text-[#0EA5E9]">
+              Intelligence
+            </span>
+          </div>
           <h2
-            className="font-display font-bold tracking-[-0.03em]"
+            className="font-[family-name:var(--font-ui)] font-bold tracking-[-0.03em]"
             style={{ fontSize: "clamp(32px, 4vw, 56px)", color: "var(--theme-text-primary)" }}
           >
             Trending This Week
           </h2>
-          <p className="mt-3 max-w-lg text-base leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
+          <p className="mt-3 max-w-lg font-[family-name:var(--font-ui)] text-base leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
             {totalRobots} robots, independently scored. No manufacturer pays for placement.
           </p>
 
-          {/* Search bar */}
+          {/* Search bar — command center style */}
           <Link
             href="/explore"
-            className="mt-8 flex items-center gap-3 rounded-lg border border-white/[0.08] bg-transparent px-5 py-4 transition-colors hover:border-[#2563EB]/30"
+            className="mt-8 flex items-center gap-3 rounded-xl px-5 py-4 transition-all hover:border-[#0EA5E9]/30 hover:shadow-[0_0_20px_rgba(14,165,233,0.06)]"
+            style={{ background: "var(--layer-1, rgba(13,13,13,1))", border: "1px solid rgba(255,255,255,0.06)" }}
           >
-            <svg className="h-5 w-5 shrink-0 text-white/45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 shrink-0 text-[#0EA5E9]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
-            <span className="flex-1 text-[15px] text-white/50">
+            <span className="flex-1 font-[family-name:var(--font-ui)] text-[15px] text-white/40">
               Search by name, manufacturer, use case, or spec...
             </span>
-            <kbd className="hidden rounded border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 font-mono text-[13px] text-white/45 sm:inline">
-              &#8984;K
+            <kbd className="hidden rounded-md px-2 py-0.5 font-[family-name:var(--font-mono)] text-[11px] sm:inline" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}>
+              ⌘K
             </kbd>
           </Link>
 
-          {/* Category filter pills — clean pill style */}
+          {/* Category filter pills */}
           <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
             {categories.filter(c => c.robot_count > 0).map((cat) => (
               <Link
                 key={cat.id}
                 href={`/explore/${cat.slug}`}
-                className="shrink-0 rounded-full border border-white/[0.08] px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] text-white/50 transition-colors hover:border-[#2563EB]/30 hover:text-[#2563EB]"
+                className="shrink-0 rounded-full px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] transition-all hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
+                style={{ border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.4)" }}
               >
                 {cat.name}
               </Link>
@@ -263,45 +298,53 @@ export default async function HomePage() {
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="group block overflow-hidden rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px]"
-                    style={{ background: "linear-gradient(160deg, rgba(12,14,28,0.97) 0%, rgba(8,10,18,0.99) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)" }}
+                    className="card-2080 holo-card group block"
                   >
-                    {/* Image — 60% of card height */}
-                    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#0F1628] to-[#141C33]">
+                    {/* Image zone */}
+                    <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#0F1628] to-[#141C33]">
                       {hasImg ? (
                         <img
                           src={imgs[0].url}
                           alt={imgs[0].alt || robot.name}
-                          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]"
+                          className="h-full w-full object-cover object-center transition-transform duration-600 group-hover:scale-[1.06]"
                           loading="lazy"
                         />
                       ) : (
                         <div className="flex h-full flex-col items-center justify-center">
                           <svg viewBox="0 0 48 48" fill="none" className="h-10 w-10 text-white/[0.06]"><rect x="12" y="8" width="24" height="20" rx="4" stroke="currentColor" strokeWidth="1.5"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="28" cy="18" r="2.5" fill="currentColor"/></svg>
-                          <span className="mt-1 text-xs font-medium text-white/45">{robot.name}</span>
+                          <span className="mt-1 font-[family-name:var(--font-ui)] text-xs font-medium text-white/45">{robot.name}</span>
                         </div>
                       )}
-                      {/* RoboScore overlay */}
+                      {/* Gradient overlay */}
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(18,18,18,0.95)]" />
+                      {/* Category badge */}
+                      {cat && (
+                        <div className="absolute left-3 top-3 rounded-md px-2.5 py-1" style={{ background: "rgba(8,8,8,0.8)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                          <span className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.15em] text-white/70">{cat.name.toUpperCase()}</span>
+                        </div>
+                      )}
+                      {/* RoboScore */}
                       {robot.robo_score != null && robot.robo_score > 0 && (
-                        <div className="absolute right-3 top-3">
-                          <RoboScoreBadge score={robot.robo_score} />
+                        <div className="absolute right-3 top-3 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: "rgba(8,8,8,0.8)", backdropFilter: "blur(12px)", border: `1px solid ${robot.robo_score >= 80 ? "rgba(16,185,129,0.4)" : robot.robo_score >= 60 ? "rgba(245,158,11,0.4)" : "rgba(239,68,68,0.4)"}`, boxShadow: `0 0 12px ${robot.robo_score >= 80 ? "rgba(16,185,129,0.15)" : robot.robo_score >= 60 ? "rgba(245,158,11,0.15)" : "rgba(239,68,68,0.15)"}` }}>
+                          <span className="font-[family-name:var(--font-brand)] text-[14px] font-bold" style={{ color: robot.robo_score >= 80 ? "#10B981" : robot.robo_score >= 60 ? "#F59E0B" : "#EF4444" }}>{robot.robo_score}</span>
                         </div>
                       )}
                     </div>
-                    {/* Info */}
-                    <div className="p-5">
-                      <span className="font-[family-name:var(--font-ui)] text-[13px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">{mfr}</span>
-                      <p className="mt-1 text-[15px] font-semibold text-white transition-colors group-hover:text-[#2563EB]">{robot.name}</p>
-                      <div className="mt-3 flex items-center justify-between">
+                    {/* Info zone */}
+                    <div className="p-4">
+                      <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[#0EA5E9]">{mfr}</span>
+                      <p className="mt-1.5 font-[family-name:var(--font-ui)] text-[16px] font-semibold text-white transition-colors group-hover:text-[#0EA5E9]">{robot.name}</p>
+                      <div className="my-2.5 border-t" style={{ borderColor: "rgba(255,255,255,0.04)" }} />
+                      <div className="flex items-center justify-between">
                         {robot.price_current != null ? (
-                          <span className="font-mono text-base font-bold text-[#60A5FA]">
+                          <span className="font-[family-name:var(--font-mono)] text-[18px] font-bold text-[#C8FF00]">
                             {formatPrice(robot.price_current)}
                           </span>
                         ) : (
-                          <span className="font-mono text-[11px] text-white/50">Contact for pricing</span>
+                          <span className="font-[family-name:var(--font-mono)] text-[11px] text-white/35">Contact for pricing</span>
                         )}
-                        <span className="text-[12px] font-medium text-[#2563EB] opacity-0 transition-opacity group-hover:opacity-100">
-                          Full Analysis &rarr;
+                        <span className="rounded-md px-3 py-1.5 font-[family-name:var(--font-brand)] text-[9px] tracking-[0.1em] text-[#0EA5E9] transition-all hover:bg-[#0EA5E9] hover:text-black" style={{ background: "rgba(14,165,233,0.1)", border: "1px solid rgba(14,165,233,0.25)" }}>
+                          EXPLORE →
                         </span>
                       </div>
                     </div>
@@ -331,50 +374,48 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
-      <section className="border-t border-white/[0.06] px-6 py-32" style={{ background: "linear-gradient(180deg, rgba(4,6,14,0.98) 0%, #020209 100%)" }}>
+      <section className="scan-line-overlay px-6 py-32" style={{ background: "var(--layer-0, #080808)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              {/* Display text treatment */}
               <div style={{ marginBottom: "2rem" }}>
-                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#F0F4FF", letterSpacing: "-0.03em" }}>
+                <p className="font-[family-name:var(--font-ui)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#F0F4FF", letterSpacing: "-0.03em" }}>
                   THE WORLD IS
                 </p>
-                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", WebkitTextStroke: "1.5px rgba(240,244,255,0.4)", color: "transparent" }}>
+                <p className="font-[family-name:var(--font-ui)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", WebkitTextStroke: "1.5px rgba(240,244,255,0.4)", color: "transparent" }}>
                   GOING TO RUN
                 </p>
-                <p className="font-display" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#60A5FA", letterSpacing: "-0.03em" }}>
+                <p className="shimmer-text font-[family-name:var(--font-brand)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
                   ON ROBOTS.
                 </p>
               </div>
-
-              <blockquote className="font-display font-bold italic leading-snug text-white" style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}>
+              <blockquote className="font-[family-name:var(--font-ui)] font-bold italic leading-snug text-white" style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}>
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
-              <p className="mt-4 text-sm text-white/50">-- Brett Adcock, Founder &amp; CEO, Figure AI</p>
+              <p className="mt-4 font-[family-name:var(--font-mono)] text-sm text-white/40">— Brett Adcock, Founder &amp; CEO, Figure AI</p>
             </div>
-            <div className="rounded-xl p-8" style={{ background: "linear-gradient(160deg, rgba(8,10,22,0.98) 0%, rgba(4,6,14,0.99) 100%)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 60px rgba(0,0,0,0.4)" }}>
+            <div className="card-2080 rounded-2xl p-8">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-white/60">Human labor (fully burdened)</span>
+                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/50">Human labor (fully burdened)</span>
                   <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-white">$46/hour</span>
                 </div>
-                <div className="flex items-center justify-between rounded-md px-3 py-1.5 -mx-3" style={{ background: "rgba(37,99,235,0.06)", borderLeft: "2px solid #2563EB" }}>
-                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/60">Robot (leased, amortized)</span>
-                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#60A5FA]">$0.45/hour</span>
+                <div className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2" style={{ background: "rgba(14,165,233,0.06)", borderLeft: "2px solid #0EA5E9" }}>
+                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/50">Robot (leased, amortized)</span>
+                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#0EA5E9]">$0.45/hour</span>
                 </div>
-                <div className="border-t border-white/10 pt-4">
+                <div className="border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/80">Cost difference</span>
-                    <span className="font-[family-name:var(--font-brand)] text-2xl font-extrabold text-[#2563EB]" style={{ textShadow: "0 0 30px rgba(37,99,235,0.4)" }}>100×</span>
+                    <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/60">Cost difference</span>
+                    <span className="font-[family-name:var(--font-brand)] text-3xl font-extrabold text-[#0EA5E9]" style={{ textShadow: "0 0 30px rgba(14,165,233,0.4)" }}>100×</span>
                   </div>
                 </div>
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-white/50">
-                At $0.45/hour, every business can afford automation. That is the world we are building toward -- and Robotomated is how you get there.
+              <p className="mt-6 font-[family-name:var(--font-ui)] text-sm leading-relaxed text-white/40">
+                At $0.45/hour, every business can afford automation. That is the world we are building toward — and Robotomated is how you get there.
               </p>
-              <Link href="/tools/robot-economics" className="mt-4 inline-block text-sm font-semibold text-[#2563EB] hover:underline">
-                Calculate your economics &rarr;
+              <Link href="/tools/robot-economics" className="mt-4 inline-block font-[family-name:var(--font-brand)] text-[11px] tracking-[0.08em] text-[#0EA5E9] hover:underline">
+                CALCULATE YOUR ECONOMICS →
               </Link>
             </div>
           </div>
@@ -384,18 +425,18 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           8. SOCIAL PROOF STATS
           ══════════════════════════════════════════ */}
-      <section className="border-y px-6 py-28" style={{ borderColor: "var(--theme-border)" }}>
+      <section className="px-6 py-28" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-0 overflow-hidden rounded-2xl lg:grid-cols-4" style={{ border: "1px solid rgba(255,255,255,0.06)", background: "rgba(14,165,233,0.02)" }}>
             {[
               { value: totalRobots.toString(), label: "Robots in Database" },
               { value: manufacturerCount.toString(), label: "Manufacturers Indexed" },
-              { value: "$24T", label: "Projected Global Market by 2040" },
-              { value: "137", label: "Humanoid Startups (China Alone)" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="font-[family-name:var(--font-brand)] font-bold" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-accent-blue)", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}>{s.value}</p>
-                <p className="mt-3 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</p>
+              { value: "$24T", label: "Projected Market by 2040" },
+              { value: "137", label: "Humanoid Startups (China)" },
+            ].map((s, i) => (
+              <div key={s.label} className="stat-cell px-8 py-8 text-center transition-colors hover:bg-[rgba(14,165,233,0.04)]" style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
+                <p className="font-[family-name:var(--font-brand)] font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(36px, 5vw, 64px)", textShadow: "0 0 30px rgba(14,165,233,0.3)" }}>{s.value}</p>
+                <p className="mt-3 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.3)" }}>{s.label}</p>
               </div>
             ))}
           </div>
@@ -410,28 +451,21 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           10. NEWSLETTER
           ══════════════════════════════════════════ */}
-      <section
-        className="px-6 py-28"
-        style={{
-          background: "var(--theme-section-alt)",
-          borderTop: "1px solid var(--theme-border)",
-          borderBottom: "1px solid var(--theme-border)",
-        }}
-      >
+      <section className="px-6 py-28" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
         <div className="mx-auto max-w-xl text-center">
-          <p className="mb-3 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
-            [ Newsletter ]
-          </p>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>
+          <span className="font-[family-name:var(--font-brand)] text-[10px] tracking-[0.2em] text-[#0EA5E9]">
+            [ NEWSLETTER ]
+          </span>
+          <h2 className="mt-4 font-[family-name:var(--font-ui)] text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>
             The Automation Intelligence Brief
           </h2>
-          <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>
+          <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "rgba(255,255,255,0.5)" }}>
             Weekly robotics intelligence for operations leaders.
           </p>
           <div className="mt-6">
             <NewsletterForm />
           </div>
-          <p className="mt-4 text-[13px]" style={{ color: "var(--theme-text-muted)" }}>
+          <p className="mt-4 font-[family-name:var(--font-mono)] text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
             Join 2,500+ operations leaders. No spam. Unsubscribe anytime.
           </p>
         </div>
