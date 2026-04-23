@@ -369,6 +369,7 @@ export interface Database {
           stripe_customer_id: string | null;
           stripe_subscription_id: string | null;
           subscription_ends_at: string | null;
+          role: "user" | "editor" | "admin";
           created_at: string;
         };
         Insert: {
@@ -382,6 +383,7 @@ export interface Database {
           stripe_customer_id?: string | null;
           stripe_subscription_id?: string | null;
           subscription_ends_at?: string | null;
+          role?: "user" | "editor" | "admin";
           created_at?: string;
         };
         Update: {
@@ -395,6 +397,7 @@ export interface Database {
           stripe_customer_id?: string | null;
           stripe_subscription_id?: string | null;
           subscription_ends_at?: string | null;
+          role?: "user" | "editor" | "admin";
           created_at?: string;
         };
         Relationships: [];
