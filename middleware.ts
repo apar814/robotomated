@@ -1,6 +1,23 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { apiRateLimit } from "@/lib/cache/rate-limit";
+
+async function getAdminRole(
+  supabase: SupabaseClient,
+  userId: string
+): Promise<string | null> {
+  try {
+    const { data } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", userId)
+      .single();
+    return data?.role ?? null;
+  } catch {
+    return null;
+  }
+}
 
 // Use the *last* XFF hop (the edge-proxy-appended address) rather than the
 // first — attackers can inject arbitrary values at the head of the list by
@@ -72,19 +89,20 @@ export async function middleware(request: NextRequest) {
     if (!user) {
       return NextResponse.redirect(new URL("/", request.url));
     }
-    let role: string | null = null;
-    try {
-      const { data } = await supabase
-        .from("users")
-        .select("role")
-        .eq("id", user.id)
-        .single();
-      role = data?.role ?? null;
-    } catch {
-      role = null;
-    }
+    const role = await getAdminRole(supabase, user.id);
     if (role !== "admin") {
       return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
+  // Protect /api/admin routes: require admin user, return JSON 401 otherwise.
+  if (pathname.startsWith("/api/admin")) {
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    const role = await getAdminRole(supabase, user.id);
+    if (role !== "admin") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }
 

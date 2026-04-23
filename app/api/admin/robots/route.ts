@@ -15,7 +15,9 @@ export async function GET(request: NextRequest) {
     .select("id, slug, name, robo_score, price_current, status, manufacturer_id, category_id, updated_at, manufacturers(name), robot_categories(name)", { count: "exact" });
 
   if (search) {
-    query = query.or(`name.ilike.%${search}%,slug.ilike.%${search}%`);
+    // Sanitize search to prevent PostgREST filter injection
+    const safeSearch = search.replace(/[%_\\*()[\]{}|,]/g, "\\$&");
+    query = query.or(`name.ilike.%${safeSearch}%,slug.ilike.%${safeSearch}%`);
   }
   if (status) {
     query = query.eq("status", status as "active" | "discontinued" | "coming_soon");
