@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase/server";
+import { createServerClient } from "@supabase/ssr";
 
 /**
- * Call at the top of any write-method handler (POST/PUT/PATCH/DELETE) that
- * needs admin-only access. Returns null if authorized as admin.
- * Returns a 401 NextResponse if not -- the caller should return it immediately.
+ * Cookie-aware admin guard for API route handlers. Uses the same SSR pattern
+ * as middleware.ts: reads Supabase auth cookies from the incoming NextRequest
+ * and resolves the logged-in user.
+ *
+ * Intended use case: admin-only writes on routes NOT already covered by the
+ * /api/admin/* matcher in middleware.ts. Middleware handles /api/admin/*
+ * automatically, so most admin routes don't need to call this directly.
+ *
+ * Returns null if the caller is authenticated AND has role = "admin".
+ * Returns a 401 NextResponse otherwise -- the caller should return it immediately.
  *
  * Usage:
  *   export async function POST(request: NextRequest) {
@@ -14,9 +21,22 @@ import { createServerClient } from "@/lib/supabase/server";
  *   }
  */
 export async function requireAdmin(
-  _request: NextRequest
+  request: NextRequest
 ): Promise<NextResponse | null> {
-  const supabase = createServerClient();
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll() {
+          // Route handlers can't mutate request cookies; ignore.
+        },
+      },
+    }
+  );
 
   let userId: string | null = null;
   try {

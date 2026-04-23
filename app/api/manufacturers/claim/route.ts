@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { Resend } from "resend";
-import { requireAdmin } from "@/lib/auth/guards";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
-  const denied = await requireAdmin(request);
-  if (denied) return denied;
-
   try {
     const body = await request.json();
 

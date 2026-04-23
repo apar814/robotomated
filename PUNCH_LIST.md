@@ -37,6 +37,7 @@ Based on LAUNCH_CHECKLIST.md, GAP_REPORT.md, actual repo state, and zero open GH
 10. **Open Graph images not systematically generated** — Each robot and category page needs its own. Effort: M | claude-code
 11. **Robot catalog only 42 robots vs 200-robot target** — Category pages look empty. Effort: L | claude-code
 12. **CRON_SECRET enforcement** — Referenced but not audited across 3 cron routes. Effort: S | claude-code
+13. **Public intake forms need spam/abuse protection** — POST /api/reviews, /api/manufacturers/claim, /api/manufacturers/partner are public (no auth, by design). Needs per-IP/per-email rate limiting, a honeypot field, or Turnstile CAPTCHA to block scripted submissions and flood email volume. Effort: M | claude-code
 
 ## Nice to Have (post-launch)
 

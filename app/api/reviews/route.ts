@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 import { starsToScore } from "@/lib/scoring/roboscore";
-import { requireAdmin } from "@/lib/auth/guards";
 
 /** Strip HTML tags and limit length */
 function sanitize(input: string, maxLen = 5000): string {
@@ -10,9 +9,6 @@ function sanitize(input: string, maxLen = 5000): string {
 }
 
 export async function POST(request: NextRequest) {
-  const denied = await requireAdmin(request);
-  if (denied) return denied;
-
   const { robot_id, stars, title, body, pros, cons, verified_purchase } = await request.json();
 
   if (!robot_id || !stars || !title || !body) {
