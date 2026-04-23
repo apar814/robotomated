@@ -1,77 +1,52 @@
-# Robotomated — Current Phase
+# Current Phase — 2026-04-23
 
-## Phase: Pre-Build — Strategy Locked, Ready for Sprint 1
-## Status: PRD + build spec complete, Claude Code prompts ready
-## Date: 2026-03-20
+## What's Shipped
+- Next.js 16.2.1 app on Vercel, React 19, Tailwind v4
+- Supabase schema: 8 migrations live
+- Robot catalog: ~42+ robots seeded (wave-1 + wave-2 agricultural/drones/delivery/software)
+- Browse/search: /explore with category pages and per-category manufacturer filter
+- Robot detail pages: DJI cinematic redesign, RoboScore badge
+- Industry landing pages /industries + TCO calculator
+- AI Advisor: streaming Claude chat, industry chips, localStorage persistence, robot cards from DB, start-over
+- Comparison tool: /compare
+- Newsletter: signup, unsubscribe, weekly digest cron (Mondays via Resend)
+- Affiliate redirect: /api/out/[slug] with click tracking
+- Stripe Pro: checkout, webhook, customer portal, 7-day trial, /pro page
+- Auth: magic link, /auth/callback, middleware protects /account
+- Account page: billing management + saved robots
+- Admin dashboard: robot CRUD, reviews, affiliate view, manufacturers
+- Cron jobs: update-prices (daily), refresh-robot-data (weekly), weekly-digest (Monday)
+- Firecrawl pipelines: spec, review, news, image scrapers
+- SEO: sitemap (with resilience fix), robots.txt, CSP + security headers, structured data groundwork
+- Google Search Console verification files committed
+- Cookie consent banner + PostHog provider wired in layout
+- Redis client: lib/cache/redis.ts (Upstash SDK present)
+- /learn article directory structure exists (construction, warehouse, home, getting-started)
 
-## Build Spec
-docs/robotomated_build_spec.html — open in browser, copy-paste
-prompts into Claude Code, one per session, in order. 15 prompts total.
+## In Progress
+- Learn content: directory structure exists but zero .mdx article files written
+- Admin auth: middleware only guards /account — /admin has NO role check (any logged-in user can access)
+- Sentry: @sentry/nextjs installed, lib/monitoring/sentry.ts exists, but no sentry.client.ts / sentry.server.ts and no DSN configured
+- Redis: Upstash client present but UPSTASH_REDIS_REST_URL / TOKEN not set in env — caching not active
+- PostHog: provider in layout but NEXT_PUBLIC_POSTHOG_KEY not set in production — no data collected
+- Amazon Associates: placeholder tag in .env.example, account not approved / live
+- Stripe PRICE_ID: may be set to a product ID (prod_...) instead of a price ID (price_...)
 
-## Prompt 0 — Create These Accounts First
-- [ ] github.com (free) — create repo
-- [ ] vercel.com (free) — connect to GitHub repo
-- [ ] supabase.com (free) — create project
-- [ ] anthropic.com/api (pay-as-you-go) — get API key
-- [ ] cloudflare.com (free) — DNS for robotomated.com
-- [ ] resend.com (free, 3K emails/mo) — transactional email
-- [ ] posthog.com (free, 1M events/mo) — analytics
+## Not Started
+- README.md (does not exist)
+- LICENSE (does not exist)
+- Expert / editorial reviews with RoboScore grading (zero published)
+- Sentry project creation + DSN wiring in config files
+- Upstash Redis env vars set in Vercel production
+- PostHog project created + key in production env
+- /admin route authentication guard (role-based)
+- Actual learn article content (.mdx files)
 
-## What Exists
-- robotomated.com domain (owned? — VERIFY)
-- robotomate.com domain (owned? — VERIFY)
-- robotomato.com domain (owned? — VERIFY)
-- RoboNexus PRD v1.0 (920 lines, comprehensive)
-- Strategic reframe doc (bootstrapped path, content-first)
-- Full product/business/brand/architecture context documented
-
-## What Does NOT Exist Yet
-- No website live
-- No database
-- No content published
-- No reviews written
-- No robot data collected/seeded
-- No newsletter
-- No social accounts
-- No affiliate relationships
-- No AI advisor
-
-## Sprint 1 — Days 1-30: The Foundation
-1. [ ] Next.js 15 site on Vercel — robotomated.com live
-2. [ ] Supabase project — robot catalog schema
-3. [ ] Seed 200 robots across 10 categories with full specs
-4. [ ] Browse + search — category pages, filters, robot detail pages
-5. [ ] SEO infrastructure — sitemap, structured data, programmatic pages
-6. [ ] Homepage — hero, featured categories, newsletter signup
-7. [ ] Robot detail page — specs, RoboScore visual, AI advisor CTA
-
-## Sprint 2 — Days 31-60: The Content Engine
-8. [ ] First 10 expert reviews with RoboScore framework
-9. [ ] 5 "Best Of" guides ("Best Warehouse Robots 2026" etc.)
-10. [ ] 5 beginner articles per target industry
-11. [ ] Newsletter signup live — capture emails from day one
-12. [ ] Start weekly "The Robotomated Brief" newsletter
-
-## Sprint 3 — Days 61-90: The AI Advisor
-13. [ ] Claude-powered advisor — conversational, 3 recommendations
-14. [ ] Comparison tool — side-by-side specs + score breakdown
-15. [ ] Affiliate links activated (Amazon, manufacturer sites)
-16. [ ] Target: $500-2,000 MRR from affiliate by Day 90
-
-## Open Questions
-1. robotomated.com — registered? Where? DNS pointing where?
-2. robotomate.com / robotomato.com — status?
-3. Social accounts: @robotomated on Twitter/X, Instagram, LinkedIn?
-4. YouTube channel set up?
-5. Robot data sourcing: manual curation vs scraping vs API partnerships?
-6. Affiliate networks: Amazon Associates, ShareASale, CJ, or direct?
-7. Review lab access: any university/testing facility relationships?
-
-## Success Metrics (Day 90)
-- 200+ robots in database with full specs
-- 10+ published expert reviews
-- 5+ "Best Of" guides ranking on Google
-- AI advisor live and functional
-- First affiliate revenue ($500-2K MRR)
-- 1,000+ newsletter subscribers
-- 50K+ monthly visitors
+## Known Issues
+- /admin publicly accessible to any authenticated user — no role check in middleware
+- /learn has zero content files despite directory scaffolding
+- Sentry not capturing errors — no config files, no DSN
+- Redis caching inactive — env vars missing in all environments
+- PostHog not collecting production analytics — key not set
+- Stripe may be misconfigured with product ID instead of price ID for Pro plan
+- No README or LICENSE on what may be a public repo
