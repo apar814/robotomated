@@ -60,6 +60,19 @@ Editorial independence is THE moat. Never take money to influence scores.
 - NEVER gate basic browsing behind signup/paywall.
 - NEVER sacrifice editorial independence for revenue. Ever.
 
+## Workforce Network (Phase 1 MVP)
+Revenue model: certification ($399/$599) + placement (Phase 2)
+Tables: employer_intent, cohorts, certification_enrollments (migration 039)
+Routes: /employers/hire-certified-operators, /certification/operator-level-1,
+  /certification/welcome, /admin/workforce-network
+API: /api/employers/submit-intent, /api/stripe/workforce-checkout,
+  /api/stripe/workforce-webhook, /api/admin/workforce, /api/cron/workforce-drip
+Email: lib/email/templates/workforce.ts (employer + student sequences)
+Script: scripts/generate-outreach-batch.ts (50 employer + 50 student CSVs)
+Auth: Admin dashboard gated to apar814@gmail.com
+Pricing: $399 early bird (first 10 seats), $599 standard, inline price_data
+Cohort model: 4-week hybrid, 10-person capacity, manual placement
+
 ## Verify Before Done
 1. `turbo build` — compiles clean
 2. `turbo test` — all passing

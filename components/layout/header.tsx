@@ -49,7 +49,9 @@ const operateItems = [
   { href: "/parts", title: "Parts Marketplace", desc: "OEM and aftermarket parts", color: "#2563EB" },
   { href: "/insure", title: "Robot Insurance", desc: "Protect your automation investment", color: "#2563EB" },
   { href: "/trade-in", title: "Trade In Your Robot", desc: "AI-powered instant valuation", color: "#2563EB" },
-  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#2563EB", divider: true },
+  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#2563EB" },
+  { href: "/certification/operator-level-1", title: "Operator Certification", desc: "$399 — 4-week hybrid program", color: "#00E5A0" },
+  { href: "/employers/hire-certified-operators", title: "For Employers", desc: "Hire certified robot operators", color: "#00E5A0", divider: true },
 ];
 
 const learnItems = [
