@@ -10,6 +10,10 @@
  *         scripts/output/outreach-batch-students.csv
  */
 
+import * as dotenv from "dotenv";
+import * as path from "path";
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
+
 import { createClient } from "@supabase/supabase-js";
 import { writeFileSync } from "fs";
 import { join } from "path";
@@ -50,7 +54,7 @@ async function generateEmployerOutreach() {
   // Get manufacturers with robot counts
   const { data: robots } = await supabase
     .from("robots")
-    .select("manufacturer_id, category")
+    .select("manufacturer_id, robot_categories(name)")
     .not("manufacturer_id", "is", null);
 
   const { data: manufacturers } = await supabase
@@ -78,8 +82,9 @@ async function generateEmployerOutreach() {
     const mfg = mfgMap.get(robot.manufacturer_id);
     if (mfg) {
       mfg.robot_count++;
-      if (robot.category && !mfg.categories.includes(robot.category)) {
-        mfg.categories.push(robot.category);
+      const catName = (robot.robot_categories as { name: string } | null)?.name;
+      if (catName && !mfg.categories.includes(catName)) {
+        mfg.categories.push(catName);
       }
     }
   }
