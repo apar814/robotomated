@@ -20,6 +20,7 @@ import { VideoHero } from "@/components/ui/video-hero";
 import { MarketPulseTicker } from "@/components/home/market-pulse-ticker";
 import { WhyRobotomated } from "@/components/home/why-robotomated";
 import { Typewriter } from "@/components/home/typewriter";
+import { WorkforceAnnouncement } from "@/components/home/workforce-announcement";
 import { MotionSection } from "@/components/ui/motion-section";
 import type { RobotCategory } from "@/lib/supabase/types";
 
@@ -97,6 +98,7 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           0. MARKET PULSE TICKER — live market updates
           ══════════════════════════════════════════ */}
+      <WorkforceAnnouncement />
       <MarketPulseTicker />
 
       {/* ══════════════════════════════════════════
