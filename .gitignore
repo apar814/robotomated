@@ -30,6 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# outreach output (generated CSVs with contact data)
+scripts/output/*.csv
+
 # env files
 .env
 .env.local
