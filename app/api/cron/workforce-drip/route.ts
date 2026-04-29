@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { sendStudentWelcomeEmail, STUDENT_WELCOME_EMAILS } from "@/lib/email/templates/workforce";
 
 /**
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const supabase = createServerClient();
+  const supabase = createUntypedServerClient();
   const now = new Date();
   let sent = 0;
   let errors = 0;

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 
 const ADMIN_EMAIL = "apar814@gmail.com";
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  const supabase = createServerClient();
+  const supabase = createUntypedServerClient();
 
   if (action === "update_status" && data) {
     const { error } = await supabase.from(table).update(data).eq("id", id);

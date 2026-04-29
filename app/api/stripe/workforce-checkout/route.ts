@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 
 const EARLY_BIRD_PRICE = 39900; // $399 in cents
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const adminSupabase = createServerClient();
+  const adminSupabase = createUntypedServerClient();
 
   // Get the active open cohort
   const { data: cohort } = await adminSupabase

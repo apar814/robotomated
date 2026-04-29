@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { sendEmployerIntentNotification } from "@/lib/email/templates/workforce";
 import type {
   EmployerIntentSubmission,
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid willingness to pay value" }, { status: 400 });
   }
 
-  const supabase = createServerClient();
+  const supabase = createUntypedServerClient();
 
   const { error } = await supabase.from("employer_intent").insert({
     company_name: body.company_name.trim(),

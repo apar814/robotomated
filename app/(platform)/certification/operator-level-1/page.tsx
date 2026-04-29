@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { EnrollButton } from "./enroll-button";
+import type { Cohort } from "@/lib/workforce/types";
 
 export const metadata: Metadata = {
   title: "Operator Level 1 Certification — $399 Early Bird | Robotomated",
@@ -109,16 +110,17 @@ export default async function OperatorLevel1Page({
   searchParams: Promise<{ canceled?: string }>;
 }) {
   const params = await searchParams;
-  const supabase = createServerClient();
+  const supabase = createUntypedServerClient();
 
-  // Get active cohort
-  const { data: cohort } = await supabase
+  // Get active cohort (table not in generated types yet)
+  const { data: rawCohort } = await supabase
     .from("cohorts")
     .select("*")
     .eq("status", "open")
     .order("start_date", { ascending: true })
     .limit(1)
     .single();
+  const cohort = rawCohort as Cohort | null;
 
   const spotsLeft = cohort ? cohort.capacity - cohort.enrolled_count : 0;
   const isEarlyBird = cohort ? cohort.enrolled_count < 10 : false;

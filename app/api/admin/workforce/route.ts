@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 
 const ADMIN_EMAIL = "apar814@gmail.com";
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
 
-  const supabase = createServerClient();
+  const supabase = createUntypedServerClient();
 
   const [employers, enrollments, cohorts] = await Promise.all([
     supabase

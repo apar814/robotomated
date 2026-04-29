@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { createServerClient } from "@/lib/supabase/server";
+import { createUntypedServerClient } from "@/lib/supabase/server";
 import { sendStudentWelcomeEmail } from "@/lib/email/templates/workforce";
 
 export async function POST(request: NextRequest) {
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
-    const supabase = createServerClient();
+    const supabase = createUntypedServerClient();
 
     // Create enrollment record
     const { error: insertError } = await supabase
