@@ -188,30 +188,25 @@ export default async function HomePage() {
           ══════════════════════════════════════════ */}
       <MotionSection as="section" className="px-6 py-28">
         <div className="mx-auto max-w-7xl">
-          {/* Section heading */}
-          <div className="mb-3 flex items-center gap-2">
-            <span className="h-px w-6 bg-[#0EA5E9]" />
-            <span className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.2em] text-[#0EA5E9]">
-              Intelligence
-            </span>
-          </div>
+          {/* Section marker per DESIGN.md */}
+          <div className="section-marker">02 / TRENDING</div>
           <h2
-            className="font-[family-name:var(--font-ui)] font-bold tracking-[-0.03em]"
-            style={{ fontSize: "clamp(32px, 4vw, 56px)", color: "var(--theme-text-primary)" }}
+            className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
+            style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "#FFFFFF" }}
           >
-            Trending This Week
+            Highest-Scored Robots This Week
           </h2>
-          <p className="mt-3 max-w-lg font-[family-name:var(--font-ui)] text-base leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
+          <p className="mt-3 max-w-lg text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
             {totalRobots} robots, independently scored. No manufacturer pays for placement.
           </p>
 
           {/* Search bar — command center style */}
           <Link
             href="/explore"
-            className="mt-8 flex items-center gap-3 rounded-xl px-5 py-4 transition-all hover:border-[#0EA5E9]/30 hover:shadow-[0_0_20px_rgba(14,165,233,0.06)]"
-            style={{ background: "var(--layer-1, rgba(13,13,13,1))", border: "1px solid rgba(255,255,255,0.06)" }}
+            className="mt-8 flex items-center gap-3 px-5 py-4 transition-colors"
+            style={{ background: "#0A0A0A", border: "1px solid #1F1F1F", borderRadius: "2px" }}
           >
-            <svg className="h-5 w-5 shrink-0 text-[#0EA5E9]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5 shrink-0 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
             </svg>
             <span className="flex-1 font-[family-name:var(--font-ui)] text-[15px] text-white/40">
@@ -228,8 +223,8 @@ export default async function HomePage() {
               <Link
                 key={cat.id}
                 href={`/explore/${cat.slug}`}
-                className="shrink-0 rounded-full px-3.5 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-[0.06em] transition-all hover:border-[#0EA5E9]/30 hover:text-[#0EA5E9]"
-                style={{ border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.4)" }}
+                className="shrink-0 px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-[0.12em] transition-colors hover:border-white/40 hover:text-white"
+                style={{ border: "1px solid #1F1F1F", color: "rgba(255,255,255,0.4)", borderRadius: "2px" }}
               >
                 {cat.name}
               </Link>
@@ -248,10 +243,11 @@ export default async function HomePage() {
                   <Link
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-                    className="card-2080 holo-card group block"
+                    className="group block border transition-colors hover:border-white/20"
+                    style={{ borderColor: "#1F1F1F", background: "#0A0A0A", borderRadius: "2px" }}
                   >
                     {/* Image zone */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#0F1628] to-[#141C33]">
+                    <div className="relative aspect-[16/10] overflow-hidden" style={{ background: "#000000" }}>
                       {hasImg ? (
                         <img
                           src={imgs[0].url}
@@ -266,35 +262,35 @@ export default async function HomePage() {
                         </div>
                       )}
                       {/* Gradient overlay */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(18,18,18,0.95)]" />
+                      {/* Gradient overlay removed per DESIGN.md */}
                       {/* Category badge */}
                       {cat && (
-                        <div className="absolute left-3 top-3 rounded-md px-2.5 py-1" style={{ background: "rgba(8,8,8,0.8)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                          <span className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.15em] text-white/70">{cat.name.toUpperCase()}</span>
+                        <div className="absolute left-3 top-3 px-2 py-1" style={{ background: "#000000", border: "1px solid #1F1F1F", borderRadius: "2px" }}>
+                          <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/70">{cat.name}</span>
                         </div>
                       )}
                       {/* RoboScore */}
                       {robot.robo_score != null && robot.robo_score > 0 && (
-                        <div className="absolute right-3 top-3 flex h-12 w-12 items-center justify-center rounded-full" style={{ background: "rgba(8,8,8,0.8)", backdropFilter: "blur(12px)", border: `1px solid ${robot.robo_score >= 80 ? "rgba(16,185,129,0.4)" : robot.robo_score >= 60 ? "rgba(245,158,11,0.4)" : "rgba(239,68,68,0.4)"}`, boxShadow: `0 0 12px ${robot.robo_score >= 80 ? "rgba(16,185,129,0.15)" : robot.robo_score >= 60 ? "rgba(245,158,11,0.15)" : "rgba(239,68,68,0.15)"}` }}>
-                          <span className="font-[family-name:var(--font-brand)] text-[14px] font-bold" style={{ color: robot.robo_score >= 80 ? "#10B981" : robot.robo_score >= 60 ? "#F59E0B" : "#EF4444" }}>{robot.robo_score}</span>
+                        <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center" style={{ background: "#000000", border: "1px solid #1F1F1F", borderRadius: "2px" }}>
+                          <span className="font-mono text-[14px] font-medium text-white">{robot.robo_score}</span>
                         </div>
                       )}
                     </div>
                     {/* Info zone */}
                     <div className="p-4">
-                      <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[#0EA5E9]">{mfr}</span>
-                      <p className="mt-1.5 font-[family-name:var(--font-ui)] text-[16px] font-semibold text-white transition-colors group-hover:text-[#0EA5E9]">{robot.name}</p>
-                      <div className="my-2.5 border-t" style={{ borderColor: "rgba(255,255,255,0.04)" }} />
+                      <span className="text-[12px] font-medium uppercase tracking-[0.12em] text-white/45">{mfr}</span>
+                      <p className="mt-1.5 text-[16px] font-medium text-white transition-colors group-hover:text-white/80">{robot.name}</p>
+                      <div className="my-3 border-t" style={{ borderColor: "#1F1F1F" }} />
                       <div className="flex items-center justify-between">
                         {robot.price_current != null ? (
-                          <span className="font-[family-name:var(--font-mono)] text-[18px] font-bold text-[#C8FF00]">
+                          <span className="font-mono text-[18px] font-medium text-white">
                             {formatPrice(robot.price_current)}
                           </span>
                         ) : (
-                          <span className="font-[family-name:var(--font-mono)] text-[11px] text-white/35">Contact for pricing</span>
+                          <span className="font-mono text-[11px] text-white/35">Contact for pricing</span>
                         )}
-                        <span className="rounded-md px-3 py-1.5 font-[family-name:var(--font-brand)] text-[9px] tracking-[0.1em] text-[#0EA5E9] transition-all hover:bg-[#0EA5E9] hover:text-black" style={{ background: "rgba(14,165,233,0.1)", border: "1px solid rgba(14,165,233,0.25)" }}>
-                          EXPLORE →
+                        <span className="text-[12px] font-medium uppercase tracking-[0.12em] text-white/45 transition-colors group-hover:text-white">
+                          VIEW →
                         </span>
                       </div>
                     </div>
