@@ -44,6 +44,19 @@ Two-value system. Maximum contrast. No exceptions.
 |---|---|---|
 | `--alert` | `#FF3B00` | ONLY for: critical warnings, recall notices, certification failures. Never for CTAs. |
 | `--data` | `#00D4FF` | ONLY for: live data, real-time indicators, "now playing" markers, intelligence feed timestamps. Borrowed from launch telemetry HUDs. Never as a brand color. |
+| `--interactive` | `#D4D4D4` | Primary interactive elements: links, focus rings, primary CTA borders, active nav. Escalates to `#FFFFFF` on hover. |
+
+**Status tokens** (reserved for state communication, never decorative):
+
+| Token | Hex | Allowed use |
+|---|---|---|
+| `--status-error` | `#FF3B00` | Genuine emergency only. Recalls, system failures, critical validation. |
+| `--status-error-muted` | `#B33000` | Routine error indicators. Badges, form validation, "required" labels, failed checks. Most error UI uses this. |
+| `--status-warning` | `#CC8400` | Caution without alarm. Expiring items, approaching limits. |
+| `--status-success` | `#4A9E6B` | Passed, verified, complete, online. |
+| `--status-info` | `#5B8FA8` | Informational, neutral. Tooltips, hints. |
+
+**Status token usage rule:** Status tokens are reserved for state communication. Never decorative or aesthetic. Components that want visual interest must use lightness, weight, or spacing — not status hue.
 
 **Forbidden:**
 - Gradients (any kind)

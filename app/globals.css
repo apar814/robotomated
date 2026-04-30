@@ -19,9 +19,23 @@
   --color-amber: #FBBF24;
 
   /* Dim accent variants */
-  --color-electric-blue-dim: rgba(255,255,255,0.04);
-  --color-lime-dim: rgba(255,255,255,0.04);
-  --color-magenta-dim: rgba(255,255,255,0.04);
+  --color-electric-blue-dim: var(--interactive-dim);
+  --color-lime-dim: var(--interactive-dim);
+  --color-magenta-dim: var(--interactive-dim);
+
+  /* Interactive accent — for links, focus rings, primary CTA borders */
+  --color-interactive: var(--interactive);
+  --color-interactive-hover: var(--interactive-hover);
+  --color-interactive-dim: var(--interactive-dim);
+
+  /* Status — reserved for state communication, never decorative.
+     Components that want visual interest must use lightness, weight,
+     or spacing — not status hue. */
+  --color-status-error: var(--status-error);
+  --color-status-error-muted: var(--status-error-muted);
+  --color-status-warning: var(--status-warning);
+  --color-status-success: var(--status-success);
+  --color-status-info: var(--status-info);
 
   /* Text hierarchy */
   --color-text-primary: var(--theme-text-primary);
@@ -459,7 +473,7 @@ html {
   --theme-text-muted: rgba(255,255,255,0.45);
   --theme-text-ghost: rgba(255,255,255,0.25);
   --theme-text-inverse: #000000;
-  --theme-accent-blue: #FFFFFF;
+  --theme-accent-blue: #D4D4D4; /* was #FFFFFF — remapped to --interactive to fix tinted bg breakage */
   --theme-input-bg: rgba(255,255,255,0.04);
   --theme-input-border: #1F1F1F;
   --theme-tag-bg: rgba(255,255,255,0.04);
@@ -470,6 +484,51 @@ html {
   --theme-scrollbar-track: #000000;
   --theme-scrollbar-thumb: #1F1F1F;
   color-scheme: dark;
+
+  /* ── Semantic neutral ramp ──────────────────────────────────────
+     Extends the ink system beyond --layer-4 / --theme-border-strong.
+     Named semantically (not --neutral-N or --layer-N) because these
+     values serve specific UI roles, not elevation layers. Choosing
+     semantic naming over numeric because "what is this for?" is more
+     useful than "what step is this?" when a component author is
+     picking a token. */
+  --border-subtle:    #1F1F1F;   /* Default borders, dividers (same as --theme-border) */
+  --border-moderate:  #2A2A2A;   /* Emphasized borders, card edges on hover */
+  --border-strong:    #333333;   /* High-emphasis borders, active states */
+  --text-disabled:    #404040;   /* Disabled text, inactive controls */
+  --text-tertiary:    #525252;   /* Third-tier text, secondary metadata */
+  --text-caption:     #6B6B6B;   /* Captions, timestamps, helper text */
+  --text-aside:       #858585;   /* De-emphasized labels, aside content */
+  --surface-hover:    #141414;   /* Hover state for surfaces (same as --theme-card-hover) */
+  --surface-active:   #1A1A1A;   /* Active/pressed state for surfaces */
+  --surface-disabled: #0D0D0D;   /* Disabled surface background */
+
+  /* ── Interactive accent ─────────────────────────────────────────
+     Single token for primary interactive elements: links, focus rings,
+     primary CTA borders, active nav indicators. Not white (too strong
+     for tinted backgrounds). Not a hue (DESIGN.md forbids "tech brand"
+     colors). High-lightness neutral — differentiates interactive from
+     static by brightness, matching SpaceX control panel patterns. */
+  --interactive:       #D4D4D4;
+  --interactive-hover: #FFFFFF;
+  --interactive-dim:   rgba(212,212,212,0.12);  /* Tinted backgrounds for interactive elements */
+
+  /* ── Status tokens ──────────────────────────────────────────────
+     Reserved for state communication. NEVER decorative or aesthetic.
+     Components that want visual interest must use lightness, weight,
+     or spacing — not status hue.
+
+     --status-error:       Genuine emergency only. Recalls, system failures,
+                           critical validation. Use sparingly.
+     --status-error-muted: Routine error indicators. Badges, form validation,
+                           "required" labels, failed checks. Most error UI
+                           should use this, not --status-error.
+     Saturation kept under 60% for all status tokens — industrial, not consumer. */
+  --status-error:       #FF3B00;   /* Emergency: recalls, system failures, critical alerts */
+  --status-error-muted: #B33000;   /* Routine: badges, labels, form errors, failed checks */
+  --status-warning:     #CC8400;   /* Caution without alarm. Expiring, approaching limit. */
+  --status-success:     #4A9E6B;   /* Passed, verified, complete, online. Muted forest green. */
+  --status-info:        #5B8FA8;   /* Informational, neutral. Tooltips, hints. Slate blue-gray. */
 }
 
 @layer base {
@@ -774,23 +833,7 @@ html {
   --glow-lg: none;
   --glow-xl: none;
 }
-:root:not(.dark) {
-  --layer-0: #FFFFFF;
-  --layer-1: #F5F5F5;
-  --layer-2: #EBEBEB;
-  --layer-3: #D4D4D4;
-  --layer-4: #A3A3A3;
-
-  --shadow-1: none;
-  --shadow-2: none;
-  --shadow-3: none;
-  --shadow-4: none;
-
-  --glow-sm: none;
-  --glow-md: none;
-  --glow-lg: none;
-  --glow-xl: none;
-}
+/* Light-mode layers removed — dark-only site per DESIGN.md */
 
 /* Hero grid — removed */
 .hero-grid { background: none; animation: none; }
