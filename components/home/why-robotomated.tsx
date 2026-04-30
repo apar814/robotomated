@@ -37,16 +37,11 @@ export function WhyRobotomated() {
       }}
     >
       <div className="mx-auto max-w-7xl">
-        <p
-          className="mb-3 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em]"
-          style={{ color: "#2563EB" }}
-        >
-          Why Robotomated
-        </p>
+        <div className="section-marker mb-4">06 / WHY ROBOTOMATED</div>
         <h2
-          className="font-display font-bold tracking-[-0.03em]"
+          className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
           style={{
-            fontSize: "clamp(28px, 3.5vw, 48px)",
+            fontSize: "clamp(28px, 3.5vw, 40px)",
             color: "var(--theme-text-primary)",
           }}
         >
@@ -66,16 +61,16 @@ export function WhyRobotomated() {
             <Link
               key={pillar.title}
               href={pillar.href}
-              className="group block rounded-xl p-8 transition-all duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[3px]"
+              className="group block p-8 transition-colors duration-75"
               style={{
-                border: "1px solid var(--theme-card-border, var(--theme-border))",
+                border: "1px solid var(--theme-border, #1F1F1F)",
                 background: "var(--theme-card)",
-                boxShadow: "var(--theme-card-shadow)",
+                borderRadius: "2px",
               }}
             >
               <p
-                className="font-[family-name:var(--font-brand)] text-3xl font-extrabold"
-                style={{ color: "#2563EB", textShadow: "0 0 30px rgba(37,99,235,0.25)" }}
+                className="font-[family-name:var(--font-mono)] text-3xl font-medium"
+                style={{ color: "var(--theme-text-primary)" }}
               >
                 {pillar.stat}
               </p>
@@ -87,7 +82,7 @@ export function WhyRobotomated() {
               </p>
 
               <h3
-                className="mt-6 font-display text-xl font-bold"
+                className="mt-6 font-[family-name:var(--font-sans)] text-xl font-medium"
                 style={{ color: "var(--theme-text-primary)" }}
               >
                 {pillar.title}
@@ -100,7 +95,7 @@ export function WhyRobotomated() {
               </p>
 
               <span
-                className="mt-6 inline-block text-sm font-semibold transition-colors group-hover:text-[#2563EB]"
+                className="mt-6 inline-block text-[12px] font-medium uppercase tracking-[0.04em] transition-colors duration-75 group-hover:text-white"
                 style={{ color: "var(--theme-text-muted)" }}
               >
                 Learn more &rarr;
