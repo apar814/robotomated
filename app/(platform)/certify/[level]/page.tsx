@@ -1,36 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { EnrollButton } from "@/components/certify/enroll-button";
+import { CERT_BY_SLUG, DETAIL_SLUGS, type CertLevel } from "@/lib/certifications";
 
 /* ══════════════════════════════════════════════
-   Level data — rebuilt for RCO v2
+   Detail-page-only data (curriculum, sample Qs)
+   keyed by slug — pricing comes from canonical source
    ══════════════════════════════════════════════ */
 
-interface CertificationData {
-  level: number;
-  name: string;
-  tag: string;
-  price: number;
-  rspPrice: number;
-  questions: number;
-  duration: number;
-  passScore: number;
-  prerequisites: string;
-  studyHours: string;
-  renewalYears: number;
-  color: string;
+interface DetailData {
   tagline: string;
   description: string;
-  proves: string;
   whoItsFor: string[];
   curriculum: { title: string; topics: string[] }[];
-  domains: { name: string; pct: number }[];
-  careers: string[];
-  salaryBump: string;
   specializations?: { name: string; focus: string; robots: string }[];
-  hasGauntlet?: boolean;
-  hasPractical?: boolean;
-  hasCapstone?: boolean;
   gauntletRounds?: { title: string; time: string; pass: string }[];
   sampleQuestion: {
     type: string;
@@ -42,25 +26,11 @@ interface CertificationData {
   };
 }
 
-const CERTIFICATIONS: Record<string, CertificationData> = {
-  "1": {
-    level: 1,
-    name: "Foundation",
-    tag: "ROBOT OPERATOR CERTIFIED",
-    price: 149,
-    rspPrice: 99,
-    questions: 80,
-    duration: 90,
-    passScore: 75,
-    prerequisites: "None",
-    studyHours: "20-40",
-    renewalYears: 2,
-    color: "blue",
+const DETAIL: Record<string, DetailData> = {
+  foundation: {
     tagline: "Your entry point into professional robotics",
     description:
       "The RCO Foundation validates core robotics knowledge. Designed for anyone entering the robotics field. No prior experience required. You will be tested on safety, types, operations, diagnostics, and compliance across 80 questions in 90 minutes.",
-    proves:
-      "You can safely operate and monitor deployed robots. You know when to call for help. You won't hurt yourself, coworkers, or equipment.",
     whoItsFor: [
       "New robotics operators and technicians",
       "Warehouse and logistics staff transitioning to automation",
@@ -120,52 +90,25 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
         ],
       },
     ],
-    domains: [
-      { name: "Safety Fundamentals", pct: 25 },
-      { name: "Robot Basics", pct: 20 },
-      { name: "Deployment Fundamentals", pct: 20 },
-      { name: "Fault Diagnosis L1", pct: 20 },
-      { name: "Regulations & Ethics", pct: 15 },
-    ],
-    careers: [
-      "Robot Operator",
-      "AMR Technician",
-      "Warehouse Automation Specialist",
-    ],
-    salaryBump: "$8,000-15,000/year",
     sampleQuestion: {
       type: "Fault Diagnosis",
       question:
         "A UR5e cobot performing a palletizing task enters protective stop 3 times per hour. Force data shows spikes to 42N (threshold: 40N) during the final placement. The task runs flawlessly in simulation. What should you investigate FIRST?",
       options: [
         "A. Recalibrate the force/torque sensor",
-        "B. Check TCP calibration — physical tool offset may differ from simulation",
+        "B. Check TCP calibration \u2014 physical tool offset may differ from simulation",
         "C. Increase the force threshold to 50N",
         "D. Replace the end-of-arm gripper",
       ],
       answer: "B",
       explanation:
-        "When a real robot triggers protective stops that don't occur in simulation, the most likely cause is a physical calibration mismatch. TCP (Tool Center Point) drift of even 0.5mm changes contact geometry enough to exceed force thresholds at the point of contact. Recalibrating the sensor (A) treats the symptom. Increasing the threshold (C) is dangerous — safety limits exist for a reason.",
+        "When a real robot triggers protective stops that don\u2019t occur in simulation, the most likely cause is a physical calibration mismatch. TCP (Tool Center Point) drift of even 0.5mm changes contact geometry enough to exceed force thresholds at the point of contact. Recalibrating the sensor (A) treats the symptom. Increasing the threshold (C) is dangerous \u2014 safety limits exist for a reason.",
     },
   },
-  "2": {
-    level: 2,
-    name: "Specialist",
-    tag: "ROBOT SYSTEMS SPECIALIST",
-    price: 299,
-    rspPrice: 199,
-    questions: 120,
-    duration: 150,
-    passScore: 78,
-    prerequisites: "Level 1 Foundation",
-    studyHours: "60-100",
-    renewalYears: 2,
-    color: "green",
+  specialist: {
     tagline: "Deep expertise in your chosen robotics domain",
     description:
       "The RCO Specialist validates deep expertise in a specific robotics domain. Choose one of 7 specializations. 120 questions in 150 minutes plus 2 practical simulation scenarios.",
-    proves:
-      "You can program, deploy, integrate, and maintain robots in your specialization. You handle common faults autonomously. You can brief clients and train operators.",
     whoItsFor: [
       "Experienced operators seeking specialization",
       "Technicians focused on specific robot categories",
@@ -173,7 +116,6 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
       "Engineers transitioning to hands-on robotics roles",
       "Professionals seeking manufacturer partner credentials",
     ],
-    hasPractical: true,
     curriculum: [
       {
         title: "Robot Programming & Control Systems",
@@ -217,12 +159,6 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
         ],
       },
     ],
-    domains: [
-      { name: "Advanced Programming", pct: 25 },
-      { name: "Fleet Management", pct: 20 },
-      { name: "Fault Injection Mastery", pct: 25 },
-      { name: "Perception & AI", pct: 30 },
-    ],
     specializations: [
       { name: "AMR Specialist", focus: "Autonomous Mobile Robots", robots: "Locus, 6 River, Fetch, Kiva" },
       { name: "Cobot Specialist", focus: "Collaborative Robots", robots: "UR, FANUC CRX, ABB GoFa" },
@@ -232,13 +168,6 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
       { name: "Medical Robot", focus: "Robots in Healthcare", robots: "Aethon TUG, Moxi, Penny" },
       { name: "Eldercare", focus: "Care Environments", robots: "PARO, Labrador, TUG" },
     ],
-    careers: [
-      "Robot Technician",
-      "Integration Specialist",
-      "Automation Engineer",
-      "RaaS Provider",
-    ],
-    salaryBump: "$20,000-35,000/year",
     sampleQuestion: {
       type: "Code Review",
       question:
@@ -258,35 +187,21 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
       stop = Twist()
       self.pub.publish(stop)`,
       options: [
-        "A. No QoS profile — messages may be dropped",
+        "A. No QoS profile \u2014 messages may be dropped",
         "B. min(msg.ranges) includes inf values which evaluate incorrectly",
-        "C. No latching on stop command — robot may resume",
-        "D. Threshold hardcoded — cannot be adjusted",
+        "C. No latching on stop command \u2014 robot may resume",
+        "D. Threshold hardcoded \u2014 cannot be adjusted",
         "E. No handling of NaN values in ranges",
       ],
       answer: "A, B, C, E",
       explanation:
-        "Critical: inf values make min() return a finite value only when ALL readings are finite, but inf readings should indicate open space — a NaN reading makes min() return NaN which fails the comparison silently. Best-effort QoS can drop the stop command under load. Publishing one Twist() then silence means the velocity controller may resume.",
+        "Critical: inf values make min() return a finite value only when ALL readings are finite, but inf readings should indicate open space \u2014 a NaN reading makes min() return NaN which fails the comparison silently. Best-effort QoS can drop the stop command under load. Publishing one Twist() then silence means the velocity controller may resume.",
     },
   },
-  "3": {
-    level: 3,
-    name: "Master",
-    tag: "ROBOT SYSTEMS MASTER",
-    price: 499,
-    rspPrice: 349,
-    questions: 150,
-    duration: 180,
-    passScore: 82,
-    prerequisites: "Level 2 Specialist",
-    studyHours: "120-200",
-    renewalYears: 2,
-    color: "violet",
+  master: {
     tagline: "You survive chaos. You handle what nobody trained you for.",
     description:
-      "The RCO Master is the highest technical certification. 150 questions in 3 hours PLUS The Gauntlet — a 2-hour live assessment with 4 rounds of real-time fault injection, zero-downtime operations, novel deployment, and code review.",
-    proves:
-      "You survive chaos. You can reprogram a robot mid-shift. You close the sim-to-real gap. You handle edge cases nobody trained you for. You do not need help.",
+      "The RCO Master is the highest technical certification. 150 questions in 3 hours PLUS The Gauntlet \u2014 a 2-hour live assessment with 4 rounds of real-time fault injection, zero-downtime operations, novel deployment, and code review.",
     whoItsFor: [
       "Senior operators managing complex deployments",
       "Automation engineers pushing the state of the art",
@@ -294,7 +209,6 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
       "Technical directors overseeing robotics programs",
       "Consultants who need to prove they can do the work",
     ],
-    hasGauntlet: true,
     gauntletRounds: [
       { title: "Fault Injection", time: "30 min", pass: "Fix 4 of 5 injected faults" },
       { title: "Zero Downtime", time: "30 min", pass: "Zero production stoppages" },
@@ -343,28 +257,14 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
         ],
       },
     ],
-    domains: [
-      { name: "Sim-to-Real Transfer", pct: 20 },
-      { name: "Dexterous Manipulation", pct: 25 },
-      { name: "World Modeling", pct: 20 },
-      { name: "Edge Inference", pct: 15 },
-      { name: "System Architecture", pct: 20 },
-    ],
-    careers: [
-      "Senior Robot Engineer",
-      "Fleet Architect",
-      "Automation Consultant",
-      "Technical Director",
-    ],
-    salaryBump: "$40,000-80,000/year",
     sampleQuestion: {
       type: "Fault Diagnosis Scenario",
       question:
-        "You're operating a Locus Origin AMR fleet in a 400,000 sq ft DC. It's 2:47 AM during peak season. Robot LR-047 stops mid-path: NAV_LOCALIZATION_FAILURE_047, LIDAR_SCAN_DEVIATION: 340%, Battery: 67%. The robot cannot be physically reached for 8 minutes due to fork traffic. What is your FIRST action?",
+        "You\u2019re operating a Locus Origin AMR fleet in a 400,000 sq ft DC. It\u2019s 2:47 AM during peak season. Robot LR-047 stops mid-path: NAV_LOCALIZATION_FAILURE_047, LIDAR_SCAN_DEVIATION: 340%, Battery: 67%. The robot cannot be physically reached for 8 minutes due to fork traffic. What is your FIRST action?",
       options: [
         "A. Immediately send remote restart command",
         "B. Check if other robots in Zone C show similar LIDAR deviations",
-        "C. Pull the robot's last 50 position logs to identify deviation start point",
+        "C. Pull the robot\u2019s last 50 position logs to identify deviation start point",
         "D. Declare the robot offline and reroute all Zone C traffic immediately",
       ],
       answer: "C",
@@ -372,24 +272,10 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
         "Before taking action, you must understand WHEN the deviation began. If it started suddenly (impact/reflective surface) vs gradually (accumulating error), the fix differs entirely. A remote restart mid-error risks compounding position uncertainty. Rerouting traffic (D) may be needed but only after diagnosis.",
     },
   },
-  "4": {
-    level: 4,
-    name: "Fleet Commander",
-    tag: "CERTIFIED ROBOT FLEET COMMANDER",
-    price: 799,
-    rspPrice: 599,
-    questions: 150,
-    duration: 180,
-    passScore: 85,
-    prerequisites: "Level 3 Master + 2 years field experience",
-    studyHours: "200+",
-    renewalYears: 2,
-    color: "amber",
+  "fleet-commander": {
     tagline: "Enterprise fleet operations and automation strategy",
     description:
       "The highest RCO credential. 150 situational questions in 3 hours PLUS a 4-hour capstone simulation, written case study submission, and panel review interview. You design and run 1,000-robot deployments for Fortune 500 companies.",
-    proves:
-      "You design and run large-scale robot operations. You train other operators. You make strategic decisions about fleet architecture, vendor selection, and organizational automation strategy.",
     whoItsFor: [
       "Directors of automation and robotics",
       "VP-level operations leaders",
@@ -397,7 +283,6 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
       "Enterprise consultants specializing in automation",
       "Robotics program managers at Fortune 500 scale",
     ],
-    hasCapstone: true,
     curriculum: [
       {
         title: "Program Design & Training",
@@ -440,27 +325,15 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
         ],
       },
     ],
-    domains: [
-      { name: "Program Design & Training", pct: 30 },
-      { name: "Incident Command", pct: 35 },
-      { name: "Business Operations", pct: 35 },
-    ],
-    careers: [
-      "Head of Automation",
-      "VP Operations",
-      "Chief Robotics Officer",
-      "Consulting Partner",
-    ],
-    salaryBump: "$60,000-150,000/year",
     sampleQuestion: {
       type: "Enterprise Scenario",
       question:
         "FreshMart Grocery (200 stores) is deploying 800+ robots: shelf scanning, customer service, overnight cleaning, inventory, and security. Budget: $12M/3yr. Staff: 2,000 with union considerations. What is the correct deployment sequence?",
       options: [
-        "A. Deploy cleaning robots first — lowest customer interaction risk, highest ROI",
-        "B. Deploy shelf scanning first — immediate inventory accuracy ROI, data foundation for other systems",
+        "A. Deploy cleaning robots first \u2014 lowest customer interaction risk, highest ROI",
+        "B. Deploy shelf scanning first \u2014 immediate inventory accuracy ROI, data foundation for other systems",
         "C. Deploy all functions simultaneously in 10 pilot stores",
-        "D. Deploy security robots first — after-hours means zero customer interaction",
+        "D. Deploy security robots first \u2014 after-hours means zero customer interaction",
       ],
       answer: "B",
       explanation:
@@ -469,43 +342,13 @@ const CERTIFICATIONS: Record<string, CertificationData> = {
   },
 };
 
-const COLOR_MAP: Record<
-  string,
-  { badge: string; cta: string; accent: string; border: string; glow: string }
-> = {
-  blue: {
-    badge: "bg-blue/10 text-blue",
-    cta: "bg-blue hover:bg-blue/90",
-    accent: "text-blue",
-    border: "border-blue/20",
-    glow: "bg-blue",
-  },
-  green: {
-    badge: "bg-green/10 text-green",
-    cta: "bg-green hover:bg-green/90 text-navy",
-    accent: "text-green",
-    border: "border-green/20",
-    glow: "bg-green",
-  },
-  violet: {
-    badge: "bg-violet/10 text-violet",
-    cta: "bg-violet hover:bg-violet/90",
-    accent: "text-violet",
-    border: "border-violet/20",
-    glow: "bg-violet",
-  },
-  amber: {
-    badge: "bg-amber-500/10 text-amber-400",
-    cta: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
-    accent: "text-amber-400",
-    border: "border-amber-500/20",
-    glow: "bg-amber-500",
-  },
-};
+/* ─── Static params for slug-based routes ─── */
 
 export function generateStaticParams() {
-  return [{ level: "1" }, { level: "2" }, { level: "3" }, { level: "4" }];
+  return DETAIL_SLUGS.map((slug) => ({ level: slug }));
 }
+
+/* ─── Metadata ─── */
 
 export async function generateMetadata({
   params,
@@ -513,13 +356,15 @@ export async function generateMetadata({
   params: Promise<{ level: string }>;
 }): Promise<Metadata> {
   const { level } = await params;
-  const cert = CERTIFICATIONS[level];
+  const cert = CERT_BY_SLUG[level];
   if (!cert) return { title: "Certification Not Found" };
   return {
     title: `RCO Level ${cert.level}: ${cert.name} -- ${cert.tag} | Robotomated`,
-    description: cert.description,
+    description: DETAIL[level]?.description ?? cert.proves,
   };
 }
+
+/* ─── Page ─── */
 
 export default async function CertificationDetailPage({
   params,
@@ -527,30 +372,12 @@ export default async function CertificationDetailPage({
   params: Promise<{ level: string }>;
 }) {
   const { level } = await params;
-  const cert = CERTIFICATIONS[level];
+  const cert = CERT_BY_SLUG[level];
+  const detail = DETAIL[level];
 
-  if (!cert) {
-    return (
-      <div className="flex min-h-[60vh] items-center justify-center px-4">
-        <div className="text-center">
-          <h1 className="font-display text-3xl font-bold">
-            Certification Not Found
-          </h1>
-          <p className="mt-4 text-muted">
-            The certification level you are looking for does not exist.
-          </p>
-          <Link
-            href="/certify"
-            className="mt-6 inline-block rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white hover:bg-blue/90"
-          >
-            View All Certifications
-          </Link>
-        </div>
-      </div>
-    );
+  if (!cert || !detail) {
+    notFound();
   }
-
-  const colors = COLOR_MAP[cert.color] || COLOR_MAP.blue;
 
   return (
     <div>
@@ -564,9 +391,7 @@ export default async function CertificationDetailPage({
             &larr; All Certifications
           </Link>
           <div className="mt-6 flex items-center gap-3">
-            <span
-              className={`inline-flex items-center rounded-full px-3 py-1 text-[13px] font-bold uppercase tracking-[0.1em] ${colors.badge}`}
-            >
+            <span className="inline-flex items-center rounded-full border border-border bg-white/5 px-3 py-1 text-[13px] font-bold uppercase tracking-[0.1em] text-white">
               Level {cert.level}
             </span>
             <span className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
@@ -576,8 +401,8 @@ export default async function CertificationDetailPage({
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">
             RCO {cert.name}
           </h1>
-          <p className="mt-2 text-lg text-muted">{cert.tagline}</p>
-          <p className="mt-6 leading-relaxed text-muted">{cert.description}</p>
+          <p className="mt-2 text-lg text-muted">{detail.tagline}</p>
+          <p className="mt-6 leading-relaxed text-muted">{detail.description}</p>
 
           {/* Exam details bar */}
           <div className="mt-8 grid grid-cols-2 gap-4 rounded-xl border border-border bg-[#0C0C0C] p-5 sm:grid-cols-5">
@@ -616,8 +441,8 @@ export default async function CertificationDetailPage({
 
           {/* Assessment badges */}
           {cert.hasGauntlet && (
-            <div className="mt-4 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3">
-              <p className="text-sm font-semibold text-red-400">
+            <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-4 py-3">
+              <p className="text-sm font-semibold text-white">
                 + THE GAUNTLET: 2-hour live assessment (4 rounds)
               </p>
               <p className="mt-1 text-xs text-muted">
@@ -626,15 +451,15 @@ export default async function CertificationDetailPage({
             </div>
           )}
           {cert.hasPractical && (
-            <div className="mt-4 rounded-lg border border-green/20 bg-green/5 px-4 py-3">
-              <p className="text-sm font-semibold text-green">
+            <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-4 py-3">
+              <p className="text-sm font-semibold text-white">
                 + 2 practical simulation scenarios (60 min total)
               </p>
             </div>
           )}
           {cert.hasCapstone && (
-            <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/5 px-4 py-3">
-              <p className="text-sm font-semibold text-amber-400">
+            <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-4 py-3">
+              <p className="text-sm font-semibold text-white">
                 + 4-hour capstone simulation + case study + panel review
               </p>
             </div>
@@ -642,9 +467,9 @@ export default async function CertificationDetailPage({
 
           {/* CTA */}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <EnrollButton level={cert.level} price={cert.price} rspPrice={cert.rspPrice} className={colors.cta} />
+            <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
             <Link
-              href={`/certify/study/${cert.level === 4 ? "fleet-commander" : cert.level === 1 ? "foundation" : cert.level === 2 ? "specialist" : "master"}`}
+              href={`/certify/study/${cert.slug}`}
               className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:text-white"
             >
               Preview Curriculum
@@ -668,11 +493,9 @@ export default async function CertificationDetailPage({
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display text-2xl font-bold">Who This Is For</h2>
           <ul className="mt-6 space-y-3">
-            {cert.whoItsFor.map((item) => (
+            {detail.whoItsFor.map((item) => (
               <li key={item} className="flex items-start gap-3 text-muted">
-                <span
-                  className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${colors.glow}`}
-                />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
                 {item}
               </li>
             ))}
@@ -692,7 +515,7 @@ export default async function CertificationDetailPage({
               <div key={d.name} className="flex items-center gap-4">
                 <div className="h-3 flex-1 rounded-full bg-border">
                   <div
-                    className={`h-3 rounded-full ${colors.glow}/60`}
+                    className="h-3 rounded-full bg-white/40"
                     style={{ width: `${d.pct}%` }}
                   />
                 </div>
@@ -707,7 +530,7 @@ export default async function CertificationDetailPage({
       </section>
 
       {/* ═══ SPECIALIZATIONS ═══ */}
-      {cert.specializations && (
+      {detail.specializations && (
         <section className="border-b border-border px-4 py-12">
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-2xl font-bold">
@@ -718,7 +541,7 @@ export default async function CertificationDetailPage({
               tailored to your domain.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {cert.specializations.map((spec) => (
+              {detail.specializations.map((spec) => (
                 <div
                   key={spec.name}
                   className="rounded-xl border border-border bg-[#0A0A0A] p-4"
@@ -726,7 +549,7 @@ export default async function CertificationDetailPage({
                   <h3 className="font-display text-base font-bold text-white">
                     {spec.name}
                   </h3>
-                  <p className={`mt-1 text-xs ${colors.accent}`}>
+                  <p className="mt-1 text-xs text-muted">
                     {spec.focus}
                   </p>
                   <p className="mt-2 text-xs text-muted">
@@ -740,26 +563,26 @@ export default async function CertificationDetailPage({
       )}
 
       {/* ═══ THE GAUNTLET ═══ */}
-      {cert.gauntletRounds && (
-        <section className="border-b border-red-500/10 bg-gradient-to-b from-red-500/[0.02] to-transparent px-4 py-12">
+      {detail.gauntletRounds && (
+        <section className="border-b border-border px-4 py-12">
           <div className="mx-auto max-w-4xl">
-            <h2 className="font-display text-2xl font-bold text-red-400">
+            <h2 className="font-display text-2xl font-bold">
               The Gauntlet
             </h2>
             <p className="mt-2 text-muted">
               4 rounds. 2 hours. No second chances.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {cert.gauntletRounds.map((r, idx) => (
+              {detail.gauntletRounds.map((r, idx) => (
                 <div
                   key={r.title}
-                  className="rounded-xl border border-red-500/10 bg-[#0A0A0A] p-5"
+                  className="rounded-xl border border-border bg-[#0A0A0A] p-5"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-red-500/30">
+                    <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white/20">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-[family-name:var(--font-mono)] text-xs text-red-400">
+                    <span className="font-[family-name:var(--font-mono)] text-xs text-muted">
                       {r.time}
                     </span>
                   </div>
@@ -781,12 +604,10 @@ export default async function CertificationDetailPage({
             Curriculum Overview
           </h2>
           <div className="mt-8 space-y-6">
-            {cert.curriculum.map((module, idx) => (
+            {detail.curriculum.map((module, idx) => (
               <div key={module.title} className="rounded-xl border border-border bg-[#0A0A0A] p-6">
                 <div className="flex items-start gap-4">
-                  <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${colors.badge}`}
-                  >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-sm font-bold text-white">
                     {idx + 1}
                   </span>
                   <div>
@@ -817,19 +638,19 @@ export default async function CertificationDetailPage({
         <div className="mx-auto max-w-4xl">
           <h2 className="font-display text-2xl font-bold">Sample Question</h2>
           <p className="mt-1 text-xs text-muted">
-            Type: {cert.sampleQuestion.type}
+            Type: {detail.sampleQuestion.type}
           </p>
           <div className="mt-6 rounded-xl border border-border bg-[#0A0A0A] p-6">
-            {cert.sampleQuestion.context && (
+            {detail.sampleQuestion.context && (
               <pre className="mb-4 overflow-x-auto rounded-lg border border-border bg-[#0C0C0C] p-4 font-mono text-xs leading-relaxed text-muted">
-                {cert.sampleQuestion.context}
+                {detail.sampleQuestion.context}
               </pre>
             )}
             <p className="text-sm font-medium leading-relaxed text-white">
-              {cert.sampleQuestion.question}
+              {detail.sampleQuestion.question}
             </p>
             <div className="mt-4 space-y-2">
-              {cert.sampleQuestion.options.map((opt) => (
+              {detail.sampleQuestion.options.map((opt) => (
                 <div
                   key={opt}
                   className="rounded-lg border border-border px-4 py-2.5 text-sm text-muted"
@@ -838,12 +659,12 @@ export default async function CertificationDetailPage({
                 </div>
               ))}
             </div>
-            <div className="mt-4 rounded-lg border border-green/20 bg-green/5 px-4 py-3">
-              <p className="text-sm font-semibold text-green">
-                Correct: {cert.sampleQuestion.answer}
+            <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-4 py-3">
+              <p className="text-sm font-semibold text-white">
+                Correct: {detail.sampleQuestion.answer}
               </p>
               <p className="mt-1 text-sm leading-relaxed text-muted">
-                {cert.sampleQuestion.explanation}
+                {detail.sampleQuestion.explanation}
               </p>
             </div>
           </div>
@@ -864,7 +685,7 @@ export default async function CertificationDetailPage({
               </span>
             ))}
           </div>
-          <p className={`mt-4 text-lg font-semibold ${colors.accent}`}>
+          <p className="mt-4 text-lg font-semibold text-white">
             Average salary increase: {cert.salaryBump}
           </p>
         </div>
@@ -880,10 +701,10 @@ export default async function CertificationDetailPage({
             {cert.prerequisites === "None"
               ? "No prerequisites. Start today."
               : `Requires ${cert.prerequisites}.`}
-            {" "}Renewal every {cert.renewalYears} years.
+            {cert.renewalYears > 0 && ` Renewal every ${cert.renewalYears} years.`}
           </p>
           <div className="mt-8">
-            <EnrollButton level={cert.level} price={cert.price} rspPrice={cert.rspPrice} className={colors.cta} />
+            <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
           </div>
         </div>
       </section>

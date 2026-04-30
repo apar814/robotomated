@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CertificationRoiCalculator } from "@/components/certify/roi-calculator";
+import { CERT_LEVELS } from "@/lib/certifications";
 
 export const metadata: Metadata = {
   title:
@@ -10,249 +11,17 @@ export const metadata: Metadata = {
 };
 
 /* ═══════════════════════════════════════════════════
-   LEVEL DATA
+   INDEX-PAGE-ONLY PRESENTATION DATA
    ═══════════════════════════════════════════════════ */
 
-const LEVELS = [
-  {
-    level: 0,
-    slug: "awareness",
-    name: "Awareness",
-    tag: "ROBOT LITERACY CERTIFIED",
-    tagShort: "RCO-A",
-    questions: 40,
-    duration: 60,
-    passScore: 70,
-    price: 0,
-    rspPrice: 0,
-    studyHours: "3-5",
-    proves:
-      "Learn what robots actually are, how they work, and the five categories reshaping every industry. You'll finish with enough context to evaluate automation opportunities and speak intelligently with vendors.",
-    outcomes: [
-      "Identify the 5 robot categories and their applications",
-      "Apply safety protocols when working near deployed robots",
-      "Evaluate vendor claims with a structured framework",
-      "Explain ROI fundamentals of automation to stakeholders",
-    ],
-    careers: ["Any role near robots", "Career changers", "Facility staff"],
-    salaryBump: "$42K–58K entry roles",
-    glow: "shadow-[#2563EB]/20 hover:shadow-[#2563EB]/40",
-    border: "border-[#2563EB]/20 hover:border-[#2563EB]/50",
-    badge: "bg-[#2563EB]/10 text-[#2563EB]",
-    accent: "text-[#2563EB]",
-    cta: "bg-[#2563EB] hover:bg-[#2563EB]/90 text-black",
-    ctaLabel: "Get Robot Literate — Free",
-    ring: "ring-green/30",
-    isFree: true,
-    domains: [
-      { name: "Robot Revolution", pct: 20 },
-      { name: "How Robots Work", pct: 25 },
-      { name: "Safety Basics", pct: 30 },
-      { name: "Robot Economy", pct: 15 },
-      { name: "First Interaction", pct: 10 },
-    ],
-  },
-  {
-    level: 1,
-    slug: "foundation",
-    name: "Foundation",
-    tag: "ROBOT OPERATOR CERTIFIED",
-    tagShort: "FOUNDATION",
-    questions: 80,
-    duration: 90,
-    passScore: 75,
-    price: 149,
-    rspPrice: 99,
-    studyHours: "20-40",
-    proves:
-      "Master the fundamentals of safe robot operation. You'll learn startup/shutdown procedures, basic fault diagnosis, and how to monitor deployed robots without putting people or equipment at risk.",
-    outcomes: [
-      "Safely start, operate, and shut down deployed robots",
-      "Diagnose and escalate Level 1 faults under pressure",
-      "Monitor robot performance and flag anomalies in real time",
-      "Follow OSHA and industry safety regulations for automation",
-    ],
-    careers: ["Robot Operator", "AMR Technician", "Warehouse Automation Specialist"],
-    salaryBump: "$8,000-15,000/year",
-    glow: "shadow-blue/20 hover:shadow-blue/40",
-    border: "border-blue/20 hover:border-blue/50",
-    badge: "bg-blue/10 text-blue",
-    accent: "text-blue",
-    cta: "bg-blue hover:bg-blue/90",
-    ctaLabel: "Become a Certified Operator",
-    ring: "ring-blue/30",
-    domains: [
-      { name: "Safety Fundamentals", pct: 25 },
-      { name: "Robot Basics", pct: 20 },
-      { name: "Deployment Fundamentals", pct: 20 },
-      { name: "Fault Diagnosis L1", pct: 20 },
-      { name: "Regulations & Ethics", pct: 15 },
-    ],
-  },
-  {
-    level: 2,
-    slug: "specialist",
-    name: "Specialist",
-    tag: "ROBOT SYSTEMS SPECIALIST",
-    tagShort: "SPECIALIST",
-    questions: 120,
-    duration: 150,
-    passScore: 78,
-    price: 299,
-    rspPrice: 199,
-    studyHours: "60-100",
-    proves:
-      "Go deep in your chosen robotics domain. You'll learn to program robots, integrate them with existing systems (WMS, ERP, MES), and resolve faults without calling the manufacturer.",
-    outcomes: [
-      "Program and deploy robots in your chosen specialization",
-      "Integrate robots with warehouse, ERP, and MES systems",
-      "Resolve common faults autonomously without vendor support",
-      "Pass 2 live simulation scenarios under time pressure",
-    ],
-    careers: [
-      "Robot Technician",
-      "Integration Specialist",
-      "Automation Engineer",
-    ],
-    salaryBump: "$20,000-35,000/year",
-    glow: "shadow-[#2563EB]/20 hover:shadow-[#2563EB]/40",
-    border: "border-[#2563EB]/20 hover:border-[#2563EB]/50",
-    badge: "bg-[#2563EB]/10 text-[#2563EB]",
-    accent: "text-[#2563EB]",
-    cta: "bg-[#2563EB] hover:bg-[#2563EB]/90 text-black",
-    ctaLabel: "Get Certified as a Specialist",
-    ring: "ring-green/30",
-    hasPractical: true,
-    domains: [
-      { name: "Advanced Programming", pct: 25 },
-      { name: "Fleet Management", pct: 20 },
-      { name: "Fault Injection Mastery", pct: 25 },
-      { name: "Perception & AI", pct: 30 },
-    ],
-  },
-  {
-    level: 3,
-    slug: "master",
-    name: "Master",
-    tag: "ROBOT SYSTEMS MASTER",
-    tagShort: "MASTER",
-    questions: 150,
-    duration: 180,
-    passScore: 82,
-    price: 499,
-    rspPrice: 349,
-    studyHours: "120-200",
-    proves:
-      "Prove you can handle anything. Reprogram a robot mid-shift, close the sim-to-real gap, and debug edge cases nobody anticipated. The Gauntlet assessment tests all of this under live conditions.",
-    outcomes: [
-      "Reprogram robot behavior live during production shifts",
-      "Architect multi-robot systems across different manufacturers",
-      "Survive The Gauntlet: 4 rounds of live fault injection",
-      "Design and validate sim-to-real transfer pipelines",
-    ],
-    careers: [
-      "Senior Robot Engineer",
-      "Fleet Architect",
-      "Technical Director",
-    ],
-    salaryBump: "$40,000-80,000/year",
-    glow: "shadow-violet/20 hover:shadow-violet/40",
-    border: "border-violet/20 hover:border-violet/50",
-    badge: "bg-violet/10 text-violet",
-    accent: "text-violet",
-    cta: "bg-violet hover:bg-violet/90",
-    ctaLabel: "Earn Your Master Credential",
-    ring: "ring-violet/30",
-    hasGauntlet: true,
-    domains: [
-      { name: "Sim-to-Real Transfer", pct: 20 },
-      { name: "Dexterous Manipulation", pct: 25 },
-      { name: "World Modeling", pct: 20 },
-      { name: "Edge Inference", pct: 15 },
-      { name: "System Architecture", pct: 20 },
-    ],
-  },
-  {
-    level: 4,
-    slug: "fleet-commander",
-    name: "Fleet Commander",
-    tag: "CERTIFIED ROBOT FLEET COMMANDER",
-    tagShort: "COMMANDER",
-    questions: 150,
-    duration: 180,
-    passScore: 85,
-    price: 799,
-    rspPrice: 599,
-    studyHours: "200+",
-    proves:
-      "Lead large-scale automation operations. You'll learn to design fleet architectures, run incident command, train and certify operators beneath you, and present ROI cases to executive leadership.",
-    outcomes: [
-      "Design fleet architectures spanning multiple facilities",
-      "Run incident command during production-critical failures",
-      "Build and deliver operator training programs",
-      "Present automation ROI cases to C-suite stakeholders",
-    ],
-    careers: [
-      "Head of Automation",
-      "VP Operations",
-      "Chief Robotics Officer",
-    ],
-    salaryBump: "$60,000-150,000/year",
-    glow: "shadow-amber-500/20 hover:shadow-amber-500/40",
-    border: "border-amber-500/20 hover:border-amber-500/50",
-    badge: "bg-amber-500/10 text-amber-400",
-    accent: "text-amber-400",
-    cta: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
-    ctaLabel: "Become a Fleet Commander",
-    ring: "ring-amber-500/30",
-    hasCapstone: true,
-    domains: [
-      { name: "Program Design & Training", pct: 30 },
-      { name: "Incident Command", pct: 35 },
-      { name: "Business Operations", pct: 35 },
-    ],
-  },
-  {
-    level: 5,
-    slug: "cro",
-    name: "Chief Robotics Officer",
-    tag: "CRO (ROBOTOMATED CERTIFIED)",
-    tagShort: "CRO",
-    questions: 0,
-    duration: 90,
-    passScore: 80,
-    price: 2499,
-    rspPrice: 2499,
-    studyHours: "N/A",
-    proves:
-      "The highest designation in robotics operations. Not an exam — an induction. Demonstrate that you have shaped the future of robotics at scale through a portfolio defense, expert panel review, and ongoing contribution commitment.",
-    outcomes: [
-      "Join an exclusive network of senior robotics leaders",
-      "Receive CRO designation recognized across the industry",
-      "Contribute to RCO curriculum and industry standards",
-      "Access board-level advisory and speaking opportunities",
-    ],
-    careers: [
-      "Chief Robotics Officer",
-      "Robotics Board Member",
-      "Industry Advisor",
-    ],
-    salaryBump: "Executive tier",
-    glow: "shadow-white/10 hover:shadow-white/20",
-    border: "border-white/20 hover:border-white/40",
-    badge: "bg-white/10 text-white",
-    accent: "text-white",
-    cta: "bg-gradient-to-r from-white to-gray-200 text-black hover:from-gray-100 hover:to-white",
-    ctaLabel: "Apply for CRO Designation",
-    ring: "ring-white/20",
-    isCRO: true,
-    domains: [
-      { name: "Portfolio Defense", pct: 33 },
-      { name: "Panel Review (90 min)", pct: 34 },
-      { name: "Contribution Commitment", pct: 33 },
-    ],
-  },
-];
+const CTA_LABELS: Record<string, string> = {
+  awareness: "Get Robot Literate — Free",
+  foundation: "Become a Certified Operator",
+  specialist: "Get Certified as a Specialist",
+  master: "Earn Your Master Credential",
+  "fleet-commander": "Become a Fleet Commander",
+  cro: "Apply for CRO Designation",
+};
 
 const GAUNTLET_ROUNDS = [
   {
@@ -447,17 +216,15 @@ export default function CertifyPage() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            {LEVELS.map((lvl) => (
+            {CERT_LEVELS.map((lvl) => (
               <div
                 key={lvl.level}
-                className={`group relative rounded-2xl border bg-[#0A0A0A] p-7 transition-all duration-300 ${lvl.border} ${lvl.glow} hover:shadow-xl`}
+                className="group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all duration-300 hover:border-white/20"
               >
                 {/* Level number + tag */}
                 <div className="mb-5 flex items-start justify-between">
                   <div>
-                    <span
-                      className={`inline-flex items-center rounded-full px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] ${lvl.badge}`}
-                    >
+                    <span className="inline-flex items-center rounded-full border border-border bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-white">
                       Level {lvl.level}
                     </span>
                     <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-muted">
@@ -529,17 +296,17 @@ export default function CertifyPage() {
 
                 {/* Gauntlet / Practical badges */}
                 {lvl.hasGauntlet && (
-                  <div className="mt-4 rounded-lg border border-red-500/20 bg-red-500/5 px-3 py-2 text-xs font-semibold text-red-400">
+                  <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-3 py-2 text-xs font-semibold text-white">
                     + THE GAUNTLET: 2-hour live assessment (4 rounds)
                   </div>
                 )}
                 {lvl.hasPractical && (
-                  <div className="mt-4 rounded-lg border border-green/20 bg-green/5 px-3 py-2 text-xs font-semibold text-green">
+                  <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-3 py-2 text-xs font-semibold text-white">
                     + 2 practical simulation scenarios (60 min total)
                   </div>
                 )}
                 {lvl.hasCapstone && (
-                  <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-xs font-semibold text-amber-400">
+                  <div className="mt-4 rounded-lg border border-border bg-white/[0.02] px-3 py-2 text-xs font-semibold text-white">
                     + 4-hour capstone + case study + panel review
                   </div>
                 )}
@@ -557,19 +324,7 @@ export default function CertifyPage() {
                         </span>
                         <div className="h-1.5 flex-1 rounded-full bg-border">
                           <div
-                            className={`h-1.5 rounded-full ${
-                              lvl.level <= 0
-                                ? "bg-[#2563EB]/60"
-                                : lvl.level === 1
-                                  ? "bg-blue/60"
-                                  : lvl.level === 2
-                                    ? "bg-[#2563EB]/60"
-                                    : lvl.level === 3
-                                      ? "bg-violet/60"
-                                      : lvl.level === 4
-                                        ? "bg-amber-500/60"
-                                        : "bg-white/40"
-                            }`}
+                            className="h-1.5 rounded-full bg-white/40"
                             style={{ width: `${d.pct}%` }}
                           />
                         </div>
@@ -587,7 +342,7 @@ export default function CertifyPage() {
                     <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
                       Career Outcome
                     </p>
-                    <p className={`text-base font-bold ${lvl.accent}`}>
+                    <p className="text-base font-bold text-white">
                       {lvl.salaryBump}
                     </p>
                   </div>
@@ -607,15 +362,15 @@ export default function CertifyPage() {
                 {/* CTA — outcome-driven copy */}
                 <div className="mt-6 flex gap-3">
                   <Link
-                    href={`/certify/${lvl.slug === "awareness" ? "awareness" : lvl.slug === "cro" ? "cro" : lvl.level}`}
-                    className={`flex-1 rounded-lg px-5 py-3 text-center text-sm font-semibold text-white transition-all ${lvl.cta}`}
+                    href={`/certify/${lvl.slug}`}
+                    className="flex-1 rounded-lg border border-white/20 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
                   >
-                    {lvl.ctaLabel}
+                    {CTA_LABELS[lvl.slug] || lvl.name}
                   </Link>
-                  {!("isCRO" in lvl && lvl.isCRO) && (
+                  {!lvl.isCRO && (
                     <Link
                       href={`/certify/study/${lvl.slug}`}
-                      className="rounded-lg border border-border px-5 py-3 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
+                      className="rounded-lg border border-border px-5 py-3 text-sm font-medium text-muted transition-colors hover:border-white/30 hover:text-white"
                     >
                       Preview Curriculum
                     </Link>

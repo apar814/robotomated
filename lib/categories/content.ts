@@ -46,7 +46,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "Do I need to modify my warehouse for robots?", a: "Most modern AMRs require minimal facility changes — WiFi coverage, floor markers at key intersections, and charging station installation. Older AGV systems require guide wires or magnetic strips embedded in the floor." },
     ],
     certLevel: "RCO Foundation (Level 1)",
-    certPath: "/certify/1",
+    certPath: "/certify/foundation",
   },
   medical: {
     slug: "medical",
@@ -76,7 +76,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "What certifications do hospital robot operators need?", a: "Hospital logistics robot operators need RCO Foundation (Level 1) minimum. Surgical robot teams need manufacturer-specific training (20-40 hours) plus RCO Specialist (Level 2) for integration work." },
     ],
     certLevel: "RCO Specialist (Level 2)",
-    certPath: "/certify/2",
+    certPath: "/certify/specialist",
   },
   humanoid: {
     slug: "humanoid",
@@ -106,7 +106,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "Are humanoid robots safe to work around?", a: "Safety standards for humanoids are still being developed (IEEE P7009, ASTM F3538, expected 2027-2028). Until then, deploy only in controlled environments with trained operators and physical separation from untrained workers." },
     ],
     certLevel: "RCO Specialist — Humanoid Track (Level 2)",
-    certPath: "/certify/2",
+    certPath: "/certify/specialist",
   },
   drone: {
     slug: "drone",
@@ -136,7 +136,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "Can drones fly in rain?", a: "Most consumer and prosumer drones cannot fly in rain. Enterprise drones with IP43+ rating (DJI Matrice series, Skydio X10) can operate in light rain. No commercial drone should fly in thunderstorms or heavy precipitation." },
     ],
     certLevel: "RCO Foundation (Level 1) + FAA Part 107",
-    certPath: "/certify/1",
+    certPath: "/certify/foundation",
   },
   manufacturing: {
     slug: "manufacturing",
@@ -166,7 +166,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "What ROI can I expect from a manufacturing robot?", a: "Typical payback period for a cobot is 6-14 months. Industrial arms in high-volume applications pay back in 3-8 months. ROI depends on labor cost, shift coverage, defect reduction, and throughput increase." },
     ],
     certLevel: "RCO Specialist (Level 2)",
-    certPath: "/certify/2",
+    certPath: "/certify/specialist",
   },
   consumer: {
     slug: "consumer",
@@ -226,7 +226,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "What happens if someone attacks the robot?", a: "Modern security robots record all interactions with multiple cameras and can trigger immediate alerts. Attacking the robot generates evidence. Most deployments report zero vandalism after the first week of operation — the robot's presence is itself a deterrent." },
     ],
     certLevel: "RCO Foundation (Level 1)",
-    certPath: "/certify/1",
+    certPath: "/certify/foundation",
   },
   agricultural: {
     slug: "agricultural",
@@ -256,7 +256,7 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
       { q: "What's the ROI on agricultural robots?", a: "For large operations (500+ acres), ROI is typically 1-2 seasons. The primary savings come from labor cost reduction during harvest season. Secondary benefits include 24-hour operation (harvest in optimal weather windows) and reduced crop damage." },
     ],
     certLevel: "RCO Foundation (Level 1)",
-    certPath: "/certify/1",
+    certPath: "/certify/foundation",
   },
 };
 

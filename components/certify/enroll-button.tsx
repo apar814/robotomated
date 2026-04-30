@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 interface EnrollButtonProps {
-  level: number;
+  slug: string;
   price: number;
   rspPrice: number;
   className?: string;
 }
 
-export function EnrollButton({ level, price, rspPrice, className }: EnrollButtonProps) {
+export function EnrollButton({ slug, price, rspPrice, className }: EnrollButtonProps) {
   const [loading, setLoading] = useState(false);
 
   async function handleCheckout() {
@@ -18,14 +18,14 @@ export function EnrollButton({ level, price, rspPrice, className }: EnrollButton
       const res = await fetch("/api/stripe/certify-checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ level: String(level) }),
+        body: JSON.stringify({ slug }),
       });
       const data = await res.json();
 
       if (data.url) {
         window.location.href = data.url;
       } else if (data.error === "Not authenticated") {
-        window.location.href = `/login?redirect=/certify/${level}`;
+        window.location.href = `/login?redirect=/certify/${slug}`;
       } else {
         setLoading(false);
       }

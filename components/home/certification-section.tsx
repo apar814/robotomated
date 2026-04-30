@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-const CERT_LEVELS = [
-  { level: 0, name: "Awareness", price: "Free", color: "rgba(34,197,94,0.8)", passScore: "70%", time: "30 min", proves: "You understand what robots are and where they fit." },
-  { level: 1, name: "Foundation", price: "$299", color: "rgba(14,165,233,0.8)", passScore: "80%", time: "90 min", proves: "You can evaluate and recommend robotic solutions." },
-  { level: 2, name: "Specialist", price: "$599", color: "rgba(139,92,246,0.8)", passScore: "85%", time: "2 hrs", proves: "You can deploy and operate robots in your specialization." },
-  { level: 3, name: "Master", price: "$1,299", color: "rgba(239,68,68,0.8)", passScore: "90%", time: "4 rounds", proves: "You survived The Gauntlet. You are elite.", isGauntlet: true },
-  { level: 4, name: "Fleet Commander", price: "$2,499", color: "rgba(245,158,11,0.8)", passScore: "92%", time: "3 hrs", proves: "You can manage multi-robot fleets at enterprise scale." },
-  { level: 5, name: "CRO", price: "By Merit", color: "rgba(255,255,255,0.9)", passScore: "N/A", time: "Board Review", proves: "The highest credential in robotics operations. Earned, never purchased.", isLocked: true },
-];
+import { CERT_LEVELS } from "@/lib/certifications";
 
 const BIZ_BENEFITS = [
   "Certify your entire operations team",
@@ -45,8 +37,8 @@ export function CertificationSection() {
               {CERT_LEVELS.map((cert) => (
                 <div key={cert.level} className="group relative flex gap-8 pb-6">
                   {/* Timeline node */}
-                  <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: cert.color }}>
-                    <span className="font-[family-name:var(--font-brand)] text-[11px] font-bold text-white">{cert.level}</span>
+                  <div className="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: "var(--interactive, #D4D4D4)" }}>
+                    <span className="font-[family-name:var(--font-brand)] text-[11px] font-bold" style={{ color: "var(--ink, #000)" }}>{cert.level}</span>
                   </div>
 
                   {/* Card */}
@@ -55,52 +47,53 @@ export function CertificationSection() {
                     style={{
                       background: "var(--theme-card, #0A0A0A)",
                       border: "1px solid var(--theme-border, #1F1F1F)",
-                      borderLeft: `3px solid ${cert.color}`,
-                      borderRadius: "0 2px 2px 0",
+                      borderRadius: "2px",
                     }}
                   >
                     {/* Level badge */}
                     <span
                       className="inline-block px-2.5 py-1 font-[family-name:var(--font-mono)] text-[9px] tracking-[0.15em]"
-                      style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))", borderRadius: "2px", color: cert.color }}
+                      style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))", borderRadius: "2px", color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}
                     >
                       LEVEL {cert.level} — {cert.name.toUpperCase()}
                     </span>
 
                     {/* Gauntlet warning */}
-                    {cert.isGauntlet && (
+                    {cert.hasGauntlet && (
                       <span className="ml-2 inline-block font-[family-name:var(--font-mono)] text-[9px] tracking-[0.12em]" style={{ color: "var(--status-error-muted, #B33000)" }}>
                         [ THE GAUNTLET ]
                       </span>
                     )}
 
-                    {/* Locked indicator for L5 */}
-                    {cert.isLocked && (
+                    {/* Locked indicator for CRO */}
+                    {cert.isCRO && (
                       <span className="ml-2 inline-block font-[family-name:var(--font-brand)] text-[9px] tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.5)" }}>
                         [ BY MERIT ONLY ]
                       </span>
                     )}
 
                     <div className="mt-3 flex items-center gap-4">
-                      <span className="font-[family-name:var(--font-mono)] text-lg font-medium" style={{ color: cert.color }}>{cert.price}</span>
+                      <span className="font-[family-name:var(--font-mono)] text-lg font-medium" style={{ color: "var(--theme-text-primary)" }}>
+                        {cert.price === 0 ? "Free" : `$${cert.price.toLocaleString()}`}
+                      </span>
                       <span className="font-[family-name:var(--font-mono)] text-[11px]" style={{ color: "rgba(255,255,255,0.35)" }}>
-                        Pass: {cert.passScore} · {cert.time}
+                        Pass: {cert.passScore}% · {cert.duration} min
                       </span>
                     </div>
 
                     {/* What it proves */}
-                    <p className="mt-3 border-l-2 pl-3 font-[family-name:var(--font-ui)] text-[14px] italic" style={{ borderColor: cert.color, color: "rgba(255,255,255,0.6)" }}>
+                    <p className="mt-3 border-l-2 pl-3 font-[family-name:var(--font-ui)] text-[14px] italic" style={{ borderColor: "var(--theme-border, #1F1F1F)", color: "rgba(255,255,255,0.6)" }}>
                       {cert.proves}
                     </p>
 
                     {/* CTA */}
-                    {!cert.isLocked ? (
+                    {!cert.isCRO ? (
                       <Link
-                        href={cert.level === 0 ? "/certify/awareness" : "/certify"}
+                        href={cert.isFree ? "/certify/awareness" : "/certify"}
                         className="mt-4 inline-block px-5 py-2.5 font-[family-name:var(--font-brand)] text-[10px] tracking-[0.1em] transition-colors duration-75 hover:text-white"
-                        style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))", borderRadius: "2px", color: cert.color }}
+                        style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))", borderRadius: "2px", color: "var(--interactive, #D4D4D4)" }}
                       >
-                        {cert.level === 0 ? "START FREE" : "BEGIN CERTIFICATION"} →
+                        {cert.isFree ? "START FREE" : "BEGIN CERTIFICATION"} →
                       </Link>
                     ) : (
                       <p className="mt-4 flex items-center gap-2 font-[family-name:var(--font-mono)] text-[11px]" style={{ color: "rgba(255,255,255,0.3)" }}>

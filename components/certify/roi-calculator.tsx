@@ -1,49 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { CERT_LEVELS } from "@/lib/certifications";
 
 /* ═══════════════════════════════════════════════════
-   LEVEL DATA
+   LEVEL DATA — pricing from canonical source
    ═══════════════════════════════════════════════════ */
 
-const LEVELS = [
-  {
-    label: "Awareness (L0)",
-    cost: 0,
-    avgIncrease: 0,
-    typicalRoles: "Entry-level robot-adjacent roles",
-  },
-  {
-    label: "Foundation (L1)",
-    cost: 149,
-    avgIncrease: 12_000,
-    typicalRoles: "Robot Operator, AMR Technician",
-  },
-  {
-    label: "Specialist (L2)",
-    cost: 299,
-    avgIncrease: 27_000,
-    typicalRoles: "Robot Technician, Integration Specialist",
-  },
-  {
-    label: "Master (L3)",
-    cost: 499,
-    avgIncrease: 55_000,
-    typicalRoles: "Senior Robot Engineer, Fleet Architect",
-  },
-  {
-    label: "Fleet Commander (L4)",
-    cost: 799,
-    avgIncrease: 100_000,
-    typicalRoles: "Head of Automation, VP Operations",
-  },
-  {
-    label: "CRO (L5)",
-    cost: 2_499,
-    avgIncrease: 0,
-    typicalRoles: "Chief Robotics Officer",
-  },
-] as const;
+const AVG_INCREASE: Record<string, number> = {
+  awareness: 0,
+  foundation: 12_000,
+  specialist: 27_000,
+  master: 55_000,
+  "fleet-commander": 100_000,
+  cro: 0,
+};
+
+const LEVELS = CERT_LEVELS.map((c) => ({
+  label: `${c.name} (L${c.level})`,
+  cost: c.price,
+  avgIncrease: AVG_INCREASE[c.slug] ?? 0,
+  typicalRoles: c.careers.join(", "),
+}));
 
 /* ═══════════════════════════════════════════════════
    HELPERS

@@ -2,20 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
-
-const CERT_PRICES: Record<string, { name: string; price: number }> = {
-  "1": { name: "RCO Foundation (Level 1)", price: 14900 }, // cents
-  "2": { name: "RCO Specialist (Level 2)", price: 29900 },
-  "3": { name: "RCO Master (Level 3)", price: 49900 },
-  "4": { name: "RCO Fleet Commander (Level 4)", price: 79900 },
-  "5": { name: "RCO CRO Designation (Level 5)", price: 249900 },
-};
+import { CERT_STRIPE_PRICES } from "@/lib/certifications";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { level, seats } = body as { level: string; seats?: number };
+  const { slug, seats } = body as { slug: string; seats?: number };
 
-  const cert = CERT_PRICES[level];
+  const cert = CERT_STRIPE_PRICES[slug];
   if (!cert) {
     return NextResponse.json({ error: "Invalid certification level" }, { status: 400 });
   }
@@ -90,11 +83,11 @@ export async function POST(request: NextRequest) {
         quantity: qty,
       },
     ],
-    success_url: `${origin}/certify/${level}?enrolled=true`,
-    cancel_url: `${origin}/certify/${level}?canceled=true`,
+    success_url: `${origin}/certify/${slug}?enrolled=true`,
+    cancel_url: `${origin}/certify/${slug}?canceled=true`,
     metadata: {
       supabase_user_id: user.id,
-      certification_level: level,
+      certification_slug: slug,
       seats: String(qty),
     },
   });
