@@ -40,12 +40,18 @@ export default async function ManufacturersPage() {
 
   return (
     <div>
-      <section className="border-b border-white/[0.06] px-4 py-12">
+      <section className="border-b px-6 py-16" style={{ borderColor: "#1F1F1F" }}>
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Manufacturers", href: "/manufacturers" }]} />
-          <p className="mt-6 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MANUFACTURERS ]</p>
-          <h1 className="mt-2 font-display text-3xl font-bold">Robot Manufacturers</h1>
-          <p className="mt-3 text-muted">{manufacturers.length} companies building the future of robotics.</p>
+          <span className="mt-6 block text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>
+            01 / MANUFACTURERS
+          </span>
+          <h1 className="mt-3 font-[family-name:var(--font-sans)] text-3xl font-medium tracking-tight sm:text-4xl" style={{ color: "#FFFFFF", letterSpacing: "-0.02em" }}>
+            Robot Manufacturers
+          </h1>
+          <p className="mt-3 text-[16px]" style={{ color: "rgba(255,255,255,0.45)" }}>
+            {manufacturers.length} companies tracked.
+          </p>
         </div>
       </section>
 
@@ -53,13 +59,13 @@ export default async function ManufacturersPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {manufacturers.map((m) => (
-              <div key={m.id} className="glass glass-hover rounded-xl p-5 transition-all hover:-translate-y-1">
+              <div key={m.id} className="border p-5 transition-colors" style={{ borderColor: "#1F1F1F", background: "#0A0A0A", borderRadius: "2px" }}>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <CompanyLogo logoUrl={m.logo_url} name={m.name} height={36} />
                     <div>
                     <Link href={`/manufacturers/${m.slug}`}>
-                      <h3 className="font-semibold hover:text-blue">{m.name}</h3>
+                      <h3 className="font-medium text-white hover:text-white/70">{m.name}</h3>
                     </Link>
                     <p className="mt-0.5 text-xs text-muted/60">
                       {m.country && <span>{m.country}</span>}
@@ -67,16 +73,16 @@ export default async function ManufacturersPage() {
                     </p>
                     </div>
                   </div>
-                  <span className="rounded-full bg-white/[0.04] px-2.5 py-0.5 font-[family-name:var(--font-brand)] text-xs font-medium text-muted">
+                  <span className="px-2 py-0.5 font-mono text-[14px] font-medium text-white/45" style={{ border: "1px solid #1F1F1F", borderRadius: "2px" }}>
                     {m.robot_count}
                   </span>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  <Link href={`/manufacturers/${m.slug}`} className="rounded-lg bg-blue/10 px-3 py-1.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-medium text-blue hover:bg-blue/20">
-                    View Robots
+                  <Link href={`/manufacturers/${m.slug}`} className="px-3 py-1.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white/45 hover:text-white" style={{ border: "1px solid #1F1F1F", borderRadius: "2px" }}>
+                    VIEW ROBOTS
                   </Link>
                   {m.website && (
-                    <a href={m.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 rounded-lg border border-white/[0.08] px-3 py-1.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] text-muted hover:text-foreground">
+                    <a href={m.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-3 py-1.5 text-[12px] font-medium uppercase tracking-[0.12em] text-white/25 hover:text-white" style={{ border: "1px solid #1F1F1F", borderRadius: "2px" }}>
                       Website
                       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
