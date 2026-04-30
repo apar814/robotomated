@@ -4,20 +4,20 @@ import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { UserMenu } from "@/components/auth/user-menu";
 import { useSiteStats } from "@/lib/context/site-stats";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+
 import { RobotimusAvatar } from "@/components/robotimus-avatar";
 
 // ── Dropdown data ──
 
 const exploreCategories = [
-  { slug: "warehouse", name: "Warehouse & Logistics", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
-  { slug: "medical", name: "Medical & Healthcare", icon: "M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" },
-  { slug: "manufacturing", name: "Manufacturing", icon: "M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" },
-  { slug: "agricultural", name: "Agricultural", icon: "M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" },
-  { slug: "security", name: "Security & Patrol", icon: "M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" },
-  { slug: "hospitality", name: "Hospitality & Service", icon: "M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" },
-  { slug: "construction", name: "Construction", icon: "M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21" },
-  { slug: "consumer", name: "Consumer & Home", icon: "m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75" },
+  { slug: "warehouse", name: "Warehouse & Logistics" },
+  { slug: "medical", name: "Medical & Healthcare" },
+  { slug: "manufacturing", name: "Manufacturing" },
+  { slug: "agricultural", name: "Agricultural" },
+  { slug: "security", name: "Security & Patrol" },
+  { slug: "hospitality", name: "Hospitality & Service" },
+  { slug: "construction", name: "Construction" },
+  { slug: "consumer", name: "Consumer & Home" },
 ];
 
 const exploreNeeds = [
@@ -62,15 +62,6 @@ const learnItems = [
   { href: "/newsletter", title: "Newsletter", desc: "Weekly automation intelligence", color: "#2563EB", divider: true },
 ];
 
-// ── SVG icon helper ──
-function NavIcon({ d }: { d: string }) {
-  return (
-    <svg className="h-4 w-4 shrink-0 text-[#2563EB]" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d={d} />
-    </svg>
-  );
-}
-
 // ── Chevron ──
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -83,8 +74,8 @@ function Chevron({ open }: { open: boolean }) {
 // ── Simple dropdown ──
 function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClose: () => void }) {
   return (
-    <div className="hero-grid absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 rounded-[14px] border p-2"
-      style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(10,10,10,0.98)", animation: "dropIn 150ms ease-out", boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(14,165,233,0.05)", backdropFilter: "blur(24px)" }}
+    <div className="absolute left-1/2 top-full z-50 mt-2 w-72 -translate-x-1/2 border p-2"
+      style={{ borderColor: "#1F1F1F", background: "rgba(0,0,0,0.95)", animation: "dropIn 150ms ease-out" }}
     >
       {items.map((item, i) => (
         <div key={item.href}>
@@ -92,13 +83,10 @@ function SimpleDropdown({ items, onClose }: { items: typeof acquireItems; onClos
           <Link
             href={item.href}
             onClick={onClose}
-            className="group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all hover:border-l-2 hover:border-l-[#0EA5E9] hover:bg-[rgba(14,165,233,0.06)]"
+            className="group block px-3 py-2.5 transition-colors hover:bg-white/[0.04]"
           >
-            <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full" style={{ background: "#0EA5E9" }} />
-            <div>
-              <p className="font-[family-name:var(--font-ui)] text-[13px] font-medium text-white/90">{item.title}</p>
-              <p className="font-[family-name:var(--font-ui)] text-[11px] text-white/40">{item.desc}</p>
-            </div>
+            <p className="text-[13px] font-medium text-white/90">{item.title}</p>
+            <p className="text-[11px] text-white/40">{item.desc}</p>
           </Link>
         </div>
       ))}
@@ -179,11 +167,11 @@ export function Header() {
       <div className="relative" onMouseEnter={() => handleEnter(id)} onMouseLeave={handleLeave}>
         <button
           onClick={() => setActiveMenu(isActive ? null : id)}
-          className="relative flex items-center gap-1.5 px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
-          style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.6)" }}
+          className="relative flex items-center gap-1.5 px-3 py-2 text-[12px] font-medium uppercase tracking-[0.12em] transition-colors"
+          style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.6)", fontFamily: "Inter, sans-serif" }}
         >
           {/* Active indicator */}
-          {isActive && <span className="absolute bottom-0 left-1/2 h-[2px] w-full -translate-x-1/2 bg-[#0EA5E9]" style={{ animation: "growWidth 300ms ease forwards" }} />}
+          {isActive && <span className="absolute bottom-0 left-1/2 h-px w-full -translate-x-1/2 bg-white" style={{ marginBottom: "-2px" }} />}
           {label}
           <Chevron open={isActive} />
         </button>
@@ -191,8 +179,8 @@ export function Header() {
         {/* Dropdowns */}
         {isActive && id === "explore" && (
           <div
-            className="hero-grid absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 rounded-[14px] border p-6"
-            style={{ borderColor: "rgba(255,255,255,0.08)", background: "rgba(10,10,10,0.98)", animation: "dropIn 150ms ease-out", boxShadow: "0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(14,165,233,0.05)", backdropFilter: "blur(24px)" }}
+            className="absolute left-1/2 top-full z-50 mt-2 w-[720px] -translate-x-1/2 border p-6"
+            style={{ borderColor: "#1F1F1F", background: "rgba(0,0,0,0.95)", animation: "dropIn 150ms ease-out" }}
             onMouseEnter={() => handleEnter(id)}
             onMouseLeave={handleLeave}
           >
@@ -206,13 +194,12 @@ export function Header() {
                       key={cat.slug}
                       href={`/explore/${cat.slug}`}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.06)]"
+                      className="block px-2.5 py-2 text-sm text-white/80 transition-colors hover:bg-white/[0.04] hover:text-white"
                     >
-                      <NavIcon d={cat.icon} />
-                      <span className="text-sm font-semibold text-[var(--theme-text-primary)]">{cat.name}</span>
+                      {cat.name}
                     </Link>
                   ))}
-                  <Link href="/explore" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#2563EB] hover:underline">
+                  <Link href="/explore" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-white/50 hover:text-white hover:underline">
                     View all categories &rarr;
                   </Link>
                 </div>
@@ -227,13 +214,12 @@ export function Header() {
                       key={need.label}
                       href={need.href}
                       onClick={closeAll}
-                      className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-all hover:bg-[rgba(14,165,233,0.06)]"
+                      className="block px-2.5 py-2 text-sm text-white/60 transition-colors hover:bg-white/[0.04] hover:text-white"
                     >
-                      <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563EB]" />
-                      <span className="text-sm text-[var(--theme-text-secondary)]">{need.label}</span>
+                      {need.label}
                     </Link>
                   ))}
-                  <Link href="/find-my-robot" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-[#2563EB] hover:underline">
+                  <Link href="/find-my-robot" onClick={closeAll} className="mt-2 block px-2.5 text-xs font-medium text-white/50 hover:text-white hover:underline">
                     Find my robot &rarr;
                   </Link>
                 </div>
@@ -242,17 +228,17 @@ export function Header() {
               {/* Column 3: Featured */}
               <div>
                 <p className="mb-3 border-b border-white/[0.04] pb-1.5 font-[family-name:var(--font-brand)] text-[8px] uppercase tracking-[0.2em] text-white/20">Featured</p>
-                <div className="rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
-                  <p className="text-[11px] font-medium uppercase tracking-widest text-[#2563EB]">Robot of the Week</p>
-                  <p className="mt-2 text-base font-bold text-[var(--theme-text-primary)]">Top RoboScore</p>
-                  <p className="mt-1 text-xs text-[var(--theme-text-muted)]">Highest-rated robot in our database this week.</p>
-                  <Link href="/explore" onClick={closeAll} className="mt-3 inline-block text-xs font-medium text-[#2563EB] hover:underline">
+                <div className="border border-[#1F1F1F] p-4">
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-white/40">Robot of the Week</p>
+                  <p className="mt-2 text-base font-bold text-white">Top RoboScore</p>
+                  <p className="mt-1 text-xs text-white/40">Highest-rated robot in our database this week.</p>
+                  <Link href="/explore" onClick={closeAll} className="mt-3 inline-block text-xs font-medium text-white/50 hover:text-white hover:underline">
                     View robot &rarr;
                   </Link>
                 </div>
-                <div className="mt-4 rounded-lg border border-[var(--theme-border)] bg-[var(--theme-tag-bg)] p-4">
-                  <p className="text-sm font-semibold text-[var(--theme-text-primary)]">{robotCount}+ robots tracked</p>
-                  <p className="mt-1 text-xs text-[var(--theme-text-muted)]">Independent RoboScores. No manufacturer bias.</p>
+                <div className="mt-4 border border-[#1F1F1F] p-4">
+                  <p className="text-sm font-semibold text-white">{robotCount}+ robots tracked</p>
+                  <p className="mt-1 text-xs text-white/40">Independent RoboScores. No manufacturer bias.</p>
                 </div>
               </div>
             </div>
@@ -291,29 +277,19 @@ export function Header() {
           from { opacity: 0; transform: translateX(-50%) translateY(8px); }
           to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
-        @keyframes pulse-icon {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-        @keyframes growWidth {
-          from { width: 0; }
-          to { width: 100%; }
-        }
       `}</style>
 
-      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "rgba(255,255,255,0.04)", background: "rgba(8,8,8,0.88)", backdropFilter: "blur(24px) saturate(180%)", boxShadow: "var(--theme-nav-shadow)" }}>
+      <header className="sticky left-0 right-0 top-0 z-50 border-b" style={{ borderColor: "#1F1F1F", background: "rgba(0,0,0,0.95)" }}>
         <div ref={navRef} className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo — ROBOTO + MATED + . */}
-          <Link href="/" className="logo-dot-pulse mr-8 flex items-center">
-            <span className="font-[family-name:var(--font-brand)] text-[16px] font-extrabold tracking-[0.04em]">
-              <span className="text-white">ROBOTO</span>
-              <span className="text-white">MATED</span>
-              <span className="logo-dot inline-block text-[#0EA5E9]" style={{ filter: "drop-shadow(0 0 6px rgba(14,165,233,0.5))" }}>.</span>
+          <Link href="/" className="mr-8 flex items-center">
+            <span className="font-[family-name:var(--font-brand)] text-[16px] font-medium uppercase tracking-[0.2em] text-white">
+              ROBOTOMATED
             </span>
           </Link>
 
           {/* Divider */}
-          <div className="mr-4 hidden h-5 w-px lg:block" style={{ background: "var(--theme-border)" }} />
+          <div className="mr-4 hidden h-5 w-px lg:block" style={{ background: "#1F1F1F" }} />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-0.5 lg:flex">
@@ -324,15 +300,15 @@ export function Header() {
             <NavButton id="learn" label="Learn" />
             <Link
               href="/intelligence"
-              className="rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
-              style={{ color: "var(--theme-text-secondary)" }}
+              className="px-3 py-2 text-[12px] font-medium uppercase tracking-[0.12em] transition-colors"
+              style={{ color: "rgba(255,255,255,0.6)", fontFamily: "Inter, sans-serif" }}
             >
               Intelligence
             </Link>
             <Link
               href="/manufacturers"
-              className="rounded-md px-3 py-2 font-[family-name:var(--font-ui)] text-[13px] font-medium tracking-[0.02em] transition-colors"
-              style={{ color: "var(--theme-text-secondary)" }}
+              className="px-3 py-2 text-[12px] font-medium uppercase tracking-[0.12em] transition-colors"
+              style={{ color: "rgba(255,255,255,0.6)", fontFamily: "Inter, sans-serif" }}
             >
               Manufacturers
             </Link>
@@ -343,19 +319,19 @@ export function Header() {
             {/* Search trigger */}
             <button
               onClick={openSearch}
-              className="hidden items-center gap-2 rounded-[10px] border px-3.5 py-2 transition-all hover:border-[#2563EB]/40 hover:shadow-[0_0_12px_rgba(37,99,235,0.1)] md:flex"
+              className="hidden items-center gap-2 border px-3.5 py-2 transition-colors hover:border-white/20 md:flex"
               style={{
                 width: "clamp(180px, 20vw, 280px)",
-                borderColor: "var(--theme-border)",
-                background: "var(--theme-tag-bg)",
-                color: "var(--theme-text-muted)",
+                borderColor: "#1F1F1F",
+                background: "transparent",
+                color: "rgba(255,255,255,0.4)",
               }}
             >
               <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
               </svg>
               <span className="flex-1 truncate text-[13px]">Search robots...</span>
-              <kbd className="shrink-0 rounded px-1.5 py-0.5 font-mono text-[13px]" style={{ background: "var(--theme-tag-bg)", color: "var(--theme-text-muted)", border: "1px solid var(--theme-border)" }}>
+              <kbd className="shrink-0 px-1.5 py-0.5 font-mono text-[13px]" style={{ background: "transparent", color: "rgba(255,255,255,0.3)", border: "1px solid #1F1F1F" }}>
                 &#8984;K
               </kbd>
             </button>
@@ -363,8 +339,8 @@ export function Header() {
             {/* Robotimus button */}
             <Link
               href="/advisor"
-              className="breathing inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 font-[family-name:var(--font-brand)] text-[11px] font-bold tracking-[0.08em] text-black transition-shadow hover:shadow-[0_0_30px_rgba(14,165,233,0.5)]"
-              style={{ background: "linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)", boxShadow: "0 0 20px rgba(14,165,233,0.35)" }}
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap border border-white/20 px-4 py-2 text-[12px] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/[0.04]"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
               <RobotimusAvatar size={18} />
               Robotimus
@@ -375,7 +351,7 @@ export function Header() {
             {/* Mobile hamburger */}
             <button
               type="button"
-              className="rounded-md p-2 text-[var(--theme-text-muted)] hover:text-[var(--theme-text-primary)] lg:hidden"
+              className="p-2 text-white/40 hover:text-white lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Menu"
             >
@@ -428,12 +404,8 @@ export function Header() {
               <Link
                 href="/advisor"
                 onClick={closeAll}
-                className="flex items-center justify-center gap-2 rounded-lg py-3 text-[14px] font-bold text-black"
-                style={{ background: "#2563EB" }}
+                className="flex items-center justify-center gap-2 border border-white/20 py-3 text-[12px] font-medium uppercase tracking-[0.12em] text-white"
               >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />
-                </svg>
                 ROBOTIMUS
               </Link>
             </div>
