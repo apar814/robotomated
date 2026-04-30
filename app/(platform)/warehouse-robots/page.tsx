@@ -72,7 +72,7 @@ export default function WarehouseRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -86,7 +86,7 @@ export default function WarehouseRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Warehouse Robots in 2026
@@ -114,7 +114,7 @@ export default function WarehouseRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               The Four Categories of Warehouse Robots
@@ -146,13 +146,13 @@ export default function WarehouseRobotsPage() {
             >
               The right category depends on your operation. For a comparison of
               AMRs and AGVs specifically, see our{" "}
-              <Link href="/amr-vs-agv" className="text-[#2563EB] hover:underline">
+              <Link href="/amr-vs-agv" className="underline hover:text-white">
                 AMR vs AGV breakdown
               </Link>
               . To browse all warehouse robots with specs and pricing, visit{" "}
               <Link
                 href="/explore/warehouse"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 our warehouse robot directory
               </Link>
@@ -162,7 +162,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               AMRs: The Fastest-Growing Segment
@@ -200,7 +200,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Robotic Picking Arms and Piece-Level Automation
@@ -221,7 +221,7 @@ export default function WarehouseRobotsPage() {
               robotic arms that these AI companies integrate with. The{" "}
               <Link
                 href="/explore/industrial"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial robot category
               </Link>{" "}
@@ -235,7 +235,7 @@ export default function WarehouseRobotsPage() {
               (cobots) like the{" "}
               <Link
                 href="/universal-robots-ur5e-review"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 Universal Robots UR5e
               </Link>{" "}
@@ -247,7 +247,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               AS/RS: Maximum Density, Maximum Investment
@@ -280,7 +280,7 @@ export default function WarehouseRobotsPage() {
               day. For a detailed cost analysis, see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 robot pricing guide
               </Link>
@@ -288,7 +288,7 @@ export default function WarehouseRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Need specific advice for your warehouse operation?
             </p>
@@ -297,7 +297,7 @@ export default function WarehouseRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -305,7 +305,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               How to Evaluate Warehouse Robots
@@ -331,13 +331,13 @@ export default function WarehouseRobotsPage() {
               style={{ color: "var(--theme-text-secondary)" }}
             >
               Our{" "}
-              <Link href="/compare" className="text-[#2563EB] hover:underline">
+              <Link href="/compare" className="underline hover:text-white">
                 comparison tool
               </Link>{" "}
               lets you evaluate warehouse robots side by side across price,
               payload, speed, and integration requirements. For independent
               assessments, check our{" "}
-              <Link href="/certify" className="text-[#2563EB] hover:underline">
+              <Link href="/certify" className="underline hover:text-white">
                 certification program
               </Link>{" "}
               which validates manufacturer claims through hands-on testing.
@@ -346,7 +346,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               RaaS: The Pay-Per-Pick Model
@@ -368,7 +368,7 @@ export default function WarehouseRobotsPage() {
               remove robots seasonally. Read our full{" "}
               <Link
                 href="/robot-as-a-service"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 RaaS guide
               </Link>{" "}
@@ -378,7 +378,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Integration and WMS Compatibility
@@ -407,7 +407,7 @@ export default function WarehouseRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               What to Expect in 2026-2028
@@ -428,7 +428,7 @@ export default function WarehouseRobotsPage() {
               non-conveyable items. While{" "}
               <Link
                 href="/humanoid-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 humanoid warehouse robots
               </Link>{" "}
@@ -437,14 +437,14 @@ export default function WarehouseRobotsPage() {
               that need flexibility above all else. Browse our{" "}
               <Link
                 href="/explore/warehouse"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full warehouse robot catalog
               </Link>{" "}
               or check the{" "}
               <Link
                 href="/best-warehouse-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 2026 rankings
               </Link>{" "}
@@ -455,7 +455,7 @@ export default function WarehouseRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

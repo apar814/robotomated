@@ -72,7 +72,7 @@ export default function HumanoidRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">Home</Link>
+            <Link href="/" className="hover:text-white">Home</Link>
           </li>
           <li>/</li>
           <li style={{ color: "var(--theme-text-secondary)" }}>Humanoid Robots</li>
@@ -82,7 +82,7 @@ export default function HumanoidRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Humanoid Robots: The Complete Buyer&#39;s Guide 2026
@@ -110,7 +110,7 @@ export default function HumanoidRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               The Major Players in 2026
@@ -141,7 +141,7 @@ export default function HumanoidRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               What Humanoid Robots Can Do Today
@@ -170,7 +170,7 @@ export default function HumanoidRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Pricing and Business Models
@@ -191,13 +191,13 @@ export default function HumanoidRobotsPage() {
               price assumes production volumes of 100,000+ units per year -- a
               scale no humanoid manufacturer has approached. For comparison,
               purpose-built AMRs cost $35,000-$50,000 and{" "}
-              <Link href="/cobot-robots" className="text-[#2563EB] hover:underline">
+              <Link href="/cobot-robots" className="underline hover:text-white">
                 collaborative robot arms
               </Link>{" "}
               cost $25,000-$55,000. Check our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 complete robot pricing guide
               </Link>{" "}
@@ -205,7 +205,7 @@ export default function HumanoidRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Not sure if a humanoid robot is right for your operation?
             </p>
@@ -214,7 +214,7 @@ export default function HumanoidRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -222,7 +222,7 @@ export default function HumanoidRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Use Cases That Make Sense Today
@@ -244,7 +244,7 @@ export default function HumanoidRobotsPage() {
               remain more cost-effective. A{" "}
               <Link
                 href="/warehouse-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 warehouse AMR fleet
               </Link>{" "}
@@ -255,7 +255,7 @@ export default function HumanoidRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Safety and Regulatory Landscape
@@ -279,7 +279,7 @@ export default function HumanoidRobotsPage() {
               commercial humanoids include fall-prediction algorithms that trigger
               controlled descent, but real-world reliability data is limited.
               Review our{" "}
-              <Link href="/certify" className="text-[#2563EB] hover:underline">
+              <Link href="/certify" className="underline hover:text-white">
                 certification standards
               </Link>{" "}
               page for the latest safety benchmarks.
@@ -288,7 +288,7 @@ export default function HumanoidRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               The 3-Year Outlook
@@ -310,14 +310,14 @@ export default function HumanoidRobotsPage() {
               proven platforms at lower prices. For operations already using{" "}
               <Link
                 href="/explore/warehouse"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 warehouse robots
               </Link>{" "}
               or{" "}
               <Link
                 href="/explore/industrial"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial robots
               </Link>
@@ -330,7 +330,7 @@ export default function HumanoidRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

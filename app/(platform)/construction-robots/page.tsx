@@ -72,7 +72,7 @@ export default function ConstructionRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -86,7 +86,7 @@ export default function ConstructionRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Construction Robots in 2026
@@ -117,7 +117,7 @@ export default function ConstructionRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Types of Construction Robots
@@ -152,7 +152,7 @@ export default function ConstructionRobotsPage() {
               construction robots in our{" "}
               <Link
                 href="/explore/construction"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 construction robot directory
               </Link>
@@ -162,7 +162,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Bricklaying Robots: FBR Hadrian X and SAM100
@@ -202,7 +202,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               3D Concrete Printing: ICON, COBOD, and Apis Cor
@@ -244,7 +244,7 @@ export default function ConstructionRobotsPage() {
               look at pricing across all robot types, see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 robot cost guide
               </Link>
@@ -254,7 +254,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Demolition and Earthmoving Robots
@@ -297,7 +297,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Rebar Tying and Finishing Robots
@@ -340,7 +340,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Site Survey and Inspection Drones
@@ -380,7 +380,7 @@ export default function ConstructionRobotsPage() {
               on industrial drone applications, see our{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial drone guide
               </Link>
@@ -390,7 +390,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Cost Analysis: $100K-$500K Systems and Rental Models
@@ -429,7 +429,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               The Labor Shortage Driving Adoption
@@ -470,7 +470,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Safety Improvements and ROI
@@ -508,7 +508,7 @@ export default function ConstructionRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Need help choosing the right construction robot for your project?
             </p>
@@ -517,7 +517,7 @@ export default function ConstructionRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -525,7 +525,7 @@ export default function ConstructionRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Future Trends: Autonomous Heavy Equipment and Modular Construction
@@ -563,14 +563,14 @@ export default function ConstructionRobotsPage() {
               utilization across multi-trade workflows. Browse our{" "}
               <Link
                 href="/explore/construction"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full construction robot catalog
               </Link>{" "}
               or explore{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial drone options
               </Link>{" "}
@@ -581,7 +581,7 @@ export default function ConstructionRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

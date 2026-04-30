@@ -77,7 +77,7 @@ export default function CleaningRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -91,7 +91,7 @@ export default function CleaningRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Cleaning Robots in 2026
@@ -120,7 +120,7 @@ export default function CleaningRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Types of Cleaning Robots
@@ -151,7 +151,7 @@ export default function CleaningRobotsPage() {
               across all robot types, see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 robot pricing guide
               </Link>
@@ -159,7 +159,7 @@ export default function CleaningRobotsPage() {
               visit{" "}
               <Link
                 href="/explore/consumer"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 our consumer robot directory
               </Link>
@@ -169,7 +169,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Consumer Robot Vacuums: The 2026 Landscape
@@ -212,7 +212,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Vacuum-Mop Combos: One Robot, Two Jobs
@@ -251,7 +251,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Commercial Autonomous Floor Cleaning
@@ -290,7 +290,7 @@ export default function CleaningRobotsPage() {
           </div>
 
           <div
-            className="my-12 rounded-xl border p-8 text-center"
+            className="my-12 border p-8 text-center"
             style={{
               borderColor: "var(--theme-border)",
               background: "var(--theme-section-alt)",
@@ -312,7 +312,7 @@ export default function CleaningRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -320,7 +320,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Window Cleaning Robots
@@ -358,7 +358,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Pool Cleaning Robots
@@ -395,7 +395,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Pricing Breakdown: Consumer vs. Commercial
@@ -432,7 +432,7 @@ export default function CleaningRobotsPage() {
               our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 comprehensive robot cost guide
               </Link>
@@ -442,7 +442,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Key Features to Compare
@@ -479,7 +479,7 @@ export default function CleaningRobotsPage() {
               cables, or pushing around shoes and socks. Our{" "}
               <Link
                 href="/compare"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 comparison tool
               </Link>{" "}
@@ -489,7 +489,7 @@ export default function CleaningRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Future Trends: Whole-Home Cleaning and AI Intelligence
@@ -525,14 +525,14 @@ export default function CleaningRobotsPage() {
               areas that current disc-shaped robots cannot access. Browse our{" "}
               <Link
                 href="/explore/consumer"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full consumer robot catalog
               </Link>{" "}
               to compare current models, or talk to{" "}
               <Link
                 href="/advisor"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 Robotimus
               </Link>{" "}
@@ -543,7 +543,7 @@ export default function CleaningRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

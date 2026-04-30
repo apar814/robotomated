@@ -68,7 +68,7 @@ export default function CobotRobotsPage() {
 
       <nav className="mx-auto max-w-4xl px-6 pt-8">
         <ol className="flex items-center gap-2 text-[13px]" style={{ color: "var(--theme-text-muted)" }}>
-          <li><Link href="/" className="hover:text-[#2563EB]">Home</Link></li>
+          <li><Link href="/" className="hover:text-white">Home</Link></li>
           <li>/</li>
           <li style={{ color: "var(--theme-text-secondary)" }}>Collaborative Robots</li>
         </ol>
@@ -77,7 +77,7 @@ export default function CobotRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Collaborative Robots (Cobots): Everything You Need to Know
@@ -98,7 +98,7 @@ export default function CobotRobotsPage() {
 
         <section className="space-y-10">
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               How Cobots Work
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -122,7 +122,7 @@ export default function CobotRobotsPage() {
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               Top Cobot Manufacturers Compared
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -130,7 +130,7 @@ export default function CobotRobotsPage() {
               UR5e, UR10e, UR20, and UR30 covering 3-30 kg payloads. UR&#39;s
               advantage is ecosystem -- the UR+ marketplace has 400+ certified
               grippers, vision systems, and software plugins. The{" "}
-              <Link href="/universal-robots-ur5e-review" className="text-[#2563EB] hover:underline">
+              <Link href="/universal-robots-ur5e-review" className="underline hover:text-white">
                 UR5e remains the best all-around cobot
               </Link>{" "}
               for most first-time buyers. FANUC CRX series (CRX-5iA, CRX-10iA,
@@ -144,14 +144,14 @@ export default function CobotRobotsPage() {
               TM12, TM14) includes built-in machine vision at no extra cost --
               a compelling value proposition for inspection and pick-and-place
               applications. Browse all cobots in our{" "}
-              <Link href="/explore/cobots" className="text-[#2563EB] hover:underline">
+              <Link href="/explore/cobots" className="underline hover:text-white">
                 cobot directory
               </Link>.
             </p>
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               Cobot Applications by Industry
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -170,7 +170,7 @@ export default function CobotRobotsPage() {
               Assembly applications are growing, particularly for electronics,
               medical devices, and automotive sub-assemblies where precise,
               repeatable force control is critical. For logistics and{" "}
-              <Link href="/warehouse-robots" className="text-[#2563EB] hover:underline">
+              <Link href="/warehouse-robots" className="underline hover:text-white">
                 warehouse operations
               </Link>
               , cobots handle packing, kitting, and goods-to-person pick
@@ -178,20 +178,20 @@ export default function CobotRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Need help choosing the right cobot for your application?
             </p>
             <p className="mt-2 text-sm" style={{ color: "var(--theme-text-secondary)" }}>
               Robotimus can match your payload, reach, and application requirements to the right cobot in under 60 seconds.
             </p>
-            <Link href="/advisor" className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]">
+            <Link href="/advisor" className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white">
               Ask Robotimus
             </Link>
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               Total Cost of Ownership
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -209,14 +209,14 @@ export default function CobotRobotsPage() {
               benefits, overhead, training), a cobot operating two shifts
               achieves ROI in 8-14 months. For detailed pricing across all
               robot types, see our{" "}
-              <Link href="/how-much-does-a-robot-cost" className="text-[#2563EB] hover:underline">
+              <Link href="/how-much-does-a-robot-cost" className="underline hover:text-white">
                 robot cost guide
               </Link>.
             </p>
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               Programming and Ease of Use
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -233,11 +233,11 @@ export default function CobotRobotsPage() {
               application templates is growing: Robotiq&#39;s Palletizing
               Solution, Vectis Cobot Welding, and UR&#39;s Application Builder
               offer turnkey configurations for the most common tasks. Our{" "}
-              <Link href="/learn" className="text-[#2563EB] hover:underline">
+              <Link href="/learn" className="underline hover:text-white">
                 learning hub
               </Link>{" "}
               and{" "}
-              <Link href="/certify" className="text-[#2563EB] hover:underline">
+              <Link href="/certify" className="underline hover:text-white">
                 certification program
               </Link>{" "}
               cover cobot programming fundamentals.
@@ -245,7 +245,7 @@ export default function CobotRobotsPage() {
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+            <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
               Cobots vs. Industrial Robots: When to Choose What
             </h2>
             <p className="mt-4 leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
@@ -262,7 +262,7 @@ export default function CobotRobotsPage() {
               automatically reduces speed when humans approach. This hybrid
               approach -- cobot safety with near-industrial speed -- represents
               the future of the category. Use our{" "}
-              <Link href="/compare" className="text-[#2563EB] hover:underline">
+              <Link href="/compare" className="underline hover:text-white">
                 comparison tool
               </Link>{" "}
               to evaluate cobots against industrial robots for your specific task.
@@ -271,7 +271,7 @@ export default function CobotRobotsPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
+          <h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl" style={{ color: "var(--theme-text-primary)" }}>
             Frequently Asked Questions
           </h2>
           <div className="mt-8 space-y-6">

@@ -72,7 +72,7 @@ export default function SecurityRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -86,7 +86,7 @@ export default function SecurityRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Security & Patrol Robots in 2026
@@ -116,7 +116,7 @@ export default function SecurityRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Types of Security Robots
@@ -150,14 +150,14 @@ export default function SecurityRobotsPage() {
               visit our{" "}
               <Link
                 href="/explore/security"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 security robot directory
               </Link>
               . For drone-specific options, see the{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial drone guide
               </Link>
@@ -167,7 +167,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Autonomous Patrol Robots: Knightscope, Cobalt, and Pal Robotics
@@ -211,7 +211,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Drone-Based Security Systems
@@ -248,7 +248,7 @@ export default function SecurityRobotsPage() {
               detection-to-verification with zero human latency. For more on{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial and security drones
               </Link>
@@ -258,7 +258,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Indoor Security: Offices, Hospitals, and Campuses
@@ -299,7 +299,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Data Centers and Critical Infrastructure
@@ -340,7 +340,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Cost Analysis: Robots vs. Traditional Security
@@ -376,7 +376,7 @@ export default function SecurityRobotsPage() {
               Read our{" "}
               <Link
                 href="/robot-as-a-service"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 Robot-as-a-Service guide
               </Link>{" "}
@@ -384,7 +384,7 @@ export default function SecurityRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Need help choosing the right security robot for your facility?
             </p>
@@ -393,7 +393,7 @@ export default function SecurityRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -401,7 +401,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Sensors and Detection Capabilities
@@ -441,7 +441,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Legal and Privacy Considerations
@@ -486,7 +486,7 @@ export default function SecurityRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Future Trends: AI Threat Detection and Human-Robot Security Teams
@@ -524,14 +524,14 @@ export default function SecurityRobotsPage() {
               starting at $75,000 per unit. Browse our{" "}
               <Link
                 href="/explore/security"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full security robot catalog
               </Link>{" "}
               or check the{" "}
               <Link
                 href="/robot-as-a-service"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 RaaS subscription options
               </Link>{" "}
@@ -542,7 +542,7 @@ export default function SecurityRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

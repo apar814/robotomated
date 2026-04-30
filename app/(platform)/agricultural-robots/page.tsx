@@ -72,7 +72,7 @@ export default function AgriculturalRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -86,7 +86,7 @@ export default function AgriculturalRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Agricultural Robots in 2026
@@ -116,7 +116,7 @@ export default function AgriculturalRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Types of Agricultural Robots
@@ -142,7 +142,7 @@ export default function AgriculturalRobotsPage() {
               agricultural robots with specs and pricing, visit{" "}
               <Link
                 href="/explore/agricultural"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 our agricultural robot catalog
               </Link>
@@ -152,7 +152,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Autonomous Tractors: 24/7 Fieldwork Without an Operator
@@ -197,7 +197,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Harvesting Robots: Solving the Hardest Problem in Ag
@@ -239,7 +239,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Weeding Robots: Lasers, Blades, and AI Vision
@@ -280,7 +280,7 @@ export default function AgriculturalRobotsPage() {
               across all robot types, see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 robot pricing guide
               </Link>
@@ -290,7 +290,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Spraying Drones and Crop Monitoring
@@ -331,7 +331,7 @@ export default function AgriculturalRobotsPage() {
               deficiency, and irrigation issues. Browse our{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 drone directory
               </Link>{" "}
@@ -340,7 +340,7 @@ export default function AgriculturalRobotsPage() {
           </div>
 
           <div
-            className="my-12 rounded-xl border p-8 text-center"
+            className="my-12 border p-8 text-center"
             style={{
               borderColor: "var(--theme-border)",
               background: "var(--theme-section-alt)",
@@ -369,7 +369,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Cost Analysis: What to Budget for Farm Robots
@@ -407,7 +407,7 @@ export default function AgriculturalRobotsPage() {
               rates of 4-8%. For cross-category pricing comparisons, see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 comprehensive robot cost guide
               </Link>
@@ -417,7 +417,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               ROI and Labor Savings
@@ -458,7 +458,7 @@ export default function AgriculturalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Future Trends: Swarm Robotics and AI Crop Management
@@ -496,14 +496,14 @@ export default function AgriculturalRobotsPage() {
               the full range of options in our{" "}
               <Link
                 href="/explore/agricultural"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 agricultural robot catalog
               </Link>{" "}
               or get personalized recommendations from our{" "}
               <Link
                 href="/advisor"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 AI advisor
               </Link>
@@ -514,7 +514,7 @@ export default function AgriculturalRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

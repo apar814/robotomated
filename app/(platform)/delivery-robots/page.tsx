@@ -72,7 +72,7 @@ export default function DeliveryRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -86,7 +86,7 @@ export default function DeliveryRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Delivery Robots in 2026
@@ -115,7 +115,7 @@ export default function DeliveryRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               The Four Types of Delivery Robots
@@ -145,14 +145,14 @@ export default function DeliveryRobotsPage() {
               full catalog of delivery robots with specs and pricing, visit our{" "}
               <Link
                 href="/explore/delivery"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 delivery robot directory
               </Link>
               . If you are exploring drone options specifically, see our{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 industrial drone guide
               </Link>
@@ -162,7 +162,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Sidewalk Delivery Robots
@@ -202,7 +202,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Indoor Delivery Robots
@@ -243,7 +243,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Autonomous Delivery Vehicles
@@ -280,7 +280,7 @@ export default function DeliveryRobotsPage() {
               subscription model, our{" "}
               <Link
                 href="/robot-as-a-service"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 RaaS guide
               </Link>{" "}
@@ -290,7 +290,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Drone Delivery
@@ -329,7 +329,7 @@ export default function DeliveryRobotsPage() {
               explore our{" "}
               <Link
                 href="/industrial-drones"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 drone and UAV guide
               </Link>
@@ -339,7 +339,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Cost Models and Unit Economics
@@ -377,7 +377,7 @@ export default function DeliveryRobotsPage() {
             </p>
           </div>
 
-          <div className="my-12 rounded-xl border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
+          <div className="my-12 border p-8 text-center" style={{ borderColor: "var(--theme-border)", background: "var(--theme-section-alt)" }}>
             <p className="text-lg font-semibold" style={{ color: "var(--theme-text-primary)" }}>
               Not sure which delivery robot fits your operation?
             </p>
@@ -386,7 +386,7 @@ export default function DeliveryRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -394,7 +394,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Regulatory Landscape
@@ -438,7 +438,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Deployment Case Studies
@@ -481,7 +481,7 @@ export default function DeliveryRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               What to Expect in 2026-2028
@@ -516,14 +516,14 @@ export default function DeliveryRobotsPage() {
               areas. Browse our{" "}
               <Link
                 href="/explore/delivery"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full delivery robot catalog
               </Link>{" "}
               to compare specs and pricing, or check the latest{" "}
               <Link
                 href="/explore/delivery/sidewalk-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 sidewalk robot rankings
               </Link>{" "}
@@ -534,7 +534,7 @@ export default function DeliveryRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions

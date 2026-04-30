@@ -77,7 +77,7 @@ export default function MedicalRobotsPage() {
           style={{ color: "var(--theme-text-muted)" }}
         >
           <li>
-            <Link href="/" className="hover:text-[#2563EB]">
+            <Link href="/" className="hover:text-white">
               Home
             </Link>
           </li>
@@ -91,7 +91,7 @@ export default function MedicalRobotsPage() {
       <article className="mx-auto max-w-4xl px-6 py-12">
         <header className="mb-12">
           <h1
-            className="font-display text-4xl font-bold tracking-tight sm:text-5xl"
+            className="font-display text-4xl font-medium tracking-tight sm:text-5xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             The Complete Guide to Medical &amp; Surgical Robots in 2026
@@ -121,7 +121,7 @@ export default function MedicalRobotsPage() {
         <section className="space-y-10">
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Five Categories of Medical Robots
@@ -155,14 +155,14 @@ export default function MedicalRobotsPage() {
               see our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 robot pricing guide
               </Link>
               . To browse all medical robots with specs, visit{" "}
               <Link
                 href="/explore/medical"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 our medical robot directory
               </Link>
@@ -172,7 +172,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Surgical Robots: The da Vinci Era and Beyond
@@ -219,7 +219,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Hospital Logistics Robots: Freeing Nurses to Care
@@ -256,7 +256,7 @@ export default function MedicalRobotsPage() {
               automation, see how{" "}
               <Link
                 href="/humanoid-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 humanoid robots
               </Link>{" "}
@@ -267,7 +267,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Rehabilitation Robots and Exoskeletons
@@ -311,7 +311,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Disinfection and Pharmacy Automation
@@ -351,7 +351,7 @@ export default function MedicalRobotsPage() {
           </div>
 
           <div
-            className="my-12 rounded-xl border p-8 text-center"
+            className="my-12 border p-8 text-center"
             style={{
               borderColor: "var(--theme-border)",
               background: "var(--theme-section-alt)",
@@ -373,7 +373,7 @@ export default function MedicalRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg border border-white/20 bg-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.04em] text-white/80 hover:border-white hover:text-white"
             >
               Ask Robotimus
             </Link>
@@ -381,7 +381,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Cost Analysis: What Hospitals Actually Pay
@@ -419,7 +419,7 @@ export default function MedicalRobotsPage() {
               our{" "}
               <Link
                 href="/how-much-does-a-robot-cost"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 comprehensive cost guide
               </Link>
@@ -429,7 +429,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Regulatory Landscape: FDA, CE, and Beyond
@@ -471,7 +471,7 @@ export default function MedicalRobotsPage() {
 
           <div>
             <h2
-              className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
               style={{ color: "var(--theme-text-primary)" }}
             >
               Future Trends: AI Surgery, Remote Operations, and Micro-Robots
@@ -511,14 +511,14 @@ export default function MedicalRobotsPage() {
               GI tract, blood vessels, and airways. Browse our{" "}
               <Link
                 href="/explore/medical"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 full medical robot catalog
               </Link>{" "}
               or explore how{" "}
               <Link
                 href="/humanoid-robots"
-                className="text-[#2563EB] hover:underline"
+                className="underline hover:text-white"
               >
                 humanoid robots in healthcare
               </Link>{" "}
@@ -530,7 +530,7 @@ export default function MedicalRobotsPage() {
 
         <section className="mt-16">
           <h2
-            className="font-display text-2xl font-bold tracking-tight sm:text-3xl"
+            className="font-display text-2xl font-medium tracking-tight sm:text-3xl"
             style={{ color: "var(--theme-text-primary)" }}
           >
             Frequently Asked Questions
