@@ -3,7 +3,7 @@ import Link from "next/link";
 const CARDS = [
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5 text-[var(--theme-accent-blue)]">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" style={{ color: "var(--interactive, #D4D4D4)" }}>
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
         <polyline points="17 6 23 6 23 12" />
       </svg>
@@ -14,7 +14,7 @@ const CARDS = [
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5 text-[var(--theme-accent-blue)]">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" style={{ color: "var(--interactive, #D4D4D4)" }}>
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -27,7 +27,7 @@ const CARDS = [
   },
   {
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5 text-[var(--theme-accent-blue)]">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5" style={{ color: "var(--interactive, #D4D4D4)" }}>
         <rect x="2" y="3" width="20" height="14" rx="2" />
         <path d="M8 21h8" />
         <path d="M12 17v4" />
@@ -46,12 +46,9 @@ export function OpportunityBanner() {
       style={{ borderColor: "var(--theme-border)", background: "var(--theme-bg)", color: "var(--theme-text-primary)" }}
     >
       <div className="mx-auto max-w-7xl">
-        <p className="mb-4 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--theme-accent-blue)]">
-          <span className="inline-block h-px w-8 bg-[var(--theme-accent-blue)]" />
-          The $24 Trillion Shift
-        </p>
+        <div className="section-marker mb-4">07 / THE OPPORTUNITY</div>
         <h2
-          className="font-display font-bold tracking-[-0.03em]"
+          className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.03em]"
           style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-text-primary)" }}
         >
           Robots are replacing<br className="hidden sm:block" />
@@ -66,32 +63,26 @@ export function OpportunityBanner() {
           deploying Digit at scale. The window to move is open right now.
         </p>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
           {CARDS.map((card) => (
             <div
               key={card.title}
-              className="rounded-xl p-6"
+              className="p-6"
               style={{
-                background: "linear-gradient(145deg, rgba(12,16,32,0.9) 0%, rgba(6,8,18,0.95) 100%)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderBottom: "2px solid transparent",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)",
+                background: "var(--theme-card, #0A0A0A)",
+                border: "1px solid var(--theme-border, #1F1F1F)",
+                borderRadius: "2px",
               }}
             >
-              <div
-                className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px]"
-                style={{ background: "var(--theme-accent-blue-dim)" }}
-              >
-                {card.icon}
-              </div>
+              <div className="mb-4">{card.icon}</div>
               <p
-                className="font-[family-name:var(--font-brand)] text-3xl font-bold"
-                style={{ color: "#60A5FA", textShadow: "0 0 40px rgba(37,99,235,0.25)" }}
+                className="font-[family-name:var(--font-mono)] text-3xl font-medium"
+                style={{ color: "var(--theme-text-primary)" }}
               >
                 {card.stat}
               </p>
               <h3
-                className="mt-1 font-display text-base font-semibold"
+                className="mt-1 font-[family-name:var(--font-sans)] text-base font-medium"
                 style={{ color: "var(--theme-text-primary)" }}
               >
                 {card.title}
@@ -109,10 +100,11 @@ export function OpportunityBanner() {
         <div className="mt-8">
           <Link
             href="/certify"
-            className="btn-glow inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-all"
+            className="inline-flex items-center gap-2 border px-6 py-3 text-[14px] font-medium uppercase tracking-[0.04em] transition-colors duration-75 hover:border-white hover:text-white"
             style={{
-              background: "#2563EB",
-              color: "#fff",
+              borderColor: "rgba(255,255,255,0.2)",
+              color: "rgba(255,255,255,0.8)",
+              borderRadius: "2px",
             }}
           >
             Get RCO Certified
