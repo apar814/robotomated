@@ -320,48 +320,39 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
-      <section className="scan-line-overlay px-6 py-32" style={{ background: "var(--layer-0, #080808)" }}>
+      {/* ABUNDANCE EQUATION — stripped to DESIGN.md */}
+      <section className="px-6 py-32" style={{ background: "#000000" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="section-marker">03 / THE ECONOMICS</div>
+          <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
-              <div style={{ marginBottom: "2rem" }}>
-                <p className="font-[family-name:var(--font-ui)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, color: "#F0F4FF", letterSpacing: "-0.03em" }}>
-                  THE WORLD IS
-                </p>
-                <p className="font-[family-name:var(--font-ui)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", WebkitTextStroke: "1.5px rgba(240,244,255,0.4)", color: "transparent" }}>
-                  GOING TO RUN
-                </p>
-                <p className="shimmer-text font-[family-name:var(--font-brand)]" style={{ fontWeight: 800, fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-                  ON ROBOTS.
-                </p>
-              </div>
-              <blockquote className="font-[family-name:var(--font-ui)] font-bold italic leading-snug text-white" style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}>
+              <h2 className="font-[family-name:var(--font-sans)] font-medium" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#FFFFFF" }}>
+                The world is going to run on robots.
+              </h2>
+              <blockquote className="mt-8 font-medium italic leading-snug text-white/70" style={{ fontSize: "clamp(18px, 2vw, 24px)" }}>
                 &ldquo;You can create a world where goods and services prices trend toward zero and GDP spikes to infinity.&rdquo;
               </blockquote>
-              <p className="mt-4 font-[family-name:var(--font-mono)] text-sm text-white/40">— Brett Adcock, Founder &amp; CEO, Figure AI</p>
+              <p className="mt-4 font-mono text-[14px] text-white/25">Brett Adcock, Figure AI</p>
             </div>
-            <div className="card-2080 rounded-2xl p-8">
+            <div className="border p-8" style={{ borderColor: "#1F1F1F", background: "#0A0A0A", borderRadius: "2px" }}>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/50">Human labor (fully burdened)</span>
-                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-white">$46/hour</span>
+                  <span className="text-[14px] text-white/50">Human labor (fully burdened)</span>
+                  <span className="font-mono text-lg font-medium text-white">$46/hour</span>
                 </div>
-                <div className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2" style={{ background: "rgba(14,165,233,0.06)", borderLeft: "2px solid #0EA5E9" }}>
-                  <span className="font-[family-name:var(--font-ui)] text-sm text-white/50">Robot (leased, amortized)</span>
-                  <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[#0EA5E9]">$0.45/hour</span>
+                <div className="flex items-center justify-between border-l-2 py-2 pl-4" style={{ borderColor: "#FFFFFF" }}>
+                  <span className="text-[14px] text-white/50">Robot (leased, amortized)</span>
+                  <span className="font-mono text-lg font-medium text-white">$0.45/hour</span>
                 </div>
-                <div className="border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                <div className="border-t pt-4" style={{ borderColor: "#1F1F1F" }}>
                   <div className="flex items-center justify-between">
-                    <span className="font-[family-name:var(--font-ui)] text-sm font-semibold text-white/60">Cost difference</span>
-                    <span className="font-[family-name:var(--font-brand)] text-3xl font-extrabold text-[#0EA5E9]" style={{ textShadow: "0 0 30px rgba(14,165,233,0.4)" }}>100×</span>
+                    <span className="text-[14px] font-medium text-white/60">Cost difference</span>
+                    <span className="font-mono text-3xl font-medium text-white">100x</span>
                   </div>
                 </div>
               </div>
-              <p className="mt-6 font-[family-name:var(--font-ui)] text-sm leading-relaxed text-white/40">
-                At $0.45/hour, every business can afford automation. That is the world we are building toward — and Robotomated is how you get there.
-              </p>
-              <Link href="/tools/robot-economics" className="mt-4 inline-block font-[family-name:var(--font-brand)] text-[11px] tracking-[0.08em] text-[#0EA5E9] hover:underline">
-                CALCULATE YOUR ECONOMICS →
+              <Link href="/tools/robot-economics" className="mt-6 inline-block text-[12px] font-medium uppercase tracking-[0.12em] text-white/45 hover:text-white">
+                RUN THE CALCULATOR &rarr;
               </Link>
             </div>
           </div>
@@ -371,18 +362,20 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           8. SOCIAL PROOF STATS
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-28" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
+      {/* STATS — DESIGN.md: mono numbers, hairline dividers, no color */}
+      <section className="px-6 py-24" style={{ background: "#000000" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-0 overflow-hidden rounded-2xl lg:grid-cols-4" style={{ border: "1px solid rgba(255,255,255,0.06)", background: "rgba(14,165,233,0.02)" }}>
+          <div className="section-marker">04 / BY THE NUMBERS</div>
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
-              { value: totalRobots.toString(), label: "Robots in Database" },
-              { value: manufacturerCount.toString(), label: "Manufacturers Indexed" },
-              { value: "$24T", label: "Projected Market by 2040" },
-              { value: "137", label: "Humanoid Startups (China)" },
+              { value: totalRobots.toString(), label: "ROBOTS TRACKED" },
+              { value: manufacturerCount.toString(), label: "MANUFACTURERS" },
+              { value: "$24T", label: "2040 MARKET" },
+              { value: "137", label: "HUMANOID STARTUPS (CN)" },
             ].map((s, i) => (
-              <div key={s.label} className="stat-cell px-8 py-8 text-center transition-colors hover:bg-[rgba(14,165,233,0.04)]" style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
-                <p className="font-[family-name:var(--font-brand)] font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(36px, 5vw, 64px)", textShadow: "0 0 30px rgba(14,165,233,0.3)" }}>{s.value}</p>
-                <p className="mt-3 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.3)" }}>{s.label}</p>
+              <div key={s.label} className="px-8 py-8 text-center" style={{ borderRight: i < 3 ? "1px solid #1F1F1F" : "none" }}>
+                <p className="font-mono font-medium text-white" style={{ fontSize: "clamp(36px, 5vw, 64px)" }}>{s.value}</p>
+                <p className="mt-3 text-[12px] font-medium uppercase tracking-[0.12em] text-white/25">{s.label}</p>
               </div>
             ))}
           </div>
