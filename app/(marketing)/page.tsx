@@ -8,7 +8,6 @@ import { HeroBackground } from "@/components/hero/hero-background";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import ChannelShowcase from "@/components/home/channel-showcase";
-import { RobotimusHeroPanel } from "@/components/home/robotimus-hero-panel";
 import { CertificationSection } from "@/components/home/certification-section";
 import { OpportunityBanner } from "@/components/home/opportunity-banner";
 import { RaaSExplainer } from "@/components/home/raas-explainer";

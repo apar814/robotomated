@@ -59,9 +59,6 @@ const STARTER_CHIPS = [
   { label: "Post a job", query: "How do I post a job on RoboWork?" },
 ];
 
-const TICKER_TEXT =
-  "FLEET STATUS: 975 ROBOTS INDEXED \u00B7\u00B7\u00B7 MARKET: $24T PROJECTED \u00B7\u00B7\u00B7 LAST ANALYSIS: 0:03 AGO \u00B7\u00B7\u00B7 SAFETY STANDARDS: 2027 RATIFICATION \u00B7\u00B7\u00B7 HUMANOID COST: -40% YoY \u00B7\u00B7\u00B7";
-
 // ── Component ──
 
 export function RobotimusHeroPanel() {
@@ -85,18 +82,11 @@ export function RobotimusHeroPanel() {
   useEffect(() => {
     setVisibleMessages(0);
     setShowTyping(false);
-
     const timers: ReturnType<typeof setTimeout>[] = [];
-
-    // Message 1 at 600ms
     timers.push(setTimeout(() => setVisibleMessages(1), 600));
-    // Message 2 at 1200ms
     timers.push(setTimeout(() => setVisibleMessages(2), 1200));
-    // Message 3 at 2000ms
     timers.push(setTimeout(() => setVisibleMessages(3), 2000));
-    // Typing indicator at 2800ms
     timers.push(setTimeout(() => setShowTyping(true), 2800));
-
     return () => timers.forEach(clearTimeout);
   }, [convoIndex]);
 
@@ -126,346 +116,205 @@ export function RobotimusHeroPanel() {
   }, [inputValue, router]);
 
   return (
-    <>
-      {/* Keyframe animations */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes panelGlow {
-          0%, 100% { box-shadow: 0 0 40px rgba(37,99,235,0.15), 0 0 80px rgba(37,99,235,0.05); }
-          50% { box-shadow: 0 0 40px rgba(37,99,235,0.25), 0 0 80px rgba(37,99,235,0.1); }
-        }
-        @keyframes pulseRing {
-          0% { transform: scale(1); opacity: 0.6; }
-          100% { transform: scale(1.8); opacity: 0; }
-        }
-        @keyframes dotPulse {
-          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-          40% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes greenPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-      ` }} />
-
+    <div
+      className="w-full max-w-[420px] transition-opacity duration-200"
+      style={{ opacity: mounted ? 1 : 0 }}
+    >
+      {/* Panel */}
       <div
-        className="w-full max-w-[420px] transition-all duration-500"
+        className="overflow-hidden"
         style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? "translateY(0)" : "translateY(20px)",
+          background: "var(--theme-card, #0A0A0A)",
+          border: "1px solid var(--theme-border, #1F1F1F)",
+          borderRadius: "2px",
         }}
       >
-        {/* Panel card */}
+        {/* Header */}
         <div
-          className="relative overflow-hidden"
-          style={{
-            background: "rgba(0, 0, 0, 0.85)",
-            backdropFilter: "blur(24px) saturate(180%)",
-            WebkitBackdropFilter: "blur(24px) saturate(180%)",
-            border: "1px solid rgba(37,99,235,0.3)",
-            borderRadius: "16px",
-            animation: "panelGlow 4s ease-in-out infinite",
-          }}
+          className="flex items-center gap-3 px-4 py-3"
+          style={{ borderBottom: "1px solid var(--theme-border, #1F1F1F)" }}
         >
-          {/* Corner brackets — top-left */}
-          <span
-            className="pointer-events-none absolute left-0 top-0"
-            style={{
-              width: "12px",
-              height: "12px",
-              borderLeft: "2px solid rgba(37,99,235,0.4)",
-              borderTop: "2px solid rgba(37,99,235,0.4)",
-            }}
-          />
-          {/* Corner brackets — top-right */}
-          <span
-            className="pointer-events-none absolute right-0 top-0"
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRight: "2px solid rgba(37,99,235,0.4)",
-              borderTop: "2px solid rgba(37,99,235,0.4)",
-            }}
-          />
-
-          {/* Header */}
-          <div
-            className="flex items-center gap-3 px-4 py-3"
-            style={{
-              background: "rgba(37,99,235,0.08)",
-              borderBottom: "1px solid rgba(37,99,235,0.15)",
-            }}
-          >
-            <div className="relative">
-              {/* Avatar with gradient background */}
-              <div
-                className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full"
-                style={{
-                  background: "linear-gradient(135deg, #2563EB, #7B2FFF)",
-                }}
-              >
-                <RobotimusAvatar size={32} />
-              </div>
-              {/* Pulse ring */}
-              <span
-                className="pointer-events-none absolute inset-0 rounded-full"
-                style={{
-                  border: "2px solid rgba(37,99,235,0.5)",
-                  animation: "pulseRing 2s ease-out infinite",
-                }}
-              />
-            </div>
-            <div className="flex-1">
-              <p
-                className="font-[family-name:var(--font-brand)] text-[13px] font-semibold text-white"
-              >
-                ROBOTIMUS
-              </p>
-              <p
-                className="font-[family-name:var(--font-ui)] text-[13px] tracking-[0.12em]"
-                style={{ color: "rgba(255,255,255,0.4)" }}
-              >
-                AI ROBOTICS ADVISOR
-              </p>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span
-                className="block h-1.5 w-1.5 rounded-full"
-                style={{
-                  backgroundColor: "#10B981",
-                  animation: "greenPulse 2s ease-in-out infinite",
-                }}
-              />
-              <span
-                className="font-[family-name:var(--font-ui)] text-[13px] tracking-[0.08em]"
-                style={{ color: "#10B981" }}
-              >
-                ONLINE
-              </span>
-            </div>
+          <div className="flex h-8 w-8 items-center justify-center">
+            <RobotimusAvatar size={28} />
           </div>
+          <div className="flex-1">
+            <p className="font-[family-name:var(--font-brand)] text-[12px] font-medium uppercase tracking-[0.12em] text-white">
+              ROBOTIMUS
+            </p>
+            <p className="font-[family-name:var(--font-ui)] text-[11px] tracking-[0.08em]" style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}>
+              AI ROBOTICS ADVISOR
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="block h-1.5 w-1.5 rounded-full animate-pulse-live" style={{ backgroundColor: "var(--interactive, #D4D4D4)" }} />
+            <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.08em]" style={{ color: "var(--interactive, #D4D4D4)" }}>
+              ONLINE
+            </span>
+          </div>
+        </div>
 
-          {/* Chat messages */}
-          <div className="h-[240px] overflow-hidden px-4 py-4 md:h-[240px]">
-            <div className="flex flex-col gap-3">
-              {conversation.slice(0, visibleMessages).map((msg, i) => (
-                <div
-                  key={`${convoIndex}-${i}`}
-                  className="transition-opacity duration-300"
-                  style={{ opacity: 1 }}
-                >
-                  {msg.role === "user" ? (
-                    <div className="flex justify-end">
+        {/* Chat messages */}
+        <div className="h-[220px] overflow-hidden px-4 py-4">
+          <div className="flex flex-col gap-3">
+            {conversation.slice(0, visibleMessages).map((msg, i) => (
+              <div key={`${convoIndex}-${i}`}>
+                {msg.role === "user" ? (
+                  <div className="flex justify-end">
+                    <div
+                      className="max-w-[80%] px-3 py-2 text-[13px] leading-relaxed"
+                      style={{
+                        background: "var(--theme-card-hover, #141414)",
+                        border: "1px solid var(--theme-border, #1F1F1F)",
+                        borderRadius: "2px",
+                        color: "var(--theme-text-primary, #FFFFFF)",
+                      }}
+                    >
+                      {msg.text}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-start gap-2">
+                    <div className="mt-1 shrink-0">
+                      <RobotimusAvatar size={20} />
+                    </div>
+                    <div>
                       <div
-                        className="max-w-[80%] rounded-xl rounded-br-sm px-3.5 py-2.5 text-[13px] leading-relaxed text-white"
+                        className="px-3 py-2 text-[13px] leading-relaxed"
                         style={{
-                          background: "linear-gradient(135deg, #2563EB, #0284C7)",
-                          boxShadow: "0 4px 12px rgba(37,99,235,0.3)",
+                          background: "var(--theme-bg, #000000)",
+                          border: "1px solid var(--theme-border, #1F1F1F)",
+                          borderLeft: "2px solid var(--interactive, #D4D4D4)",
+                          borderRadius: "2px",
+                          color: "var(--theme-text-secondary, rgba(255,255,255,0.7))",
                         }}
                       >
                         {msg.text}
                       </div>
-                    </div>
-                  ) : (
-                    <div className="flex items-start gap-2">
-                      <div className="mt-1 shrink-0">
-                        <RobotimusAvatar size={24} />
-                      </div>
-                      <div>
-                        <div
-                          className="max-w-full rounded-xl rounded-bl-sm px-3.5 py-2.5 text-[13px] leading-relaxed"
-                          style={{
-                            background: "rgba(255,255,255,0.04)",
-                            border: "1px solid rgba(255,255,255,0.08)",
-                            borderLeft: "2px solid #2563EB",
-                            color: "rgba(255,255,255,0.85)",
-                          }}
-                        >
-                          {msg.text}
+                      {msg.chips && (
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {msg.chips.map((chip) => (
+                            <span
+                              key={chip.label}
+                              className="inline-flex items-center gap-1 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[11px] font-medium"
+                              style={{
+                                background: "var(--theme-tag-bg, rgba(255,255,255,0.04))",
+                                border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))",
+                                borderRadius: "2px",
+                                color: "var(--interactive, #D4D4D4)",
+                              }}
+                            >
+                              {chip.label}
+                              <span style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}>{chip.score}</span>
+                            </span>
+                          ))}
                         </div>
-                        {msg.chips && (
-                          <div className="mt-2 flex flex-wrap gap-1.5">
-                            {msg.chips.map((chip) => (
-                              <span
-                                key={chip.label}
-                                className="inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium"
-                                style={{
-                                  backgroundColor: "rgba(37,99,235,0.08)",
-                                  border: "1px solid rgba(37,99,235,0.2)",
-                                  color: "#2563EB",
-                                }}
-                              >
-                                {chip.label}
-                                <span className="opacity-70">{chip.score}&uarr;</span>
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              ))}
-
-              {/* Typing indicator */}
-              {showTyping && (
-                <div className="flex items-start gap-2">
-                  <div className="mt-1 shrink-0">
-                    <RobotimusAvatar size={24} />
                   </div>
-                  <div
-                    className="flex items-center gap-2 rounded-xl rounded-bl-sm px-4 py-3"
-                    style={{
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      borderLeft: "2px solid #2563EB",
-                    }}
-                  >
-                    <div className="flex items-center gap-1">
-                      <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
-                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "0ms" }}
-                      />
-                      <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
-                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "200ms" }}
-                      />
-                      <span
-                        className="inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]"
-                        style={{ animation: "dotPulse 1.4s ease-in-out infinite", animationDelay: "400ms" }}
-                      />
-                    </div>
-                    <span
-                      className="font-[family-name:var(--font-brand)] text-[13px] tracking-[0.15em]"
-                      style={{ color: "rgba(37,99,235,0.6)" }}
-                    >
-                      PROCESSING...
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Data ticker */}
-          <div
-            className="relative overflow-hidden"
-            style={{
-              height: "24px",
-              background: "rgba(0,0,0,0.3)",
-              borderTop: "1px solid rgba(37,99,235,0.1)",
-            }}
-          >
-            <div
-              className="absolute top-0 flex h-full items-center whitespace-nowrap font-[family-name:var(--font-mono)] text-[13px]"
-              style={{
-                color: "rgba(37,99,235,0.5)",
-                animation: "ticker 30s linear infinite",
-              }}
-            >
-              <span className="px-4">{TICKER_TEXT}</span>
-              <span className="px-4">{TICKER_TEXT}</span>
-            </div>
-          </div>
-
-          {/* Suggestion chips */}
-          <div className="flex flex-wrap gap-1.5 px-4 py-2.5">
-            {STARTER_CHIPS.map((chip) => (
-              <Link
-                key={chip.label}
-                href={`/advisor?q=${encodeURIComponent(chip.query)}`}
-                className="rounded-full px-2.5 py-1 text-[11px] transition-all duration-200"
-                style={{
-                  backgroundColor: "rgba(37,99,235,0.08)",
-                  border: "1px solid rgba(37,99,235,0.2)",
-                  color: "#2563EB",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.backgroundColor = "rgba(37,99,235,0.15)";
-                  el.style.borderColor = "rgba(37,99,235,0.4)";
-                  el.style.transform = "translateY(-1px)";
-                  el.style.boxShadow = "0 4px 12px rgba(37,99,235,0.2)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.backgroundColor = "rgba(37,99,235,0.08)";
-                  el.style.borderColor = "rgba(37,99,235,0.2)";
-                  el.style.transform = "translateY(0)";
-                  el.style.boxShadow = "none";
-                }}
-              >
-                {chip.label}
-              </Link>
+                )}
+              </div>
             ))}
-          </div>
 
-          {/* Input area */}
-          <div
-            className="px-3 py-3"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              borderTop: "1px solid rgba(37,99,235,0.15)",
-            }}
-          >
-            <div
-              className="flex items-center gap-2 rounded-lg px-3.5 py-2.5 transition-all duration-200"
-              style={{
-                backgroundColor: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
-              onFocusCapture={(e) => {
-                e.currentTarget.style.borderColor = "rgba(37,99,235,0.4)";
-                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
-              }}
-              onBlurCapture={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                placeholder={PLACEHOLDERS[placeholderIndex]}
-                className="min-w-0 flex-1 bg-transparent text-[13px] outline-none"
-                style={{
-                  color: "rgba(255,255,255,0.9)",
-                }}
-              />
-              <button
-                onClick={handleSubmit}
-                className="shrink-0 rounded-md px-3 py-1.5 text-[13px] font-semibold text-black transition-all duration-200"
-                style={{
-                  background: "linear-gradient(135deg, #2563EB, #0284C7)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = "0 0 16px rgba(37,99,235,0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                Ask &rarr;
-              </button>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="px-4 pb-3 pt-1 text-center">
-            <p
-              className="font-[family-name:var(--font-brand)] text-[8px] tracking-[0.12em]"
-              style={{ color: "rgba(255,255,255,0.2)" }}
-            >
-              POWERED BY CLAUDE &middot; INDEPENDENT &middot; NO MANUFACTURER PAYS
-            </p>
+            {/* Typing indicator */}
+            {showTyping && (
+              <div className="flex items-start gap-2">
+                <div className="mt-1 shrink-0">
+                  <RobotimusAvatar size={20} />
+                </div>
+                <div
+                  className="flex items-center gap-2 px-3 py-2"
+                  style={{
+                    background: "var(--theme-bg, #000000)",
+                    border: "1px solid var(--theme-border, #1F1F1F)",
+                    borderLeft: "2px solid var(--interactive, #D4D4D4)",
+                    borderRadius: "2px",
+                  }}
+                >
+                  <div className="flex items-center gap-1">
+                    {[0, 1, 2].map((d) => (
+                      <span
+                        key={d}
+                        className="inline-block h-1 w-1 rounded-full"
+                        style={{
+                          backgroundColor: "var(--theme-text-muted, rgba(255,255,255,0.45))",
+                          animation: `pulse-live 1.4s ease-in-out ${d * 200}ms infinite`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <span
+                    className="font-[family-name:var(--font-mono)] text-[11px] tracking-[0.12em]"
+                    style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}
+                  >
+                    PROCESSING
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Suggestion chips */}
+        <div
+          className="flex flex-wrap gap-1.5 px-4 py-2"
+          style={{ borderTop: "1px solid var(--theme-border, #1F1F1F)" }}
+        >
+          {STARTER_CHIPS.map((chip) => (
+            <Link
+              key={chip.label}
+              href={`/advisor?q=${encodeURIComponent(chip.query)}`}
+              className="px-2 py-1 text-[11px] font-medium uppercase tracking-[0.04em] transition-colors duration-75 hover:border-white/40 hover:text-white"
+              style={{
+                background: "var(--theme-tag-bg, rgba(255,255,255,0.04))",
+                border: "1px solid var(--theme-tag-border, rgba(255,255,255,0.12))",
+                borderRadius: "2px",
+                color: "var(--theme-text-muted, rgba(255,255,255,0.45))",
+              }}
+            >
+              {chip.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Input */}
+        <div className="px-4 py-3" style={{ borderTop: "1px solid var(--theme-border, #1F1F1F)" }}>
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+              placeholder={PLACEHOLDERS[placeholderIndex]}
+              className="min-w-0 flex-1 border-b bg-transparent py-2 text-[13px] outline-none"
+              style={{
+                borderColor: "var(--theme-border, #1F1F1F)",
+                color: "var(--theme-text-primary, #FFFFFF)",
+              }}
+            />
+            <button
+              onClick={handleSubmit}
+              className="shrink-0 px-4 py-2 text-[12px] font-medium uppercase tracking-[0.04em] transition-colors duration-75 hover:bg-white/90"
+              style={{
+                background: "var(--theme-text-primary, #FFFFFF)",
+                color: "var(--theme-text-inverse, #000000)",
+                borderRadius: "2px",
+              }}
+            >
+              Ask
+            </button>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="px-4 pb-3 pt-1">
+          <p
+            className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em]"
+            style={{ color: "var(--theme-text-ghost, rgba(255,255,255,0.25))" }}
+          >
+            POWERED BY CLAUDE · INDEPENDENT · NO MANUFACTURER PAYS
+          </p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
