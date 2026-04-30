@@ -5,7 +5,8 @@ import Link from "next/link";
 interface Channel {
   number: string;
   name: string;
-  accent: string;
+  catToken: string;
+  catTextToken: string;
   tagline: string;
   bullets: string[];
   cta: string;
@@ -17,7 +18,8 @@ const CHANNELS: Channel[] = [
   {
     number: "01",
     name: "INTELLIGENCE",
-    accent: "#2563EB",
+    catToken: "var(--cat-humanoid, #9DA3A8)",
+    catTextToken: "var(--cat-humanoid-text, #C8CDD1)",
     tagline: "Know before you buy.",
     bullets: [
       "Compare 305 robots side by side",
@@ -36,7 +38,8 @@ const CHANNELS: Channel[] = [
   {
     number: "02",
     name: "ACQUIRE",
-    accent: "#22C55E",
+    catToken: "var(--cat-mobile-amr, #7A8C9E)",
+    catTextToken: "var(--cat-mobile-amr-text, #B5C0CC)",
     tagline: "Buy or lease the right robot.",
     bullets: [
       "Purchase outright from manufacturers",
@@ -55,7 +58,8 @@ const CHANNELS: Channel[] = [
   {
     number: "03",
     name: "DEPLOY",
-    accent: "#8B5CF6",
+    catToken: "var(--cat-industrial-arm, #8B8680)",
+    catTextToken: "var(--cat-industrial-arm-text, #BFB8AF)",
     tagline: "Get it working from day one.",
     bullets: [
       "Post a job, get bids in 24 hours",
@@ -74,7 +78,8 @@ const CHANNELS: Channel[] = [
   {
     number: "04",
     name: "OPERATE",
-    accent: "#F59E0B",
+    catToken: "var(--cat-quadruped, #4A6FA5)",
+    catTextToken: "var(--cat-quadruped-text, #7A9DD0)",
     tagline: "Keep it running. Keep it productive.",
     bullets: [
       "Certified maintenance network",
@@ -94,7 +99,8 @@ const CHANNELS: Channel[] = [
   {
     number: "05",
     name: "TRANSITION",
-    accent: "#EC4899",
+    catToken: "var(--cat-service, #5C6B7D)",
+    catTextToken: "var(--cat-service-text, #9CABBF)",
     tagline: "Every robot has a next chapter.",
     bullets: [
       "AI-powered instant trade-in valuation",
@@ -112,72 +118,56 @@ const CHANNELS: Channel[] = [
   },
 ];
 
-function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-  const rect = e.currentTarget.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
-  e.currentTarget.style.setProperty("--holo-x", `${x}%`);
-  e.currentTarget.style.setProperty("--holo-y", `${y}%`);
-  e.currentTarget.style.setProperty("--holo-opacity", "1");
-}
-
-function handleMouseLeave(e: React.MouseEvent<HTMLElement>) {
-  e.currentTarget.style.setProperty("--holo-opacity", "0");
-}
-
 function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={channel.href}
-      className="card-2080 holo-card channel-glow morphing-border group relative flex flex-col overflow-hidden"
+      className="group flex flex-col overflow-hidden transition-colors duration-75"
       style={{
-        borderTop: `2px solid ${channel.accent}`,
+        background: "var(--theme-card, #0A0A0A)",
+        border: "1px solid var(--theme-border, #1F1F1F)",
+        borderTop: `2px solid ${channel.catToken}`,
+        borderRadius: "2px",
         padding: "28px 24px",
-        ["--channel-color" as string]: `${channel.accent}1F`,
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
     >
       {/* Channel number */}
       <span
-        className="relative mb-5 font-[family-name:var(--font-brand)] text-[10px] font-medium tracking-[0.15em]"
-        style={{ color: `${channel.accent}99` }}
+        className="mb-5 font-[family-name:var(--font-mono)] text-[10px] tracking-[0.15em]"
+        style={{ color: channel.catToken }}
       >
         {channel.number}
       </span>
 
-      {/* Icon container */}
+      {/* Icon */}
       <div
-        className="breathing relative mb-4 inline-flex h-[42px] w-[42px] items-center justify-center rounded-[10px]"
-        style={{
-          background: `${channel.accent}1A`,
-          border: `1px solid ${channel.accent}33`,
-          color: channel.accent,
-        }}
+        className="mb-4 inline-flex h-10 w-10 items-center justify-center"
+        style={{ color: channel.catTextToken }}
       >
         {channel.icon}
       </div>
 
       {/* Channel name */}
-      <h3 className="relative mb-2 font-[family-name:var(--font-brand)] text-[13px] font-bold tracking-[0.08em] text-white">
+      <h3 className="mb-2 font-[family-name:var(--font-brand)] text-[12px] font-medium tracking-[0.12em] text-white">
         {channel.name}
       </h3>
 
       {/* Tagline */}
-      <p className="relative mb-5 font-[family-name:var(--font-ui)] text-[13px] text-white/45">
+      <p className="mb-5 font-[family-name:var(--font-ui)] text-[13px]" style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}>
         {channel.tagline}
       </p>
 
       {/* Bullet items */}
-      <ul className="relative mb-6 flex flex-1 flex-col gap-0">
+      <ul className="mb-6 flex flex-1 flex-col gap-0">
         {channel.bullets.map((bullet) => (
           <li
             key={bullet}
-            className="relative pl-3.5 font-[family-name:var(--font-ui)] text-[12px] leading-[2.0] text-white/55"
+            className="relative pl-3.5 font-[family-name:var(--font-ui)] text-[12px] leading-[2.0]"
+            style={{ color: "var(--theme-text-secondary, rgba(255,255,255,0.7))" }}
           >
             <span
               className="absolute left-0 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full"
-              style={{ backgroundColor: channel.accent }}
+              style={{ backgroundColor: channel.catToken }}
             />
             {bullet}
           </li>
@@ -186,19 +176,14 @@ function ChannelCard({ channel }: { channel: Channel }) {
 
       {/* CTA */}
       <div
-        className="relative mt-auto flex items-center gap-1.5 pt-5"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        className="mt-auto flex items-center gap-1.5 pt-5"
+        style={{ borderTop: "1px solid var(--theme-border, #1F1F1F)" }}
       >
         <span
-          className="relative font-[family-name:var(--font-brand)] text-[10px] tracking-[0.1em]"
-          style={{ color: channel.accent }}
+          className="font-[family-name:var(--font-brand)] text-[10px] uppercase tracking-[0.12em] transition-colors duration-75 group-hover:text-white"
+          style={{ color: channel.catTextToken }}
         >
           {channel.cta}
-          {/* Underline that grows from left on hover */}
-          <span
-            className="absolute bottom-0 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
-            style={{ backgroundColor: channel.accent }}
-          />
         </span>
         <svg
           width="14"
@@ -210,7 +195,7 @@ function ChannelCard({ channel }: { channel: Channel }) {
           strokeLinecap="round"
           strokeLinejoin="round"
           className="transition-transform duration-200 group-hover:translate-x-1"
-          style={{ color: channel.accent }}
+          style={{ color: channel.catTextToken }}
         >
           <path d="M5 12h14" />
           <path d="M12 5l7 7-7 7" />
@@ -224,23 +209,23 @@ export default function ChannelShowcase() {
   return (
     <section className="w-full py-20 md:py-28" style={{ backgroundColor: "var(--theme-bg)" }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Section marker per DESIGN.md */}
         <div className="mb-14 max-w-2xl">
-          <p className="mb-3 flex items-center gap-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
-            <span className="inline-block h-px w-6 bg-[#2563EB]" />
-            Platform Channels
-          </p>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-[var(--theme-text-primary)] sm:text-4xl">
+          <div className="section-marker mb-4">05 / PLATFORM</div>
+          <h2
+            className="mb-4 font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
+            style={{ fontSize: "clamp(28px, 3.5vw, 40px)", color: "var(--theme-text-primary)" }}
+          >
             One platform. Five ways to access robotic automation.
           </h2>
-          <p className="max-w-[580px] font-[family-name:var(--font-ui)] text-base leading-[1.7] text-[var(--theme-text-secondary)]">
-            Whether you want to own, lease, hire, operate, or transition --
+          <p className="max-w-[580px] font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>
+            Whether you want to own, lease, hire, operate, or transition —
             Robotomated serves every stage of the robot lifecycle.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {CHANNELS.map((channel) => (
             <ChannelCard key={channel.number} channel={channel} />
           ))}
