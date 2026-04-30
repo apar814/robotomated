@@ -43,14 +43,18 @@ export default async function ExplorePage() {
 
   return (
     <div>
-      <div className="border-b border-border px-4 py-12 text-center">
-        <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
-          [ ROBOT INTELLIGENCE ]
-        </span>
-        <h1 className="mt-2 font-[family-name:var(--font-brand)] text-3xl font-bold uppercase tracking-wide sm:text-4xl">Explore Robots</h1>
-        <p className="mt-3 font-[family-name:var(--font-ui)] text-sm tracking-wider text-muted">
-          Every robot independently scored across 8 dimensions. No manufacturer pays for placement.
-        </p>
+      <div className="border-b px-6 py-16" style={{ borderColor: "#1F1F1F" }}>
+        <div className="mx-auto max-w-7xl">
+          <span className="text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>
+            01 / DATABASE
+          </span>
+          <h1 className="mt-3 font-[family-name:var(--font-sans)] text-4xl font-medium tracking-tight sm:text-5xl" style={{ color: "#FFFFFF", letterSpacing: "-0.02em" }}>
+            Explore Robots
+          </h1>
+          <p className="mt-3 text-[16px]" style={{ color: "rgba(255,255,255,0.45)" }}>
+            Every robot independently scored across 8 dimensions. No manufacturer pays for placement.
+          </p>
+        </div>
       </div>
       <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-8"><GridSkeleton /></div>}>
         <BrowseClient categories={categories} manufacturers={manufacturers} />
