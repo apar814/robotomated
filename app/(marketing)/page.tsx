@@ -104,91 +104,51 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
-      <VideoHero
-        videoUrl={process.env.HERO_VIDEO_URL || null}
-        posterUrl={null}
-        overlayOpacity={0.7}
-        className="hero-grid scan-line-overlay min-h-[600px] lg:min-h-[700px]"
-      >
-        {/* Fallback background layers (show when no video) */}
-        <HeroBackground className="pointer-events-none absolute inset-0" />
-        <HeroNetworkSvg className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15" />
-
-        <div className="px-6 py-20 sm:py-28 lg:py-36">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-[55%_45%] lg:gap-16">
-            {/* Left column — job-first messaging + category pills */}
-            <div className="relative">
-              <span className="font-[family-name:var(--font-brand)] text-[10px] tracking-[0.2em] text-[#0EA5E9] blink-cursor">
-                [ THE OPERATING SYSTEM FOR ROBOTICS ]
-              </span>
-              <h1
-                className="mt-8 leading-[1.0]"
-                style={{ fontSize: "clamp(44px, 5.5vw, 84px)", letterSpacing: "-0.03em", color: "var(--theme-text-primary)", textShadow: "0 0 80px rgba(37,99,235,0.12)" }}
+      {/* HERO — DESIGN.md: full-bleed, bottom-left headline, one CTA */}
+      <section className="relative min-h-[600px] lg:min-h-[700px]" style={{ background: "#000000" }}>
+        <div className="absolute inset-0 flex items-end px-6 pb-24 sm:px-12 sm:pb-32 lg:px-20 lg:pb-40">
+          <div className="max-w-4xl">
+            <span className="label-uppercase text-[12px] tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>
+              01 / WHAT WE COVER
+            </span>
+            <h1
+              className="mt-4 font-[family-name:var(--font-sans)]"
+              style={{ fontSize: "clamp(40px, 5.5vw, 96px)", fontWeight: 500, lineHeight: 1.0, letterSpacing: "-0.04em", color: "#FFFFFF" }}
+            >
+              {totalRobots} robots. Every spec, every review, every certification path.
+            </h1>
+            <div className="mt-8">
+              <Link
+                href="/explore"
+                className="inline-block border border-white/20 px-6 py-3 text-[14px] font-medium uppercase tracking-[0.04em] text-white/80 transition-colors hover:border-white hover:text-white"
+                style={{ borderRadius: "2px" }}
               >
-                <span className="block font-[family-name:var(--font-ui)] font-extrabold">One platform.</span>
-                <span className="block font-[family-name:var(--font-ui)] font-extrabold">The entire robot</span>
-                <span className="shimmer-text block font-[family-name:var(--font-brand)] font-extrabold">lifecycle.</span>
-              </h1>
-              <p className="mt-6 max-w-[480px] font-[family-name:var(--font-ui)] leading-[1.75]" style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)" }}>
-                Tell us what needs doing. Robotimus will find the right robot, tell you what it costs, and get you deployed.
-              </p>
-              <div className="mt-4 h-8 max-w-[480px]">
-                <Typewriter />
-              </div>
-
-              {/* CTA buttons */}
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/explore"
-                  className="btn-scan rounded-lg px-7 py-3.5 font-[family-name:var(--font-brand)] text-[11px] font-bold uppercase tracking-[0.1em] text-black transition-all"
-                  style={{ background: "#0EA5E9", boxShadow: "0 0 20px rgba(14,165,233,0.3)" }}
-                >
-                  Explore Robots
-                </Link>
-                <Link
-                  href="/advisor"
-                  className="rounded-lg px-7 py-3.5 font-[family-name:var(--font-brand)] text-[11px] font-bold uppercase tracking-[0.1em] transition-all hover:border-[rgba(255,255,255,0.4)]"
-                  style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)", boxShadow: "none" }}
-                  onMouseEnter={undefined}
-                >
-                  Ask Robotimus
-                </Link>
-              </div>
-
-              {/* Category pills */}
-              <div className="mt-8">
-                <HeroPills />
-              </div>
-
-              {/* Stats inline */}
-              <p className="mt-6 font-mono text-[11px] text-white/45">
-                {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independently scored
-              </p>
+                EXPLORE THE DATABASE &rarr;
+              </Link>
             </div>
-
-            {/* Right column — Robotimus panel */}
-            <div className="panel-float flex justify-center lg:justify-end lg:pt-16" style={{ boxShadow: "0 0 60px rgba(14,165,233,0.08)" }}>
-              <RobotimusHeroPanel />
-            </div>
+            <p className="mt-8 font-mono text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+              {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independent scoring
+            </p>
           </div>
         </div>
-      </VideoHero>
+      </section>
 
       {/* ══════════════════════════════════════════
           2. STATS BAR
           ══════════════════════════════════════════ */}
-      <section className="px-6 py-0" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
+      {/* STATS — DESIGN.md: large mono numbers, uppercase labels, hairline separators */}
+      <section className="px-6 py-16" style={{ background: "#000000" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 overflow-hidden rounded-xl border lg:grid-cols-4" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(14,165,233,0.02)" }}>
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
-              { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "Robots Tracked" },
-              { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "Manufacturers Indexed" },
-              { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "Market Today" },
-              { value: <HeroCounter target={5} duration={800} delay={600} />, label: "Ways to Access" },
+              { value: <HeroCounter target={totalRobots} suffix="+" duration={2000} delay={0} />, label: "ROBOTS TRACKED" },
+              { value: <HeroCounter target={manufacturerCount} suffix="+" duration={1800} delay={200} />, label: "MANUFACTURERS" },
+              { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "MARKET SIZE" },
+              { value: <HeroCounter target={5} duration={800} delay={600} />, label: "ACCESS PATHS" },
             ].map((s, i) => (
-              <div key={s.label} className="stat-cell px-6 py-6 text-center transition-colors hover:bg-[rgba(14,165,233,0.04)]" style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
-                <span className="block font-[family-name:var(--font-brand)] font-bold text-[#0EA5E9]" style={{ fontSize: "clamp(28px, 3vw, 44px)" }}>{s.value}</span>
-                <span className="mt-1 block font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.3)" }}>{s.label}</span>
+              <div key={s.label} className="px-6 py-6 text-center" style={{ borderRight: i < 3 ? "1px solid #1F1F1F" : "none" }}>
+                <span className="block font-mono font-medium text-white" style={{ fontSize: "clamp(28px, 3vw, 48px)" }}>{s.value}</span>
+                <span className="mt-2 block text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -197,14 +157,10 @@ export default async function HomePage() {
 
       <LiveActivity />
 
-      <div className="px-6 py-4" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-4">
-          <span className="h-px w-6" style={{ background: "rgba(255,255,255,0.1)" }} />
-          <span className="font-[family-name:var(--font-brand)] text-[9px] tracking-[0.2em]" style={{ color: "rgba(255,255,255,0.15)" }}>
-            INDEPENDENT · NO MANUFACTURER PAYS FOR SCORES
-          </span>
-          <span className="h-px w-6" style={{ background: "rgba(255,255,255,0.1)" }} />
-        </div>
+      <div className="border-t border-b px-6 py-4" style={{ borderColor: "#1F1F1F" }}>
+        <p className="text-center text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.25)" }}>
+          INDEPENDENT · NO MANUFACTURER PAYS FOR SCORES
+        </p>
       </div>
 
       {/* ══════════════════════════════════════════
@@ -225,15 +181,7 @@ export default async function HomePage() {
       {/* ══════════════════════════════════════════
           3.6. TRUST STATEMENT BAR
           ══════════════════════════════════════════ */}
-      <div className="px-6 py-5" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
-        <div className="mx-auto flex max-w-4xl items-center justify-center gap-4">
-          <span className="h-px w-10" style={{ background: "rgba(255,255,255,0.06)" }} />
-          <p className="text-center font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(255,255,255,0.15)" }}>
-            {totalRobots} robots tracked · {manufacturerCount} manufacturers · Every score is independent · No manufacturer has ever paid for placement
-          </p>
-          <span className="h-px w-10" style={{ background: "rgba(255,255,255,0.06)" }} />
-        </div>
-      </div>
+      {/* Trust bar removed — already stated in hero and stats */}
 
       {/* ══════════════════════════════════════════
           5. TRENDING ROBOTS
