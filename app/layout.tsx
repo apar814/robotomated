@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Orbitron, Chakra_Petch, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { StatusBar } from "@/components/layout/status-bar";
 import { Footer } from "@/components/layout/footer";
@@ -8,7 +8,7 @@ import { OrganizationSchema } from "@/components/seo/json-ld";
 import { AffiliateDisclosureBanner } from "@/components/commerce/affiliate-disclosure";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { CookieBanner } from "@/components/analytics/cookie-banner";
-import { CursorGlow } from "@/components/ui/cursor-glow";
+// CursorGlow removed per DESIGN.md — no decorative effects
 import { CommandPalette } from "@/components/ui/command-palette";
 import { CompareBar } from "@/components/compare/compare-bar";
 import { ExitIntentPopup } from "@/components/engagement/exit-intent-popup";
@@ -26,17 +26,10 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const orbitron = Orbitron({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-brand",
-  display: "swap",
-});
-
-const chakraPetch = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-ui",
+  weight: ["400", "500", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -101,7 +94,7 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${orbitron.variable} ${chakraPetch.variable} ${jetbrainsMono.variable}`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="flex min-h-screen flex-col">
         <OrganizationSchema />
@@ -115,7 +108,7 @@ export default async function RootLayout({
             <main className="flex-1 animate-fade-in pb-16 lg:pb-0">{children}</main>
             <Footer />
             <CookieBanner />
-            <CursorGlow />
+            {/* CursorGlow removed */}
             <CommandPalette />
             <CompareBar />
             <ExitIntentPopup />
@@ -124,12 +117,12 @@ export default async function RootLayout({
               position="bottom-right"
               toastOptions={{
                 style: {
-                  background: "rgba(6,8,20,0.97)",
-                  border: "1px solid rgba(37,99,235,0.25)",
-                  borderLeft: "3px solid #2563EB",
-                  color: "#F0F4FF",
+                  background: "#0A0A0A",
+                  border: "1px solid #1F1F1F",
+                  color: "#FFFFFF",
                   fontSize: "0.85rem",
-                  fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
+                  fontFamily: "var(--font-body, 'Inter'), system-ui, sans-serif",
+                  borderRadius: "2px",
                 },
               }}
               duration={3000}
