@@ -43,18 +43,34 @@ Two-value system. Maximum contrast. No exceptions.
 | Token | Hex | Allowed use |
 |---|---|---|
 | `--alert` | `#FF3B00` | ONLY for: critical warnings, recall notices, certification failures. Never for CTAs. |
-| `--data` | `#00D4FF` | ONLY for: live data, real-time indicators, "now playing" markers, intelligence feed timestamps. Borrowed from launch telemetry HUDs. Never as a brand color. |
 | `--interactive` | `#D4D4D4` | Primary interactive elements: links, focus rings, primary CTA borders, active nav. Escalates to `#FFFFFF` on hover. |
 
-**Status tokens** (reserved for state communication, never decorative):
+> **Cyan (`#00D4FF`) has been removed from the system entirely.** No `--data` token exists. Live indicators, timestamps, and real-time markers use `--interactive` (white family) instead.
 
-| Token | Hex | Allowed use |
-|---|---|---|
-| `--status-error` | `#FF3B00` | Genuine emergency only. Recalls, system failures, critical validation. |
-| `--status-error-muted` | `#B33000` | Routine error indicators. Badges, form validation, "required" labels, failed checks. Most error UI uses this. |
-| `--status-warning` | `#CC8400` | Caution without alarm. Expiring items, approaching limits. |
-| `--status-success` | `#4A9E6B` | Passed, verified, complete, online. |
-| `--status-info` | `#5B8FA8` | Informational, neutral. Tooltips, hints. |
+**Categorical palette** (robot type identification — never decorative):
+
+Each robot category has a background swatch and a higher-contrast text variant for labels/badges. All drawn from the same industrial metal/slate family.
+
+| Token | Hex | Text variant | Category |
+|---|---|---|---|
+| `--cat-humanoid` | `#9DA3A8` (titanium) | `#C8CDD1` | Humanoid robots |
+| `--cat-mobile-amr` | `#7A8C9E` (brushed steel) | `#B5C0CC` | Mobile robots / AMRs |
+| `--cat-industrial-arm` | `#8B8680` (stone gray) | `#BFB8AF` | Industrial arms |
+| `--cat-quadruped` | `#4A6FA5` (slate blue) | `#7A9DD0` | Quadrupeds |
+| `--cat-service` | `#5C6B7D` (cool slate gray) | `#9CABBF` | Service robots |
+| `--cat-aerial` | `#2D4A7A` (deep navy) | `#6B8AB8` | Aerial / drones |
+
+**Status palette** (drawn from the same metal/slate family):
+
+| Token | Hex | Text variant | Allowed use |
+|---|---|---|---|
+| `--status-error` | `#FF3B00` | — | **RESERVED — emergency only.** Recalls, safety alerts, system failures. The ONLY saturated color in the entire system. Ask: "is someone in danger or is money being lost right now?" If no, use a neutral token. |
+| `--status-error-muted` | `#B33000` | — | Routine error indicators. Badges, form validation, failed checks. |
+| `--status-warning` | `#A89580` (stone gray warmer) | `#C8BBA8` | Caution without alarm. Expiring items, approaching limits. |
+| `--status-success` | `#3A5876` (slate blue darker) | `#6B8AB8` | Passed, verified, complete, online. |
+| `--status-info` | `#7A8C9E` (brushed steel) | `#B5C0CC` | Informational, neutral. Tooltips, hints. Use at 0.2 opacity for backgrounds. |
+
+**Red is reserved for emergencies.** `--status-error` (#FF3B00) is the only high-saturation color in the system. It exists to communicate danger — recalls, safety alerts, system failures. If a component reaches for red and the answer to "is this a genuine emergency?" is no, use `--status-error-muted` or a neutral token instead.
 
 **Status token usage rule:** Status tokens are reserved for state communication. Never decorative or aesthetic. Components that want visual interest must use lightness, weight, or spacing — not status hue.
 
@@ -246,7 +262,7 @@ Modals and overlays:
 - Leave aggressive amounts of whitespace
 - Treat each robot detail page like a launch dossier
 - Caption images with metadata in mono
-- Use the data accent (`#00D4FF`) only for live/real-time indicators
+- Use `--interactive` (#D4D4D4 → #FFFFFF on hover) for live/real-time indicators
 - Allow long horizontal rules to extend to viewport edges
 
 ### DON'T
@@ -305,8 +321,10 @@ PRIMARY DARK:   #000000 (--ink)
 PRIMARY LIGHT:  #FFFFFF (--paper)
 DARK CARD:      #0A0A0A (--ink-90)
 DARK BORDER:    #1F1F1F (--ink-70)
-ALERT:          #FF3B00 (use for warnings only)
-DATA:           #00D4FF (use for live indicators only)
+ALERT:          #FF3B00 (RESERVED — emergency only: recalls, safety alerts, system failures)
+CATEGORICAL:    6 tokens (--cat-humanoid thru --cat-aerial), each with -text variant
+STATUS:         Slate family (--status-success #3A5876, --status-warning #A89580, --status-info #7A8C9E)
+CYAN:           REMOVED from system entirely — no --data token
 DISPLAY FONT:   Space Grotesk (500 weight)
 BODY FONT:      Inter (400 weight)
 MONO FONT:      JetBrains Mono (technical specs)
@@ -326,7 +344,7 @@ SPACING SCALE:  4/8/16/24/32/48/64/96/128/192
 > "Generate the Operator Level 1 certification sales page following Robotomated DESIGN.md. Hero in light mode (override) with display-2 headline. Section `01 / WHAT YOU LEARN` with 5-module grid using spec cards. Section `02 / OUTCOMES` with mono salary range presentation. Section `03 / COHORT` with current cohort dynamic data. Section `04 / FAQ` with accordion. Single primary CTA button per section maximum."
 
 **Build the intelligence feed:**
-> "Generate the intelligence feed following Robotomated DESIGN.md. Dark mode only. Editorial card layout with full-bleed images, headlines at display-2, deck below in body-lg, metadata row in uppercase labels (SOURCE / TIMESTAMP / CATEGORY) with timestamp using `--data` color. Hairline rules between cards. Filter chips at top in uppercase, 12px tracking 0.12em."
+> "Generate the intelligence feed following Robotomated DESIGN.md. Dark mode only. Editorial card layout with full-bleed images, headlines at display-2, deck below in body-lg, metadata row in uppercase labels (SOURCE / TIMESTAMP / CATEGORY) with timestamp using `--interactive` color. Hairline rules between cards. Filter chips at top in uppercase, 12px tracking 0.12em."
 
 ### When in doubt
 1. Remove an element

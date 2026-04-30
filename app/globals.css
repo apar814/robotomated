@@ -34,8 +34,25 @@
   --color-status-error: var(--status-error);
   --color-status-error-muted: var(--status-error-muted);
   --color-status-warning: var(--status-warning);
+  --color-status-warning-text: var(--status-warning-text);
   --color-status-success: var(--status-success);
+  --color-status-success-text: var(--status-success-text);
   --color-status-info: var(--status-info);
+  --color-status-info-text: var(--status-info-text);
+
+  /* Categorical — robot type identification */
+  --color-cat-humanoid: var(--cat-humanoid);
+  --color-cat-humanoid-text: var(--cat-humanoid-text);
+  --color-cat-mobile-amr: var(--cat-mobile-amr);
+  --color-cat-mobile-amr-text: var(--cat-mobile-amr-text);
+  --color-cat-industrial-arm: var(--cat-industrial-arm);
+  --color-cat-industrial-arm-text: var(--cat-industrial-arm-text);
+  --color-cat-quadruped: var(--cat-quadruped);
+  --color-cat-quadruped-text: var(--cat-quadruped-text);
+  --color-cat-service: var(--cat-service);
+  --color-cat-service-text: var(--cat-service-text);
+  --color-cat-aerial: var(--cat-aerial);
+  --color-cat-aerial-text: var(--cat-aerial-text);
 
   /* Text hierarchy */
   --color-text-primary: var(--theme-text-primary);
@@ -48,7 +65,7 @@
   --color-secondary: var(--theme-text-secondary);
   --color-tertiary: var(--theme-text-muted);
   --color-ghost: var(--theme-text-muted);
-  --color-data: #00D4FF;
+  /* --color-data: removed — cyan killed entirely per design decision 2026-04-29 */
 
   /* Borders */
   --color-border: var(--theme-border);
@@ -74,7 +91,7 @@
   --color-green-dim: rgba(255,255,255,0.04);
   --color-orange: #FBBF24;
   --color-orange-dim: rgba(251,191,36,0.04);
-  --color-cyan-glow: #00D4FF;
+  /* --color-cyan-glow: removed — cyan killed entirely */
   --color-plasma: var(--theme-accent-blue);
 
   /* Fonts — DESIGN.md stack */
@@ -513,22 +530,43 @@ html {
   --interactive-hover: #FFFFFF;
   --interactive-dim:   rgba(212,212,212,0.12);  /* Tinted backgrounds for interactive elements */
 
+  /* ── Categorical palette ─────────────────────────────────────────
+     Six robot category tokens. Each has a background swatch and a
+     higher-contrast text variant for labels/badges. Drawn from the
+     same industrial metal/slate family — no hue diversity for
+     decoration. These are identification tokens, not accents. */
+  --cat-humanoid:           #9DA3A8;   /* Titanium */
+  --cat-humanoid-text:      #C8CDD1;
+  --cat-mobile-amr:         #7A8C9E;   /* Brushed steel */
+  --cat-mobile-amr-text:    #B5C0CC;
+  --cat-industrial-arm:     #8B8680;   /* Stone gray */
+  --cat-industrial-arm-text:#BFB8AF;
+  --cat-quadruped:          #4A6FA5;   /* Slate blue */
+  --cat-quadruped-text:     #7A9DD0;
+  --cat-service:            #5C6B7D;   /* Cool slate gray */
+  --cat-service-text:       #9CABBF;
+  --cat-aerial:             #2D4A7A;   /* Deep navy */
+  --cat-aerial-text:        #6B8AB8;
+
   /* ── Status tokens ──────────────────────────────────────────────
+     Drawn from the same metal/slate family as categorical tokens.
      Reserved for state communication. NEVER decorative or aesthetic.
      Components that want visual interest must use lightness, weight,
      or spacing — not status hue.
 
-     --status-error:       Genuine emergency only. Recalls, system failures,
-                           critical validation. Use sparingly.
-     --status-error-muted: Routine error indicators. Badges, form validation,
-                           "required" labels, failed checks. Most error UI
-                           should use this, not --status-error.
-     Saturation kept under 60% for all status tokens — industrial, not consumer. */
-  --status-error:       #FF3B00;   /* Emergency: recalls, system failures, critical alerts */
-  --status-error-muted: #B33000;   /* Routine: badges, labels, form errors, failed checks */
-  --status-warning:     #CC8400;   /* Caution without alarm. Expiring, approaching limit. */
-  --status-success:     #4A9E6B;   /* Passed, verified, complete, online. Muted forest green. */
-  --status-info:        #5B8FA8;   /* Informational, neutral. Tooltips, hints. Slate blue-gray. */
+     --status-error is RESERVED for genuine emergencies: recalls,
+     safety alerts, system failures. It is the ONLY saturated color
+     in the entire system. If you reach for it, ask: "is someone
+     in danger or is money being lost right now?" If no, use a
+     neutral token instead. */
+  --status-error:           #FF3B00;   /* RESERVED — emergency only: recalls, safety alerts, system failures */
+  --status-error-muted:     #B33000;   /* Routine error indicators. Badges, form validation, failed checks. */
+  --status-warning:         #A89580;   /* Stone gray warmer. Caution without alarm. */
+  --status-warning-text:    #C8BBA8;
+  --status-success:         #3A5876;   /* Slate blue darker. Passed, verified, online. */
+  --status-success-text:    #6B8AB8;
+  --status-info:            #7A8C9E;   /* Brushed steel at 0.2 opacity bg. Tooltips, hints. */
+  --status-info-text:       #B5C0CC;
 }
 
 @layer base {
@@ -595,7 +633,7 @@ html {
   font-size: 0.85em;
 }
 .prose-robotimus a {
-  color: #00D4FF;
+  color: var(--interactive);
   text-decoration: underline;
 }
 
