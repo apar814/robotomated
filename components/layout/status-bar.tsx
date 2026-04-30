@@ -25,13 +25,13 @@ export function StatusBar() {
   const seconds = String(elapsed % 60).padStart(2, "0");
 
   return (
-    <div className="sticky top-12 z-40 flex h-[30px] items-center justify-between border-b border-border-subtle bg-[#050505] px-6 font-mono text-[13px]">
+    <div className="sticky top-12 z-40 flex h-[30px] items-center justify-between border-b px-6 font-mono text-[11px]" style={{ borderColor: "#1F1F1F", background: "#000000" }}>
       {/* Left side — desktop */}
       <div className="hidden items-center gap-5 md:flex">
         {/* ACTIVE indicator */}
         <span className="flex items-center gap-1.5">
-          <span className="animate-pulse-live h-1 w-1 rounded-full bg-blue-600 shadow-[0_0_4px_rgba(200,255,0,0.6)]" />
-          <span className="text-blue-400">ACTIVE</span>
+          <span className="animate-pulse-live h-1 w-1 rounded-full" style={{ background: "#00D4FF" }} />
+          <span style={{ color: "#00D4FF" }}>ACTIVE</span>
         </span>
 
         <span className="flex items-center gap-1.5">
@@ -53,7 +53,7 @@ export function StatusBar() {
       {/* Right side — desktop */}
       <div className="hidden items-center gap-1.5 md:flex">
         <span className="text-text-tertiary">REFRESHED</span>
-        <span className="text-electric-blue">
+        <span style={{ color: "#00D4FF" }}>
           {minutes}:{seconds} AGO
         </span>
       </div>
