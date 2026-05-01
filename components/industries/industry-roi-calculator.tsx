@@ -46,7 +46,7 @@ function WarehouseCalculator() {
           <Output label="Est. annual savings" value={`$${annualSavings.toLocaleString()}`} large />
           <Output label="Recommended system" value={recommendedType} />
           <Output label="Estimated investment" value={`$${estimatedInvestment.toLocaleString()}`} />
-          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -75,9 +75,9 @@ function MedicalCalculator() {
         </div>
         <div className="space-y-3">
           <Output label="OR time saved" value={`${hoursSaved} hours/year`} large />
-          <Output label="Revenue impact" value={`$${revenueImpact.toLocaleString()}`} color="text-green" />
+          <Output label="Revenue impact" value={`$${revenueImpact.toLocaleString()}`} color="text-white" />
           <Output label="System investment" value="~$2M" />
-          <Output label="Est. payback" value={`${paybackYears} years`} color={Number(paybackYears) <= 4 ? "text-green" : "text-amber-400"} />
+          <Output label="Est. payback" value={`${paybackYears} years`} color={Number(paybackYears) <= 4 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -107,7 +107,7 @@ function ManufacturingCalculator() {
         <div className="space-y-3">
           <Output label="Annual productivity gain" value={`$${effectiveSavings.toLocaleString()}`} large />
           <Output label="Total cell cost (est.)" value={`$${(robotCost * 2).toLocaleString()}`} />
-          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback period" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 24 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -140,8 +140,8 @@ function AgriculturalCalculator() {
         <div className="space-y-3">
           <Output label="Annual labor savings" value={`$${annualSavings.toLocaleString()}`} large />
           <Output label="Chemical savings" value={`$${chemicalSavings.toLocaleString()}`} />
-          <Output label="Total annual savings" value={`$${totalSavings.toLocaleString()}`} color="text-green" />
-          <Output label="Payback" value={`${paybackSeasons} seasons`} color={Number(paybackSeasons) <= 2 ? "text-green" : "text-amber-400"} />
+          <Output label="Total annual savings" value={`$${totalSavings.toLocaleString()}`} color="text-white" />
+          <Output label="Payback" value={`${paybackSeasons} seasons`} color={Number(paybackSeasons) <= 2 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -174,9 +174,9 @@ function ConstructionCalculator() {
         <div className="space-y-3">
           <Output label="Labor productivity savings" value={`$${laborSavings.toLocaleString()}`} large />
           <Output label="Rework cost savings" value={`$${reworkReduction.toLocaleString()}`} />
-          <Output label="Total project savings" value={`$${totalSavings.toLocaleString()}`} color="text-green" />
+          <Output label="Total project savings" value={`$${totalSavings.toLocaleString()}`} color="text-white" />
           <Output label="Equipment investment" value={`$${robotInvestment.toLocaleString()}`} />
-          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -209,7 +209,7 @@ function DeliveryCalculator() {
           <Output label="Annual delivery savings" value={`$${annualSavings.toLocaleString()}`} large />
           <Output label="Fleet investment" value={`$${fleetInvestment.toLocaleString()}`} />
           <Output label="Robot cost per delivery" value={`$${robotCostPerDelivery.toFixed(2)}`} />
-          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -238,7 +238,7 @@ function SecurityCalculator() {
         <div className="space-y-3">
           <Output label="Annual guard cost" value={`$${annualGuardCost.toLocaleString()}`} />
           <Output label="Annual robot cost (RaaS)" value={`$${annualRobotCost.toLocaleString()}`} />
-          <Output label="Annual savings" value={`$${Math.max(0, annualSavings).toLocaleString()}`} large color="text-green" />
+          <Output label="Annual savings" value={`$${Math.max(0, annualSavings).toLocaleString()}`} large color="text-white" />
           <Output label="Coverage improvement" value={coverageMultiplier} />
         </div>
       </div>
@@ -272,8 +272,8 @@ function HospitalityCalculator() {
         <div className="space-y-3">
           <Output label="Annual delivery labor cost" value={`$${Math.round(annualStaffCost).toLocaleString()}`} />
           <Output label="Robots needed" value={`${robotsNeeded}`} />
-          <Output label="Annual savings" value={`$${Math.round(annualSavings).toLocaleString()}`} large color="text-green" />
-          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 12 ? "text-green" : "text-amber-400"} />
+          <Output label="Annual savings" value={`$${Math.round(annualSavings).toLocaleString()}`} large color="text-white" />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 12 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -306,9 +306,9 @@ function EldercareCalculator() {
         <div className="space-y-3">
           <Output label="Monitoring labor savings" value={`$${annualSavings.toLocaleString()}`} />
           <Output label="Fall cost avoidance" value={`$${fallCostAvoidance.toLocaleString()}`} />
-          <Output label="Total annual benefit" value={`$${totalBenefit.toLocaleString()}`} large color="text-green" />
+          <Output label="Total annual benefit" value={`$${totalBenefit.toLocaleString()}`} large color="text-white" />
           <Output label="System investment" value={`$${systemCost.toLocaleString()}`} />
-          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-green" : "text-amber-400"} />
+          <Output label="Payback" value={paybackMonths > 0 ? `${paybackMonths} months` : "\u2014"} color={paybackMonths <= 18 ? "text-white" : "text-white"} />
         </div>
       </div>
     </CalcCard>
@@ -343,7 +343,7 @@ function Output({ label, value, large, color }: { label: string; value: string; 
   return (
     <div className="rounded-xl bg-white/[0.04] px-4 py-4">
       <p className="text-[13px] font-medium uppercase tracking-widest text-white/50">{label}</p>
-      <p className={cn("mt-1 font-mono font-bold", large ? "text-[clamp(24px,3vw,40px)]" : "text-lg", color || "text-green")}>{value}</p>
+      <p className={cn("mt-1 font-mono font-bold", large ? "text-[clamp(24px,3vw,40px)]" : "text-lg", color || "text-white")}>{value}</p>
     </div>
   );
 }

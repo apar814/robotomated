@@ -67,7 +67,7 @@ export function ProWaitlistClient() {
       {/* Hero */}
       <section className="px-4 py-20 text-center">
         <div className="mx-auto max-w-2xl">
-          <span className="inline-block rounded-full bg-violet/10 px-4 py-1.5 text-xs font-semibold text-violet">
+          <span className="inline-block rounded-full bg-white/5 px-4 py-1.5 text-xs font-semibold text-white">
             Coming Soon
           </span>
           <h1 className="mt-6 font-display text-4xl font-bold sm:text-5xl">
@@ -147,8 +147,8 @@ export function ProWaitlistClient() {
                     <p className="font-medium text-foreground/60">{f.free}</p>
                   </div>
                   <div>
-                    <p className="text-violet">Pro</p>
-                    <p className="font-semibold text-violet">{f.pro}</p>
+                    <p className="text-white">Pro</p>
+                    <p className="font-semibold text-white">{f.pro}</p>
                   </div>
                 </div>
               </div>

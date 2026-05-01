@@ -81,9 +81,9 @@ export default async function IndustriesHubPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#0A0F1E] px-4 pb-24 pt-14">
+      <section className="relative overflow-hidden bg-[#000000] px-4 pb-24 pt-14">
         <div className="absolute inset-0 bg-mesh opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0F1E]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]" />
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <Breadcrumbs
             items={[
@@ -103,7 +103,7 @@ export default async function IndustriesHubPage() {
           {/* Big stat cards */}
           <div className="mx-auto mt-12 grid max-w-3xl grid-cols-3 gap-6">
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-6 backdrop-blur-sm">
-              <p className="font-mono text-4xl font-extrabold text-[#00C2FF]">
+              <p className="font-mono text-4xl font-extrabold text-[#D4D4D4]">
                 9
               </p>
               <p className="mt-1 text-xs uppercase tracking-widest text-white/40">
@@ -111,7 +111,7 @@ export default async function IndustriesHubPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-6 backdrop-blur-sm">
-              <p className="font-mono text-4xl font-extrabold text-[#7B2FFF]">
+              <p className="font-mono text-4xl font-extrabold text-[#D4D4D4]">
                 $140B+
               </p>
               <p className="mt-1 text-xs uppercase tracking-widest text-white/40">
@@ -131,7 +131,7 @@ export default async function IndustriesHubPage() {
       </section>
 
       {/* ── INDUSTRY CARDS GRID ── */}
-      <section className="bg-[#0A0F1E] px-4 pb-20">
+      <section className="bg-[#000000] px-4 pb-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, i) => {
@@ -143,7 +143,7 @@ export default async function IndustriesHubPage() {
                 >
                   <Link
                     href={`/industries/${industry.slug}`}
-                    className="group relative flex min-h-[320px] flex-col justify-end overflow-hidden rounded-2xl border border-white/[0.08] transition-all hover:-translate-y-1 hover:border-[#00C2FF]/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
+                    className="group relative flex min-h-[320px] flex-col justify-end overflow-hidden rounded-2xl border border-white/[0.08] transition-all hover:-translate-y-1 hover:border-[#D4D4D4]/30 hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
                   >
                     {/* Background image */}
                     <Image
@@ -155,18 +155,18 @@ export default async function IndustriesHubPage() {
                     />
 
                     {/* Dark gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent" />
 
                     {/* Content */}
                     <div className="relative z-10 p-6">
                       {/* Robot count badge */}
                       {count > 0 && (
-                        <span className="mb-3 inline-block rounded-full bg-[#00C2FF]/15 px-3 py-1 font-mono text-[11px] font-bold text-[#00C2FF] backdrop-blur-sm">
+                        <span className="mb-3 inline-block rounded-full bg-[#D4D4D4]/15 px-3 py-1 font-mono text-[11px] font-bold text-[#D4D4D4] backdrop-blur-sm">
                           {count} robots
                         </span>
                       )}
 
-                      <h2 className="font-display text-xl font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-[#00C2FF]">
+                      <h2 className="font-display text-xl font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-[#D4D4D4]">
                         {industry.name}
                       </h2>
 
@@ -203,7 +203,7 @@ export default async function IndustriesHubPage() {
                       </div>
 
                       {/* CTA */}
-                      <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-[#00C2FF] opacity-0 transition-opacity group-hover:opacity-100">
+                      <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-[#D4D4D4] opacity-0 transition-opacity group-hover:opacity-100">
                         Explore {industry.name.split(" ")[0]}
                         <svg
                           className="h-4 w-4"
@@ -229,10 +229,10 @@ export default async function IndustriesHubPage() {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
-            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-[#00C2FF]/[0.05] to-[#7B2FFF]/[0.05] p-8 text-center sm:p-12">
+            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-[#D4D4D4]/[0.05] to-[#D4D4D4]/[0.05] p-8 text-center sm:p-12">
               <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">
                 Not sure which industry to start with?
               </h2>
@@ -243,7 +243,7 @@ export default async function IndustriesHubPage() {
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Link
                   href="/advisor"
-                  className="rounded-lg bg-[#00C2FF] px-8 py-3 text-sm font-semibold text-white hover:opacity-90"
+                  className="rounded-lg bg-[#D4D4D4] px-8 py-3 text-sm font-semibold text-white hover:opacity-90"
                 >
                   Ask Robotimus
                 </Link>

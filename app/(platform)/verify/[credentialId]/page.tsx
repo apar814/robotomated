@@ -87,7 +87,7 @@ export default async function VerifyCredentialPage({
   const displayStatus = isExpired ? "expired" : credential.status;
 
   const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string }> = {
-    active: { label: "Active", bg: "bg-green/10", text: "text-green" },
+    active: { label: "Active", bg: "bg-white/5", text: "text-white" },
     expired: { label: "Expired", bg: "bg-yellow-500/10", text: "text-yellow-400" },
     revoked: { label: "Revoked", bg: "bg-red-500/10", text: "text-red-400" },
     suspended: { label: "Suspended", bg: "bg-orange-500/10", text: "text-orange-400" },
@@ -111,7 +111,7 @@ export default async function VerifyCredentialPage({
             <div className="flex items-center gap-2">
               {isActive && !isExpired ? (
                 <svg
-                  className="h-6 w-6 text-green"
+                  className="h-6 w-6" style={{ color: "var(--status-success-text, #6B8AB8)" }}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

@@ -155,7 +155,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
           <div className="mx-auto max-w-6xl">
             <Link
               href={`/explore/${bestRobotCat}/${bestRobot.slug}`}
-              className="group flex flex-col gap-6 rounded-md border border-white/20 bg-gradient-to-r from-white/[0.05] to-violet/5 p-6 transition-all hover:border-white/20 sm:flex-row sm:items-center"
+              className="group flex flex-col gap-6 rounded-md border border-white/10 bg-white/[0.04] p-6 transition-all hover:border-white/20 sm:flex-row sm:items-center"
             >
               <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-md">
                 {bestRobotImgs[0]?.url ? (
@@ -216,7 +216,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                       {robot.price_current != null ? (
                         <span className="font-mono text-sm font-bold text-white">${robot.price_current.toLocaleString()}</span>
                       ) : (
-                        <span className="text-xs text-orange">Request Quote</span>
+                        <span className="text-xs text-white/60">Request Quote</span>
                       )}
                       {robot.robo_score != null && robot.robo_score > 0 && <RoboScoreBadge score={robot.robo_score} />}
                     </div>

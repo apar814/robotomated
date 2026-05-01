@@ -188,7 +188,7 @@ export function RobotForm({ initialData, mode }: Props) {
   if (status === "success") {
     return (
       <div className="py-20 text-center">
-        <h2 className="text-2xl font-bold text-green">
+        <h2 className="text-2xl font-bold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>
           Robot {mode === "create" ? "Created" : "Updated"}!
         </h2>
         <p className="mt-2 text-muted">

@@ -137,10 +137,10 @@ export default function MethodologyPage() {
               <tbody>
                 {[
                   { range: "90–100", rating: "Exceptional", color: "text-white", meaning: "Best-in-class. Excels across most dimensions." },
-                  { range: "80–89", rating: "Excellent", color: "text-green", meaning: "Strong performer with minor trade-offs." },
-                  { range: "70–79", rating: "Good", color: "text-green", meaning: "Solid choice for most use cases." },
-                  { range: "60–69", rating: "Average", color: "text-orange", meaning: "Gets the job done but has notable weaknesses." },
-                  { range: "Below 60", rating: "Below Average", color: "text-orange", meaning: "Consider alternatives unless uniquely suited." },
+                  { range: "80–89", rating: "Excellent", color: "text-white", meaning: "Strong performer with minor trade-offs." },
+                  { range: "70–79", rating: "Good", color: "text-white", meaning: "Solid choice for most use cases." },
+                  { range: "60–69", rating: "Average", color: "text-white/60", meaning: "Gets the job done but has notable weaknesses." },
+                  { range: "Below 60", rating: "Below Average", color: "text-white/60", meaning: "Consider alternatives unless uniquely suited." },
                 ].map(({ range, rating, color, meaning }, i) => (
                   <tr key={range} className={i % 2 === 0 ? "bg-navy-light" : "bg-navy-lighter"}>
                     <td className="px-4 py-3 font-mono font-semibold">{range}</td>

@@ -41,12 +41,12 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
         {/* Outputs */}
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
-            <OutputCard label="Monthly savings" value={`$${monthlyLaborSaved.toLocaleString()}`} color="text-green" large />
-            <OutputCard label="Payback period" value={fmtPayback(paybackMonths)} color={paybackMonths <= 18 ? "text-green" : paybackMonths <= 36 ? "text-amber-500" : "text-orange"} large />
+            <OutputCard label="Monthly savings" value={`$${monthlyLaborSaved.toLocaleString()}`} color="text-white" large />
+            <OutputCard label="Payback period" value={fmtPayback(paybackMonths)} color={paybackMonths <= 18 ? "text-white" : paybackMonths <= 36 ? "text-white" : "text-white/60"} large />
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-green" : "text-orange"} />
-            <OutputCard label="5-year savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-green" : "text-orange"} />
+            <OutputCard label="3-year net ROI" value={`${threeYearROI}%`} color={threeYearROI > 0 ? "text-white" : "text-white/60"} />
+            <OutputCard label="5-year savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-white" : "text-white/60"} />
           </div>
 
           <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-2.5 text-xs font-medium text-white/40 transition-colors hover:border-white/20 hover:text-white">

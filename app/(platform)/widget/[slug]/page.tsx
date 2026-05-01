@@ -51,7 +51,7 @@ export default async function WidgetPage({ params }: Props) {
           )}
           <div className="mt-4 flex items-center justify-between">
             {robot.robo_score && <RoboScoreBadge score={robot.robo_score} />}
-            <span className="font-mono text-sm font-semibold text-green">{price}</span>
+            <span className="font-mono text-sm font-semibold text-white">{price}</span>
           </div>
           <a
             href={`/explore/${cat?.slug || "all"}/${robot.slug}`}

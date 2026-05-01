@@ -41,7 +41,7 @@ export default async function CaseStudyPage({ params }: Props) {
       }} />
 
       {/* ── HERO ── */}
-      <section className="bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-16 pt-12">
+      <section className="bg-gradient-to-b from-[#000000] to-[#000000] px-4 pb-16 pt-12">
         <div className="mx-auto max-w-4xl">
           <Breadcrumbs items={[
             { name: "Home", href: "/" },
@@ -69,7 +69,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── PROBLEM ── */}
-      <section className="bg-[#0A0F1E] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-orange">The Problem</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">What they were up against</h2>
@@ -86,7 +86,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── SOLUTION ── */}
-      <section className="bg-[#0F1628] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">The Solution</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">What they deployed</h2>
@@ -107,7 +107,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── IMPLEMENTATION ── */}
-      <section className="bg-[#0A0F1E] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">Implementation</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">
@@ -133,7 +133,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── RESULTS ── */}
-      <section className="bg-[#0F1628] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">Results</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">What they achieved</h2>
@@ -166,7 +166,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── LESSONS ── */}
-      <section className="bg-[#0A0F1E] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">Lessons Learned</span>
           <h2 className="mt-2 font-display text-xl font-bold text-white sm:text-2xl">Key takeaways</h2>
@@ -182,7 +182,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#0F1628] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.02] to-white/[0.04] p-8 text-center sm:p-12">
             <h2 className="font-display text-2xl font-bold text-white">

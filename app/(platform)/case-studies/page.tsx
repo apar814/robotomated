@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <div>
-      <section className="bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-16 pt-12">
+      <section className="bg-gradient-to-b from-[#000000] to-[#000000] px-4 pb-16 pt-12">
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[
             { name: "Home", href: "/" },
@@ -28,7 +28,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="bg-[#0A0F1E] px-4 py-16">
+      <section className="bg-[#000000] px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {CASE_STUDIES.map((cs) => (

@@ -269,7 +269,7 @@ export default async function ComparePage({ params }: Props) {
                 return (
                   <div key={key} className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
                     <div className="flex items-center justify-end gap-2">
-                      <span className={cn("font-mono text-sm font-semibold", aWins && "text-green")}>{a}</span>
+                      <span className={cn("font-mono text-sm font-semibold", aWins && "text-white")}>{a}</span>
                       <div className="h-2 w-24 overflow-hidden rounded-full bg-navy-lighter sm:w-32">
                         <div className="ml-auto h-full rounded-full bg-white" style={{ width: `${a}%`, opacity: 0.7 }} />
                       </div>
@@ -277,9 +277,9 @@ export default async function ComparePage({ params }: Props) {
                     <span className="w-20 text-center text-xs text-muted">{label}</span>
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-24 overflow-hidden rounded-full bg-navy-lighter sm:w-32">
-                        <div className="h-full rounded-full bg-violet" style={{ width: `${b}%`, opacity: 0.7 }} />
+                        <div className="h-full rounded-full bg-white/60" style={{ width: `${b}%`, opacity: 0.7 }} />
                       </div>
-                      <span className={cn("font-mono text-sm font-semibold", bWins && "text-green")}>{b}</span>
+                      <span className={cn("font-mono text-sm font-semibold", bWins && "text-white")}>{b}</span>
                     </div>
                   </div>
                 );
@@ -299,7 +299,7 @@ export default async function ComparePage({ params }: Props) {
                 <tr className="bg-navy-lighter">
                   <th className="px-4 py-3 text-left font-medium text-muted">Spec</th>
                   <th className="px-4 py-3 text-left font-medium text-white">{robotA.name}</th>
-                  <th className="px-4 py-3 text-left font-medium text-violet">{robotB.name}</th>
+                  <th className="px-4 py-3 text-left font-medium text-white">{robotB.name}</th>
                 </tr>
               </thead>
               <tbody>
@@ -331,7 +331,7 @@ export default async function ComparePage({ params }: Props) {
                 <tr className="bg-navy-lighter">
                   <th className="px-4 py-3 text-left font-medium text-muted">Metric</th>
                   <th className="px-4 py-3 text-left font-medium text-white">{robotA.name}</th>
-                  <th className="px-4 py-3 text-left font-medium text-violet">{robotB.name}</th>
+                  <th className="px-4 py-3 text-left font-medium text-white">{robotB.name}</th>
                 </tr>
               </thead>
               <tbody>
@@ -339,14 +339,14 @@ export default async function ComparePage({ params }: Props) {
                   <td className="px-4 py-3 font-medium text-muted">Vendor Health Score</td>
                   <td className="px-4 py-3 font-mono">
                     {robotA.vendor_health_score != null ? (
-                      <span className={cn(robotA.vendor_health_score >= 70 ? "text-green" : robotA.vendor_health_score >= 50 ? "text-orange" : "text-muted")}>
+                      <span className={cn(robotA.vendor_health_score >= 70 ? "text-white" : robotA.vendor_health_score >= 50 ? "text-white/60" : "text-muted")}>
                         {robotA.vendor_health_score}/100
                       </span>
                     ) : "—"}
                   </td>
                   <td className="px-4 py-3 font-mono">
                     {robotB.vendor_health_score != null ? (
-                      <span className={cn(robotB.vendor_health_score >= 70 ? "text-green" : robotB.vendor_health_score >= 50 ? "text-orange" : "text-muted")}>
+                      <span className={cn(robotB.vendor_health_score >= 70 ? "text-white" : robotB.vendor_health_score >= 50 ? "text-white/60" : "text-muted")}>
                         {robotB.vendor_health_score}/100
                       </span>
                     ) : "—"}
@@ -396,7 +396,7 @@ export default async function ComparePage({ params }: Props) {
                   </td>
                   <td className="px-4 py-3">
                     {robotB.support_model ? (
-                      <span className="inline-block rounded border border-violet/20 bg-violet/5 px-2 py-0.5 font-mono text-xs text-violet">
+                      <span className="inline-block rounded border border-white/20 bg-white/5 px-2 py-0.5 font-mono text-xs text-white">
                         {robotB.support_model}
                       </span>
                     ) : "—"}
@@ -411,7 +411,7 @@ export default async function ComparePage({ params }: Props) {
                     {robotA.safety_certifications && robotA.safety_certifications.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {robotA.safety_certifications.map((cert) => (
-                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[13px] text-green">
+                          <span key={cert} className="inline-block rounded border border-border bg-white/5 px-1.5 py-0.5 font-mono text-[13px] text-white">
                             {cert}
                           </span>
                         ))}
@@ -422,7 +422,7 @@ export default async function ComparePage({ params }: Props) {
                     {robotB.safety_certifications && robotB.safety_certifications.length > 0 ? (
                       <div className="flex flex-wrap gap-1">
                         {robotB.safety_certifications.map((cert) => (
-                          <span key={cert} className="inline-block rounded border border-green/20 bg-green/5 px-1.5 py-0.5 font-mono text-[13px] text-green">
+                          <span key={cert} className="inline-block rounded border border-border bg-white/5 px-1.5 py-0.5 font-mono text-[13px] text-white">
                             {cert}
                           </span>
                         ))}

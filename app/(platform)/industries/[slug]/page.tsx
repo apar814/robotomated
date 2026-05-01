@@ -136,7 +136,7 @@ export default async function IndustryPage({ params }: Props) {
       <FaqSchema items={industry.faqs} />
 
       {/* -- HERO -- */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-16 pt-12">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#000000] to-[#000000] px-4 pb-16 pt-12">
         <div className="absolute inset-0 bg-mesh opacity-50" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <Breadcrumbs items={[
@@ -177,7 +177,7 @@ export default async function IndustryPage({ params }: Props) {
 
       {/* -- ROBOT SECTIONS (SSR) -- */}
       {allRobots.length > 0 ? (
-        <div id="robot-sections" className="bg-[#0A0F1E]">
+        <div id="robot-sections" className="bg-[#000000]">
           {industry.types.map((type) => {
             const typeRobots = robotsByType[type.id] || [];
             if (typeRobots.length === 0) return null;
@@ -208,7 +208,7 @@ export default async function IndustryPage({ params }: Props) {
           })}
         </div>
       ) : (
-        <section className="bg-[#0A0F1E] px-4 py-16">
+        <section className="bg-[#000000] px-4 py-16">
           <div className="mx-auto max-w-6xl text-center">
             <p className="text-lg text-white/40">Robot listings for {industry.name.toLowerCase()} are coming soon.</p>
             <p className="mt-2 text-sm text-white/50">Subscribe below to be notified when we add robots for this industry.</p>
@@ -217,7 +217,7 @@ export default async function IndustryPage({ params }: Props) {
       )}
 
       {/* -- ROI CALCULATOR -- */}
-      <section id="roi" className="scroll-mt-24 bg-[#0F1628] px-4 py-20">
+      <section id="roi" className="scroll-mt-24 bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <span className="section-label">ROI Calculator</span>
@@ -235,7 +235,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- BUYER GUIDE -- */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <span className="section-label">Buyer{"'"}s Guide</span>
@@ -262,7 +262,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- COMPLIANCE & REGULATIONS -- */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <span className="section-label">Compliance</span>
@@ -297,7 +297,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- CASE STUDIES -- */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <span className="section-label">Case Studies</span>
@@ -329,7 +329,7 @@ export default async function IndustryPage({ params }: Props) {
                   <div className="mt-auto grid grid-cols-3 gap-2 border-t border-white/[0.05] pt-4">
                     {cs.metrics.map((m) => (
                       <div key={m.label} className="text-center">
-                        <p className="font-mono text-sm font-bold text-green">{m.value}</p>
+                        <p className="font-mono text-sm font-bold text-white">{m.value}</p>
                         <p className="mt-0.5 text-[13px] uppercase tracking-wider text-white/50">{m.label}</p>
                       </div>
                     ))}
@@ -342,7 +342,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- FAQ -- */}
-      <section id="faq" className="bg-[#0F1628] px-4 py-20">
+      <section id="faq" className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <span className="section-label">FAQ</span>
@@ -369,7 +369,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- NEWSLETTER CTA -- */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
             <IndustryNewsletterCta industryLabel={industry.newsletterLabel} />
@@ -378,10 +378,10 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- CTA -- */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
-            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
+            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 text-center sm:p-12">
               <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">{industry.ctaText}</h2>
               <p className="mt-3 text-base text-white/60">
                 {allRobots.length > 0

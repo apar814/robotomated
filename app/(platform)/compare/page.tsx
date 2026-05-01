@@ -160,7 +160,7 @@ function ComparePageInner() {
               <h3 className="font-semibold text-foreground">{r.name}</h3>
               <div className="mt-2 flex items-center justify-between">
                 {r.price_current != null ? (
-                  <span className="font-mono text-sm font-bold text-green">{fmtPrice(r.price_current)}</span>
+                  <span className="font-mono text-sm font-bold text-white">{fmtPrice(r.price_current)}</span>
                 ) : (
                   <span className="text-xs text-white/50">Contact for pricing</span>
                 )}
@@ -205,9 +205,9 @@ function ComparePageInner() {
                 if (bestScore && r.slug === bestScore.slug) labels.push("Highest rated");
                 if (bestPrice && r.slug === bestPrice.slug && robots.length > 1) labels.push("Best price");
                 return (
-                  <div key={r.slug} className={cn("rounded-lg border p-3 text-center text-xs", labels.length > 0 ? "border-green/30 bg-green/5" : "border-border bg-white/[0.03]")}>
+                  <div key={r.slug} className={cn("rounded-lg border p-3 text-center text-xs", labels.length > 0 ? "border-white/20 bg-white/5" : "border-border bg-white/[0.03]")}>
                     {labels.length > 0 ? (
-                      <span className="font-semibold text-green">{labels.join(" · ")}</span>
+                      <span className="font-semibold text-white">{labels.join(" · ")}</span>
                     ) : (
                       <span className="text-white/50">—</span>
                     )}
@@ -270,7 +270,7 @@ function ComparePageInner() {
                         </div>
                         <div className="flex justify-between text-xs">
                           <span className="text-white/50">Monthly savings</span>
-                          <span className="font-mono font-medium text-green">${Math.round(annualSavings / 12).toLocaleString()}</span>
+                          <span className="font-mono font-medium text-white">${Math.round(annualSavings / 12).toLocaleString()}</span>
                         </div>
                         <div className="flex justify-between text-xs">
                           <span className="text-white/50">3-year ROI</span>
@@ -317,7 +317,7 @@ function CompareRow({ label, robots, getValue, bestSlug, highlightBest }: {
         const val = getValue(r);
         const isBest = bestSlug === r.slug || (highlightBest && isBestNumeric(robots, r, getValue));
         return (
-          <td key={r.slug} className={cn("px-4 py-2.5 font-mono text-xs", isBest ? "bg-green/5 font-semibold text-green" : "text-foreground")}>
+          <td key={r.slug} className={cn("px-4 py-2.5 font-mono text-xs", isBest ? "bg-white/5 font-semibold text-white" : "text-foreground")}>
             {val}
           </td>
         );

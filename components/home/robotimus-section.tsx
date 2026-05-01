@@ -52,8 +52,8 @@ export function RobotimusSection() {
                 <RobotimusAvatar size={24} />
                 <span className="text-sm font-semibold text-[var(--theme-text-primary)]">Robotimus</span>
                 <span className="relative ml-1 flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style={{ background: "var(--status-success-text, #6B8AB8)" }} />
+                  <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: "var(--status-success-text, #6B8AB8)" }} />
                 </span>
                 <span className="text-xs text-[var(--theme-text-muted)]">Online</span>
               </div>

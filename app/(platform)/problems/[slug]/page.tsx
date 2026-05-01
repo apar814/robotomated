@@ -49,7 +49,7 @@ export default async function ProblemPage({ params }: Props) {
       <FaqSchema items={problem.faqs} />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-16 pt-12">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#000000] to-[#000000] px-4 pb-16 pt-12">
         <div className="absolute inset-0 bg-mesh opacity-50" />
         <div className="relative z-10 mx-auto max-w-4xl">
           <Breadcrumbs items={[
@@ -90,7 +90,7 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── TRENDS: Why this is getting worse ── */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-orange">The Trend</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
@@ -108,7 +108,7 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── HOW AUTOMATION SOLVES IT ── */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">The Solution</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
@@ -134,9 +134,9 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── ROBOT CATEGORIES ── */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[13px] font-semibold uppercase tracking-widest text-green">Robot Categories</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-white">Robot Categories</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             Which robots address this?
           </h2>
@@ -159,7 +159,7 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── ROI DATA ── */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-white">ROI Data</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
@@ -207,9 +207,9 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-[#0A0F1E] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[13px] font-semibold uppercase tracking-widest text-violet">FAQ</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-white">FAQ</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             Common questions
           </h2>
@@ -230,9 +230,9 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#0F1628] px-4 py-20">
+      <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-blue/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
+          <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 text-center sm:p-12">
             <h2 className="font-display text-2xl font-bold text-white">
               Ready to solve {problem.title.toLowerCase()}?
             </h2>

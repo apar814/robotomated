@@ -115,10 +115,10 @@ export default async function ArticlePage({ params }: Props) {
             <span>{frontmatter.readTime} min read</span>
             <span className={cn(
               "rounded-full px-2 py-0.5 text-[13px] font-medium",
-              frontmatter.audience === "beginner" ? "bg-green/10 text-green" :
+              frontmatter.audience === "beginner" ? "bg-white/10 text-white" :
               frontmatter.audience === "enthusiast" ? "bg-white/10 text-white" :
-              frontmatter.audience === "professional" ? "bg-violet/10 text-violet" :
-              "bg-orange/10 text-orange"
+              frontmatter.audience === "professional" ? "bg-white/10 text-white" :
+              "bg-white/5 text-white/60"
             )}>
               {audienceLabels[frontmatter.audience] || frontmatter.audience}
             </span>

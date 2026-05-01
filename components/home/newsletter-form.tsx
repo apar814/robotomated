@@ -76,10 +76,10 @@ export function NewsletterForm() {
         ))}
       </select>
       {status === "success" && (
-        <p className="text-sm text-green">{message}</p>
+        <p className="text-sm" style={{ color: "var(--status-success-text, #6B8AB8)" }}>{message}</p>
       )}
       {status === "error" && (
-        <p className="text-sm text-orange">{message}</p>
+        <p className="text-sm text-white/60">{message}</p>
       )}
     </form>
   );

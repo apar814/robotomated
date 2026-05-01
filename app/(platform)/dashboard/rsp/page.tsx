@@ -388,7 +388,7 @@ function JobsTab() {
       {/* Active Bids */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-violet" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white/40" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Active Bids
           </span>
@@ -494,7 +494,7 @@ function MaintenanceTab() {
               Maintenance Log
             </span>
           </div>
-          <button className="rounded border border-border px-4 py-2 text-xs font-bold text-text-primary transition-colors hover:border-electric-blue hover:text-white">
+          <button className="rounded border border-border px-4 py-2 text-xs font-bold text-text-primary transition-colors hover:border-white/20 hover:text-white">
             Schedule Maintenance
           </button>
         </div>

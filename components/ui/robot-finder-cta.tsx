@@ -6,7 +6,7 @@ import { useSiteStats } from "@/lib/context/site-stats";
 export function RobotFinderCtaStrip() {
   const { robotCount } = useSiteStats();
   return (
-    <section className="border-y border-border bg-gradient-to-r from-[#0A0F1E] via-[#0F1628] to-[#0A0F1E] px-6 py-10">
+    <section className="border-y border-border bg-gradient-to-r from-[#000000] via-[#000000] to-[#000000] px-6 py-10">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5">
           <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

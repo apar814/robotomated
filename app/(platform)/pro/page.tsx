@@ -61,7 +61,7 @@ function ProPageContent() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 text-center">
         <div className="mx-auto max-w-3xl">
-          <span className="rounded-full bg-gradient-to-r from-white/10 to-violet px-4 py-1.5 text-xs font-semibold text-white">
+          <span className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-white">
             Robotomated Pro
           </span>
           <h1 className="mt-6 text-4xl font-bold sm:text-5xl">

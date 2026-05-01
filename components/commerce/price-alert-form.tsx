@@ -51,8 +51,8 @@ export function PriceAlertForm({ robotId, robotName, currentPrice }: PriceAlertF
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-green/20 bg-green/5 p-5 text-center">
-        <p className="font-semibold text-green">Price alert set!</p>
+      <div className="rounded-xl border border-border bg-white/5 p-5 text-center" style={{ borderColor: "var(--status-success, #3A5876)" }}>
+        <p className="font-semibold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>Price alert set!</p>
         <p className="mt-1 text-sm text-muted">
           We&apos;ll email you when {robotName} drops below ${parseFloat(targetPrice).toLocaleString()}.
         </p>

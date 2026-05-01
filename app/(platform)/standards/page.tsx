@@ -111,14 +111,14 @@ const TIMELINE_STEPS = [
     year: "2025",
     label: "Development",
     description: "Working groups drafting specifications",
-    color: "var(--theme-blue, #00C2FF)",
+    color: "var(--theme-blue, #D4D4D4)",
     active: true,
   },
   {
     year: "2026",
     label: "Public Comment",
     description: "Industry review and feedback period",
-    color: "var(--theme-violet, #7B2FFF)",
+    color: "var(--theme-neutral, #D4D4D4)",
     active: false,
   },
   {
@@ -199,9 +199,9 @@ export default function StandardsPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[var(--theme-navy,#0A0F1E)] px-4 pb-12 pt-14">
+      <section className="relative overflow-hidden bg-[var(--theme-navy,#000000)] px-4 pb-12 pt-14">
         <div className="absolute inset-0 bg-mesh opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--theme-navy,#0A0F1E)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--theme-navy,#000000)]" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <Breadcrumbs
             items={[
@@ -225,10 +225,10 @@ export default function StandardsPage() {
       </section>
 
       {/* ── ALERT BANNER ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-4">
-        <div className="mx-auto max-w-4xl rounded-2xl border border-amber-500/30 bg-amber-500/[0.05] px-6 py-5 backdrop-blur-sm">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-16 pt-4">
+        <div className="mx-auto max-w-4xl rounded-2xl border border-white/20 bg-white/[0.05] px-6 py-5 backdrop-blur-sm">
           <div className="flex items-start gap-4">
-            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500/20 text-xs font-bold text-amber-400">
+            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-bold text-white">
               !
             </span>
             <p className="text-sm leading-relaxed text-amber-200/80">
@@ -243,7 +243,7 @@ export default function StandardsPage() {
       </section>
 
       {/* ── TIMELINE ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-4xl">
           <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white text-center">[ TIMELINE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -269,7 +269,7 @@ export default function StandardsPage() {
                   }}
                 >
                   {step.active && (
-                    <span className="h-2 w-2 rounded-full bg-[var(--theme-navy,#0A0F1E)]" />
+                    <span className="h-2 w-2 rounded-full bg-[var(--theme-navy,#000000)]" />
                   )}
                 </div>
                 <p
@@ -291,7 +291,7 @@ export default function StandardsPage() {
       </section>
 
       {/* ── STANDARDS BY STATUS ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
           {/* Ratified */}
           <div>
@@ -338,7 +338,7 @@ export default function StandardsPage() {
           {/* In Development */}
           <div className="mt-16">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-widest text-amber-400">
+              <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-widest text-white">
                 In Development
               </span>
               <span className="text-sm text-white/50">
@@ -349,7 +349,7 @@ export default function StandardsPage() {
               {inDevelopment.map((s) => (
                 <div
                   key={s.name}
-                  className="rounded-2xl border border-amber-500/10 bg-white/[0.02] p-6 backdrop-blur-sm"
+                  className="rounded-2xl border border-border bg-white/[0.02] p-6 backdrop-blur-sm"
                 >
                   <div className="flex items-start justify-between">
                     <h3 className="font-mono text-base font-bold text-white">
@@ -380,7 +380,7 @@ export default function StandardsPage() {
       </section>
 
       {/* ── ENTERPRISE BUYER GUIDANCE ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
           <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white text-center">[ BUYER GUIDANCE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -410,7 +410,7 @@ export default function StandardsPage() {
                         key={std}
                         className="flex items-center gap-2 text-sm text-white/60"
                       >
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--theme-blue,#00C2FF)]" />
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--theme-blue,#D4D4D4)]" />
                         {std}
                       </li>
                     ))}
@@ -423,8 +423,8 @@ export default function StandardsPage() {
       </section>
 
       {/* ── EMAIL ALERT CTA ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-8">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-blue,#00C2FF)]/20 bg-[var(--theme-blue,#00C2FF)]/[0.03] p-10 text-center backdrop-blur-sm">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-16 pt-8">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-blue,#D4D4D4)]/20 bg-[var(--theme-blue,#D4D4D4)]/[0.03] p-10 text-center backdrop-blur-sm">
           <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ ALERTS ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
             Get Notified When Standards Change
@@ -438,11 +438,11 @@ export default function StandardsPage() {
             <input
               type="email"
               placeholder="safety@yourcompany.com"
-              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]/50"
+              className="flex-1 rounded-xl border border-white/[0.12] bg-white/[0.05] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#D4D4D4)]/50 focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]/50"
             />
             <button
               type="button"
-              className="rounded-xl bg-[var(--theme-blue,#00C2FF)] px-6 py-3 text-sm font-semibold text-[var(--theme-navy,#0A0F1E)] transition-colors hover:bg-[var(--theme-blue,#00C2FF)]/80"
+              className="rounded-xl bg-[var(--theme-blue,#D4D4D4)] px-6 py-3 text-sm font-semibold text-[var(--theme-navy,#000000)] transition-colors hover:bg-[var(--theme-blue,#D4D4D4)]/80"
             >
               Subscribe to Alerts
             </button>
@@ -454,7 +454,7 @@ export default function StandardsPage() {
       </section>
 
       {/* ── EXPLORE CTA ── */}
-      <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
+      <section className="bg-[var(--theme-navy,#000000)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ EXPLORE ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
@@ -467,7 +467,7 @@ export default function StandardsPage() {
           </p>
           <Link
             href="/explore"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[var(--theme-violet,#7B2FFF)] px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--theme-violet,#7B2FFF)]/80"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white/10 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/15"
           >
             Browse Certified Robots
           </Link>

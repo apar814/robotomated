@@ -91,13 +91,13 @@ export function MaintenanceCalendar({ schedules, assets }: MaintenanceCalendarPr
                 key={s.id}
                 className={`flex items-start gap-3 rounded-lg border px-3 py-2 ${
                   urgent
-                    ? "border-amber-400/20 bg-amber-400/5"
+                    ? "border-white/20 bg-white/5"
                     : "border-white/[0.06] bg-white/[0.01]"
                 }`}
               >
                 <div
                   className={`mt-0.5 h-2 w-2 shrink-0 rounded-full ${
-                    urgent ? "bg-amber-400" : "bg-[#00C2FF]"
+                    urgent ? "bg-white" : "bg-[#00C2FF]"
                   }`}
                 />
                 <div className="flex-1 min-w-0">

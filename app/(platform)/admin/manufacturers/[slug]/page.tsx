@@ -58,7 +58,7 @@ export default function AdminManufacturerLogoPage() {
 
       <div className="mt-4 flex items-center gap-3">
         <Button onClick={save} disabled={saving}>{saving ? "Saving..." : "Save Logo"}</Button>
-        {msg && <span className={`text-sm ${msg === "Saved!" ? "text-green" : "text-orange"}`}>{msg}</span>}
+        {msg && <span className="text-sm" style={{ color: msg === "Saved!" ? "var(--status-success-text, #6B8AB8)" : undefined }}>{msg}</span>}
       </div>
     </div>
   );

@@ -88,7 +88,7 @@ export default async function FoundingRspPage() {
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <div className="mb-4 inline-block rounded-full border border-[#F59E0B]/20 bg-[#F59E0B]/5 px-4 py-1.5">
             <span className="font-mono text-[13px] uppercase tracking-widest text-[#F59E0B]">

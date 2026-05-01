@@ -99,34 +99,34 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
         >
           <defs>
             <radialGradient id="nl-glow" cx="30%" cy="40%" r="60%">
-              <stop offset="0%" stopColor="#00C2FF" stopOpacity="0.06" />
+              <stop offset="0%" stopColor="#D4D4D4" stopOpacity="0.06" />
               <stop offset="100%" stopColor="#0A0F1E" stopOpacity="0" />
             </radialGradient>
           </defs>
           <rect width="100%" height="100%" fill="url(#nl-glow)" />
           {/* Grid lines */}
-          <line x1="10%" y1="0" x2="10%" y2="100%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
-          <line x1="30%" y1="0" x2="30%" y2="100%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
-          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#00C2FF" strokeOpacity="0.03" strokeWidth="1" />
-          <line x1="70%" y1="0" x2="70%" y2="100%" stroke="#7B2FFF" strokeOpacity="0.04" strokeWidth="1" />
-          <line x1="90%" y1="0" x2="90%" y2="100%" stroke="#7B2FFF" strokeOpacity="0.03" strokeWidth="1" />
-          <line x1="0" y1="25%" x2="100%" y2="25%" stroke="#00C2FF" strokeOpacity="0.03" strokeWidth="1" />
-          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
-          <line x1="0" y1="75%" x2="100%" y2="75%" stroke="#7B2FFF" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="10%" y1="0" x2="10%" y2="100%" stroke="#D4D4D4" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="30%" y1="0" x2="30%" y2="100%" stroke="#D4D4D4" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="#D4D4D4" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="70%" y1="0" x2="70%" y2="100%" stroke="#D4D4D4" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="90%" y1="0" x2="90%" y2="100%" stroke="#D4D4D4" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="0" y1="25%" x2="100%" y2="25%" stroke="#D4D4D4" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#D4D4D4" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="0" y1="75%" x2="100%" y2="75%" stroke="#D4D4D4" strokeOpacity="0.03" strokeWidth="1" />
           {/* Data nodes */}
-          <circle cx="10%" cy="25%" r="3" fill="#00C2FF" opacity="0.15" />
-          <circle cx="30%" cy="50%" r="4" fill="#00C2FF" opacity="0.12" />
-          <circle cx="50%" cy="25%" r="2.5" fill="#7B2FFF" opacity="0.15" />
-          <circle cx="70%" cy="75%" r="3" fill="#7B2FFF" opacity="0.12" />
-          <circle cx="90%" cy="50%" r="3.5" fill="#00C2FF" opacity="0.10" />
+          <circle cx="10%" cy="25%" r="3" fill="#D4D4D4" opacity="0.15" />
+          <circle cx="30%" cy="50%" r="4" fill="#D4D4D4" opacity="0.12" />
+          <circle cx="50%" cy="25%" r="2.5" fill="#D4D4D4" opacity="0.15" />
+          <circle cx="70%" cy="75%" r="3" fill="#D4D4D4" opacity="0.12" />
+          <circle cx="90%" cy="50%" r="3.5" fill="#D4D4D4" opacity="0.10" />
           <circle cx="30%" cy="75%" r="2" fill="#00E5A0" opacity="0.12" />
           <circle cx="70%" cy="25%" r="2.5" fill="#00E5A0" opacity="0.10" />
           {/* Connection lines between nodes */}
-          <line x1="10%" y1="25%" x2="30%" y2="50%" stroke="#00C2FF" strokeOpacity="0.06" strokeWidth="1" />
-          <line x1="30%" y1="50%" x2="50%" y2="25%" stroke="#00C2FF" strokeOpacity="0.05" strokeWidth="1" />
-          <line x1="50%" y1="25%" x2="70%" y2="25%" stroke="#7B2FFF" strokeOpacity="0.05" strokeWidth="1" />
-          <line x1="70%" y1="25%" x2="90%" y2="50%" stroke="#7B2FFF" strokeOpacity="0.06" strokeWidth="1" />
-          <line x1="90%" y1="50%" x2="70%" y2="75%" stroke="#00C2FF" strokeOpacity="0.04" strokeWidth="1" />
+          <line x1="10%" y1="25%" x2="30%" y2="50%" stroke="#D4D4D4" strokeOpacity="0.06" strokeWidth="1" />
+          <line x1="30%" y1="50%" x2="50%" y2="25%" stroke="#D4D4D4" strokeOpacity="0.05" strokeWidth="1" />
+          <line x1="50%" y1="25%" x2="70%" y2="25%" stroke="#D4D4D4" strokeOpacity="0.05" strokeWidth="1" />
+          <line x1="70%" y1="25%" x2="90%" y2="50%" stroke="#D4D4D4" strokeOpacity="0.06" strokeWidth="1" />
+          <line x1="90%" y1="50%" x2="70%" y2="75%" stroke="#D4D4D4" strokeOpacity="0.04" strokeWidth="1" />
           <line x1="70%" y1="75%" x2="30%" y2="75%" stroke="#00E5A0" strokeOpacity="0.05" strokeWidth="1" />
           <line x1="30%" y1="75%" x2="30%" y2="50%" stroke="#00E5A0" strokeOpacity="0.04" strokeWidth="1" />
         </svg>
@@ -149,11 +149,11 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
                 <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Robots Tracked</p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-green">$103B</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-bold text-white">$103B</p>
                 <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Market Coverage</p>
               </div>
               <div>
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-violet">51</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">51</p>
                 <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Research Reports</p>
               </div>
             </div>
@@ -168,8 +168,8 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
 
             {/* Signup form */}
             {status === "success" ? (
-              <div className="mt-8 rounded-xl border border-green/20 bg-green/5 p-8">
-                <p className="text-lg font-semibold text-green">You&apos;re in.</p>
+              <div className="mt-8 rounded-xl border border-border bg-white/5 p-8" style={{ borderColor: "var(--status-success, #3A5876)" }}>
+                <p className="text-lg font-semibold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>You&apos;re in.</p>
                 <p className="mt-2 text-sm text-muted">{message}</p>
               </div>
             ) : (

@@ -19,7 +19,7 @@ export function CompareBar() {
         </div>
         <Link
           href={`/compare?robots=${slugs.join(",")}`}
-          className="rounded-lg bg-green px-6 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          className="rounded-lg bg-white px-6 py-2 text-sm font-semibold text-[#0A0F1E] transition-opacity hover:opacity-90"
         >
           View Comparison
         </Link>

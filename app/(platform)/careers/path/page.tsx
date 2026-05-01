@@ -145,12 +145,12 @@ export default function CareerPathPage() {
 
   /* shared input classes */
   const selectCls =
-    "w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white focus:border-[#00C2FF] focus:outline-none appearance-none cursor-pointer";
+    "w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white focus:border-[#D4D4D4] focus:outline-none appearance-none cursor-pointer";
   const inputCls =
-    "w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white font-mono focus:border-[#00C2FF] focus:outline-none";
+    "w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white font-mono focus:border-[#D4D4D4] focus:outline-none";
 
   return (
-    <div className="min-h-screen bg-[#0A0F1E]">
+    <div className="min-h-screen bg-[#000000]">
       {/* ─── HEADER ─── */}
       <section className="border-b border-white/[0.06] px-4 pb-10 pt-12">
         <div className="mx-auto max-w-5xl">
@@ -173,7 +173,7 @@ export default function CareerPathPage() {
             </ol>
           </nav>
 
-          <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.2em] text-[#00C2FF]">
+          <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.2em] text-[#D4D4D4]">
             Career Path Tool
           </p>
           <h1 className="mt-3 text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl lg:text-5xl">
@@ -264,13 +264,13 @@ export default function CareerPathPage() {
           <div className="relative space-y-0">
             {/* vertical cyan line */}
             <div
-              className="absolute left-6 top-0 w-px bg-gradient-to-b from-white/20 via-[#00C2FF]/40 to-[#00C2FF]/60 sm:left-8"
+              className="absolute left-6 top-0 w-px bg-gradient-to-b from-white/20 via-[#D4D4D4]/40 to-[#D4D4D4]/60 sm:left-8"
               style={{ height: "100%" }}
             />
 
             {/* Stage 0 — NOW */}
             <div className="relative pb-8">
-              <div className="absolute left-4 top-6 h-4 w-4 rounded-full border-2 border-white/30 bg-[#0A0F1E] sm:left-6" />
+              <div className="absolute left-4 top-6 h-4 w-4 rounded-full border-2 border-white/30 bg-[#000000] sm:left-6" />
               <div className="ml-14 sm:ml-20">
                 <div className="rounded-xl border border-white/20 bg-[#0A0A0A] p-6">
                   <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-white/40">
@@ -295,15 +295,15 @@ export default function CareerPathPage() {
               return (
                 <div key={stage.level} className="relative pb-8 last:pb-0">
                   {/* dot on line */}
-                  <div className="absolute left-4 top-6 h-4 w-4 rounded-full border-2 border-[#00C2FF]/50 bg-[#0A0F1E] sm:left-6">
-                    <div className="absolute inset-1 rounded-full bg-[#00C2FF]/60" />
+                  <div className="absolute left-4 top-6 h-4 w-4 rounded-full border-2 border-[#D4D4D4]/50 bg-[#000000] sm:left-6">
+                    <div className="absolute inset-1 rounded-full bg-[#D4D4D4]/60" />
                   </div>
 
                   <div className="ml-14 sm:ml-20">
-                    <div className="rounded-xl border border-[#00C2FF]/20 bg-[#0A0A0A] p-6">
+                    <div className="rounded-xl border border-[#D4D4D4]/20 bg-[#0A0A0A] p-6">
                       {/* header row */}
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="rounded-md border border-[#00C2FF]/30 bg-[#00C2FF]/10 px-2 py-0.5 font-mono text-[13px] font-bold text-[#00C2FF]">
+                        <span className="rounded-md border border-[#D4D4D4]/30 bg-[#D4D4D4]/10 px-2 py-0.5 font-mono text-[13px] font-bold text-[#D4D4D4]">
                           {stage.badge}
                         </span>
                         <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-white/40">
@@ -312,7 +312,7 @@ export default function CareerPathPage() {
                       </div>
 
                       {/* salary */}
-                      <p className="mt-3 font-mono text-2xl font-bold text-[#00C2FF]">
+                      <p className="mt-3 font-mono text-2xl font-bold text-[#D4D4D4]">
                         {fmt(projected)}
                         <span className="ml-1 text-xs font-normal text-white/50">
                           /year
@@ -362,7 +362,7 @@ export default function CareerPathPage() {
       {/* ─── ROI SUMMARY ─── */}
       <section className="px-4 pb-16">
         <div className="mx-auto max-w-5xl">
-          <div className="rounded-xl border border-[#00C2FF]/20 bg-gradient-to-br from-[#00C2FF]/[0.04] to-[#7B2FFF]/[0.04] p-6 sm:p-8">
+          <div className="rounded-xl border border-[#D4D4D4]/20 bg-gradient-to-br from-[#D4D4D4]/[0.04] to-[#D4D4D4]/[0.04] p-6 sm:p-8">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-white/40">
               Return on Investment
             </h2>
@@ -382,7 +382,7 @@ export default function CareerPathPage() {
               </div>
               <div>
                 <p className="text-xs text-white/40">Payback Period</p>
-                <p className="mt-1 font-mono text-2xl font-bold text-[#00C2FF]">
+                <p className="mt-1 font-mono text-2xl font-bold text-[#D4D4D4]">
                   {paybackMonths}{" "}
                   <span className="text-sm font-normal text-white/50">
                     months
@@ -403,7 +403,7 @@ export default function CareerPathPage() {
             <div className="mt-8">
               <Link
                 href="/certify"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#00C2FF] px-6 py-3 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-[#00C2FF]/90"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#D4D4D4] px-6 py-3 text-sm font-semibold text-[#000000] transition-colors hover:bg-[#D4D4D4]/90"
               >
                 Start Your Journey
                 <svg
@@ -436,18 +436,18 @@ export default function CareerPathPage() {
               <Link
                 key={job.title}
                 href={job.href}
-                className="group rounded-xl border border-white/[0.08] bg-[#0A0A0A] p-6 transition-colors hover:border-[#00C2FF]/30"
+                className="group rounded-xl border border-white/[0.08] bg-[#0A0A0A] p-6 transition-colors hover:border-[#D4D4D4]/30"
               >
-                <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-[#00C2FF]">
+                <p className="font-mono text-[13px] font-bold uppercase tracking-widest text-[#D4D4D4]">
                   {job.level}
                 </p>
-                <p className="mt-2 text-lg font-bold text-white group-hover:text-[#00C2FF] transition-colors">
+                <p className="mt-2 text-lg font-bold text-white group-hover:text-[#D4D4D4] transition-colors">
                   {job.title}
                 </p>
                 <p className="mt-1 text-sm text-white/40">
                   {job.count}+ open positions
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[#00C2FF]/70 group-hover:text-[#00C2FF]">
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[#D4D4D4]/70 group-hover:text-[#D4D4D4]">
                   View jobs
                   <svg
                     className="h-3 w-3"

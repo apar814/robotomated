@@ -38,9 +38,9 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/[0.06] to-white/[0.04] p-8 sm:p-10">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 sm:p-10">
       <div className="mx-auto max-w-xl text-center">
-        <p className="text-[11px] font-medium uppercase tracking-widest text-violet">Newsletter</p>
+        <p className="text-[11px] font-medium uppercase tracking-widest text-white">Newsletter</p>
         <h3 className="mt-2 font-display text-xl font-bold tracking-[-0.02em] text-white sm:text-2xl">
           Get weekly {industryLabel} robotics intelligence
         </h3>
@@ -59,13 +59,13 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="whitespace-nowrap rounded-lg bg-violet px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 sm:rounded-l-none"
+            className="whitespace-nowrap rounded-lg bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-50 sm:rounded-l-none"
           >
             {status === "loading" ? "Subscribing..." : "Subscribe Free"}
           </button>
         </form>
         {status === "success" && (
-          <p className="mt-3 text-sm text-green">{message}</p>
+          <p className="mt-3 text-sm" style={{ color: "var(--status-success-text, #6B8AB8)" }}>{message}</p>
         )}
         {status === "error" && (
           <p className="mt-3 text-sm text-orange-400">{message}</p>

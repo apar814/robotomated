@@ -96,7 +96,7 @@ export default function AdminNewReviewPage() {
   if (status === "success") {
     return (
       <div className="mx-auto max-w-4xl px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold text-green">Review Published!</h1>
+        <h1 className="text-2xl font-bold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>Review Published!</h1>
         <p className="mt-3 text-muted">The expert review has been saved and published.</p>
         <Button className="mt-6" onClick={() => { setStatus("idle"); setTitle(""); setBody(""); }}>
           Write Another

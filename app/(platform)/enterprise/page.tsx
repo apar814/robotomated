@@ -149,7 +149,7 @@ export default function EnterprisePage() {
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
             href="#contact"
-            className="inline-flex items-center rounded-lg bg-[var(--theme-blue,#00C2FF)] px-8 py-3 text-sm font-semibold text-[var(--theme-navy,#0A0F1E)] transition-opacity hover:opacity-90"
+            className="inline-flex items-center rounded-lg bg-[var(--theme-blue,#D4D4D4)] px-8 py-3 text-sm font-semibold text-[var(--theme-navy,#000000)] transition-opacity hover:opacity-90"
           >
             Talk to Sales
           </a>
@@ -179,7 +179,7 @@ export default function EnterprisePage() {
               className="glass relative rounded-xl border border-white/10 p-6"
             >
               {feature.badge ? (
-                <span className="absolute right-4 top-4 rounded-full bg-[var(--theme-violet,#7B2FFF)]/20 px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-[var(--theme-violet,#7B2FFF)]">
+                <span className="absolute right-4 top-4 rounded-full bg-[var(--theme-neutral,#D4D4D4)]/20 px-2.5 py-0.5 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-[var(--theme-neutral,#D4D4D4)]">
                   {feature.badge}
                 </span>
               ) : null}
@@ -208,12 +208,12 @@ export default function EnterprisePage() {
               key={tier.name}
               className={`glass relative flex flex-col rounded-2xl border p-8 ${
                 tier.highlight
-                  ? "border-[var(--theme-blue,#00C2FF)]/50"
+                  ? "border-[var(--theme-blue,#D4D4D4)]/50"
                   : "border-white/10"
               }`}
             >
               {tier.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--theme-blue,#00C2FF)] px-4 py-1 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-[var(--theme-navy,#0A0F1E)]">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--theme-blue,#D4D4D4)] px-4 py-1 font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-[var(--theme-navy,#000000)]">
                   Most Popular
                 </span>
               )}
@@ -256,7 +256,7 @@ export default function EnterprisePage() {
                 href={tier.name === "Enterprise" ? "#contact" : "#contact"}
                 className={`mt-8 block rounded-lg py-3 text-center text-sm font-semibold transition-opacity hover:opacity-90 ${
                   tier.highlight
-                    ? "bg-[var(--theme-blue,#00C2FF)] text-[var(--theme-navy,#0A0F1E)]"
+                    ? "bg-[var(--theme-blue,#D4D4D4)] text-[var(--theme-navy,#000000)]"
                     : "border border-white/10 text-white hover:bg-white/5"
                 }`}
               >
@@ -304,7 +304,7 @@ function EnterpriseContactForm() {
           name="name"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
           placeholder="Jane Doe"
         />
       </div>
@@ -320,7 +320,7 @@ function EnterpriseContactForm() {
           name="email"
           type="email"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
           placeholder="jane@company.com"
         />
       </div>
@@ -336,7 +336,7 @@ function EnterpriseContactForm() {
           name="company"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
           placeholder="Acme Robotics Inc."
         />
       </div>
@@ -350,7 +350,7 @@ function EnterpriseContactForm() {
         <select
           id="ent-fleet-size"
           name="fleet_size"
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
         >
           <option value="">Select fleet size</option>
           {FLEET_SIZE_OPTIONS.map((opt) => (
@@ -371,7 +371,7 @@ function EnterpriseContactForm() {
           id="ent-spend"
           name="annual_robot_spend"
           type="text"
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
           placeholder="$500,000"
         />
       </div>
@@ -385,7 +385,7 @@ function EnterpriseContactForm() {
         <select
           id="ent-timeline"
           name="timeline"
-          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white focus:border-[var(--theme-blue,#00C2FF)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#00C2FF)]"
+          className="mt-1 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white focus:border-[var(--theme-blue,#D4D4D4)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-blue,#D4D4D4)]"
         >
           <option value="">Select timeline</option>
           {TIMELINE_OPTIONS.map((opt) => (
@@ -398,7 +398,7 @@ function EnterpriseContactForm() {
       <div className="sm:col-span-2">
         <button
           type="submit"
-          className="w-full rounded-lg bg-[var(--theme-blue,#00C2FF)] px-8 py-3 text-sm font-semibold text-[var(--theme-navy,#0A0F1E)] transition-opacity hover:opacity-90 sm:w-auto"
+          className="w-full rounded-lg bg-[var(--theme-blue,#D4D4D4)] px-8 py-3 text-sm font-semibold text-[var(--theme-navy,#000000)] transition-opacity hover:opacity-90 sm:w-auto"
         >
           Submit Inquiry
         </button>

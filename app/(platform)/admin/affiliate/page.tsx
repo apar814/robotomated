@@ -83,8 +83,8 @@ export default async function AffiliateAnalyticsPage() {
       <div className="mt-6 grid gap-4 sm:grid-cols-4">
         {[
           { label: "Today", value: todayClicks || 0, color: "text-white" },
-          { label: "This Week", value: weekClicks || 0, color: "text-green" },
-          { label: "This Month", value: monthClicks || 0, color: "text-violet" },
+          { label: "This Week", value: weekClicks || 0, color: "text-white" },
+          { label: "This Month", value: monthClicks || 0, color: "text-white" },
           { label: "All Time", value: totalClicks || 0, color: "text-foreground" },
         ].map((stat) => (
           <div key={stat.label} className="rounded-xl border border-border bg-navy-light p-5 text-center">
@@ -137,7 +137,7 @@ export default async function AffiliateAnalyticsPage() {
                   <div className="flex-1">
                     <div className="h-4 rounded bg-white/[0.06]">
                       <div
-                        className="h-full rounded bg-green"
+                        className="h-full rounded bg-white"
                         style={{ width: `${(d.count / Math.max(...dateStats.map(x => x.count), 1)) * 100}%` }}
                       />
                     </div>

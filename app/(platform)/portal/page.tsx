@@ -80,13 +80,13 @@ export default function ManufacturerPortalPage() {
     return (
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
         <div className="mb-4 flex justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green/10">
-            <svg className="h-8 w-8 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl" style={{ background: "var(--status-success, #3A5876)" }}>
+            <svg className="h-8 w-8" style={{ color: "var(--status-success-text, #6B8AB8)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-green">Submission Received!</h1>
+        <h1 className="text-2xl font-bold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>Submission Received!</h1>
         <p className="mt-3 text-muted">
           Thanks for submitting {form.robot_name}. Our team will review it and reach out
           to {form.contact_email} within 3 business days.

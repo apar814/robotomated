@@ -55,8 +55,8 @@ function BillingContent() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
       {success && (
-        <div className="mb-6 rounded-xl border border-green/20 bg-green/5 p-4 text-center">
-          <p className="font-semibold text-green">Welcome to Robotomated Pro!</p>
+        <div className="mb-6 rounded-xl border border-border bg-white/5 p-4 text-center" style={{ borderColor: "var(--status-success, #3A5876)" }}>
+          <p className="font-semibold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>Welcome to Robotomated Pro!</p>
           <p className="mt-1 text-sm text-muted">Your 7-day free trial has started.</p>
         </div>
       )}
@@ -70,7 +70,7 @@ function BillingContent() {
             <h2 className="text-sm font-semibold uppercase tracking-wider text-muted">Current Plan</h2>
             <p className="mt-2 text-xl font-bold">
               {isPro ? (
-                <span className="bg-gradient-to-r from-blue to-violet bg-clip-text text-transparent">
+                <span className="text-white">
                   Robotomated Pro
                 </span>
               ) : (
@@ -102,7 +102,7 @@ function BillingContent() {
           ) : (
             <Link
               href="/pro"
-              className="rounded-lg bg-gradient-to-r from-blue to-violet px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="rounded-lg bg-white/10 px-6 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               Upgrade to Pro — $49/mo
             </Link>
@@ -146,7 +146,7 @@ function BillingContent() {
 
 function Check() {
   return (
-    <svg className="h-4 w-4 shrink-0 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+    <svg className="h-4 w-4 shrink-0" style={{ color: "var(--status-success-text, #6B8AB8)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   );

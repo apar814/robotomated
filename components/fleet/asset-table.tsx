@@ -6,7 +6,7 @@ import type { DemoAsset, DemoSchedule, DemoMaintenanceLog } from "@/lib/fleet/de
 
 const statusStyles: Record<string, string> = {
   active: "bg-[#00E5A0]/15 text-[#00E5A0] border-[#00E5A0]/30",
-  maintenance: "bg-amber-400/15 text-amber-400 border-amber-400/30",
+  maintenance: "bg-white/10 text-white border-white/20",
   offline: "bg-red-400/15 text-red-400 border-red-400/30",
   decommissioned: "bg-white/10 text-white/40 border-white/10",
 };

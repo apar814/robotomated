@@ -140,8 +140,8 @@ export default function AdminRobotsPage() {
                     </td>
                     <td className="px-4 py-3">
                       <span className={`inline-block rounded-full px-2 py-0.5 text-[13px] font-semibold uppercase ${
-                        r.status === "active" ? "bg-green/15 text-green" :
-                        r.status === "discontinued" ? "bg-orange/15 text-orange" :
+                        r.status === "active" ? "bg-white/5 text-white" :
+                        r.status === "discontinued" ? "bg-white/5 text-white/60" :
                         "bg-white/10 text-white"
                       }`}>
                         {r.status}

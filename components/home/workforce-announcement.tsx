@@ -9,7 +9,7 @@ export function WorkforceAnnouncement() {
   if (dismissed) return null;
 
   return (
-    <div className="bg-gradient-to-r from-electric-blue/10 via-lime/5 to-electric-blue/10 border-b border-electric-blue/20">
+    <div className="bg-gradient-to-r from-white/[0.04] via-lime/5 to-white/[0.04] border-b border-white/20">
       <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
           <span className="shrink-0 bg-lime/20 text-lime text-xs font-mono px-2 py-0.5 rounded hidden sm:inline">

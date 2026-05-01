@@ -129,8 +129,8 @@ export default function AdminImportPage() {
       {step === "validate" && (
         <div>
           <div className="mb-6 flex items-center gap-4">
-            <span className="text-sm text-green">{validCount} valid</span>
-            {errorCount > 0 && <span className="text-sm text-orange">{errorCount} with errors</span>}
+            <span className="text-sm" style={{ color: "var(--status-success-text, #6B8AB8)" }}>{validCount} valid</span>
+            {errorCount > 0 && <span className="text-sm text-white/60">{errorCount} with errors</span>}
             <span className="text-sm text-muted">{rows.length} total rows</span>
           </div>
 
@@ -146,15 +146,15 @@ export default function AdminImportPage() {
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.index} className={row.errors.length > 0 ? "bg-orange/5" : "bg-navy-light"}>
+                  <tr key={row.index} className={row.errors.length > 0 ? "bg-white/5" : "bg-navy-light"}>
                     <td className="px-3 py-2">{row.index}</td>
                     <td className="px-3 py-2">{row.data.name}</td>
                     <td className="px-3 py-2 font-mono">{row.data.slug}</td>
                     <td className="px-3 py-2">
                       {row.errors.length > 0 ? (
-                        <span className="text-orange">{row.errors.join(", ")}</span>
+                        <span className="text-white/60">{row.errors.join(", ")}</span>
                       ) : (
-                        <span className="text-green">OK</span>
+                        <span style={{ color: "var(--status-success-text, #6B8AB8)" }}>OK</span>
                       )}
                     </td>
                   </tr>
@@ -180,12 +180,12 @@ export default function AdminImportPage() {
 
       {step === "done" && (
         <div className="space-y-4">
-          <div className="rounded-xl border border-green/20 bg-green/5 p-6">
-            <p className="text-lg font-semibold text-green">{results.success} robots imported successfully</p>
+          <div className="rounded-xl border border-border bg-white/5 p-6" style={{ borderColor: "var(--status-success, #3A5876)" }}>
+            <p className="text-lg font-semibold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>{results.success} robots imported successfully</p>
           </div>
           {results.errors.length > 0 && (
-            <div className="rounded-xl border border-orange/20 bg-orange/5 p-6">
-              <p className="mb-2 font-semibold text-orange">{results.errors.length} errors:</p>
+            <div className="rounded-xl border border-border bg-white/5 p-6">
+              <p className="mb-2 font-semibold text-white/60">{results.errors.length} errors:</p>
               <ul className="max-h-48 space-y-1 overflow-auto text-xs text-muted">
                 {results.errors.map((e, i) => <li key={i}>{e}</li>)}
               </ul>

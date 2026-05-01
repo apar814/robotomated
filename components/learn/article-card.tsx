@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils/cn";
 import type { ArticleFrontmatter } from "@/lib/learn/articles";
 
 const audienceColors: Record<string, string> = {
-  beginner: "bg-green/10 text-green",
+  beginner: "bg-white/10 text-white",
   enthusiast: "bg-white/5 text-white",
-  professional: "bg-violet/10 text-violet",
-  developer: "bg-orange/10 text-orange",
+  professional: "bg-white/10 text-white",
+  developer: "bg-white/5 text-white/60",
 };
 
 export function ArticleCard({

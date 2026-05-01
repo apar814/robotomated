@@ -86,14 +86,14 @@ const tierStyles: Record<Tier["emphasis"], { card: string; badge: string; price:
     price: "font-[family-name:var(--font-mono)] text-foreground",
   },
   gold: {
-    card: "glass rounded-xl p-6 border border-[#00C2FF]/30 shadow-[0_0_24px_rgba(0,194,255,0.06)]",
+    card: "glass rounded-xl p-6 border border-[#D4D4D4]/30 shadow-[0_0_24px_rgba(212,212,212,0.06)]",
     badge: "rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-semibold text-white",
     price: "font-[family-name:var(--font-mono)] text-white",
   },
   platinum: {
-    card: "relative rounded-xl p-6 border border-violet/40 bg-gradient-to-br from-white/[0.06] to-violet/[0.04] shadow-[0_0_32px_rgba(123,47,255,0.08)]",
-    badge: "rounded-full bg-gradient-to-r from-white/10 to-violet px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-bold text-white",
-    price: "font-[family-name:var(--font-mono)] bg-gradient-to-r from-white/10 to-violet bg-clip-text text-transparent",
+    card: "relative rounded-xl p-6 border border-white/20 bg-white/[0.04]",
+    badge: "rounded-full bg-white/10 px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-bold text-white",
+    price: "font-[family-name:var(--font-mono)] text-white",
   },
 };
 
@@ -156,7 +156,7 @@ export default function ManufacturerPartnerPage() {
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm">
                         <svg
-                          className="mt-0.5 h-4 w-4 shrink-0 text-green"
+                          className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--status-success-text, #6B8AB8)" }}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"

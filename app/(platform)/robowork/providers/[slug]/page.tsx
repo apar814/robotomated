@@ -166,7 +166,7 @@ function formatRate(val: number | null) {
 function RspScoreBadge({ score, percentile }: { score: number; percentile?: number | null }) {
   const color =
     score >= 80 ? "text-[#00E5A0] border-[#00E5A0]/30 bg-[#00E5A0]/5" :
-    score >= 60 ? "text-amber-400 border-amber-500/30 bg-amber-500/5" :
+    score >= 60 ? "text-white border-white/20 bg-white/5" :
     "text-red-400 border-red-500/30 bg-red-500/5";
 
   return (
@@ -202,7 +202,7 @@ function TierDots({ tier }: { tier: string }) {
 function AvailabilityBadge({ status }: { status: string }) {
   const config: Record<string, { label: string; color: string }> = {
     available: { label: "Available Now", color: "bg-[#00E5A0]/10 text-[#00E5A0] border-[#00E5A0]/20" },
-    busy: { label: "Currently Busy", color: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
+    busy: { label: "Currently Busy", color: "bg-white/10 text-white border-white/20" },
     unavailable: { label: "Unavailable", color: "bg-red-500/10 text-red-400 border-red-500/20" },
     by_appointment: { label: "By Appointment", color: "bg-white/10 text-white border-white/20" },
   };
@@ -474,9 +474,9 @@ export default async function ProviderProfilePage({ params }: Props) {
                       <div className="flex items-center gap-3">
                         <span className={cn(
                           "flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold",
-                          cert.certification_level === 4 ? "bg-amber-500/10 text-amber-400" :
-                          cert.certification_level === 3 ? "bg-violet/10 text-violet" :
-                          cert.certification_level === 2 ? "bg-green/10 text-green" :
+                          cert.certification_level === 4 ? "bg-white/10 text-white" :
+                          cert.certification_level === 3 ? "bg-white/10 text-white" :
+                          cert.certification_level === 2 ? "bg-white/10 text-white" :
                           "bg-white/5 text-white"
                         )}>
                           L{cert.certification_level}
@@ -616,7 +616,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                         )}
                       </div>
                       <div className="mt-3 flex flex-wrap gap-1.5">
-                        {robot.operator_included && <span className="rounded-full bg-violet/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-violet">OPERATOR INCLUDED</span>}
+                        {robot.operator_included && <span className="rounded-full bg-white/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-white">OPERATOR INCLUDED</span>}
                         {robot.remote_capable && <span className="rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-[#14B8A6]">REMOTE CAPABLE</span>}
                       </div>
                       <button className="mt-4 w-full rounded-lg border border-white/20 bg-white/5 py-2 text-xs font-medium text-white transition-colors hover:bg-white/10">
@@ -836,7 +836,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                       </div>
                       <div className="mt-1 h-1.5 w-full rounded-full bg-border">
                         <div
-                          className={cn("h-1.5 rounded-full", val >= 80 ? "bg-[#00E5A0]" : val >= 60 ? "bg-amber-500" : "bg-red-400")}
+                          className={cn("h-1.5 rounded-full", val >= 80 ? "bg-[#00E5A0]" : val >= 60 ? "bg-white/40" : "bg-red-400")}
                           style={{ width: `${val}%` }}
                         />
                       </div>

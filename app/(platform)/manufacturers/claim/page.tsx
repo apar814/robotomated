@@ -181,9 +181,9 @@ export default function ManufacturerClaimPage() {
         </section>
         <section className="px-4 py-24">
           <div className="mx-auto max-w-lg text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green/20">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full" style={{ background: "var(--status-success, #3A5876)" }}>
               <svg
-                className="h-8 w-8 text-green"
+                className="h-8 w-8" style={{ color: "var(--status-success-text, #6B8AB8)" }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -261,7 +261,7 @@ export default function ManufacturerClaimPage() {
                   i === step
                     ? "bg-white text-black"
                     : i < step
-                      ? "bg-green/20 text-green cursor-pointer"
+                      ? "bg-white/10 text-white cursor-pointer"
                       : "bg-white/[0.04] text-muted/40"
                 }`}
               >
@@ -288,7 +288,7 @@ export default function ManufacturerClaimPage() {
                   i === step
                     ? "font-medium text-foreground"
                     : i < step
-                      ? "text-green"
+                      ? "text-white"
                       : "text-muted/40"
                 }`}
               >
@@ -297,7 +297,7 @@ export default function ManufacturerClaimPage() {
               {i < STEPS.length - 1 && (
                 <div
                   className={`hidden h-px w-8 sm:block ${
-                    i < step ? "bg-green/40" : "bg-white/[0.06]"
+                    i < step ? "bg-white/20" : "bg-white/[0.06]"
                   }`}
                 />
               )}
