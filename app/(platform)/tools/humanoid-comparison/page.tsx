@@ -110,7 +110,7 @@ const TAKEAWAY_CARDS = [
   },
   {
     title: "Technology Leader",
-    accent: "electric-blue" as const,
+    accent: "neutral" as const,
     description:
       "US companies, particularly Figure, lead on technology depth. Fleet neural learning — where every deployed robot improves every other robot — is the capability that will define market leaders. Combined with full autonomy and self-charging, Figure's approach prioritizes long-term operational value over short-term price competition.",
   },
@@ -363,7 +363,7 @@ export default function HumanoidComparisonPage() {
                   className={`inline-flex rounded px-2 py-1 text-xs font-semibold ${
                     card.accent === "lime"
                       ? "bg-white/5 text-white"
-                      : card.accent === "electric-blue"
+                      : card.accent === "neutral"
                         ? "bg-white/5 text-white"
                         : "bg-magenta/15 text-magenta"
                   }`}

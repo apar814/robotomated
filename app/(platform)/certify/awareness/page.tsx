@@ -171,7 +171,7 @@ export default function AwarenessPage() {
           <div className="mt-10 flex flex-col items-center gap-3">
             <Link
               href="/certify/exam?level=0"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Free &rarr;
             </Link>
@@ -200,7 +200,7 @@ export default function AwarenessPage() {
             {MODULES.map((mod) => (
               <div
                 key={mod.number}
-                className="hover-card-bl group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all hover:border-white/20"
+                className="group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all hover:border-white/20"
               >
                 <div className="flex flex-col gap-6 sm:flex-row">
                   {/* Number badge */}
@@ -302,7 +302,7 @@ export default function AwarenessPage() {
             {WHO_IS_THIS_FOR.map((persona) => (
               <div
                 key={persona.role}
-                className="hover-card-bl rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
+                className="rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <h3 className="font-display text-base font-bold text-white">
                   {persona.role}
@@ -401,7 +401,7 @@ export default function AwarenessPage() {
           <div className="mt-8">
             <Link
               href="/certify/exam?level=0"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Free &rarr;
             </Link>

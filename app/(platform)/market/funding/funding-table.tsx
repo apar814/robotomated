@@ -83,7 +83,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             <select
               value={roundFilter}
               onChange={(e) => setRoundFilter(e.target.value)}
-              className="rounded border border-border bg-obsidian-surface px-3 py-1.5 font-mono text-xs text-secondary focus:border-electric-blue focus:outline-none"
+              className="rounded border border-border bg-obsidian-surface px-3 py-1.5 font-mono text-xs text-secondary focus:border-white/40 focus:outline-none"
             >
               <option value="All">All Rounds</option>
               {roundTypes.map((t) => (
@@ -97,7 +97,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="rounded border border-border bg-obsidian-surface px-3 py-1.5 font-mono text-xs text-secondary focus:border-electric-blue focus:outline-none"
+              className="rounded border border-border bg-obsidian-surface px-3 py-1.5 font-mono text-xs text-secondary focus:border-white/40 focus:outline-none"
             >
               <option value="All">All Categories</option>
               {categories.map((c) => (

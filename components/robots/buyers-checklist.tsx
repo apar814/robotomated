@@ -94,7 +94,7 @@ export function BuyersChecklist({ robotName, robotSlug }: BuyersChecklistProps) 
             placeholder="you@company.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-w-0 flex-1 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+            className="min-w-0 flex-1 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-white/40 focus:outline-none"
             required
           />
           <button

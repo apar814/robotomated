@@ -173,13 +173,13 @@ export default function CertifyPage() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Get Certified Free — Level 0 Awareness
             </Link>
             <Link
               href="#levels"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-white/30 hover:text-white"
+              className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-white/30 hover:text-white"
             >
               Compare All 6 Levels
             </Link>
@@ -219,7 +219,7 @@ export default function CertifyPage() {
             {CERT_LEVELS.map((lvl) => (
               <div
                 key={lvl.level}
-                className="hover-card-bl group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all duration-300 hover:border-white/20"
+                className="group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all duration-300 hover:border-white/20"
               >
                 {/* Level number + tag */}
                 <div className="mb-5 flex items-start justify-between">
@@ -401,7 +401,7 @@ export default function CertifyPage() {
             {GAUNTLET_ROUNDS.map((r) => (
               <div
                 key={r.round}
-                className="hover-card-bl group rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
+                className="group rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <div className="mb-3 flex items-center justify-between">
                   <span className="font-[family-name:var(--font-brand)] text-4xl font-bold text-white/20">
@@ -446,7 +446,7 @@ export default function CertifyPage() {
             {SPECIALIZATIONS.map((spec) => (
               <div
                 key={spec.name}
-                className="hover-card-bl group relative rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-white/20"
+                className="group relative rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-white/20"
               >
                 {spec.isNew && (
                   <span className="absolute -top-2 right-4 rounded-full bg-white/10 border border-border px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
@@ -536,7 +536,7 @@ export default function CertifyPage() {
 
               <Link
                 href="/certify/employer"
-                className="hover-btn-bl mt-8 inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="mt-8 inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Certify Your Team
               </Link>
@@ -614,7 +614,7 @@ export default function CertifyPage() {
             ].map((track) => (
               <div
                 key={track.name}
-                className="hover-card-bl group relative rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
+                className="group relative rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <span className="absolute -top-2 right-4 rounded-full bg-white/10 border border-border px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
                   2026
@@ -636,7 +636,7 @@ export default function CertifyPage() {
                   </p>
                   <p className="text-xs text-white">{track.premium}</p>
                 </div>
-                <button className="hover-btn-bl mt-4 w-full rounded-lg border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
+                <button className="mt-4 w-full rounded-lg border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
                   Join Waitlist
                 </button>
               </div>
@@ -662,7 +662,7 @@ export default function CertifyPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               href="/certify/future-of-robotics"
-              className="hover-btn-bl rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              className="rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
               12 Megatrends Shaping Robotics
             </Link>
@@ -700,7 +700,7 @@ export default function CertifyPage() {
             />
             <button
               type="submit"
-              className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Verify
             </button>
@@ -794,7 +794,7 @@ export default function CertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Get Certified Free — Level 0 Awareness
             </Link>

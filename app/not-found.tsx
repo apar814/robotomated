@@ -36,7 +36,7 @@ export default async function NotFound() {
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link
           href="/explore"
-          className="rounded-lg border border-white/20 px-6 py-2.5 text-sm font-semibold text-white/80 hover-btn-bl"
+          className="rounded-lg border border-white/20 px-6 py-2.5 text-sm font-semibold text-white/80 transition-colors hover:border-white/40 hover:text-white"
         >
           Explore All Robots
         </Link>
@@ -62,7 +62,7 @@ export default async function NotFound() {
                 <Link
                   key={r.slug as string}
                   href={`/explore/${catSlug}/${r.slug}`}
-                  className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left transition-all hover:border-white/20 hover-card-bl"
+                  className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-left transition-all hover:border-white/20"
                 >
                   <p className="text-[13px] text-white/45">{mfr}</p>
                   <p className="mt-0.5 text-sm font-semibold text-white transition-colors group-hover:text-white">

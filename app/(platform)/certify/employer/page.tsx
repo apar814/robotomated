@@ -165,7 +165,7 @@ export default function EmployerPortalPage() {
                   </p>
                 </div>
 
-                <button className="hover-btn-bl mt-6 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+                <button className="mt-6 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
                   Get Started
                 </button>
               </div>
@@ -182,7 +182,7 @@ export default function EmployerPortalPage() {
               coordination, custom reporting, and API access for LMS
               integration.
             </p>
-            <button className="hover-btn-bl mt-4 rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+            <button className="mt-4 rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Contact Sales
             </button>
           </div>
@@ -265,7 +265,7 @@ export default function EmployerPortalPage() {
             Start with 5 seats and scale up as your automation program grows.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <button className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-10 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+            <button className="rounded-lg border border-white/20 bg-white/5 px-10 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Start Team Certification
             </button>
             <Link

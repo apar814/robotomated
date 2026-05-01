@@ -336,7 +336,7 @@ export default function WhyCertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Start RCO Foundation — $149
             </Link>

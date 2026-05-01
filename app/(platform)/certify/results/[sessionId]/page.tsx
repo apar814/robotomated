@@ -52,7 +52,7 @@ export default async function ResultsPage({
           </p>
           <Link
             href="/certify"
-            className="hover-btn-bl mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+            className="mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
             Back to Certifications
           </Link>
@@ -161,7 +161,7 @@ export default async function ResultsPage({
         {/* Actions */}
         <section className="px-4 py-12">
           <div className="mx-auto flex max-w-2xl flex-col gap-3 sm:flex-row">
-            <button className="hover-btn-bl flex-1 rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
+            <button className="flex-1 rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Download Certificate (PDF)
             </button>
             <button className="flex-1 rounded-lg bg-[#0077B5] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0077B5]/90">
@@ -247,7 +247,7 @@ export default async function ResultsPage({
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Retake Exam
             </Link>

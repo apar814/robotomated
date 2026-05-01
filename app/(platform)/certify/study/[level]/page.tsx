@@ -437,7 +437,7 @@ export default async function StudyLevelPage({
           </p>
           <Link
             href="/certify/study"
-            className="hover-btn-bl mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
+            className="mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
             View All Study Paths
           </Link>

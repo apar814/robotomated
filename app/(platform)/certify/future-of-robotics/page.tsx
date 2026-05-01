@@ -258,7 +258,7 @@ export default function FutureOfRoboticsPage() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
+              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Your Certification
             </Link>
