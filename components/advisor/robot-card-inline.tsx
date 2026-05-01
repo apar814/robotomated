@@ -43,7 +43,7 @@ export function RobotCardInline({ robot }: { robot: RobotRecommendation }) {
             </span>
             <Link
               href={`/explore/${robot.category || "all"}/${robot.slug}`}
-              className="rounded-md bg-blue px-3 py-1.5 text-xs font-semibold text-navy transition-opacity hover:opacity-90"
+              className="rounded-md bg-white px-3 py-1.5 text-xs font-semibold text-navy transition-opacity hover:opacity-90"
             >
               View Robot &rarr;
             </Link>

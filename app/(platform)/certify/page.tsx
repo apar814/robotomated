@@ -129,13 +129,13 @@ export default function CertifyPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ CERTIFICATION PROGRAM ]
           </p>
 
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
             The Standard for{" "}
-            <span className="bg-gradient-to-r from-blue via-violet to-green bg-clip-text text-transparent">
+            <span className="text-white font-semibold">
               Robot Operations
             </span>
           </h1>
@@ -173,13 +173,13 @@ export default function CertifyPage() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-[#2563EB] px-8 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#60A5FA] hover:shadow-lg hover:shadow-[#2563EB]/20"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Get Certified Free — Level 0 Awareness
             </Link>
             <Link
               href="#levels"
-              className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-blue/30 hover:text-white"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-white/30 hover:text-white"
             >
               Compare All 6 Levels
             </Link>
@@ -190,7 +190,7 @@ export default function CertifyPage() {
       {/* ═══ CERTIFICATION LEVELS ═══ */}
       <section id="levels" className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ 6 LEVELS &middot; FROM LITERACY TO LEADERSHIP ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -203,12 +203,12 @@ export default function CertifyPage() {
           </p>
 
           {/* ROI headline */}
-          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-[#2563EB]/20 bg-[#2563EB]/5 px-6 py-4 text-center">
+          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-border bg-white/5 px-6 py-4 text-center">
             <p className="text-sm text-white">
               The average RCO Master earns{" "}
-              <span className="font-bold text-[#2563EB]">$40,000 more per year</span>{" "}
+              <span className="font-bold text-white">$40,000 more per year</span>{" "}
               than an uncertified operator. The certification pays for itself in{" "}
-              <span className="font-bold text-[#2563EB]">11 days</span>.
+              <span className="font-bold text-white">11 days</span>.
             </p>
             <p className="mt-1 text-xs text-muted">
               Most students complete Foundation to Master in 14 weeks.
@@ -219,7 +219,7 @@ export default function CertifyPage() {
             {CERT_LEVELS.map((lvl) => (
               <div
                 key={lvl.level}
-                className="group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all duration-300 hover:border-white/20"
+                className="hover-card-bl group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all duration-300 hover:border-white/20"
               >
                 {/* Level number + tag */}
                 <div className="mb-5 flex items-start justify-between">
@@ -383,13 +383,13 @@ export default function CertifyPage() {
       </section>
 
       {/* ═══ THE GAUNTLET ═══ */}
-      <section className="border-y border-red-500/10 bg-gradient-to-b from-red-500/[0.02] to-transparent px-4 py-20">
+      <section className="border-y border-border px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-red-400">
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ MASTER LEVEL ASSESSMENT ]
           </p>
           <h2 className="mt-4 text-center font-display text-3xl font-bold sm:text-5xl">
-            The <span className="text-red-400">Gauntlet</span>
+            The <span className="text-white">Gauntlet</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-center text-muted">
             4 rounds. 2 hours. No second chances.
@@ -401,13 +401,13 @@ export default function CertifyPage() {
             {GAUNTLET_ROUNDS.map((r) => (
               <div
                 key={r.round}
-                className="group rounded-xl border border-red-500/10 bg-[#0A0A0A] p-6 transition-all hover:border-red-500/30"
+                className="hover-card-bl group rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="font-[family-name:var(--font-brand)] text-4xl font-bold text-red-500/30">
+                  <span className="font-[family-name:var(--font-brand)] text-4xl font-bold text-white/20">
                     {String(r.round).padStart(2, "0")}
                   </span>
-                  <span className="rounded-full border border-red-500/20 px-3 py-1 font-[family-name:var(--font-mono)] text-xs text-red-400">
+                  <span className="rounded-full border border-border px-3 py-1 font-[family-name:var(--font-mono)] text-xs text-muted">
                     {r.time}
                   </span>
                 </div>
@@ -431,7 +431,7 @@ export default function CertifyPage() {
       {/* ═══ SPECIALIZATIONS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ 7 SPECIALIZATION TRACKS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -446,10 +446,10 @@ export default function CertifyPage() {
             {SPECIALIZATIONS.map((spec) => (
               <div
                 key={spec.name}
-                className="group relative rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-green/30"
+                className="hover-card-bl group relative rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-white/20"
               >
                 {spec.isNew && (
-                  <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
+                  <span className="absolute -top-2 right-4 rounded-full bg-white/10 border border-border px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
                     New
                   </span>
                 )}
@@ -459,7 +459,7 @@ export default function CertifyPage() {
                 <h3 className="font-display text-base font-bold text-white">
                   {spec.name}
                 </h3>
-                <p className="mt-1 text-xs text-green">{spec.focus}</p>
+                <p className="mt-1 text-xs text-white">{spec.focus}</p>
                 <p className="mt-3 text-xs text-muted">
                   <span className="font-semibold text-white/70">Key robots:</span>{" "}
                   {spec.robots}
@@ -484,7 +484,7 @@ export default function CertifyPage() {
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
                 [ FOR EMPLOYERS ]
               </p>
               <h2 className="mt-4 font-display text-3xl font-bold">
@@ -526,7 +526,7 @@ export default function CertifyPage() {
                     <span className="text-sm font-medium text-white">
                       {tier.seats}
                     </span>
-                    <span className="text-xs text-green">{tier.discount}</span>
+                    <span className="text-xs text-white">{tier.discount}</span>
                     <span className="font-[family-name:var(--font-mono)] text-sm text-white">
                       {tier.price}
                     </span>
@@ -536,7 +536,7 @@ export default function CertifyPage() {
 
               <Link
                 href="/certify/employer"
-                className="mt-8 inline-flex items-center rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90"
+                className="hover-btn-bl mt-8 inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Certify Your Team
               </Link>
@@ -559,7 +559,7 @@ export default function CertifyPage() {
                   key={feature}
                   className="flex items-start gap-3 text-sm text-muted"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue" />
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
                   {feature}
                 </div>
               ))}
@@ -569,9 +569,9 @@ export default function CertifyPage() {
       </section>
 
       {/* ═══ EMERGING SPECIALIZATIONS ═══ */}
-      <section className="border-y border-violet/10 bg-gradient-to-b from-violet/[0.02] to-transparent px-4 py-20">
+      <section className="border-y border-border px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ COMING 2026 ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -614,18 +614,18 @@ export default function CertifyPage() {
             ].map((track) => (
               <div
                 key={track.name}
-                className="group relative rounded-xl border border-violet/20 bg-[#0A0A0A] p-6 transition-all hover:border-violet/40"
+                className="hover-card-bl group relative rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
-                <span className="absolute -top-2 right-4 rounded-full bg-violet px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
+                <span className="absolute -top-2 right-4 rounded-full bg-white/10 border border-border px-2.5 py-0.5 text-[13px] font-bold uppercase tracking-wider text-white">
                   2026
                 </span>
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-violet/20 bg-violet/5 font-[family-name:var(--font-brand)] text-lg font-bold text-violet">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white/5 font-[family-name:var(--font-brand)] text-lg font-bold text-white">
                   {track.icon}
                 </div>
                 <h3 className="font-display text-base font-bold text-white">
                   {track.name}
                 </h3>
-                <p className="mt-1 text-xs font-semibold text-violet">
+                <p className="mt-1 text-xs font-semibold text-white">
                   {track.tagline}
                 </p>
                 <p className="mt-3 text-sm text-muted">{track.description}</p>
@@ -634,9 +634,9 @@ export default function CertifyPage() {
                     <span className="text-white">Career:</span>{" "}
                     {track.career}
                   </p>
-                  <p className="text-xs text-green">{track.premium}</p>
+                  <p className="text-xs text-white">{track.premium}</p>
                 </div>
-                <button className="mt-4 w-full rounded-lg border border-violet/30 px-4 py-2.5 text-sm font-medium text-violet transition-colors hover:bg-violet/10">
+                <button className="hover-btn-bl mt-4 w-full rounded-lg border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
                   Join Waitlist
                 </button>
               </div>
@@ -648,7 +648,7 @@ export default function CertifyPage() {
       {/* ═══ LIVING CERTIFICATION ═══ */}
       <section className="bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE LIVING CERTIFICATION ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -662,7 +662,7 @@ export default function CertifyPage() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               href="/certify/future-of-robotics"
-              className="rounded-lg border border-blue/30 px-5 py-2.5 text-sm font-medium text-blue transition-colors hover:bg-blue/10"
+              className="hover-btn-bl rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
               12 Megatrends Shaping Robotics
             </Link>
@@ -679,7 +679,7 @@ export default function CertifyPage() {
       {/* ═══ VERIFICATION ═══ */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-md text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ VERIFY A CREDENTIAL ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold">
@@ -696,11 +696,11 @@ export default function CertifyPage() {
               type="text"
               name="id"
               placeholder="RCO-XXXXXXXX"
-              className="flex-1 rounded-lg border border-border bg-[#0A0A0A] px-4 py-3 font-[family-name:var(--font-mono)] text-sm text-white placeholder:text-muted focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+              className="flex-1 rounded-lg border border-border bg-[#0A0A0A] px-4 py-3 font-[family-name:var(--font-mono)] text-sm text-white placeholder:text-muted focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/20"
             />
             <button
               type="submit"
-              className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90"
+              className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Verify
             </button>
@@ -711,7 +711,7 @@ export default function CertifyPage() {
       {/* ═══ WHY RCO ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE STANDARD ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold">
@@ -720,8 +720,8 @@ export default function CertifyPage() {
 
           <div className="grid gap-8 sm:grid-cols-3">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-blue/20 bg-blue/5">
-                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-blue">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white/5">
+                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">
                   R
                 </span>
               </div>
@@ -734,8 +734,8 @@ export default function CertifyPage() {
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-violet/20 bg-violet/5">
-                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-violet">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white/5">
+                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">
                   T
                 </span>
               </div>
@@ -748,8 +748,8 @@ export default function CertifyPage() {
               </p>
             </div>
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-green/20 bg-green/5">
-                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-green">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-white/5">
+                <span className="font-[family-name:var(--font-brand)] text-xl font-bold text-white">
                   V
                 </span>
               </div>
@@ -768,7 +768,7 @@ export default function CertifyPage() {
       {/* ═══ YOUR ROI ═══ */}
       <section className="border-t border-border px-4 py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ YOUR ROI ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -786,7 +786,7 @@ export default function CertifyPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
             The future of robotics runs on{" "}
-            <span className="text-blue">certified operators</span>.
+            <span className="text-white font-semibold">certified operators</span>.
           </h2>
           <p className="mt-4 text-muted">
             Start your certification journey today. Level 0 is free.
@@ -794,7 +794,7 @@ export default function CertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-[#2563EB] px-10 py-4 text-sm font-semibold text-black transition-all hover:bg-[#60A5FA] hover:shadow-lg hover:shadow-[#2563EB]/20"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Get Certified Free — Level 0 Awareness
             </Link>

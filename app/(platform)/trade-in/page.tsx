@@ -104,7 +104,7 @@ export default function TradeInPage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
           [ TRADE-IN VALUATOR ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -139,7 +139,7 @@ export default function TradeInPage() {
                   value={manufacturer}
                   onChange={(e) => setManufacturer(e.target.value)}
                   placeholder="e.g. Fanuc, ABB, KUKA"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -154,7 +154,7 @@ export default function TradeInPage() {
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   placeholder="e.g. CRX-10iA, UR10e"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export default function TradeInPage() {
                   value={yearPurchased}
                   onChange={(e) => setYearPurchased(e.target.value)}
                   placeholder="2022"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function TradeInPage() {
                   value={purchasePrice}
                   onChange={(e) => setPurchasePrice(e.target.value)}
                   placeholder="50000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function TradeInPage() {
                   value={operatingHours}
                   onChange={(e) => setOperatingHours(e.target.value)}
                   placeholder="12000"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -217,7 +217,7 @@ export default function TradeInPage() {
                   value={softwareVersion}
                   onChange={(e) => setSoftwareVersion(e.target.value)}
                   placeholder="Optional"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -236,7 +236,7 @@ export default function TradeInPage() {
                       onClick={() => setCondition(val)}
                       className={`flex h-12 w-12 items-center justify-center rounded-lg border font-display font-bold transition-colors ${
                         condition === val
-                          ? "border-[#00C2FF] bg-[#00C2FF]/20 text-[#00C2FF]"
+                          ? "border-white/50 bg-white/10 text-white"
                           : "border-white/10 text-muted hover:border-white/30"
                       }`}
                     >
@@ -256,7 +256,7 @@ export default function TradeInPage() {
                   value={knownIssues}
                   onChange={(e) => setKnownIssues(e.target.value)}
                   placeholder="Describe any known issues or repairs needed (optional)"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
@@ -271,14 +271,14 @@ export default function TradeInPage() {
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="City, State"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
               </div>
 
               <div className="flex items-end">
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-[#00C2FF] px-8 py-3 font-display font-semibold text-[#0A0F1E] transition-colors hover:bg-[#00C2FF]/80"
+                  className="w-full rounded-lg bg-white/5 border border-white/20 px-8 py-3 font-display font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   Get Valuation
                 </button>
@@ -291,7 +291,7 @@ export default function TradeInPage() {
       {step === "loading" && (
         <section className="mt-12 text-center">
           <div className="glass mx-auto max-w-md rounded-2xl border border-white/10 p-12">
-            <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-white/10 border-t-[#00C2FF]" />
+            <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-white/10 border-t-white" />
             <p className="mt-6 font-display text-lg text-white">
               Calculating valuation...
             </p>
@@ -305,7 +305,7 @@ export default function TradeInPage() {
       {step === "result" && result && (
         <section className="mt-12 space-y-8">
           <div className="glass rounded-2xl border border-white/10 p-8 text-center sm:p-12">
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
               [ VALUATION RESULT ]
             </p>
             <h2 className="mt-2 font-display text-lg font-semibold text-muted">
@@ -337,7 +337,7 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8">
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
               [ ANALYSIS ]
             </p>
             <h3 className="mt-2 font-display text-lg font-semibold text-white">
@@ -351,7 +351,7 @@ export default function TradeInPage() {
                 </p>
                 <div className="mt-2 h-2 rounded-full bg-white/10">
                   <div
-                    className="h-2 rounded-full bg-[#00C2FF]"
+                    className="h-2 rounded-full bg-white/50"
                     style={{ width: `${result.factors.age_factor * 100}%` }}
                   />
                 </div>
@@ -414,7 +414,7 @@ export default function TradeInPage() {
           </div>
 
           <div className="glass rounded-2xl border border-white/10 p-8 text-center">
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
               [ FULL REPORT ]
             </p>
             <h3 className="mt-2 font-display text-lg font-semibold text-white">
@@ -439,7 +439,7 @@ export default function TradeInPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+                  className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
                 />
                 <button
                   type="submit"

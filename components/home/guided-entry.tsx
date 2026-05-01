@@ -123,7 +123,7 @@ export function GuidedEntry() {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+              <div className="h-1.5 w-1.5 rounded-full bg-white" />
               <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">Start Here</span>
             </div>
             <h2 className="mt-2 font-display text-xl font-bold text-primary sm:text-2xl">
@@ -140,7 +140,7 @@ export function GuidedEntry() {
         {/* Progress */}
         <div className="mb-8 flex gap-2">
           {[0, 1, 2].map((i) => (
-            <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= step ? "bg-electric-blue" : "bg-border"}`} />
+            <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= step ? "bg-white" : "bg-border"}`} />
           ))}
         </div>
 
@@ -151,13 +151,13 @@ export function GuidedEntry() {
               <button
                 key={ind.value}
                 onClick={() => { setIndustry(ind.value); setStep(1); }}
-                className={`group rounded-lg border p-4 text-left transition-all hover:-translate-y-0.5 hover:border-electric-blue/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)] ${
+                className={`group rounded-lg border p-4 text-left transition-all hover:-translate-y-0.5 hover:border-white/20 hover:shadow-[0_4px_20px_rgba(0,0,0,0.2)] ${
                   currentIndustry === ind.value
-                    ? "border-electric-blue/40 bg-electric-blue/5"
+                    ? "border-white/20 bg-white/5"
                     : "border-border bg-obsidian-surface"
                 }`}
               >
-                <span className="inline-block rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] font-bold text-electric-blue">
+                <span className="inline-block rounded bg-white/5 px-2 py-0.5 font-mono text-[13px] font-bold text-white">
                   {ind.icon}
                 </span>
                 <p className="mt-2 text-sm font-semibold text-primary">{ind.label}</p>
@@ -174,7 +174,7 @@ export function GuidedEntry() {
                 <button
                   key={ch.value}
                   onClick={() => { setChallenge(ch.value); setStep(2); }}
-                  className="rounded-lg border border-border bg-obsidian-surface p-5 text-left transition-all hover:-translate-y-0.5 hover:border-electric-blue/30"
+                  className="rounded-lg border border-border bg-obsidian-surface p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/20"
                 >
                   <p className="text-sm font-semibold text-primary">{ch.label}</p>
                 </button>
@@ -194,7 +194,7 @@ export function GuidedEntry() {
                 <button
                   key={b.value}
                   onClick={() => { setBudget(b.value); complete(); }}
-                  className="rounded-lg border border-border bg-obsidian-surface p-5 text-left transition-all hover:-translate-y-0.5 hover:border-electric-blue/30"
+                  className="rounded-lg border border-border bg-obsidian-surface p-5 text-left transition-all hover:-translate-y-0.5 hover:border-white/20"
                 >
                   <p className="text-base font-bold text-primary">{b.label}</p>
                   <p className="mt-1 text-xs text-ghost">{b.sublabel}</p>
@@ -229,8 +229,8 @@ function GuidedResults({
     <section className="border-y border-border bg-obsidian-surface px-6 py-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-electric-blue/10">
-            <svg className="h-5 w-5 text-electric-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/5">
+            <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -240,14 +240,14 @@ function GuidedResults({
             </p>
             <p className="text-xs text-ghost">
               Showing robots matched to your profile.{" "}
-              <button onClick={onReset} className="text-electric-blue hover:underline">Change</button>
+              <button onClick={onReset} className="text-white hover:underline">Change</button>
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-2">
           {categorySlug && (
-            <Link href={`/explore/${categorySlug}`} className="rounded-md bg-electric-blue/10 px-4 py-2 text-xs font-semibold text-electric-blue hover:bg-electric-blue/20">
+            <Link href={`/explore/${categorySlug}`} className="rounded-md bg-white/5 px-4 py-2 text-xs font-semibold text-white hover:bg-white/10">
               Browse {industryLabel} Robots
             </Link>
           )}

@@ -97,7 +97,7 @@ export function ExitIntentPopup() {
         </button>
 
         <div className="text-center">
-          <div className="mb-1 font-mono text-[13px] uppercase tracking-widest text-electric-blue">
+          <div className="mb-1 font-mono text-[13px] uppercase tracking-widest text-white">
             [INTEL] WEEKLY BRIEF
           </div>
           <h2 className="text-xl font-bold text-text-primary">
@@ -118,12 +118,12 @@ export function ExitIntentPopup() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
               required
-              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 text-sm text-text-primary placeholder:text-text-ghost focus:border-border focus:outline-none"
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="mt-3 w-full rounded-md bg-electric-blue px-4 py-2.5 font-mono text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="mt-3 w-full rounded-md bg-white px-4 py-2.5 font-mono text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               {status === "loading" ? "Subscribing..." : "Get the Weekly Brief"}
             </button>

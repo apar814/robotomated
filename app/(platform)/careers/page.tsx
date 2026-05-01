@@ -41,7 +41,7 @@ export default function CareersPage() {
               { name: "Careers", href: "/careers" },
             ]}
           />
-          <p className="mt-8 font-mono text-[13px] font-semibold uppercase tracking-[0.2em] text-electric-blue">
+          <p className="mt-8 font-mono text-[13px] font-semibold uppercase tracking-[0.2em] text-white">
             Workforce Development
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">

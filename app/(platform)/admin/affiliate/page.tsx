@@ -82,7 +82,7 @@ export default async function AffiliateAnalyticsPage() {
       {/* Summary cards */}
       <div className="mt-6 grid gap-4 sm:grid-cols-4">
         {[
-          { label: "Today", value: todayClicks || 0, color: "text-blue" },
+          { label: "Today", value: todayClicks || 0, color: "text-white" },
           { label: "This Week", value: weekClicks || 0, color: "text-green" },
           { label: "This Month", value: monthClicks || 0, color: "text-violet" },
           { label: "All Time", value: totalClicks || 0, color: "text-foreground" },
@@ -113,7 +113,7 @@ export default async function AffiliateAnalyticsPage() {
                     </div>
                     <div className="mt-1 h-1.5 rounded-full bg-white/[0.06]">
                       <div
-                        className="h-full rounded-full bg-blue"
+                        className="h-full rounded-full bg-white/5"
                         style={{ width: `${(r.count / (robotStats[0]?.count || 1)) * 100}%` }}
                       />
                     </div>

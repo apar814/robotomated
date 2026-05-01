@@ -210,7 +210,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#00C2FF] to-[#7B2FFF] transition-all duration-500 ease-out"
+          className="h-full rounded-full bg-gradient-to-r from-white/40 to-white/20 transition-all duration-500 ease-out"
           style={{ width: `${(step / total) * 100}%` }}
         />
       </div>
@@ -220,9 +220,9 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
             <div
               className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-mono font-bold transition-colors duration-300 ${
                 i + 1 < step
-                  ? "bg-[#2563EB] text-white border border-[#2563EB]"
+                  ? "bg-white/15 text-white border border-white/30"
                   : i + 1 === step
-                  ? "bg-[#2563EB] text-white border border-[#2563EB]"
+                  ? "bg-white/15 text-white border border-white/30"
                   : "border border-white/10 text-white/45"
               }`}
             >
@@ -295,7 +295,7 @@ function StepOperation({
           <select
             value={state.industry}
             onChange={(e) => onChange("industry", e.target.value)}
-            className="glass w-full rounded-lg border-white/10 bg-[#0C0C0C] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-[#00C2FF] focus:ring-1 focus:ring-[#00C2FF]/30"
+            className="glass w-full rounded-lg border-white/10 bg-[#0C0C0C] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-white/50 focus:ring-1 focus:ring-white/20"
           >
             <option value="">Select your industry</option>
             {INDUSTRIES.map((ind) => (
@@ -318,7 +318,7 @@ function StepOperation({
                 onClick={() => onChange("facilitySize", fs.value)}
                 className={`glass rounded-lg px-3 py-2.5 text-center text-sm transition-all duration-200 ${
                   state.facilitySize === fs.value
-                    ? "!border-[#00C2FF] !bg-[#00C2FF]/5 text-[#00C2FF]"
+                    ? "!border-white/30 !bg-white/5 text-white"
                     : "text-white/60 hover:text-white/80"
                 }`}
               >
@@ -340,7 +340,7 @@ function StepOperation({
                 onClick={() => onChange("workers", wc.value)}
                 className={`glass rounded-lg px-3 py-2.5 text-center text-sm transition-all duration-200 ${
                   state.workers === wc.value
-                    ? "!border-[#00C2FF] !bg-[#00C2FF]/5 text-[#00C2FF]"
+                    ? "!border-white/30 !bg-white/5 text-white"
                     : "text-white/60 hover:text-white/80"
                 }`}
               >
@@ -362,7 +362,7 @@ function StepOperation({
                 onClick={() => onChange("urgency", urg.value)}
                 className={`glass rounded-lg px-4 py-3 text-center text-sm transition-all duration-200 ${
                   state.urgency === urg.value
-                    ? "!border-[#00C2FF] !bg-[#00C2FF]/5 text-[#00C2FF]"
+                    ? "!border-white/30 !bg-white/5 text-white"
                     : "text-white/60 hover:text-white/80"
                 }`}
               >
@@ -542,7 +542,7 @@ function StepResults({
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 <div className="mb-1 flex items-center gap-3">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#00C2FF]/10 font-mono text-xs font-bold text-[#00C2FF]">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 font-mono text-xs font-bold text-white">
                     {i + 1}
                   </span>
                   <h3 className="text-lg font-semibold text-white">
@@ -600,11 +600,11 @@ function StepResults({
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
                 required
-                className="glass flex-1 rounded-lg bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-[#00C2FF]"
+                className="glass flex-1 rounded-lg bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-white/50"
               />
               <button
                 type="submit"
-                className="shrink-0 rounded-lg bg-[#00C2FF] px-5 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-opacity hover:opacity-90"
+                className="shrink-0 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-opacity hover:opacity-90"
               >
                 Send report
               </button>
@@ -658,9 +658,9 @@ function AnalyzingLoader() {
   return (
     <div className="flex flex-col items-center justify-center py-20">
       <div className="relative mb-6 h-16 w-16">
-        <div className="absolute inset-0 animate-ping rounded-full bg-[#00C2FF]/20" />
+        <div className="absolute inset-0 animate-ping rounded-full bg-white/15" />
         <div className="absolute inset-2 animate-pulse rounded-full bg-[#7B2FFF]/30" />
-        <div className="absolute inset-4 rounded-full bg-[#00C2FF]/40" />
+        <div className="absolute inset-4 rounded-full bg-white/25" />
       </div>
       <h3 className="mb-2 font-display text-lg font-semibold text-white">
         Analyzing your requirements...
@@ -825,7 +825,7 @@ export function FindMyRobotWizard() {
             disabled={!canProceed()}
             className={`rounded-lg px-6 py-2.5 text-sm font-semibold transition-all duration-200 ${
               canProceed()
-                ? "bg-[#00C2FF] text-[#0A0F1E] hover:opacity-90"
+                ? "bg-white text-[#0A0F1E] hover:opacity-90"
                 : "cursor-not-allowed bg-white/5 text-white/45"
             }`}
           >

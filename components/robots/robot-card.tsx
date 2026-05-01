@@ -31,10 +31,8 @@ function getScoreColor(score: number): string {
   return "#EF4444";
 }
 
-function getScoreGlow(score: number): string {
-  if (score >= 80) return "0 0 10px rgba(16,185,129,0.35)";
-  if (score >= 60) return "0 0 10px rgba(245,158,11,0.3)";
-  return "0 0 10px rgba(239,68,68,0.3)";
+function getScoreGlow(_score: number): string {
+  return "none";
 }
 
 function getKeySpecs(
@@ -119,7 +117,7 @@ export function RobotCard({
             checked={compareSelected}
             disabled={compareDisabled && !compareSelected}
             onChange={() => onCompareToggle(robot.id)}
-            className="h-3.5 w-3.5 accent-blue"
+            className="h-3.5 w-3.5 accent-white"
           />
           <span className="text-white/70">Compare</span>
         </label>
@@ -141,12 +139,12 @@ export function RobotCard({
               fallbackSublabel={robot.name}
             />
           ) : (
-            <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0F1628] to-[#141C33] px-4 text-center">
+            <div className="flex h-full w-full flex-col items-center justify-center bg-[#0F1628] px-4 text-center">
               <svg
                 viewBox="0 0 48 48"
                 fill="none"
                 className="h-10 w-10"
-                style={{ color: "rgba(37,99,235,0.3)" }}
+                style={{ color: "rgba(212,212,212,0.3)" }}
               >
                 <rect
                   x="12"
@@ -242,13 +240,13 @@ export function RobotCard({
       {/* Info area */}
       <div className="flex flex-1 flex-col p-4">
         {/* Manufacturer */}
-        <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em] text-[#0EA5E9]">
+        <span className="font-[family-name:var(--font-brand)] text-[9px] uppercase tracking-[0.15em]" style={{ color: "var(--interactive, #D4D4D4)" }}>
           {robot.manufacturer_name}
         </span>
 
         {/* Robot name */}
         <Link href={`/explore/${robot.category_slug}/${robot.slug}`}>
-          <h3 className="mt-1.5 font-[family-name:var(--font-ui)] text-[16px] font-semibold leading-tight text-white transition-colors group-hover:text-[#0EA5E9]">
+          <h3 className="mt-1.5 font-[family-name:var(--font-ui)] text-[16px] font-semibold leading-tight text-white transition-colors group-hover:text-white/80">
             {robot.name}
           </h3>
         </Link>
@@ -290,11 +288,11 @@ export function RobotCard({
           )}
           <Link
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className="rounded border px-2.5 py-1 font-[family-name:var(--font-brand)] text-[9px] tracking-[0.1em] transition-all duration-150 hover:bg-[#0EA5E9] hover:text-black focus-visible:bg-[#0EA5E9] focus-visible:text-black"
+            className="rounded border px-2.5 py-1 font-[family-name:var(--font-brand)] text-[9px] tracking-[0.1em] transition-all duration-150 hover:bg-white/15 hover:text-white focus-visible:bg-white/15 focus-visible:text-white"
             style={{
-              background: "rgba(14,165,233,0.1)",
-              borderColor: "rgba(14,165,233,0.25)",
-              color: "#0EA5E9",
+              background: "rgba(255,255,255,0.05)",
+              borderColor: "rgba(255,255,255,0.15)",
+              color: "var(--interactive, #D4D4D4)",
             }}
             aria-label={`Explore ${robot.name}`}
           >

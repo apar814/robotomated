@@ -271,7 +271,7 @@ export default async function ComparePage({ params }: Props) {
                     <div className="flex items-center justify-end gap-2">
                       <span className={cn("font-mono text-sm font-semibold", aWins && "text-green")}>{a}</span>
                       <div className="h-2 w-24 overflow-hidden rounded-full bg-navy-lighter sm:w-32">
-                        <div className="ml-auto h-full rounded-full bg-blue" style={{ width: `${a}%`, opacity: 0.7 }} />
+                        <div className="ml-auto h-full rounded-full bg-white" style={{ width: `${a}%`, opacity: 0.7 }} />
                       </div>
                     </div>
                     <span className="w-20 text-center text-xs text-muted">{label}</span>
@@ -298,7 +298,7 @@ export default async function ComparePage({ params }: Props) {
               <thead>
                 <tr className="bg-navy-lighter">
                   <th className="px-4 py-3 text-left font-medium text-muted">Spec</th>
-                  <th className="px-4 py-3 text-left font-medium text-blue">{robotA.name}</th>
+                  <th className="px-4 py-3 text-left font-medium text-white">{robotA.name}</th>
                   <th className="px-4 py-3 text-left font-medium text-violet">{robotB.name}</th>
                 </tr>
               </thead>
@@ -330,7 +330,7 @@ export default async function ComparePage({ params }: Props) {
               <thead>
                 <tr className="bg-navy-lighter">
                   <th className="px-4 py-3 text-left font-medium text-muted">Metric</th>
-                  <th className="px-4 py-3 text-left font-medium text-blue">{robotA.name}</th>
+                  <th className="px-4 py-3 text-left font-medium text-white">{robotA.name}</th>
                   <th className="px-4 py-3 text-left font-medium text-violet">{robotB.name}</th>
                 </tr>
               </thead>
@@ -386,7 +386,7 @@ export default async function ComparePage({ params }: Props) {
                   <td className="px-4 py-3 font-medium text-muted">Support Model</td>
                   <td className="px-4 py-3">
                     {robotA.support_model ? (
-                      <span className="inline-block rounded border border-blue/20 bg-blue/5 px-2 py-0.5 font-mono text-xs text-blue">
+                      <span className="inline-block rounded border border-white/20 bg-white/5 px-2 py-0.5 font-mono text-xs text-white">
                         {robotA.support_model}
                       </span>
                     ) : "—"}
@@ -439,14 +439,14 @@ export default async function ComparePage({ params }: Props) {
       {/* Internal links */}
       <section className="border-b border-border px-4 py-12">
         <div className="mx-auto max-w-6xl flex flex-wrap gap-2">
-          <Link href={`/explore/${catA?.slug || "all"}/${robotA.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+          <Link href={`/explore/${catA?.slug || "all"}/${robotA.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
             {robotA.name} Full Review
           </Link>
-          <Link href={`/explore/${catB?.slug || "all"}/${robotB.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+          <Link href={`/explore/${catB?.slug || "all"}/${robotB.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
             {robotB.name} Full Review
           </Link>
           {catA && (
-            <Link href={`/best/${catA.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+            <Link href={`/best/${catA.slug}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
               Best {catA.name} Robots
             </Link>
           )}

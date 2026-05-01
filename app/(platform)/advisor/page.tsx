@@ -85,30 +85,30 @@ export default function AdvisorPage() {
       <FaqSchema items={ROBOTIMUS_FAQS} />
 
       {/* SSR Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1E] to-[#0F1628] px-4 pb-12 pt-12">
+      <section className="relative overflow-hidden bg-[#0A0F1E] px-4 pb-12 pt-12">
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           {/* Robotimus avatar */}
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-16 w-16">
-              <line x1="16" y1="2" x2="16" y2="6" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
-              <circle cx="16" cy="2" r="1.5" fill="#2563EB" />
-              <rect x="6" y="6" width="20" height="16" rx="4" fill="#2563EB" fillOpacity="0.15" stroke="#2563EB" strokeWidth="1.5" />
-              <circle cx="12" cy="14" r="2.5" fill="#2563EB" />
-              <circle cx="20" cy="14" r="2.5" fill="#2563EB" />
+              <line x1="16" y1="2" x2="16" y2="6" stroke="#D4D4D4" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="16" cy="2" r="1.5" fill="#D4D4D4" />
+              <rect x="6" y="6" width="20" height="16" rx="4" fill="#D4D4D4" fillOpacity="0.15" stroke="#D4D4D4" strokeWidth="1.5" />
+              <circle cx="12" cy="14" r="2.5" fill="#FFFFFF" />
+              <circle cx="20" cy="14" r="2.5" fill="#FFFFFF" />
               <circle cx="13" cy="13" r="0.8" fill="white" fillOpacity="0.8" />
               <circle cx="21" cy="13" r="0.8" fill="white" fillOpacity="0.8" />
-              <rect x="11" y="18" width="10" height="1.5" rx="0.75" fill="#2563EB" fillOpacity="0.6" />
-              <rect x="3" y="11" width="3" height="6" rx="1.5" fill="#2563EB" fillOpacity="0.3" />
-              <rect x="26" y="11" width="3" height="6" rx="1.5" fill="#2563EB" fillOpacity="0.3" />
-              <rect x="14" y="22" width="4" height="3" rx="1" fill="#2563EB" fillOpacity="0.4" />
-              <rect x="9" y="25" width="14" height="4" rx="2" fill="#2563EB" fillOpacity="0.15" stroke="#2563EB" strokeWidth="1" />
+              <rect x="11" y="18" width="10" height="1.5" rx="0.75" fill="#D4D4D4" fillOpacity="0.6" />
+              <rect x="3" y="11" width="3" height="6" rx="1.5" fill="#D4D4D4" fillOpacity="0.3" />
+              <rect x="26" y="11" width="3" height="6" rx="1.5" fill="#D4D4D4" fillOpacity="0.3" />
+              <rect x="14" y="22" width="4" height="3" rx="1" fill="#D4D4D4" fillOpacity="0.4" />
+              <rect x="9" y="25" width="14" height="4" rx="2" fill="#D4D4D4" fillOpacity="0.15" stroke="#D4D4D4" strokeWidth="1" />
             </svg>
           </div>
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl">
             Robotimus
           </h1>
-          <p className="mt-1 text-sm font-medium text-[#2563EB]">Your independent robotics advisor</p>
+          <p className="mt-1 text-sm font-medium text-white/60">Your independent robotics advisor</p>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/60">
             Tell me what you need in plain language. I know every robot in our database
             and I&apos;ll tell you straight whether to buy, lease, or hire &mdash; with specs,
@@ -121,7 +121,7 @@ export default function AdvisorPage() {
               <Link
                 key={uc.label}
                 href={`/advisor?q=${encodeURIComponent(uc.query)}`}
-                className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-left transition-all hover:border-[#2563EB]/30 hover:bg-white/[0.06]"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-left transition-all hover:border-white/20 hover:bg-white/[0.06]"
               >
                 <p className="text-sm font-bold text-white">{uc.label}</p>
                 <p className="mt-1 text-xs text-white/50">{uc.query}</p>
@@ -152,7 +152,7 @@ export default function AdvisorPage() {
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2563EB]/10 font-mono text-lg font-bold text-[#2563EB]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 font-mono text-lg font-bold text-white">
                 1
               </div>
               <h3 className="mt-4 font-semibold text-white">Describe your needs</h3>
@@ -162,7 +162,7 @@ export default function AdvisorPage() {
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#7B2FFF]/10 font-mono text-lg font-bold text-[#7B2FFF]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 font-mono text-lg font-bold text-white">
                 2
               </div>
               <h3 className="mt-4 font-semibold text-white">Get recommendations</h3>
@@ -172,7 +172,7 @@ export default function AdvisorPage() {
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#00E5A0]/10 font-mono text-lg font-bold text-[#00E5A0]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 font-mono text-lg font-bold text-white">
                 3
               </div>
               <h3 className="mt-4 font-semibold text-white">Buy, lease, or hire</h3>
@@ -246,7 +246,7 @@ export default function AdvisorPage() {
               <Link
                 key={ind.href}
                 href={ind.href}
-                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition-colors hover:border-[#2563EB]/30 hover:text-white"
+                className="rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm text-white/70 transition-colors hover:border-white/20 hover:text-white"
               >
                 {ind.label}
               </Link>

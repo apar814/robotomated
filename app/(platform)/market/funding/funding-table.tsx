@@ -117,25 +117,25 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             <thead>
               <tr className="border-b border-border bg-obsidian-surface">
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-white"
                   onClick={() => toggleSort("company")}
                 >
                   Company{sortIcon("company")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-white"
                   onClick={() => toggleSort("amount")}
                 >
                   Amount{sortIcon("amount")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-white"
                   onClick={() => toggleSort("round")}
                 >
                   Round{sortIcon("round")}
                 </th>
                 <th
-                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-electric-blue"
+                  className="cursor-pointer px-4 py-3 font-mono text-[13px] uppercase tracking-widest text-ghost transition-colors hover:text-white"
                   onClick={() => toggleSort("date")}
                 >
                   Date{sortIcon("date")}
@@ -161,7 +161,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
                       rel="noopener noreferrer"
                       className="group flex flex-col"
                     >
-                      <span className="text-sm font-medium text-foreground transition-colors group-hover:text-electric-blue">
+                      <span className="text-sm font-medium text-foreground transition-colors group-hover:text-white">
                         {round.company}
                       </span>
                       <span className="mt-0.5 line-clamp-1 text-[11px] text-ghost">
@@ -170,7 +170,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
                     </a>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="font-mono text-sm font-bold text-blue-400">{round.amount}</span>
+                    <span className="font-mono text-sm font-bold text-white">{round.amount}</span>
                   </td>
                   <td className="px-4 py-3">
                     <span
@@ -202,7 +202,7 @@ export function FundingTable({ rounds, roundTypes, categories, roundColors }: Fu
             <p className="text-sm text-ghost">No funding rounds match your filters.</p>
             <button
               onClick={() => { setRoundFilter("All"); setCategoryFilter("All"); }}
-              className="mt-2 font-mono text-xs text-electric-blue transition-colors hover:underline"
+              className="mt-2 font-mono text-xs text-white transition-colors hover:underline"
             >
               Clear filters
             </button>

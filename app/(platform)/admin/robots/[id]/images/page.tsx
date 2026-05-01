@@ -93,7 +93,7 @@ export default function AdminRobotImagesPage() {
                 <div className="relative h-48">
                   <Image src={img.url} alt={img.alt} fill sizes="50vw" className="object-cover" unoptimized />
                   {i === 0 && (
-                    <span className="absolute left-2 top-2 rounded bg-blue/80 px-2 py-0.5 text-[13px] font-bold text-navy">PRIMARY</span>
+                    <span className="absolute left-2 top-2 rounded bg-white/80 px-2 py-0.5 text-[13px] font-bold text-navy">PRIMARY</span>
                   )}
                 </div>
                 <div className="flex items-center justify-between p-3">
@@ -124,7 +124,7 @@ export default function AdminRobotImagesPage() {
               value={newUrl}
               onChange={(e) => { setNewUrl(e.target.value); setPreview(null); }}
               placeholder="https://manufacturer.com/product-photo.webp"
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none"
+              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-border focus:outline-none"
             />
           </div>
           <div>
@@ -134,7 +134,7 @@ export default function AdminRobotImagesPage() {
               value={newAlt}
               onChange={(e) => setNewAlt(e.target.value)}
               placeholder="Product photo description"
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none"
+              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-border focus:outline-none"
             />
           </div>
 
@@ -153,7 +153,7 @@ export default function AdminRobotImagesPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={preview} alt="Preview" className="h-full w-full object-cover" onError={() => setPreview(null)} />
               </div>
-              <p className="px-3 py-2 text-xs text-green">Image loads successfully</p>
+              <p className="px-3 py-2 text-xs text-white">Image loads successfully</p>
             </div>
           )}
         </div>
@@ -164,7 +164,7 @@ export default function AdminRobotImagesPage() {
         <Button onClick={save} disabled={saving}>
           {saving ? "Saving..." : "Save All Images"}
         </Button>
-        {message && <span className={`text-sm ${message.includes("saved") ? "text-green" : "text-orange"}`}>{message}</span>}
+        {message && <span className={`text-sm ${message.includes("saved") ? "text-white" : "text-orange"}`}>{message}</span>}
       </div>
 
       <div className="mt-8 rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">

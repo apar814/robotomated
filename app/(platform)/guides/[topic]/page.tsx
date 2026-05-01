@@ -56,9 +56,9 @@ const mdxComponents = {
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => <ul className="mb-4 list-disc space-y-1 pl-6 text-muted" {...props} />,
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => <ol className="mb-4 list-decimal space-y-1 pl-6 text-muted" {...props} />,
   li: (props: React.HTMLAttributes<HTMLLIElement>) => <li className="text-muted" {...props} />,
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-blue hover:underline" {...props} />,
-  blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => <blockquote className="mb-4 border-l-2 border-blue pl-4 italic text-muted" {...props} />,
-  code: (props: React.HTMLAttributes<HTMLElement>) => <code className="rounded bg-navy-lighter px-1.5 py-0.5 font-mono text-sm text-blue" {...props} />,
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-white hover:underline" {...props} />,
+  blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => <blockquote className="mb-4 border-l-2 border-border pl-4 italic text-muted" {...props} />,
+  code: (props: React.HTMLAttributes<HTMLElement>) => <code className="rounded bg-navy-lighter px-1.5 py-0.5 font-mono text-sm text-white" {...props} />,
   pre: (props: React.HTMLAttributes<HTMLPreElement>) => <pre className="mb-4 overflow-x-auto rounded-lg bg-navy-lighter p-4 font-mono text-sm" {...props} />,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => <div className="mb-4 overflow-x-auto"><table className="w-full text-sm" {...props} /></div>,
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => <th className="border-b border-border bg-navy-lighter px-4 py-2 text-left font-medium text-muted" {...props} />,
@@ -111,14 +111,14 @@ export default async function GuidePage({ params }: Props) {
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-4 text-xl font-bold">Continue Learning</h2>
           <div className="flex flex-wrap gap-2">
-            <Link href="/explore" className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+            <Link href="/explore" className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
               Explore All Robots
             </Link>
-            <Link href="/advisor" className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+            <Link href="/advisor" className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
               Ask Robotimus
             </Link>
             {frontmatter.category && (
-              <Link href={`/best/${frontmatter.category}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-blue/30 hover:text-foreground">
+              <Link href={`/best/${frontmatter.category}`} className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-white/20 hover:text-foreground">
                 Best {frontmatter.category} Robots
               </Link>
             )}

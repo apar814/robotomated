@@ -52,7 +52,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
             onClick={() => setSortBy("deals")}
             className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors ${
               sortBy === "deals"
-                ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                ? "border-white/20 bg-white/5 text-white"
                 : "border-border text-ghost hover:border-border-active hover:text-secondary"
             }`}
           >
@@ -62,7 +62,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
             onClick={() => setSortBy("deployed")}
             className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors ${
               sortBy === "deployed"
-                ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                ? "border-white/20 bg-white/5 text-white"
                 : "border-border text-ghost hover:border-border-active hover:text-secondary"
             }`}
           >
@@ -117,7 +117,7 @@ export function InvestorGrid({ investors }: InvestorGridProps) {
                   </div>
                   <div className="bg-obsidian-surface p-3">
                     <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">Deployed</p>
-                    <p className="mt-1 font-mono text-lg font-bold text-blue-400">
+                    <p className="mt-1 font-mono text-lg font-bold text-white">
                       {formatDeployed(investor.totalDeployed)}
                     </p>
                   </div>

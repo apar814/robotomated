@@ -19,11 +19,11 @@ function PartsSearchBar() {
       <input
         type="text"
         placeholder="Search parts by name, part number, or robot model..."
-        className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+        className="flex-1 rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
       />
       <button
         type="button"
-        className="rounded-lg bg-[#00C2FF] px-8 py-3 font-display font-semibold text-[#0A0F1E] transition-colors hover:bg-[#00C2FF]/80"
+        className="rounded-lg bg-white/5 border border-white/20 px-8 py-3 font-display font-semibold text-white transition-colors hover:bg-white/10"
       >
         Search
       </button>
@@ -48,7 +48,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="e.g. Servo Motor, Gripper Assembly"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -61,7 +61,7 @@ function ListPartForm() {
           name="part_number"
           type="text"
           placeholder="OEM or aftermarket part number"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -78,7 +78,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="e.g. Fanuc CRX-10iA, UR10e"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -90,7 +90,7 @@ function ListPartForm() {
           id="condition"
           name="condition"
           required
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/50 focus:outline-none"
         >
           <option value="">Select condition</option>
           {FILTER_OPTIONS.condition.map((c) => (
@@ -113,7 +113,7 @@ function ListPartForm() {
           step="0.01"
           required
           placeholder="0.00"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -127,7 +127,7 @@ function ListPartForm() {
           type="text"
           required
           placeholder="City, State"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -144,7 +144,7 @@ function ListPartForm() {
           rows={3}
           required
           placeholder="Describe the part, its condition, and any relevant details..."
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -158,7 +158,7 @@ function ListPartForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -185,7 +185,7 @@ export default function PartsPage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
           [ PARTS MARKETPLACE ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -205,7 +205,7 @@ export default function PartsPage() {
             <button
               key={c}
               type="button"
-              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
+              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-white/20 hover:text-white"
             >
               {c}
             </button>
@@ -214,7 +214,7 @@ export default function PartsPage() {
             <button
               key={p}
               type="button"
-              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-[#00C2FF] hover:text-white"
+              className="rounded-full border border-white/10 px-4 py-1.5 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.08em] text-muted transition-colors hover:border-white/20 hover:text-white"
             >
               {p}
             </button>
@@ -245,7 +245,7 @@ export default function PartsPage() {
 
       <section id="list" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
             [ SELLER PORTAL ]
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-white">

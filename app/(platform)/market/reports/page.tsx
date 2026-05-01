@@ -109,12 +109,12 @@ export default async function MarketReportsPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/market"
-              className="font-mono text-[13px] text-ghost transition-colors hover:text-electric-blue"
+              className="font-mono text-[13px] text-ghost transition-colors hover:text-white"
             >
               Market
             </Link>
             <span className="text-ghost">/</span>
-            <span className="font-mono text-[13px] text-electric-blue">
+            <span className="font-mono text-[13px] text-white">
               Reports
             </span>
           </div>
@@ -145,7 +145,7 @@ export default async function MarketReportsPage() {
               <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                 Largest Market
               </p>
-              <p className="mt-2 font-mono text-2xl font-bold text-blue-400">
+              <p className="mt-2 font-mono text-2xl font-bold text-white">
                 ${largestMarket.market_size_usd_billions}B
               </p>
               <p className="mt-1 text-xs text-tertiary">

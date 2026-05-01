@@ -166,7 +166,7 @@ function ComparePageInner() {
                 )}
                 {r.robo_score != null && <RoboScoreBadge score={r.robo_score} />}
               </div>
-              <Link href={`/explore/${r.category_slug}/${r.slug}`} className="mt-3 block w-full rounded-lg border border-border py-1.5 text-center text-xs text-white/35 hover:border-blue hover:text-blue">
+              <Link href={`/explore/${r.category_slug}/${r.slug}`} className="mt-3 block w-full rounded-lg border border-border py-1.5 text-center text-xs text-white/35 hover:border-white/20 hover:text-white">
                 View details →
               </Link>
             </div>
@@ -189,10 +189,10 @@ function ComparePageInner() {
             <div className="mb-6 flex items-center justify-between">
               <h2 className="font-display text-lg font-bold text-foreground">Comparison</h2>
               <div className="flex gap-2">
-                <button onClick={shareComparison} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-blue hover:text-blue">
+                <button onClick={shareComparison} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-white/20 hover:text-white">
                   Share comparison
                 </button>
-                <button onClick={() => window.print()} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-blue hover:text-blue">
+                <button onClick={() => window.print()} className="rounded-lg border border-border px-3 py-1.5 text-xs text-white/35 hover:border-white/20 hover:text-white">
                   Export PDF
                 </button>
               </div>

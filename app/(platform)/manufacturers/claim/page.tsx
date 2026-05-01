@@ -205,14 +205,14 @@ export default function ManufacturerClaimPage() {
                 {form.manufacturerName}
               </span>{" "}
               and respond within 2 business days. Check your inbox at{" "}
-              <span className="font-mono text-sm text-blue">
+              <span className="font-mono text-sm text-white">
                 {form.workEmail}
               </span>
               .
             </p>
             <Link
               href="/manufacturers"
-              className="mt-8 inline-block rounded-lg bg-blue/10 px-5 py-2.5 text-sm font-medium text-blue hover:bg-blue/20"
+              className="mt-8 inline-block rounded-lg bg-white/5 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10"
             >
               Back to Manufacturers
             </Link>
@@ -259,7 +259,7 @@ export default function ManufacturerClaimPage() {
                 disabled={i > step}
                 className={`flex h-8 w-8 items-center justify-center rounded-full font-mono text-xs font-bold transition-colors ${
                   i === step
-                    ? "bg-blue text-white"
+                    ? "bg-white text-black"
                     : i < step
                       ? "bg-green/20 text-green cursor-pointer"
                       : "bg-white/[0.04] text-muted/40"
@@ -321,7 +321,7 @@ export default function ManufacturerClaimPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="e.g. Boston Dynamics, Universal Robots..."
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
                 {searching && (
                   <p className="mt-2 text-xs text-muted/60">Searching...</p>
@@ -336,7 +336,7 @@ export default function ManufacturerClaimPage() {
                       onClick={() => selectManufacturer(m)}
                       className={`glass rounded-xl p-4 text-left transition-all hover:-translate-y-0.5 ${
                         form.manufacturerId === m.id
-                          ? "ring-2 ring-blue"
+                          ? "ring-2 ring-white/30"
                           : "hover:ring-1 hover:ring-white/[0.12]"
                       }`}
                     >
@@ -375,7 +375,7 @@ export default function ManufacturerClaimPage() {
                     If your company is not listed, please{" "}
                     <Link
                       href="/contact"
-                      className="text-blue hover:underline"
+                      className="text-white hover:underline"
                     >
                       contact us
                     </Link>{" "}
@@ -385,8 +385,8 @@ export default function ManufacturerClaimPage() {
               )}
 
               {form.manufacturerId && (
-                <div className="glass rounded-xl border border-blue/20 p-4">
-                  <p className="text-xs font-medium uppercase tracking-wider text-blue">
+                <div className="glass rounded-xl border border-white/20 p-4">
+                  <p className="text-xs font-medium uppercase tracking-wider text-white">
                     Selected
                   </p>
                   <p className="mt-1 font-semibold text-foreground">
@@ -423,7 +423,7 @@ export default function ManufacturerClaimPage() {
                       ? `you@${form.manufacturerWebsite.replace(/^https?:\/\/(www\.)?/, "").replace(/\/.*/, "")}`
                       : "you@company.com"
                   }
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
                 {form.manufacturerWebsite && (
                   <p className="mt-1.5 text-xs text-muted/60">
@@ -443,7 +443,7 @@ export default function ManufacturerClaimPage() {
                     setForm((f) => ({ ...f, jobTitle: e.target.value }))
                   }
                   placeholder="e.g. VP of Marketing, Product Manager"
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
               </div>
 
@@ -458,7 +458,7 @@ export default function ManufacturerClaimPage() {
                     setForm((f) => ({ ...f, linkedInUrl: e.target.value }))
                   }
                   placeholder="https://linkedin.com/in/your-profile"
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
                 <p className="mt-1.5 text-xs text-muted/60">
                   Optional, but helps us verify your identity faster.
@@ -489,7 +489,7 @@ export default function ManufacturerClaimPage() {
                   }
                   rows={4}
                   placeholder="Tell visitors about your company, mission, and products..."
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
               </div>
 
@@ -508,7 +508,7 @@ export default function ManufacturerClaimPage() {
                       }))
                     }
                     placeholder="contact@company.com"
-                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                   />
                 </div>
                 <div>
@@ -525,7 +525,7 @@ export default function ManufacturerClaimPage() {
                       }))
                     }
                     placeholder="+1 (555) 000-0000"
-                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                    className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                   />
                 </div>
               </div>
@@ -541,7 +541,7 @@ export default function ManufacturerClaimPage() {
                     setForm((f) => ({ ...f, logoUrl: e.target.value }))
                   }
                   placeholder="https://company.com/logo.png"
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
               </div>
 
@@ -556,7 +556,7 @@ export default function ManufacturerClaimPage() {
                     setForm((f) => ({ ...f, catalogUrl: e.target.value }))
                   }
                   placeholder="https://company.com/products"
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted/40 focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 />
               </div>
             </div>
@@ -593,7 +593,7 @@ export default function ManufacturerClaimPage() {
                       }))
                     }
                     className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
-                      form.featuredListing ? "bg-blue" : "bg-white/[0.08]"
+                      form.featuredListing ? "bg-white" : "bg-white/[0.08]"
                     }`}
                   >
                     <span
@@ -630,7 +630,7 @@ export default function ManufacturerClaimPage() {
                       }))
                     }
                     className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
-                      form.sponsoredRobots ? "bg-blue" : "bg-white/[0.08]"
+                      form.sponsoredRobots ? "bg-white" : "bg-white/[0.08]"
                     }`}
                   >
                     <span
@@ -657,7 +657,7 @@ export default function ManufacturerClaimPage() {
                       preferredContact: e.target.value,
                     }))
                   }
-                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground focus:border-blue/50 focus:outline-none focus:ring-1 focus:ring-blue/30"
+                  className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-foreground focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
                 >
                   <option value="email">Email</option>
                   <option value="phone">Phone</option>
@@ -691,7 +691,7 @@ export default function ManufacturerClaimPage() {
               <button
                 onClick={() => setStep((s) => s + 1)}
                 disabled={!canAdvance()}
-                className="rounded-lg bg-blue px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="rounded-lg bg-white px-6 py-2.5 text-sm font-medium text-black transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue
               </button>
@@ -699,7 +699,7 @@ export default function ManufacturerClaimPage() {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="rounded-lg bg-gradient-to-r from-blue to-violet px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+                className="rounded-lg bg-gradient-to-r from-white/10 to-white/5 px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
               >
                 {submitting ? "Submitting..." : "Submit Claim"}
               </button>

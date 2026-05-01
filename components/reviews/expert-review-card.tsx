@@ -18,13 +18,13 @@ export function ExpertReviewCard({
   title, body, roboScore, scoreBreakdown, pros, cons, verdict, publishedAt,
 }: ExpertReviewCardProps) {
   return (
-    <div className="rounded-xl border border-blue/20 bg-navy-light">
+    <div className="rounded-xl border border-white/20 bg-navy-light">
       {/* Header */}
       <div className="flex items-center gap-2 border-b border-border px-6 py-3">
-        <svg className="h-4 w-4 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span className="text-xs font-semibold uppercase tracking-wider text-blue">Expert Review</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-white">Expert Review</span>
         {publishedAt && (
           <span className="ml-auto text-xs text-muted">
             {new Date(publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
@@ -62,8 +62,8 @@ export function ExpertReviewCard({
 
         {/* Verdict */}
         {verdict && (
-          <div className="mt-6 rounded-lg border border-blue/20 bg-blue/5 p-4">
-            <h4 className="mb-1 text-sm font-semibold text-blue">Verdict</h4>
+          <div className="mt-6 rounded-lg border border-white/20 bg-white/5 p-4">
+            <h4 className="mb-1 text-sm font-semibold text-white">Verdict</h4>
             <p className="text-sm text-muted">{verdict}</p>
           </div>
         )}

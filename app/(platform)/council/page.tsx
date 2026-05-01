@@ -39,32 +39,32 @@ const CAREER_LADDER = [
   {
     level: "L0",
     name: "Awareness",
-    color: "border-green/30 bg-green/5 text-green",
-    accent: "bg-green",
+    color: "border-white/20 bg-white/5 text-white/60",
+    accent: "bg-white/20",
   },
   {
     level: "L1",
     name: "Foundation",
-    color: "border-blue/30 bg-blue/5 text-blue",
-    accent: "bg-blue",
+    color: "border-white/20 bg-white/5 text-white/70",
+    accent: "bg-white/30",
   },
   {
     level: "L2",
     name: "Specialist",
-    color: "border-green/30 bg-green/5 text-green",
-    accent: "bg-green",
+    color: "border-white/20 bg-white/5 text-white/70",
+    accent: "bg-white/30",
   },
   {
     level: "L3",
     name: "Master",
-    color: "border-violet/30 bg-violet/5 text-violet",
-    accent: "bg-violet",
+    color: "border-white/25 bg-white/5 text-white/80",
+    accent: "bg-white/40",
   },
   {
     level: "L4",
     name: "Commander",
-    color: "border-amber-500/30 bg-amber-500/5 text-amber-400",
-    accent: "bg-amber-500",
+    color: "border-white/30 bg-white/5 text-white/90",
+    accent: "bg-white/50",
   },
   {
     level: "L5",
@@ -96,13 +96,13 @@ export default function CouncilPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white">
             [ THE COUNCIL ]
           </p>
 
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
             RCO Advisory{" "}
-            <span className="bg-gradient-to-r from-violet via-blue to-green bg-clip-text text-transparent">
+            <span className="text-white/90">
               Council
             </span>
           </h1>
@@ -121,7 +121,7 @@ export default function CouncilPage() {
       {/* ═══ HOW IT WORKS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white">
             [ HOW IT WORKS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -137,7 +137,7 @@ export default function CouncilPage() {
             {COUNCIL_POWERS.map((power) => (
               <div
                 key={power.title}
-                className="rounded-xl border border-violet/10 bg-[#0A0A0A] p-6 transition-all hover:border-violet/30"
+                className="rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <h3 className="font-display text-base font-bold text-white">
                   {power.title}
@@ -177,7 +177,7 @@ export default function CouncilPage() {
       {/* ═══ COUNCIL MEMBERS ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white">
             [ COUNCIL MEMBERS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -185,9 +185,9 @@ export default function CouncilPage() {
           </h2>
 
           {/* Empty state */}
-          <div className="mx-auto mt-10 max-w-lg rounded-2xl border border-dashed border-violet/20 px-8 py-16 text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-violet/20 bg-violet/5">
-              <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-violet">
+          <div className="mx-auto mt-10 max-w-lg rounded-2xl border border-dashed border-white/20 px-8 py-16 text-center">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-white/5">
+              <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                 0
               </span>
             </div>
@@ -200,7 +200,7 @@ export default function CouncilPage() {
             </p>
             <Link
               href="/certify/cro"
-              className="mt-6 inline-flex items-center rounded-lg border border-violet/30 px-6 py-3 text-sm font-medium text-violet transition-colors hover:bg-violet/10"
+              className="mt-6 inline-flex items-center rounded-lg border border-white/20 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
               Apply for Level 5 &rarr;
             </Link>
@@ -211,7 +211,7 @@ export default function CouncilPage() {
       {/* ═══ PUBLISHED DECISIONS ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white">
             [ PUBLISHED DECISIONS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -242,7 +242,7 @@ export default function CouncilPage() {
                   <span className="font-[family-name:var(--font-mono)] text-xs text-muted">
                     2026-XX-XX
                   </span>
-                  <span className="rounded-full bg-green/10 px-2.5 py-0.5 text-[13px] font-bold text-green">
+                  <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[13px] font-bold text-white">
                     APPROVED
                   </span>
                 </div>
@@ -261,7 +261,7 @@ export default function CouncilPage() {
       {/* ═══ HOW TO JOIN ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white">
             [ HOW TO JOIN ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -294,7 +294,7 @@ export default function CouncilPage() {
           <div className="mt-12 text-center">
             <Link
               href="/certify/awareness"
-              className="inline-flex items-center rounded-lg bg-green px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
+              className="inline-flex items-center rounded-lg bg-white px-8 py-3.5 text-sm font-semibold text-navy transition-all hover:bg-white/90"
             >
               Start at Level 0 — Free
             </Link>
@@ -302,7 +302,7 @@ export default function CouncilPage() {
               Or{" "}
               <Link
                 href="/certify"
-                className="text-blue transition-colors hover:text-blue/80"
+                className="text-white transition-colors hover:text-white/80"
               >
                 view all certification levels
               </Link>
@@ -316,7 +316,7 @@ export default function CouncilPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
             The industry governs itself —{" "}
-            <span className="bg-gradient-to-r from-violet to-blue bg-clip-text text-transparent">
+            <span className="text-white/90">
               transparently
             </span>
           </h2>
@@ -334,7 +334,7 @@ export default function CouncilPage() {
             </Link>
             <Link
               href="/certify"
-              className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-violet/30 hover:text-white"
+              className="inline-flex items-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-white/20 hover:text-white"
             >
               View All Levels
             </Link>

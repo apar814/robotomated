@@ -71,7 +71,7 @@ export function CertificationRoiCalculator() {
               step={1000}
               value={salary}
               onChange={(e) => setSalary(Number(e.target.value) || 0)}
-              className="w-full rounded-lg border border-border bg-[#111] py-2.5 pl-7 pr-3 font-mono text-sm text-white outline-none transition-colors focus:border-[#2563EB]"
+              className="w-full rounded-lg border border-border bg-[#111] py-2.5 pl-7 pr-3 font-mono text-sm text-white outline-none transition-colors focus:border-white/50"
             />
           </div>
         </div>
@@ -88,7 +88,7 @@ export function CertificationRoiCalculator() {
             id="roi-level"
             value={levelIdx}
             onChange={(e) => setLevelIdx(Number(e.target.value))}
-            className="w-full appearance-none rounded-lg border border-border bg-[#111] px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-[#2563EB]"
+            className="w-full appearance-none rounded-lg border border-border bg-[#111] px-3 py-2.5 text-sm text-white outline-none transition-colors focus:border-white/50"
           >
             {LEVELS.map((l, i) => (
               <option key={l.label} value={i}>
@@ -119,7 +119,7 @@ export function CertificationRoiCalculator() {
           <p className="text-xs font-medium uppercase tracking-wider text-neutral-400">
             Annual Salary Increase
           </p>
-          <p className="mt-1 font-mono text-2xl font-bold text-[#2563EB]">
+          <p className="mt-1 font-mono text-2xl font-bold text-white">
             {annualIncrease === 0 ? "Career access" : `+$${fmt(annualIncrease)}`}
           </p>
         </div>
@@ -155,11 +155,11 @@ export function CertificationRoiCalculator() {
       </div>
 
       {/* ── Hero number: 5-year difference ── */}
-      <div className="mt-6 rounded-lg border border-[#2563EB]/20 bg-[#2563EB]/5 p-5 text-center">
-        <p className="text-xs font-medium uppercase tracking-wider text-[#2563EB]">
+      <div className="mt-6 rounded-lg border border-border bg-white/5 p-5 text-center">
+        <p className="text-xs font-medium uppercase tracking-wider text-muted">
           5-Year Cumulative Earnings Difference
         </p>
-        <p className="mt-2 font-mono text-4xl font-extrabold text-[#2563EB] sm:text-5xl">
+        <p className="mt-2 font-mono text-4xl font-extrabold text-white sm:text-5xl">
           {fiveYearDiff === 0
             ? "Priceless"
             : `+$${fmt(fiveYearDiff)}`}

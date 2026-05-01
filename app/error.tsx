@@ -22,13 +22,13 @@ export default function GlobalError({
       <div className="mt-6 flex gap-3">
         <button
           onClick={reset}
-          className="rounded-lg bg-blue px-6 py-2.5 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
+          className="rounded-lg border border-white/20 px-6 py-2.5 text-sm font-semibold text-white/80 hover-btn-bl"
         >
           Try Again
         </button>
         <Link
           href="/"
-          className="rounded-lg border border-border px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-navy-lighter"
+          className="rounded-lg border border-white/20 px-6 py-2.5 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10"
         >
           Go Home
         </Link>

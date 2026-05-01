@@ -28,18 +28,18 @@ interface JobCardProps {
 }
 
 const INDUSTRY_COLORS: Record<string, string> = {
-  "Warehouse & Logistics": "bg-electric-blue/10 text-electric-blue",
-  Manufacturing: "bg-violet/10 text-violet",
+  "Warehouse & Logistics": "bg-white/10 text-white/70",
+  Manufacturing: "bg-white/10 text-white/60",
   Construction: "bg-amber/10 text-amber",
-  Agriculture: "bg-blue-600/10 text-blue-400",
+  Agriculture: "bg-white/10 text-white/60",
   Healthcare: "bg-magenta/10 text-magenta",
-  Hospitality: "bg-electric-blue/10 text-electric-blue",
+  Hospitality: "bg-white/10 text-white/70",
   Security: "bg-magenta/10 text-magenta",
-  Retail: "bg-violet/10 text-violet",
+  Retail: "bg-white/10 text-white/60",
   "Food & Beverage": "bg-amber/10 text-amber",
   Mining: "bg-amber/10 text-amber",
-  Energy: "bg-blue-600/10 text-blue-400",
-  Education: "bg-electric-blue/10 text-electric-blue",
+  Energy: "bg-white/10 text-white/60",
+  Education: "bg-white/10 text-white/70",
 };
 
 export function JobCard({
@@ -61,7 +61,7 @@ export function JobCard({
   const urgencyConf = URGENCY_CONFIG[urgency as keyof typeof URGENCY_CONFIG] || URGENCY_CONFIG.flexible;
   const statusConf = STATUS_CONFIG[status as keyof typeof STATUS_CONFIG] || STATUS_CONFIG.draft;
   const taskLabel = TASK_TYPES.find((t) => t.value === task_type)?.label || task_type;
-  const industryColor = INDUSTRY_COLORS[industry] || "bg-electric-blue/10 text-electric-blue";
+  const industryColor = INDUSTRY_COLORS[industry] || "bg-white/10 text-white/70";
 
   const location = [city, state].filter(Boolean).join(", ") || (remote_ok ? "Remote" : "Location TBD");
 
@@ -84,7 +84,7 @@ export function JobCard({
       </div>
 
       {/* Title */}
-      <h3 className="text-base font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+      <h3 className="text-base font-bold text-text-primary transition-colors group-hover:text-white">
         {title}
       </h3>
 
@@ -100,7 +100,7 @@ export function JobCard({
           </svg>
           {location}
         </span>
-        <span className="font-mono font-semibold text-electric-blue">
+        <span className="font-mono font-semibold text-white">
           {formatBudget(budget_min, budget_max)}
         </span>
         {duration_days && (

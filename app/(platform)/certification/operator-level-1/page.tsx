@@ -147,12 +147,12 @@ export default async function OperatorLevel1Page({
 
       {/* Hero */}
       <section className="px-4 pt-24 pb-16 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <p className="text-electric-blue font-mono text-sm tracking-widest uppercase mb-4">
+        <p className="text-white font-mono text-sm tracking-widest uppercase mb-4">
           Robotomated Certified Operator
         </p>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
           Become a Certified{" "}
-          <span className="text-electric-blue">Robot Operator</span> in 4 Weeks
+          <span className="text-white">Robot Operator</span> in 4 Weeks
         </h1>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-2">
           $45-75K starting roles. No prerequisites. Placement assistance included.
@@ -163,7 +163,7 @@ export default async function OperatorLevel1Page({
         </p>
 
         {/* Pricing Card */}
-        <div className="max-w-md mx-auto bg-obsidian-surface border border-electric-blue/30 rounded-xl p-8 mb-8">
+        <div className="max-w-md mx-auto bg-obsidian-surface border border-white/20 rounded-xl p-8 mb-8">
           {isEarlyBird && cohort && (
             <p className="text-lime font-mono text-sm mb-2">
               Early Bird — {cohort.capacity - cohort.enrolled_count} of{" "}
@@ -204,7 +204,7 @@ export default async function OperatorLevel1Page({
               key={s.l}
               className="bg-obsidian-surface border border-border rounded-lg p-3"
             >
-              <p className="text-lg font-bold text-electric-blue">{s.v}</p>
+              <p className="text-lg font-bold text-white">{s.v}</p>
               <p className="text-xs text-text-tertiary">{s.l}</p>
             </div>
           ))}
@@ -223,7 +223,7 @@ export default async function OperatorLevel1Page({
               className="bg-obsidian-surface border border-border rounded-lg p-6"
             >
               <div className="flex items-center gap-3 mb-3">
-                <span className="bg-electric-blue/10 text-electric-blue font-mono text-sm px-3 py-1 rounded-full">
+                <span className="bg-white/10 text-white font-mono text-sm px-3 py-1 rounded-full">
                   Module {mod.num}
                 </span>
                 <h3 className="font-semibold text-text-primary">{mod.title}</h3>
@@ -234,7 +234,7 @@ export default async function OperatorLevel1Page({
                     key={topic}
                     className="text-sm text-text-secondary flex gap-2"
                   >
-                    <span className="text-electric-blue shrink-0">-</span>
+                    <span className="text-white shrink-0">-</span>
                     {topic}
                   </li>
                 ))}
@@ -258,7 +258,7 @@ export default async function OperatorLevel1Page({
             </p>
             <div className="max-w-xs mx-auto bg-obsidian rounded-full h-3 mb-2">
               <div
-                className="bg-electric-blue rounded-full h-3 transition-all"
+                className="bg-white/40 rounded-full h-3 transition-all"
                 style={{
                   width: `${(cohort.enrolled_count / cohort.capacity) * 100}%`,
                 }}
@@ -274,7 +274,7 @@ export default async function OperatorLevel1Page({
       {/* Social Proof Placeholder */}
       <section className="px-4 pb-16 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="bg-obsidian-surface border border-border rounded-xl p-8 text-center">
-          <p className="text-electric-blue font-mono text-sm mb-2">
+          <p className="text-white font-mono text-sm mb-2">
             Employer Network
           </p>
           <p className="text-xl font-bold text-text-primary mb-2">

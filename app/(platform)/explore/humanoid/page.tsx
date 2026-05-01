@@ -109,7 +109,7 @@ export default async function HumanoidPage() {
                 key={stat.label}
                 className="rounded-lg border border-border bg-obsidian-surface p-6 text-center"
               >
-                <p className="text-4xl font-bold text-electric-blue">
+                <p className="text-4xl font-bold text-white">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-sm font-semibold text-text-primary">
@@ -165,19 +165,19 @@ export default async function HumanoidPage() {
                 <Link
                   key={robot.id}
                   href={`/robots/${robot.slug}`}
-                  className="group rounded-lg border border-border bg-obsidian-surface p-6 transition-colors hover:border-electric-blue"
+                  className="group rounded-lg border border-border bg-obsidian-surface p-6 transition-colors hover:border-white/20"
                 >
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm text-text-tertiary">
                         {robot.manufacturers?.name ?? "Unknown"}
                       </p>
-                      <h4 className="mt-1 text-lg font-semibold text-text-primary group-hover:text-electric-blue">
+                      <h4 className="mt-1 text-lg font-semibold text-text-primary group-hover:text-white">
                         {robot.name}
                       </h4>
                     </div>
                     {robot.robo_score != null && (
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-electric-blue text-sm font-bold text-electric-blue">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-sm font-bold text-white">
                         {robot.robo_score}
                       </div>
                     )}
@@ -188,7 +188,7 @@ export default async function HumanoidPage() {
                     </p>
                   )}
                   {robot.price_current != null && (
-                    <p className="mt-3 text-sm font-semibold text-blue-400">
+                    <p className="mt-3 text-sm font-semibold text-white">
                       ${robot.price_current.toLocaleString()}
                     </p>
                   )}
@@ -219,13 +219,13 @@ export default async function HumanoidPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/find-my-robot"
-              className="inline-flex items-center rounded-lg bg-electric-blue px-6 py-3 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90"
+              className="inline-flex items-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90"
             >
               Find My Robot
             </Link>
             <Link
               href="/advisor"
-              className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-white/20 hover:text-white"
             >
               Talk to AI Advisor
             </Link>

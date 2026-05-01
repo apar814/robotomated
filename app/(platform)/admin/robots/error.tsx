@@ -18,7 +18,7 @@ export default function AdminRobotsError({
       <div className="mt-6 flex justify-center gap-3">
         <button
           onClick={reset}
-          className="rounded-lg bg-blue px-5 py-2 text-sm font-semibold text-navy hover:opacity-90"
+          className="rounded-lg bg-white px-5 py-2 text-sm font-semibold text-navy hover:opacity-90"
         >
           Try Again
         </button>

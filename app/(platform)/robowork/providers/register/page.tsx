@@ -152,8 +152,9 @@ export default function RegisterProviderPage() {
                 display: "inline-block",
                 padding: "0.75rem 1.5rem",
                 borderRadius: "0.5rem",
-                backgroundColor: "#2563EB",
-                color: "#000",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "#fff",
                 fontSize: "0.875rem",
                 fontWeight: 600,
                 textDecoration: "none",
@@ -225,7 +226,7 @@ export default function RegisterProviderPage() {
                   fontSize: "10px",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "#2563EB",
+                  color: "#D4D4D4",
                   fontWeight: 600,
                 }}
               >
@@ -315,8 +316,8 @@ export default function RegisterProviderPage() {
                     alignItems: "center",
                     justifyContent: "center",
                     borderRadius: "0.5rem",
-                    backgroundColor: "rgba(14, 165, 233, 0.1)",
-                    color: "#2563EB",
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    color: "#D4D4D4",
                     fontFamily: "var(--font-mono, monospace)",
                     fontSize: "0.875rem",
                     fontWeight: 700,
@@ -339,7 +340,7 @@ export default function RegisterProviderPage() {
                       marginTop: "0.125rem",
                       fontFamily: "var(--font-mono, monospace)",
                       fontSize: "0.75rem",
-                      color: "#2563EB",
+                      color: "#D4D4D4",
                     }}
                   >
                     {s.subtitle}
@@ -417,8 +418,8 @@ export default function RegisterProviderPage() {
                   display: "inline-block",
                   padding: "0.375rem 0.875rem",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(14, 165, 233, 0.12)",
-                  color: "#2563EB",
+                  backgroundColor: "rgba(255, 255, 255, 0.06)",
+                  color: "#D4D4D4",
                   fontSize: "0.8125rem",
                   fontWeight: 500,
                 }}

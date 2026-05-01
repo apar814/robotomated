@@ -180,24 +180,24 @@ const MOCK_ALERTS: MaintenanceAlert[] = [
 // ── Status Config ──
 
 const STATUS_BADGE: Record<string, string> = {
-  operational: "bg-blue-600/15 text-blue-400 border-blue-600/20",
-  deployed: "bg-electric-blue/15 text-electric-blue border-electric-blue/20",
+  operational: "bg-white/5 text-white border-white/20",
+  deployed: "bg-white/5 text-white border-white/20",
   maintenance: "bg-amber/15 text-amber border-amber/20",
   idle: "bg-text-tertiary/15 text-text-secondary border-text-tertiary/20",
 };
 
 const INVOICE_STATUS_BADGE: Record<string, string> = {
   draft: "bg-text-tertiary/15 text-text-secondary",
-  sent: "bg-electric-blue/15 text-electric-blue",
-  paid: "bg-blue-600/15 text-blue-400",
+  sent: "bg-white/5 text-white",
+  paid: "bg-white/5 text-white",
   overdue: "bg-magenta/15 text-magenta",
   cancelled: "bg-text-tertiary/15 text-text-secondary",
 };
 
 const MAINT_TYPE_BADGE: Record<string, string> = {
-  scheduled: "bg-electric-blue/15 text-electric-blue",
+  scheduled: "bg-white/5 text-white",
   emergency: "bg-magenta/15 text-magenta",
-  preventive: "bg-blue-600/15 text-blue-400",
+  preventive: "bg-white/5 text-white",
 };
 
 const TABS = ["Overview", "Jobs", "Fleet", "Maintenance", "Invoices"] as const;
@@ -230,7 +230,7 @@ export default function RSPDashboardPage() {
               className={cn(
                 "shrink-0 border-b-2 px-4 py-2.5 font-mono text-xs font-semibold uppercase tracking-wider transition-colors",
                 activeTab === tab
-                  ? "border-electric-blue text-electric-blue"
+                  ? "border-white/20 text-white"
                   : "border-transparent text-text-secondary hover:text-text-primary"
               )}
             >
@@ -272,7 +272,7 @@ function OverviewTab() {
               <p
                 className={cn(
                   "mt-1 text-[11px]",
-                  stat.changeType === "up" && "text-blue-400",
+                  stat.changeType === "up" && "text-white",
                   stat.changeType === "down" && "text-magenta",
                   stat.changeType === "neutral" && "text-text-secondary"
                 )}
@@ -287,7 +287,7 @@ function OverviewTab() {
       {/* Recent Reviews */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Recent Reviews
           </span>
@@ -310,7 +310,7 @@ function OverviewTab() {
                     </p>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="font-mono text-sm font-bold text-electric-blue">
+                    <span className="font-mono text-sm font-bold text-white">
                       {review.rating}
                     </span>
                     <span className="text-[13px] text-text-tertiary">/5</span>
@@ -370,14 +370,14 @@ function JobsTab() {
       <div>
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Open Jobs in Your Market
             </span>
           </div>
           <Link
             href="/robowork/jobs"
-            className="font-mono text-[13px] text-electric-blue transition-colors hover:underline"
+            className="font-mono text-[13px] text-white transition-colors hover:underline"
           >
             Browse all jobs &rarr;
           </Link>
@@ -399,7 +399,7 @@ function JobsTab() {
       {/* Completed Jobs */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Completed Jobs
           </span>
@@ -417,12 +417,12 @@ function FleetTab() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Your Fleet
           </span>
         </div>
-        <button className="rounded bg-electric-blue px-4 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
+        <button className="rounded bg-white px-4 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
           Add Robot
         </button>
       </div>
@@ -453,7 +453,7 @@ function FleetTab() {
                     {robot.manufacturer}
                   </p>
                   {robot.currentJob && (
-                    <p className="mt-1 text-[11px] text-electric-blue">
+                    <p className="mt-1 text-[11px] text-white">
                       {robot.currentJob}
                     </p>
                   )}
@@ -494,7 +494,7 @@ function MaintenanceTab() {
               Maintenance Log
             </span>
           </div>
-          <button className="rounded border border-border px-4 py-2 text-xs font-bold text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue">
+          <button className="rounded border border-border px-4 py-2 text-xs font-bold text-text-primary transition-colors hover:border-electric-blue hover:text-white">
             Schedule Maintenance
           </button>
         </div>
@@ -553,7 +553,7 @@ function MaintenanceTab() {
                       <span
                         className={cn(
                           "rounded px-2 py-0.5 text-[13px] font-semibold capitalize",
-                          log.status === "completed" && "bg-blue-600/15 text-blue-400",
+                          log.status === "completed" && "bg-white/5 text-white",
                           log.status === "pending" && "bg-text-tertiary/15 text-text-secondary",
                           log.status === "in_progress" && "bg-amber/15 text-amber"
                         )}
@@ -574,7 +574,7 @@ function MaintenanceTab() {
       {/* Cost Tracking */}
       <div>
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Cost Summary
           </span>
@@ -616,12 +616,12 @@ function InvoicesTab() {
       {/* Header with action */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
             Invoices
           </span>
         </div>
-        <button className="rounded bg-electric-blue px-4 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
+        <button className="rounded bg-white px-4 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
           Create Invoice
         </button>
       </div>
@@ -665,7 +665,7 @@ function InvoicesTab() {
             <tbody className="divide-y divide-border">
               {MOCK_INVOICES.map((inv) => (
                 <tr key={inv.id}>
-                  <td className="py-3 pr-4 font-mono text-xs font-semibold text-electric-blue">
+                  <td className="py-3 pr-4 font-mono text-xs font-semibold text-white">
                     {inv.invoiceNumber}
                   </td>
                   <td className="py-3 pr-4 text-sm text-text-primary">

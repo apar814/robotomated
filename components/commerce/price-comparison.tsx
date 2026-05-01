@@ -70,7 +70,7 @@ export function PriceComparison({ robotSlug, prices, affiliateUrl, manufacturerW
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium">{meta.name}</span>
                   {isBest && (
-                    <span className="rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-semibold text-green">
+                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-[13px] font-semibold text-white">
                       Best Price
                     </span>
                   )}
@@ -90,7 +90,7 @@ export function PriceComparison({ robotSlug, prices, affiliateUrl, manufacturerW
                 rel="noopener noreferrer"
                 className={cn(
                   "shrink-0 rounded-lg px-4 py-2 text-xs font-semibold transition-opacity hover:opacity-90",
-                  isBest ? "bg-green text-navy" : "bg-blue text-navy"
+                  isBest ? "bg-white text-navy" : "bg-white/5 text-white"
                 )}
               >
                 Buy at {meta.name}

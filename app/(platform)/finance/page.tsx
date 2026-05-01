@@ -61,7 +61,7 @@ export default function FinancePage() {
 
       {/* Hero */}
       <section className="mt-8 text-center">
-        <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
           [ ROBOT FINANCING ]
         </span>
         <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -79,7 +79,7 @@ export default function FinancePage() {
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
-              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ EQUIPMENT LOANS ]</p>
+              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">[ EQUIPMENT LOANS ]</p>
               <h2 className="mt-3 font-display text-2xl font-semibold text-white">
                 Equipment Financing
               </h2>
@@ -172,7 +172,7 @@ export default function FinancePage() {
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
-              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ COVERAGE ]</p>
+              <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">[ COVERAGE ]</p>
               <h2 className="mt-3 font-display text-2xl font-semibold text-white">
                 Robot Insurance
               </h2>
@@ -257,7 +257,7 @@ export default function FinancePage() {
       {/* Lease Programs */}
       <section className="mt-16">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ LEASE OPTIONS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">[ LEASE OPTIONS ]</p>
           <h2 className="mt-3 font-display text-2xl font-semibold text-white">
             Lease Programs
           </h2>

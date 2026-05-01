@@ -44,7 +44,7 @@ export function EnrollButton() {
     <button
       onClick={handleEnroll}
       disabled={loading}
-      className="w-full bg-electric-blue text-obsidian font-semibold py-3.5 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+      className="w-full bg-white text-obsidian font-semibold py-3.5 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {loading ? "Redirecting to checkout..." : "Enroll Now"}
     </button>

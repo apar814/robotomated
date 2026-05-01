@@ -361,7 +361,7 @@ export default function AgriculturalRobotsPage() {
             </p>
             <Link
               href="/advisor"
-              className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-3 text-[14px] font-semibold text-white hover:bg-[#1d4ed8]"
+              className="mt-4 inline-block rounded-lg bg-white/5 border border-white/20 px-6 py-3 text-[14px] font-semibold text-white hover:bg-white/10"
             >
               Ask Robotimus
             </Link>

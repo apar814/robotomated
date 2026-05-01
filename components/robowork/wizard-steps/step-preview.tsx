@@ -15,7 +15,7 @@ const BADGE_CONFIG = [
 
 const FULFILLMENT_COLORS: Record<string, string> = {
   delivery: "#7B2FFF",
-  pickup: "#2563EB",
+  pickup: "#D4D4D4",
   onsite: "#00E5A0",
   remote: "#F59E0B",
 };
@@ -147,7 +147,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.dailyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#2563EB" }}
+                      style={{ color: "#D4D4D4" }}
                     >
                       {formatRate(robot.dailyRate, "day")}
                     </span>
@@ -155,7 +155,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.weeklyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#2563EB" }}
+                      style={{ color: "#D4D4D4" }}
                     >
                       {formatRate(robot.weeklyRate, "week")}
                     </span>
@@ -163,7 +163,7 @@ export default function StepPreview({ data }: StepProps) {
                   {robot.monthlyRate && (
                     <span
                       className="text-xs font-semibold"
-                      style={{ color: "#2563EB" }}
+                      style={{ color: "#D4D4D4" }}
                     >
                       {formatRate(robot.monthlyRate, "month")}
                     </span>
@@ -221,9 +221,9 @@ export default function StepPreview({ data }: StepProps) {
                 key={task}
                 className="rounded-full px-3 py-1 text-xs font-semibold"
                 style={{
-                  background: "rgba(37,99,235,0.1)",
-                  color: "#2563EB",
-                  border: "1px solid rgba(37,99,235,0.2)",
+                  background: "rgba(255,255,255,0.08)",
+                  color: "#D4D4D4",
+                  border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
                 {task}

@@ -38,9 +38,9 @@ const STUDY_LEVELS: Record<string, StudyLevelData> = {
     name: "Foundation",
     slug: "foundation",
     color: "blue",
-    badge: "bg-blue/10 text-blue",
-    accent: "text-blue",
-    cta: "bg-blue hover:bg-blue/90",
+    badge: "bg-white/10 text-white",
+    accent: "text-white",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Master the core knowledge every robot operator needs. Safety, types, operations, diagnostics, and compliance.",
     totalHours: 14,
@@ -128,9 +128,9 @@ const STUDY_LEVELS: Record<string, StudyLevelData> = {
     name: "Specialist",
     slug: "specialist",
     color: "green",
-    badge: "bg-green/10 text-green",
-    accent: "text-green",
-    cta: "bg-green hover:bg-green/90 text-navy",
+    badge: "bg-white/10 text-white",
+    accent: "text-white",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Deep expertise in programming, fleet management, fault diagnosis under pressure, and computer vision.",
     totalHours: 32,
@@ -211,9 +211,9 @@ const STUDY_LEVELS: Record<string, StudyLevelData> = {
     name: "Master",
     slug: "master",
     color: "violet",
-    badge: "bg-violet/10 text-violet",
-    accent: "text-violet",
-    cta: "bg-violet hover:bg-violet/90",
+    badge: "bg-white/10 text-white",
+    accent: "text-white",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Sim-to-real mastery, dexterous manipulation, world models, edge inference, and full-stack system architecture.",
     totalHours: 49,
@@ -298,9 +298,9 @@ const STUDY_LEVELS: Record<string, StudyLevelData> = {
     name: "Fleet Commander",
     slug: "fleet-commander",
     color: "amber",
-    badge: "bg-amber-500/10 text-amber-400",
-    accent: "text-amber-400",
-    cta: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
+    badge: "bg-white/10 text-white",
+    accent: "text-white",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Program design, crisis management, business operations, and enterprise capstone preparation.",
     totalHours: 62,
@@ -437,7 +437,7 @@ export default async function StudyLevelPage({
           </p>
           <Link
             href="/certify/study"
-            className="mt-6 inline-block rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white hover:bg-blue/90"
+            className="hover-btn-bl mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
             View All Study Paths
           </Link>
@@ -559,8 +559,8 @@ export default async function StudyLevelPage({
                   </div>
 
                   {/* Module quiz */}
-                  <div className="mt-4 flex items-center justify-between rounded-lg border border-blue/20 bg-blue/5 px-4 py-2.5">
-                    <span className="text-sm font-medium text-blue">
+                  <div className="mt-4 flex items-center justify-between rounded-lg border border-border bg-white/5 px-4 py-2.5">
+                    <span className="text-sm font-medium text-white">
                       Module Quiz
                     </span>
                     <span className="text-xs text-muted">

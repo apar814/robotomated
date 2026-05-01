@@ -60,7 +60,7 @@ function emptyRobot(): RobotEntry {
 }
 
 const inputClasses =
-  "w-full rounded-lg border border-border bg-obsidian-surface px-3 py-2.5 font-sans text-sm text-text-primary placeholder:text-text-ghost focus:border-[#2563EB]/50 focus:outline-none transition-colors";
+  "w-full rounded-lg border border-border bg-obsidian-surface px-3 py-2.5 font-sans text-sm text-text-primary placeholder:text-text-ghost focus:border-white/50 focus:outline-none transition-colors";
 const labelClasses = "font-mono text-[13px] tracking-widest uppercase text-text-ghost";
 
 export function RegisterProviderForm() {
@@ -194,7 +194,7 @@ export function RegisterProviderForm() {
         </p>
         <a
           href="/robowork/providers"
-          className="mt-6 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black"
+          className="mt-6 inline-block rounded-lg bg-white/10 border border-white/20 px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white"
         >
           BROWSE PROVIDERS
         </a>
@@ -213,14 +213,14 @@ export function RegisterProviderForm() {
           return (
             <div key={label} className="flex items-center gap-2">
               {i > 0 && (
-                <div className={cn("h-px w-6 sm:w-10", isComplete ? "bg-[#2563EB]" : "bg-border")} />
+                <div className={cn("h-px w-6 sm:w-10", isComplete ? "bg-white/60" : "bg-border")} />
               )}
               <button
                 type="button"
                 onClick={() => stepNum < step && setStep(stepNum)}
                 className={cn(
                   "flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-[13px] tracking-wider transition-colors",
-                  isActive && "bg-[#2563EB]/10 text-[#2563EB]",
+                  isActive && "bg-white/10 text-white",
                   isComplete && "bg-[#00E5A0]/10 text-[#00E5A0] cursor-pointer",
                   !isActive && !isComplete && "bg-white/[0.02] text-text-ghost"
                 )}
@@ -228,7 +228,7 @@ export function RegisterProviderForm() {
                 <span
                   className={cn(
                     "flex h-5 w-5 items-center justify-center rounded-full text-[13px] font-bold",
-                    isActive && "bg-[#2563EB] text-black",
+                    isActive && "bg-white/60 text-black",
                     isComplete && "bg-[#00E5A0] text-black",
                     !isActive && !isComplete && "bg-white/[0.06] text-text-ghost"
                   )}
@@ -350,7 +350,7 @@ export function RegisterProviderForm() {
                 setError(null);
                 setStep(2);
               }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-white/10 border border-white/20 px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/[0.15]"
             >
               NEXT: SPECIALIZATIONS
             </button>
@@ -373,8 +373,8 @@ export function RegisterProviderForm() {
                   className={cn(
                     "rounded-full px-4 py-2 font-sans text-xs font-medium transition-colors",
                     specializations.includes(s)
-                      ? "bg-[#2563EB]/20 text-[#2563EB] border border-[#2563EB]/30"
-                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-[#2563EB]/20"
+                      ? "bg-white/10 text-white border border-white/20"
+                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-white/20"
                   )}
                 >
                   {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -393,8 +393,8 @@ export function RegisterProviderForm() {
                   className={cn(
                     "rounded-full px-4 py-2 font-sans text-xs font-medium transition-colors",
                     fulfillmentTypes.includes(f.value)
-                      ? "bg-[#60A5FA]/20 text-[#60A5FA] border border-[#60A5FA]/30"
-                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-[#60A5FA]/20"
+                      ? "bg-white/10 text-white border border-white/20"
+                      : "bg-white/[0.04] text-text-secondary border border-border hover:border-white/20"
                   )}
                 >
                   {f.label}
@@ -423,7 +423,7 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => { setError(null); setStep(3); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-white/10 border border-white/20 px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/[0.15]"
             >
               NEXT: ROBOT FLEET
             </button>
@@ -473,7 +473,7 @@ export function RegisterProviderForm() {
 
           {/* Add robot sub-form */}
           {showRobotForm ? (
-            <div className="rounded-xl border border-[#2563EB]/20 bg-[#2563EB]/[0.02] p-5 space-y-4">
+            <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5 space-y-4">
               <h3 className="font-sans text-sm font-semibold text-text-primary">Add Robot</h3>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div>
@@ -564,7 +564,7 @@ export function RegisterProviderForm() {
                     type="checkbox"
                     checked={currentRobot.operator_included}
                     onChange={(e) => setCurrentRobot({ ...currentRobot, operator_included: e.target.checked })}
-                    className="h-4 w-4 rounded border-border bg-obsidian-surface accent-[#2563EB]"
+                    className="h-4 w-4 rounded border-border bg-obsidian-surface accent-white"
                   />
                   <span className="font-sans text-xs text-text-secondary">Operator Included</span>
                 </label>
@@ -573,7 +573,7 @@ export function RegisterProviderForm() {
                     type="checkbox"
                     checked={currentRobot.remote_capable}
                     onChange={(e) => setCurrentRobot({ ...currentRobot, remote_capable: e.target.checked })}
-                    className="h-4 w-4 rounded border-border bg-obsidian-surface accent-[#2563EB]"
+                    className="h-4 w-4 rounded border-border bg-obsidian-surface accent-white"
                   />
                   <span className="font-sans text-xs text-text-secondary">Remote Capable</span>
                 </label>
@@ -583,7 +583,7 @@ export function RegisterProviderForm() {
                   type="button"
                   onClick={addRobot}
                   disabled={!currentRobot.custom_name.trim()}
-                  className="rounded-lg bg-[#60A5FA] px-5 py-2 font-mono text-[13px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+                  className="rounded-lg bg-white/10 border border-white/20 px-5 py-2 font-mono text-[13px] font-semibold tracking-wider text-white transition-opacity disabled:opacity-40"
                 >
                   ADD ROBOT
                 </button>
@@ -600,7 +600,7 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => setShowRobotForm(true)}
-              className="flex items-center gap-2 rounded-lg border border-dashed border-border px-5 py-3 font-sans text-xs font-medium text-text-secondary transition-colors hover:border-[#2563EB]/30 hover:text-[#2563EB]"
+              className="flex items-center gap-2 rounded-lg border border-dashed border-border px-5 py-3 font-sans text-xs font-medium text-text-secondary transition-colors hover:border-white/20 hover:text-white"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -620,7 +620,7 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => { setError(null); setStep(4); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-white/10 border border-white/20 px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/[0.15]"
             >
               NEXT: VERIFICATION
             </button>
@@ -663,7 +663,7 @@ export function RegisterProviderForm() {
               type="checkbox"
               checked={bgCheckConsent}
               onChange={(e) => setBgCheckConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-border bg-obsidian-surface accent-[#2563EB]"
+              className="mt-0.5 h-4 w-4 rounded border-border bg-obsidian-surface accent-white"
             />
             <div>
               <span className="font-sans text-sm text-text-primary">I consent to a background check</span>
@@ -684,7 +684,7 @@ export function RegisterProviderForm() {
             <button
               type="button"
               onClick={() => { setError(null); setStep(5); }}
-              className="rounded-lg bg-[#2563EB] px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="rounded-lg bg-white/10 border border-white/20 px-6 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/[0.15]"
             >
               NEXT: SUBMIT
             </button>
@@ -722,7 +722,7 @@ export function RegisterProviderForm() {
               type="checkbox"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-border bg-obsidian-surface accent-[#2563EB]"
+              className="mt-0.5 h-4 w-4 rounded border-border bg-obsidian-surface accent-white"
             />
             <div>
               <span className="font-sans text-sm text-text-primary">
@@ -759,7 +759,7 @@ export function RegisterProviderForm() {
               type="button"
               onClick={handleSubmit}
               disabled={submitting || !termsAccepted || !email.trim()}
-              className="rounded-lg bg-[#60A5FA] px-8 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-opacity disabled:opacity-40"
+              className="rounded-lg bg-white/10 border border-white/20 px-8 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-opacity disabled:opacity-40"
             >
               {submitting ? "SUBMITTING..." : "REGISTER AS PROVIDER"}
             </button>

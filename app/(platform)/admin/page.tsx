@@ -82,7 +82,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
         <div className="flex gap-2">
-          <Link href="/admin/robots/new" className="rounded-lg bg-blue px-4 py-2 text-sm font-semibold text-navy hover:opacity-90">
+          <Link href="/admin/robots/new" className="rounded-lg bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:opacity-90">
             + Add Robot
           </Link>
           <Link href="/admin/robots/import" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
@@ -137,7 +137,7 @@ export default function AdminDashboard() {
                   <div className="flex gap-1">
                     <button
                       onClick={() => moderateReview(rv.id, "approve")}
-                      className="rounded px-2 py-1 text-xs text-green hover:bg-green/10"
+                      className="rounded px-2 py-1 text-xs hover:bg-white/5" style={{ color: "var(--status-success-text)" }}
                     >
                       Approve
                     </button>
@@ -188,12 +188,12 @@ export default function AdminDashboard() {
                 value={revenueForm.month}
                 onChange={(e) => setRevenueForm({ ...revenueForm, month: e.target.value })}
                 required
-                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-border focus:outline-none"
               />
               <select
                 value={revenueForm.source}
                 onChange={(e) => setRevenueForm({ ...revenueForm, source: e.target.value })}
-                className="rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+                className="rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-border focus:outline-none"
               >
                 <option value="affiliate">Affiliate</option>
                 <option value="stripe">Stripe Subscriptions</option>
@@ -208,14 +208,14 @@ export default function AdminDashboard() {
                 value={revenueForm.amount}
                 onChange={(e) => setRevenueForm({ ...revenueForm, amount: e.target.value })}
                 required
-                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-border focus:outline-none"
               />
               <input
                 type="text"
                 placeholder="Notes"
                 value={revenueForm.notes}
                 onChange={(e) => setRevenueForm({ ...revenueForm, notes: e.target.value })}
-                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+                className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-border focus:outline-none"
               />
             </div>
             <Button type="submit" disabled={revenueStatus === "saving"} className="text-xs">
@@ -280,7 +280,7 @@ function StatCard({ label, value, detail, delta }: { label: string; value: strin
       <div className="mt-1 flex items-center gap-2">
         {detail && <span className="text-[13px] text-muted">{detail}</span>}
         {delta !== undefined && delta !== 0 && (
-          <span className={cn("text-[13px] font-medium", delta > 0 ? "text-green" : "text-orange")}>
+          <span className={cn("text-[13px] font-medium", delta > 0 ? "text-white" : "text-orange")}>
             {delta > 0 ? "+" : ""}{delta} vs yesterday
           </span>
         )}

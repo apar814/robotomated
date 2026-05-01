@@ -79,7 +79,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
   return (
     <form onSubmit={handleSubmit} className="grid gap-6 sm:grid-cols-2">
       {error && (
-        <div className="sm:col-span-2 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400">
+        <div className="sm:col-span-2 rounded-lg border border-white/20 bg-white/5 p-4 text-sm" style={{ color: "var(--status-error-muted)" }}>
           {error}
         </div>
       )}
@@ -94,7 +94,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="e.g. Fanuc, ABB"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -108,7 +108,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="e.g. CRX-10iA"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -123,7 +123,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           required
           min="0"
           placeholder="50000"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -137,7 +137,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="number"
           min="1"
           defaultValue={1}
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -149,7 +149,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           id="use_case"
           name="use_case"
           required
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/30 focus:outline-none"
         >
           <option value="">Select use case</option>
           <option value="manufacturing">Manufacturing / Assembly</option>
@@ -176,7 +176,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
               <input
                 type="checkbox"
                 name={`coverage_${i}`}
-                className="h-4 w-4 rounded border-white/20 bg-white/5 text-[#00C2FF] focus:ring-[#00C2FF]"
+                className="h-4 w-4 rounded border-white/20 bg-white/5 text-white focus:ring-white/30"
               />
               <span className="text-sm text-white">{type}</span>
             </label>
@@ -194,7 +194,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="City, State"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -205,7 +205,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
         <select
           id="annual_budget"
           name="annual_budget"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/30 focus:outline-none"
         >
           <option value="">Select range</option>
           <option value="under_5k">Under $5,000</option>
@@ -225,7 +225,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="text"
           required
           placeholder="Jane Smith"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -239,7 +239,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           type="email"
           required
           placeholder="jane@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -252,7 +252,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
           name="contact_phone"
           type="tel"
           placeholder="+1 (555) 000-0000"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/30 focus:outline-none"
         />
       </div>
 
@@ -260,7 +260,7 @@ export function InsuranceQuoteForm({ coverageTypes }: InsuranceQuoteFormProps) {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-lg bg-[#00C2FF] px-8 py-3 font-display font-semibold text-[#0A0F1E] transition-colors hover:bg-[#00C2FF]/80 disabled:opacity-50"
+          className="w-full rounded-lg bg-white px-8 py-3 font-display font-semibold text-[#0A0F1E] transition-colors hover:bg-white/80 disabled:opacity-50"
         >
           {submitting ? "Submitting..." : "Get Quotes"}
         </button>

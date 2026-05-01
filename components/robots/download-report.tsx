@@ -137,8 +137,8 @@ function buildReportHtml(robot: DownloadReportProps["robot"]): string {
   </style>
 </head>
 <body>
-  <div style="border-bottom:2px solid #2563EB;padding-bottom:16px;margin-bottom:24px;">
-    <p style="font-size:12px;color:#2563EB;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 4px;">RoboScore Report</p>
+  <div style="border-bottom:2px solid #4B5563;padding-bottom:16px;margin-bottom:24px;">
+    <p style="font-size:12px;color:#4B5563;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 4px;">RoboScore Report</p>
     <h1>${robot.name}</h1>
     <p style="color:#6b7280;margin:4px 0 0;">by ${robot.manufacturer} &bull; Generated ${today}</p>
   </div>

@@ -45,13 +45,13 @@ export function BuyerJourneyBar() {
           return (
             <div key={stage.key} className="flex shrink-0 items-center">
               {i > 0 && (
-                <div className={`mx-1 h-px w-4 sm:w-6 ${isPast ? "bg-blue/40" : "bg-white/[0.06]"}`} />
+                <div className={`mx-1 h-px w-4 sm:w-6 ${isPast ? "bg-white/20" : "bg-white/[0.06]"}`} />
               )}
               <Link
                 href={stage.href}
                 className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors ${
                   isActive
-                    ? "bg-blue/10 text-blue"
+                    ? "bg-white/10 text-white"
                     : isPast
                       ? "text-white/40 hover:text-white/60"
                       : "text-white/45 hover:text-white/40"

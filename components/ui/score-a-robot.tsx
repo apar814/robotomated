@@ -56,7 +56,7 @@ export function ScoreARobot() {
             <div key={dim.key}>
               <div className="mb-1.5 flex items-center justify-between">
                 <span className="text-sm text-white">{dim.label}</span>
-                <span className={`font-mono text-sm ${changed ? "text-[#2563EB]" : "text-muted"}`}>
+                <span className={`font-mono text-sm ${changed ? "text-white" : "text-muted"}`}>
                   {normPct.toFixed(1)}%
                 </span>
               </div>
@@ -83,7 +83,7 @@ export function ScoreARobot() {
             Standard
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-[#2563EB]" />
+            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-white/60" />
             Yours
           </span>
         </div>
@@ -99,7 +99,7 @@ export function ScoreARobot() {
                   <span className="text-muted">{dim.label}</span>
                   <div className="flex gap-3">
                     <span className="font-mono text-muted">{stdWeight}%</span>
-                    <span className="font-mono text-[#2563EB]">{normPct.toFixed(1)}%</span>
+                    <span className="font-mono text-white">{normPct.toFixed(1)}%</span>
                   </div>
                 </div>
                 <div className="relative h-5 w-full overflow-hidden rounded bg-white/5">
@@ -110,7 +110,7 @@ export function ScoreARobot() {
                   />
                   {/* User bar */}
                   <div
-                    className="absolute inset-y-0 left-0 rounded bg-[#2563EB]/60 transition-all"
+                    className="absolute inset-y-0 left-0 rounded bg-white/40 transition-all"
                     style={{ width: `${(normPct / barMax) * 100}%` }}
                   />
                 </div>
@@ -143,7 +143,7 @@ export function ScoreARobot() {
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: #2563EB;
+          background: #D4D4D4;
           border: 2px solid #0A0A0A;
           cursor: pointer;
         }
@@ -151,7 +151,7 @@ export function ScoreARobot() {
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: #2563EB;
+          background: #D4D4D4;
           border: 2px solid #0A0A0A;
           cursor: pointer;
         }

@@ -27,7 +27,7 @@ export function ShareButtons({ title, url }: ShareProps) {
         href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-white/20 hover:text-foreground"
         aria-label="Share on X"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -38,7 +38,7 @@ export function ShareButtons({ title, url }: ShareProps) {
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-white/20 hover:text-foreground"
         aria-label="Share on LinkedIn"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -47,7 +47,7 @@ export function ShareButtons({ title, url }: ShareProps) {
       </a>
       <button
         onClick={copyLink}
-        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+        className="rounded-md border border-border p-2 text-muted transition-colors hover:border-white/20 hover:text-foreground"
         aria-label="Copy link"
       >
         {copied ? (

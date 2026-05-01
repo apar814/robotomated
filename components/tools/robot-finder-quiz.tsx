@@ -285,7 +285,7 @@ export function RobotFinderQuiz() {
   if (loading) {
     return (
       <div className="flex flex-col items-center py-16">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-electric-blue border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-white border-t-transparent" />
         <p className="mt-4 font-mono text-sm text-text-tertiary">
           Analyzing {robotCount}+ robots...
         </p>
@@ -317,19 +317,19 @@ export function RobotFinderQuiz() {
             <Link
               key={robot.slug}
               href={`/explore/${robot.category_slug || "all"}/${robot.slug}`}
-              className="group block rounded-md border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30 hover:-translate-y-0.5"
+              className="group block rounded-md border border-border bg-obsidian-surface p-5 transition-all hover:border-white/20 hover:-translate-y-0.5"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] font-semibold text-electric-blue">
+                    <span className="rounded bg-white/5 px-2 py-0.5 font-mono text-[13px] font-semibold text-white">
                       #{i + 1}
                     </span>
-                    <span className="rounded bg-blue-600/10 px-2 py-0.5 font-mono text-[13px] font-bold text-blue-400">
+                    <span className="rounded bg-white/5 px-2 py-0.5 font-mono text-[13px] font-bold text-white">
                       {robot.matchPct}% MATCH
                     </span>
                   </div>
-                  <h3 className="mt-2 text-lg font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+                  <h3 className="mt-2 text-lg font-bold text-text-primary transition-colors group-hover:text-white">
                     {robot.name}
                   </h3>
                   <p className="text-xs text-text-secondary">
@@ -347,7 +347,7 @@ export function RobotFinderQuiz() {
                     <RoboScoreBadge score={robot.robo_score} />
                   )}
                   {robot.price_current != null ? (
-                    <span className="font-mono text-sm font-bold text-blue-400">
+                    <span className="font-mono text-sm font-bold text-white">
                       ${robot.price_current.toLocaleString()}
                     </span>
                   ) : (
@@ -361,7 +361,7 @@ export function RobotFinderQuiz() {
                 <span className="font-mono text-[13px] text-text-ghost">
                   Est. maintenance: {robot.maintenance_est != null ? `$${robot.maintenance_est.toLocaleString()}/yr` : "—"}
                 </span>
-                <span className="text-xs text-electric-blue opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                   View Full Analysis →
                 </span>
               </div>
@@ -431,7 +431,7 @@ export function RobotFinderQuiz() {
                       return (
                         <td
                           key={r.slug}
-                          className="py-2 px-3 text-right font-mono font-bold text-blue-400"
+                          className="py-2 px-3 text-right font-mono font-bold text-white"
                         >
                           {total != null ? `$${total.toLocaleString()}` : "—"}
                         </td>
@@ -454,7 +454,7 @@ export function RobotFinderQuiz() {
             and deployment timelines.
           </p>
           {emailStatus === "success" ? (
-            <p className="mt-4 font-mono text-sm text-blue-400">
+            <p className="mt-4 font-mono text-sm text-white">
               Report sent to your inbox.
             </p>
           ) : (
@@ -467,12 +467,12 @@ export function RobotFinderQuiz() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@company.com"
-                className="w-64 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+                className="w-64 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-white/50 focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={emailStatus === "loading"}
-                className="rounded-md bg-electric-blue px-4 py-2 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90 disabled:opacity-50"
               >
                 {emailStatus === "loading" ? "..." : "Get Report"}
               </button>
@@ -489,7 +489,7 @@ export function RobotFinderQuiz() {
         <div className="mt-8 text-center">
           <button
             onClick={restart}
-            className="rounded-md border border-border px-6 py-2 text-sm text-text-secondary transition-colors hover:border-electric-blue/30 hover:text-text-primary"
+            className="rounded-md border border-border px-6 py-2 text-sm text-text-secondary transition-colors hover:border-white/20 hover:text-text-primary"
           >
             Start Over
           </button>
@@ -615,7 +615,7 @@ export function RobotFinderQuiz() {
       {/* Progress bar */}
       <div className="mb-8 h-1 rounded-full bg-obsidian-3">
         <div
-          className="h-full rounded-full bg-electric-blue transition-all duration-500"
+          className="h-full rounded-full bg-white transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -668,11 +668,11 @@ function OptionCard({
   return (
     <button
       onClick={onClick}
-      className="group rounded-md border border-border bg-obsidian-surface px-5 py-4 text-left text-sm font-medium text-text-primary transition-all hover:border-electric-blue/40 hover:bg-obsidian-hover"
+      className="group rounded-md border border-border bg-obsidian-surface px-5 py-4 text-left text-sm font-medium text-text-primary transition-all hover:border-white/20 hover:bg-obsidian-hover"
     >
       <div className="flex items-center gap-3">
         {badge && (
-          <span className="rounded bg-electric-blue/10 px-1.5 py-0.5 font-mono text-[13px] font-bold text-electric-blue">
+          <span className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[13px] font-bold text-white">
             {badge}
           </span>
         )}

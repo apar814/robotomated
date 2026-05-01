@@ -128,7 +128,7 @@ export default async function BestCategoryPage({ params }: Props) {
               <div key={robot.id} className="rounded-xl border border-border bg-navy-light p-6">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
                   {/* Rank badge */}
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-lighter font-mono text-lg font-bold text-blue">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-lighter font-mono text-lg font-bold text-white">
                     #{i + 1}
                   </div>
 
@@ -137,7 +137,7 @@ export default async function BestCategoryPage({ params }: Props) {
                       <div>
                         <p className="text-xs text-muted">{mfr?.name}</p>
                         <Link href={`/explore/${slug}/${robot.slug}`}>
-                          <h3 className="text-xl font-bold transition-colors hover:text-blue">{robot.name}</h3>
+                          <h3 className="text-xl font-bold transition-colors hover:text-white">{robot.name}</h3>
                         </Link>
                       </div>
                       {robot.robo_score != null && <RoboScoreRing score={robot.robo_score} size={80} />}
@@ -163,7 +163,7 @@ export default async function BestCategoryPage({ params }: Props) {
                       </span>
                       <Link
                         href={`/explore/${slug}/${robot.slug}`}
-                        className="rounded-lg bg-blue px-5 py-2 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
+                        className="rounded-lg bg-white px-5 py-2 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
                       >
                         Full Review
                       </Link>
@@ -193,7 +193,7 @@ export default async function BestCategoryPage({ params }: Props) {
               <Link
                 key={c.slug}
                 href={`/best/${c.slug}`}
-                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-white/20 hover:text-foreground"
               >
                 Best {c.name} Robots
               </Link>

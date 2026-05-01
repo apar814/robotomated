@@ -41,7 +41,7 @@ function UnsubscribeContent() {
       <div className="text-center">
         <h1 className="text-2xl font-bold">Invalid Link</h1>
         <p className="mt-2 text-muted">This unsubscribe link appears to be invalid.</p>
-        <Link href="/" className="mt-6 inline-block text-blue hover:underline">
+        <Link href="/" className="mt-6 inline-block text-white hover:underline">
           Go to Robotomated
         </Link>
       </div>
@@ -55,7 +55,7 @@ function UnsubscribeContent() {
         <p className="mt-2 text-muted">
           You&apos;ve been removed from the weekly digest. We&apos;re sorry to see you go.
         </p>
-        <Link href="/" className="mt-6 inline-block text-blue hover:underline">
+        <Link href="/" className="mt-6 inline-block text-white hover:underline">
           Back to Robotomated
         </Link>
       </div>
@@ -71,7 +71,7 @@ function UnsubscribeContent() {
       <button
         onClick={handleUnsubscribe}
         disabled={status === "loading"}
-        className="mt-6 rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="mt-6 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90 disabled:opacity-50"
       >
         {status === "loading" ? "Unsubscribing..." : "Yes, unsubscribe me"}
       </button>

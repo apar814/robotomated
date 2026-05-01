@@ -78,7 +78,7 @@ export function ActivityFeed() {
         <div className="grid gap-10 lg:grid-cols-3">
           {/* Most Posted Jobs This Week */}
           <div>
-            <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
               [ MOST POSTED THIS WEEK ]
             </p>
             <h2 className="mb-6 text-lg font-bold text-text-primary">
@@ -91,7 +91,7 @@ export function ActivityFeed() {
                   className="flex items-center justify-between rounded-lg border border-border bg-obsidian-surface px-4 py-3"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded bg-[#2563EB]/10 font-[family-name:var(--font-brand)] text-xs font-bold text-[#2563EB]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded bg-white/10 font-[family-name:var(--font-brand)] text-xs font-bold text-white/60">
                       {i + 1}
                     </span>
                     <span className="text-sm font-medium text-text-primary">
@@ -113,7 +113,7 @@ export function ActivityFeed() {
 
           {/* Activity Feed */}
           <div className="lg:col-span-2">
-            <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="mb-2 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
               [ MARKETPLACE ACTIVITY ]
             </p>
             <h2 className="mb-6 text-lg font-bold text-text-primary">
@@ -127,13 +127,13 @@ export function ActivityFeed() {
                     i < visibleCount - 1 ? "border-b border-border/50" : ""
                   }`}
                 >
-                  <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2563EB]/60" />
+                  <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40" />
                   <div className="min-w-0 flex-1">
                     <p className="text-sm text-text-secondary">
                       {item.message}
                     </p>
                     <div className="mt-1 flex items-center gap-2">
-                      <span className="rounded bg-[#2563EB]/10 px-1.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-[#2563EB]">
+                      <span className="rounded bg-white/10 px-1.5 py-0.5 font-[family-name:var(--font-ui)] text-[10px] font-semibold uppercase tracking-[0.08em] text-white/60">
                         {item.category}
                       </span>
                       <span className="text-[11px] text-text-ghost">
@@ -147,7 +147,7 @@ export function ActivityFeed() {
             {visibleCount < ACTIVITY_ITEMS.length && (
               <button
                 onClick={() => setVisibleCount(ACTIVITY_ITEMS.length)}
-                className="mt-4 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-[#2563EB] transition-colors hover:underline"
+                className="mt-4 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.1em] text-white/60 transition-colors hover:underline"
               >
                 Show More Activity
               </button>

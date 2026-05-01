@@ -52,7 +52,7 @@ export default async function ResultsPage({
           </p>
           <Link
             href="/certify"
-            className="mt-6 inline-block rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white hover:bg-blue/90"
+            className="hover-btn-bl mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
           >
             Back to Certifications
           </Link>
@@ -67,13 +67,13 @@ export default async function ResultsPage({
         {/* Pass: Celebration */}
         <section className="border-b border-border px-4 py-16">
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-green/10">
-              <span className="font-display text-4xl font-bold text-green">
+            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-white/10">
+              <span className="font-display text-4xl font-bold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>
                 {result.score}%
               </span>
             </div>
             <h1 className="mt-6 font-display text-3xl font-bold sm:text-4xl">
-              Certification <span className="text-green">Earned</span>
+              Certification <span className="font-semibold text-white">Earned</span>
             </h1>
             <p className="mt-4 text-muted">
               Congratulations. You have successfully passed the{" "}
@@ -91,7 +91,7 @@ export default async function ResultsPage({
                 <h2 className="font-display text-lg font-bold text-white">
                   Your Credential
                 </h2>
-                <span className="rounded-full bg-green/10 px-3 py-1 text-xs font-semibold text-green">
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold" style={{ color: "var(--status-success-text, #6B8AB8)" }}>
                   Active
                 </span>
               </div>
@@ -120,7 +120,7 @@ export default async function ResultsPage({
                 </div>
                 <div className="flex justify-between">
                   <dt className="text-muted">Verification URL</dt>
-                  <dd className="text-blue">
+                  <dd className="text-white">
                     <Link href={`/verify/${result.credentialId}`}>
                       robotomated.com/verify/{result.credentialId}
                     </Link>
@@ -147,7 +147,7 @@ export default async function ResultsPage({
                   <div className="mt-1.5 h-2 w-full rounded-full bg-border">
                     <div
                       className={`h-2 rounded-full ${
-                        cat.percentage >= 75 ? "bg-green" : "bg-red-400"
+                        cat.percentage >= 75 ? "bg-white/40" : "bg-white/20"
                       }`}
                       style={{ width: `${cat.percentage}%` }}
                     />
@@ -161,7 +161,7 @@ export default async function ResultsPage({
         {/* Actions */}
         <section className="px-4 py-12">
           <div className="mx-auto flex max-w-2xl flex-col gap-3 sm:flex-row">
-            <button className="flex-1 rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90">
+            <button className="hover-btn-bl flex-1 rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Download Certificate (PDF)
             </button>
             <button className="flex-1 rounded-lg bg-[#0077B5] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0077B5]/90">
@@ -184,8 +184,8 @@ export default async function ResultsPage({
     <div>
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-red-500/10">
-            <span className="font-display text-4xl font-bold text-red-400">
+          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-white/10">
+            <span className="font-display text-4xl font-bold text-muted">
               {result.score}%
             </span>
           </div>
@@ -216,7 +216,7 @@ export default async function ResultsPage({
                   <span className="text-muted">{cat.category}</span>
                   <span
                     className={`font-medium ${
-                      cat.percentage >= 75 ? "text-green" : "text-red-400"
+                      cat.percentage >= 75 ? "text-white" : "text-muted"
                     }`}
                   >
                     {cat.correct}/{cat.total} ({cat.percentage}%)
@@ -225,7 +225,7 @@ export default async function ResultsPage({
                 <div className="mt-1.5 h-2 w-full rounded-full bg-border">
                   <div
                     className={`h-2 rounded-full ${
-                      cat.percentage >= 75 ? "bg-green" : "bg-red-400"
+                      cat.percentage >= 75 ? "bg-white/40" : "bg-white/20"
                     }`}
                     style={{ width: `${cat.percentage}%` }}
                   />
@@ -247,7 +247,7 @@ export default async function ResultsPage({
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90"
+              className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Retake Exam
             </Link>

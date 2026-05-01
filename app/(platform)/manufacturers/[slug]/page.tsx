@@ -127,8 +127,8 @@ export default async function ManufacturerDetailPage({ params }: Props) {
               )}
               {minPrice != null && (
                 <p className="mt-2 text-sm text-muted">
-                  Price range: <span className="font-mono font-semibold text-blue-400">${minPrice.toLocaleString()}</span>
-                  {maxPrice != null && maxPrice !== minPrice && <span className="font-mono font-semibold text-blue-400"> – ${maxPrice.toLocaleString()}</span>}
+                  Price range: <span className="font-mono font-semibold text-white">${minPrice.toLocaleString()}</span>
+                  {maxPrice != null && maxPrice !== minPrice && <span className="font-mono font-semibold text-white"> – ${maxPrice.toLocaleString()}</span>}
                 </p>
               )}
             </div>
@@ -137,7 +137,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                 href={mfr.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex shrink-0 items-center gap-2 rounded-md bg-electric-blue-dim px-6 py-3 text-sm font-semibold text-electric-blue transition-colors hover:bg-electric-blue/20"
+                className="flex shrink-0 items-center gap-2 rounded-md bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Visit {mfr.name}
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -155,7 +155,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
           <div className="mx-auto max-w-6xl">
             <Link
               href={`/explore/${bestRobotCat}/${bestRobot.slug}`}
-              className="group flex flex-col gap-6 rounded-md border border-electric-blue/20 bg-gradient-to-r from-electric-blue/5 to-violet/5 p-6 transition-all hover:border-electric-blue/40 sm:flex-row sm:items-center"
+              className="group flex flex-col gap-6 rounded-md border border-white/20 bg-gradient-to-r from-white/[0.05] to-violet/5 p-6 transition-all hover:border-white/20 sm:flex-row sm:items-center"
             >
               <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-md">
                 {bestRobotImgs[0]?.url ? (
@@ -167,19 +167,19 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                 )}
               </div>
               <div className="flex-1">
-                <p className="font-mono text-[13px] uppercase tracking-widest text-electric-blue">
-                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-electric-blue" />Best from {mfr.name}
+                <p className="font-mono text-[13px] uppercase tracking-widest text-white">
+                  <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-white" />Best from {mfr.name}
                 </p>
-                <h2 className="mt-1 text-xl font-bold transition-colors group-hover:text-electric-blue">
+                <h2 className="mt-1 text-xl font-bold transition-colors group-hover:text-white">
                   {bestRobot.name}
                 </h2>
                 <p className="mt-1 text-sm text-muted">{bestRobot.description_short}</p>
                 <div className="mt-3 flex items-center gap-4">
                   {bestRobot.robo_score != null && <RoboScoreBadge score={bestRobot.robo_score} />}
                   {bestRobot.price_current != null && (
-                    <span className="font-mono text-sm font-bold text-blue-400">${bestRobot.price_current.toLocaleString()}</span>
+                    <span className="font-mono text-sm font-bold text-white">${bestRobot.price_current.toLocaleString()}</span>
                   )}
-                  <span className="ml-auto text-xs font-semibold text-electric-blue group-hover:underline">
+                  <span className="ml-auto text-xs font-semibold text-white group-hover:underline">
                     View Details &rarr;
                   </span>
                 </div>
@@ -192,7 +192,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
       {/* All Robots Grid */}
       <section className="px-4 py-12">
         <div className="mx-auto max-w-6xl">
-          <p className="mb-2 font-mono text-[13px] uppercase tracking-widest text-text-ghost"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-electric-blue" />Product Catalog</p>
+          <p className="mb-2 font-mono text-[13px] uppercase tracking-widest text-text-ghost"><span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-white" />Product Catalog</p>
           <h2 className="mb-6 text-xl font-bold">All {mfr.name} Robots</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {allRobots.map((robot) => {
@@ -210,11 +210,11 @@ export default async function ManufacturerDetailPage({ params }: Props) {
                     {cat && <span className="absolute left-3 top-3 rounded-full bg-obsidian/70 px-2 py-0.5 text-[13px] text-foreground/80 backdrop-blur-sm">{cat.name}</span>}
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold transition-colors group-hover:text-electric-blue">{robot.name}</h3>
+                    <h3 className="font-semibold transition-colors group-hover:text-white">{robot.name}</h3>
                     <p className="mt-1 line-clamp-2 text-xs text-muted/70">{robot.description_short}</p>
                     <div className="mt-3 flex items-center justify-between">
                       {robot.price_current != null ? (
-                        <span className="font-mono text-sm font-bold text-blue-400">${robot.price_current.toLocaleString()}</span>
+                        <span className="font-mono text-sm font-bold text-white">${robot.price_current.toLocaleString()}</span>
                       ) : (
                         <span className="text-xs text-orange">Request Quote</span>
                       )}

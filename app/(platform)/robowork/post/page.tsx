@@ -15,7 +15,7 @@ export default function PostJobPage() {
         {/* Header */}
         <Link
           href="/robowork"
-          className="mb-4 inline-block font-mono text-[13px] text-electric-blue transition-colors hover:underline"
+          className="mb-4 inline-block font-mono text-[13px] text-white transition-colors hover:underline"
         >
           &larr; RoboWork
         </Link>

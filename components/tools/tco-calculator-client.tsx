@@ -28,7 +28,7 @@ interface SelectedRobot {
   installationCost: number;
 }
 
-const COLORS = ["#2563EB", "#6366F1", "#60A5FA"];
+const COLORS = ["#D4D4D4", "#A3A3A3", "#737373"];
 
 export function TcoCalculatorClient() {
   // ─── Robot Search ───
@@ -236,11 +236,11 @@ export function TcoCalculatorClient() {
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => searchTerm.length >= 2 && setShowDropdown(true)}
             placeholder="Search robots by name..."
-            className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+            className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-border focus:outline-none"
             disabled={selectedRobots.length >= 3}
           />
           {searchLoading && (
-            <div className="absolute right-3 top-3 h-4 w-4 animate-spin rounded-full border-2 border-electric-blue border-t-transparent" />
+            <div className="absolute right-3 top-3 h-4 w-4 animate-spin rounded-full border-2 border-border border-t-transparent" />
           )}
           {showDropdown && robotOptions.length > 0 && (
             <div className="absolute left-0 top-full z-20 mt-1 max-h-48 w-full overflow-y-auto rounded-md border border-border bg-obsidian-elevated shadow-xl">
@@ -257,7 +257,7 @@ export function TcoCalculatorClient() {
                     </span>
                   </span>
                   {robot.price_current != null && (
-                    <span className="font-mono text-xs text-blue-400">
+                    <span className="font-mono text-xs text-white">
                       ${robot.price_current.toLocaleString()}
                     </span>
                   )}
@@ -374,7 +374,7 @@ export function TcoCalculatorClient() {
               className={cn(
                 "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
                 financeMode === "purchase"
-                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  ? "border-white/30 bg-white/10 text-white"
                   : "border-border text-text-tertiary hover:text-text-secondary",
               )}
             >
@@ -385,7 +385,7 @@ export function TcoCalculatorClient() {
               className={cn(
                 "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
                 financeMode === "lease"
-                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  ? "border-white/30 bg-white/10 text-white"
                   : "border-border text-text-tertiary hover:text-text-secondary",
               )}
             >
@@ -470,7 +470,7 @@ export function TcoCalculatorClient() {
                 <tr className="border-b border-border/50">
                   <td className="py-2 pr-4 text-text-secondary">
                     <span className="flex items-center gap-2">
-                      <span className="inline-block h-2 w-2 rounded-full bg-blue-600" />
+                      <span className="inline-block h-2 w-2 rounded-full bg-white/50" />
                       Human Labor
                     </span>
                   </td>
@@ -506,7 +506,7 @@ export function TcoCalculatorClient() {
                           key={y}
                           className={cn(
                             "px-3 py-2 text-right font-mono text-sm",
-                            saving > 0 ? "text-blue-400" : "text-magenta",
+                            saving > 0 ? "text-white" : "text-magenta",
                           )}
                         >
                           {saving > 0 ? "+" : ""}${saving.toLocaleString()}
@@ -516,7 +516,7 @@ export function TcoCalculatorClient() {
                     <td
                       className={cn(
                         "px-3 py-2 text-right font-mono font-bold",
-                        rc.fiveYearSavings > 0 ? "text-blue-400" : "text-magenta",
+                        rc.fiveYearSavings > 0 ? "text-white" : "text-magenta",
                       )}
                     >
                       {rc.fiveYearSavings > 0 ? "+" : ""}$
@@ -579,9 +579,9 @@ export function TcoCalculatorClient() {
                   type="monotone"
                   dataKey="human"
                   name="Human Labor"
-                  stroke="#60A5FA"
+                  stroke="#D4D4D4"
                   strokeWidth={2}
-                  dot={{ fill: "#60A5FA", r: 3 }}
+                  dot={{ fill: "#D4D4D4", r: 3 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -599,7 +599,7 @@ export function TcoCalculatorClient() {
               </span>
             ))}
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-blue-600" />
+              <span className="h-2 w-2 rounded-full bg-white/50" />
               Human Labor
             </span>
           </div>
@@ -618,7 +618,7 @@ export function TcoCalculatorClient() {
                   <p className="font-mono text-[13px] uppercase tracking-wider text-text-ghost">
                     Payback Period
                   </p>
-                  <p className="mt-1 font-mono text-2xl font-bold text-blue-400">
+                  <p className="mt-1 font-mono text-2xl font-bold text-white">
                     {rc.breakEvenMonths != null && rc.breakEvenMonths <= 60
                       ? `${rc.breakEvenMonths}mo`
                       : "> 5yr"}
@@ -631,7 +631,7 @@ export function TcoCalculatorClient() {
                   <p
                     className={cn(
                       "mt-1 font-mono text-2xl font-bold",
-                      rc.roi > 0 ? "text-blue-400" : "text-magenta",
+                      rc.roi > 0 ? "text-white" : "text-magenta",
                     )}
                   >
                     {rc.roi}%
@@ -653,7 +653,7 @@ export function TcoCalculatorClient() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={shareAnalysis}
-              className="rounded-md border border-border px-6 py-2.5 text-sm font-medium text-text-tertiary transition-colors hover:border-electric-blue/30 hover:text-electric-blue"
+              className="rounded-md border border-border px-6 py-2.5 text-sm font-medium text-text-tertiary transition-colors hover:border-border/30 hover:text-white"
             >
               Share this analysis
             </button>
@@ -678,7 +678,7 @@ export function TcoCalculatorClient() {
           Get a detailed TCO report with financing scenarios and ROI projections.
         </p>
         {emailStatus === "success" ? (
-          <p className="mt-4 font-mono text-sm text-blue-400">Report sent to your inbox.</p>
+          <p className="mt-4 font-mono text-sm text-white">Report sent to your inbox.</p>
         ) : (
           <form
             onSubmit={handleEmailSubmit}
@@ -689,12 +689,12 @@ export function TcoCalculatorClient() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
-              className="w-64 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+              className="w-64 rounded-md border border-border bg-obsidian px-3 py-2 font-mono text-sm text-text-primary placeholder:text-text-ghost focus:border-border focus:outline-none"
             />
             <button
               type="submit"
               disabled={emailStatus === "loading"}
-              className="rounded-md bg-electric-blue px-4 py-2 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="rounded-md bg-white px-4 py-2 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               {emailStatus === "loading" ? "..." : "Export"}
             </button>
@@ -754,7 +754,7 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-electric-blue"
+        className="w-full accent-white"
       />
     </div>
   );
@@ -777,7 +777,7 @@ function NumberInput({
       <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
         {label}
       </label>
-      <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2 focus-within:border-electric-blue">
+      <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2 focus-within:border-border">
         {prefix && (
           <span className="mr-1 font-mono text-sm text-text-tertiary">{prefix}</span>
         )}

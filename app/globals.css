@@ -920,3 +920,51 @@ html {
   box-shadow: none !important;
   backdrop-filter: none;
 }
+
+/* ═══════════════════════════════════════
+   HOVER TREATMENT — DESIGN.md "backlit" language
+   Functional glow on hover only. No colored glows.
+   ═══════════════════════════════════════ */
+.hover-card-bl {
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.hover-card-bl:hover {
+  border-color: rgba(255,255,255,0.30);
+  box-shadow: 0 0 32px rgba(255,255,255,0.08), 0 0 8px rgba(255,255,255,0.04);
+}
+
+.hover-btn-bl {
+  transition: border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+.hover-btn-bl:hover {
+  border-color: #FFF;
+  color: #FFF;
+  box-shadow: 0 0 16px rgba(255,255,255,0.12);
+}
+
+.hover-link-bl {
+  position: relative;
+  display: inline-block;
+}
+.hover-link-bl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: #FFF;
+  transition: width 200ms ease;
+}
+.hover-link-bl:hover::after {
+  width: 100%;
+}
+
+/* Section marker — per DESIGN.md */
+.section-marker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--theme-text-muted);
+}

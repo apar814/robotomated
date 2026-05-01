@@ -68,7 +68,7 @@ export function PartnerContactForm() {
             name="name"
             type="text"
             required
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
             placeholder="Your full name"
           />
         </label>
@@ -78,7 +78,7 @@ export function PartnerContactForm() {
             name="email"
             type="email"
             required
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
             placeholder="you@company.com"
           />
         </label>
@@ -88,7 +88,7 @@ export function PartnerContactForm() {
             name="company"
             type="text"
             required
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
             placeholder="Your company name"
           />
         </label>
@@ -97,7 +97,7 @@ export function PartnerContactForm() {
           <select
             name="tier"
             required
-            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
           >
             <option value="">Select a tier</option>
             {tiers.map((t) => (
@@ -111,7 +111,7 @@ export function PartnerContactForm() {
         <textarea
           name="message"
           rows={4}
-          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+          className="w-full rounded-lg border border-white/[0.12] bg-white/[0.05] px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/30"
           placeholder="Tell us about your partnership goals..."
         />
       </label>

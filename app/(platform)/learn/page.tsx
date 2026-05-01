@@ -24,7 +24,7 @@ export default function LearnHub() {
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Learn", href: "/learn" }]} />
           <h1 className="mt-6 text-3xl font-bold sm:text-4xl">
-            Robo<span className="text-blue">Learn</span>
+            Robo<span className="text-white">Learn</span>
           </h1>
           <p className="mt-3 max-w-2xl text-muted">
             Everything you need to understand robots — from what they are to how to deploy them.
@@ -39,7 +39,7 @@ export default function LearnHub() {
           <div className="flex flex-wrap gap-2">
             <Link
               href="/learn"
-              className="rounded-full bg-blue/10 px-4 py-2 text-sm font-medium text-blue"
+              className="rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-white"
             >
               All
             </Link>
@@ -47,7 +47,7 @@ export default function LearnHub() {
               <Link
                 key={cat.slug}
                 href={`/learn/${cat.slug}`}
-                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-white/20 hover:text-foreground"
               >
                 {cat.name} ({cat.count})
               </Link>
@@ -99,7 +99,7 @@ export default function LearnHub() {
           </p>
           <Link
             href="/explore"
-            className="mt-6 inline-block rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
+            className="mt-6 inline-block rounded-lg bg-white px-8 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90"
           >
             Explore Robots
           </Link>

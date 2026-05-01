@@ -68,7 +68,7 @@ export function VideoEmbed({ url, title, caption, posterUrl, className = "" }: V
         <div>
           <p className="text-sm font-medium text-foreground">{title || "Watch demo video"}</p>
           {caption && <p className="text-xs text-neutral-500">{caption}</p>}
-          <a href={url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-xs text-blue hover:underline">
+          <a href={url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-xs text-white hover:underline">
             Watch on manufacturer site →
           </a>
         </div>

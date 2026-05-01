@@ -347,7 +347,7 @@ export default function ExamInterface({
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--theme-border)] border-t-[var(--theme-blue)]" />
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-[var(--theme-border)] border-t-white/50" />
           <p className="mt-4 text-sm text-[var(--theme-muted)]">
             Loading exam...
           </p>
@@ -363,14 +363,14 @@ export default function ExamInterface({
     return (
       <div className="flex min-h-screen items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
-          <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-8">
+          <div className="rounded-xl border border-border bg-white/5 p-8">
             <h2 className="font-display text-xl font-bold text-white">
               Exam Error
             </h2>
-            <p className="mt-2 text-sm text-red-400">{error}</p>
+            <p className="mt-2 text-sm text-muted">{error}</p>
             <a
               href="/certify"
-              className="mt-6 inline-block rounded-lg bg-[var(--theme-blue)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
+              className="mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Return to Certifications
             </a>
@@ -387,8 +387,8 @@ export default function ExamInterface({
     return (
       <div className="flex min-h-screen items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
-          <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-8">
-            <h2 className="font-display text-xl font-bold text-red-400">
+          <div className="rounded-xl border border-border bg-white/5 p-8">
+            <h2 className="font-display text-xl font-bold text-white">
               Exam Session Flagged
             </h2>
             <p className="mt-2 text-sm text-[var(--theme-muted)]">
@@ -436,8 +436,8 @@ export default function ExamInterface({
                     }}
                     className={`flex h-10 w-full items-center justify-center rounded-lg border text-sm font-medium transition-colors ${
                       isAnswered
-                        ? "border-[var(--theme-blue)]/30 bg-[var(--theme-blue)]/10 text-[var(--theme-blue)]"
-                        : "border-[var(--theme-border)] text-[var(--theme-muted)] hover:border-[var(--theme-blue)]/30"
+                        ? "border-white/40/30 bg-white/10 text-white"
+                        : "border-[var(--theme-border)] text-[var(--theme-muted)] hover:border-white/40/30"
                     }`}
                   >
                     {idx + 1}
@@ -449,7 +449,7 @@ export default function ExamInterface({
             <div className="mt-4 flex items-center justify-between text-sm text-[var(--theme-muted)]">
               <span>Time remaining: {formatTime(timeRemaining)}</span>
               {tabSwitchCount > 0 && (
-                <span className="text-yellow-400">
+                <span className="text-muted">
                   {tabSwitchCount} tab switch
                   {tabSwitchCount === 1 ? "" : "es"}
                 </span>
@@ -465,7 +465,7 @@ export default function ExamInterface({
               </button>
               <button
                 onClick={() => setShowConfirm(true)}
-                className="flex-1 rounded-lg bg-[var(--theme-blue)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
+                className="flex-1 rounded-lg bg-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
               >
                 Submit Exam
               </button>
@@ -493,7 +493,7 @@ export default function ExamInterface({
                   <button
                     onClick={handleSubmitExam}
                     disabled={submitting}
-                    className="flex-1 rounded-lg bg-[var(--theme-blue)] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:opacity-90 disabled:opacity-50"
+                    className="flex-1 rounded-lg bg-white/20 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:opacity-90 disabled:opacity-50"
                   >
                     {submitting ? "Submitting..." : "Confirm Submit"}
                   </button>
@@ -514,31 +514,31 @@ export default function ExamInterface({
   const progressPercent = ((currentIndex + 1) / totalQuestions) * 100;
 
   const questionTypeBadge: Record<string, { label: string; color: string }> = {
-    multiple_choice: { label: "Multiple Choice", color: "bg-blue/10 text-blue" },
+    multiple_choice: { label: "Multiple Choice", color: "bg-white/10 text-white" },
     multi_select: {
       label: "Multi-Select",
-      color: "bg-violet/10 text-violet",
+      color: "bg-white/10 text-white",
     },
-    scenario: { label: "Scenario", color: "bg-green/10 text-green" },
+    scenario: { label: "Scenario", color: "bg-white/10 text-white" },
     fault_diagnosis: {
       label: "Fault Diagnosis",
-      color: "bg-red-500/10 text-red-400",
+      color: "bg-white/10 text-white",
     },
     code_review: {
       label: "Code Review",
-      color: "bg-amber-500/10 text-amber-400",
+      color: "bg-white/10 text-white",
     },
     calculation: {
       label: "Calculation",
-      color: "bg-cyan-500/10 text-cyan-400",
+      color: "bg-white/10 text-white",
     },
     sequencing: {
       label: "Sequencing",
-      color: "bg-purple-500/10 text-purple-400",
+      color: "bg-white/10 text-white",
     },
     true_false_justify: {
       label: "True/False + Justify",
-      color: "bg-orange-500/10 text-orange-400",
+      color: "bg-white/10 text-white",
     },
   };
 
@@ -569,9 +569,9 @@ export default function ExamInterface({
             <div
               className={`font-mono text-sm font-bold ${
                 isTimeCritical
-                  ? "animate-pulse text-red-400"
+                  ? "animate-pulse text-white"
                   : isTimeLow
-                    ? "text-yellow-400"
+                    ? "text-muted"
                     : "text-white"
               }`}
             >
@@ -581,7 +581,7 @@ export default function ExamInterface({
         </div>
         <div className="h-1 w-full bg-[var(--theme-border)]">
           <div
-            className="h-1 bg-[var(--theme-blue)] transition-all duration-300"
+            className="h-1 bg-white/20 transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
@@ -589,7 +589,7 @@ export default function ExamInterface({
 
       {/* ── Anti-cheat warning ── */}
       {tabSwitchCount > 0 && tabSwitchCount < 5 && (
-        <div className="border-b border-yellow-500/20 bg-yellow-500/5 px-4 py-2 text-center text-xs text-yellow-400">
+        <div className="border-b border-border bg-white/5 px-4 py-2 text-center text-xs text-muted">
           Warning: {tabSwitchCount} tab switch
           {tabSwitchCount === 1 ? "" : "es"} detected. Excessive switching
           may invalidate your exam. ({5 - tabSwitchCount} remaining before
@@ -620,7 +620,7 @@ export default function ExamInterface({
         {/* Scenario context */}
         {currentQuestion.scenario_context && (
           <div className="mb-6 rounded-lg border border-[var(--theme-border)] bg-[#0C0C0C] p-4 text-sm leading-relaxed text-[var(--theme-muted)]">
-            <p className="mb-1 text-[13px] font-bold uppercase tracking-wider text-[var(--theme-blue)]">
+            <p className="mb-1 text-[13px] font-bold uppercase tracking-wider text-white">
               Scenario
             </p>
             <p className="whitespace-pre-line">
@@ -632,7 +632,7 @@ export default function ExamInterface({
         {/* Code snippet */}
         {currentQuestion.code_snippet && (
           <div className="mb-6 overflow-x-auto rounded-lg border border-[var(--theme-border)] bg-[#0C0C0C] p-4">
-            <p className="mb-2 text-[13px] font-bold uppercase tracking-wider text-amber-400">
+            <p className="mb-2 text-[13px] font-bold uppercase tracking-wider text-white">
               Code
             </p>
             <pre className="font-mono text-sm leading-relaxed text-[var(--theme-muted)]">
@@ -665,14 +665,14 @@ export default function ExamInterface({
                     onClick={() => handleSelectSingle(idx)}
                     className={`flex w-full items-start gap-4 rounded-xl border px-5 py-4 text-left text-sm transition-all ${
                       isSelected
-                        ? "border-[var(--theme-blue)] bg-[var(--theme-blue)]/10 text-white"
-                        : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-[var(--theme-blue)]/30 hover:text-white"
+                        ? "border-white/40 bg-white/10 text-white"
+                        : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-white/40/30 hover:text-white"
                     }`}
                   >
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-bold ${
                         isSelected
-                          ? "border-[var(--theme-blue)] bg-[var(--theme-blue)] text-white"
+                          ? "border-white/40 bg-white/20 text-white"
                           : "border-[var(--theme-border)]"
                       }`}
                     >
@@ -690,7 +690,7 @@ export default function ExamInterface({
             currentQuestion.question_type === "code_review") && (
             <div className="space-y-3">
               {currentQuestion.select_count && (
-                <p className="mb-2 text-xs font-semibold text-violet">
+                <p className="mb-2 text-xs font-semibold text-white">
                   Select {currentQuestion.select_count} answers
                 </p>
               )}
@@ -708,14 +708,14 @@ export default function ExamInterface({
                     onClick={() => handleToggleMulti(idx)}
                     className={`flex w-full items-start gap-4 rounded-xl border px-5 py-4 text-left text-sm transition-all ${
                       isSelected
-                        ? "border-violet bg-violet/10 text-white"
-                        : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-violet/30 hover:text-white"
+                        ? "border-white/40 bg-white/10 text-white"
+                        : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-white/30 hover:text-white"
                     }`}
                   >
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md border text-xs font-bold ${
                         isSelected
-                          ? "border-violet bg-violet text-white"
+                          ? "border-white/40 bg-white/20 text-white"
                           : "border-[var(--theme-border)]"
                       }`}
                     >
@@ -731,7 +731,7 @@ export default function ExamInterface({
           {/* SEQUENCING */}
           {currentQuestion.question_type === "sequencing" && (
             <div className="space-y-2">
-              <p className="mb-2 text-xs font-semibold text-purple-400">
+              <p className="mb-2 text-xs font-semibold text-white">
                 Arrange in correct order (use arrows to reorder)
               </p>
               {sequenceOrder.map((optIdx, posIdx) => {
@@ -743,7 +743,7 @@ export default function ExamInterface({
                     key={optIdx}
                     className="flex items-center gap-3 rounded-xl border border-[var(--theme-border)] bg-[var(--theme-card)] px-4 py-3"
                   >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-purple-500/30 bg-purple-500/10 font-mono text-xs font-bold text-purple-400">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border bg-white/10 font-mono text-xs font-bold text-white">
                       {posIdx + 1}
                     </span>
                     <span className="flex-1 text-sm text-[var(--theme-muted)]">
@@ -781,14 +781,14 @@ export default function ExamInterface({
           {currentQuestion.question_type === "calculation" && (
             <div className="space-y-4">
               <div>
-                <p className="mb-2 text-xs font-semibold text-cyan-400">
+                <p className="mb-2 text-xs font-semibold text-white">
                   Show your work and enter your final answer
                 </p>
                 <textarea
                   value={calcAnswer}
                   onChange={(e) => handleCalcChange(e.target.value)}
                   placeholder="Show your calculation reasoning and final answer here..."
-                  className="w-full rounded-xl border border-[var(--theme-border)] bg-[var(--theme-card)] p-4 font-mono text-sm text-white placeholder:text-[var(--theme-muted)] focus:border-cyan-500/50 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                  className="w-full rounded-xl border border-[var(--theme-border)] bg-[var(--theme-card)] p-4 font-mono text-sm text-white placeholder:text-[var(--theme-muted)] focus:border-white/50 focus:outline-none focus:ring-1 focus:ring-white/20"
                   rows={6}
                 />
               </div>
@@ -809,14 +809,14 @@ export default function ExamInterface({
                         onClick={() => handleSelectSingle(idx)}
                         className={`flex w-full items-start gap-4 rounded-xl border px-5 py-4 text-left text-sm transition-all ${
                           isSelected
-                            ? "border-cyan-500 bg-cyan-500/10 text-white"
-                            : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-cyan-500/30 hover:text-white"
+                            ? "border-white/40 bg-white/10 text-white"
+                            : "border-[var(--theme-border)] bg-[var(--theme-card)] text-[var(--theme-muted)] hover:border-white/30 hover:text-white"
                         }`}
                       >
                         <span
                           className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-bold ${
                             isSelected
-                              ? "border-cyan-500 bg-cyan-500 text-white"
+                              ? "border-white/40 bg-white/20 text-white"
                               : "border-[var(--theme-border)]"
                           }`}
                         >
@@ -848,7 +848,7 @@ export default function ExamInterface({
 
           <button
             onClick={handleNext}
-            className="rounded-lg bg-[var(--theme-blue)] px-8 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
+            className="rounded-lg bg-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
           >
             {currentIndex < totalQuestions - 1
               ? "Next Question"

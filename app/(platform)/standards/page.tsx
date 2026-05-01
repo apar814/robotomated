@@ -209,7 +209,7 @@ export default function StandardsPage() {
               { name: "Standards", href: "/standards" },
             ]}
           />
-          <p className="mt-8 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
             [ SAFETY STANDARDS ]
           </p>
           <h1 className="mt-4 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
@@ -245,7 +245,7 @@ export default function StandardsPage() {
       {/* ── TIMELINE ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-4xl">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ TIMELINE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white text-center">[ TIMELINE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Collaborative Standards Timeline
           </h2>
@@ -382,7 +382,7 @@ export default function StandardsPage() {
       {/* ── ENTERPRISE BUYER GUIDANCE ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-6xl">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB] text-center">[ BUYER GUIDANCE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white text-center">[ BUYER GUIDANCE ]</p>
           <h2 className="mt-3 text-center font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             What Certifications Do You Need?
           </h2>
@@ -425,7 +425,7 @@ export default function StandardsPage() {
       {/* ── EMAIL ALERT CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-16 pt-8">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[var(--theme-blue,#00C2FF)]/20 bg-[var(--theme-blue,#00C2FF)]/[0.03] p-10 text-center backdrop-blur-sm">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ ALERTS ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ ALERTS ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
             Get Notified When Standards Change
           </h2>
@@ -456,7 +456,7 @@ export default function StandardsPage() {
       {/* ── EXPLORE CTA ── */}
       <section className="bg-[var(--theme-navy,#0A0F1E)] px-4 pb-24 pt-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ EXPLORE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ EXPLORE ]</p>
           <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
             Find Certified Robots
           </h2>

@@ -391,7 +391,7 @@ export default async function HomePage() {
           ══════════════════════════════════════════ */}
       <section className="px-6 py-28" style={{ background: "var(--layer-0, var(--theme-bg))" }}>
         <div className="mx-auto max-w-xl text-center">
-          <span className="font-[family-name:var(--font-brand)] text-[10px] tracking-[0.2em] text-[#0EA5E9]">
+          <span className="font-[family-name:var(--font-brand)] text-[10px] tracking-[0.2em] text-white">
             [ NEWSLETTER ]
           </span>
           <h2 className="mt-4 font-[family-name:var(--font-ui)] text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>

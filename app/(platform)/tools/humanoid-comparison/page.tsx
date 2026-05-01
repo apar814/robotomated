@@ -126,15 +126,15 @@ function AvailabilityBadge({ status }: { status: string }) {
   let colorClasses: string;
   switch (status) {
     case "Available":
-      colorClasses = "bg-blue-600/15 text-blue-400 border-blue-600/30";
+      colorClasses = "bg-white/5 text-white border-white/20";
       break;
     case "Pre-order":
       colorClasses =
-        "bg-electric-blue/15 text-electric-blue border-electric-blue/30";
+        "bg-white/5 text-white border-white/20";
       break;
     case "Limited":
       colorClasses =
-        "bg-electric-blue/10 text-electric-blue border-electric-blue/20";
+        "bg-white/5 text-white border-white/20";
       break;
     case "Prototype":
       colorClasses =
@@ -162,7 +162,7 @@ function OriginFlag({ origin }: { origin: "US" | "China" }) {
     <span
       className={`inline-flex rounded px-1.5 py-0.5 text-xs font-semibold ${
         origin === "US"
-          ? "bg-electric-blue/15 text-electric-blue"
+          ? "bg-white/5 text-white"
           : "bg-red-500/15 text-red-400"
       }`}
     >
@@ -212,8 +212,8 @@ export default function HumanoidComparisonPage() {
       {/* Independence Disclaimer */}
       <section className="px-4 py-8">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-lg border border-electric-blue/30 bg-electric-blue/5 p-5">
-            <p className="text-sm font-semibold text-electric-blue">
+          <div className="rounded-lg border border-white/20 bg-white/5 p-5">
+            <p className="text-sm font-semibold text-white">
               Independence Disclaimer
             </p>
             <p className="mt-1 text-sm leading-relaxed text-text-secondary">
@@ -362,9 +362,9 @@ export default function HumanoidComparisonPage() {
                 <div
                   className={`inline-flex rounded px-2 py-1 text-xs font-semibold ${
                     card.accent === "lime"
-                      ? "bg-blue-600/15 text-blue-400"
+                      ? "bg-white/5 text-white"
                       : card.accent === "electric-blue"
-                        ? "bg-electric-blue/15 text-electric-blue"
+                        ? "bg-white/5 text-white"
                         : "bg-magenta/15 text-magenta"
                   }`}
                 >
@@ -392,13 +392,13 @@ export default function HumanoidComparisonPage() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/advisor"
-              className="inline-flex items-center rounded-lg bg-electric-blue px-6 py-3 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90"
+              className="inline-flex items-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-obsidian transition-opacity hover:opacity-90"
             >
               Talk to AI Advisor
             </Link>
             <Link
               href="/find-my-robot"
-              className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="inline-flex items-center rounded-lg border border-border px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-white/20 hover:text-white"
             >
               Find My Robot
             </Link>

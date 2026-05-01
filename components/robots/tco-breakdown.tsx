@@ -23,14 +23,14 @@ function formatCurrency(value: number): string {
 const trainingLabels: Record<string, { label: string; color: string }> = {
   none: { label: "No training needed", color: "text-green" },
   basic: { label: "Basic (1-2 days)", color: "text-green" },
-  intermediate: { label: "Intermediate (1-2 weeks)", color: "text-blue" },
+  intermediate: { label: "Intermediate (1-2 weeks)", color: "text-white" },
   advanced: { label: "Advanced (2-4 weeks)", color: "text-orange" },
   specialist: { label: "Specialist (months)", color: "text-orange" },
 };
 
 const partsLabels: Record<string, { label: string; color: string }> = {
   excellent: { label: "Excellent", color: "text-green" },
-  good: { label: "Good", color: "text-blue" },
+  good: { label: "Good", color: "text-white" },
   limited: { label: "Limited", color: "text-orange" },
   poor: { label: "Poor", color: "text-orange" },
 };
@@ -59,8 +59,8 @@ export function TcoBreakdown({
   const fiveYearTco = upfront + leaseTotal + integrationTotal + trainingTotal + maintenanceTotal + electricityTotal;
 
   const segments = [
-    { label: isLease ? "Lease/Subscription" : "Purchase Price", value: isLease ? leaseTotal : upfront, color: "bg-blue" },
-    { label: "Integration & Setup", value: integrationTotal, color: "bg-violet" },
+    { label: isLease ? "Lease/Subscription" : "Purchase Price", value: isLease ? leaseTotal : upfront, color: "bg-white/60" },
+    { label: "Integration & Setup", value: integrationTotal, color: "bg-white/40" },
     { label: "Training", value: trainingTotal, color: "bg-cyan-glow" },
     { label: "Maintenance (5yr)", value: maintenanceTotal, color: "bg-orange" },
     { label: "Electricity (5yr)", value: electricityTotal, color: "bg-green" },
@@ -124,8 +124,8 @@ export function TcoBreakdown({
 
       {/* Financing note */}
       {financingNotes && (
-        <div className="mt-4 rounded-lg border border-blue/10 bg-blue/5 p-3">
-          <p className="text-xs font-medium text-blue">Financing Available</p>
+        <div className="mt-4 rounded-lg border border-white/10 bg-white/5 p-3">
+          <p className="text-xs font-medium text-white">Financing Available</p>
           <p className="mt-0.5 text-[11px] text-muted">{financingNotes}</p>
         </div>
       )}

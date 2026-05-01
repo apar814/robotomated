@@ -139,7 +139,7 @@ function StarRating({ rating, size = "sm" }: { rating: number; size?: "sm" | "lg
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={cn(dim, star <= Math.round(rating) ? "text-[#60A5FA]" : "text-white/28")}
+          className={cn(dim, star <= Math.round(rating) ? "text-white" : "text-white/28")}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -204,7 +204,7 @@ function AvailabilityBadge({ status }: { status: string }) {
     available: { label: "Available Now", color: "bg-[#00E5A0]/10 text-[#00E5A0] border-[#00E5A0]/20" },
     busy: { label: "Currently Busy", color: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
     unavailable: { label: "Unavailable", color: "bg-red-500/10 text-red-400 border-red-500/20" },
-    by_appointment: { label: "By Appointment", color: "bg-[#2563EB]/10 text-[#2563EB] border-[#2563EB]/20" },
+    by_appointment: { label: "By Appointment", color: "bg-white/10 text-white border-white/20" },
   };
   const c = config[status] || config.available;
   return (
@@ -431,7 +431,7 @@ export default async function ProviderProfilePage({ params }: Props) {
               )}
               <Link
                 href={`mailto:?subject=RoboWork inquiry: ${provider.company_name}`}
-                className="rounded-lg bg-blue px-6 py-3 font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-wider text-white transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+                className="rounded-lg bg-white/5 border border-white/20 px-6 py-3 font-[family-name:var(--font-mono)] text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/10"
               >
                 CONTACT PROVIDER
               </Link>
@@ -454,7 +454,7 @@ export default async function ProviderProfilePage({ params }: Props) {
               {provider.specializations.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {provider.specializations.map((s) => (
-                    <span key={s} className="rounded-full bg-blue/10 px-3 py-1 text-xs font-medium text-blue">
+                    <span key={s} className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-white">
                       {s.charAt(0).toUpperCase() + s.slice(1)}
                     </span>
                   ))}
@@ -477,7 +477,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           cert.certification_level === 4 ? "bg-amber-500/10 text-amber-400" :
                           cert.certification_level === 3 ? "bg-violet/10 text-violet" :
                           cert.certification_level === 2 ? "bg-green/10 text-green" :
-                          "bg-blue/10 text-blue"
+                          "bg-white/5 text-white"
                         )}>
                           L{cert.certification_level}
                         </span>
@@ -498,7 +498,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           </svg>
                         )}
                         {cert.credential_id && (
-                          <Link href={`/verify/${cert.credential_id}`} className="text-[13px] text-blue hover:underline">
+                          <Link href={`/verify/${cert.credential_id}`} className="text-[13px] text-white hover:underline">
                             Verify
                           </Link>
                         )}
@@ -588,7 +588,7 @@ export default async function ProviderProfilePage({ params }: Props) {
               ) : (
                 <div className="mt-4 grid gap-4 sm:grid-cols-2">
                   {allRobots.map((robot) => (
-                    <div key={robot.id} className="rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-blue/20">
+                    <div key={robot.id} className="rounded-xl border border-border bg-[#0A0A0A] p-5 transition-all hover:border-white/20">
                       <div className="flex items-start justify-between">
                         <div>
                           <h3 className="text-sm font-semibold text-white">{robot.custom_name || "Unnamed Robot"}</h3>
@@ -619,7 +619,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                         {robot.operator_included && <span className="rounded-full bg-violet/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-violet">OPERATOR INCLUDED</span>}
                         {robot.remote_capable && <span className="rounded-full bg-[#14B8A6]/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[13px] tracking-wider text-[#14B8A6]">REMOTE CAPABLE</span>}
                       </div>
-                      <button className="mt-4 w-full rounded-lg border border-[#60A5FA]/30 bg-[#60A5FA]/5 py-2 text-xs font-medium text-[#60A5FA] transition-colors hover:bg-[#60A5FA]/10">
+                      <button className="mt-4 w-full rounded-lg border border-white/20 bg-white/5 py-2 text-xs font-medium text-white transition-colors hover:bg-white/10">
                         Request Booking
                       </button>
                     </div>
@@ -638,7 +638,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                       <div className="flex items-start justify-between">
                         <h3 className="font-display text-base font-bold text-white">{cs.title}</h3>
                         {cs.client_industry && (
-                          <span className="rounded-full bg-blue/10 px-2.5 py-0.5 text-[13px] text-blue">{cs.client_industry}</span>
+                          <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-[13px] text-white">{cs.client_industry}</span>
                         )}
                       </div>
                       <p className="mt-2 text-sm text-muted">{cs.summary}</p>
@@ -648,7 +648,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           <p className="mt-1 text-xs text-muted">{cs.challenge}</p>
                         </div>
                         <div className="rounded-lg border border-border/50 bg-[#0C0C0C] p-3">
-                          <p className="text-[13px] font-bold uppercase tracking-wider text-blue">Solution</p>
+                          <p className="text-[13px] font-bold uppercase tracking-wider text-white">Solution</p>
                           <p className="mt-1 text-xs text-muted">{cs.solution}</p>
                         </div>
                         <div className="rounded-lg border border-border/50 bg-[#0C0C0C] p-3">
@@ -719,7 +719,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                         </div>
                         <div className="flex items-center gap-2">
                           {review.verified_job && (
-                            <span className="rounded-full bg-blue/10 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[8px] tracking-wider text-blue">
+                            <span className="rounded-full bg-white/5 px-2 py-0.5 font-[family-name:var(--font-mono)] text-[8px] tracking-wider text-white">
                               VERIFIED JOB
                             </span>
                           )}
@@ -750,7 +750,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                           <span className="rounded-full bg-[#00E5A0]/10 px-2 py-0.5 text-[13px] text-[#00E5A0]">On Time</span>
                         )}
                         {review.uptime_achieved != null && (
-                          <span className="rounded-full bg-blue/10 px-2 py-0.5 text-[13px] text-blue">{review.uptime_achieved}% uptime</span>
+                          <span className="rounded-full bg-white/5 px-2 py-0.5 text-[13px] text-white">{review.uptime_achieved}% uptime</span>
                         )}
                       </div>
 
@@ -775,7 +775,7 @@ export default async function ProviderProfilePage({ params }: Props) {
             <div className="rounded-xl border border-border bg-[#0A0A0A] p-5">
               <h3 className="font-[family-name:var(--font-mono)] text-[13px] tracking-widest uppercase text-muted">Verification</h3>
               <div className="mt-3 space-y-2">
-                <div className={cn("flex items-center gap-2 text-xs", provider.verified ? "text-blue" : "text-muted")}>
+                <div className={cn("flex items-center gap-2 text-xs", provider.verified ? "text-white" : "text-muted")}>
                   <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
                   {provider.verified ? "Identity Verified" : "Identity Not Verified"}
                 </div>
@@ -847,14 +847,14 @@ export default async function ProviderProfilePage({ params }: Props) {
             )}
 
             {/* Contact */}
-            <div className="rounded-xl border border-blue/20 bg-blue/5 p-5 text-center">
+            <div className="rounded-xl border border-white/20 bg-white/5 p-5 text-center">
               <h3 className="font-display text-base font-bold text-white">Need a robot?</h3>
               <p className="mt-2 text-xs text-muted">
                 Contact {provider.company_name} for a custom quote.
               </p>
               <Link
                 href={`mailto:?subject=RoboWork inquiry: ${provider.company_name}`}
-                className="mt-4 block rounded-lg bg-blue px-6 py-3 text-xs font-semibold text-white transition-colors hover:bg-blue/90"
+                className="mt-4 block rounded-lg bg-white px-6 py-3 text-xs font-semibold text-black transition-colors hover:bg-white/90"
               >
                 Contact Provider
               </Link>
@@ -863,7 +863,7 @@ export default async function ProviderProfilePage({ params }: Props) {
                   href={provider.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 block text-[13px] text-blue hover:underline"
+                  className="mt-2 block text-[13px] text-white hover:underline"
                 >
                   Visit Website
                 </a>

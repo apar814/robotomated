@@ -93,12 +93,12 @@ export default function EmployerPortalPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ EMPLOYER PORTAL ]
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">
             Certify Your{" "}
-            <span className="text-blue">Entire Team</span>
+            <span className="text-white font-semibold">Entire Team</span>
           </h1>
           <p className="mx-auto mt-4 max-w-lg text-muted">
             Bulk pricing, team management, compliance reports. The fastest
@@ -136,12 +136,12 @@ export default function EmployerPortalPage() {
                 key={tier.seats}
                 className={`relative rounded-xl border p-6 transition-all ${
                   tier.popular
-                    ? "border-blue/50 bg-blue/5 shadow-lg shadow-blue/10"
-                    : "border-border bg-[#0A0A0A] hover:border-blue/20"
+                    ? "border-white/30 bg-white/5"
+                    : "border-border bg-[#0A0A0A] hover:border-white/20"
                 }`}
               >
                 {tier.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue px-4 py-1 text-[13px] font-bold uppercase tracking-wider text-white">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white/10 border border-border px-4 py-1 text-[13px] font-bold uppercase tracking-wider text-white">
                     Most Popular
                   </span>
                 )}
@@ -153,7 +153,7 @@ export default function EmployerPortalPage() {
                 </div>
 
                 <div className="mt-6 space-y-2 text-center">
-                  <p className="text-xs text-green font-semibold">
+                  <p className="text-xs text-white font-semibold">
                     {tier.discount}% off
                   </p>
                   <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
@@ -165,7 +165,7 @@ export default function EmployerPortalPage() {
                   </p>
                 </div>
 
-                <button className="mt-6 w-full rounded-lg bg-blue px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue/90">
+                <button className="hover-btn-bl mt-6 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
                   Get Started
                 </button>
               </div>
@@ -173,7 +173,7 @@ export default function EmployerPortalPage() {
           </div>
 
           {/* Enterprise */}
-          <div className="mt-8 rounded-xl border border-amber-500/20 bg-amber-500/5 p-6 text-center">
+          <div className="mt-8 rounded-xl border border-border bg-white/5 p-6 text-center">
             <h3 className="font-display text-lg font-bold text-white">
               Enterprise (25+ seats)
             </h3>
@@ -182,7 +182,7 @@ export default function EmployerPortalPage() {
               coordination, custom reporting, and API access for LMS
               integration.
             </p>
-            <button className="mt-4 rounded-lg border border-amber-500/30 px-8 py-3 text-sm font-semibold text-amber-400 transition-colors hover:bg-amber-500/10">
+            <button className="hover-btn-bl mt-4 rounded-lg border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Contact Sales
             </button>
           </div>
@@ -248,7 +248,7 @@ export default function EmployerPortalPage() {
                   {uc.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted">{uc.description}</p>
-                <p className="mt-3 text-xs text-blue">{uc.roles}</p>
+                <p className="mt-3 text-xs text-white">{uc.roles}</p>
               </div>
             ))}
           </div>
@@ -265,7 +265,7 @@ export default function EmployerPortalPage() {
             Start with 5 seats and scale up as your automation program grows.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <button className="rounded-lg bg-blue px-10 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-blue/90">
+            <button className="hover-btn-bl rounded-lg border border-white/20 bg-white/5 px-10 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10">
               Start Team Certification
             </button>
             <Link

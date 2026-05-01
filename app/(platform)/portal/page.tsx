@@ -91,7 +91,7 @@ export default function ManufacturerPortalPage() {
           Thanks for submitting {form.robot_name}. Our team will review it and reach out
           to {form.contact_email} within 3 business days.
         </p>
-        <Link href="/" className="mt-6 inline-block text-sm text-blue hover:underline">
+        <Link href="/" className="mt-6 inline-block text-sm text-white hover:underline">
           Back to Robotomated
         </Link>
       </div>
@@ -108,7 +108,7 @@ export default function ManufacturerPortalPage() {
       <p className="mt-2 text-xs text-muted">
         Listing is free. We never charge manufacturers to appear in our database.
         Scores are determined independently.{" "}
-        <Link href="/methodology" className="text-blue hover:underline">Read our methodology</Link>.
+        <Link href="/methodology" className="text-white hover:underline">Read our methodology</Link>.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -117,11 +117,11 @@ export default function ManufacturerPortalPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-2 block text-xs text-muted">Company Name *</label>
-              <input value={form.company_name} onChange={(e) => update("company_name", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input value={form.company_name} onChange={(e) => update("company_name", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none" />
             </div>
             <div>
               <label className="mb-2 block text-xs text-muted">Contact Email *</label>
-              <input type="email" value={form.contact_email} onChange={(e) => update("contact_email", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input type="email" value={form.contact_email} onChange={(e) => update("contact_email", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none" />
             </div>
           </div>
         </div>
@@ -131,26 +131,26 @@ export default function ManufacturerPortalPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-2 block text-xs text-muted">Robot Name *</label>
-              <input value={form.robot_name} onChange={(e) => update("robot_name", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input value={form.robot_name} onChange={(e) => update("robot_name", e.target.value)} required className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none" />
             </div>
             <div>
               <label className="mb-2 block text-xs text-muted">Model Number</label>
-              <input value={form.model_number} onChange={(e) => update("model_number", e.target.value)} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input value={form.model_number} onChange={(e) => update("model_number", e.target.value)} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none" />
             </div>
           </div>
           <div className="mt-4">
             <label className="mb-2 block text-xs text-muted">Product URL</label>
-            <input type="url" value={form.product_url} onChange={(e) => update("product_url", e.target.value)} placeholder="https://yourcompany.com/robot" className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none" />
+            <input type="url" value={form.product_url} onChange={(e) => update("product_url", e.target.value)} placeholder="https://yourcompany.com/robot" className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none" />
           </div>
           <div className="mt-4">
             <label className="mb-2 block text-xs text-muted">
               Specifications (JSON or key: value format, one per line)
             </label>
-            <textarea value={form.specs_text} onChange={(e) => update("specs_text", e.target.value)} rows={6} placeholder={'payload_kg: 5\nreach_mm: 850\ndof: 6\nweight_kg: 20.6'} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 font-mono text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none" />
+            <textarea value={form.specs_text} onChange={(e) => update("specs_text", e.target.value)} rows={6} placeholder={'payload_kg: 5\nreach_mm: 850\ndof: 6\nweight_kg: 20.6'} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 font-mono text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none" />
           </div>
           <div className="mt-4">
             <label className="mb-2 block text-xs text-muted">Additional Notes</label>
-            <textarea value={form.notes} onChange={(e) => update("notes", e.target.value)} rows={3} placeholder="Any additional context about the robot..." className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none" />
+            <textarea value={form.notes} onChange={(e) => update("notes", e.target.value)} rows={3} placeholder="Any additional context about the robot..." className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none" />
           </div>
         </div>
 

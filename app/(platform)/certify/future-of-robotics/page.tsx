@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 };
 
 const IMPACT_COLORS = {
-  transformational: "bg-red-500/10 text-red-400 border-red-500/20",
-  critical: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  high: "bg-blue/10 text-blue border-blue/20",
+  transformational: "bg-white/10 text-white border-border",
+  critical: "bg-white/10 text-white border-border",
+  high: "bg-white/10 text-white border-border",
 };
 
 export default function FutureOfRoboticsPage() {
@@ -32,12 +32,12 @@ export default function FutureOfRoboticsPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ INDUSTRY INTELLIGENCE ]
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
             Where Robotics Is Going:{" "}
-            <span className="text-blue">2026-2035</span>
+            <span className="text-white font-semibold">2026-2035</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
             12 megatrends reshaping how robots work, how humans work with robots,
@@ -54,7 +54,7 @@ export default function FutureOfRoboticsPage() {
       {/* Autonomy Framework */}
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE AUTONOMY FRAMEWORK ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -72,7 +72,7 @@ export default function FutureOfRoboticsPage() {
                 className="rounded-xl border border-border bg-[#0A0A0A] p-5"
               >
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-blue/20 bg-blue/5 font-[family-name:var(--font-brand)] text-xl font-bold text-blue">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-white/5 font-[family-name:var(--font-brand)] text-xl font-bold text-white">
                     L{level.level}
                   </div>
                   <div className="flex-1">
@@ -80,7 +80,7 @@ export default function FutureOfRoboticsPage() {
                       <h3 className="font-display text-lg font-bold text-white">
                         {level.name}
                       </h3>
-                      <span className="rounded-full bg-violet/10 px-2.5 py-0.5 text-[13px] font-semibold text-violet">
+                      <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-[13px] font-semibold text-white">
                         RCO: {level.rcoLevelRequired}
                       </span>
                     </div>
@@ -89,7 +89,7 @@ export default function FutureOfRoboticsPage() {
                     </p>
                     <div className="mt-3 grid gap-2 sm:grid-cols-2">
                       <div className="rounded-lg border border-border/50 bg-[#0C0C0C] px-3 py-2">
-                        <p className="text-[13px] font-semibold uppercase tracking-wider text-green">
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-white">
                           Human Role
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
@@ -97,7 +97,7 @@ export default function FutureOfRoboticsPage() {
                         </p>
                       </div>
                       <div className="rounded-lg border border-border/50 bg-[#0C0C0C] px-3 py-2">
-                        <p className="text-[13px] font-semibold uppercase tracking-wider text-blue">
+                        <p className="text-[13px] font-semibold uppercase tracking-wider text-white">
                           Failure Mode
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
@@ -126,7 +126,7 @@ export default function FutureOfRoboticsPage() {
       {/* 12 Megatrends */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ 12 MEGATRENDS ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold">
@@ -159,7 +159,7 @@ export default function FutureOfRoboticsPage() {
                         {trend.impactLevel}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm font-medium text-green">
+                    <p className="mt-1 text-sm font-medium text-white">
                       {trend.tagline}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -176,7 +176,7 @@ export default function FutureOfRoboticsPage() {
 
                 {/* What operators need to know */}
                 <div className="mt-5 border-t border-border pt-5">
-                  <p className="mb-3 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-blue">
+                  <p className="mb-3 font-[family-name:var(--font-ui)] text-[13px] font-bold uppercase tracking-[0.1em] text-white">
                     What Operators Need to Know
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2">
@@ -185,7 +185,7 @@ export default function FutureOfRoboticsPage() {
                         key={item}
                         className="flex items-start gap-2 text-xs text-muted"
                       >
-                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-blue" />
+                        <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-white/30" />
                         {item}
                       </div>
                     ))}
@@ -217,7 +217,7 @@ export default function FutureOfRoboticsPage() {
                       {trend.keyCompanies.map((c) => (
                         <span
                           key={c}
-                          className="rounded-full border border-violet/20 bg-violet/5 px-2 py-0.5 text-[13px] text-violet"
+                          className="rounded-full border border-border bg-white/5 px-2 py-0.5 text-[13px] text-muted"
                         >
                           {c}
                         </span>
@@ -231,7 +231,7 @@ export default function FutureOfRoboticsPage() {
                   {trend.relevantLevels.map((l) => (
                     <span
                       key={l}
-                      className="rounded-full bg-green/10 px-2 py-0.5 text-[13px] font-semibold text-green"
+                      className="rounded-full bg-white/10 px-2 py-0.5 text-[13px] font-semibold text-white"
                     >
                       {l.replace("_", " ")}
                     </span>
@@ -248,7 +248,7 @@ export default function FutureOfRoboticsPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold">
             Prepare for the{" "}
-            <span className="text-blue">autonomous future</span>
+            <span className="text-white font-semibold">autonomous future</span>
           </h2>
           <p className="mt-4 text-muted">
             The RCO certification program is updated quarterly to reflect these
@@ -258,7 +258,7 @@ export default function FutureOfRoboticsPage() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="inline-flex items-center rounded-lg bg-blue px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-blue/90"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Your Certification
             </Link>

@@ -49,7 +49,7 @@ export function MarketPulseTicker() {
               </span>
               <span
                 className="h-1 w-1 shrink-0 rounded-full"
-                style={{ background: "#2563EB" }}
+                style={{ background: "rgba(255,255,255,0.3)" }}
               />
             </span>
           ))}

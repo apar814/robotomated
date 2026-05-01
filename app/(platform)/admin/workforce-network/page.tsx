@@ -116,8 +116,8 @@ export default function WorkforceNetworkDashboard() {
     return (
       <div className="min-h-screen bg-obsidian flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-400 text-lg mb-2">{error}</p>
-          <Link href="/admin" className="text-electric-blue text-sm hover:underline">
+          <p className="text-lg mb-2" style={{ color: "var(--status-error-muted)" }}>{error}</p>
+          <Link href="/admin" className="text-white text-sm hover:underline">
             Back to Admin
           </Link>
         </div>
@@ -136,27 +136,27 @@ export default function WorkforceNetworkDashboard() {
     {
       label: "Employer Leads",
       value: data.summary.total_employers,
-      accent: "text-electric-blue",
+      accent: "text-white",
     },
     {
       label: "New (Uncontacted)",
       value: data.summary.new_employers,
-      accent: "text-amber",
+      accent: "text-white",
     },
     {
       label: "Enrolled Students",
       value: data.summary.total_students,
-      accent: "text-lime",
+      accent: "text-white",
     },
     {
       label: "Revenue",
       value: `$${(data.summary.total_revenue / 100).toLocaleString()}`,
-      accent: "text-lime",
+      accent: "text-white",
     },
     {
       label: "Placements",
       value: data.summary.placements,
-      accent: "text-electric-blue",
+      accent: "text-white",
     },
   ];
 
@@ -199,7 +199,7 @@ export default function WorkforceNetworkDashboard() {
             </h2>
             <button
               onClick={() => exportCSV("employers")}
-              className="text-xs text-electric-blue hover:underline"
+              className="text-xs text-white hover:underline"
             >
               Export CSV
             </button>
@@ -214,7 +214,7 @@ export default function WorkforceNetworkDashboard() {
                   onClick={() => setEmpFilter(f)}
                   className={`text-xs px-2 py-1 rounded transition-colors ${
                     empFilter === f
-                      ? "bg-electric-blue/20 text-electric-blue"
+                      ? "bg-white/10 text-white"
                       : "text-text-tertiary hover:text-text-secondary"
                   }`}
                 >
@@ -253,10 +253,10 @@ export default function WorkforceNetworkDashboard() {
                       emp.status === "new"
                         ? "bg-amber/10 text-amber"
                         : emp.status === "closed_won"
-                          ? "bg-lime/10 text-lime"
+                          ? "bg-lime/10 text-white"
                           : emp.status === "closed_lost"
-                            ? "bg-red-500/10 text-red-400"
-                            : "bg-electric-blue/10 text-electric-blue"
+                            ? "bg-white/5 text-white/60"
+                            : "bg-white/5 text-white"
                     }`}
                   >
                     {STATUS_LABELS[emp.status]}
@@ -284,7 +284,7 @@ export default function WorkforceNetworkDashboard() {
                           contacted_at: new Date().toISOString(),
                         })
                       }
-                      className="text-xs bg-electric-blue/10 text-electric-blue px-2 py-1 rounded hover:bg-electric-blue/20"
+                      className="text-xs bg-white/5 text-white px-2 py-1 rounded hover:bg-white/10"
                     >
                       Mark Contacted
                     </button>
@@ -296,7 +296,7 @@ export default function WorkforceNetworkDashboard() {
                           status: "qualified",
                         })
                       }
-                      className="text-xs bg-electric-blue/10 text-electric-blue px-2 py-1 rounded hover:bg-electric-blue/20"
+                      className="text-xs bg-white/5 text-white px-2 py-1 rounded hover:bg-white/10"
                     >
                       Mark Qualified
                     </button>
@@ -310,7 +310,7 @@ export default function WorkforceNetworkDashboard() {
                             status: "closed_won",
                           })
                         }
-                        className="text-xs bg-lime/10 text-lime px-2 py-1 rounded hover:bg-lime/20"
+                        className="text-xs bg-lime/10 text-white px-2 py-1 rounded hover:bg-lime/20"
                       >
                         Won
                       </button>
@@ -320,7 +320,7 @@ export default function WorkforceNetworkDashboard() {
                             status: "closed_lost",
                           })
                         }
-                        className="text-xs bg-red-500/10 text-red-400 px-2 py-1 rounded hover:bg-red-500/20"
+                        className="text-xs bg-white/5 text-white/60 px-2 py-1 rounded hover:bg-white/10"
                       >
                         Lost
                       </button>
@@ -347,7 +347,7 @@ export default function WorkforceNetworkDashboard() {
             </h2>
             <button
               onClick={() => exportCSV("enrollments")}
-              className="text-xs text-electric-blue hover:underline"
+              className="text-xs text-white hover:underline"
             >
               Export CSV
             </button>
@@ -372,21 +372,21 @@ export default function WorkforceNetworkDashboard() {
                   <span
                     className={`text-xs font-mono px-2 py-0.5 rounded ${
                       enr.payment_status === "paid"
-                        ? "bg-lime/10 text-lime"
+                        ? "bg-lime/10 text-white"
                         : "bg-amber/10 text-amber"
                     }`}
                   >
                     {enr.payment_status}
                   </span>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-electric-blue/10 text-electric-blue">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/5 text-white">
                     {enr.completion_status.replace("_", " ")}
                   </span>
                   {enr.placement_status !== "not_applicable" && (
                     <span
                       className={`text-xs font-mono px-2 py-0.5 rounded ${
                         enr.placement_status === "placed"
-                          ? "bg-lime/10 text-lime"
-                          : "bg-violet-dim text-violet"
+                          ? "bg-lime/10 text-white"
+                          : "bg-white/5 text-white"
                       }`}
                     >
                       {enr.placement_status}
@@ -401,7 +401,7 @@ export default function WorkforceNetworkDashboard() {
                           placement_status: "seeking",
                         })
                       }
-                      className="text-xs bg-electric-blue/10 text-electric-blue px-2 py-1 rounded hover:bg-electric-blue/20"
+                      className="text-xs bg-white/5 text-white px-2 py-1 rounded hover:bg-white/10"
                     >
                       Mark Seeking Placement
                     </button>
@@ -437,10 +437,10 @@ export default function WorkforceNetworkDashboard() {
                   <span
                     className={
                       cohort.status === "open"
-                        ? "text-lime"
+                        ? "text-white"
                         : cohort.status === "full"
-                          ? "text-amber"
-                          : "text-electric-blue"
+                          ? "text-white/60"
+                          : "text-white/80"
                     }
                   >
                     {cohort.status}
@@ -449,7 +449,7 @@ export default function WorkforceNetworkDashboard() {
                 <div className="flex items-center gap-3">
                   <div className="flex-1 bg-obsidian rounded-full h-2.5">
                     <div
-                      className="bg-electric-blue rounded-full h-2.5 transition-all"
+                      className="bg-white/40 rounded-full h-2.5 transition-all"
                       style={{
                         width: `${Math.min(100, (cohort.enrolled_count / cohort.capacity) * 100)}%`,
                       }}
@@ -478,10 +478,10 @@ export default function WorkforceNetworkDashboard() {
                 .map((e) => (
                   <div
                     key={e.id}
-                    className="bg-obsidian-surface border border-lime/20 rounded-lg p-4"
+                    className="bg-obsidian-surface border border-border rounded-lg p-4"
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-lime text-xs font-mono">
+                      <span className="text-white text-xs font-mono">
                         PLACED
                       </span>
                     </div>

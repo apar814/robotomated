@@ -76,7 +76,7 @@ export function PriceAlertForm({ robotId, robotName, currentPrice }: PriceAlertF
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+              className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
             />
           </div>
           <div className="w-32">
@@ -90,7 +90,7 @@ export function PriceAlertForm({ robotId, robotName, currentPrice }: PriceAlertF
                 value={targetPrice}
                 onChange={(e) => setTargetPrice(e.target.value)}
                 placeholder="Target"
-                className="w-full rounded-lg border border-border bg-navy-lighter py-2.5 pl-7 pr-3 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+                className="w-full rounded-lg border border-border bg-navy-lighter py-2.5 pl-7 pr-3 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
               />
             </div>
           </div>

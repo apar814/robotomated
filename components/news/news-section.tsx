@@ -40,7 +40,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       href={article.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 transition-all hover:border-blue/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
+      className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03] p-6 transition-all hover:border-white/20 hover:shadow-[0_4px_30px_rgba(0,194,255,0.06)]"
       style={{ maxHeight: 320 }}
     >
       <div>
@@ -49,7 +49,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
           <TagPill label={article.tag} color={article.tagColor} />
           <span className="text-xs text-white/45">{relativeTime(article.publishedAt)}</span>
         </div>
-        <h3 className="mb-3 text-xl font-bold leading-snug text-white/90 transition-colors group-hover:text-blue">
+        <h3 className="mb-3 text-xl font-bold leading-snug text-white/90 transition-colors group-hover:text-white">
           {article.title}
         </h3>
         <p className="line-clamp-4 text-sm leading-relaxed text-white/40">
@@ -58,7 +58,7 @@ function HeroArticle({ article }: { article: NewsArticle }) {
       </div>
       <div className="mt-4 flex items-center justify-between border-t border-white/[0.05] pt-4">
         <span className="text-[11px] text-white/45">{article.category}</span>
-        <span className="text-xs font-medium text-blue group-hover:underline">Read article →</span>
+        <span className="text-xs font-medium text-white group-hover:underline">Read article →</span>
       </div>
     </a>
   );
@@ -78,14 +78,14 @@ function ArticleRow({ article }: { article: NewsArticle }) {
           <TagPill label={article.tag} color={article.tagColor} />
           <span className="text-[11px] text-white/45">{relativeTime(article.publishedAt)}</span>
         </div>
-        <p className="line-clamp-2 text-sm font-medium leading-snug text-white/80 transition-colors group-hover:text-blue">
+        <p className="line-clamp-2 text-sm font-medium leading-snug text-white/80 transition-colors group-hover:text-white">
           {article.title}
         </p>
         <div className="mt-1">
           <SourceBadge source={article.source} />
         </div>
       </div>
-      <span className="mt-2 shrink-0 text-sm text-white/30 transition-colors group-hover:text-blue">→</span>
+      <span className="mt-2 shrink-0 text-sm text-white/30 transition-colors group-hover:text-white">→</span>
     </a>
   );
 }
@@ -95,7 +95,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
     return (
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="mb-6">
-          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-white">Industry Pulse</p>
           <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 text-center">
@@ -112,10 +112,10 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <div className="mb-8 flex items-baseline justify-between">
         <div>
-          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-blue">Industry Pulse</p>
+          <p className="mb-1 text-[13px] font-semibold uppercase tracking-[0.2em] text-white">Industry Pulse</p>
           <h2 className="font-display text-2xl font-bold text-white">Latest News</h2>
         </div>
-        <Link href="/news" className="text-sm text-blue hover:underline">All news →</Link>
+        <Link href="/news" className="text-sm text-white hover:underline">All news →</Link>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_380px]">
@@ -123,7 +123,7 @@ export function NewsSection({ articles }: { articles: NewsArticle[] }) {
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
           <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wide text-white/45">Recent</p>
           {secondary.map((a) => <ArticleRow key={a.id} article={a} />)}
-          <Link href="/news" className="mt-3 block text-center text-xs text-blue hover:underline">View all news →</Link>
+          <Link href="/news" className="mt-3 block text-center text-xs text-white hover:underline">View all news →</Link>
         </div>
       </div>
     </section>

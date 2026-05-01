@@ -28,7 +28,7 @@ export function WorkforceAnnouncement() {
         <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/certification/operator-level-1"
-            className="text-xs font-semibold text-electric-blue hover:text-lime transition-colors whitespace-nowrap"
+            className="text-xs font-semibold text-white hover:text-lime transition-colors whitespace-nowrap"
           >
             Learn More &rarr;
           </Link>

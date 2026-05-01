@@ -70,7 +70,7 @@ export default function AdminReviewsPage() {
       <div className="flex items-center justify-between">
         <h1 className="font-display text-2xl font-bold">Review Moderation</h1>
         <div className="flex gap-2">
-          <Link href="/admin/reviews/new" className="rounded-lg bg-blue px-4 py-2 text-sm font-semibold text-navy hover:opacity-90">
+          <Link href="/admin/reviews/new" className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy hover:opacity-90">
             + Expert Review
           </Link>
           <Link href="/admin" className="rounded-lg border border-white/10 px-4 py-2 text-sm text-white/40 hover:text-white/60">
@@ -95,11 +95,11 @@ export default function AdminReviewsPage() {
             onClick={() => setTab(t.key)}
             className={cn(
               "relative px-4 py-2 text-sm font-medium capitalize",
-              tab === t.key ? "text-[#2563EB]" : "text-white/40 hover:text-white/60"
+              tab === t.key ? "text-white" : "text-white/40 hover:text-white/60"
             )}
           >
             {t.label}
-            {tab === t.key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2563EB]" />}
+            {tab === t.key && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/10" />}
           </button>
         ))}
       </div>
@@ -135,7 +135,7 @@ export default function AdminReviewsPage() {
                       className={cn(
                         "rounded px-2 py-0.5 text-[13px] font-semibold",
                         review.review_type === "expert"
-                          ? "bg-[#2563EB]/10 text-[#2563EB]"
+                          ? "bg-white/10/10 text-white"
                           : "bg-white/10 text-white/60"
                       )}
                     >

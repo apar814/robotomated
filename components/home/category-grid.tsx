@@ -20,12 +20,12 @@ export function CategoryGrid({ categories }: { categories: CategoryWithCount[] }
         <Link
           key={cat.id}
           href={`/explore/${cat.slug}`}
-          className="group rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-blue/40 hover:shadow-[0_0_20px_rgba(0,194,255,0.08)]"
+          className="group rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-white/20"
         >
-          <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-lg bg-blue/10 transition-colors group-hover:bg-blue/20">
+          <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 transition-colors group-hover:bg-white/10">
             <svg
               viewBox="0 0 24 24"
-              className="h-5 w-5 text-blue"
+              className="h-5 w-5 text-white"
               fill="none"
               stroke="currentColor"
               strokeWidth={1.5}

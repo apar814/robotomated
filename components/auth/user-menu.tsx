@@ -46,7 +46,7 @@ export function UserMenu() {
       <div className="flex shrink-0 items-center gap-2">
         <Link
           href="/login"
-          className="hidden whitespace-nowrap rounded-md border px-4 py-2 text-[14px] font-medium transition-colors hover:border-[#2563EB] hover:text-[#2563EB] sm:inline-flex"
+          className="hidden whitespace-nowrap rounded-md border px-4 py-2 text-[14px] font-medium transition-colors hover:border-white/40 hover:text-white sm:inline-flex"
           style={{
             borderColor: "var(--theme-border-strong)",
             color: "var(--theme-text-secondary)",
@@ -57,7 +57,7 @@ export function UserMenu() {
         <Link
           href="/login?mode=signup"
           className="inline-flex whitespace-nowrap rounded-md px-4 py-2 text-[14px] font-bold text-black transition-colors hover:opacity-90"
-          style={{ background: "#2563EB" }}
+          style={{ background: "#FFFFFF" }}
         >
           Sign Up
         </Link>
@@ -78,7 +78,7 @@ export function UserMenu() {
       <button
         onClick={() => setOpen(!open)}
         className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white"
-        style={{ background: "linear-gradient(135deg, #2563EB, #7B2FFF)" }}
+        style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)" }}
       >
         {(user.email?.[0] || "?").toUpperCase()}
       </button>
@@ -100,7 +100,7 @@ export function UserMenu() {
           <Link
             href="/account"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(37,99,235,0.08)]"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-white/5"
             style={{ color: "var(--theme-text-secondary)" }}
           >
             Account
@@ -108,7 +108,7 @@ export function UserMenu() {
           <Link
             href="/account/saved"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(37,99,235,0.08)]"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-white/5"
             style={{ color: "var(--theme-text-secondary)" }}
           >
             Saved Robots
@@ -116,14 +116,14 @@ export function UserMenu() {
           <Link
             href="/account/billing"
             onClick={() => setOpen(false)}
-            className="block px-4 py-2 text-sm transition-colors hover:bg-[rgba(37,99,235,0.08)]"
+            className="block px-4 py-2 text-sm transition-colors hover:bg-white/5"
             style={{ color: "var(--theme-text-secondary)" }}
           >
             Billing
           </Link>
           <button
             onClick={handleSignOut}
-            className="block w-full border-t px-4 py-2 text-left text-sm transition-colors hover:bg-[rgba(37,99,235,0.08)]"
+            className="block w-full border-t px-4 py-2 text-left text-sm transition-colors hover:bg-white/5"
             style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-secondary)" }}
           >
             Sign Out

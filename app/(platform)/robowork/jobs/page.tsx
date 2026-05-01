@@ -104,7 +104,7 @@ export default async function BrowseJobsPage({
         <div className="mb-8">
           <Link
             href="/robowork"
-            className="mb-3 inline-block font-mono text-[13px] text-electric-blue transition-colors hover:underline"
+            className="mb-3 inline-block font-mono text-[13px] text-white transition-colors hover:underline"
           >
             &larr; RoboWork
           </Link>
@@ -129,7 +129,7 @@ export default async function BrowseJobsPage({
             <p className="text-sm text-text-secondary">No jobs match your filters.</p>
             <Link
               href="/robowork/jobs"
-              className="mt-3 inline-block font-mono text-xs text-electric-blue hover:underline"
+              className="mt-3 inline-block font-mono text-xs text-white hover:underline"
             >
               Clear filters
             </Link>
@@ -200,8 +200,8 @@ function PaginationLink({
       href={`/robowork/jobs?${sp.toString()}`}
       className={
         active
-          ? "rounded bg-electric-blue px-3 py-1.5 text-xs font-bold text-white"
-          : "rounded border border-border px-3 py-1.5 text-xs text-text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+          ? "rounded bg-white px-3 py-1.5 text-xs font-bold text-white"
+          : "rounded border border-border px-3 py-1.5 text-xs text-text-secondary transition-colors hover:border-white/20 hover:text-white"
       }
     >
       {label}

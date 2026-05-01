@@ -87,7 +87,7 @@ function BillingContent() {
           </div>
           <div>
             {isPro ? (
-              <span className="rounded-full bg-blue/10 px-3 py-1 text-xs font-semibold text-blue">Active</span>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white">Active</span>
             ) : (
               <span className="rounded-full bg-navy-lighter px-3 py-1 text-xs font-semibold text-muted">Free Tier</span>
             )}

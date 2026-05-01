@@ -39,12 +39,12 @@ const mdxComponents = {
   li: (props: React.HTMLAttributes<HTMLLIElement>) => <li className="text-muted" {...props} />,
   a: ({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     if (href?.startsWith("/")) {
-      return <Link href={href} className="text-blue hover:underline" {...props} />;
+      return <Link href={href} className="text-white hover:underline" {...props} />;
     }
-    return <a href={href} className="text-blue hover:underline" target="_blank" rel="noopener noreferrer" {...props} />;
+    return <a href={href} className="text-white hover:underline" target="_blank" rel="noopener noreferrer" {...props} />;
   },
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className="mb-4 border-l-2 border-blue pl-4 italic text-muted" {...props} />
+    <blockquote className="mb-4 border-l-2 border-white/20 pl-4 italic text-muted" {...props} />
   ),
   pre: ({ children }: { children: React.ReactElement<{ children: string; className?: string }> }) => {
     const childProps = children?.props;
@@ -54,7 +54,7 @@ const mdxComponents = {
     return <pre className="mb-4 overflow-x-auto rounded-lg bg-navy-lighter p-4 font-mono text-sm">{children}</pre>;
   },
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code className="rounded bg-navy-lighter px-1.5 py-0.5 font-mono text-sm text-blue" {...props} />
+    <code className="rounded bg-navy-lighter px-1.5 py-0.5 font-mono text-sm text-white" {...props} />
   ),
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="mb-4 overflow-x-auto rounded-lg border border-border">

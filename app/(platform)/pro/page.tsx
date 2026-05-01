@@ -61,7 +61,7 @@ function ProPageContent() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 text-center">
         <div className="mx-auto max-w-3xl">
-          <span className="rounded-full bg-gradient-to-r from-blue to-violet px-4 py-1.5 text-xs font-semibold text-white">
+          <span className="rounded-full bg-gradient-to-r from-white/10 to-violet px-4 py-1.5 text-xs font-semibold text-white">
             Robotomated Pro
           </span>
           <h1 className="mt-6 text-4xl font-bold sm:text-5xl">
@@ -75,7 +75,7 @@ function ProPageContent() {
               <span className="text-5xl font-bold">$49</span>
               <span className="text-muted">/month</span>
             </div>
-            <p className="text-sm text-blue-400">7-day free trial included</p>
+            <p className="text-sm text-white">7-day free trial included</p>
           </div>
           <Button onClick={handleCheckout} disabled={loading} className="mt-6 px-8 py-3 text-base">
             {loading ? "Processing..." : "Start Free Trial"}
@@ -93,7 +93,7 @@ function ProPageContent() {
                 <tr className="bg-obsidian-3">
                   <th className="px-5 py-3 text-left font-medium text-muted">Feature</th>
                   <th className="px-5 py-3 text-center font-medium text-muted">Free</th>
-                  <th className="px-5 py-3 text-center font-medium text-electric-blue">Pro</th>
+                  <th className="px-5 py-3 text-center font-medium text-white">Pro</th>
                 </tr>
               </thead>
               <tbody>
@@ -156,7 +156,7 @@ function ProPageContent() {
 function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }) {
   if (value === true) {
     return (
-      <svg className={cn("mx-auto h-5 w-5", pro ? "text-electric-blue" : "text-blue-400")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <svg className={cn("mx-auto h-5 w-5", pro ? "text-white" : "text-white")} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>
     );
@@ -164,7 +164,7 @@ function FeatureValue({ value, pro }: { value: boolean | string; pro?: boolean }
   if (value === false) {
     return <span className="text-muted">—</span>;
   }
-  return <span className={cn("text-xs", pro ? "font-semibold text-electric-blue" : "text-muted")}>{value}</span>;
+  return <span className={cn("text-xs", pro ? "font-semibold text-white" : "text-muted")}>{value}</span>;
 }
 
 export default function ProPage() {

@@ -35,13 +35,13 @@ function ArticleCard({ article }: { article: NewsArticle }) {
           <TagPill label={article.tag} color={article.tagColor} />
           <span className="text-[11px] text-white/50">{relativeTime(article.publishedAt)}</span>
         </div>
-        <h3 className="line-clamp-3 text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-blue">
+        <h3 className="line-clamp-3 text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-white">
           {article.title}
         </h3>
         <p className="line-clamp-3 flex-1 text-xs leading-relaxed text-white/35">{article.summary}</p>
         <div className="mt-auto flex items-center justify-between border-t border-border pt-2">
           <span className="text-xs font-medium text-white/35">{article.source}</span>
-          <span className="text-[11px] text-white/50 transition-colors group-hover:text-blue">Read →</span>
+          <span className="text-[11px] text-white/50 transition-colors group-hover:text-white">Read →</span>
         </div>
       </div>
     </a>
@@ -80,7 +80,7 @@ export default function NewsPage() {
             {["All", ...NEWS_CATEGORIES].map(cat => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
-                  activeCategory === cat ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-white/35 hover:border-white/[0.15]"
+                  activeCategory === cat ? "border-white/30 bg-white/10 font-medium text-white" : "border-border text-white/35 hover:border-white/[0.15]"
                 )}>
                 {cat}
               </button>
@@ -91,7 +91,7 @@ export default function NewsPage() {
             {sources.map(src => (
               <button key={src} onClick={() => setActiveSource(src)}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-all",
-                  activeSource === src ? "border-blue bg-blue/10 font-medium text-blue" : "border-border text-white/35 hover:border-white/[0.15]"
+                  activeSource === src ? "border-white/30 bg-white/10 font-medium text-white" : "border-border text-white/35 hover:border-white/[0.15]"
                 )}>
                 {src}
               </button>
@@ -104,7 +104,7 @@ export default function NewsPage() {
         {breaking.length > 0 && (
           <section>
             <div className="mb-4 flex items-center gap-3">
-              <span className="rounded-full bg-red-500 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-white">Breaking</span>
+              <span className="rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-white" style={{ backgroundColor: "var(--status-error-muted)" }}>Breaking</span>
               <div className="h-px flex-1 bg-border" />
             </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

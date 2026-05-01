@@ -63,7 +63,7 @@ export default function AdminRobotsPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Manage Robots</h1>
         <div className="flex gap-2">
-          <Link href="/admin/robots/new" className="rounded-lg bg-blue px-4 py-2 text-sm font-semibold text-navy hover:opacity-90">
+          <Link href="/admin/robots/new" className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy hover:opacity-90">
             + Add Robot
           </Link>
           <Link href="/admin/robots/import" className="rounded-lg border border-border px-4 py-2 text-sm text-muted hover:text-foreground">
@@ -82,19 +82,19 @@ export default function AdminRobotsPage() {
           placeholder="Search robots..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+          className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none"
         />
         <select
           value={statusFilter}
           onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-          className="rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none"
+          className="rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none"
         >
           <option value="">All statuses</option>
           <option value="active">Active</option>
           <option value="discontinued">Discontinued</option>
           <option value="coming_soon">Coming Soon</option>
         </select>
-        <button type="submit" className="rounded-lg bg-blue/20 px-4 py-2 text-sm font-medium text-blue hover:bg-blue/30">
+        <button type="submit" className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">
           Search
         </button>
       </form>
@@ -142,7 +142,7 @@ export default function AdminRobotsPage() {
                       <span className={`inline-block rounded-full px-2 py-0.5 text-[13px] font-semibold uppercase ${
                         r.status === "active" ? "bg-green/15 text-green" :
                         r.status === "discontinued" ? "bg-orange/15 text-orange" :
-                        "bg-blue/15 text-blue"
+                        "bg-white/10 text-white"
                       }`}>
                         {r.status}
                       </span>
@@ -152,7 +152,7 @@ export default function AdminRobotsPage() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex gap-2">
-                        <Link href={`/admin/robots/${r.id}/edit`} className="text-xs text-blue hover:underline">Edit</Link>
+                        <Link href={`/admin/robots/${r.id}/edit`} className="text-xs text-white hover:underline">Edit</Link>
                         <Link href={`/admin/robots/${r.id}/images`} className="text-xs text-muted hover:text-foreground">Images</Link>
                         <Link href={`/robots/${r.slug}`} className="text-xs text-muted hover:text-foreground">View</Link>
                       </div>

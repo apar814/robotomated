@@ -86,7 +86,7 @@ export function RaaSExplainer() {
             className="rounded-xl p-7"
             style={{ background: "linear-gradient(160deg, rgba(10,22,40,0.98) 0%, rgba(6,12,28,0.99) 100%)", color: "rgba(255,255,255,0.8)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}
           >
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-white/60">
               Real-World Example
             </p>
             <h3 className="mt-2 font-display text-lg font-bold text-white">
@@ -103,7 +103,7 @@ export function RaaSExplainer() {
                   key={i}
                   className="flex gap-3 border-b border-white/[0.06] py-2.5 text-sm text-white/70 last:border-0"
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2563EB]/20 font-[family-name:var(--font-brand)] text-[13px] font-bold text-[#2563EB]">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 font-[family-name:var(--font-brand)] text-[13px] font-bold text-white/60">
                     {i + 1}
                   </span>
                   {step}
@@ -111,8 +111,8 @@ export function RaaSExplainer() {
               ))}
             </ol>
 
-            <div className="mt-4 rounded-lg border border-[#2563EB]/25 bg-[#2563EB]/10 p-4 text-sm">
-              <span className="font-semibold text-[#2563EB]">Result: </span>
+            <div className="mt-4 rounded-lg border border-white/15 bg-white/5 p-4 text-sm">
+              <span className="font-semibold text-white/60">Result: </span>
               $8,000–$12,000 total. No hiring, no maintenance, no storage.
               The same operator books another job immediately after.
             </div>

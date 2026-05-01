@@ -98,7 +98,7 @@ export default function AdminManufacturersPage() {
             key={t}
             onClick={() => setTab(t)}
             className={`relative px-4 py-2 text-sm font-medium capitalize transition-colors ${
-              tab === t ? "text-[#2563EB]" : "text-white/40 hover:text-white/60"
+              tab === t ? "text-white" : "text-white/40 hover:text-white/60"
             }`}
           >
             {t}
@@ -108,11 +108,11 @@ export default function AdminManufacturersPage() {
               </span>
             )}
             {t === "partnerships" && pendingPartnerships.length > 0 && (
-              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#60A5FA] px-1 text-[13px] font-bold text-black">
+              <span className="ml-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-white/10 px-1 text-[13px] font-bold text-black">
                 {pendingPartnerships.length}
               </span>
             )}
-            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2563EB]" />}
+            {tab === t && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/5" />}
           </button>
         ))}
       </div>
@@ -168,7 +168,7 @@ export default function AdminManufacturersPage() {
                     </p>
                     <p className="mt-1 text-xs">
                       Tier interest:{" "}
-                      <span className="font-mono font-semibold text-[#60A5FA]">{p.tier_interest}</span>
+                      <span className="font-mono font-semibold text-white">{p.tier_interest}</span>
                     </p>
                     {p.message && <p className="mt-1 text-xs text-white/50">{p.message}</p>}
                   </div>

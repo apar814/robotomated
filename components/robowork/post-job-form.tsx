@@ -116,7 +116,7 @@ export function PostJobForm() {
   }
 
   const inputClass =
-    "w-full rounded border border-border bg-obsidian-elevated px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-electric-blue placeholder:text-text-tertiary";
+    "w-full rounded border border-border bg-obsidian-elevated px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-white/50 placeholder:text-text-tertiary";
   const labelClass = "mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost";
 
   return (
@@ -130,9 +130,9 @@ export function PostJobForm() {
                 className={cn(
                   "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-colors",
                   i < step
-                    ? "bg-electric-blue text-white"
+                    ? "bg-white text-black"
                     : i === step
-                      ? "border-2 border-electric-blue bg-electric-blue/10 text-electric-blue"
+                      ? "border-2 border-white/20 bg-white/5 text-white"
                       : "border border-border text-text-tertiary"
                 )}
               >
@@ -190,7 +190,7 @@ export function PostJobForm() {
                     className={cn(
                       "flex flex-col items-center gap-1 rounded border px-2 py-3 text-center transition-colors",
                       form.task_type === t.value
-                        ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                        ? "border-white/20 bg-white/5 text-white"
                         : "border-border text-text-secondary hover:border-text-tertiary"
                     )}
                   >
@@ -273,7 +273,7 @@ export function PostJobForm() {
                 onClick={() => set("remote_ok", !form.remote_ok)}
                 className={cn(
                   "relative h-5 w-9 rounded-full transition-colors",
-                  form.remote_ok ? "bg-electric-blue" : "bg-text-tertiary"
+                  form.remote_ok ? "bg-white" : "bg-text-tertiary"
                 )}
               >
                 <span
@@ -318,7 +318,7 @@ export function PostJobForm() {
                     className={cn(
                       "rounded border px-4 py-2 text-xs transition-colors",
                       form.urgency === key
-                        ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                        ? "border-white/20 bg-white/5 text-white"
                         : "border-border text-text-secondary hover:border-text-tertiary"
                     )}
                   >
@@ -375,7 +375,7 @@ export function PostJobForm() {
                     className={cn(
                       "rounded border px-4 py-2 text-xs transition-colors",
                       form.fulfillment_type === opt.value
-                        ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                        ? "border-white/20 bg-white/5 text-white"
                         : "border-border text-text-secondary hover:border-text-tertiary"
                     )}
                   >
@@ -512,7 +512,7 @@ export function PostJobForm() {
               type="button"
               disabled={!canProceed()}
               onClick={() => setStep(step + 1)}
-              className="rounded bg-electric-blue px-6 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+              className="rounded bg-white px-6 py-2.5 text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-40"
             >
               Continue
             </button>
@@ -521,7 +521,7 @@ export function PostJobForm() {
               type="button"
               disabled={submitting}
               onClick={handleSubmit}
-              className="rounded bg-electric-blue px-8 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="rounded bg-white px-8 py-2.5 text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               {submitting ? "Publishing..." : "Publish Job"}
             </button>

@@ -78,14 +78,14 @@ export function MobileNav() {
               key={item.href}
               href={item.href}
               className={`relative flex min-w-[56px] flex-col items-center gap-0.5 px-2 py-1.5 transition-all active:scale-[0.97] ${
-                isActive ? "text-[#0EA5E9]" : "text-white/30"
+                isActive ? "text-white" : "text-white/30"
               }`}
             >
               {/* Active glow indicator */}
               {isActive && (
                 <span
                   className="absolute -top-1.5 h-[2px] w-8 rounded-full"
-                  style={{ background: "#0EA5E9", boxShadow: "0 0 8px rgba(14,165,233,0.5)" }}
+                  style={{ background: "#FFFFFF" }}
                 />
               )}
               {item.icon}

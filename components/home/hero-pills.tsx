@@ -41,8 +41,8 @@ export function HeroPills() {
               padding: "0.65rem 1.4rem",
               minHeight: "42px",
               minWidth: "140px",
-              background: "#1E3A5F",
-              border: "1px solid #2563EB",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: "4px",
               color: "#F0F4FF",
               fontSize: "0.78rem",
@@ -55,15 +55,15 @@ export function HeroPills() {
             }}
             onMouseOver={(e) => {
               const t = e.currentTarget;
-              t.style.background = "#2563EB";
-              t.style.borderColor = "#2563EB";
+              t.style.background = "rgba(255,255,255,0.2)";
+              t.style.borderColor = "rgba(255,255,255,0.2)";
               t.style.color = "#FFFFFF";
               t.style.transform = "translateY(-1px)";
             }}
             onMouseOut={(e) => {
               const t = e.currentTarget;
-              t.style.background = "#1E3A5F";
-              t.style.borderColor = "#2563EB";
+              t.style.background = "rgba(255,255,255,0.05)";
+              t.style.borderColor = "rgba(255,255,255,0.2)";
               t.style.color = "#F0F4FF";
               t.style.transform = "translateY(0)";
             }}

@@ -13,10 +13,10 @@ export function AddToCompareButton({ slug, className = "" }: { slug: string; cla
       disabled={!isAdded && isFull}
       className={`rounded-lg border px-4 py-2 text-xs font-medium transition-colors ${
         isAdded
-          ? "border-green/30 bg-green/10 text-green"
+          ? "border-white/30 bg-white/10 text-white"
           : isFull
           ? "cursor-not-allowed border-border text-neutral-300"
-          : "border-border text-neutral-500 hover:border-blue hover:text-blue"
+          : "border-border text-neutral-500 hover:border-white/30 hover:text-white"
       } ${className}`}
     >
       {isAdded ? (

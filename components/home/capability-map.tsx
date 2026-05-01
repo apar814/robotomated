@@ -66,7 +66,7 @@ export function CapabilityMap() {
       <div className="mx-auto max-w-7xl">
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+          <div className="h-1.5 w-1.5 rounded-full bg-white" />
           <span className="font-mono text-[13px] uppercase tracking-widest text-ghost">
             Robotics Capability Map
           </span>
@@ -80,7 +80,7 @@ export function CapabilityMap() {
               onClick={() => setActiveCategory(cat)}
               className={`rounded-full px-4 py-2 text-[14px] font-medium transition-colors ${
                 activeCategory === cat
-                  ? "bg-[rgba(37,99,235,0.15)] text-[#2563EB]"
+                  ? "bg-white/10 text-white"
                   : "bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.45)] hover:bg-[rgba(255,255,255,0.08)] hover:text-[rgba(255,255,255,0.6)]"
               }`}
             >
@@ -98,7 +98,7 @@ export function CapabilityMap() {
         <div className="mt-8 flex items-center justify-center gap-3">
           <span className="font-mono text-[13px] text-[rgba(255,255,255,0.35)]">
             Based on{" "}
-            <span className="font-bold text-[#2563EB]">{meta.robotCount}</span>{" "}
+            <span className="font-bold text-white">{meta.robotCount}</span>{" "}
             {activeCategory === "all" ? "robots" : `${meta.label.toLowerCase()} robots`}
           </span>
         </div>
@@ -107,7 +107,7 @@ export function CapabilityMap() {
         <div className="mt-8 flex justify-center">
           <Link
             href="/explore?sort=robo_score"
-            className="inline-flex items-center gap-2 rounded-lg bg-electric-blue px-6 py-3 text-[14px] font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
+            className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-[14px] font-bold text-black transition-shadow hover:shadow-none"
           >
             Most capable robots
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

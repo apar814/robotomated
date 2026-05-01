@@ -92,7 +92,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 function getCategoryStyle(cat: string): React.CSSProperties {
   switch (cat) {
     case "funding":
-      return { background: "rgba(37,99,235,0.2)", color: "#60A5FA", border: "1px solid rgba(37,99,235,0.35)" };
+      return { background: "rgba(212,212,212,0.12)", color: "#D4D4D4", border: "1px solid rgba(212,212,212,0.25)" };
     case "product":
       return { background: "rgba(34,197,94,0.15)", color: "#4ADE80", border: "1px solid rgba(34,197,94,0.3)" };
     case "market":
@@ -121,7 +121,7 @@ function SectionHeader({ label }: { label: string }) {
           fontSize: "0.65rem",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "#60A5FA",
+          color: "#D4D4D4",
           whiteSpace: "nowrap",
         }}
       >
@@ -197,9 +197,9 @@ export default async function IntelligencePage() {
                 key={pill}
                 className="rounded-full px-3.5 py-1.5"
                 style={{
-                  border: "1px solid rgba(37,99,235,0.25)",
+                  border: "1px solid rgba(212,212,212,0.2)",
                   background: "rgba(37,99,235,0.08)",
-                  color: "#60A5FA",
+                  color: "#D4D4D4",
                   fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
                   fontWeight: 600,
                   fontSize: "0.78rem",
@@ -218,9 +218,9 @@ export default async function IntelligencePage() {
           <div
             className="rounded-xl sm:flex sm:items-center sm:justify-between"
             style={{
-              background: "linear-gradient(135deg, rgba(37,99,235,0.12) 0%, rgba(37,99,235,0.04) 100%)",
-              border: "1px solid rgba(37,99,235,0.25)",
-              borderLeft: "3px solid #2563EB",
+              background: "linear-gradient(135deg, rgba(212,212,212,0.08) 0%, rgba(37,99,235,0.04) 100%)",
+              border: "1px solid rgba(212,212,212,0.2)",
+              borderLeft: "3px solid rgba(255,255,255,0.2)",
               padding: "1.75rem 2rem",
             }}
           >
@@ -232,7 +232,7 @@ export default async function IntelligencePage() {
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
-                  color: "#60A5FA",
+                  color: "#D4D4D4",
                 }}
               >
                 The Automation Intelligence Brief
@@ -272,7 +272,7 @@ export default async function IntelligencePage() {
                   {featured.slice(0, 5).map((item) => (
                     <article
                       key={item.url}
-                      className="rounded-[10px] transition-all duration-200 hover:border-[rgba(37,99,235,0.25)]"
+                      className="rounded-[10px] transition-all duration-200 hover:border-[rgba(212,212,212,0.2)]"
                       style={{
                         background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
                         border: "1px solid rgba(255,255,255,0.06)",
@@ -327,13 +327,13 @@ export default async function IntelligencePage() {
                         <div
                           style={{
                             background: "rgba(37,99,235,0.06)",
-                            borderLeft: "2px solid #2563EB",
+                            borderLeft: "2px solid rgba(255,255,255,0.2)",
                             padding: "0.6rem 0.85rem",
                             marginTop: "0.75rem",
                             borderRadius: "0 6px 6px 0",
                           }}
                         >
-                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2563EB" }}>
+                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                             Signal
                           </p>
                           <p style={{ fontWeight: 500, fontSize: "0.82rem", color: "rgba(240,244,255,0.7)", lineHeight: 1.6, marginTop: "0.15rem" }}>
@@ -359,7 +359,7 @@ export default async function IntelligencePage() {
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="transition-colors hover:text-[#60A5FA]"
+                          className="transition-colors hover:text-white"
                           style={{ fontWeight: 600, fontSize: "0.75rem", color: "rgba(240,244,255,0.3)" }}
                         >
                           Read more &rarr;
@@ -379,7 +379,7 @@ export default async function IntelligencePage() {
                   {standard.map((item) => (
                     <article
                       key={item.url}
-                      className="transition-all duration-200 hover:border-[rgba(37,99,235,0.25)]"
+                      className="transition-all duration-200 hover:border-[rgba(212,212,212,0.2)]"
                       style={{
                         background: "linear-gradient(160deg, rgba(10,12,26,0.9) 0%, rgba(6,8,18,0.95) 100%)",
                         border: "1px solid rgba(255,255,255,0.06)",
@@ -433,13 +433,13 @@ export default async function IntelligencePage() {
                         <div
                           style={{
                             background: "rgba(37,99,235,0.06)",
-                            borderLeft: "2px solid #2563EB",
+                            borderLeft: "2px solid rgba(255,255,255,0.2)",
                             padding: "0.6rem 0.85rem",
                             marginTop: "0.75rem",
                             borderRadius: "0 6px 6px 0",
                           }}
                         >
-                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2563EB" }}>
+                          <p style={{ fontWeight: 700, fontSize: "0.6rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                             Signal
                           </p>
                           <p style={{ fontWeight: 500, fontSize: "0.82rem", color: "rgba(240,244,255,0.7)", lineHeight: 1.6, marginTop: "0.15rem" }}>
@@ -454,7 +454,7 @@ export default async function IntelligencePage() {
                           href={item.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="transition-colors hover:text-[#60A5FA]"
+                          className="transition-colors hover:text-white"
                           style={{ fontWeight: 600, fontSize: "0.75rem", color: "rgba(240,244,255,0.3)" }}
                         >
                           Read more &rarr;
@@ -479,7 +479,7 @@ export default async function IntelligencePage() {
                 padding: "1.5rem",
               }}
             >
-              <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+              <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                 Ask About This Feed
               </p>
               <p className="mt-2" style={{ fontSize: "0.85rem", color: "rgba(240,244,255,0.6)", lineHeight: 1.6 }}>
@@ -488,7 +488,7 @@ export default async function IntelligencePage() {
               <Link
                 href="/advisor"
                 className="mt-4 block rounded-lg py-2.5 text-center transition-opacity hover:opacity-90"
-                style={{ background: "#2563EB", fontWeight: 700, fontSize: "0.82rem", color: "#F0F4FF" }}
+                style={{ background: "rgba(255,255,255,0.1)", fontWeight: 700, fontSize: "0.82rem", color: "#F0F4FF" }}
               >
                 Ask Robotimus
               </Link>
@@ -500,18 +500,18 @@ export default async function IntelligencePage() {
                 className="rounded-[10px]"
                 style={{
                   background: "linear-gradient(145deg, rgba(14,18,38,0.95) 0%, rgba(8,10,20,0.98) 100%)",
-                  border: "1px solid rgba(37,99,235,0.2)",
-                  borderLeft: "3px solid #2563EB",
+                  border: "1px solid rgba(212,212,212,0.12)",
+                  borderLeft: "3px solid rgba(255,255,255,0.2)",
                   padding: "1.5rem",
                   boxShadow: "inset 0 1px 0 rgba(37,99,235,0.06)",
                 }}
               >
-                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                   This Week in Funding
                 </p>
                 <p
                   className="mt-2"
-                  style={{ fontFamily: "var(--font-brand)", fontWeight: 700, fontSize: "1.4rem", color: "#2563EB", textShadow: "0 0 30px rgba(37,99,235,0.3)" }}
+                  style={{ fontFamily: "var(--font-brand)", fontWeight: 700, fontSize: "1.4rem", color: "#D4D4D4", textShadow: "0 0 30px rgba(212,212,212,0.2)" }}
                 >
                   {formatAmount(totalFunding)}
                 </p>
@@ -523,14 +523,14 @@ export default async function IntelligencePage() {
                     <div key={r.announced_at + r.company} className="border-t border-white/[0.06] pt-2.5">
                       <div className="flex items-center justify-between">
                         <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "#F0F4FF" }}>{r.company}</p>
-                        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", fontWeight: 700, color: "#2563EB" }}>
+                        <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", fontWeight: 700, color: "#D4D4D4" }}>
                           {formatAmount(r.amount_usd)}
                         </p>
                       </div>
                       {r.round_type && (
                         <span
                           className="mt-1 inline-block rounded-full px-2 py-0.5"
-                          style={{ fontSize: "0.65rem", fontWeight: 600, background: "rgba(37,99,235,0.12)", color: "#60A5FA", border: "1px solid rgba(37,99,235,0.25)" }}
+                          style={{ fontSize: "0.65rem", fontWeight: 600, background: "rgba(212,212,212,0.08)", color: "#D4D4D4", border: "1px solid rgba(212,212,212,0.2)" }}
                         >
                           {r.round_type}
                         </span>
@@ -552,7 +552,7 @@ export default async function IntelligencePage() {
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
                 }}
               >
-                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                   Trending Manufacturers
                 </p>
                 <div className="mt-3 space-y-2">
@@ -581,7 +581,7 @@ export default async function IntelligencePage() {
                   boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
                 }}
               >
-                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#60A5FA" }}>
+                <p style={{ fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.16em", textTransform: "uppercase", color: "#D4D4D4" }}>
                   Trending Topics
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -592,7 +592,7 @@ export default async function IntelligencePage() {
                       style={{ border: "1px solid rgba(255,255,255,0.06)", fontSize: "0.78rem", color: "rgba(240,244,255,0.4)" }}
                     >
                       {tag}
-                      <span style={{ fontFamily: "var(--font-mono)", color: "#2563EB", fontSize: "0.72rem" }}>{count}</span>
+                      <span style={{ fontFamily: "var(--font-mono)", color: "#D4D4D4", fontSize: "0.72rem" }}>{count}</span>
                     </span>
                   ))}
                 </div>

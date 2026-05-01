@@ -43,7 +43,7 @@ export default function IndependencePage() {
         <div className="mx-auto max-w-4xl">
           <p
             className="mb-4 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em]"
-            style={{ color: "#2563EB" }}
+            style={{ color: "#D4D4D4" }}
           >
             Our Promise
           </p>
@@ -84,7 +84,7 @@ export default function IndependencePage() {
               <div className="flex items-start gap-6">
                 <span
                   className="shrink-0 font-[family-name:var(--font-brand)] text-2xl font-bold"
-                  style={{ color: "#2563EB" }}
+                  style={{ color: "#D4D4D4" }}
                 >
                   {p.number}
                 </span>
@@ -124,13 +124,13 @@ export default function IndependencePage() {
             <Link
               href="/methodology"
               className="btn-glow inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold"
-              style={{ background: "#2563EB", color: "#fff" }}
+              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff" }}
             >
               Read Our Methodology
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 rounded-lg border px-7 py-3.5 text-sm font-semibold transition-colors hover:border-[#2563EB]"
+              className="inline-flex items-center gap-2 rounded-lg border px-7 py-3.5 text-sm font-semibold transition-colors hover:border-white/20"
               style={{
                 borderColor: "var(--theme-border)",
                 color: "var(--theme-text-primary)",

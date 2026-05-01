@@ -108,14 +108,14 @@ export function MaintenanceEstimatorClient() {
               max={100}
               value={fleetSize}
               onChange={(e) => setFleetSize(Math.max(1, Math.min(100, Number(e.target.value) || 1)))}
-              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-electric-blue focus:outline-none"
+              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-white/50 focus:outline-none"
             />
           </div>
           <div>
             <label className="mb-1 block font-mono text-[13px] uppercase tracking-wider text-text-ghost">
               Average Robot Value
             </label>
-            <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2.5 focus-within:border-electric-blue">
+            <div className="flex items-center rounded-md border border-border bg-obsidian px-3 py-2.5 focus-within:border-white/50">
               <span className="mr-1 font-mono text-sm text-text-tertiary">$</span>
               <input
                 type="number"
@@ -132,7 +132,7 @@ export function MaintenanceEstimatorClient() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-electric-blue focus:outline-none"
+              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-white/50 focus:outline-none"
             >
               {CATEGORIES.map((c) => (
                 <option key={c.value} value={c.value}>
@@ -148,7 +148,7 @@ export function MaintenanceEstimatorClient() {
             <select
               value={maintenanceModel}
               onChange={(e) => setMaintenanceModel(e.target.value as MaintenanceModel)}
-              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-electric-blue focus:outline-none"
+              className="w-full rounded-md border border-border bg-obsidian px-4 py-2.5 font-mono text-sm text-text-data focus:border-white/50 focus:outline-none"
             >
               <option value="in_house">In-House Team</option>
               <option value="service_contract">Service Contract</option>
@@ -164,11 +164,11 @@ export function MaintenanceEstimatorClient() {
           Annual Maintenance Cost Estimate
         </h3>
         <div className="flex items-end justify-center gap-2">
-          <span className="font-mono text-3xl font-bold text-blue-400">
+          <span className="font-mono text-3xl font-bold text-white">
             ${results.annualLow.toLocaleString()}
           </span>
           <span className="pb-1 font-mono text-sm text-text-tertiary">to</span>
-          <span className="font-mono text-3xl font-bold text-blue-400">
+          <span className="font-mono text-3xl font-bold text-white">
             ${results.annualHigh.toLocaleString()}
           </span>
           <span className="pb-1 font-mono text-sm text-text-ghost">/year</span>
@@ -183,14 +183,14 @@ export function MaintenanceEstimatorClient() {
         {/* In-house */}
         <div className={cn(
           "rounded-md border bg-obsidian-surface p-6",
-          maintenanceModel === "in_house" ? "border-electric-blue/30" : "border-border",
+          maintenanceModel === "in_house" ? "border-white/20" : "border-border",
         )}>
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-electric-blue">
+            <h3 className="font-mono text-xs uppercase tracking-wider text-white">
               In-House Team
             </h3>
             {maintenanceModel === "in_house" && (
-              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] text-electric-blue">
+              <span className="rounded bg-white/5 px-2 py-0.5 font-mono text-[13px] text-white">
                 CURRENT
               </span>
             )}
@@ -226,14 +226,14 @@ export function MaintenanceEstimatorClient() {
         {/* Service Contract */}
         <div className={cn(
           "rounded-md border bg-obsidian-surface p-6",
-          maintenanceModel === "service_contract" ? "border-electric-blue/30" : "border-border",
+          maintenanceModel === "service_contract" ? "border-white/20" : "border-border",
         )}>
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-electric-blue">
+            <h3 className="font-mono text-xs uppercase tracking-wider text-white">
               Service Contract
             </h3>
             {maintenanceModel === "service_contract" && (
-              <span className="rounded bg-electric-blue/10 px-2 py-0.5 font-mono text-[13px] text-electric-blue">
+              <span className="rounded bg-white/5 px-2 py-0.5 font-mono text-[13px] text-white">
                 CURRENT
               </span>
             )}
@@ -280,7 +280,7 @@ export function MaintenanceEstimatorClient() {
             <span className="font-mono font-bold text-text-data">{fleetSize}</span>{" "}
             robots, you need
           </p>
-          <p className="mt-2 font-mono text-4xl font-bold text-blue-400">
+          <p className="mt-2 font-mono text-4xl font-bold text-white">
             {results.techsNeeded}
           </p>
           <p className="mt-1 text-sm text-text-secondary">
@@ -303,7 +303,7 @@ export function MaintenanceEstimatorClient() {
               <p className="text-sm text-text-secondary">
                 In-house maintenance becomes more cost-effective at
               </p>
-              <p className="mt-2 font-mono text-3xl font-bold text-electric-blue">
+              <p className="mt-2 font-mono text-3xl font-bold text-white">
                 {results.breakEvenFleetSize}+ robots
               </p>
               <p className="mt-2 text-sm text-text-tertiary">

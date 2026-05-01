@@ -75,7 +75,7 @@ export function RoiCalculator({
           {paybackMonths !== null ? (
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted">Payback period</span>
-              <span className={cn("font-mono text-lg font-bold", paybackMonths <= 12 ? "text-green" : paybackMonths <= 24 ? "text-blue" : "text-orange")}>
+              <span className={cn("font-mono text-lg font-bold", paybackMonths <= 12 ? "text-green" : paybackMonths <= 24 ? "text-white" : "text-orange")}>
                 {paybackMonths} months
               </span>
             </div>
@@ -121,7 +121,7 @@ function SliderInput({ label, value, min, max, step, unit, onChange }: {
       <input
         type="range" min={min} max={max} step={step} value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-blue"
+        className="w-full accent-white"
       />
     </div>
   );

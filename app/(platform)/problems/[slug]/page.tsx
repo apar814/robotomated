@@ -72,7 +72,7 @@ export default async function ProblemPage({ params }: Props) {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href={`/tools/robot-finder?industry=${problem.wizardPresets.industry}&useCase=${problem.wizardPresets.useCase}`}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
             >
               Find Your Solution
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -110,7 +110,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── HOW AUTOMATION SOLVES IT ── */}
       <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[13px] font-semibold uppercase tracking-widest text-blue">The Solution</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-white">The Solution</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             {problem.automationSolution.heading}
           </h2>
@@ -120,7 +120,7 @@ export default async function ProblemPage({ params }: Props) {
           <div className="mt-10 space-y-4">
             {problem.automationSolution.benefits.map((benefit, i) => (
               <div key={i} className="flex gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue/10 font-mono text-sm font-bold text-blue">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 font-mono text-sm font-bold text-white">
                   {i + 1}
                 </div>
                 <div>
@@ -145,11 +145,11 @@ export default async function ProblemPage({ params }: Props) {
               <Link
                 key={cat.slug + cat.name}
                 href={`/explore/${cat.slug}`}
-                className="group rounded-xl border border-white/[0.07] bg-white/[0.02] p-6 transition-all hover:-translate-y-1 hover:border-blue/20"
+                className="group rounded-xl border border-white/[0.07] bg-white/[0.02] p-6 transition-all hover:-translate-y-1 hover:border-white/20"
               >
-                <h3 className="font-semibold text-white transition-colors group-hover:text-blue">{cat.name}</h3>
+                <h3 className="font-semibold text-white transition-colors group-hover:text-white">{cat.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/50">{cat.description}</p>
-                <span className="mt-4 inline-block text-xs font-semibold text-blue">
+                <span className="mt-4 inline-block text-xs font-semibold text-white">
                   Browse robots &rarr;
                 </span>
               </Link>
@@ -161,7 +161,7 @@ export default async function ProblemPage({ params }: Props) {
       {/* ── ROI DATA ── */}
       <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <span className="text-[13px] font-semibold uppercase tracking-widest text-blue-400">ROI Data</span>
+          <span className="text-[13px] font-semibold uppercase tracking-widest text-white">ROI Data</span>
           <h2 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
             What does the data say?
           </h2>
@@ -169,15 +169,15 @@ export default async function ProblemPage({ params }: Props) {
           {/* Big metrics */}
           <div className="mt-10 flex flex-wrap gap-4">
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-8 py-6">
-              <p className="font-mono text-3xl font-bold text-blue-400">{problem.roi.paybackMonths}</p>
+              <p className="font-mono text-3xl font-bold text-white">{problem.roi.paybackMonths}</p>
               <p className="mt-1 text-xs uppercase tracking-wider text-white/40">Months to Payback</p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-8 py-6">
-              <p className="font-mono text-3xl font-bold text-blue-400">{problem.roi.costReduction}</p>
+              <p className="font-mono text-3xl font-bold text-white">{problem.roi.costReduction}</p>
               <p className="mt-1 text-xs uppercase tracking-wider text-white/40">Cost Reduction</p>
             </div>
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-8 py-6">
-              <p className="font-mono text-3xl font-bold text-blue-400">{problem.roi.productivityGain}</p>
+              <p className="font-mono text-3xl font-bold text-white">{problem.roi.productivityGain}</p>
               <p className="mt-1 text-xs uppercase tracking-wider text-white/40">Productivity Gain</p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default async function ProblemPage({ params }: Props) {
           <div className="mt-8 text-center">
             <Link
               href="/tools/tco-calculator"
-              className="text-sm font-semibold text-blue hover:underline"
+              className="text-sm font-semibold text-white hover:underline"
             >
               Calculate your exact ROI with our TCO tool &rarr;
             </Link>
@@ -242,7 +242,7 @@ export default async function ProblemPage({ params }: Props) {
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href={`/tools/robot-finder?industry=${problem.wizardPresets.industry}&useCase=${problem.wizardPresets.useCase}`}
-                className="rounded-lg bg-electric-blue px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
+                className="rounded-lg bg-white px-8 py-4 text-base font-bold text-black transition-shadow hover:shadow-[0_0_24px_rgba(37,99,235,0.35)]"
               >
                 Find Your Solution &rarr;
               </Link>

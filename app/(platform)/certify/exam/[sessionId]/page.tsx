@@ -17,7 +17,7 @@ export default function ExamPage({
     return (
       <div className="flex min-h-screen items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
-          <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-8">
+          <div className="rounded-xl border border-border bg-white/5 p-8">
             <h2 className="font-display text-xl font-bold text-white">
               Invalid Exam Link
             </h2>
@@ -27,7 +27,7 @@ export default function ExamPage({
             </p>
             <a
               href="/certify"
-              className="mt-6 inline-block rounded-lg bg-[var(--theme-blue)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:opacity-90"
+              className="mt-6 inline-block rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Return to Certifications
             </a>

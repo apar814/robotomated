@@ -4,7 +4,7 @@ import { useState } from "react";
 import { getActionImage } from "@/lib/action-images";
 
 /* ────────────────────────────────────────────
-   SVG Icons — 40px, stroke #2563EB
+   SVG Icons — 40px, stroke #D4D4D4
    ──────────────────────────────────────────── */
 
 const svgProps = {
@@ -12,7 +12,7 @@ const svgProps = {
   height: 40,
   viewBox: "0 0 24 24",
   fill: "none",
-  stroke: "#2563EB",
+  stroke: "#D4D4D4",
   strokeWidth: 1.5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
@@ -116,22 +116,20 @@ export default function TaskCard({ taskKey, selected, onSelect }: TaskCardProps)
   const [hovered, setHovered] = useState(false);
 
   const bg = selected
-    ? "linear-gradient(145deg, rgba(37,99,235,0.15) 0%, rgba(20,30,60,0.99) 100%)"
+    ? "linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(20,30,60,0.99) 100%)"
     : hovered
       ? "linear-gradient(145deg, rgba(20,26,52,0.99) 0%, rgba(12,16,32,0.99) 100%)"
       : "linear-gradient(145deg, rgba(14,18,38,0.97) 0%, rgba(8,10,20,0.99) 100%)";
 
   const borderColor = selected
-    ? "#2563EB"
+    ? "rgba(255,255,255,0.3)"
     : hovered
-      ? "rgba(37,99,235,0.5)"
+      ? "rgba(255,255,255,0.2)"
       : "rgba(255,255,255,0.08)";
 
   const shadow = selected
-    ? "0 0 0 1px rgba(37,99,235,0.4), 0 8px 24px rgba(37,99,235,0.15)"
-    : hovered
-      ? "0 8px 24px rgba(37,99,235,0.12)"
-      : "none";
+    ? "0 0 0 1px rgba(255,255,255,0.15)"
+    : "none";
 
   const transform = selected
     ? "scale(1.02)"
@@ -145,7 +143,7 @@ export default function TaskCard({ taskKey, selected, onSelect }: TaskCardProps)
       onClick={onSelect}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative w-full overflow-hidden rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]/50"
+      className="relative w-full overflow-hidden rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
       style={{
         background: bg,
         border: `1px solid ${borderColor}`,
@@ -184,7 +182,7 @@ export default function TaskCard({ taskKey, selected, onSelect }: TaskCardProps)
             style={{
               opacity: hovered || selected ? 1 : 0,
               transition: "opacity 0.15s",
-              color: "#2563EB",
+              color: "rgba(255,255,255,0.3)",
               fontSize: "1.1rem",
               fontWeight: 700,
             }}
@@ -204,7 +202,7 @@ export default function TaskCard({ taskKey, selected, onSelect }: TaskCardProps)
             width: 28,
             height: 28,
             borderRadius: "50%",
-            backgroundColor: "#2563EB",
+            backgroundColor: "rgba(255,255,255,0.3)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

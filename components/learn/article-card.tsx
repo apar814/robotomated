@@ -4,7 +4,7 @@ import type { ArticleFrontmatter } from "@/lib/learn/articles";
 
 const audienceColors: Record<string, string> = {
   beginner: "bg-green/10 text-green",
-  enthusiast: "bg-blue/10 text-blue",
+  enthusiast: "bg-white/5 text-white",
   professional: "bg-violet/10 text-violet",
   developer: "bg-orange/10 text-orange",
 };
@@ -19,7 +19,7 @@ export function ArticleCard({
   return (
     <Link
       href={`/learn/${categorySlug}/${article.slug}`}
-      className="group flex flex-col rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-blue/30"
+      className="group flex flex-col rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-white/20"
     >
       <div className="flex items-center gap-2">
         <span className={cn("rounded-full px-2 py-0.5 text-[13px] font-medium", audienceColors[article.audience] || audienceColors.beginner)}>
@@ -27,7 +27,7 @@ export function ArticleCard({
         </span>
         <span className="text-[13px] text-muted">{article.readTime} min read</span>
       </div>
-      <h3 className="mt-3 font-semibold transition-colors group-hover:text-blue">
+      <h3 className="mt-3 font-semibold transition-colors group-hover:text-white">
         {article.title}
       </h3>
       <p className="mt-2 line-clamp-2 flex-1 text-xs text-muted">

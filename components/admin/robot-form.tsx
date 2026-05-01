@@ -192,9 +192,9 @@ export function RobotForm({ initialData, mode }: Props) {
           Robot {mode === "create" ? "Created" : "Updated"}!
         </h2>
         <p className="mt-2 text-muted">
-          <a href={`/explore/all/${form.slug}`} className="text-blue hover:underline">View robot page</a>
+          <a href={`/explore/all/${form.slug}`} className="text-white hover:underline">View robot page</a>
           {" | "}
-          <button onClick={() => setStatus("idle")} className="text-blue hover:underline">
+          <button onClick={() => setStatus("idle")} className="text-white hover:underline">
             {mode === "create" ? "Add another" : "Continue editing"}
           </button>
         </p>
@@ -267,7 +267,7 @@ export function RobotForm({ initialData, mode }: Props) {
             value={form.description_long}
             onChange={(e) => updateField("description_long", e.target.value)}
             rows={6}
-            className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none"
+            className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none"
           />
         </div>
       </Section>
@@ -287,12 +287,12 @@ export function RobotForm({ initialData, mode }: Props) {
         <div className="space-y-2">
           {form.specs.map((spec, i) => (
             <div key={i} className="flex gap-2">
-              <input value={spec.key} onChange={(e) => updateSpec(i, "key", e.target.value)} placeholder="Spec name" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none" />
-              <input value={spec.value} onChange={(e) => updateSpec(i, "value", e.target.value)} placeholder="Value" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input value={spec.key} onChange={(e) => updateSpec(i, "key", e.target.value)} placeholder="Spec name" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none" />
+              <input value={spec.value} onChange={(e) => updateSpec(i, "value", e.target.value)} placeholder="Value" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none" />
               <button onClick={() => removeSpec(i)} className="px-2 text-muted hover:text-orange" aria-label="Remove">&times;</button>
             </div>
           ))}
-          <button onClick={addSpec} className="text-sm text-blue hover:underline">+ Add spec</button>
+          <button onClick={addSpec} className="text-sm text-white hover:underline">+ Add spec</button>
         </div>
       </Section>
 
@@ -301,13 +301,13 @@ export function RobotForm({ initialData, mode }: Props) {
         <div className="space-y-2">
           {form.images.map((img, i) => (
             <div key={i} className="flex gap-2">
-              <input value={img.url} onChange={(e) => updateImage(i, "url", e.target.value)} placeholder="Image URL" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none" />
-              <input value={img.alt} onChange={(e) => updateImage(i, "alt", e.target.value)} placeholder="Alt text" className="w-40 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-blue focus:outline-none" />
+              <input value={img.url} onChange={(e) => updateImage(i, "url", e.target.value)} placeholder="Image URL" className="flex-1 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none" />
+              <input value={img.alt} onChange={(e) => updateImage(i, "alt", e.target.value)} placeholder="Alt text" className="w-40 rounded-lg border border-border bg-navy-lighter px-3 py-2 text-sm text-foreground focus:border-white/50 focus:outline-none" />
               <button onClick={() => removeImage(i)} className="px-2 text-muted hover:text-orange">&times;</button>
             </div>
           ))}
           {form.images.length < 10 && (
-            <button onClick={addImage} className="text-sm text-blue hover:underline">+ Add image</button>
+            <button onClick={addImage} className="text-sm text-white hover:underline">+ Add image</button>
           )}
         </div>
       </Section>
@@ -318,14 +318,14 @@ export function RobotForm({ initialData, mode }: Props) {
           {DIMENSIONS.map((d) => (
             <div key={d.key} className="flex items-center gap-3">
               <label className="w-24 shrink-0 text-xs text-muted">{d.label}</label>
-              <input type="range" min={0} max={100} value={form.scores[d.key] || 0} onChange={(e) => updateScore(d.key, parseInt(e.target.value))} className="flex-1 accent-blue" />
-              <input type="number" min={0} max={100} value={form.scores[d.key] || 0} onChange={(e) => updateScore(d.key, Math.min(100, Math.max(0, parseInt(e.target.value) || 0)))} className="w-14 rounded border border-border bg-navy-lighter px-2 py-1 text-center font-mono text-xs focus:border-blue focus:outline-none" />
+              <input type="range" min={0} max={100} value={form.scores[d.key] || 0} onChange={(e) => updateScore(d.key, parseInt(e.target.value))} className="flex-1 accent-white" />
+              <input type="number" min={0} max={100} value={form.scores[d.key] || 0} onChange={(e) => updateScore(d.key, Math.min(100, Math.max(0, parseInt(e.target.value) || 0)))} className="w-14 rounded border border-border bg-navy-lighter px-2 py-1 text-center font-mono text-xs focus:border-white/50 focus:outline-none" />
             </div>
           ))}
         </div>
         <div className="mt-4 rounded-lg bg-navy-lighter p-3">
           <span className="text-sm font-semibold">Calculated RoboScore: </span>
-          <span className="font-mono text-lg font-bold text-blue">{roboScore.toFixed(1)}</span>
+          <span className="font-mono text-lg font-bold text-white">{roboScore.toFixed(1)}</span>
         </div>
       </Section>
 
@@ -354,7 +354,7 @@ function Field({ label, value, onChange, type = "text", mono }: { label: string;
   return (
     <div>
       <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">{label}</label>
-      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={`w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none ${mono ? "font-mono" : ""}`} />
+      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={`w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none ${mono ? "font-mono" : ""}`} />
     </div>
   );
 }
@@ -363,7 +363,7 @@ function SelectField({ label, value, onChange, options }: { label: string; value
   return (
     <div>
       <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">{label}</label>
-      <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none">
+      <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none">
         <option value="">Select...</option>
         {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>

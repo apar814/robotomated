@@ -186,7 +186,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
                 onClick={handleSendEmailCode}
                 disabled={emailSending}
                 className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition-opacity disabled:opacity-50"
-                style={{ background: "#2563EB" }}
+                style={{ background: "#D4D4D4" }}
               >
                 {emailSending ? "Sending..." : "Send code"}
               </button>
@@ -210,7 +210,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
                   onClick={handleVerifyEmailCode}
                   disabled={emailVerifying}
                   className="rounded-lg px-4 py-2 text-sm font-semibold text-white transition-opacity disabled:opacity-50"
-                  style={{ background: "#2563EB" }}
+                  style={{ background: "#D4D4D4" }}
                 >
                   {emailVerifying ? "Verifying..." : "Verify"}
                 </button>
@@ -272,7 +272,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
                 type="button"
                 onClick={handleSendPhoneCode}
                 className="rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                style={{ background: "#2563EB" }}
+                style={{ background: "#D4D4D4" }}
               >
                 Send code
               </button>
@@ -295,7 +295,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
                   type="button"
                   onClick={handleVerifyPhoneCode}
                   className="rounded-lg px-4 py-2 text-sm font-semibold text-white"
-                  style={{ background: "#2563EB" }}
+                  style={{ background: "#D4D4D4" }}
                 >
                   Verify
                 </button>
@@ -419,7 +419,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
                 onClick={handleLinkedinVerify}
                 disabled={!linkedinUrl}
                 className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-opacity disabled:opacity-50"
-                style={{ background: "#2563EB" }}
+                style={{ background: "#D4D4D4" }}
               >
                 Verify
               </button>
@@ -586,7 +586,7 @@ export default function StepVerification({ data, updateData }: StepProps) {
           <a
             href="/certify"
             className="inline-block text-sm font-semibold underline"
-            style={{ color: "#2563EB" }}
+            style={{ color: "#D4D4D4" }}
           >
             Learn more at /certify
           </a>

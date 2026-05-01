@@ -8,19 +8,19 @@ interface StatCardProps {
 }
 
 const accentColors: Record<string, string> = {
-  blue: "border-[#00C2FF]/30 bg-[#00C2FF]/5",
-  green: "border-[#00E5A0]/30 bg-[#00E5A0]/5",
-  violet: "border-[#7B2FFF]/30 bg-[#7B2FFF]/5",
-  amber: "border-amber-400/30 bg-amber-400/5",
-  red: "border-red-400/30 bg-red-400/5",
+  blue: "border-white/[0.08] bg-white/[0.02]",
+  green: "border-white/[0.08] bg-white/[0.02]",
+  violet: "border-white/[0.08] bg-white/[0.02]",
+  amber: "border-white/[0.08] bg-white/[0.02]",
+  red: "border-white/[0.08] bg-white/[0.02]",
 };
 
 const valueColors: Record<string, string> = {
-  blue: "text-[#00C2FF]",
-  green: "text-[#00E5A0]",
-  violet: "text-[#7B2FFF]",
-  amber: "text-amber-400",
-  red: "text-red-400",
+  blue: "text-white",
+  green: "text-white",
+  violet: "text-white",
+  amber: "text-white",
+  red: "text-white",
 };
 
 function StatCard({ label, value, subtitle, accent = "blue" }: StatCardProps) {

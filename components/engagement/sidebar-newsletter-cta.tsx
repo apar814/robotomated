@@ -45,12 +45,12 @@ export function SidebarNewsletterCta({ robotName }: { robotName: string }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
               required
-              className="w-full rounded-md border border-border bg-obsidian px-3 py-2 text-sm text-text-primary placeholder:text-text-ghost focus:border-electric-blue focus:outline-none"
+              className="w-full rounded-md border border-border bg-obsidian px-3 py-2 text-sm text-text-primary placeholder:text-text-ghost focus:border-white/50 focus:outline-none"
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full rounded-md border border-electric-blue bg-electric-blue/10 px-3 py-2 font-mono text-xs font-bold text-electric-blue transition-colors hover:bg-electric-blue/20 disabled:opacity-50"
+              className="w-full rounded-md border border-white/20 bg-white/5 px-3 py-2 font-mono text-xs font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-50"
             >
               {status === "loading" ? "..." : "Subscribe"}
             </button>

@@ -208,7 +208,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
             )}
 
             {hasFilters && (
-              <button onClick={clearFilters} className="font-[family-name:var(--font-ui)] text-[11px] font-bold uppercase tracking-wide hover:underline" style={{ color: "#2563EB" }}>
+              <button onClick={clearFilters} className="font-[family-name:var(--font-ui)] text-[11px] font-bold uppercase tracking-wide hover:underline" style={{ color: "#D4D4D4" }}>
                 Clear all filters
               </button>
             )}
@@ -247,7 +247,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
                       Clear filters
                     </button>
                   )}
-                  <Link href="/advisor" className="rounded-lg px-4 py-2 text-sm font-semibold text-black" style={{ background: "#2563EB" }}>
+                  <Link href="/advisor" className="rounded-lg px-4 py-2 text-sm font-semibold text-black" style={{ background: "#FFFFFF" }}>
                     Ask Robotimus &rarr;
                   </Link>
                 </div>
@@ -277,7 +277,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
                         onClick={() => handlePage(p)}
                         className={cn(
                           "h-8 w-8 rounded-md font-[family-name:var(--font-brand)] text-xs font-medium transition-colors",
-                          p === page ? "bg-[#2563EB] text-white" : "hover:bg-[rgba(37,99,235,0.08)]"
+                          p === page ? "bg-white/10 text-white" : "hover:bg-white/5"
                         )}
                         style={{ color: p === page ? undefined : "var(--theme-text-muted)" }}
                       >
@@ -302,7 +302,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
               </div>
               <Link href={`/explore/compare?ids=${compareIds.join(",")}`}
                 className="rounded-md px-6 py-2 text-sm font-semibold text-black"
-                style={{ background: "#2563EB" }}>
+                style={{ background: "#FFFFFF" }}>
                 Compare Now
               </Link>
             </div>
@@ -316,7 +316,7 @@ export function BrowseClient({ categories, manufacturers, initialCategory, total
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <span className="mb-1 block font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ {title} ]</span>
+      <span className="mb-1 block font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">[ {title} ]</span>
       <div className="space-y-0.5">{children}</div>
     </div>
   );
@@ -331,8 +331,8 @@ function FilterButton({ label, active, onClick }: { label: string; active: boole
         active && "font-medium"
       )}
       style={{
-        color: active ? "#2563EB" : "var(--theme-text-muted)",
-        background: active ? "rgba(37,99,235,0.08)" : "transparent",
+        color: active ? "#FFFFFF" : "var(--theme-text-muted)",
+        background: active ? "rgba(255,255,255,0.05)" : "transparent",
       }}
     >
       {label}

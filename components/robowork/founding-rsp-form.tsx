@@ -82,8 +82,8 @@ export function FoundingRspForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-lg border border-blue-600/20 bg-blue-600/5 p-8 text-center">
-        <div className="mb-3 text-4xl text-blue-400">&#10003;</div>
+      <div className="rounded-lg border border-white/20 bg-white/5 p-8 text-center">
+        <div className="mb-3 text-4xl text-white">&#10003;</div>
         <h3 className="text-lg font-bold text-text-primary">
           Application received!
         </h3>
@@ -101,7 +101,7 @@ export function FoundingRspForm() {
   };
 
   const inputClass =
-    "w-full rounded border px-3 py-2.5 text-sm outline-none transition-colors focus:border-electric-blue placeholder:text-text-tertiary";
+    "w-full rounded border px-3 py-2.5 text-sm outline-none transition-colors focus:border-white/50 placeholder:text-text-tertiary";
 
   const labelClass =
     "mb-1.5 block font-mono text-[13px] uppercase tracking-widest text-text-ghost";
@@ -188,7 +188,7 @@ export function FoundingRspForm() {
               onClick={() => toggleCategory(cat)}
               className={`rounded-full border px-3.5 py-1.5 text-xs font-medium capitalize transition-colors ${
                 robotTypes.includes(cat)
-                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  ? "border-white/20 bg-white/5 text-white"
                   : "border-border text-text-secondary hover:border-text-tertiary"
               }`}
             >
@@ -235,7 +235,7 @@ export function FoundingRspForm() {
         type="submit"
         disabled={submitting}
         className="w-full rounded px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90 disabled:opacity-50"
-        style={{ backgroundColor: "#2563EB", color: "#000" }}
+        style={{ backgroundColor: "#D4D4D4", color: "#000" }}
       >
         {submitting ? "Submitting..." : "Submit Application"}
       </button>

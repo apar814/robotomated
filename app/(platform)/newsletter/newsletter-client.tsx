@@ -133,8 +133,8 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
         <div className="relative z-10 mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 lg:grid-cols-[3fr_2fr]">
           {/* Left: copy + form */}
           <div>
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ NEWSLETTER ]</p>
-            <p className="mt-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-widest text-blue">Every Monday at 7am</p>
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ NEWSLETTER ]</p>
+            <p className="mt-2 font-[family-name:var(--font-ui)] text-xs font-semibold uppercase tracking-widest text-white">Every Monday at 7am</p>
             <h1 className="mt-4 font-display text-4xl font-bold sm:text-5xl">
               The Robotomated Brief
             </h1>
@@ -145,7 +145,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
             {/* Stats */}
             <div className="mt-8 flex gap-8">
               <div>
-                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-blue">{robotCount}+</p>
+                <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">{robotCount}+</p>
                 <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-muted">Robots Tracked</p>
               </div>
               <div>
@@ -160,10 +160,10 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
 
             {/* Benefits */}
             <ul className="mt-8 space-y-2 text-sm text-muted">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-electric-blue" /> Top-rated robots and new launches every week</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-electric-blue" /> Market funding data and price movements</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-electric-blue" /> Industry analysis for operators and buyers</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-electric-blue" /> No spam, unsubscribe anytime</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" /> Top-rated robots and new launches every week</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" /> Market funding data and price movements</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" /> Industry analysis for operators and buyers</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white" /> No spam, unsubscribe anytime</li>
             </ul>
 
             {/* Signup form */}
@@ -181,7 +181,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@company.com"
-                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none sm:rounded-r-none"
+                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-4 text-sm text-white placeholder:text-white/45 focus:border-white/50 focus:outline-none sm:rounded-r-none"
                   />
                   <Button type="submit" disabled={status === "loading"} className="px-8 py-4 sm:rounded-l-none">
                     {status === "loading" ? "Subscribing..." : "Subscribe Free"}
@@ -206,7 +206,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* What you get */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ INSIDE EVERY ISSUE ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ INSIDE EVERY ISSUE ]</p>
           <h2 className="mt-2 text-center text-xl font-bold">What&apos;s Inside Every Issue</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -216,7 +216,7 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
               { iconType: "trending-up" as const, title: "Industry Intel", desc: "Trends, analysis, and what operators need to know" },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-center">
-                <NewsletterIcon type={item.iconType} className="mx-auto h-6 w-6 text-blue" />
+                <NewsletterIcon type={item.iconType} className="mx-auto h-6 w-6 text-white" />
                 <h3 className="mt-2 text-sm font-semibold">{item.title}</h3>
                 <p className="mt-1 text-xs text-muted">{item.desc}</p>
               </div>
@@ -228,12 +228,12 @@ export function NewsletterPageClient({ subscriberCount }: { subscriberCount: num
       {/* Recent issues */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ RECENT ISSUES ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ RECENT ISSUES ]</p>
           <h2 className="mt-2 text-center text-xl font-bold">Recent Issues</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {RECENT_ISSUES.map((issue) => (
               <div key={issue.title} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5">
-                <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-blue">{issue.date}</p>
+                <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-wider text-white">{issue.date}</p>
                 <h3 className="mt-2 text-sm font-semibold leading-tight">{issue.title}</h3>
                 <p className="mt-2 text-xs leading-relaxed text-muted">{issue.preview}</p>
               </div>

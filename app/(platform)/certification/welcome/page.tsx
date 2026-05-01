@@ -24,19 +24,19 @@ export default function CertificationWelcomePage() {
             <p className="text-lime font-mono text-sm mb-3">What happens now:</p>
             <ol className="space-y-2 text-sm text-text-secondary">
               <li className="flex gap-2">
-                <span className="text-electric-blue font-mono shrink-0">1.</span>
+                <span className="text-white font-mono shrink-0">1.</span>
                 Check your inbox for the welcome email with your cohort details
               </li>
               <li className="flex gap-2">
-                <span className="text-electric-blue font-mono shrink-0">2.</span>
+                <span className="text-white font-mono shrink-0">2.</span>
                 Complete the free Level 0 Robot Awareness quiz if you haven&apos;t already
               </li>
               <li className="flex gap-2">
-                <span className="text-electric-blue font-mono shrink-0">3.</span>
+                <span className="text-white font-mono shrink-0">3.</span>
                 Block 10 hrs/week on your calendar for the next 4 weeks
               </li>
               <li className="flex gap-2">
-                <span className="text-electric-blue font-mono shrink-0">4.</span>
+                <span className="text-white font-mono shrink-0">4.</span>
                 Watch for your community invite 3 days before cohort starts
               </li>
             </ol>
@@ -45,13 +45,13 @@ export default function CertificationWelcomePage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/certify"
-              className="flex-1 bg-electric-blue text-obsidian font-semibold py-3 rounded-lg hover:brightness-110 transition-all text-center"
+              className="flex-1 bg-white text-obsidian font-semibold py-3 rounded-lg hover:brightness-110 transition-all text-center"
             >
               Take Level 0 Quiz
             </Link>
             <Link
               href="/explore"
-              className="flex-1 border border-border text-text-secondary font-medium py-3 rounded-lg hover:border-electric-blue hover:text-text-primary transition-colors text-center"
+              className="flex-1 border border-border text-text-secondary font-medium py-3 rounded-lg hover:border-white/30 hover:text-text-primary transition-colors text-center"
             >
               Explore Robots
             </Link>

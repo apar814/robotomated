@@ -238,19 +238,19 @@ export default async function FleetPage() {
 
       {/* Next step */}
       <div className="mt-12 grid gap-4 sm:grid-cols-3">
-        <Link href="/fleet/add" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-[#2563EB]/30">
+        <Link href="/fleet/add" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-white/20">
           <p className="font-mono text-[13px] uppercase tracking-widest text-white/45">Manage</p>
-          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-[#2563EB]">Add a robot to your fleet</p>
+          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-white">Add a robot to your fleet</p>
           <p className="mt-1 text-xs text-white/40">Register a new asset for tracking.</p>
         </Link>
-        <Link href="/tools/maintenance-estimator" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-[#2563EB]/30">
+        <Link href="/tools/maintenance-estimator" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-white/20">
           <p className="font-mono text-[13px] uppercase tracking-widest text-white/45">Plan</p>
-          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-[#2563EB]">Estimate maintenance costs</p>
+          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-white">Estimate maintenance costs</p>
           <p className="mt-1 text-xs text-white/40">Forecast your fleet operating budget.</p>
         </Link>
-        <Link href="/certify" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-[#2563EB]/30">
+        <Link href="/certify" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-white/20">
           <p className="font-mono text-[13px] uppercase tracking-widest text-white/45">Train</p>
-          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-[#2563EB]">Certify your operators</p>
+          <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-white">Certify your operators</p>
           <p className="mt-1 text-xs text-white/40">Certified operators have 73% fewer incidents.</p>
         </Link>
       </div>

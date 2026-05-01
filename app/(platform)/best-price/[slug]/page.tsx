@@ -152,7 +152,7 @@ export default async function BestPricePage({ params }: Props) {
         <div className="mx-auto max-w-4xl text-center">
           <Link
             href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-            className="text-sm text-blue hover:underline"
+            className="text-sm text-white hover:underline"
           >
             &larr; Back to {robot.name} full review
           </Link>

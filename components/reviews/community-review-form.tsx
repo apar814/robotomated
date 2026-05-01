@@ -77,7 +77,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
     return (
       <button
         onClick={() => setOpen(true)}
-        className="w-full rounded-xl border border-dashed border-border bg-navy-light p-6 text-center text-sm text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+        className="w-full rounded-xl border border-dashed border-border bg-navy-light p-6 text-center text-sm text-muted transition-colors hover:border-white/20 hover:text-foreground"
       >
         Write a review of {robotName}
       </button>
@@ -129,7 +129,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Summarize your experience"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -146,7 +146,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
           onChange={(e) => setBody(e.target.value)}
           rows={5}
           placeholder="Share your detailed experience with this robot..."
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -160,7 +160,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
           onChange={(e) => setPros(e.target.value)}
           rows={3}
           placeholder="Fast setup&#10;Great battery life&#10;Quiet operation"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -174,7 +174,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
           onChange={(e) => setCons(e.target.value)}
           rows={3}
           placeholder="Expensive replacement parts&#10;App could be better"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -184,7 +184,7 @@ export function CommunityReviewForm({ robotId, robotName }: CommunityReviewFormP
           type="checkbox"
           checked={verified}
           onChange={(e) => setVerified(e.target.checked)}
-          className="h-4 w-4 rounded border-border bg-navy-lighter accent-blue"
+          className="h-4 w-4 rounded border-border bg-navy-lighter accent-white"
         />
         <span className="text-sm text-muted">I own or have used this robot</span>
       </label>

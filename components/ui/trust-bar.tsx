@@ -29,7 +29,7 @@ export function TrustBar() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-6 py-2.5 md:flex md:justify-between">
         {TRUST_ITEMS.map((item) => (
           <div key={item.prefix} className="flex items-center gap-2">
-            <div className="h-1 w-1 shrink-0 rounded-full bg-electric-blue" />
+            <div className="h-1 w-1 shrink-0 rounded-full bg-white/60" />
             <span className="font-mono text-[13px] uppercase tracking-wider text-tertiary">
               <span className="text-secondary">{item.prefix}</span>
               {item.suffix}

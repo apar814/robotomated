@@ -8,7 +8,7 @@ interface WizardCelebrationProps {
   companyName: string;
 }
 
-const CONFETTI_COLORS = ["#2563EB", "#F59E0B", "#10B981", "#7B2FFF", "#FF006E"];
+const CONFETTI_COLORS = ["#D4D4D4", "#F59E0B", "#10B981", "#7B2FFF", "#FF006E"];
 const CONFETTI_COUNT = 30;
 
 function generateConfettiPieces() {

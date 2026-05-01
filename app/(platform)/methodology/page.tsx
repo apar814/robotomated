@@ -66,7 +66,7 @@ export default function MethodologyPage() {
           <div className="space-y-8">
             {DIMENSIONS.map((dim, i) => (
               <div key={dim.key} className="flex gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue/10 font-mono text-sm font-bold text-blue">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/5 font-mono text-sm font-bold text-white">
                   {Math.round(dim.weight * 100)}%
                 </div>
                 <div>
@@ -94,7 +94,7 @@ export default function MethodologyPage() {
               { step: "4", title: "Peer Review", desc: "Scores are reviewed for consistency across the category. We recalibrate when new robots shift benchmarks." },
             ].map(({ step, title, desc }) => (
               <div key={step} className="rounded-xl border border-border bg-navy-light p-5">
-                <span className="font-mono text-xs text-blue">{step}</span>
+                <span className="font-mono text-xs text-white">{step}</span>
                 <h3 className="mt-1 font-semibold">{title}</h3>
                 <p className="mt-2 text-xs text-muted">{desc}</p>
               </div>
@@ -136,7 +136,7 @@ export default function MethodologyPage() {
               </thead>
               <tbody>
                 {[
-                  { range: "90–100", rating: "Exceptional", color: "text-blue", meaning: "Best-in-class. Excels across most dimensions." },
+                  { range: "90–100", rating: "Exceptional", color: "text-white", meaning: "Best-in-class. Excels across most dimensions." },
                   { range: "80–89", rating: "Excellent", color: "text-green", meaning: "Strong performer with minor trade-offs." },
                   { range: "70–79", rating: "Good", color: "text-green", meaning: "Solid choice for most use cases." },
                   { range: "60–69", rating: "Average", color: "text-orange", meaning: "Gets the job done but has notable weaknesses." },
@@ -175,7 +175,7 @@ export default function MethodologyPage() {
             Browse our database and see how RoboScore helps you compare robots objectively.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link href="/explore" className="rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90">
+            <Link href="/explore" className="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-navy transition-opacity hover:opacity-90">
               Explore Robots
             </Link>
             <Link href="/reviews" className="rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-navy-lighter">

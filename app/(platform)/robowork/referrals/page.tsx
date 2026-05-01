@@ -78,17 +78,17 @@ export default async function RspReferralsPage() {
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border px-4 pb-20 pt-16 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-gradient-to-b from-electric-blue/[0.03] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <div className="mb-4 inline-block rounded-full border border-blue-600/20 bg-blue-600/5 px-4 py-1.5">
-            <span className="font-mono text-[13px] uppercase tracking-widest text-blue-400">
+          <div className="mb-4 inline-block rounded-full border border-white/20 bg-white/5 px-4 py-1.5">
+            <span className="font-mono text-[13px] uppercase tracking-widest text-white">
               RSP Referral Program
             </span>
           </div>
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Refer an RSP.{" "}
-            <span className="text-blue-400">Earn $500.</span>
+            <span className="text-white">Earn $500.</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
@@ -103,7 +103,7 @@ export default async function RspReferralsPage() {
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               How It Works
             </span>
@@ -131,7 +131,7 @@ export default async function RspReferralsPage() {
                 key={item.step}
                 className="rounded-lg border border-border bg-obsidian-surface p-6 transition-all hover:-translate-y-0.5 hover:border-border-active"
               >
-                <span className="mb-3 inline-block font-mono text-2xl font-extrabold text-electric-blue">
+                <span className="mb-3 inline-block font-mono text-2xl font-extrabold text-white">
                   {item.step}
                 </span>
                 <h3 className="text-sm font-bold text-text-primary">
@@ -179,7 +179,7 @@ export default async function RspReferralsPage() {
                 )}
                 <a
                   href="/robowork/providers/register"
-                  className="inline-flex items-center rounded-md bg-blue-600 px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-blue-600/90"
+                  className="inline-flex items-center rounded-md bg-white px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-white/90"
                 >
                   Register as RSP
                 </a>

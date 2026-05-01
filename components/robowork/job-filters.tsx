@@ -35,9 +35,9 @@ export function JobFilters() {
   }
 
   const selectClass =
-    "rounded border border-border bg-obsidian-elevated px-3 py-2 text-xs text-text-primary outline-none focus:border-electric-blue transition-colors";
+    "rounded border border-border bg-obsidian-elevated px-3 py-2 text-xs text-text-primary outline-none focus:border-white/50 transition-colors";
   const inputClass =
-    "rounded border border-border bg-obsidian-elevated px-3 py-2 text-xs text-text-primary outline-none focus:border-electric-blue transition-colors w-full";
+    "rounded border border-border bg-obsidian-elevated px-3 py-2 text-xs text-text-primary outline-none focus:border-white/50 transition-colors w-full";
 
   return (
     <div className="rounded-lg border border-border bg-obsidian-surface p-4">
@@ -83,7 +83,7 @@ export function JobFilters() {
 
         <button
           onClick={() => setExpanded(!expanded)}
-          className="ml-auto rounded border border-border px-3 py-2 font-mono text-[13px] uppercase tracking-wider text-text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+          className="ml-auto rounded border border-border px-3 py-2 font-mono text-[13px] uppercase tracking-wider text-text-secondary transition-colors hover:border-white/20 hover:text-white"
         >
           {expanded ? "Less Filters" : "More Filters"}
         </button>

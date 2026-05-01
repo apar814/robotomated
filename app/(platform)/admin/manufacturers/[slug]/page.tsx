@@ -53,7 +53,7 @@ export default function AdminManufacturerLogoPage() {
       <div className="mt-6">
         <label className="mb-1 block text-xs text-white/40">Logo URL</label>
         <input type="url" value={logoUrl} onChange={e => setLogoUrl(e.target.value)} placeholder="https://example.com/logo.png"
-          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none" />
+          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2.5 text-sm text-white placeholder:text-white/45 focus:border-white/50 focus:outline-none" />
       </div>
 
       <div className="mt-4 flex items-center gap-3">

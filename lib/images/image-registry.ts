@@ -64,7 +64,7 @@ export function getSectionImageUrl(
 // ── Category gradient fallbacks ──
 
 const CATEGORY_GRADIENTS: Record<string, string> = {
-  warehouse: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0EA5E9 100%)",
+  warehouse: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #D4D4D4 100%)",
   medical: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #06B6D4 100%)",
   manufacturing: "linear-gradient(135deg, #0F172A 0%, #2D1B69 50%, #7C3AED 100%)",
   security: "linear-gradient(135deg, #0F172A 0%, #1C1917 50%, #F59E0B 100%)",
@@ -72,13 +72,13 @@ const CATEGORY_GRADIENTS: Record<string, string> = {
   humanoid: "linear-gradient(135deg, #0F172A 0%, #312E81 50%, #818CF8 100%)",
   construction: "linear-gradient(135deg, #0F172A 0%, #431407 50%, #EA580C 100%)",
   cleaning: "linear-gradient(135deg, #0F172A 0%, #164E63 50%, #06B6D4 100%)",
-  delivery: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #3B82F6 100%)",
+  delivery: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #D4D4D4 100%)",
   consumer: "linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #A78BFA 100%)",
 };
 
 export function getCategoryGradient(categorySlug: string): string {
   return (
     CATEGORY_GRADIENTS[categorySlug] ||
-    "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0EA5E9 100%)"
+    "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #D4D4D4 100%)"
   );
 }

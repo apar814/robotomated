@@ -8,7 +8,7 @@ export function AffiliateDisclosureInline() {
     <p className="mt-3 text-[13px] text-muted">
       Robotomated earns a commission on purchases made through our links at no extra cost to you.
       This never influences our scores or recommendations.{" "}
-      <a href="/methodology" className="text-blue hover:underline">Learn more</a>.
+      <a href="/methodology" className="text-white hover:underline">Learn more</a>.
     </p>
   );
 }

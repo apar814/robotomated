@@ -30,8 +30,8 @@ export function StatusBar() {
       <div className="hidden items-center gap-5 md:flex">
         {/* ACTIVE indicator */}
         <span className="flex items-center gap-1.5">
-          <span className="animate-pulse-live h-1 w-1 rounded-full" style={{ background: "#00D4FF" }} />
-          <span style={{ color: "#00D4FF" }}>ACTIVE</span>
+          <span className="animate-pulse-live h-1 w-1 rounded-full" style={{ background: "#D4D4D4" }} />
+          <span style={{ color: "#D4D4D4" }}>ACTIVE</span>
         </span>
 
         <span className="flex items-center gap-1.5">
@@ -53,7 +53,7 @@ export function StatusBar() {
       {/* Right side — desktop */}
       <div className="hidden items-center gap-1.5 md:flex">
         <span className="text-text-tertiary">REFRESHED</span>
-        <span style={{ color: "#00D4FF" }}>
+        <span style={{ color: "#D4D4D4" }}>
           {minutes}:{seconds} AGO
         </span>
       </div>

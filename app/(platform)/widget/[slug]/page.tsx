@@ -55,7 +55,7 @@ export default async function WidgetPage({ params }: Props) {
           </div>
           <a
             href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
-            className="mt-4 block rounded-lg bg-blue py-2.5 text-center text-sm font-semibold text-[#0A0F1E] hover:bg-blue/90"
+            className="mt-4 block rounded-lg bg-white py-2.5 text-center text-sm font-semibold text-[#0A0F1E] hover:bg-white/90"
           >
             View on Robotomated
           </a>

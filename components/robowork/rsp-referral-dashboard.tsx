@@ -23,8 +23,8 @@ interface Props {
 
 const STATUS_STYLES: Record<string, { bg: string; text: string; label: string }> = {
   pending: { bg: "bg-[#F59E0B]/10", text: "text-[#F59E0B]", label: "Pending" },
-  qualified: { bg: "bg-electric-blue/10", text: "text-electric-blue", label: "Qualified" },
-  paid: { bg: "bg-blue-600/10", text: "text-blue-400", label: "Paid" },
+  qualified: { bg: "bg-white/5", text: "text-white", label: "Qualified" },
+  paid: { bg: "bg-white/5", text: "text-white", label: "Paid" },
 };
 
 export function RspReferralDashboard({
@@ -93,7 +93,7 @@ export function RspReferralDashboard({
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Your Referral Link
             </span>
@@ -121,13 +121,13 @@ export function RspReferralDashboard({
               <div className="flex items-center gap-3 rounded-lg border border-border bg-obsidian-surface p-4">
                 <div className="min-w-0 flex-1">
                   <p className="text-xs text-text-ghost">Your referral link</p>
-                  <p className="mt-1 truncate font-mono text-sm text-electric-blue">
+                  <p className="mt-1 truncate font-mono text-sm text-white">
                     {referralLink}
                   </p>
                 </div>
                 <button
                   onClick={() => copyToClipboard(referralLink!, "link")}
-                  className="shrink-0 rounded-md bg-blue-600 px-4 py-2 text-xs font-semibold text-[#0A0F1E] transition-colors hover:bg-blue-600/90"
+                  className="shrink-0 rounded-md bg-white px-4 py-2 text-xs font-semibold text-[#0A0F1E] transition-colors hover:bg-white/90"
                 >
                   {copied === "link" ? "Copied!" : "Copy Link"}
                 </button>
@@ -158,7 +158,7 @@ export function RspReferralDashboard({
               <button
                 onClick={generateCode}
                 disabled={generating}
-                className="mt-4 rounded-md bg-blue-600 px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-blue-600/90 disabled:opacity-50"
+                className="mt-4 rounded-md bg-white px-6 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-white/90 disabled:opacity-50"
               >
                 {generating ? "Generating..." : "Generate Referral Code"}
               </button>
@@ -173,9 +173,9 @@ export function RspReferralDashboard({
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
               { label: "Total Referrals", value: referralCount, color: "text-text-primary" },
-              { label: "Qualified", value: qualifiedCount, color: "text-electric-blue" },
-              { label: "Paid Out", value: paidCount, color: "text-blue-400" },
-              { label: "Total Earned", value: `$${totalEarned.toLocaleString()}`, color: "text-blue-400" },
+              { label: "Qualified", value: qualifiedCount, color: "text-white" },
+              { label: "Paid Out", value: paidCount, color: "text-white" },
+              { label: "Total Earned", value: `$${totalEarned.toLocaleString()}`, color: "text-white" },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -195,7 +195,7 @@ export function RspReferralDashboard({
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white/60" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Your Referrals
             </span>

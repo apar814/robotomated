@@ -209,9 +209,9 @@ export function RegisterWizard() {
             padding: "0.75rem 1rem",
             marginBottom: "1.5rem",
             borderRadius: "0.5rem",
-            backgroundColor: "rgba(14, 165, 233, 0.1)",
-            border: "1px solid rgba(14, 165, 233, 0.3)",
-            color: "#2563EB",
+            backgroundColor: "rgba(212, 212, 212, 0.08)",
+            border: "1px solid rgba(212, 212, 212, 0.2)",
+            color: "#D4D4D4",
             fontSize: "0.875rem",
             fontWeight: 500,
             textAlign: "center",
@@ -279,7 +279,7 @@ export function RegisterWizard() {
               borderRadius: "0.5rem",
               border: "none",
               backgroundColor: canProceed(step, data)
-                ? "#2563EB"
+                ? "#D4D4D4"
                 : "var(--theme-border)",
               color: canProceed(step, data) ? "#fff" : "var(--theme-text-secondary)",
               fontSize: "0.875rem",
@@ -298,7 +298,7 @@ export function RegisterWizard() {
               padding: "0.75rem 1.5rem",
               borderRadius: "0.5rem",
               border: "none",
-              backgroundColor: submitting ? "var(--theme-border)" : "#2563EB",
+              backgroundColor: submitting ? "var(--theme-border)" : "#D4D4D4",
               color: submitting ? "var(--theme-text-secondary)" : "#fff",
               fontSize: "0.875rem",
               fontWeight: 600,

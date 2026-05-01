@@ -40,7 +40,7 @@ export default async function LeaderboardPage() {
     <div className="min-h-screen bg-[#080808]">
       <section className="px-4 pb-16 pt-12">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-white">
             Newsletter Community
           </p>
           <h1 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">
@@ -48,7 +48,7 @@ export default async function LeaderboardPage() {
           </h1>
           <p className="mt-3 text-white/50">
             Refer 3 friends to the Robotomated newsletter and earn our{" "}
-            <span className="font-semibold text-[#60A5FA]">Robot Buyer&apos;s Guide PDF</span>.
+            <span className="font-semibold text-white">Robot Buyer&apos;s Guide PDF</span>.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default async function LeaderboardPage() {
               </p>
               <a
                 href="/newsletter"
-                className="mt-4 inline-block rounded-lg bg-[#2563EB] px-6 py-2.5 text-sm font-semibold text-black transition-opacity hover:opacity-90"
+                className="mt-4 inline-block rounded-lg bg-white/5 border border-white/20 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Subscribe and get your link
               </a>
@@ -74,9 +74,9 @@ export default async function LeaderboardPage() {
                   key={i}
                   className={`flex items-center justify-between rounded-lg border px-5 py-3 ${
                     i === 0
-                      ? "border-[#60A5FA]/30 bg-[#60A5FA]/[0.04]"
+                      ? "border-white/20 bg-white/[0.04]"
                       : i < 3
-                        ? "border-[#2563EB]/20 bg-[#2563EB]/[0.02]"
+                        ? "border-white/15 bg-white/[0.02]"
                         : "border-white/10 bg-white/[0.02]"
                   }`}
                 >
@@ -84,9 +84,9 @@ export default async function LeaderboardPage() {
                     <span
                       className={`flex h-8 w-8 items-center justify-center rounded-full font-mono text-sm font-bold ${
                         i === 0
-                          ? "bg-[#60A5FA] text-black"
+                          ? "bg-white/20 text-white"
                           : i < 3
-                            ? "bg-[#2563EB]/20 text-[#2563EB]"
+                            ? "bg-white/10 text-white"
                             : "bg-white/10 text-white/40"
                       }`}
                     >
@@ -106,15 +106,15 @@ export default async function LeaderboardPage() {
             <h2 className="text-sm font-semibold text-white">How it works</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div>
-                <p className="font-mono text-2xl font-bold text-[#2563EB]">1</p>
+                <p className="font-mono text-2xl font-bold text-white">1</p>
                 <p className="mt-1 text-xs text-white/50">Subscribe to the newsletter</p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-[#2563EB]">2</p>
+                <p className="font-mono text-2xl font-bold text-white">2</p>
                 <p className="mt-1 text-xs text-white/50">Share your unique referral link</p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-[#60A5FA]">3</p>
+                <p className="font-mono text-2xl font-bold text-white">3</p>
                 <p className="mt-1 text-xs text-white/50">3 referrals = Robot Buyer&apos;s Guide PDF</p>
               </div>
             </div>

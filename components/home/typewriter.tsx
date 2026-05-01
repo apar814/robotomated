@@ -36,7 +36,7 @@ export function Typewriter() {
   }, [charIndex, deleting, currentIndex, currentText.length]);
 
   return (
-    <span className="font-mono text-blue">
+    <span className="font-mono text-white">
       {currentText.slice(0, charIndex)}
       <span className="animate-pulse">|</span>
     </span>

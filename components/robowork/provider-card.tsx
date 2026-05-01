@@ -52,7 +52,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={cn("h-3.5 w-3.5", star <= Math.round(rating) ? "text-[#60A5FA]" : "text-white/28")}
+          className={cn("h-3.5 w-3.5", star <= Math.round(rating) ? "text-white" : "text-white/28")}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -80,12 +80,12 @@ export function ProviderCard({
   founding_rsp_number,
 }: ProviderCardProps) {
   return (
-    <div className="group rounded-xl border border-border bg-obsidian-surface p-5 transition-all hover:border-[#2563EB]/30 hover:-translate-y-0.5">
+    <div className="group rounded-xl border border-border bg-obsidian-surface p-5 transition-all hover:border-white/20 hover:-translate-y-0.5">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
           <Link href={`/robowork/providers/${slug}`}>
-            <h3 className="font-sans text-base font-semibold text-text-primary group-hover:text-[#2563EB] transition-colors">
+            <h3 className="font-sans text-base font-semibold text-text-primary group-hover:text-white transition-colors">
               {company_name}
               {is_founding_rsp && founding_rsp_number && (
                 <span
@@ -123,7 +123,7 @@ export function ProviderCard({
           {specializations.slice(0, 4).map((spec) => (
             <span
               key={spec}
-              className="rounded-full bg-[#2563EB]/10 px-2.5 py-0.5 font-sans text-[13px] font-medium text-[#2563EB]"
+              className="rounded-full bg-white/10 px-2.5 py-0.5 font-sans text-[13px] font-medium text-white"
             >
               {spec}
             </span>
@@ -158,7 +158,7 @@ export function ProviderCard({
       {/* Verification badges */}
       <div className="mt-4 flex items-center gap-2">
         {verified && (
-          <span className="flex items-center gap-1 rounded-full bg-[#2563EB]/10 px-2 py-0.5 font-mono text-[13px] tracking-wider text-[#2563EB]">
+          <span className="flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 font-mono text-[13px] tracking-wider text-white">
             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
@@ -186,7 +186,7 @@ export function ProviderCard({
       {/* CTA */}
       <Link
         href={`/robowork/providers/${slug}`}
-        className="mt-4 block w-full rounded-lg border border-[#2563EB]/30 bg-[#2563EB]/5 py-2 text-center font-sans text-xs font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB]/10"
+        className="mt-4 block w-full rounded-lg border border-white/20 bg-white/5 py-2 text-center font-sans text-xs font-medium text-white transition-colors hover:bg-white/10"
       >
         View Profile
       </Link>

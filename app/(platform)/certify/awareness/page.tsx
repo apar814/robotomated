@@ -130,13 +130,13 @@ export default function AwarenessPage() {
         </div>
 
         <div className="relative mx-auto max-w-5xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ FREE CERTIFICATION ]
           </p>
 
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
             Become{" "}
-            <span className="bg-gradient-to-r from-green via-blue to-violet bg-clip-text text-transparent">
+            <span className="text-white font-semibold">
               Robot Literate
             </span>
           </h1>
@@ -171,7 +171,7 @@ export default function AwarenessPage() {
           <div className="mt-10 flex flex-col items-center gap-3">
             <Link
               href="/certify/exam?level=0"
-              className="inline-flex items-center rounded-lg bg-green px-10 py-4 text-base font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Free &rarr;
             </Link>
@@ -185,7 +185,7 @@ export default function AwarenessPage() {
       {/* ═══ 5 MODULES ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ 5 MODULES ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -200,12 +200,12 @@ export default function AwarenessPage() {
             {MODULES.map((mod) => (
               <div
                 key={mod.number}
-                className="group relative rounded-2xl border border-green/10 bg-[#0A0A0A] p-7 transition-all hover:border-green/30 hover:shadow-xl hover:shadow-green/5"
+                className="hover-card-bl group relative rounded-2xl border border-border bg-[#0A0A0A] p-7 transition-all hover:border-white/20"
               >
                 <div className="flex flex-col gap-6 sm:flex-row">
                   {/* Number badge */}
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-green/20 bg-green/5">
-                    <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-green">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-white/5">
+                    <span className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                       {String(mod.number).padStart(2, "0")}
                     </span>
                   </div>
@@ -215,7 +215,7 @@ export default function AwarenessPage() {
                       <h3 className="font-display text-xl font-bold text-white">
                         {mod.title}
                       </h3>
-                      <span className="rounded-full border border-green/20 px-3 py-1 font-[family-name:var(--font-mono)] text-xs text-green">
+                      <span className="rounded-full border border-border px-3 py-1 font-[family-name:var(--font-mono)] text-xs text-muted">
                         {mod.time}
                       </span>
                     </div>
@@ -230,7 +230,7 @@ export default function AwarenessPage() {
                           key={topic}
                           className="flex items-start gap-2 text-xs text-muted"
                         >
-                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-green/50" />
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/30" />
                           {topic}
                         </div>
                       ))}
@@ -244,9 +244,9 @@ export default function AwarenessPage() {
       </section>
 
       {/* ═══ THE EXAM ═══ */}
-      <section className="border-y border-green/10 bg-gradient-to-b from-green/[0.02] to-transparent px-4 py-20">
+      <section className="border-y border-border px-4 py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-green">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE EXAM ]
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
@@ -269,7 +269,7 @@ export default function AwarenessPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl border border-green/10 bg-[#0A0A0A] px-4 py-5"
+                className="rounded-xl border border-border bg-[#0A0A0A] px-4 py-5"
               >
                 <p className="font-[family-name:var(--font-brand)] text-2xl font-bold text-white">
                   {stat.value}
@@ -291,7 +291,7 @@ export default function AwarenessPage() {
       {/* ═══ WHO IS THIS FOR ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ WHO IS THIS FOR ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -302,7 +302,7 @@ export default function AwarenessPage() {
             {WHO_IS_THIS_FOR.map((persona) => (
               <div
                 key={persona.role}
-                className="rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-green/20"
+                className="hover-card-bl rounded-xl border border-border bg-[#0A0A0A] p-6 transition-all hover:border-white/20"
               >
                 <h3 className="font-display text-base font-bold text-white">
                   {persona.role}
@@ -319,7 +319,7 @@ export default function AwarenessPage() {
       {/* ═══ CAREER PATH ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ WHAT COMES NEXT ]
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">
@@ -327,44 +327,44 @@ export default function AwarenessPage() {
           </h2>
           <p className="mt-4 text-muted">
             Pass Level 0 and unlock a{" "}
-            <span className="font-semibold text-green">$20 discount</span> on
+            <span className="font-semibold text-white">$20 discount</span> on
             Level 1 Foundation.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <div className="rounded-lg border border-green/30 bg-green/5 px-4 py-2.5">
-              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-green">
+            <div className="rounded-lg border border-border bg-white/5 px-4 py-2.5">
+              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-white">
                 L0 Awareness
               </p>
               <p className="text-xs text-muted">FREE</p>
             </div>
             <span className="text-muted">&rarr;</span>
-            <div className="rounded-lg border border-blue/30 bg-blue/5 px-4 py-2.5">
-              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-blue">
+            <div className="rounded-lg border border-border bg-white/5 px-4 py-2.5">
+              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-white">
                 L1 Foundation
               </p>
               <p className="text-xs text-muted">
                 <span className="text-muted line-through">$149</span>{" "}
-                <span className="font-semibold text-green">$129</span>
+                <span className="font-semibold text-white">$129</span>
               </p>
             </div>
             <span className="text-muted">&rarr;</span>
-            <div className="rounded-lg border border-green/30 bg-green/5 px-4 py-2.5">
-              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-green">
+            <div className="rounded-lg border border-border bg-white/5 px-4 py-2.5">
+              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-white">
                 L2 Specialist
               </p>
               <p className="text-xs text-muted">$299</p>
             </div>
             <span className="text-muted">&rarr;</span>
-            <div className="rounded-lg border border-violet/30 bg-violet/5 px-4 py-2.5">
-              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-violet">
+            <div className="rounded-lg border border-border bg-white/5 px-4 py-2.5">
+              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-white">
                 L3 Master
               </p>
               <p className="text-xs text-muted">$499</p>
             </div>
             <span className="text-muted">&rarr;</span>
-            <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 px-4 py-2.5">
-              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-amber-400">
+            <div className="rounded-lg border border-border bg-white/5 px-4 py-2.5">
+              <p className="font-[family-name:var(--font-brand)] text-sm font-bold text-white">
                 L4 Commander
               </p>
               <p className="text-xs text-muted">$799</p>
@@ -380,7 +380,7 @@ export default function AwarenessPage() {
 
           <Link
             href="/certify/level"
-            className="mt-8 inline-flex items-center text-sm font-medium text-green transition-colors hover:text-green/80"
+            className="mt-8 inline-flex items-center text-sm font-medium text-white transition-colors hover:text-white/80"
           >
             View full certification ladder &rarr;
           </Link>
@@ -392,7 +392,7 @@ export default function AwarenessPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
             Start Your Robot Literacy Journey —{" "}
-            <span className="text-green">Free</span>
+            <span className="text-white font-semibold">Free</span>
           </h2>
           <p className="mt-4 text-muted">
             3 hours. 5 modules. 40 questions. Permanent credential. Zero
@@ -401,7 +401,7 @@ export default function AwarenessPage() {
           <div className="mt-8">
             <Link
               href="/certify/exam?level=0"
-              className="inline-flex items-center rounded-lg bg-green px-10 py-4 text-base font-semibold text-navy transition-all hover:bg-green/90 hover:shadow-lg hover:shadow-green/20"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
             >
               Start Free &rarr;
             </Link>

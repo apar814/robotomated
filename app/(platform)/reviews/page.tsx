@@ -71,12 +71,12 @@ export default async function ReviewsPage() {
       <section className="border-b border-border px-4 py-6">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap gap-2">
-            <span className="rounded-full bg-blue/10 px-4 py-2 text-sm font-medium text-blue">All</span>
+            <span className="rounded-full bg-white/5 px-4 py-2 text-sm font-medium text-white">All</span>
             {(categories || []).map((cat) => (
               <Link
                 key={cat.slug}
                 href={`/explore/${cat.slug}`}
-                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-blue/30 hover:text-foreground"
+                className="rounded-full border border-border px-4 py-2 text-sm text-muted transition-colors hover:border-white/20 hover:text-foreground"
               >
                 {cat.name}
               </Link>
@@ -97,18 +97,18 @@ export default async function ReviewsPage() {
                 const mfr = (robot?.manufacturers as { name: string } | null)?.name || "";
 
                 return (
-                  <div key={review.id} className="rounded-xl border border-blue/20 bg-navy-light p-6">
+                  <div key={review.id} className="rounded-xl border border-white/20 bg-navy-light p-6">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <div className="flex items-center gap-2">
-                          <svg className="h-4 w-4 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-xs font-semibold uppercase tracking-wider text-blue">Expert Review</span>
+                          <span className="text-xs font-semibold uppercase tracking-wider text-white">Expert Review</span>
                         </div>
                         <Link href={`/explore/${catSlug}/${robot?.slug}`}>
                           <p className="mt-1 text-xs text-muted">{mfr}</p>
-                          <h3 className="text-xl font-bold transition-colors hover:text-blue">{review.title}</h3>
+                          <h3 className="text-xl font-bold transition-colors hover:text-white">{review.title}</h3>
                         </Link>
                       </div>
                       {review.robo_score != null && <RoboScoreRing score={review.robo_score} size={80} />}
@@ -118,7 +118,7 @@ export default async function ReviewsPage() {
 
                     {review.verdict && (
                       <p className="mt-3 text-sm">
-                        <span className="font-semibold text-blue">Verdict:</span>{" "}
+                        <span className="font-semibold text-white">Verdict:</span>{" "}
                         <span className="text-muted">{review.verdict}</span>
                       </p>
                     )}
@@ -126,7 +126,7 @@ export default async function ReviewsPage() {
                     <div className="mt-4">
                       <Link
                         href={`/explore/${catSlug}/${robot?.slug}`}
-                        className="text-sm font-medium text-blue hover:underline"
+                        className="text-sm font-medium text-white hover:underline"
                       >
                         Read Full Review &rarr;
                       </Link>
@@ -148,7 +148,7 @@ export default async function ReviewsPage() {
               <p className="text-lg font-semibold">No reviews yet</p>
               <p className="mt-2 text-sm text-muted">
                 Be the first to review a robot.{" "}
-                <Link href="/explore" className="text-blue hover:underline">Browse robots</Link> and share your experience.
+                <Link href="/explore" className="text-white hover:underline">Browse robots</Link> and share your experience.
               </p>
             </div>
           ) : communityReviews.length === 0 ? (

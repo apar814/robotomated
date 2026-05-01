@@ -55,8 +55,8 @@ function WorkerColumn() {
 
   return (
     <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-electric-blue/20 bg-electric-blue/10">
-        <svg className="h-5 w-5 text-electric-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/5">
+        <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
@@ -79,12 +79,12 @@ function WorkerColumn() {
               onClick={() => setSelectedRole(selectedRole === role ? "" : role)}
               className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm transition-all ${
                 selectedRole === role
-                  ? "border border-electric-blue/30 bg-electric-blue/10 text-electric-blue"
+                  ? "border border-white/30 bg-white/10 text-white"
                   : "border border-transparent text-white/60 hover:bg-white/[0.03] hover:text-white/80"
               }`}
             >
               <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${
-                selectedRole === role ? "bg-electric-blue" : "bg-white/20"
+                selectedRole === role ? "bg-white" : "bg-white/20"
               }`} />
               {role}
             </button>
@@ -94,8 +94,8 @@ function WorkerColumn() {
 
       {/* Form */}
       {status === "success" ? (
-        <div className="mt-6 rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
-          <p className="text-sm font-semibold text-blue-400">You&apos;re on the list.</p>
+        <div className="mt-6 rounded-xl border border-white/20 bg-white/5 p-6">
+          <p className="text-sm font-semibold text-white">You&apos;re on the list.</p>
           <p className="mt-1 text-xs text-white/50">{message}</p>
         </div>
       ) : (
@@ -106,7 +106,7 @@ function WorkerColumn() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
-            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-electric-blue focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-border focus:outline-none"
           />
           <Button type="submit" disabled={status === "loading"} className="mt-3 w-full">
             {status === "loading" ? "Submitting..." : "Join the Waitlist"}
@@ -132,8 +132,8 @@ function EmployerColumn() {
 
   return (
     <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-violet/20 bg-violet/10">
-        <svg className="h-5 w-5 text-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/20 bg-white/5">
+        <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="7" width="20" height="14" rx="2" />
           <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
           <path d="M12 12h.01" />
@@ -154,7 +154,7 @@ function EmployerColumn() {
           "Ongoing training and upskilling partnerships",
         ].map((item) => (
           <div key={item} className="flex items-start gap-2.5">
-            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet" />
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40" />
             <p className="text-sm text-white/50">{item}</p>
           </div>
         ))}
@@ -162,8 +162,8 @@ function EmployerColumn() {
 
       {/* Form */}
       {status === "success" ? (
-        <div className="mt-6 rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
-          <p className="text-sm font-semibold text-blue-400">Request received.</p>
+        <div className="mt-6 rounded-xl border border-white/20 bg-white/5 p-6">
+          <p className="text-sm font-semibold text-white">Request received.</p>
           <p className="mt-1 text-xs text-white/50">{message}</p>
         </div>
       ) : (
@@ -174,7 +174,7 @@ function EmployerColumn() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="hiring@company.com"
-            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-violet focus:outline-none"
+            className="w-full rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-border focus:outline-none"
           />
           <Button type="submit" variant="secondary" disabled={status === "loading"} className="mt-3 w-full">
             {status === "loading" ? "Submitting..." : "Get Early Access"}
@@ -201,9 +201,9 @@ function ManufacturerCTA() {
   return (
     <section className="bg-[#0A0F1E] px-4 pb-20 pt-4">
       <div className="mx-auto max-w-5xl">
-        <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-electric-blue/[0.04] to-violet/[0.04] p-8 sm:p-12">
+        <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.02] to-white/[0.04] p-8 sm:p-12">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-electric-blue">
+            <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.15em] text-white">
               Manufacturer Partners
             </p>
             <h2 className="mt-3 text-2xl font-bold text-white">
@@ -216,8 +216,8 @@ function ManufacturerCTA() {
             </p>
 
             {status === "success" ? (
-              <div className="mx-auto mt-6 max-w-md rounded-xl border border-blue-600/20 bg-blue-600/5 p-6">
-                <p className="text-sm font-semibold text-blue-400">Partnership request submitted.</p>
+              <div className="mx-auto mt-6 max-w-md rounded-xl border border-white/20 bg-white/5 p-6">
+                <p className="text-sm font-semibold text-white">Partnership request submitted.</p>
                 <p className="mt-1 text-xs text-white/50">{message}</p>
               </div>
             ) : (
@@ -229,7 +229,7 @@ function ManufacturerCTA() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="partnerships@manufacturer.com"
-                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-electric-blue focus:outline-none sm:rounded-r-none"
+                    className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-border focus:outline-none sm:rounded-r-none"
                   />
                   <Button type="submit" disabled={status === "loading"} className="px-6 py-3 sm:rounded-l-none">
                     {status === "loading" ? "Sending..." : "Partner With Us"}

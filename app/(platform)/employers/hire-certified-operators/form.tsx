@@ -101,12 +101,12 @@ export function EmployerIntentForm() {
   }
 
   const inputClass =
-    "w-full bg-obsidian border border-border rounded-lg px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-electric-blue transition-colors";
+    "w-full bg-obsidian border border-border rounded-lg px-4 py-3 text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-white/50 transition-colors";
   const labelClass = "block text-sm font-medium text-text-secondary mb-1.5";
   const btnPrimary =
-    "w-full bg-electric-blue text-obsidian font-semibold py-3.5 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed";
+    "w-full bg-white text-obsidian font-semibold py-3.5 rounded-lg hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed";
   const btnSecondary =
-    "w-full border border-border text-text-secondary font-medium py-3 rounded-lg hover:border-electric-blue hover:text-text-primary transition-colors";
+    "w-full border border-border text-text-secondary font-medium py-3 rounded-lg hover:border-white/20 hover:text-text-primary transition-colors";
 
   // Step indicators
   const stepIndicator = (
@@ -116,7 +116,7 @@ export function EmployerIntentForm() {
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-mono ${
               s === step
-                ? "bg-electric-blue text-obsidian"
+                ? "bg-white text-obsidian"
                 : s < step
                   ? "bg-lime/20 text-lime"
                   : "bg-obsidian border border-border text-text-tertiary"

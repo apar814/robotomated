@@ -114,7 +114,7 @@ export default function CROPage() {
       {/* ═══ THE THREE GATES ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE THREE GATES ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -319,7 +319,7 @@ export default function CROPage() {
       {/* ═══ PREREQUISITES ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ PREREQUISITES ]
           </p>
           <h2 className="mb-12 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -337,7 +337,7 @@ export default function CROPage() {
                     key={req}
                     className="flex items-center gap-3 text-sm"
                   >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green/10 text-xs text-green">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-white">
                       &#10003;
                     </span>
                     <span className="text-white">{req}</span>
@@ -356,7 +356,7 @@ export default function CROPage() {
                     key={req}
                     className="flex items-center gap-3 text-sm"
                   >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue" />
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
                     <span className="text-muted">{req}</span>
                   </div>
                 ))}
@@ -369,7 +369,7 @@ export default function CROPage() {
       {/* ═══ CRO COUNCIL ═══ */}
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-violet">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE COUNCIL ]
           </p>
           <h2 className="mb-4 text-center font-display text-3xl font-bold sm:text-4xl">
@@ -391,9 +391,9 @@ export default function CROPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-3 rounded-lg border border-violet/10 px-4 py-3 text-sm text-muted"
+                className="flex items-center gap-3 rounded-lg border border-border px-4 py-3 text-sm text-muted"
               >
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet" />
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
                 {item}
               </div>
             ))}
@@ -402,7 +402,7 @@ export default function CROPage() {
           <div className="mt-8 text-center">
             <Link
               href="/council"
-              className="inline-flex items-center text-sm font-medium text-violet transition-colors hover:text-violet/80"
+              className="inline-flex items-center text-sm font-medium text-white transition-colors hover:text-white/80"
             >
               View Council Decisions &rarr;
             </Link>
@@ -413,7 +413,7 @@ export default function CROPage() {
       {/* ═══ TIMELINE ═══ */}
       <section className="border-y border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ TIMELINE ]
           </p>
           <h2 className="mb-10 text-center font-display text-2xl font-bold">
@@ -472,7 +472,7 @@ export default function CROPage() {
                   key={item}
                   className="flex items-center gap-3 text-sm"
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green/10 text-xs text-green">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-white">
                     &#10003;
                   </span>
                   <span className="text-muted">{item}</span>

@@ -20,8 +20,8 @@ const SAMPLE_JOBS: JobCard[] = [
     bids: "4 bids",
     posted: "2 hours ago",
     tags: [
-      { label: "AMR", color: "bg-electric-blue/15 text-electric-blue" },
-      { label: "WITH OPERATOR", color: "bg-violet/15 text-violet" },
+      { label: "AMR", color: "bg-white/10 text-white/70" },
+      { label: "WITH OPERATOR", color: "bg-white/10 text-white/60" },
     ],
     urgent: true,
   },
@@ -33,8 +33,8 @@ const SAMPLE_JOBS: JobCard[] = [
     bids: "2 bids",
     posted: "1 day ago",
     tags: [
-      { label: "CLEANING", color: "bg-blue-600/15 text-blue-400" },
-      { label: "AUTONOMOUS", color: "bg-electric-blue/15 text-electric-blue" },
+      { label: "CLEANING", color: "bg-white/10 text-white/60" },
+      { label: "AUTONOMOUS", color: "bg-white/10 text-white/70" },
     ],
   },
   {
@@ -45,8 +45,8 @@ const SAMPLE_JOBS: JobCard[] = [
     bids: "1 bid",
     posted: "3 days ago",
     tags: [
-      { label: "AGR", color: "bg-blue-600/15 text-blue-400" },
-      { label: "WITH OPERATOR", color: "bg-violet/15 text-violet" },
+      { label: "AGR", color: "bg-white/10 text-white/60" },
+      { label: "WITH OPERATOR", color: "bg-white/10 text-white/60" },
     ],
   },
 ];
@@ -57,8 +57,8 @@ export function RoboWorkSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section label */}
         <div className="mb-6 flex items-center gap-2">
-          <span className="inline-block h-px w-6 bg-[#2563EB]" />
-          <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <span className="inline-block h-px w-6 bg-white/60" />
+          <span className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
             Deploy Channel
           </span>
         </div>
@@ -131,7 +131,7 @@ export function RoboWorkSection() {
                   <span>{job.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-[family-name:var(--font-mono)] text-[14px] font-bold text-blue-400">
+                  <span className="font-[family-name:var(--font-mono)] text-[14px] font-bold text-white/60">
                     {job.budget}
                   </span>
                 </div>
@@ -139,7 +139,7 @@ export function RoboWorkSection() {
 
               {/* Footer */}
               <div className="mt-4 flex items-center justify-between border-t border-border-subtle pt-3">
-                <span className="font-[family-name:var(--font-ui)] text-[12px] font-medium text-electric-blue">
+                <span className="font-[family-name:var(--font-ui)] text-[12px] font-medium text-white">
                   {job.bids}
                 </span>
                 <span className="text-[12px] text-ghost">{job.posted}</span>
@@ -153,7 +153,7 @@ export function RoboWorkSection() {
           <Link
             href="/robowork/post"
             className="inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-[15px] font-bold tracking-[0.02em] text-black transition-all hover:-translate-y-0.5"
-            style={{ background: "#2563EB" }}
+            style={{ background: "#FFFFFF" }}
           >
             Post a Job
             <svg
@@ -172,7 +172,7 @@ export function RoboWorkSection() {
           </Link>
           <Link
             href="/robowork/providers/register"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-[#2563EB] hover:text-[#2563EB]"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border px-7 py-3.5 text-[15px] font-semibold text-[var(--theme-text-primary)] transition-all hover:-translate-y-0.5 hover:border-white/40 hover:text-white/60"
             style={{ borderColor: "var(--theme-border)" }}
           >
             Become a Provider

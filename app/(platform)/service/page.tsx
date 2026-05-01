@@ -63,7 +63,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="e.g. Fanuc, ABB, Universal Robots"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -77,7 +77,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="e.g. CRX-10iA, UR10e"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -92,7 +92,7 @@ function ServiceRequestForm() {
           id="service_type"
           name="service_type"
           required
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/50 focus:outline-none"
         >
           <option value="">Select a service</option>
           {SERVICE_CATEGORIES.map((cat) => (
@@ -111,7 +111,7 @@ function ServiceRequestForm() {
           id="urgency"
           name="urgency"
           required
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-white/50 focus:outline-none"
         >
           <option value="">Select urgency</option>
           <option value="low">Low - Within 2 weeks</option>
@@ -134,7 +134,7 @@ function ServiceRequestForm() {
           required
           rows={4}
           placeholder="Describe the issue or service needed..."
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -148,7 +148,7 @@ function ServiceRequestForm() {
           type="text"
           required
           placeholder="City, State or ZIP"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -162,14 +162,14 @@ function ServiceRequestForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-[#00C2FF] focus:outline-none"
+          className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-white/50 focus:outline-none"
         />
       </div>
 
       <div className="sm:col-span-2">
         <button
           type="submit"
-          className="w-full rounded-lg bg-[#00C2FF] px-8 py-3 font-display font-semibold text-[#0A0F1E] transition-colors hover:bg-[#00C2FF]/80"
+          className="w-full rounded-lg bg-white/5 border border-white/20 px-8 py-3 font-display font-semibold text-white transition-colors hover:bg-white/10"
         >
           Request Service
         </button>
@@ -189,7 +189,7 @@ export default function ServicePage() {
       />
 
       <section className="mt-8 text-center">
-        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
           [ OPERATE CHANNEL ]
         </p>
         <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -202,7 +202,7 @@ export default function ServicePage() {
       </section>
 
       <section className="mt-16">
-        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+        <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
           [ SERVICE TYPES ]
         </p>
         <h2 className="mt-2 font-display text-2xl font-semibold text-white">
@@ -228,7 +228,7 @@ export default function ServicePage() {
 
       <section id="request" className="mt-20">
         <div className="glass rounded-2xl border border-white/10 p-8 sm:p-12">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">
             [ REQUEST FORM ]
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-white">

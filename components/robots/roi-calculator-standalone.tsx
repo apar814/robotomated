@@ -28,7 +28,7 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
   }, [workers, wage, shifts, price, robotSlug]);
 
   return (
-    <div className="rounded-2xl border border-blue/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(0,194,255,0.05)] backdrop-blur-sm sm:p-8">
+    <div className="rounded-2xl border border-white/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(0,194,255,0.05)] backdrop-blur-sm sm:p-8">
       <div className="grid gap-8 sm:grid-cols-2">
         {/* Inputs */}
         <div className="space-y-5">
@@ -49,7 +49,7 @@ export function RoiCalculatorStandalone({ robotName, robotPrice, robotSlug }: Pr
             <OutputCard label="5-year savings" value={fiveYearSavings > 0 ? `$${fiveYearSavings.toLocaleString()}` : fiveYearSavings === 0 ? "$0" : `-$${Math.abs(fiveYearSavings).toLocaleString()}`} color={fiveYearSavings > 0 ? "text-green" : "text-orange"} />
           </div>
 
-          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-2.5 text-xs font-medium text-white/40 transition-colors hover:border-blue/30 hover:text-blue">
+          <button onClick={shareRoi} className="mt-2 w-full rounded-lg border border-white/[0.07] bg-white/[0.03] py-2.5 text-xs font-medium text-white/40 transition-colors hover:border-white/20 hover:text-white">
             Share your ROI calculation
           </button>
         </div>
@@ -79,7 +79,7 @@ function SliderInput({ label, value, min, max, step, onChange, prefix = "", suff
         <span className="font-mono text-sm font-bold text-white">{prefix}{fmt ? value.toLocaleString() : value}{suffix}</span>
       </div>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-blue" />
+        className="w-full accent-white" />
     </div>
   );
 }

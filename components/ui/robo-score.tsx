@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils/cn";
 function getScoreColor(score: number) {
   if (score >= 90)
     return {
-      text: "text-blue-400",
-      bg: "bg-blue-600",
-      border: "border-blue-600/10",
+      text: "text-white",
+      bg: "bg-white",
+      border: "border-white/10",
       ring: "stroke-lime",
-      dimBg: "bg-blue-600-dim",
-      hex: "#60A5FA",
+      dimBg: "bg-white/[0.05]",
+      hex: "#D4D4D4",
     };
   if (score >= 80)
     return {
@@ -76,7 +76,7 @@ function RoboScoreTooltip() {
             </span>
             <div className="relative h-[3px] flex-1 overflow-hidden rounded-sm bg-white/[0.05]">
               <div
-                className="absolute inset-y-0 left-0 rounded-sm bg-electric-blue"
+                className="absolute inset-y-0 left-0 rounded-sm bg-white/60"
                 style={{ width: `${(d.weight / maxWeight) * 100}%` }}
               />
             </div>
@@ -203,7 +203,7 @@ export function ScoreBar({
       </div>
       <div className="relative h-1.5 flex-1 overflow-hidden rounded-sm bg-white/[0.05]">
         <div
-          className="absolute inset-y-0 left-0 rounded-sm bg-electric-blue transition-[width] duration-700 ease-out"
+          className="absolute inset-y-0 left-0 rounded-sm bg-white/60 transition-[width] duration-700 ease-out"
           style={{ width: `${score}%`, opacity: 0.85 }}
         />
       </div>

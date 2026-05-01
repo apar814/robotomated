@@ -98,7 +98,7 @@ export default async function FoundingRspPage() {
 
           <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-text-primary sm:text-5xl lg:text-6xl">
             Founding Robot{" "}
-            <span className="text-electric-blue">Service Provider</span>
+            <span className="text-white">Service Provider</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
@@ -157,7 +157,7 @@ export default async function FoundingRspPage() {
       <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Requirements
             </span>
@@ -167,7 +167,7 @@ export default async function FoundingRspPage() {
             <ul className="space-y-3">
               {REQUIREMENTS.map((req) => (
                 <li key={req} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-electric-blue/10 text-[13px] text-electric-blue">
+                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-white/5 text-[13px] text-white">
                     &#10003;
                   </span>
                   <span className="text-sm text-text-secondary">{req}</span>
@@ -182,7 +182,7 @@ export default async function FoundingRspPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+            <div className="h-1.5 w-1.5 rounded-full bg-white" />
             <span className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">
               Apply Now
             </span>

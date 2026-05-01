@@ -87,13 +87,13 @@ const tierStyles: Record<Tier["emphasis"], { card: string; badge: string; price:
   },
   gold: {
     card: "glass rounded-xl p-6 border border-[#00C2FF]/30 shadow-[0_0_24px_rgba(0,194,255,0.06)]",
-    badge: "rounded-full bg-blue/10 px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-semibold text-blue",
-    price: "font-[family-name:var(--font-mono)] text-blue",
+    badge: "rounded-full bg-white/5 px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-semibold text-white",
+    price: "font-[family-name:var(--font-mono)] text-white",
   },
   platinum: {
     card: "relative rounded-xl p-6 border border-violet/40 bg-gradient-to-br from-white/[0.06] to-violet/[0.04] shadow-[0_0_32px_rgba(123,47,255,0.08)]",
-    badge: "rounded-full bg-gradient-to-r from-blue to-violet px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-bold text-white",
-    price: "font-[family-name:var(--font-mono)] bg-gradient-to-r from-blue to-violet bg-clip-text text-transparent",
+    badge: "rounded-full bg-gradient-to-r from-white/10 to-violet px-3 py-1 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.06em] font-bold text-white",
+    price: "font-[family-name:var(--font-mono)] bg-gradient-to-r from-white/10 to-violet bg-clip-text text-transparent",
   },
 };
 
@@ -110,7 +110,7 @@ export default function ManufacturerPartnerPage() {
               { name: "Partner", href: "/manufacturers/partner" },
             ]}
           />
-          <p className="mt-8 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ PARTNER PROGRAM ]</p>
+          <p className="mt-8 font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ PARTNER PROGRAM ]</p>
           <h1 className="mt-3 font-display text-4xl font-bold sm:text-5xl">
             Reach buyers where they research
           </h1>
@@ -126,7 +126,7 @@ export default function ManufacturerPartnerPage() {
         <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="glass rounded-xl p-6 text-center">
-              <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-blue">{s.value}</p>
+              <p className="font-[family-name:var(--font-brand)] text-3xl font-bold text-white">{s.value}</p>
               <p className="mt-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-[0.06em] text-muted">{s.label}</p>
             </div>
           ))}
@@ -136,7 +136,7 @@ export default function ManufacturerPartnerPage() {
       {/* Partnership Tiers */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-6xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ TIERS ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ TIERS ]</p>
           <h2 className="mt-2 text-center font-display text-3xl font-bold">Partnership tiers</h2>
           <p className="mt-3 text-center text-muted">
             From free listings to full enterprise partnerships. Choose the level that fits your goals.
@@ -178,7 +178,7 @@ export default function ManufacturerPartnerPage() {
       {/* Why Partner */}
       <section className="border-t border-white/[0.06] px-4 py-16">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ WHY PARTNER ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ WHY PARTNER ]</p>
           <h2 className="mt-2 text-center font-display text-3xl font-bold">
             Why manufacturers partner with Robotomated
           </h2>
@@ -211,7 +211,7 @@ export default function ManufacturerPartnerPage() {
       {/* Contact Form */}
       <section className="border-t border-white/[0.06] px-4 py-16" id="contact">
         <div className="mx-auto max-w-2xl">
-          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ GET STARTED ]</p>
+          <p className="text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ GET STARTED ]</p>
           <h2 className="mt-2 text-center font-display text-3xl font-bold">Schedule a call</h2>
           <p className="mt-3 text-center text-muted">
             Tell us about your partnership goals and our team will follow up within 2 business days.

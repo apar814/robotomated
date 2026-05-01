@@ -111,7 +111,7 @@ export default function TcoCalculatorPage() {
                       key={item}
                       className="flex items-start gap-2 text-sm text-text-tertiary"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-electric-blue" />
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white" />
                       {item}
                     </li>
                   ))}

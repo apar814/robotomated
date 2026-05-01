@@ -25,17 +25,17 @@ export async function generateMetadata({
 }
 
 const statusStyles: Record<string, string> = {
-  active: "bg-[#00E5A0]/15 text-[#00E5A0] border-[#00E5A0]/30",
-  maintenance: "bg-amber-400/15 text-amber-400 border-amber-400/30",
-  offline: "bg-red-400/15 text-red-400 border-red-400/30",
+  active: "bg-white/10 text-white border-white/20",
+  maintenance: "bg-white/10 text-white/70 border-white/20",
+  offline: "bg-white/10 text-white/50 border-white/20",
   decommissioned: "bg-white/10 text-white/40 border-white/10",
 };
 
 const typeStyles: Record<string, string> = {
-  routine: "bg-[#00C2FF]/15 text-[#00C2FF]",
-  repair: "bg-amber-400/15 text-amber-400",
-  emergency: "bg-red-400/15 text-red-400",
-  upgrade: "bg-[#7B2FFF]/15 text-[#7B2FFF]",
+  routine: "bg-white/10 text-white",
+  repair: "bg-white/10 text-white/70",
+  emergency: "bg-white/10 text-white/60",
+  upgrade: "bg-white/10 text-white/80",
 };
 
 export default async function AssetDetailPage({
@@ -178,10 +178,10 @@ export default async function AssetDetailPage({
 
       {/* Demo banner */}
       {isDemo && (
-        <div className="mb-6 rounded-xl border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 px-4 py-3">
+        <div className="mb-6 rounded-xl border border-white/20 bg-white/5 px-4 py-3">
           <p className="text-xs text-white/50">
-            <span className="font-semibold text-[#7B2FFF]">Demo Mode</span> — This is sample data.{" "}
-            <Link href="/auth/login" className="text-[#7B2FFF] underline">Sign in</Link> to manage your own fleet.
+            <span className="font-semibold text-white">Demo Mode</span> — This is sample data.{" "}
+            <Link href="/auth/login" className="text-white underline">Sign in</Link> to manage your own fleet.
           </p>
         </div>
       )}
@@ -211,7 +211,7 @@ export default async function AssetDetailPage({
 
         <div className="flex flex-wrap gap-2">
           {isDemo ? (
-            <span className="inline-flex items-center gap-2 rounded-[10px] bg-[#00C2FF]/50 px-4 py-2.5 text-sm font-bold text-[#0A0F1E] cursor-not-allowed">
+            <span className="inline-flex items-center gap-2 rounded-[10px] bg-white/30 px-4 py-2.5 text-sm font-bold text-[#0A0F1E] cursor-not-allowed">
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
@@ -220,7 +220,7 @@ export default async function AssetDetailPage({
           ) : (
             <Link
               href={`/fleet/${assetId}/log-service`}
-              className="inline-flex items-center gap-2 rounded-[10px] bg-[#00C2FF] px-4 py-2.5 text-sm font-bold text-[#0A0F1E] hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-[10px] bg-white px-4 py-2.5 text-sm font-bold text-[#0A0F1E] hover:opacity-90 transition-opacity"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -238,22 +238,22 @@ export default async function AssetDetailPage({
 
       {/* Key Metrics */}
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div className="rounded-xl border border-[#00E5A0]/30 bg-[#00E5A0]/5 p-4">
+        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Uptime</p>
-          <p className="mt-1 text-2xl font-bold text-[#00E5A0]">
+          <p className="mt-1 text-2xl font-bold text-white">
             {uptimePct ? `${uptimePct.toFixed(1)}%` : "--"}
           </p>
         </div>
-        <div className="rounded-xl border border-[#00C2FF]/30 bg-[#00C2FF]/5 p-4">
+        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Total Cost</p>
-          <p className="mt-1 text-2xl font-bold text-[#00C2FF]">
+          <p className="mt-1 text-2xl font-bold text-white">
             ${(asset.purchase_price + totalMaintenanceCost).toLocaleString()}
           </p>
           <p className="text-[13px] text-white/50">Purchase + maintenance</p>
         </div>
-        <div className="rounded-xl border border-[#7B2FFF]/30 bg-[#7B2FFF]/5 p-4">
+        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
           <p className="text-xs font-medium uppercase tracking-wider text-white/50">Maintenance</p>
-          <p className="mt-1 text-2xl font-bold text-[#7B2FFF]">
+          <p className="mt-1 text-2xl font-bold text-white">
             ${totalMaintenanceCost.toLocaleString()}
           </p>
           <p className="text-[13px] text-white/50">{logs.length} service events</p>
@@ -294,14 +294,14 @@ export default async function AssetDetailPage({
                       <div className="text-right">
                         <p
                           className={`text-xs font-medium ${
-                            isOverdue ? "text-red-400" : "text-white/60"
+                            isOverdue ? "text-white/70" : "text-white/60"
                           }`}
                         >
                           {s.next_due ? formatDate(s.next_due) : "Not scheduled"}
                           {isOverdue && " (overdue)"}
                         </p>
                         {s.requires_professional && (
-                          <span className="mt-1 inline-block rounded bg-[#7B2FFF]/20 px-1.5 py-0.5 text-[13px] font-medium text-[#7B2FFF]">
+                          <span className="mt-1 inline-block rounded bg-white/10 px-1.5 py-0.5 text-[13px] font-medium text-white">
                             PRO
                           </span>
                         )}
@@ -338,12 +338,12 @@ export default async function AssetDetailPage({
                   <div
                     className={`mt-1 h-[22px] w-[22px] shrink-0 rounded-full border-2 ${
                       log.maintenance_type === "emergency"
-                        ? "border-red-400 bg-red-400/20"
+                        ? "border-white/40 bg-white/10"
                         : log.maintenance_type === "repair"
-                        ? "border-amber-400 bg-amber-400/20"
+                        ? "border-white/30 bg-white/10"
                         : log.maintenance_type === "upgrade"
-                        ? "border-[#7B2FFF] bg-[#7B2FFF]/20"
-                        : "border-[#00C2FF] bg-[#00C2FF]/20"
+                        ? "border-white/30 bg-white/10"
+                        : "border-white/20 bg-white/10"
                     }`}
                   />
                   <div className="flex-1 min-w-0">

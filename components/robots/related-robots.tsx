@@ -22,12 +22,12 @@ export function RelatedRobots({ robots, title = "Related Robots" }: { robots: Re
           <Link
             key={r.slug}
             href={`/explore/${r.category_slug}/${r.slug}`}
-            className="group rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-blue/30"
+            className="group rounded-xl border border-border bg-navy-light p-5 transition-all hover:border-white/20"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
                 <p className="truncate text-xs text-muted">{r.manufacturer_name}</p>
-                <h3 className="truncate font-semibold transition-colors group-hover:text-blue">{r.name}</h3>
+                <h3 className="truncate font-semibold transition-colors group-hover:text-white">{r.name}</h3>
               </div>
               {r.robo_score != null && <RoboScoreBadge score={r.robo_score} />}
             </div>
@@ -36,7 +36,7 @@ export function RelatedRobots({ robots, title = "Related Robots" }: { robots: Re
               <span className="font-mono text-sm font-semibold">
                 {r.price_current != null ? `$${r.price_current.toLocaleString()}` : "Contact"}
               </span>
-              <span className="text-xs text-blue">View &rarr;</span>
+              <span className="text-xs text-white">View &rarr;</span>
             </div>
           </Link>
         ))}

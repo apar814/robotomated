@@ -69,11 +69,11 @@ export default function FundingTrackerPage() {
       <section className="border-b border-border px-4 py-10 sm:py-14">
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2">
-            <Link href="/market" className="font-mono text-[13px] text-ghost transition-colors hover:text-electric-blue">
+            <Link href="/market" className="font-mono text-[13px] text-ghost transition-colors hover:text-white">
               Market
             </Link>
             <span className="text-ghost">/</span>
-            <span className="font-mono text-[13px] text-electric-blue">Funding</span>
+            <span className="font-mono text-[13px] text-white">Funding</span>
           </div>
 
           <h1 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
@@ -95,7 +95,7 @@ export default function FundingTrackerPage() {
             </div>
             <div className="bg-obsidian-surface p-4">
               <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">Raised YTD</p>
-              <p className="mt-2 font-mono text-2xl font-bold text-blue-400">{ytd.formatted}</p>
+              <p className="mt-2 font-mono text-2xl font-bold text-white">{ytd.formatted}</p>
               <p className="mt-1 text-xs text-tertiary">{ytd.dealCount} deals in {new Date().getFullYear()}</p>
             </div>
             <div className="bg-obsidian-surface p-4">

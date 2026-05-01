@@ -30,36 +30,36 @@ const exploreNeeds = [
 ];
 
 const acquireItems = [
-  { href: "/explore", title: "Buy a Robot", desc: "Research and purchase outright", color: "#2563EB" },
-  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $1,500/mo", color: "#2563EB" },
-  { href: "/cpo", title: "Certified Pre-Owned", desc: "Verified robots at 40-60% off new", color: "#2563EB" },
-  { href: "/find-my-robot", title: "Find My Robot", desc: "Answer 5 questions, get matched", color: "#2563EB" },
-  { href: "/lease/quote", title: "Lease Calculator", desc: "Estimate your monthly payment", color: "#2563EB", divider: true },
+  { href: "/explore", title: "Buy a Robot", desc: "Research and purchase outright", color: "#D4D4D4" },
+  { href: "/lease", title: "Lease a Robot", desc: "Preserve capital, from $1,500/mo", color: "#D4D4D4" },
+  { href: "/cpo", title: "Certified Pre-Owned", desc: "Verified robots at 40-60% off new", color: "#D4D4D4" },
+  { href: "/find-my-robot", title: "Find My Robot", desc: "Answer 5 questions, get matched", color: "#D4D4D4" },
+  { href: "/lease/quote", title: "Lease Calculator", desc: "Estimate your monthly payment", color: "#D4D4D4", divider: true },
 ];
 
 const deployItems = [
-  { href: "/robowork", title: "RoboWork", desc: "Post a job, hire a robot service provider", color: "#2563EB" },
-  { href: "/robowork/providers", title: "Find an RSP", desc: "Browse Robot Service Providers near you", color: "#2563EB" },
-  { href: "/robowork/post", title: "Post a Job", desc: "Describe your task, get bids", color: "#2563EB" },
-  { href: "/robowork/providers/register", title: "Become a Provider", desc: "List your robots and get hired", color: "#2563EB", divider: true },
+  { href: "/robowork", title: "RoboWork", desc: "Post a job, hire a robot service provider", color: "#D4D4D4" },
+  { href: "/robowork/providers", title: "Find an RSP", desc: "Browse Robot Service Providers near you", color: "#D4D4D4" },
+  { href: "/robowork/post", title: "Post a Job", desc: "Describe your task, get bids", color: "#D4D4D4" },
+  { href: "/robowork/providers/register", title: "Become a Provider", desc: "List your robots and get hired", color: "#D4D4D4", divider: true },
 ];
 
 const operateItems = [
-  { href: "/service", title: "Service & Maintenance", desc: "Find certified technicians near you", color: "#2563EB" },
-  { href: "/parts", title: "Parts Marketplace", desc: "OEM and aftermarket parts", color: "#2563EB" },
-  { href: "/insure", title: "Robot Insurance", desc: "Protect your automation investment", color: "#2563EB" },
-  { href: "/trade-in", title: "Trade In Your Robot", desc: "AI-powered instant valuation", color: "#2563EB" },
-  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#2563EB" },
-  { href: "/certification/operator-level-1", title: "Operator Certification", desc: "$399 — 4-week hybrid program", color: "#00E5A0" },
-  { href: "/employers/hire-certified-operators", title: "For Employers", desc: "Hire certified robot operators", color: "#00E5A0", divider: true },
+  { href: "/service", title: "Service & Maintenance", desc: "Find certified technicians near you", color: "#D4D4D4" },
+  { href: "/parts", title: "Parts Marketplace", desc: "OEM and aftermarket parts", color: "#D4D4D4" },
+  { href: "/insure", title: "Robot Insurance", desc: "Protect your automation investment", color: "#D4D4D4" },
+  { href: "/trade-in", title: "Trade In Your Robot", desc: "AI-powered instant valuation", color: "#D4D4D4" },
+  { href: "/certify", title: "Get Certified (RCO)", desc: "Industry standard certification", color: "#D4D4D4" },
+  { href: "/certification/operator-level-1", title: "Operator Certification", desc: "$399 — 4-week hybrid program", color: "#D4D4D4" },
+  { href: "/employers/hire-certified-operators", title: "For Employers", desc: "Hire certified robot operators", color: "#D4D4D4", divider: true },
 ];
 
 const learnItems = [
-  { href: "/learn", title: "Intelligence Library", desc: "50+ buyer guides and industry reports", color: "#2563EB" },
-  { href: "/market", title: "Market Intelligence", desc: "Funding, launches, price trends", color: "#2563EB" },
-  { href: "/case-studies", title: "Case Studies", desc: "Real deployments, real results", color: "#2563EB" },
-  { href: "/tools/tco-calculator", title: "TCO Calculator", desc: "5-year total cost of ownership", color: "#2563EB" },
-  { href: "/newsletter", title: "Newsletter", desc: "Weekly automation intelligence", color: "#2563EB", divider: true },
+  { href: "/learn", title: "Intelligence Library", desc: "50+ buyer guides and industry reports", color: "#D4D4D4" },
+  { href: "/market", title: "Market Intelligence", desc: "Funding, launches, price trends", color: "#D4D4D4" },
+  { href: "/case-studies", title: "Case Studies", desc: "Real deployments, real results", color: "#D4D4D4" },
+  { href: "/tools/tco-calculator", title: "TCO Calculator", desc: "5-year total cost of ownership", color: "#D4D4D4" },
+  { href: "/newsletter", title: "Newsletter", desc: "Weekly automation intelligence", color: "#D4D4D4", divider: true },
 ];
 
 // ── Chevron ──

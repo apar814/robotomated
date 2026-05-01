@@ -62,7 +62,7 @@ export function CareerArc() {
   return (
     <section className="border-b border-border px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl">
-        <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+        <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/60">
           [ YOUR CAREER ARC ]
         </p>
         <h2 className="mb-3 text-center font-display text-2xl font-bold text-white sm:text-3xl">
@@ -79,7 +79,7 @@ export function CareerArc() {
             {/* Connecting line */}
             <div className="absolute left-0 right-0 top-[39px] h-[2px] bg-border" />
             <div
-              className="absolute left-0 top-[39px] h-[2px] bg-[#2563EB]/60"
+              className="absolute left-0 top-[39px] h-[2px] bg-white/30"
               style={{ width: "10%" }}
             />
 
@@ -109,15 +109,15 @@ export function CareerArc() {
                     <div
                       className={`relative z-10 flex h-[78px] w-[78px] cursor-pointer items-center justify-center rounded-full border-2 transition-all duration-200 ${
                         isActive
-                          ? "border-[#2563EB] bg-[#2563EB]/20 shadow-lg shadow-[#2563EB]/20"
+                          ? "border-white/30 bg-white/10"
                           : isHovered
-                            ? "border-[#2563EB]/60 bg-[#2563EB]/10"
+                            ? "border-white/20 bg-white/5"
                             : "border-border bg-[#0A0A0A]"
                       }`}
                     >
                       <div className="text-center">
                         <p className={`font-[family-name:var(--font-mono)] text-xs font-bold ${
-                          isActive ? "text-[#2563EB]" : isHovered ? "text-[#2563EB]/80" : "text-muted"
+                          isActive ? "text-white/60" : isHovered ? "text-white/60/80" : "text-muted"
                         }`}>
                           L{i + 1}
                         </p>
@@ -152,7 +152,7 @@ export function CareerArc() {
                         <p className="mb-2 text-xs text-muted">{stage.description}</p>
 
                         <div className="mb-2">
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Job Titles
                           </p>
                           <div className="mt-1 flex flex-wrap gap-1">
@@ -165,7 +165,7 @@ export function CareerArc() {
                         </div>
 
                         <div className="mb-2">
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Companies Hiring
                           </p>
                           <p className="mt-0.5 text-[10px] text-muted">
@@ -174,7 +174,7 @@ export function CareerArc() {
                         </div>
 
                         <div>
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Time to Achieve
                           </p>
                           <p className="mt-0.5 text-[10px] text-muted">
@@ -196,7 +196,7 @@ export function CareerArc() {
             {/* Vertical line */}
             <div className="absolute bottom-0 left-[15px] top-0 w-[2px] bg-border" />
             <div
-              className="absolute left-[15px] top-0 w-[2px] bg-[#2563EB]/60"
+              className="absolute left-[15px] top-0 w-[2px] bg-white/30"
               style={{ height: "12%" }}
             />
 
@@ -215,14 +215,14 @@ export function CareerArc() {
                     <div
                       className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
                         isActive
-                          ? "border-[#2563EB] bg-[#2563EB]/20"
+                          ? "border-white/30 bg-white/10"
                           : isExpanded
-                            ? "border-[#2563EB]/60 bg-[#2563EB]/10"
+                            ? "border-white/20 bg-white/5"
                             : "border-border bg-[#0A0A0A]"
                       }`}
                     >
                       <span className={`font-[family-name:var(--font-mono)] text-[10px] font-bold ${
-                        isActive || isExpanded ? "text-[#2563EB]" : "text-muted"
+                        isActive || isExpanded ? "text-white/60" : "text-muted"
                       }`}>
                         L{i + 1}
                       </span>
@@ -249,7 +249,7 @@ export function CareerArc() {
                         <div className="mt-3 rounded-lg border border-border bg-[#0A0A0A] p-3">
                           <p className="mb-2 text-xs text-muted">{stage.description}</p>
 
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Job Titles
                           </p>
                           <div className="mt-1 mb-2 flex flex-wrap gap-1">
@@ -260,14 +260,14 @@ export function CareerArc() {
                             ))}
                           </div>
 
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Companies Hiring
                           </p>
                           <p className="mt-0.5 mb-2 text-[10px] text-muted">
                             {stage.companiesHiring.join(", ")}
                           </p>
 
-                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-[#2563EB]">
+                          <p className="font-[family-name:var(--font-ui)] text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
                             Time to Achieve
                           </p>
                           <p className="mt-0.5 text-[10px] text-muted">

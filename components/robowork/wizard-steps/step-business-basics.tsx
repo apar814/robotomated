@@ -75,14 +75,14 @@ export default function StepBusinessBasics({ data, updateData }: StepProps) {
                 onClick={() => updateData({ businessType: bt.value })}
                 className="rounded-lg border p-4 text-left transition-colors"
                 style={{
-                  borderColor: selected ? "#2563EB" : "var(--theme-border)",
+                  borderColor: selected ? "rgba(255,255,255,0.3)" : "var(--theme-border)",
                   background: selected
-                    ? "rgba(37,99,235,0.05)"
+                    ? "rgba(255,255,255,0.04)"
                     : "var(--theme-card)",
                 }}
               >
                 <div className="flex h-6 w-6 items-center justify-center">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4" /></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4" /></svg>
                 </div>
                 <div
                   className="mt-1 text-sm font-semibold"

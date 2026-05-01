@@ -127,7 +127,7 @@ export function FilterBar({
               placeholder="Search robots..."
               value={search}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full rounded-lg border py-2 pl-9 pr-8 text-[13px] outline-none transition-colors focus:border-[#2563EB]"
+              className="w-full rounded-lg border py-2 pl-9 pr-8 text-[13px] outline-none transition-colors focus:border-white/50"
               style={{
                 background: "var(--theme-input-bg)",
                 borderColor: "var(--theme-input-border)",
@@ -198,7 +198,7 @@ export function FilterBar({
             className="rounded-lg border px-3 py-1.5 text-[13px] font-medium lg:hidden"
             style={{ borderColor: "var(--theme-border)", color: "var(--theme-text-secondary)" }}
           >
-            Filters {hasFilters ? <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-[#2563EB]" /> : null}
+            Filters {hasFilters ? <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-white/50" /> : null}
           </button>
         </div>
 
@@ -210,8 +210,8 @@ export function FilterBar({
                 key={f.key}
                 className={cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium", f.key === "price" && "font-[family-name:var(--font-mono)]")}
                 style={{
-                  background: "#2563EB",
-                  border: "1px solid #2563EB",
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.2)",
                   color: "#FFFFFF",
                   fontWeight: 600,
                 }}
@@ -237,7 +237,7 @@ export function FilterBar({
                   key={chip.label}
                   href={`/explore/${chip.value}`}
                   className={cn(
-                    "rounded-full border px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors hover:border-[#2563EB] hover:text-[#2563EB]",
+                    "rounded-full border px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors hover:border-white/40 hover:text-white",
                   )}
                   style={{
                     borderColor: "var(--theme-tag-border)",
@@ -256,9 +256,9 @@ export function FilterBar({
                 onClick={() => isActive ? removeFilter({ key: chip.filter, label: chip.label, value: chip.value }) : handleQuickChip(chip)}
                 className="rounded-full border px-2.5 py-1 font-[family-name:var(--font-ui)] text-[11px] uppercase tracking-wide transition-colors"
                 style={{
-                  borderColor: isActive ? "#2563EB" : "var(--theme-tag-border)",
-                  color: isActive ? "#2563EB" : "var(--theme-tag-text)",
-                  background: isActive ? "rgba(37,99,235,0.1)" : "var(--theme-tag-bg)",
+                  borderColor: isActive ? "#D4D4D4" : "var(--theme-tag-border)",
+                  color: isActive ? "#D4D4D4" : "var(--theme-tag-text)",
+                  background: isActive ? "rgba(255,255,255,0.05)" : "var(--theme-tag-bg)",
                 }}
               >
                 {chip.icon} {chip.label}
@@ -298,12 +298,12 @@ export function FilterBar({
                     onClick={() => onPriceChange(p.min, p.max)}
                     className={cn("rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors",
                       p.hasMoney && "font-[family-name:var(--font-mono)] dark:text-[#84CC16]",
-                      priceMin === p.min && priceMax === p.max ? "border-[#2563EB] text-[#2563EB]" : ""
+                      priceMin === p.min && priceMax === p.max ? "border-white/30 text-white" : ""
                     )}
                     style={{
-                      borderColor: priceMin === p.min && priceMax === p.max ? "#2563EB" : "var(--theme-border)",
-                      color: priceMin === p.min && priceMax === p.max ? "#2563EB" : "var(--theme-text-secondary)",
-                      background: priceMin === p.min && priceMax === p.max ? "rgba(37,99,235,0.1)" : "transparent",
+                      borderColor: priceMin === p.min && priceMax === p.max ? "#D4D4D4" : "var(--theme-border)",
+                      color: priceMin === p.min && priceMax === p.max ? "#D4D4D4" : "var(--theme-text-secondary)",
+                      background: priceMin === p.min && priceMax === p.max ? "rgba(255,255,255,0.05)" : "transparent",
                     }}
                   >
                     {p.label}
@@ -323,9 +323,9 @@ export function FilterBar({
                       onClick={() => onIndustryChange(ind === "All Industries" ? "" : ind)}
                       className={cn("rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors")}
                       style={{
-                        borderColor: isActive ? "#2563EB" : "var(--theme-border)",
-                        color: isActive ? "#2563EB" : "var(--theme-text-secondary)",
-                        background: isActive ? "rgba(37,99,235,0.1)" : "transparent",
+                        borderColor: isActive ? "#D4D4D4" : "var(--theme-border)",
+                        color: isActive ? "#D4D4D4" : "var(--theme-text-secondary)",
+                        background: isActive ? "rgba(255,255,255,0.05)" : "transparent",
                       }}
                     >
                       {ind}
@@ -345,9 +345,9 @@ export function FilterBar({
                     onClick={() => onSortChange(s.value)}
                     className="mb-1 block w-full rounded-lg border px-3 py-2.5 text-left text-sm font-medium transition-colors"
                     style={{
-                      borderColor: isActive ? "#2563EB" : "var(--theme-border)",
-                      color: isActive ? "#2563EB" : "var(--theme-text-secondary)",
-                      background: isActive ? "rgba(37,99,235,0.1)" : "transparent",
+                      borderColor: isActive ? "#D4D4D4" : "var(--theme-border)",
+                      color: isActive ? "#D4D4D4" : "var(--theme-text-secondary)",
+                      background: isActive ? "rgba(255,255,255,0.05)" : "transparent",
                     }}
                   >
                     {s.label}
@@ -360,7 +360,7 @@ export function FilterBar({
             <button
               onClick={() => setMobileOpen(false)}
               className="w-full rounded-lg py-3 text-center text-sm font-bold text-black"
-              style={{ background: "#2563EB" }}
+              style={{ background: "#FFFFFF" }}
             >
               Apply (<span className="font-[family-name:var(--font-brand)]">{totalCount}</span> results)
             </button>
@@ -402,9 +402,9 @@ function FilterDropdown({
           "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 font-[family-name:var(--font-ui)] text-[11px] font-medium uppercase tracking-wide transition-colors",
         )}
         style={{
-          borderColor: isDefault ? "var(--theme-border)" : "rgba(37,99,235,0.3)",
-          color: isDefault ? "var(--theme-text-secondary)" : "#2563EB",
-          background: isDefault ? "transparent" : "rgba(37,99,235,0.05)",
+          borderColor: isDefault ? "var(--theme-border)" : "rgba(255,255,255,0.2)",
+          color: isDefault ? "var(--theme-text-secondary)" : "#D4D4D4",
+          background: isDefault ? "transparent" : "rgba(255,255,255,0.03)",
         }}
       >
         {label}
@@ -425,10 +425,10 @@ function FilterDropdown({
               key={opt}
               onClick={() => { onChange(opt); setOpen(false); }}
               className={cn(
-                "block w-full px-3 py-2 text-left text-[13px] transition-colors hover:bg-[rgba(37,99,235,0.08)]",
+                "block w-full px-3 py-2 text-left text-[13px] transition-colors hover:bg-[rgba(255,255,255,0.05)]",
               )}
               style={{
-                color: opt === value ? "#2563EB" : "var(--theme-text-secondary)",
+                color: opt === value ? "#D4D4D4" : "var(--theme-text-secondary)",
                 fontWeight: opt === value ? 600 : 400,
               }}
             >

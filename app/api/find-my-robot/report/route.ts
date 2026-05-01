@@ -48,12 +48,12 @@ export async function POST(request: NextRequest) {
     .map(
       (r, i) => `
       <tr style="border-bottom: 1px solid #1a1a1a;">
-        <td style="padding: 12px 8px; color: #2563EB; font-weight: 600; font-size: 14px;">#${i + 1}</td>
+        <td style="padding: 12px 8px; color: #D4D4D4; font-weight: 600; font-size: 14px;">#${i + 1}</td>
         <td style="padding: 12px 8px;">
           <div style="font-weight: 600; font-size: 14px;">${r.name}</div>
           <div style="color: #888; font-size: 12px; margin-top: 2px;">${r.category}</div>
         </td>
-        <td style="padding: 12px 8px; color: #60A5FA; font-family: monospace; font-size: 14px;">${r.score}/100</td>
+        <td style="padding: 12px 8px; color: #D4D4D4; font-family: monospace; font-size: 14px;">${r.score}/100</td>
         <td style="padding: 12px 8px; color: #ccc; font-size: 13px;">${r.priceRange}</td>
       </tr>
     `
@@ -73,11 +73,11 @@ export async function POST(request: NextRequest) {
         <div style="font-family: 'Space Grotesk', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #080808; color: #e0e0e0; padding: 32px;">
           <div style="text-align: center; margin-bottom: 24px;">
             <span style="font-family: monospace; font-size: 14px; font-weight: bold; letter-spacing: 3px;">
-              <span style="color: #fff;">ROBOTO</span><span style="color: #555;">MATED</span><span style="color: #2563EB;">.</span>
+              <span style="color: #fff;">ROBOTO</span><span style="color: #555;">MATED</span><span style="color: #D4D4D4;">.</span>
             </span>
           </div>
 
-          <h1 style="color: #2563EB; font-size: 22px; margin-bottom: 8px;">Your Robot Buyer Profile</h1>
+          <h1 style="color: #D4D4D4; font-size: 22px; margin-bottom: 8px;">Your Robot Buyer Profile</h1>
           <p style="color: #888; font-size: 13px; margin-bottom: 24px;">Based on your requirements, here are our top recommendations.</p>
 
           <div style="background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
@@ -105,11 +105,11 @@ export async function POST(request: NextRequest) {
           </table>
 
           <div style="margin-top: 24px; text-align: center;">
-            <a href="https://robotomated.com/find-my-robot" style="display: inline-block; background: #2563EB; color: #000; padding: 12px 32px; text-decoration: none; font-weight: 600; border-radius: 6px; font-size: 14px;">Compare These Robots</a>
+            <a href="https://robotomated.com/find-my-robot" style="display: inline-block; background: #D4D4D4; color: #000; padding: 12px 32px; text-decoration: none; font-weight: 600; border-radius: 6px; font-size: 14px;">Compare These Robots</a>
           </div>
 
           <div style="margin-top: 24px; text-align: center;">
-            <a href="https://robotomated.com/advisor" style="color: #7B2FFF; text-decoration: none; font-size: 13px;">Talk to our AI Robot Advisor &rarr;</a>
+            <a href="https://robotomated.com/advisor" style="color: #D4D4D4; text-decoration: none; font-size: 13px;">Talk to our AI Robot Advisor &rarr;</a>
           </div>
 
           <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #222; text-align: center;">

@@ -9,7 +9,7 @@ export function RobotimusAvatar({ size = 32, glow = false, className = "" }: { s
         <div
           className="absolute inset-0 rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(37,99,235,0.35) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)",
             animation: "pulse-glow 3s ease-in-out infinite",
             transform: "scale(1.5)",
           }}
@@ -24,7 +24,7 @@ export function RobotimusAvatar({ size = 32, glow = false, className = "" }: { s
         className="relative"
       >
         {/* Background circle */}
-        <circle cx="32" cy="32" r="32" fill="#2563EB" />
+        <circle cx="32" cy="32" r="32" fill="#D4D4D4" />
 
         {/* Antenna */}
         <rect x="30" y="6" width="4" height="8" rx="2" fill="#FFFFFF" />

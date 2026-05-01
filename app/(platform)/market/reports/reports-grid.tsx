@@ -62,8 +62,8 @@ export function ReportsGrid({
             onClick={() => setActiveCategory("all")}
             className={`rounded-full border px-3 py-1.5 font-mono text-[11px] transition-colors ${
               activeCategory === "all"
-                ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
-                : "border-border text-ghost hover:border-electric-blue hover:text-electric-blue"
+                ? "border-white/20 bg-white/5 text-white"
+                : "border-border text-ghost hover:border-white/20 hover:text-white"
             }`}
           >
             All ({reports.length})
@@ -76,8 +76,8 @@ export function ReportsGrid({
                 onClick={() => setActiveCategory(cat)}
                 className={`rounded-full border px-3 py-1.5 font-mono text-[11px] transition-colors ${
                   activeCategory === cat
-                    ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
-                    : "border-border text-ghost hover:border-electric-blue hover:text-electric-blue"
+                    ? "border-white/20 bg-white/5 text-white"
+                    : "border-border text-ghost hover:border-white/20 hover:text-white"
                 }`}
               >
                 {catLabel(cat)} ({count})
@@ -97,7 +97,7 @@ export function ReportsGrid({
               <Link
                 key={report.id}
                 href={`/market/reports/${slug}`}
-                className="group flex flex-col rounded-xl border border-border bg-obsidian-surface p-5 transition-all hover:-translate-y-0.5 hover:border-electric-blue/40"
+                className="group flex flex-col rounded-xl border border-border bg-obsidian-surface p-5 transition-all hover:-translate-y-0.5 hover:border-white/20"
               >
                 {/* Header */}
                 <div className="mb-3 flex items-start justify-between gap-2">
@@ -116,7 +116,7 @@ export function ReportsGrid({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base font-bold text-foreground transition-colors group-hover:text-electric-blue">
+                <h3 className="text-base font-bold text-foreground transition-colors group-hover:text-white">
                   {report.title}
                 </h3>
                 <p className="mt-1 font-mono text-[11px] text-ghost">
@@ -129,7 +129,7 @@ export function ReportsGrid({
                     <p className="font-mono text-[13px] uppercase tracking-widest text-ghost">
                       Market Size
                     </p>
-                    <p className="mt-1 font-mono text-lg font-bold text-blue-400">
+                    <p className="mt-1 font-mono text-lg font-bold text-white">
                       ${report.market_size_usd_billions}B
                     </p>
                   </div>

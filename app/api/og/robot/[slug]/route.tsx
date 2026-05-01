@@ -62,7 +62,7 @@ export async function GET(
             style={{
               fontSize: 64,
               fontWeight: 700,
-              color: "#2563EB",
+              color: "#D4D4D4",
               letterSpacing: "-0.03em",
             }}
           >
@@ -157,7 +157,7 @@ export async function GET(
                 style={{
                   fontSize: 32,
                   fontWeight: 700,
-                  color: "#60A5FA",
+                  color: "#D4D4D4",
                   marginTop: 24,
                   fontFamily: "monospace",
                 }}
@@ -173,7 +173,7 @@ export async function GET(
               style={{
                 fontSize: 22,
                 fontWeight: 700,
-                color: "#2563EB",
+                color: "#D4D4D4",
                 letterSpacing: "0.08em",
               }}
             >
@@ -222,7 +222,7 @@ export async function GET(
                 style={{
                   fontSize: 80,
                   fontWeight: 700,
-                  color: "#60A5FA",
+                  color: "#D4D4D4",
                   lineHeight: 1,
                 }}
               >

@@ -32,7 +32,7 @@ export default function MarketplacePage() {
       {/* ── Hero ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">[ MARKET INTELLIGENCE ]</p>
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white">[ MARKET INTELLIGENCE ]</p>
           <h1 className="mt-2 font-display text-3xl font-bold text-foreground sm:text-4xl">Marketplace</h1>
           <p className="mt-2 text-muted">
             Buy and sell robots from verified dealers. Track funding rounds, investors, and market intelligence.
@@ -42,19 +42,19 @@ export default function MarketplacePage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/market/funding"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-white/20 hover:text-white"
             >
               Funding Tracker
             </Link>
             <Link
               href="/market/investors"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-white/20 hover:text-white"
             >
               Top Investors
             </Link>
             <Link
               href="/market/reports"
-              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-electric-blue hover:text-electric-blue"
+              className="rounded border border-border bg-obsidian-surface px-4 py-2.5 font-[family-name:var(--font-ui)] text-xs uppercase tracking-[0.08em] text-secondary transition-colors hover:border-white/20 hover:text-white"
             >
               Market Reports
             </Link>
@@ -67,14 +67,14 @@ export default function MarketplacePage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+              <div className="h-1.5 w-1.5 rounded-full bg-white" />
               <span className="font-[family-name:var(--font-brand)] text-[13px] uppercase tracking-widest text-ghost">
                 Recently Funded
               </span>
             </div>
             <Link
               href="/market/funding"
-              className="font-mono text-[13px] text-electric-blue transition-colors hover:underline"
+              className="font-mono text-[13px] text-white transition-colors hover:underline"
             >
               View All Funding &rarr;
             </Link>
@@ -93,7 +93,7 @@ export default function MarketplacePage() {
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-foreground transition-colors group-hover:text-electric-blue">
+                    <span className="text-sm font-medium text-foreground transition-colors group-hover:text-white">
                       {round.company}
                     </span>
                     <span
@@ -109,7 +109,7 @@ export default function MarketplacePage() {
                   <p className="mt-0.5 text-xs text-ghost">{round.leadInvestor}</p>
                 </div>
                 <div className="flex shrink-0 items-center gap-4">
-                  <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-blue-400">{round.amount}</span>
+                  <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-white">{round.amount}</span>
                   <span className="hidden font-mono text-[13px] text-ghost sm:block">
                     {formatDate(round.date)}
                   </span>

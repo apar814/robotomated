@@ -159,7 +159,7 @@ export default async function IndustryPage({ params }: Props) {
             {industry.marketStats.map((stat) => (
               <div key={stat.label} className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-6 py-4">
                 <p className="font-mono text-2xl font-bold text-white">{stat.value}</p>
-                <p className="text-[11px] uppercase tracking-widest text-blue">{stat.label}</p>
+                <p className="text-[11px] uppercase tracking-widest text-white">{stat.label}</p>
                 <p className="mt-0.5 text-xs text-white/40">{stat.subtext}</p>
               </div>
             ))}
@@ -197,7 +197,7 @@ export default async function IndustryPage({ params }: Props) {
                   </div>
                   {typeRobots.length > 6 && (
                     <div className="mt-6">
-                      <Link href={`/explore/${catSlug}`} className="text-sm text-blue hover:underline">
+                      <Link href={`/explore/${catSlug}`} className="text-sm text-white hover:underline">
                         View all {typeRobots.length} {type.label.toLowerCase()} robots &rarr;
                       </Link>
                     </div>
@@ -278,12 +278,12 @@ export default async function IndustryPage({ params }: Props) {
               <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
                 <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
                   <div className="flex items-start gap-3">
-                    <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[13px] font-bold ${item.required ? "bg-blue/20 text-blue" : "bg-white/10 text-white/40"}`}>
+                    <span className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[13px] font-bold ${item.required ? "bg-white/20 text-white" : "bg-white/10 text-white/40"}`}>
                       {item.required ? "\u2713" : "\u25CB"}
                     </span>
                     <div>
                       <h3 className="font-semibold text-white">{item.name}</h3>
-                      <span className={`mt-0.5 inline-block text-[13px] uppercase tracking-wider ${item.required ? "text-blue" : "text-white/50"}`}>
+                      <span className={`mt-0.5 inline-block text-[13px] uppercase tracking-wider ${item.required ? "text-white" : "text-white/50"}`}>
                         {item.required ? "Required" : "Recommended"}
                       </span>
                       <p className="mt-1.5 text-sm leading-[1.7] text-white/50">{item.description}</p>
@@ -313,7 +313,7 @@ export default async function IndustryPage({ params }: Props) {
               <RevealOnScroll key={i} delay={Math.min(i, 2) as 0 | 1 | 2}>
                 <div className="flex h-full flex-col rounded-xl border border-white/[0.07] bg-white/[0.02] p-6">
                   <div className="mb-4">
-                    <p className="text-[13px] font-medium uppercase tracking-widest text-blue">{cs.industry}</p>
+                    <p className="text-[13px] font-medium uppercase tracking-widest text-white">{cs.industry}</p>
                     <h3 className="mt-1 font-display text-lg font-bold text-white">{cs.company}</h3>
                   </div>
                   <div className="mb-4 space-y-2">
@@ -381,7 +381,7 @@ export default async function IndustryPage({ params }: Props) {
       <section className="bg-[#0F1628] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
-            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-blue/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
+            <div className="rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.05] to-violet/[0.05] p-8 text-center sm:p-12">
               <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white">{industry.ctaText}</h2>
               <p className="mt-3 text-base text-white/60">
                 {allRobots.length > 0
@@ -389,7 +389,7 @@ export default async function IndustryPage({ params }: Props) {
                   : `Explore ${industry.name.toLowerCase()} — new robots added regularly.`}
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <Link href={`/explore/${catSlug}`} className="rounded-lg bg-blue px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Browse {industry.name}</Link>
+                <Link href={`/explore/${catSlug}`} className="rounded-lg bg-white px-8 py-3 text-sm font-semibold text-white hover:opacity-90">Browse {industry.name}</Link>
                 <Link href="/advisor" className="rounded-lg border border-white/[0.12] bg-white/[0.05] px-8 py-3 text-sm font-semibold text-white/80 hover:border-white/20">Ask Robotimus</Link>
               </div>
             </div>
@@ -407,7 +407,7 @@ function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug
   const mfr = robot.manufacturers?.name || "";
 
   return (
-    <Link href={`/explore/${categorySlug}/${robot.slug}`} className="group block overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-blue/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+    <Link href={`/explore/${categorySlug}/${robot.slug}`} className="group block overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
       <div className="relative h-36 bg-white/[0.03]">
         {realImg ? (
           <SafeImage src={realImg} alt={robot.name} sizes="33vw" className="object-cover" fallbackLabel={mfr} fallbackSublabel={robot.name} />
@@ -420,7 +420,7 @@ function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug
       </div>
       <div className="p-4">
         <p className="text-[13px] text-white/50">{mfr}</p>
-        <h3 className="font-semibold text-white transition-colors group-hover:text-blue">{robot.name}</h3>
+        <h3 className="font-semibold text-white transition-colors group-hover:text-white">{robot.name}</h3>
         {robot.description_short && (
           <p className="mt-1 line-clamp-2 text-xs text-white/40">{robot.description_short}</p>
         )}

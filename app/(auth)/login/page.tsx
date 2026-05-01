@@ -43,8 +43,8 @@ function LoginForm() {
     return (
       <div className="mx-auto max-w-md px-4 py-20 text-center">
         <div className="mb-4 flex justify-center">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-green/10">
-            <svg className="h-8 w-8 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl" style={{ background: "var(--status-success-bg, rgba(255,255,255,0.05))" }}>
+            <svg className="h-8 w-8" style={{ color: "var(--status-success-text, #D4D4D4)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
           </div>
@@ -56,7 +56,7 @@ function LoginForm() {
         </p>
         <button
           onClick={() => { setStatus("idle"); setEmail(""); }}
-          className="mt-6 text-sm text-blue hover:underline"
+          className="mt-6 text-sm text-white hover:underline"
         >
           Use a different email
         </button>
@@ -88,7 +88,7 @@ function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-border bg-navy-light px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+            className="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-white/50 focus:outline-none"
           />
         </div>
 
@@ -101,8 +101,8 @@ function LoginForm() {
 
       <p className="mt-6 text-center text-xs text-muted">
         By signing in, you agree to our{" "}
-        <Link href="/terms" className="text-blue hover:underline">Terms</Link> and{" "}
-        <Link href="/privacy" className="text-blue hover:underline">Privacy Policy</Link>.
+        <Link href="/terms" className="text-white hover:underline">Terms</Link> and{" "}
+        <Link href="/privacy" className="text-white hover:underline">Privacy Policy</Link>.
       </p>
     </div>
   );

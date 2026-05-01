@@ -22,7 +22,7 @@ export function ManufacturerLogo({ name, logoUrl, size = 48 }: ManufacturerLogoP
           border: "1px solid rgba(0,0,0,0.08)",
         }}
       >
-        <span style={{ fontWeight: 700, fontSize: size * 0.3, color: "#2563EB" }}>
+        <span style={{ fontWeight: 700, fontSize: size * 0.3, color: "#D4D4D4" }}>
           {initials}
         </span>
       </div>

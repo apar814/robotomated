@@ -100,7 +100,7 @@ export default async function CategoryPage({ params }: Props) {
             <div className="mt-6 flex flex-wrap gap-6">
               {content.stats.map((s) => (
                 <div key={s.label}>
-                  <p className="text-2xl font-bold" style={{ color: "#2563EB" }}>{s.value}</p>
+                  <p className="text-2xl font-bold" style={{ color: "#D4D4D4" }}>{s.value}</p>
                   <p className="text-xs font-bold uppercase tracking-wider text-white/45">{s.label}</p>
                 </div>
               ))}

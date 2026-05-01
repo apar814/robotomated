@@ -22,7 +22,7 @@ export function RecentlyViewed() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+            <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
               Based on your research
             </p>
             <h2
@@ -34,7 +34,7 @@ export function RecentlyViewed() {
           </div>
           <Link
             href="/explore"
-            className="text-[12px] font-medium text-[#2563EB] transition-opacity hover:opacity-80"
+            className="text-[12px] font-medium text-white/60 transition-opacity hover:opacity-80"
           >
             View all &rarr;
           </Link>
@@ -44,12 +44,12 @@ export function RecentlyViewed() {
             <Link
               key={r.slug}
               href={`/explore/${r.category}/${r.slug}`}
-              className="group rounded-xl border border-white/[0.06] bg-[#0D0D0D] p-4 transition-all hover:border-[#2563EB]/20"
+              className="group rounded-xl border border-white/[0.06] bg-[#0D0D0D] p-4 transition-all hover:border-white/20"
             >
               <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-white/50">
                 {r.category}
               </p>
-              <p className="mt-1 text-sm font-semibold text-white transition-colors group-hover:text-[#2563EB]">
+              <p className="mt-1 text-sm font-semibold text-white transition-colors group-hover:text-white/60">
                 {r.name}
               </p>
               <p className="mt-2 text-[13px] text-white/45">

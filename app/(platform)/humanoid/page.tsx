@@ -207,7 +207,7 @@ export default async function HumanoidHubPage() {
       {/* ── Section 1: Hero ── */}
       <section className="border-b border-border px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.15em] text-white/60">
             [ HUMANOID INTELLIGENCE ]
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl">

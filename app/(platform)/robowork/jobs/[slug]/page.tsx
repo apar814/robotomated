@@ -144,7 +144,7 @@ export default async function JobDetailPage({
         {/* Breadcrumb */}
         <Link
           href="/robowork/jobs"
-          className="mb-4 inline-block font-mono text-[13px] text-electric-blue transition-colors hover:underline"
+          className="mb-4 inline-block font-mono text-[13px] text-white transition-colors hover:underline"
         >
           &larr; Back to Jobs
         </Link>
@@ -152,7 +152,7 @@ export default async function JobDetailPage({
         {/* Header */}
         <div className="mb-8 rounded-lg border border-border bg-obsidian-surface p-6">
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className="rounded bg-electric-blue/10 px-2.5 py-1 text-[13px] font-semibold text-electric-blue">
+            <span className="rounded bg-white/5 px-2.5 py-1 text-[13px] font-semibold text-white">
               {j.industry}
             </span>
             <span className={cn("rounded border px-2.5 py-1 text-[13px] font-semibold", urgencyConf.color)}>
@@ -175,7 +175,7 @@ export default async function JobDetailPage({
               </svg>
               {location}
             </span>
-            <span className="font-mono font-bold text-electric-blue">
+            <span className="font-mono font-bold text-white">
               {formatBudget(j.budget_min, j.budget_max)}
             </span>
             <span>{relativeTime(j.created_at)}</span>
@@ -191,7 +191,7 @@ export default async function JobDetailPage({
             {/* Description */}
             <div className="rounded-lg border border-border bg-obsidian-surface p-6">
               <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-text-primary">
-                <div className="h-1.5 w-1.5 rounded-full bg-electric-blue" />
+                <div className="h-1.5 w-1.5 rounded-full bg-white" />
                 Job Description
               </h2>
               <div className="whitespace-pre-wrap text-sm leading-relaxed text-text-secondary">
@@ -216,7 +216,7 @@ export default async function JobDetailPage({
             {j.site_details && (
               <div className="rounded-lg border border-border bg-obsidian-surface p-6">
                 <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-text-primary">
-                  <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                  <div className="h-1.5 w-1.5 rounded-full bg-white" />
                   Site Details
                 </h2>
                 <div className="whitespace-pre-wrap text-sm leading-relaxed text-text-secondary">
@@ -290,7 +290,7 @@ export default async function JobDetailPage({
             {j.status === "open" && (
               <a
                 href="#bid"
-                className="block w-full rounded bg-electric-blue py-3 text-center text-sm font-bold text-white transition-opacity hover:opacity-90"
+                className="block w-full rounded bg-white py-3 text-center text-sm font-bold text-white transition-opacity hover:opacity-90"
               >
                 Submit a Bid
               </a>

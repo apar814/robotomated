@@ -176,7 +176,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
             </div>
             <Link
               href="/robowork/providers/register"
-              className="shrink-0 rounded-lg bg-[#2563EB] px-5 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-black transition-shadow hover:shadow-[0_0_16px_rgba(37,99,235,0.3)]"
+              className="shrink-0 rounded-lg bg-white/5 border border-white/20 px-5 py-2.5 font-mono text-[13px] font-semibold tracking-wider text-white transition-colors hover:bg-white/10"
             >
               BECOME A PROVIDER
             </Link>
@@ -195,7 +195,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
                 name="city"
                 defaultValue={params.city || ""}
                 placeholder="Any city"
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary placeholder:text-text-ghost focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary placeholder:text-text-ghost focus:border-white/50 focus:outline-none"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -204,7 +204,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
                 name="state"
                 defaultValue={params.state || ""}
                 placeholder="Any state"
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary placeholder:text-text-ghost focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary placeholder:text-text-ghost focus:border-white/50 focus:outline-none"
               />
             </div>
 
@@ -216,7 +216,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               <select
                 name="specialization"
                 defaultValue={params.specialization || ""}
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-white/50 focus:outline-none"
               >
                 <option value="">All</option>
                 {SPECIALIZATION_OPTIONS.map((s) => (
@@ -235,7 +235,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               <select
                 name="fulfillment"
                 defaultValue={params.fulfillment || ""}
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-white/50 focus:outline-none"
               >
                 <option value="">Any</option>
                 {FULFILLMENT_OPTIONS.map((f) => (
@@ -254,7 +254,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               <select
                 name="rating"
                 defaultValue={params.rating || ""}
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-white/50 focus:outline-none"
               >
                 <option value="">Any</option>
                 <option value="4">4+ Stars</option>
@@ -270,7 +270,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
                 name="verified"
                 value="true"
                 defaultChecked={params.verified === "true"}
-                className="h-4 w-4 rounded border-border bg-obsidian-surface accent-[#2563EB]"
+                className="h-4 w-4 rounded border-border bg-obsidian-surface accent-white/50"
               />
               <span className="font-sans text-xs text-text-secondary">Verified only</span>
             </label>
@@ -281,7 +281,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               <select
                 name="sort"
                 defaultValue={params.sort || "rating"}
-                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-[#2563EB]/50 focus:outline-none"
+                className="rounded-lg border border-border bg-obsidian-surface px-3 py-2 font-sans text-xs text-text-primary focus:border-white/50 focus:outline-none"
               >
                 {SORT_OPTIONS.map((s) => (
                   <option key={s.value} value={s.value}>
@@ -293,7 +293,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
 
             <button
               type="submit"
-              className="rounded-lg border border-[#2563EB]/30 bg-[#2563EB]/5 px-5 py-2 font-sans text-xs font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB]/10"
+              className="rounded-lg border border-white/20 bg-white/5 px-5 py-2 font-sans text-xs font-medium text-white transition-colors hover:bg-white/10"
             >
               Apply Filters
             </button>
@@ -311,7 +311,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
               </p>
               <Link
                 href="/robowork/providers"
-                className="mt-4 inline-block font-sans text-xs font-medium text-[#2563EB] hover:underline"
+                className="mt-4 inline-block font-sans text-xs font-medium text-white hover:underline"
               >
                 Clear all filters
               </Link>
@@ -344,7 +344,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
                   {page > 1 && (
                     <Link
                       href={buildUrl({ page: String(page - 1) })}
-                      className="rounded-lg border border-border px-4 py-2 font-sans text-xs text-text-secondary transition-colors hover:border-[#2563EB]/30 hover:text-text-primary"
+                      className="rounded-lg border border-border px-4 py-2 font-sans text-xs text-text-secondary transition-colors hover:border-white/20 hover:text-text-primary"
                     >
                       Previous
                     </Link>
@@ -360,8 +360,8 @@ export default async function ProvidersPage({ searchParams }: Props) {
                           href={buildUrl({ page: String(p) })}
                           className={
                             p === page
-                              ? "rounded-lg bg-[#2563EB]/10 px-3 py-2 font-mono text-xs font-medium text-[#2563EB]"
-                              : "rounded-lg border border-border px-3 py-2 font-mono text-xs text-text-secondary transition-colors hover:border-[#2563EB]/30"
+                              ? "rounded-lg bg-white/10 px-3 py-2 font-mono text-xs font-medium text-white"
+                              : "rounded-lg border border-border px-3 py-2 font-mono text-xs text-text-secondary transition-colors hover:border-white/20"
                           }
                         >
                           {p}
@@ -371,7 +371,7 @@ export default async function ProvidersPage({ searchParams }: Props) {
                   {page < totalPages && (
                     <Link
                       href={buildUrl({ page: String(page + 1) })}
-                      className="rounded-lg border border-border px-4 py-2 font-sans text-xs text-text-secondary transition-colors hover:border-[#2563EB]/30 hover:text-text-primary"
+                      className="rounded-lg border border-border px-4 py-2 font-sans text-xs text-text-secondary transition-colors hover:border-white/20 hover:text-text-primary"
                     >
                       Next
                     </Link>

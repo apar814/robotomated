@@ -117,7 +117,7 @@ export default function AdminImportPage() {
 
           <div
             onClick={() => fileRef.current?.click()}
-            className="cursor-pointer rounded-xl border-2 border-dashed border-border bg-navy-light p-12 text-center transition-colors hover:border-blue/30"
+            className="cursor-pointer rounded-xl border-2 border-dashed border-border bg-navy-light p-12 text-center transition-colors hover:border-white/20"
           >
             <p className="text-muted">Click to upload CSV file</p>
             <p className="mt-1 text-xs text-muted">Max 100 rows</p>

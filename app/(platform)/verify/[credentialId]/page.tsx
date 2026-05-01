@@ -68,7 +68,7 @@ export default async function VerifyCredentialPage({
             </p>
             <Link
               href="/certify"
-              className="mt-6 inline-block rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white hover:bg-blue/90"
+              className="mt-6 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#0A0F1E] hover:bg-white/90"
             >
               Learn About RCO
             </Link>
@@ -204,7 +204,7 @@ export default async function VerifyCredentialPage({
         <div className="mt-6 text-center">
           <p className="text-xs text-muted">
             Verified by{" "}
-            <Link href="/" className="text-blue hover:underline">
+            <Link href="/" className="text-white hover:underline">
               Robotomated
             </Link>
           </p>

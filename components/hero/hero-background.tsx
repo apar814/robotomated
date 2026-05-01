@@ -29,7 +29,7 @@ interface DataColumn {
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const ACCENT = "#2563EB";
+const ACCENT = "#D4D4D4";
 const NODE_COUNT_MIN = 50;
 const NODE_COUNT_MAX = 80;
 const CONNECT_DISTANCE = 120;
@@ -224,7 +224,7 @@ export function HeroBackground({ className }: { className?: string }) {
           if (dist < CONNECT_DISTANCE) {
             const alpha =
               (1 - dist / CONNECT_DISTANCE) * CONNECT_MAX_OPACITY * opacityScale;
-            ctx.strokeStyle = `rgba(37,99,235,${alpha})`;
+            ctx.strokeStyle = `rgba(212,212,212,${alpha})`;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -237,7 +237,7 @@ export function HeroBackground({ className }: { className?: string }) {
       for (const node of nodes) {
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(37,99,235,${node.opacity * opacityScale})`;
+        ctx.fillStyle = `rgba(212,212,212,${node.opacity * opacityScale})`;
         ctx.fill();
       }
 
@@ -279,7 +279,7 @@ export function HeroBackground({ className }: { className?: string }) {
           const charOpacity = 0.08 * fadeTop * fadeBottom * opacityScale;
 
           if (charOpacity > 0.001) {
-            ctx.fillStyle = `rgba(37,99,235,${charOpacity})`;
+            ctx.fillStyle = `rgba(212,212,212,${charOpacity})`;
             ctx.fillText(col.chars[i], col.x, charY);
           }
         }
@@ -370,8 +370,8 @@ export function HeroBackground({ className }: { className?: string }) {
           right: "-50%",
           height: "70%",
           backgroundImage: `
-            linear-gradient(to right, rgba(37,99,235,${0.018 * opacityScale}) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(37,99,235,${0.018 * opacityScale}) 1px, transparent 1px)
+            linear-gradient(to right, rgba(212,212,212,${0.018 * opacityScale}) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(212,212,212,${0.018 * opacityScale}) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
           transform: "perspective(1000px) rotateX(60deg)",
@@ -446,7 +446,7 @@ export function HeroBackground({ className }: { className?: string }) {
           left: 0,
           right: 0,
           height: 1,
-          background: `linear-gradient(to right, transparent 0%, rgba(37,99,235,0.4) 20%, rgba(37,99,235,0.8) 50%, rgba(37,99,235,0.4) 80%, transparent 100%)`,
+          background: `linear-gradient(to right, transparent 0%, rgba(212,212,212,0.4) 20%, rgba(212,212,212,0.8) 50%, rgba(212,212,212,0.4) 80%, transparent 100%)`,
           opacity: 0.4 * opacityScale,
           animation: "heroScanLine 8s linear infinite",
         }}

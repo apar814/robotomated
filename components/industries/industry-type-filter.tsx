@@ -49,7 +49,7 @@ export function IndustryTypeFilter({ types, typeCounts }: Props) {
           onClick={() => handleClick(null)}
           className={`whitespace-nowrap border-b-2 px-4 py-3.5 text-[11px] uppercase tracking-wider transition-colors ${
             activeType === null
-              ? "border-blue text-white"
+              ? "border-white/20 text-white"
               : "border-transparent text-white/40 hover:text-white/70"
           }`}
         >
@@ -64,7 +64,7 @@ export function IndustryTypeFilter({ types, typeCounts }: Props) {
               onClick={() => handleClick(type.id)}
               className={`whitespace-nowrap border-b-2 px-4 py-3.5 text-[11px] uppercase tracking-wider transition-colors ${
                 activeType === type.id
-                  ? "border-blue text-white"
+                  ? "border-white/20 text-white"
                   : "border-transparent text-white/40 hover:text-white/70"
               }`}
             >

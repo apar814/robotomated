@@ -38,7 +38,7 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/[0.06] to-blue/[0.04] p-8 sm:p-10">
+    <div className="rounded-2xl border border-violet/20 bg-gradient-to-br from-violet/[0.06] to-white/[0.04] p-8 sm:p-10">
       <div className="mx-auto max-w-xl text-center">
         <p className="text-[11px] font-medium uppercase tracking-widest text-violet">Newsletter</p>
         <h3 className="mt-2 font-display text-xl font-bold tracking-[-0.02em] text-white sm:text-2xl">
@@ -54,7 +54,7 @@ export function IndustryNewsletterCta({ industryLabel }: Props) {
             placeholder="you@company.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-blue focus:outline-none sm:rounded-r-none"
+            className="flex-1 rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/45 focus:border-white/50 focus:outline-none sm:rounded-r-none"
           />
           <button
             type="submit"

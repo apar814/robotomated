@@ -318,7 +318,7 @@ function EldercareCalculator() {
 // --- Shared components ---
 function CalcCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-blue/20 bg-white/[0.03] p-6 shadow-[0_0_60px_rgba(0,194,255,0.05)] backdrop-blur-sm sm:p-8">
+    <div className="rounded-2xl border border-white/20 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
       {children}
     </div>
   );
@@ -334,7 +334,7 @@ function Slider({ label, value, min, max, step, onChange, prefix = "", suffix = 
         <label className="text-[11px] uppercase tracking-wider text-white/40">{label}</label>
         <span className="font-mono text-sm font-bold text-white">{prefix}{fmt ? value.toLocaleString() : value}{suffix}</span>
       </div>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-blue" />
+      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} className="w-full accent-white" />
     </div>
   );
 }

@@ -15,10 +15,10 @@ const STUDY_LEVELS = [
     hours: "14 hours across 5 modules",
     modules: 5,
     practiceQuestions: "100+",
-    color: "blue",
-    badge: "bg-blue/10 text-blue border-blue/20",
-    border: "border-blue/20 hover:border-blue/50",
-    cta: "bg-blue hover:bg-blue/90",
+    color: "white",
+    badge: "bg-white/10 text-white border-border",
+    border: "border-border hover:border-white/30",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Core safety, robot types, deployment basics, fault diagnosis, and compliance.",
     moduleNames: [
@@ -36,10 +36,10 @@ const STUDY_LEVELS = [
     hours: "32 hours across 4 modules",
     modules: 4,
     practiceQuestions: "150+",
-    color: "green",
-    badge: "bg-green/10 text-green border-green/20",
-    border: "border-green/20 hover:border-green/50",
-    cta: "bg-green hover:bg-green/90 text-navy",
+    color: "white",
+    badge: "bg-white/10 text-white border-border",
+    border: "border-border hover:border-white/30",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Advanced programming, fleet management, live fault diagnosis, and computer vision.",
     moduleNames: [
@@ -56,10 +56,10 @@ const STUDY_LEVELS = [
     hours: "49 hours across 4 modules",
     modules: 4,
     practiceQuestions: "200+",
-    color: "violet",
-    badge: "bg-violet/10 text-violet border-violet/20",
-    border: "border-violet/20 hover:border-violet/50",
-    cta: "bg-violet hover:bg-violet/90",
+    color: "white",
+    badge: "bg-white/10 text-white border-border",
+    border: "border-border hover:border-white/30",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Sim-to-real transfer, dexterous manipulation, world models, and system architecture.",
     moduleNames: [
@@ -76,10 +76,10 @@ const STUDY_LEVELS = [
     hours: "62 hours across 4 modules",
     modules: 4,
     practiceQuestions: "150+",
-    color: "amber",
-    badge: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-    border: "border-amber-500/20 hover:border-amber-500/50",
-    cta: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700",
+    color: "white",
+    badge: "bg-white/10 text-white border-border",
+    border: "border-border hover:border-white/30",
+    cta: "border border-white/20 bg-white/5 hover:bg-white/10",
     description:
       "Program design, crisis management, business operations, and enterprise capstone prep.",
     moduleNames: [
@@ -97,12 +97,12 @@ export default function StudyCenterPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ STUDY CENTER ]
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold sm:text-5xl">
             Prepare for Your{" "}
-            <span className="text-blue">Certification</span>
+            <span className="text-white font-semibold">Certification</span>
           </h1>
           <p className="mx-auto mt-4 max-w-lg text-muted">
             Structured learning paths, unlimited practice questions, and

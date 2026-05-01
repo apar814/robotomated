@@ -61,7 +61,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
 
   if (submitted) {
     return (
-      <div className="rounded-lg border border-blue-600/20 bg-blue-600/5 p-8 text-center">
+      <div className="rounded-lg border border-white/20 bg-white/5 p-8 text-center">
         <div className="mb-3 text-3xl">&#10003;</div>
         <h3 className="text-lg font-bold text-text-primary">Bid Submitted</h3>
         <p className="mt-2 text-sm text-text-secondary">
@@ -72,7 +72,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
   }
 
   const inputClass =
-    "w-full rounded border border-border bg-obsidian-elevated px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-electric-blue placeholder:text-text-tertiary";
+    "w-full rounded border border-border bg-obsidian-elevated px-3 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-white/50 placeholder:text-text-tertiary";
 
   return (
     <form onSubmit={handleSubmit} className="rounded-lg border border-border bg-obsidian-surface p-6">
@@ -135,7 +135,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
               className={cn(
                 "rounded border px-3 py-2 text-xs transition-colors",
                 fulfillmentType === opt.value
-                  ? "border-electric-blue bg-electric-blue/10 text-electric-blue"
+                  ? "border-white/20 bg-white/5 text-white"
                   : "border-border text-text-secondary hover:border-text-tertiary"
               )}
             >
@@ -152,7 +152,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
           onClick={() => setIncludesOperator(!includesOperator)}
           className={cn(
             "relative h-5 w-9 rounded-full transition-colors",
-            includesOperator ? "bg-electric-blue" : "bg-text-tertiary"
+            includesOperator ? "bg-white" : "bg-text-tertiary"
           )}
         >
           <span
@@ -194,7 +194,7 @@ export function BidForm({ jobSlug, jobTitle }: BidFormProps) {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded bg-electric-blue px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="w-full rounded bg-white px-6 py-3 text-sm font-bold text-black transition-opacity hover:opacity-90 disabled:opacity-50"
       >
         {submitting ? "Submitting..." : "Submit Bid"}
       </button>

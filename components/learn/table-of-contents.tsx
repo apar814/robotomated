@@ -47,7 +47,7 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
             "block rounded-md py-1 text-xs transition-colors",
             h.level === 3 ? "pl-4" : "pl-0",
             activeId === h.id
-              ? "font-medium text-blue"
+              ? "font-medium text-white"
               : "text-muted hover:text-foreground"
           )}
         >

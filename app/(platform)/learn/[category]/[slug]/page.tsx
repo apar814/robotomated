@@ -116,7 +116,7 @@ export default async function ArticlePage({ params }: Props) {
             <span className={cn(
               "rounded-full px-2 py-0.5 text-[13px] font-medium",
               frontmatter.audience === "beginner" ? "bg-green/10 text-green" :
-              frontmatter.audience === "enthusiast" ? "bg-blue/10 text-blue" :
+              frontmatter.audience === "enthusiast" ? "bg-white/10 text-white" :
               frontmatter.audience === "professional" ? "bg-violet/10 text-violet" :
               "bg-orange/10 text-orange"
             )}>
@@ -145,7 +145,7 @@ export default async function ArticlePage({ params }: Props) {
             {/* Author card */}
             <div className="mt-8 rounded-xl border border-border bg-navy-light p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue/10 text-lg font-bold text-blue">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-lg font-bold text-white">
                   {frontmatter.author.charAt(0)}
                 </div>
                 <div>
@@ -188,7 +188,7 @@ export default async function ArticlePage({ params }: Props) {
                         <Link
                           key={r.slug}
                           href={`/explore/${catSlug}/${r.slug}`}
-                          className="block rounded-lg border border-border bg-navy-lighter p-3 transition-all hover:border-blue/30"
+                          className="block rounded-lg border border-border bg-navy-lighter p-3 transition-all hover:border-white/20"
                         >
                           <div className="flex items-start justify-between gap-1">
                             <div className="min-w-0">

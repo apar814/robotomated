@@ -64,7 +64,7 @@ export default async function AccountPage() {
       {/* Profile */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue to-violet text-xl font-bold text-white">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-xl font-bold text-white">
             {(user.email?.[0] || "?").toUpperCase()}
           </div>
           <div>
@@ -80,14 +80,14 @@ export default async function AccountPage() {
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold">Your Shortlist</h2>
           {(saved?.length || 0) > 0 && (
-            <Link href="/account/saved" className="text-sm text-blue hover:underline">View all</Link>
+            <Link href="/account/saved" className="text-sm text-white hover:underline">View all</Link>
           )}
         </div>
         {!saved?.length ? (
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
             <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><rect x="5" y="8" width="14" height="12" rx="2" /><path d="M9 13h0M15 13h0" strokeWidth={2.5} /><path d="M9 17h6M12 2v4M7 8V6M17 8V6" /></svg>
             <p className="text-sm text-muted">Save robots while you research to build your shortlist.</p>
-            <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
+            <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-white hover:underline">
               Start exploring robots
             </Link>
           </div>
@@ -102,10 +102,10 @@ export default async function AccountPage() {
                 <Link
                   key={s.robot_id}
                   href={`/explore/${catSlug}/${r.slug}`}
-                  className="group rounded-xl border border-border bg-navy-light p-4 transition-all hover:border-blue/30"
+                  className="group rounded-xl border border-border bg-navy-light p-4 transition-all hover:border-white/20"
                 >
                   <p className="text-xs text-muted">{mfr}</p>
-                  <h3 className="font-semibold transition-colors group-hover:text-blue">{r.name}</h3>
+                  <h3 className="font-semibold transition-colors group-hover:text-white">{r.name}</h3>
                   {r.robo_score != null && <RoboScoreBadge score={r.robo_score} className="mt-2" />}
                 </Link>
               );
@@ -121,7 +121,7 @@ export default async function AccountPage() {
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
             <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
             <p className="text-sm text-muted">Robotimus is your AI advisor for robot selection, pricing, and deployment strategy.</p>
-            <Link href="/advisor" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
+            <Link href="/advisor" className="mt-3 inline-block text-sm font-medium text-white hover:underline">
               Get a recommendation
             </Link>
           </div>
@@ -135,7 +135,7 @@ export default async function AccountPage() {
                     {new Date(c.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </p>
                 </div>
-                <Link href={`/advisor?session=${c.session_id}`} className="text-sm text-blue hover:underline">
+                <Link href={`/advisor?session=${c.session_id}`} className="text-sm text-white hover:underline">
                   Continue
                 </Link>
               </div>
@@ -151,7 +151,7 @@ export default async function AccountPage() {
           <div className="mt-4 rounded-xl border border-dashed border-border bg-navy-light p-8 text-center">
             <svg className="mx-auto mb-3 h-8 w-8 text-white/28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
             <p className="text-sm text-muted">Share your hands-on experience to help others make better automation decisions.</p>
-            <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-blue hover:underline">
+            <Link href="/explore" className="mt-3 inline-block text-sm font-medium text-white hover:underline">
               Review a robot you&apos;ve used
             </Link>
           </div>

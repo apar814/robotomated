@@ -100,12 +100,12 @@ export default function WhyCertifyPage() {
       {/* Hero */}
       <section className="border-b border-border px-4 py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE CASE FOR CERTIFICATION ]
           </p>
           <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl">
             The ROI of{" "}
-            <span className="text-blue">RCO Certification</span>
+            <span className="text-white font-semibold">RCO Certification</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
             In a field growing 25% year-over-year, certification is the
@@ -128,10 +128,10 @@ export default function WhyCertifyPage() {
           <div className="grid gap-6 sm:grid-cols-2">
             {SALARY_DATA.map((s) => {
               const colorClasses: Record<string, { badge: string; accent: string }> = {
-                blue: { badge: "bg-blue/10 text-blue", accent: "text-blue" },
-                green: { badge: "bg-green/10 text-green", accent: "text-green" },
-                violet: { badge: "bg-violet/10 text-violet", accent: "text-violet" },
-                amber: { badge: "bg-amber-500/10 text-amber-400", accent: "text-amber-400" },
+                blue: { badge: "bg-white/10 text-white", accent: "text-white" },
+                green: { badge: "bg-white/10 text-white", accent: "text-white" },
+                violet: { badge: "bg-white/10 text-white", accent: "text-white" },
+                amber: { badge: "bg-white/10 text-white", accent: "text-white" },
               };
               const c = colorClasses[s.color] || colorClasses.blue;
 
@@ -184,12 +184,12 @@ export default function WhyCertifyPage() {
                 <div className="flex-1">
                   <div className="h-3 w-full rounded-full bg-border">
                     <div
-                      className="h-3 rounded-full bg-blue/60"
+                      className="h-3 rounded-full bg-white/40"
                       style={{ width: t.pct }}
                     />
                   </div>
                 </div>
-                <span className="w-10 shrink-0 text-right font-[family-name:var(--font-mono)] text-sm font-bold text-blue">
+                <span className="w-10 shrink-0 text-right font-[family-name:var(--font-mono)] text-sm font-bold text-white">
                   {t.pct}
                 </span>
               </div>
@@ -233,7 +233,7 @@ export default function WhyCertifyPage() {
       {/* The Living Certification */}
       <section className="border-b border-border bg-[#0A0A0A] px-4 py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
+          <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
             [ THE LIVING CERTIFICATION ]
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold">
@@ -316,7 +316,7 @@ export default function WhyCertifyPage() {
                   {cert.name}
                 </h3>
                 <p className="mt-1 text-sm text-muted">{cert.why}</p>
-                <p className="mt-2 text-xs text-green">{cert.timeline}</p>
+                <p className="mt-2 text-xs text-white">{cert.timeline}</p>
               </div>
             ))}
           </div>
@@ -328,7 +328,7 @@ export default function WhyCertifyPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold">
             The future of robotics runs on{" "}
-            <span className="text-blue">certified operators</span>.
+            <span className="text-white font-semibold">certified operators</span>.
           </h2>
           <p className="mt-4 text-muted">
             Start your certification journey today. No prerequisites for Level 1.
@@ -336,7 +336,7 @@ export default function WhyCertifyPage() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/certify"
-              className="inline-flex items-center rounded-lg bg-blue px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-blue/90 hover:shadow-lg hover:shadow-blue/20"
+              className="hover-btn-bl inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-10 py-4 text-sm font-semibold text-white transition-all hover:bg-white/10"
             >
               Start RCO Foundation — $149
             </Link>

@@ -79,8 +79,25 @@ Each robot category has a background swatch and a higher-contrast text variant f
 - Drop shadows on text
 - Color-as-decoration
 - Brand colors borrowed from your robot manufacturer logos
+- Glow effects. Forbidden as decorative elements at rest. PERMITTED ONLY on the hover state of interactive elements (cards, buttons, links) as a functional indicator that the element is being addressed. Glow disappears when cursor leaves. Maximum spread: 32px. Maximum opacity: 0.08. Color: rgba(255,255,255, X) only — no colored glows.
 
 **Canvas mode:** Dual. Dark mode is default. Light mode is opt-in via system preference. Marketing pages and certification flows can override to light mode for warmth — robot detail pages and the intelligence feed stay dark.
+
+### Hover treatment
+
+Interactive elements use a consistent "backlit" hover language — a soft white glow that signals addressability without decoration.
+
+| Element | Property | Rest | Hover | Transition |
+|---|---|---|---|---|
+| **Cards** | `border-color` | `rgba(255,255,255,0.10)` | `rgba(255,255,255,0.30)` | `200ms ease` |
+| | `box-shadow` | `none` | `0 0 32px rgba(255,255,255,0.08), 0 0 8px rgba(255,255,255,0.04)` | |
+| **Buttons (ghost CTAs)** | `border-color` | `rgba(255,255,255,0.20)` | `#FFF` | `200ms ease` |
+| | `color` | `rgba(255,255,255,0.80)` | `#FFF` | |
+| | `box-shadow` | `none` | `0 0 16px rgba(255,255,255,0.12)` | |
+| **Links (text)** | underline draw | `::after` pseudo-element, `width: 0` | `width: 100%` | `200ms ease` |
+| | | `height: 1px`, `background: #FFF`, `bottom: -2px` | | |
+
+Utility classes: `.hover-card-bl`, `.hover-btn-bl`, `.hover-link-bl` (defined in `globals.css`).
 
 ---
 

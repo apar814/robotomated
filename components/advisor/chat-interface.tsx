@@ -364,7 +364,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                   <button
                     key={prompt.text}
                     onClick={() => sendMessage(prompt.text)}
-                    className="w-full rounded-[10px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(37,99,235,0.3)] hover:bg-[rgba(14,18,38,0.95)]"
+                    className="w-full rounded-[10px] text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgba(255,255,255,0.15)] hover:bg-[rgba(14,18,38,0.95)]"
                     style={{
                       background: "rgba(10,12,28,0.9)",
                       border: "1px solid rgba(255,255,255,0.07)",
@@ -421,7 +421,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               <div
                 style={msg.role === "user"
                   ? {
-                      background: "#2563EB",
+                      background: "rgba(255,255,255,0.1)",
                       borderRadius: "12px 12px 4px 12px",
                       padding: "0.85rem 1.25rem",
                       color: "#FFFFFF",
@@ -445,7 +445,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                   /* During streaming: render raw text only — no markdown parsing on partial content */
                   <div style={{ fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif", fontSize: "0.92rem", fontWeight: 500, lineHeight: 1.7, color: "rgba(240,244,255,0.9)", whiteSpace: "pre-wrap" }}>
                     {msg.content}
-                    <span style={{ display: "inline-block", width: 2, height: "1em", background: "#2563EB", marginLeft: 2, verticalAlign: "text-bottom", animation: "blink 1s step-end infinite" }} />
+                    <span style={{ display: "inline-block", width: 2, height: "1em", background: "#D4D4D4", marginLeft: 2, verticalAlign: "text-bottom", animation: "blink 1s step-end infinite" }} />
                   </div>
                 ) : (
                   /* After streaming complete: render with markdown + robot cards */
@@ -462,11 +462,11 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="transition-all hover:bg-[rgba(37,99,235,0.15)]"
+                  className="transition-all hover:bg-[rgba(255,255,255,0.1)]"
                   style={{
-                    background: "rgba(37,99,235,0.08)",
-                    border: "1px solid rgba(37,99,235,0.25)",
-                    color: "#60A5FA",
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    color: "#D4D4D4",
                     fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
                     fontWeight: 600,
                     fontSize: "0.78rem",
@@ -487,7 +487,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
             <div className="mb-4 ml-8 flex flex-wrap gap-2">
               <Link
                 href="/explore"
-                className="rounded-lg border border-[#2563EB]/20 bg-[#2563EB]/10 px-3 py-1.5 text-xs font-medium text-[#2563EB] transition-colors hover:bg-[#2563EB]/20"
+                className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-white/10"
               >
                 Browse all robots
               </Link>
@@ -516,7 +516,7 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               </p>
               <button
                 onClick={() => { setError(""); if (messages.length > 0) { const lastUser = [...messages].reverse().find(m => m.role === "user"); if (lastUser) sendMessage(lastUser.content); } }}
-                style={{ marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 700, color: "#60A5FA", background: "none", border: "none", cursor: "pointer", padding: 0, textTransform: "uppercase", letterSpacing: "0.08em", minHeight: "auto", minWidth: "auto" }}
+                style={{ marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 700, color: "#D4D4D4", background: "none", border: "none", cursor: "pointer", padding: 0, textTransform: "uppercase", letterSpacing: "0.08em", minHeight: "auto", minWidth: "auto" }}
               >
                 Try Again
               </button>
@@ -539,12 +539,12 @@ export function ChatInterface({ initialMessage }: { initialMessage?: string }) {
               placeholder="Ask Robotimus about robots..."
               rows={1}
               disabled={streaming}
-              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[#2563EB]/40 focus:outline-none disabled:opacity-50"
+              className="flex-1 resize-none rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-white/20 focus:outline-none disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={!input.trim() || streaming}
-              className="shrink-0 rounded-xl bg-[#2563EB] px-4 py-3 text-[#0A0F1E] transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="shrink-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white transition-opacity hover:opacity-90 disabled:opacity-50"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 12h14" />
@@ -588,16 +588,16 @@ const mdComponents = {
     if (isBlock) {
       return (
         <pre style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 6, padding: "0.75rem 1rem", overflowX: "auto", margin: "0.75rem 0" }}>
-          <code style={{ fontSize: "0.82rem", color: "#60A5FA", fontFamily: "monospace" }}>{children}</code>
+          <code style={{ fontSize: "0.82rem", color: "#D4D4D4", fontFamily: "monospace" }}>{children}</code>
         </pre>
       );
     }
-    return <code style={{ background: "rgba(255,255,255,0.08)", padding: "0.1rem 0.35rem", borderRadius: 3, fontSize: "0.85rem", color: "#60A5FA", fontFamily: "monospace" }}>{children}</code>;
+    return <code style={{ background: "rgba(255,255,255,0.08)", padding: "0.1rem 0.35rem", borderRadius: 3, fontSize: "0.85rem", color: "#D4D4D4", fontFamily: "monospace" }}>{children}</code>;
   },
-  blockquote: ({ children }: any) => <blockquote style={{ borderLeft: "2px solid #2563EB", paddingLeft: "1rem", margin: "0.5rem 0", color: "rgba(240,244,255,0.65)" }}>{children}</blockquote>,
-  a: ({ children, href }: any) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: "#60A5FA", textDecoration: "underline" }}>{children}</a>,
+  blockquote: ({ children }: any) => <blockquote style={{ borderLeft: "2px solid rgba(255,255,255,0.2)", paddingLeft: "1rem", margin: "0.5rem 0", color: "rgba(240,244,255,0.65)" }}>{children}</blockquote>,
+  a: ({ children, href }: any) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: "#D4D4D4", textDecoration: "underline" }}>{children}</a>,
   table: ({ children }: any) => <div style={{ overflowX: "auto", margin: "0.75rem 0" }}><table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>{children}</table></div>,
-  th: ({ children }: any) => <th style={{ padding: "0.5rem 0.75rem", background: "rgba(37,99,235,0.15)", color: "#F0F4FF", fontWeight: 700, textAlign: "left", borderBottom: "1px solid rgba(37,99,235,0.3)" }}>{children}</th>,
+  th: ({ children }: any) => <th style={{ padding: "0.5rem 0.75rem", background: "rgba(255,255,255,0.08)", color: "#F0F4FF", fontWeight: 700, textAlign: "left", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>{children}</th>,
   td: ({ children }: any) => <td style={{ padding: "0.5rem 0.75rem", color: "rgba(240,244,255,0.75)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>{children}</td>,
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */

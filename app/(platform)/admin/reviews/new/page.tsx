@@ -121,12 +121,12 @@ export default function AdminNewReviewPage() {
 
         {error && <p className="mb-4 text-sm text-orange">{error}</p>}
 
-        <div className="rounded-xl border border-blue/20 bg-navy-light p-6">
+        <div className="rounded-xl border border-white/20 bg-navy-light p-6">
           <div className="flex items-center gap-2 border-b border-border pb-3 mb-6">
-            <svg className="h-4 w-4 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue">Expert Review</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-white">Expert Review</span>
             <span className="ml-auto text-xs text-muted">{selectedRobot?.name}</span>
           </div>
 
@@ -150,8 +150,8 @@ export default function AdminNewReviewPage() {
           </div>
 
           {verdict && (
-            <div className="mt-6 rounded-lg border border-blue/20 bg-blue/5 p-4">
-              <h4 className="mb-1 text-sm font-semibold text-blue">Verdict</h4>
+            <div className="mt-6 rounded-lg border border-white/20 bg-white/5 p-4">
+              <h4 className="mb-1 text-sm font-semibold text-white">Verdict</h4>
               <p className="text-sm text-muted">{verdict}</p>
             </div>
           )}
@@ -170,7 +170,7 @@ export default function AdminNewReviewPage() {
         <select
           value={robotId}
           onChange={(e) => setRobotId(e.target.value)}
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground focus:border-white/50 focus:outline-none"
         >
           <option value="">Select a robot...</option>
           {robots.map((r) => (
@@ -187,7 +187,7 @@ export default function AdminNewReviewPage() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="e.g. UR5e Review: The Cobot That Changed Manufacturing"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -205,21 +205,21 @@ export default function AdminNewReviewPage() {
                 min={0} max={100} step={1}
                 value={scores[dim.key]}
                 onChange={(e) => setScores({ ...scores, [dim.key]: parseInt(e.target.value) })}
-                className="flex-1 accent-blue"
+                className="flex-1 accent-white"
               />
               <input
                 type="number"
                 min={0} max={100}
                 value={scores[dim.key]}
                 onChange={(e) => setScores({ ...scores, [dim.key]: Math.min(100, Math.max(0, parseInt(e.target.value) || 0)) })}
-                className="w-14 rounded border border-border bg-navy-lighter px-2 py-1 text-center font-mono text-xs text-foreground focus:border-blue focus:outline-none"
+                className="w-14 rounded border border-border bg-navy-lighter px-2 py-1 text-center font-mono text-xs text-foreground focus:border-white/50 focus:outline-none"
               />
             </div>
           ))}
         </div>
         <div className="mt-4 flex items-center gap-3 rounded-lg bg-navy-lighter p-3">
           <span className="text-sm font-semibold">Calculated RoboScore:</span>
-          <span className="font-mono text-lg font-bold text-blue">{finalScore.toFixed(1)}</span>
+          <span className="font-mono text-lg font-bold text-white">{finalScore.toFixed(1)}</span>
         </div>
       </div>
 
@@ -231,7 +231,7 @@ export default function AdminNewReviewPage() {
           onChange={(e) => setBody(e.target.value)}
           rows={12}
           placeholder="Write the full expert review..."
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -243,7 +243,7 @@ export default function AdminNewReviewPage() {
           onChange={(e) => setProsText(e.target.value)}
           rows={4}
           placeholder="Industry-leading ease of use&#10;Excellent force sensing&#10;Huge ecosystem of accessories"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -255,7 +255,7 @@ export default function AdminNewReviewPage() {
           onChange={(e) => setConsText(e.target.value)}
           rows={4}
           placeholder="Limited to 5kg payload&#10;No IP67 rating"
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 
@@ -267,7 +267,7 @@ export default function AdminNewReviewPage() {
           onChange={(e) => setVerdict(e.target.value)}
           rows={3}
           placeholder="One-paragraph summary verdict..."
-          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-blue focus:outline-none"
+          className="w-full rounded-lg border border-border bg-navy-lighter px-3 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-white/50 focus:outline-none"
         />
       </div>
 

@@ -54,12 +54,12 @@ export default function EmployerHirePage() {
     <main className="min-h-screen bg-obsidian">
       {/* Hero */}
       <section className="px-4 pt-24 pb-16 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <p className="text-electric-blue font-mono text-sm tracking-widest uppercase mb-4">
+        <p className="text-white font-mono text-sm tracking-widest uppercase mb-4">
           Robotomated Workforce Network
         </p>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
           Hire Pre-Vetted, Certified{" "}
-          <span className="text-electric-blue">Robot Operators</span>
+          <span className="text-white">Robot Operators</span>
         </h1>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-4">
           Skip the recruiting black hole. We train and certify operators on the
@@ -81,7 +81,7 @@ export default function EmployerHirePage() {
               key={stat.label}
               className="bg-obsidian-surface border border-border rounded-lg p-4"
             >
-              <p className="text-2xl font-bold text-electric-blue">
+              <p className="text-2xl font-bold text-white">
                 {stat.value}
               </p>
               <p className="text-xs text-text-tertiary mt-1">{stat.label}</p>

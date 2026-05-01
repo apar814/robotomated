@@ -319,7 +319,7 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Price */}
             <div className="mt-4">
               {robot.price_current != null ? (
-                <p className="font-mono text-2xl font-bold text-blue-400">
+                <p className="font-mono text-2xl font-bold text-white">
                   {fmtPrice(robot.price_current)}
                 </p>
               ) : (
@@ -339,13 +339,13 @@ export default async function RobotDetailPage({ params }: Props) {
             {/* Who is this for + What problem does it solve */}
             <div className="mt-5 space-y-2">
               <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
-                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-electric-blue">What problem does this solve?</p>
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-white">What problem does this solve?</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-text-primary">
                   {bestFor}.
                 </p>
               </div>
               <div className="rounded-lg border border-border bg-obsidian-surface px-4 py-3">
-                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-electric-blue">Who is this for?</p>
+                <p className="font-mono text-[13px] font-semibold uppercase tracking-widest text-white">Who is this for?</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
                   {robot.price_current != null && robot.price_current < 15000
                     ? "Small-to-mid operations evaluating automation for the first time. Low barrier to entry, fast deployment."
@@ -362,7 +362,7 @@ export default async function RobotDetailPage({ params }: Props) {
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href="#checklist"
-                className="rounded-md bg-electric-blue px-5 py-2.5 font-mono text-sm font-bold text-black transition-opacity hover:opacity-90"
+                className="rounded-md bg-white px-5 py-2.5 font-mono text-sm font-bold text-black transition-opacity hover:opacity-90"
               >
                 Get Buyer&apos;s Checklist
               </a>
@@ -381,7 +381,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 {[robot.price_current, robot.robo_score, robotImages.length > 0, Object.keys(specs).length > 3].filter(Boolean).length}/4 data completeness
               </span>
               <span className="text-text-ghost">·</span>
-              <a href={`mailto:data@robotomated.com?subject=Data%20correction:%20${encodeURIComponent(robot.name)}&body=Robot:%20${encodeURIComponent(robot.name)}%0AField:%20%0ACorrection:%20`} className="text-electric-blue hover:underline">
+              <a href={`mailto:data@robotomated.com?subject=Data%20correction:%20${encodeURIComponent(robot.name)}&body=Robot:%20${encodeURIComponent(robot.name)}%0AField:%20%0ACorrection:%20`} className="text-white hover:underline">
                 Report an error
               </a>
             </div>
@@ -493,7 +493,7 @@ export default async function RobotDetailPage({ params }: Props) {
               <div className="section-label mb-3">
                 <span className="font-mono text-[13px] tracking-widest">[EDITORIAL] ROBOTOMATED VERDICT</span>
               </div>
-              <div className="rounded-md border border-border border-l-2 border-l-[#2563EB] bg-obsidian-surface p-5">
+              <div className="rounded-md border border-border border-l-2 border-l-white/30 bg-obsidian-surface p-5">
                 <p className="text-sm leading-relaxed text-text-secondary">
                   {verdict.verdict}
                 </p>
@@ -538,10 +538,10 @@ export default async function RobotDetailPage({ params }: Props) {
                       <Link
                         key={alt.id}
                         href={`/explore/${altCatSlug}/${alt.slug}`}
-                        className="group rounded-md border border-border bg-obsidian-surface p-4 transition-all hover:border-[#2563EB]/30"
+                        className="group rounded-md border border-border bg-obsidian-surface p-4 transition-all hover:border-white/20"
                       >
                         <p className="font-mono text-[11px] uppercase tracking-widest text-text-ghost">{altMfr}</p>
-                        <h4 className="mt-1 text-sm font-semibold text-text-primary transition-colors group-hover:text-[#2563EB]">
+                        <h4 className="mt-1 text-sm font-semibold text-text-primary transition-colors group-hover:text-white">
                           {alt.name}
                         </h4>
                         <div className="mt-2 flex items-center justify-between">
@@ -750,7 +750,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     </div>
                     <div>
                       <p className="font-mono text-[13px] text-text-ghost">CURRENT</p>
-                      <p className="font-mono text-sm font-bold text-blue-400">
+                      <p className="font-mono text-sm font-bold text-white">
                         {robot.price_current != null ? fmtPrice(robot.price_current) : "RFQ"}
                       </p>
                     </div>
@@ -916,7 +916,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     })}
                   </div>
                   <div className="mt-3 border-t border-border pt-3">
-                    <Link href="/methodology" className="font-mono text-[13px] text-electric-blue hover:underline">
+                    <Link href="/methodology" className="font-mono text-[13px] text-white hover:underline">
                       Read methodology →
                     </Link>
                   </div>
@@ -959,7 +959,7 @@ export default async function RobotDetailPage({ params }: Props) {
                 </p>
                 <Link
                   href="/advisor"
-                  className="block w-full rounded-md border border-electric-blue bg-electric-blue/10 px-4 py-2.5 text-center font-mono text-sm font-bold text-electric-blue transition-colors hover:bg-electric-blue/20"
+                  className="block w-full rounded-md border border-white/20 bg-white/10 px-4 py-2.5 text-center font-mono text-sm font-bold text-white transition-colors hover:bg-white/10"
                 >
                   Find Similar Robots →
                 </Link>
@@ -987,7 +987,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     href={`/api/out/${robot.slug}?ref=product-page&pos=sidebar`}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="block w-full rounded-md bg-electric-blue px-4 py-2.5 text-center font-mono text-sm font-bold text-black transition-opacity hover:opacity-90"
+                    className="block w-full rounded-md bg-white px-4 py-2.5 text-center font-mono text-sm font-bold text-black transition-opacity hover:opacity-90"
                   >
                     {robot.affiliate_url ? `Buy from ${mfr?.name}` : `Visit ${mfr?.name}`}
                   </a>
@@ -1035,7 +1035,7 @@ export default async function RobotDetailPage({ params }: Props) {
                   <Link
                     key={s.id}
                     href={`/explore/${sCatSlug}/${s.slug}`}
-                    className="group block overflow-hidden rounded-md border border-border bg-obsidian-surface transition-all hover:border-electric-blue/30"
+                    className="group block overflow-hidden rounded-md border border-border bg-obsidian-surface transition-all hover:border-white/20/30"
                   >
                     <div className="relative h-40 bg-obsidian">
                       {realImg ? (
@@ -1056,7 +1056,7 @@ export default async function RobotDetailPage({ params }: Props) {
                     </div>
                     <div className="p-4">
                       <p className="font-mono text-[13px] text-text-ghost">{sMfr}</p>
-                      <h3 className="font-semibold text-text-primary transition-colors group-hover:text-electric-blue">
+                      <h3 className="font-semibold text-text-primary transition-colors group-hover:text-white">
                         {s.name}
                       </h3>
                       <div className="mt-2 flex items-center justify-between">
@@ -1110,7 +1110,7 @@ export default async function RobotDetailPage({ params }: Props) {
               },
             ].map((faq) => (
               <details key={faq.q} className="group rounded-lg border border-border bg-obsidian-surface">
-                <summary className="cursor-pointer px-5 py-4 text-sm font-semibold text-text-primary transition-colors hover:text-electric-blue">
+                <summary className="cursor-pointer px-5 py-4 text-sm font-semibold text-text-primary transition-colors hover:text-white">
                   {faq.q}
                 </summary>
                 <div className="border-t border-border px-5 py-4 text-sm leading-relaxed text-text-secondary">
@@ -1128,30 +1128,30 @@ export default async function RobotDetailPage({ params }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             <Link
               href="/compare"
-              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-white/20/30"
             >
               <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
-              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-white">
                 Compare with alternatives
               </p>
               <p className="mt-1 text-xs text-text-tertiary">Side-by-side across every dimension.</p>
             </Link>
             <Link
               href="/tools/tco-calculator"
-              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-white/20/30"
             >
               <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
-              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-white">
                 Calculate 5-year total cost
               </p>
               <p className="mt-1 text-xs text-text-tertiary">Purchase + maintenance + integration.</p>
             </Link>
             <Link
               href="/advisor"
-              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-electric-blue/30"
+              className="group rounded-lg border border-border bg-obsidian-surface p-5 transition-all hover:border-white/20/30"
             >
               <p className="font-mono text-[13px] uppercase tracking-widest text-text-ghost">Next</p>
-              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-electric-blue">
+              <p className="mt-1 text-sm font-bold text-text-primary transition-colors group-hover:text-white">
                 Get a deployment recommendation
               </p>
               <p className="mt-1 text-xs text-text-tertiary">Tell Robotimus your use case and budget.</p>
