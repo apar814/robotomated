@@ -407,8 +407,8 @@ function RobotCard({ robot, categorySlug }: { robot: IndustryRobot; categorySlug
   const mfr = robot.manufacturers?.name || "";
 
   return (
-    <Link href={`/explore/${categorySlug}/${robot.slug}`} className="group block overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
-      <div className="relative h-36 bg-white/[0.03]">
+    <Link href={`/explore/${categorySlug}/${robot.slug}`} className="group block rounded-xl border border-white/[0.07] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
+      <div className="relative h-36 overflow-hidden rounded-t-xl bg-white/[0.03]">
         {realImg ? (
           <SafeImage src={realImg} alt={robot.name} sizes="33vw" className="object-cover" fallbackLabel={mfr} fallbackSublabel={robot.name} />
         ) : (

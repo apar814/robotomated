@@ -1035,9 +1035,9 @@ export default async function RobotDetailPage({ params }: Props) {
                   <Link
                     key={s.id}
                     href={`/explore/${sCatSlug}/${s.slug}`}
-                    className="group block overflow-hidden rounded-md border border-border bg-obsidian-surface transition-all hover:border-white/20/30"
+                    className="group block rounded-md border border-border bg-obsidian-surface transition-all hover:border-white/20/30"
                   >
-                    <div className="relative h-40 bg-obsidian">
+                    <div className="relative h-40 overflow-hidden rounded-t-md bg-obsidian">
                       {realImg ? (
                         <SafeImage
                           src={realImg}

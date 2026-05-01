@@ -31,8 +31,9 @@ export function HeroMosaic({ robots }: { robots: MosaicRobot[] }) {
           <Link
             key={robot.slug}
             href={`/explore/${robot.category_slug}/${robot.slug}`}
-            className={`group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] transition-all duration-300 hover:border-white/20 ${ROTATIONS[i]} ${OFFSETS[i]}`}
+            className={`group relative rounded-2xl border border-white/[0.08] bg-white/[0.04] transition-all duration-300 hover:border-white/20 ${ROTATIONS[i]} ${OFFSETS[i]}`}
           >
+            <div className="absolute inset-0 overflow-hidden rounded-2xl">
             {hasImage ? (
               <SafeImage
                 src={robot.image_url!}
@@ -47,6 +48,7 @@ export function HeroMosaic({ robots }: { robots: MosaicRobot[] }) {
                 <span className="mt-1 text-sm font-bold text-white/45">{robot.name}</span>
               </div>
             )}
+            </div>
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E]/80 via-transparent to-transparent" />

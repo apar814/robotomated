@@ -199,7 +199,7 @@ export default async function ManufacturerDetailPage({ params }: Props) {
               const cat = robot.robot_categories as { slug: string; name: string } | null;
               const imgs = Array.isArray(robot.images) ? robot.images as { url: string }[] : [];
               return (
-                <Link key={robot.id} href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="obsidian-card group overflow-hidden transition-all hover:-translate-y-1">
+                <Link key={robot.id} href={`/explore/${cat?.slug || "all"}/${robot.slug}`} className="obsidian-card group transition-all hover:-translate-y-1">
                   <div className="relative h-36 overflow-hidden rounded-t-md">
                     {imgs[0]?.url ? (
                       <Image src={imgs[0].url} alt={robot.name} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
