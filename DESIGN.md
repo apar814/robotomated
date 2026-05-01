@@ -79,7 +79,7 @@ Each robot category has a background swatch and a higher-contrast text variant f
 - Drop shadows on text
 - Color-as-decoration
 - Brand colors borrowed from your robot manufacturer logos
-- Glow effects
+- Glow effects. Forbidden. No box-shadow, no inner shadow, no rgba glows. Cards, buttons, and links use border-color shifts and background lifts only for hover indication.
 
 **Canvas mode:** Dual. Dark mode is default. Light mode is opt-in via system preference. Marketing pages and certification flows can override to light mode for warmth — robot detail pages and the intelligence feed stay dark.
 
