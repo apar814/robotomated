@@ -48,26 +48,26 @@ export function RaaSExplainer() {
 
             {/* VS Compare */}
             <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg" style={{ background: "var(--theme-border)" }}>
-              <div className="p-4" style={{ background: "#FEF5F5" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-red-600">
+              <div className="p-4" style={{ background: "var(--theme-card)" }}>
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider" style={{ color: "var(--theme-text-muted)" }}>
                   Traditional Ownership
                 </p>
-                <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-body, #2D3E55)" }}>
+                <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-secondary)" }}>
                   {["$150K–$500K upfront", "Hire & train operators", "Maintain your own fleet", "Locked into one system"].map((item) => (
                     <li key={item} className="flex items-start gap-1.5">
-                      <span className="mt-0.5 text-red-500">✕</span> {item}
+                      <span className="mt-0.5" style={{ color: "var(--theme-text-muted)" }}>✕</span> {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="p-4" style={{ background: "#F0FAFB" }}>
-                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider" style={{ color: "#007A8C" }}>
+              <div className="p-4" style={{ background: "var(--theme-card)" }}>
+                <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider" style={{ color: "var(--theme-text-primary)" }}>
                   RaaS via RoboWork
                 </p>
-                <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-body, #2D3E55)" }}>
+                <ul className="mt-3 space-y-1.5 text-xs" style={{ color: "var(--theme-text-secondary)" }}>
                   {["Pay per job or month", "Operator included", "Switch robots as needed", "No long-term contract"].map((item) => (
                     <li key={item} className="flex items-start gap-1.5">
-                      <span className="mt-0.5" style={{ color: "#007A8C" }}>✓</span> {item}
+                      <span className="mt-0.5" style={{ color: "var(--theme-text-primary)" }}>✓</span> {item}
                     </li>
                   ))}
                 </ul>
@@ -84,7 +84,7 @@ export function RaaSExplainer() {
           {/* Case Study */}
           <div
             className="rounded-xl p-7"
-            style={{ background: "linear-gradient(160deg, rgba(10,22,40,0.98) 0%, rgba(6,12,28,0.99) 100%)", color: "rgba(255,255,255,0.8)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.04)" }}
+            style={{ background: "var(--theme-card)", color: "rgba(255,255,255,0.8)", border: "1px solid var(--theme-border)" }}
           >
             <p className="font-[family-name:var(--font-brand)] text-[13px] font-bold uppercase tracking-wider text-white/60">
               Real-World Example
@@ -122,8 +122,8 @@ export function RaaSExplainer() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/robowork/post"
-            className="inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
-            style={{ background: "var(--theme-text-primary)" }}
+            className="inline-flex items-center gap-2 rounded-lg border-2 px-7 py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5"
+            style={{ borderColor: "var(--theme-text-primary)", color: "var(--theme-text-primary)" }}
           >
             Post a Job
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
