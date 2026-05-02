@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -51,6 +52,21 @@ export default function CobotRobotsPage() {
 
   return (
     <div style={{ background: "var(--theme-bg)" }}>
+      <div className="relative w-full aspect-video bg-black">
+        <Image
+          src="/images/categories/industrial-arm-hero.jpg"
+          alt="Six-axis industrial robotic arm row receding into low-light manufacturing floor"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+        />
+      </div>
+      <div
+        className="w-full border-b"
+        style={{ borderColor: "var(--theme-border)" }}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
