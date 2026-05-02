@@ -44,7 +44,8 @@ export function RecentlyViewed() {
             <Link
               key={r.slug}
               href={`/explore/${r.category}/${r.slug}`}
-              className="group rounded-xl border border-white/[0.06] bg-[#0D0D0D] p-4 transition-all hover:border-white/20"
+              className="group rounded-sm border p-4 transition-all hover:border-white/20"
+              style={{ borderColor: "var(--theme-border)", background: "var(--theme-card)" }}
             >
               <p className="font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.08em] text-white/50">
                 {r.category}

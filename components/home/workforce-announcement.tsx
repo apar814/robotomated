@@ -9,10 +9,10 @@ export function WorkforceAnnouncement() {
   if (dismissed) return null;
 
   return (
-    <div className="bg-gradient-to-r from-white/[0.04] via-lime/5 to-white/[0.04] border-b border-white/20">
+    <div className="bg-white/[0.04] border-b border-white/20">
       <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <span className="shrink-0 bg-lime/20 text-lime text-xs font-mono px-2 py-0.5 rounded hidden sm:inline">
+          <span className="shrink-0 bg-white/10 text-white text-xs font-mono px-2 py-0.5 rounded-sm hidden sm:inline">
             NEW
           </span>
           <p className="text-sm text-text-primary truncate">
@@ -28,7 +28,7 @@ export function WorkforceAnnouncement() {
         <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/certification/operator-level-1"
-            className="text-xs font-semibold text-white hover:text-lime transition-colors whitespace-nowrap"
+            className="text-xs font-semibold text-white hover:text-white/70 transition-colors whitespace-nowrap"
           >
             Learn More &rarr;
           </Link>

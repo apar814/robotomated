@@ -33,7 +33,7 @@ export function LiveActivity() {
       <div className="mx-auto flex max-w-7xl items-center justify-center gap-2">
         <span
           className="inline-block shrink-0 rounded-full animate-pulse-live"
-          style={{ width: 6, height: 6, background: "#22C55E" }}
+          style={{ width: 6, height: 6, background: "var(--status-success, #22C55E)" }}
         />
         <p
           className="transition-opacity duration-300"
@@ -41,7 +41,7 @@ export function LiveActivity() {
             fontFamily: "var(--font-ui, 'Space Grotesk'), sans-serif",
             fontWeight: 600,
             fontSize: "0.78rem",
-            color: "rgba(240,244,255,0.5)",
+            color: "var(--theme-text-muted)",
             opacity: visible ? 1 : 0,
           }}
         >
