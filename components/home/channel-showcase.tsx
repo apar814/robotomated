@@ -78,8 +78,8 @@ const CHANNELS: Channel[] = [
   {
     number: "04",
     name: "OPERATE",
-    catToken: "var(--cat-quadruped, #4A6FA5)",
-    catTextToken: "var(--cat-quadruped-text, #7A9DD0)",
+    catToken: "var(--cat-quadruped, #8A8F94)",
+    catTextToken: "var(--cat-quadruped-text, #B5B9BD)",
     tagline: "Keep it running. Keep it productive.",
     bullets: [
       "Certified maintenance network",
@@ -99,8 +99,8 @@ const CHANNELS: Channel[] = [
   {
     number: "05",
     name: "TRANSITION",
-    catToken: "var(--cat-service, #5C6B7D)",
-    catTextToken: "var(--cat-service-text, #9CABBF)",
+    catToken: "var(--cat-service, #7A7F85)",
+    catTextToken: "var(--cat-service-text, #A8ADB2)",
     tagline: "Every robot has a next chapter.",
     bullets: [
       "AI-powered instant trade-in valuation",

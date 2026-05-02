@@ -107,7 +107,7 @@ export default async function HomePage() {
       <section className="relative min-h-[600px] lg:min-h-[700px]" style={{ background: "#000000" }}>
         <div className="absolute inset-0 flex items-end px-6 pb-24 sm:px-12 sm:pb-32 lg:px-20 lg:pb-40">
           <div className="max-w-4xl">
-            <span className="label-uppercase text-[12px] tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <span className="label-uppercase text-[12px] tracking-[0.12em]">
               01 / WHAT WE COVER
             </span>
             <h1
