@@ -22,7 +22,7 @@ export function HeroPills() {
           fontWeight: 700,
           letterSpacing: "0.12em",
           textTransform: "uppercase" as const,
-          color: "rgba(240,244,255,0.35)",
+          color: "var(--theme-text-muted)",
           marginBottom: "0.75rem",
         }}
       >
@@ -41,10 +41,10 @@ export function HeroPills() {
               padding: "0.65rem 1.4rem",
               minHeight: "42px",
               minWidth: "140px",
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.2)",
+              background: "var(--theme-tag-bg, rgba(255,255,255,0.05))",
+              border: "1px solid var(--theme-border)",
               borderRadius: "4px",
-              color: "#F0F4FF",
+              color: "var(--theme-text-primary)",
               fontSize: "0.78rem",
               fontWeight: 700,
               letterSpacing: "0.06em",

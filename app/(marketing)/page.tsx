@@ -104,7 +104,7 @@ export default async function HomePage() {
           1. HERO — 2-column with Robotimus panel
           ══════════════════════════════════════════ */}
       {/* HERO — DESIGN.md: full-bleed, bottom-left headline, one CTA */}
-      <section className="relative min-h-[600px] lg:min-h-[700px]" style={{ background: "#000000" }}>
+      <section className="relative min-h-[600px] lg:min-h-[700px]" style={{ background: "var(--theme-bg)" }}>
         <div className="absolute inset-0 flex items-end px-6 pb-24 sm:px-12 sm:pb-32 lg:px-20 lg:pb-40">
           <div className="max-w-4xl">
             <span className="label-uppercase text-[12px] tracking-[0.12em]">
@@ -112,7 +112,7 @@ export default async function HomePage() {
             </span>
             <h1
               className="mt-4 font-[family-name:var(--font-sans)]"
-              style={{ fontSize: "clamp(40px, 5.5vw, 96px)", fontWeight: 500, lineHeight: 1.0, letterSpacing: "-0.04em", color: "#FFFFFF" }}
+              style={{ fontSize: "clamp(40px, 5.5vw, 96px)", fontWeight: 500, lineHeight: 1.0, letterSpacing: "-0.04em", color: "var(--theme-text-primary)" }}
             >
               {totalRobots} robots. Every spec, every review, every certification path.
             </h1>
@@ -125,7 +125,7 @@ export default async function HomePage() {
                 EXPLORE THE DATABASE &rarr;
               </Link>
             </div>
-            <p className="mt-8 font-mono text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+            <p className="mt-8 font-mono text-[11px]" style={{ color: "var(--theme-text-muted)" }}>
               {totalRobots} robots &middot; {manufacturerCount} manufacturers &middot; Independent scoring
             </p>
           </div>
@@ -136,7 +136,7 @@ export default async function HomePage() {
           2. STATS BAR
           ══════════════════════════════════════════ */}
       {/* STATS — DESIGN.md: large mono numbers, uppercase labels, hairline separators */}
-      <section className="px-6 py-16" style={{ background: "#000000" }}>
+      <section className="px-6 py-16" style={{ background: "var(--theme-bg)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
@@ -145,9 +145,9 @@ export default async function HomePage() {
               { value: <HeroCounter target={103} prefix="$" suffix="B" duration={2200} delay={400} />, label: "MARKET SIZE" },
               { value: <HeroCounter target={5} duration={800} delay={600} />, label: "ACCESS PATHS" },
             ].map((s, i) => (
-              <div key={s.label} className="px-6 py-6 text-center" style={{ borderRight: i < 3 ? "1px solid #1F1F1F" : "none" }}>
+              <div key={s.label} className="px-6 py-6 text-center" style={{ borderRight: i < 3 ? "1px solid var(--theme-border)" : "none" }}>
                 <span className="block font-mono font-medium text-white" style={{ fontSize: "clamp(28px, 3vw, 48px)" }}>{s.value}</span>
-                <span className="mt-2 block text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</span>
+                <span className="mt-2 block text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
               </div>
             ))}
           </div>
@@ -156,8 +156,8 @@ export default async function HomePage() {
 
       <LiveActivity />
 
-      <div className="border-t border-b px-6 py-4" style={{ borderColor: "#1F1F1F" }}>
-        <p className="text-center text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.25)" }}>
+      <div className="border-t border-b px-6 py-4" style={{ borderColor: "var(--theme-border)" }}>
+        <p className="text-center text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>
           INDEPENDENT · NO MANUFACTURER PAYS FOR SCORES
         </p>
       </div>
@@ -191,11 +191,11 @@ export default async function HomePage() {
           <div className="section-marker">02 / TRENDING</div>
           <h2
             className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
-            style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "#FFFFFF" }}
+            style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "var(--theme-text-primary)" }}
           >
             Highest-Scored Robots This Week
           </h2>
-          <p className="mt-3 max-w-lg text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <p className="mt-3 max-w-lg text-base leading-relaxed" style={{ color: "var(--theme-text-muted)" }}>
             {totalRobots} robots, independently scored. No manufacturer pays for placement.
           </p>
 
@@ -203,7 +203,7 @@ export default async function HomePage() {
           <Link
             href="/explore"
             className="mt-8 flex items-center gap-3 px-5 py-4 transition-colors"
-            style={{ background: "#0A0A0A", border: "1px solid #1F1F1F", borderRadius: "2px" }}
+            style={{ background: "var(--theme-card)", border: "1px solid var(--theme-border)", borderRadius: "2px" }}
           >
             <svg className="h-5 w-5 shrink-0 text-white/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
@@ -211,7 +211,7 @@ export default async function HomePage() {
             <span className="flex-1 font-[family-name:var(--font-ui)] text-[15px] text-white/40">
               Search by name, manufacturer, use case, or spec...
             </span>
-            <kbd className="hidden rounded-md px-2 py-0.5 font-[family-name:var(--font-mono)] text-[11px] sm:inline" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}>
+            <kbd className="hidden rounded-md px-2 py-0.5 font-[family-name:var(--font-mono)] text-[11px] sm:inline" style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-border)", color: "var(--theme-text-muted)" }}>
               ⌘K
             </kbd>
           </Link>
@@ -223,7 +223,7 @@ export default async function HomePage() {
                 key={cat.id}
                 href={`/explore/${cat.slug}`}
                 className="shrink-0 px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-[0.12em] transition-colors hover:border-white/40 hover:text-white"
-                style={{ border: "1px solid #1F1F1F", color: "rgba(255,255,255,0.4)", borderRadius: "2px" }}
+                style={{ border: "1px solid var(--theme-border)", color: "var(--theme-text-muted)", borderRadius: "2px" }}
               >
                 {cat.name}
               </Link>
@@ -243,10 +243,10 @@ export default async function HomePage() {
                     key={robot.id}
                     href={`/explore/${cat?.slug || "all"}/${robot.slug}`}
                     className="group block border transition-colors hover:border-white/20"
-                    style={{ borderColor: "#1F1F1F", background: "#0A0A0A", borderRadius: "2px" }}
+                    style={{ borderColor: "var(--theme-border)", background: "var(--theme-card)", borderRadius: "2px" }}
                   >
                     {/* Image zone */}
-                    <div className="relative aspect-[16/10] overflow-hidden" style={{ background: "#000000" }}>
+                    <div className="relative aspect-[16/10] overflow-hidden" style={{ background: "var(--theme-bg)" }}>
                       {hasImg ? (
                         <img
                           src={imgs[0].url}
@@ -264,13 +264,13 @@ export default async function HomePage() {
                       {/* Gradient overlay removed per DESIGN.md */}
                       {/* Category badge */}
                       {cat && (
-                        <div className="absolute left-3 top-3 px-2 py-1" style={{ background: "#000000", border: "1px solid #1F1F1F", borderRadius: "2px" }}>
+                        <div className="absolute left-3 top-3 px-2 py-1" style={{ background: "var(--theme-bg)", border: "1px solid var(--theme-border)", borderRadius: "2px" }}>
                           <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-white/70">{cat.name}</span>
                         </div>
                       )}
                       {/* RoboScore */}
                       {robot.robo_score != null && robot.robo_score > 0 && (
-                        <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center" style={{ background: "#000000", border: "1px solid #1F1F1F", borderRadius: "2px" }}>
+                        <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center" style={{ background: "var(--theme-bg)", border: "1px solid var(--theme-border)", borderRadius: "2px" }}>
                           <span className="font-mono text-[14px] font-medium text-white">{robot.robo_score}</span>
                         </div>
                       )}
@@ -279,7 +279,7 @@ export default async function HomePage() {
                     <div className="p-4">
                       <span className="text-[12px] font-medium uppercase tracking-[0.12em] text-white/45">{mfr}</span>
                       <p className="mt-1.5 text-[16px] font-medium text-white transition-colors group-hover:text-white/80">{robot.name}</p>
-                      <div className="my-3 border-t" style={{ borderColor: "#1F1F1F" }} />
+                      <div className="my-3 border-t" style={{ borderColor: "var(--theme-border)" }} />
                       <div className="flex items-center justify-between">
                         {robot.price_current != null ? (
                           <span className="font-mono text-[18px] font-medium text-white">
@@ -320,12 +320,12 @@ export default async function HomePage() {
           7.75. THE ABUNDANCE EQUATION
           ══════════════════════════════════════════ */}
       {/* ABUNDANCE EQUATION — stripped to DESIGN.md */}
-      <section className="px-6 py-32" style={{ background: "#000000" }}>
+      <section className="px-6 py-32" style={{ background: "var(--theme-bg)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="section-marker">03 / THE ECONOMICS</div>
           <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="font-[family-name:var(--font-sans)] font-medium" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#FFFFFF" }}>
+              <h2 className="font-[family-name:var(--font-sans)] font-medium" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "var(--theme-text-primary)" }}>
                 The world is going to run on robots.
               </h2>
               <blockquote className="mt-8 font-medium italic leading-snug text-white/70" style={{ fontSize: "clamp(18px, 2vw, 24px)" }}>
@@ -333,17 +333,17 @@ export default async function HomePage() {
               </blockquote>
               <p className="mt-4 font-mono text-[14px] text-white/25">Brett Adcock, Figure AI</p>
             </div>
-            <div className="border p-8" style={{ borderColor: "#1F1F1F", background: "#0A0A0A", borderRadius: "2px" }}>
+            <div className="border p-8" style={{ borderColor: "var(--theme-border)", background: "var(--theme-card)", borderRadius: "2px" }}>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-[14px] text-white/50">Human labor (fully burdened)</span>
                   <span className="font-mono text-lg font-medium text-white">$46/hour</span>
                 </div>
-                <div className="flex items-center justify-between border-l-2 py-2 pl-4" style={{ borderColor: "#FFFFFF" }}>
+                <div className="flex items-center justify-between border-l-2 py-2 pl-4" style={{ borderColor: "var(--theme-text-primary)" }}>
                   <span className="text-[14px] text-white/50">Robot (leased, amortized)</span>
                   <span className="font-mono text-lg font-medium text-white">$0.45/hour</span>
                 </div>
-                <div className="border-t pt-4" style={{ borderColor: "#1F1F1F" }}>
+                <div className="border-t pt-4" style={{ borderColor: "var(--theme-border)" }}>
                   <div className="flex items-center justify-between">
                     <span className="text-[14px] font-medium text-white/60">Cost difference</span>
                     <span className="font-mono text-3xl font-medium text-white">100x</span>
@@ -362,7 +362,7 @@ export default async function HomePage() {
           8. SOCIAL PROOF STATS
           ══════════════════════════════════════════ */}
       {/* STATS — DESIGN.md: mono numbers, hairline dividers, no color */}
-      <section className="px-6 py-24" style={{ background: "#000000" }}>
+      <section className="px-6 py-24" style={{ background: "var(--theme-bg)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="section-marker">04 / BY THE NUMBERS</div>
           <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -372,7 +372,7 @@ export default async function HomePage() {
               { value: "$24T", label: "2040 MARKET" },
               { value: "137", label: "HUMANOID STARTUPS (CN)" },
             ].map((s, i) => (
-              <div key={s.label} className="px-8 py-8 text-center" style={{ borderRight: i < 3 ? "1px solid #1F1F1F" : "none" }}>
+              <div key={s.label} className="px-8 py-8 text-center" style={{ borderRight: i < 3 ? "1px solid var(--theme-border)" : "none" }}>
                 <p className="font-mono font-medium text-white" style={{ fontSize: "clamp(36px, 5vw, 64px)" }}>{s.value}</p>
                 <p className="mt-3 text-[12px] font-medium uppercase tracking-[0.12em] text-white/25">{s.label}</p>
               </div>
@@ -397,13 +397,13 @@ export default async function HomePage() {
           <h2 className="mt-4 font-[family-name:var(--font-ui)] text-3xl font-bold sm:text-4xl" style={{ color: "var(--theme-text-primary)" }}>
             The Automation Intelligence Brief
           </h2>
-          <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <p className="mx-auto mt-4 max-w-md font-[family-name:var(--font-ui)] text-base leading-[1.7]" style={{ color: "var(--theme-text-secondary)" }}>
             Weekly robotics intelligence for operations leaders.
           </p>
           <div className="mt-6">
             <NewsletterForm />
           </div>
-          <p className="mt-4 font-[family-name:var(--font-mono)] text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+          <p className="mt-4 font-[family-name:var(--font-mono)] text-[11px]" style={{ color: "var(--theme-text-muted)" }}>
             Join 2,500+ operations leaders. No spam. Unsubscribe anytime.
           </p>
         </div>
