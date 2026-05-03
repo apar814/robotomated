@@ -4,7 +4,6 @@ import { cached } from "@/lib/cache/redis";
 import { RoboScoreBadge } from "@/components/ui/robo-score";
 // SocialProofStrip removed — stats now inline
 import { HeroNetworkSvg } from "@/components/ui/hero-network-svg";
-import { HeroBackground } from "@/components/hero/hero-background";
 import { HeroCounter } from "@/components/home/hero-counter";
 import { NewsletterForm } from "@/components/home/newsletter-form";
 import ChannelShowcase from "@/components/home/channel-showcase";
