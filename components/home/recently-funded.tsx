@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { getRecentFundings } from "@/lib/data/funding-data";
 
-const ROUND_COLORS: Record<string, string> = {
-  Seed: "#00E5A0",
-  "Series A": "#00C2FF",
-  "Series B": "#7B2FFF",
-  "Series C": "#C8A84E",
-  "Series D": "#FF6B6B",
-  "Series E": "#FF9F43",
-  "Series F": "#EE5A9A",
-  Growth: "#00E5A0",
-  "Growth Equity": "#00E5A0",
-  "Pre-IPO": "#FFD700",
+/* Inverse brightness: later rounds = brighter (more capital = more signal) */
+const ROUND_BRIGHTNESS: Record<string, string> = {
+  Seed: "rgba(255,255,255,0.35)",
+  "Series A": "rgba(255,255,255,0.4)",
+  "Series B": "rgba(255,255,255,0.55)",
+  "Series C": "rgba(255,255,255,0.7)",
+  "Series D": "rgba(255,255,255,0.85)",
+  "Series E": "rgba(255,255,255,0.9)",
+  "Series F": "rgba(255,255,255,0.95)",
+  Growth: "rgba(255,255,255,0.85)",
+  "Growth Equity": "rgba(255,255,255,0.85)",
+  "Pre-IPO": "rgba(255,255,255,1)",
 };
 
 function formatDate(iso: string): string {
@@ -39,7 +40,7 @@ export function RecentlyFunded() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg bg-border-subtle sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm bg-border-subtle sm:grid-cols-3">
           {recent.map((round) => (
             <a
               key={round.id}
@@ -62,11 +63,11 @@ export function RecentlyFunded() {
               {/* Round badge */}
               <div className="mt-2 flex items-center gap-2">
                 <span
-                  className="inline-block rounded px-1.5 py-0.5 text-[13px] font-medium"
+                  className="inline-block rounded-sm px-1.5 py-0.5 text-[13px] font-medium"
                   style={{
-                    background: (ROUND_COLORS[round.round] || "#00C2FF") + "15",
-                    color: ROUND_COLORS[round.round] || "#00C2FF",
-                    border: `0.5px solid ${(ROUND_COLORS[round.round] || "#00C2FF")}30`,
+                    background: "rgba(255,255,255,0.05)",
+                    color: ROUND_BRIGHTNESS[round.round] || "rgba(255,255,255,0.5)",
+                    border: "0.5px solid rgba(255,255,255,0.06)",
                   }}
                 >
                   {round.round}

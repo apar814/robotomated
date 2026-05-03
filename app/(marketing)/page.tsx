@@ -250,7 +250,7 @@ export default async function HomePage() {
                         <img
                           src={imgs[0].url}
                           alt={imgs[0].alt || robot.name}
-                          className="h-full w-full object-cover object-center transition-transform duration-600 group-hover:scale-[1.06]"
+                          className="h-full w-full object-cover object-center transition-transform duration-200 group-hover:scale-[1.06]"
                           loading="lazy"
                         />
                       ) : (

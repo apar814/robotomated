@@ -1,41 +1,29 @@
 import { cn } from "@/lib/utils/cn";
 
-/* ── Obsidian tier colors ── */
+/* ── Brightness-gradient score tiers (no color — opacity only) ── */
 function getScoreColor(score: number) {
-  if (score >= 90)
-    return {
-      text: "text-white",
-      bg: "bg-white",
-      border: "border-white/10",
-      ring: "stroke-lime",
-      dimBg: "bg-white/[0.05]",
-      hex: "#D4D4D4",
-    };
-  if (score >= 80)
+  if (score >= 85)
     return {
       text: "text-white",
       bg: "bg-white",
       border: "border-white/10",
       ring: "stroke-white",
       dimBg: "bg-white/[0.05]",
-      hex: "#FFFFFF",
     };
   if (score >= 70)
     return {
-      text: "text-amber",
-      bg: "bg-amber",
-      border: "border-amber/10",
-      ring: "stroke-amber",
-      dimBg: "bg-[rgba(251,191,36,0.05)]",
-      hex: "#FBBF24",
+      text: "text-white/65",
+      bg: "bg-white/65",
+      border: "border-white/[0.06]",
+      ring: "stroke-white/65",
+      dimBg: "bg-white/[0.03]",
     };
   return {
-    text: "text-magenta",
-    bg: "bg-magenta",
-    border: "border-magenta/10",
-    ring: "stroke-magenta",
-    dimBg: "bg-magenta-dim",
-    hex: "#FF006E",
+    text: "text-white/40",
+    bg: "bg-white/40",
+    border: "border-white/[0.04]",
+    ring: "stroke-white/40",
+    dimBg: "bg-white/[0.02]",
   };
 }
 
@@ -58,7 +46,7 @@ function RoboScoreTooltip() {
   return (
     <div
       className={cn(
-        "pointer-events-none absolute left-0 bottom-full z-50 mb-2 w-[280px] rounded-md border border-border bg-obsidian-surface p-4 opacity-0 shadow-xl transition-opacity duration-150",
+        "pointer-events-none absolute left-0 bottom-full z-50 mb-2 w-[280px] rounded-md border border-border bg-obsidian-surface p-4 opacity-0 transition-opacity duration-150",
         "group-hover:pointer-events-auto group-hover:opacity-100"
       )}
     >

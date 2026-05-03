@@ -275,7 +275,12 @@ Modals and overlays:
 - Don't write marketing copy in headlines — write factual claims
 - Don't use sentence-case in section markers
 - Don't decorate with patterns, dot grids, or background textures
-- Don't animate page transitions beyond a 200ms fade
+- Don't violate the animation duration tiers:
+  - **Interactions** (hover, focus, click feedback): max 200ms
+  - **Entrance animations** (scroll-triggered fades, video loads): max 500ms
+  - **Data animations** (counters, score reveals, ring fills): unconstrained — duration carries meaning
+  - **Ambient effects** (pulses, ticker scroll, cursor blink): unconstrained — long durations create the meditative effect
+  - **Loading states** (shimmer, skeleton): unconstrained — designed to feel slow
 - Don't use multiple competing CTAs in the same section
 - Don't use stock photography — only real robots
 - Don't use the brand colors of robot manufacturers — they undermine our editorial independence

@@ -71,7 +71,7 @@ export function VideoHero({
           loop
           playsInline
           aria-label={alt}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -167,7 +167,7 @@ export function VideoPlayer({
         loop
         playsInline
         onCanPlayThrough={() => setLoaded(true)}
-        className={`w-full transition-opacity duration-700 ${
+        className={`w-full transition-opacity duration-500 ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
         style={{ aspectRatio: "16/9" }}
