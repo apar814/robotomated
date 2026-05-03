@@ -39,7 +39,7 @@ export function EnrollButton({ slug, price, rspPrice, className }: EnrollButtonP
       <button
         onClick={handleCheckout}
         disabled={loading}
-        className={`inline-flex items-center justify-center rounded-lg px-10 py-3.5 text-sm font-semibold text-white transition-all disabled:opacity-50 ${className || ""}`}
+        className={`inline-flex items-center justify-center rounded-sm bg-white px-10 py-3.5 text-sm font-semibold text-black transition-all hover:bg-white/90 disabled:opacity-50 ${className || ""}`}
       >
         {loading ? "Processing..." : `Enroll Now — $${price}`}
       </button>
