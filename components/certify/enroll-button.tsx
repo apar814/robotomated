@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface EnrollButtonProps {
   slug: string;
@@ -11,9 +11,17 @@ interface EnrollButtonProps {
 
 export function EnrollButton({ slug, price, rspPrice, className }: EnrollButtonProps) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!error) return;
+    const timer = setTimeout(() => setError(""), 8000);
+    return () => clearTimeout(timer);
+  }, [error]);
 
   async function handleCheckout() {
     setLoading(true);
+    setError("");
     try {
       const res = await fetch("/api/stripe/certify-checkout", {
         method: "POST",
@@ -27,9 +35,11 @@ export function EnrollButton({ slug, price, rspPrice, className }: EnrollButtonP
       } else if (data.error === "Not authenticated") {
         window.location.href = `/login?redirect=/certify/${slug}`;
       } else {
+        setError("Something went wrong — please try again or contact support@robotomated.com");
         setLoading(false);
       }
     } catch {
+      setError("Connection issue — please check your network and retry");
       setLoading(false);
     }
   }
@@ -43,6 +53,9 @@ export function EnrollButton({ slug, price, rspPrice, className }: EnrollButtonP
       >
         {loading ? "Processing..." : `Enroll Now — $${price}`}
       </button>
+      {error && (
+        <p className="text-red-600 text-sm mt-2">{error}</p>
+      )}
       <p className="text-xs text-white/50">
         RSP members: ${rspPrice} &middot; Team pricing available for 5+ seats
       </p>

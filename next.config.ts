@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**" },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/certify/1", destination: "/certify/foundation", permanent: true },
+      { source: "/certify/2", destination: "/certify/specialist", permanent: true },
+      { source: "/certify/3", destination: "/certify/master", permanent: true },
+      { source: "/certify/4", destination: "/certify/fleet-commander", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
