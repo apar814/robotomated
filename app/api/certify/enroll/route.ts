@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
+import { createServerClient as createSSRClient } from "@supabase/ssr";
 
 function generateSessionToken(): string {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -13,37 +14,34 @@ function generateSessionToken(): string {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { certificationId, userName, userEmail, paidBy, employerName } = body;
+    const { certificationId } = body as { certificationId?: string };
 
-    if (!certificationId || !userName || !userEmail || !paidBy) {
+    if (!certificationId) {
       return NextResponse.json(
-        {
-          error: "Missing required fields: certificationId, userName, userEmail, paidBy",
+        { error: "Missing required field: certificationId" },
+        { status: 400 }
+      );
+    }
+
+    // Auth check
+    const supabaseResponse = NextResponse.json({});
+    const userSupabase = createSSRClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() { return request.cookies.getAll(); },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options));
+          },
         },
-        { status: 400 }
-      );
-    }
+      }
+    );
 
-    if (!["self", "employer"].includes(paidBy)) {
-      return NextResponse.json(
-        { error: "paidBy must be 'self' or 'employer'" },
-        { status: 400 }
-      );
-    }
-
-    if (paidBy === "employer" && !employerName) {
-      return NextResponse.json(
-        { error: "employerName is required when paidBy is 'employer'" },
-        { status: 400 }
-      );
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(userEmail)) {
-      return NextResponse.json(
-        { error: "Invalid email address" },
-        { status: 400 }
-      );
+    const { data: { user } } = await userSupabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,10 +55,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (certError || !certification) {
-      return NextResponse.json(
-        { error: "Certification not found" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Certification not found" }, { status: 404 });
     }
 
     if (!certification.active) {
@@ -70,16 +65,43 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Payment gate: user must have a completed payment for this cert
+    const { data: enrollment } = await supabase
+      .from("rco_payments")
+      .select("id, status, created_at")
+      .eq("user_id", user.id)
+      .eq("certification_id", certificationId)
+      .eq("status", "completed")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (!enrollment) {
+      return NextResponse.json(
+        { error: "No active enrollment for this certification" },
+        { status: 403 }
+      );
+    }
+
+    // Enrollments are valid for 2 years from purchase date
+    const enrolledAt = new Date(enrollment.created_at);
+    const expiresAtEnrollment = new Date(enrolledAt);
+    expiresAtEnrollment.setFullYear(expiresAtEnrollment.getFullYear() + 2);
+    if (expiresAtEnrollment < new Date()) {
+      return NextResponse.json(
+        { error: "Enrollment has expired (valid for 2 years from purchase)" },
+        { status: 403 }
+      );
+    }
+
     const sessionToken = generateSessionToken();
     const expiresAt = new Date();
-    expiresAt.setHours(expiresAt.getHours() + 72); // 72-hour window to start
-
-    // TODO: Integrate Stripe payment before creating session
-    // For now, create session directly (payment handling added later)
+    expiresAt.setMinutes(expiresAt.getMinutes() + certification.exam_duration);
 
     const { data: session, error: sessionError } = await supabase
       .from("rco_exam_sessions")
       .insert({
+        user_id: user.id,
         certification_id: certificationId,
         session_token: sessionToken,
         expires_at: expiresAt.toISOString(),
@@ -101,9 +123,6 @@ export async function POST(request: NextRequest) {
       expiresAt: session.expires_at,
     });
   } catch {
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

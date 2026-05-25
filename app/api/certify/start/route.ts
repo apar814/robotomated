@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
+import { createServerClient as createSSRClient } from "@supabase/ssr";
 import { FOUNDATION_QUESTIONS } from "@/lib/data/sample-exam-questions";
 
 export async function POST(request: NextRequest) {
@@ -12,6 +13,27 @@ export async function POST(request: NextRequest) {
         { error: "Missing required field: certification_slug" },
         { status: 400 }
       );
+    }
+
+    // Auth check
+    const supabaseResponse = NextResponse.json({});
+    const userSupabase = createSSRClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() { return request.cookies.getAll(); },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options));
+          },
+        },
+      }
+    );
+
+    const { data: { user } } = await userSupabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,6 +57,35 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "This certification is not currently available" },
         { status: 400 }
+      );
+    }
+
+    // Payment gate: user must have a completed payment for this cert
+    const { data: enrollment } = await supabase
+      .from("rco_payments")
+      .select("id, status, created_at")
+      .eq("user_id", user.id)
+      .eq("certification_id", certification.id)
+      .eq("status", "completed")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (!enrollment) {
+      return NextResponse.json(
+        { error: "No active enrollment for this certification" },
+        { status: 403 }
+      );
+    }
+
+    // Enrollments are valid for 2 years from purchase date
+    const enrolledAt = new Date(enrollment.created_at);
+    const expiresAtEnrollment = new Date(enrolledAt);
+    expiresAtEnrollment.setFullYear(expiresAtEnrollment.getFullYear() + 2);
+    if (expiresAtEnrollment < new Date()) {
+      return NextResponse.json(
+        { error: "Enrollment has expired (valid for 2 years from purchase)" },
+        { status: 403 }
       );
     }
 
@@ -114,6 +165,7 @@ export async function POST(request: NextRequest) {
     const { data: session, error: sessionError } = await supabase
       .from("rco_exam_sessions")
       .insert({
+        user_id: user.id,
         certification_id: certification.id,
         session_token: sessionToken,
         status: "in_progress",

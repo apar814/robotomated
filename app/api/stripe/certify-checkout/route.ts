@@ -36,6 +36,18 @@ export async function POST(request: NextRequest) {
 
   const adminSupabase = createServerClient();
 
+  // Resolve cert UUID from slug — webhook needs the UUID, not the slug
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data: certRow } = await (adminSupabase as any)
+    .from("rco_certifications")
+    .select("id")
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (!certRow?.id) {
+    return NextResponse.json({ error: "Certification not found" }, { status: 404 });
+  }
+
   // Get or create Stripe customer
   const { data: profile } = await adminSupabase
     .from("users")
@@ -88,6 +100,8 @@ export async function POST(request: NextRequest) {
     metadata: {
       supabase_user_id: user.id,
       certification_slug: slug,
+      certification_id: certRow.id,
+      product_type: "cert_enrollment",
       seats: String(qty),
     },
   });
