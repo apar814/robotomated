@@ -34,10 +34,15 @@ export const dynamicParams = true;
 interface Props { params: Promise<{ category: string }> }
 
 export async function generateStaticParams() {
-  // Pre-render top 5 categories at build, rest rendered on-demand
-  const supabase = createServerClient();
-  const { data } = await supabase.from("robot_categories").select("slug").order("display_order").limit(5).returns<{ slug: string }[]>();
-  return (data || []).map((c) => ({ category: c.slug }));
+  try {
+    // Pre-render top 5 categories at build, rest rendered on-demand
+    const supabase = createServerClient();
+    const { data } = await supabase.from("robot_categories").select("slug").order("display_order").limit(5).returns<{ slug: string }[]>();
+    return (data || []).map((c) => ({ category: c.slug }));
+  } catch (err) {
+    console.warn(`[build-resilience] best/[category] generateStaticParams fell back to on-demand: ${err}`);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

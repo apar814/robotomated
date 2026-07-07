@@ -5,6 +5,9 @@ import { cached } from "@/lib/cache/redis";
 import { BrowseClient } from "@/components/robots/browse-client";
 import { GridSkeleton } from "@/components/ui/skeleton";
 
+// ISR: degraded-database builds bake empty filter lists — self-heal in minutes.
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Explore Robots",
   description: "Browse, search, and compare robots across all categories. Filter by price, RoboScore, manufacturer, and more.",
@@ -28,12 +31,12 @@ async function getFilterData() {
   const categories = await cached<Category[]>("categories", 3600, async () => {
     const { data } = await supabase.from("robot_categories").select("id, slug, name").order("display_order").returns<Category[]>();
     return data || [];
-  });
+  }, (d) => d.length > 0);
 
   const manufacturers = await cached<Mfr[]>("manufacturers", 3600, async () => {
     const { data } = await supabase.from("manufacturers").select("id, name").order("name").returns<Mfr[]>();
     return data || [];
-  });
+  }, (d) => d.length > 0);
 
   return { categories, manufacturers };
 }

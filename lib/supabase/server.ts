@@ -1,11 +1,32 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/database";
 
+/**
+ * 10s cap on every Supabase request so a degraded database can never hang
+ * a build (60s static-gen timeout) or a request. supabase-js surfaces the
+ * abort as { data: null, error }, so callers' existing `data || []`
+ * fallbacks render an empty state instead of crashing.
+ */
+const QUERY_TIMEOUT_MS = 10_000;
+
+export function resilientFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  return fetch(input, {
+    ...init,
+    signal: init?.signal ?? AbortSignal.timeout(QUERY_TIMEOUT_MS),
+  }).catch((err) => {
+    if (err instanceof Error && err.name === "TimeoutError") {
+      console.warn(`[supabase] query timed out after ${QUERY_TIMEOUT_MS / 1000}s: ${String(input).slice(0, 120)}`);
+    }
+    throw err;
+  });
+}
+
 /** Service-role client for admin operations (bypasses RLS) */
 export function createServerClient() {
   return createClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { global: { fetch: resilientFetch } }
   );
 }
 
@@ -17,6 +38,7 @@ export function createServerClient() {
 export function createUntypedServerClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { global: { fetch: resilientFetch } }
   );
 }

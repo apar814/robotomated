@@ -111,6 +111,7 @@ const FEATURED_COMPARISONS = [
 ];
 
 export async function generateStaticParams() {
+  try {
   // Pre-render featured comparisons + top robot combos by category
   const supabase = createServerClient();
   const { data } = await supabase
@@ -147,6 +148,12 @@ export async function generateStaticParams() {
     }
   }
   return params;
+  } catch (err) {
+    // Degraded database: pre-render only the static featured list; the rest
+    // render on-demand once the database is healthy again.
+    console.warn(`[build-resilience] compare generateStaticParams fell back to featured list: ${err}`);
+    return FEATURED_COMPARISONS.map((s) => ({ slugs: s }));
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

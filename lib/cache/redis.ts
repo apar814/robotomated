@@ -32,12 +32,26 @@ export async function cacheSet(key: string, value: unknown, ttlSeconds: number):
   }
 }
 
-/** Fetch with cache — returns cached data or calls fetcher and caches the result */
-export async function cached<T>(key: string, ttlSeconds: number, fetcher: () => Promise<T>): Promise<T> {
+/**
+ * Fetch with cache — returns cached data or calls fetcher and caches the result.
+ * `shouldCache` guards against persisting degraded-database fallbacks (empty
+ * arrays, zero counts) for the full TTL — skipped results are recomputed on
+ * the next request instead.
+ */
+export async function cached<T>(
+  key: string,
+  ttlSeconds: number,
+  fetcher: () => Promise<T>,
+  shouldCache: (data: T) => boolean = () => true
+): Promise<T> {
   const cachedData = await cacheGet<T>(key);
   if (cachedData !== null) return cachedData;
 
   const data = await fetcher();
-  await cacheSet(key, data, ttlSeconds);
+  if (shouldCache(data)) {
+    await cacheSet(key, data, ttlSeconds);
+  } else {
+    console.warn(`[cache] not caching "${key}" — result looks like a degraded-database fallback`);
+  }
   return data;
 }

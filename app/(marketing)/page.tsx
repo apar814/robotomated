@@ -22,6 +22,10 @@ import { WorkforceAnnouncement } from "@/components/home/workforce-announcement"
 import { MotionSection } from "@/components/ui/motion-section";
 import type { RobotCategory } from "@/lib/supabase/types";
 
+// ISR: if a degraded database bakes zeros at build time, they self-heal
+// on the next revalidation instead of persisting until the next deploy.
+export const revalidate = 300;
+
 interface FeaturedRobot {
   id: string; slug: string; name: string;
   robo_score: number | null; price_current: number | null; price_msrp: number | null;
@@ -40,7 +44,7 @@ async function getData() {
     const counts: Record<string, number> = {};
     robots?.forEach((r) => { counts[r.category_id] = (counts[r.category_id] || 0) + 1; });
     return (cats || []).map((c) => ({ ...c, robot_count: counts[c.id] || 0 }));
-  });
+  }, (d) => d.length > 0);
 
   const { count: manufacturerCount } = await supabase
     .from("manufacturers")
@@ -75,7 +79,7 @@ async function getData() {
     }
 
     return picked;
-  });
+  }, (d) => d.length > 0);
 
   const totalRobots = categories.reduce((s, c) => s + c.robot_count, 0);
 

@@ -6,6 +6,10 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+// Admin dashboard — render per-request. Its 7+ sequential queries exceed the
+// 60s static-generation timeout when each hits the 10s degraded-DB cap.
+export const dynamic = "force-dynamic";
+
 interface RobotViewRow {
   slug: string;
   name: string;

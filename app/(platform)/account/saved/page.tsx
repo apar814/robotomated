@@ -7,6 +7,9 @@ import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 
 export const metadata: Metadata = { title: "Saved Robots" };
 
+// Per-user page — must never be statically generated.
+export const dynamic = "force-dynamic";
+
 interface SavedRobot {
   robot_id: string;
   robots: {

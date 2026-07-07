@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
+import { resilientFetch } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
 /** Auth-aware server client that reads session from cookies */
@@ -10,6 +11,7 @@ export async function createAuthClient() {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
+      global: { fetch: resilientFetch },
       cookies: {
         getAll() {
           return cookieStore.getAll();

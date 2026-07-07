@@ -7,6 +7,10 @@ import { SignOutButton } from "@/components/auth/sign-out-button";
 
 export const metadata: Metadata = { title: "Your Account" };
 
+// Per-user page — must never be statically generated (killed the build when
+// the database was degraded: static gen hung on auth + data queries).
+export const dynamic = "force-dynamic";
+
 interface SavedRobot {
   robot_id: string;
   robots: { slug: string; name: string; robo_score: number | null; manufacturers: { name: string } | null; robot_categories: { slug: string } | null } | null;
