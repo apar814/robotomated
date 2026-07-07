@@ -145,7 +145,7 @@ export default async function HomePage() {
               { value: <HeroCounter target={5} duration={800} delay={600} />, label: "ACCESS PATHS" },
             ].map((s, i) => (
               <div key={s.label} className="px-6 py-6 text-center" style={{ borderRight: i < 3 ? "1px solid var(--theme-border)" : "none" }}>
-                <span className="block font-mono font-medium text-white" style={{ fontSize: "clamp(28px, 3vw, 48px)" }}>{s.value}</span>
+                <span className="block font-mono font-medium" style={{ fontSize: "clamp(28px, 3vw, 48px)", color: "var(--theme-text-primary)" }}>{s.value}</span>
                 <span className="mt-2 block text-[12px] font-medium uppercase tracking-[0.12em]" style={{ color: "var(--theme-text-muted)" }}>{s.label}</span>
               </div>
             ))}

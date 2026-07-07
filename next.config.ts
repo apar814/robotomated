@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
       { source: "/certify/2", destination: "/certify/specialist", permanent: true },
       { source: "/certify/3", destination: "/certify/master", permanent: true },
       { source: "/certify/4", destination: "/certify/fleet-commander", permanent: true },
+      { source: "/robotimus", destination: "/advisor", permanent: true },
     ];
   },
   async headers() {

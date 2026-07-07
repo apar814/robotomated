@@ -80,3 +80,12 @@ next-env.d.ts
 .vibe/
 .windsurf/
 .zencoder/
+
+# AI session artifacts — design audit screenshots, local skill copies, scratch images
+.design/
+skills-lock.json
+prod-*.jpeg
+skills/*
+!skills/robotomated-copy/
+.claude/skills/*
+!.claude/skills/ui-ux-pro-max/
