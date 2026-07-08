@@ -17,6 +17,7 @@ import { Toaster } from "sonner";
 import { BuyerJourneyBar } from "@/components/ui/buyer-journey-bar";
 import { SiteStatsProvider } from "@/lib/context/site-stats";
 import { getSiteStats } from "@/lib/data/site-stats";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -113,6 +114,7 @@ export default async function RootLayout({
             <CompareBar />
             <ExitIntentPopup />
             <MobileNav />
+            <Analytics />
             <Toaster
               position="bottom-right"
               toastOptions={{
