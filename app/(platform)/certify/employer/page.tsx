@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "RCO Employer Portal -- Certify Your Team | Robotomated",
   description:
-    "Bulk certification pricing, team management dashboard, compliance reporting. Certified operators have 73% fewer robot incidents.",
+    "Bulk certification pricing, team management dashboard, compliance reporting. Automated deployments see 40-70% fewer lost-time incidents.",
 };
 
 const BULK_TIERS = [
@@ -70,8 +70,8 @@ const DASHBOARD_FEATURES = [
 
 const ROI_STATS = [
   {
-    stat: "73%",
-    label: "Fewer robot incidents with certified operators",
+    stat: "40-70%",
+    label: "Fewer lost-time incidents in automated deployments (FANUC deployment data)",
   },
   {
     stat: "40%",

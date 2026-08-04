@@ -25,6 +25,7 @@ import { TrustStack } from "@/components/home/trust-stack";
 import { CTANavigation } from "@/components/home/cta-navigation";
 import { MotionSection } from "@/components/ui/motion-section";
 import type { RobotCategory } from "@/lib/supabase/types";
+import { MARKET_CLAIMS } from "@/lib/data/market-claims";
 
 // ISR: if a degraded database bakes zeros at build time, they self-heal
 // on the next revalidation instead of persisting until the next deploy.
@@ -317,7 +318,7 @@ export default async function HomePage() {
       </MotionSection>
 
       {/* ══════════════════════════════════════════
-          5.5. THE $24T OPPORTUNITY BANNER
+          5.5. THE OPPORTUNITY BANNER
           ══════════════════════════════════════════ */}
       <OpportunityBanner />
 
@@ -384,7 +385,7 @@ export default async function HomePage() {
             {[
               { value: totalRobots.toString(), label: "ROBOTS TRACKED" },
               { value: manufacturerCount.toString(), label: "MANUFACTURERS" },
-              { value: "$24T", label: "2040 MARKET" },
+              { value: MARKET_CLAIMS.marketProjection.value, label: "PROJECTED MARKET" },
               { value: "137", label: "HUMANOID STARTUPS (CN)" },
             ].map((s, i) => (
               <div key={s.label} className="px-8 py-8 text-center" style={{ borderRight: i < 3 ? "1px solid var(--theme-border)" : "none" }}>

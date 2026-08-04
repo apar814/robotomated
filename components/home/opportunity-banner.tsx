@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MARKET_CLAIMS } from "@/lib/data/market-claims";
 
 const CARDS = [
   {
@@ -8,8 +9,8 @@ const CARDS = [
         <polyline points="17 6 23 6 23 12" />
       </svg>
     ),
-    stat: "$24T",
-    title: "Projected market by 2040",
+    stat: MARKET_CLAIMS.marketProjection.value,
+    title: "Projected robotics market",
     body: "Robotics is on track to be one of the largest industries in human history. The infrastructure to support it — operators, platforms, standards — barely exists yet.",
   },
   {
@@ -21,9 +22,9 @@ const CARDS = [
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
-    stat: "+34%",
-    title: "RCO holders earn more on RoboWork",
-    body: "Certified operators command a premium — and that gap is widening as businesses demand accountability, safety compliance, and insurance coverage for every deployment.",
+    stat: "6",
+    title: "Certification levels, employer-verifiable",
+    body: "From Level 0 awareness through CRO. Every credential covers safety, operations, and judgment under pressure — and employers can verify any certificate on the platform.",
   },
   {
     icon: (
@@ -33,9 +34,9 @@ const CARDS = [
         <path d="M12 17v4" />
       </svg>
     ),
-    stat: "73%",
-    title: "Incident reduction with certified ops",
-    body: "Insurance carriers are starting to require RCO certification. Early movers who are already certified will be the ones businesses must hire to stay compliant and covered.",
+    stat: MARKET_CLAIMS.incidentReduction.value,
+    title: "Fewer lost-time incidents in automated deployments",
+    body: "FANUC palletizing deployment data shows 40-70% fewer lost-time incidents when dangerous manual tasks are automated. Trained, certified operators are how deployments stay in that range.",
   },
 ];
 

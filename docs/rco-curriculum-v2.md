@@ -33,7 +33,7 @@ Foundational understanding of robots as tools: what they are, the 5 major catego
 ### Domain Weights
 | Domain | Weight | Key Topics |
 |--------|--------|------------|
-| The Robot Revolution | 20% | History, current state, market size ($103B→$24T), who's building what |
+| The Robot Revolution | 20% | History, current state, market size ($103B today; long-range projections unverified — see lib/data/market-claims.ts), who's building what |
 | How Robots Work | 25% | Sensors (LIDAR, cameras, IMU), actuators, batteries, compute, DoF basics |
 | Safety Basics | 30% | E-Stop, keep-out zones, ISO 10218 awareness, "never enter a robot's workspace without lockout" |
 | The Robot Economy | 15% | Buy vs lease vs RaaS, labor cost comparison, ROI basics, total cost of ownership |

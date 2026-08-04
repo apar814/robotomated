@@ -137,15 +137,15 @@ export function CertificationSection() {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="px-4 py-4" style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-border, #1F1F1F)", borderRadius: "2px" }}>
-                <p className="font-[family-name:var(--font-mono)] text-2xl font-medium" style={{ color: "var(--theme-text-primary)" }}>73%</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-medium" style={{ color: "var(--theme-text-primary)" }}>40-70%</p>
                 <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] leading-[1.5]" style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}>
-                  Fewer incidents with certified operators
+                  Fewer lost-time incidents in automated deployments
                 </p>
               </div>
               <div className="px-4 py-4" style={{ background: "var(--theme-tag-bg, rgba(255,255,255,0.04))", border: "1px solid var(--theme-border, #1F1F1F)", borderRadius: "2px" }}>
-                <p className="font-[family-name:var(--font-mono)] text-2xl font-medium" style={{ color: "var(--theme-text-primary)" }}>+34%</p>
+                <p className="font-[family-name:var(--font-mono)] text-2xl font-medium" style={{ color: "var(--theme-text-primary)" }}>6</p>
                 <p className="mt-1 font-[family-name:var(--font-ui)] text-[13px] leading-[1.5]" style={{ color: "var(--theme-text-muted, rgba(255,255,255,0.45))" }}>
-                  Higher earnings on RoboWork
+                  Employer-verifiable certification levels
                 </p>
               </div>
             </div>

@@ -17,10 +17,10 @@ export const LEVEL_0_QUESTIONS: QuizQuestion[] = [
   {
     id: "l0-d1-01",
     domain: "The Robot Revolution",
-    question: "What is the projected global robotics market size by 2040?",
-    options: ["$2.4 trillion", "$24 trillion", "$240 billion", "$2.4 billion"],
+    question: "Where was Unimate, the first industrial robot, deployed in 1961?",
+    options: ["A Ford stamping plant", "A General Motors assembly line", "A Boeing aircraft factory", "A Toyota paint shop"],
     correctIndex: 1,
-    explanation: "The global robotics market is projected to reach $24 trillion by 2040, making it one of the largest industries in human history.",
+    explanation: "Unimate, created by George Devol and Joseph Engelberger, went to work on a General Motors assembly line in Ewing Township, New Jersey in 1961, unloading die-casting machines — the start of industrial robotics.",
   },
   {
     id: "l0-d1-02",
@@ -316,10 +316,10 @@ export const LEVEL_0_QUESTIONS: QuizQuestion[] = [
   {
     id: "l0-d4-03",
     domain: "The Robot Economy",
-    question: "By what percentage do RCO-certified operators typically earn more than non-certified operators?",
-    options: ["5%", "15%", "34%", "75%"],
-    correctIndex: 2,
-    explanation: "RCO-certified operators on the Robotomated platform earn approximately 34% more than non-certified operators, reflecting the premium on verified skills.",
+    question: "Which country has led the world in annual industrial robot installations since 2013?",
+    options: ["United States", "Japan", "Germany", "China"],
+    correctIndex: 3,
+    explanation: "According to IFR World Robotics data, China has been the world's largest market for industrial robot installations every year since 2013, accounting for roughly half of global installations in recent years.",
   },
   {
     id: "l0-d4-04",
@@ -337,10 +337,15 @@ export const LEVEL_0_QUESTIONS: QuizQuestion[] = [
   {
     id: "l0-d4-05",
     domain: "The Robot Economy",
-    question: "What percentage of workplace incidents are reduced with certified robot operators?",
-    options: ["23%", "43%", "73%", "93%"],
-    correctIndex: 2,
-    explanation: "Facilities using certified robot operators experience a 73% reduction in incidents, which is why insurance carriers increasingly require operator certification.",
+    question: "In workplace safety reporting, what is a 'lost-time incident'?",
+    options: [
+      "A robot breakdown that pauses production",
+      "An injury that causes an employee to miss work beyond the day it occurred",
+      "A near-miss that caused no injury",
+      "Any incident reported after the end of a shift",
+    ],
+    correctIndex: 1,
+    explanation: "A lost-time incident is a workplace injury that results in an employee missing at least one full day of work after the day of the injury. It's a core OSHA-tracked safety metric, and reducing lost-time incidents is a primary safety argument for automating dangerous manual tasks.",
   },
   {
     id: "l0-d4-06",

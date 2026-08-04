@@ -84,7 +84,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "We've seen a 73% reduction in robot incidents since requiring RCO Foundation for all operators. The ROI on certification pays for itself in the first month.",
+      "Robot incidents dropped noticeably once we required RCO Foundation for all operators. The ROI on certification pays for itself in the first month.",
     author: "Director of Safety, major warehouse operator",
   },
   {

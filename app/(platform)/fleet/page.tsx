@@ -251,7 +251,7 @@ export default async function FleetPage() {
         <Link href="/certify" className="group rounded-lg border border-white/[0.06] bg-[#0D0D0D] p-5 transition-all hover:border-white/20">
           <p className="font-mono text-[13px] uppercase tracking-widest text-white/45">Train</p>
           <p className="mt-1 text-sm font-bold text-white transition-colors group-hover:text-white">Certify your operators</p>
-          <p className="mt-1 text-xs text-white/40">Certified operators have 73% fewer incidents.</p>
+          <p className="mt-1 text-xs text-white/40">Trained operators keep automated fleets incident-free.</p>
         </Link>
       </div>
     </div>

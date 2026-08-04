@@ -495,8 +495,8 @@ export default function CertifyPage() {
                 Certify Your Team
               </h2>
               <p className="mt-4 text-muted">
-                Certified operators have 73% fewer robot incidents. RCO
-                certified RSPs earn 40% more jobs on Robotomated. Required for
+                Automated deployments see 40-70% fewer lost-time incidents —
+                trained operators are how they stay in that range. Required for
                 premium RoboWork listings.
               </p>
 

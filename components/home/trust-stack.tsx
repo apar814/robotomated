@@ -8,9 +8,9 @@ interface TrustSignal {
   href: string;
 }
 
-// Claim-based stats (+73% incident reduction, +34% earning premium, $24T market)
-// are intentionally absent: no citation exists anywhere in the repo for them.
-// Only database-backed numbers and product facts (cert level count) render here.
+// Claim-based market stats are intentionally absent: only database-backed
+// numbers and product facts (cert level count) render here. Sourced or
+// pending-verification market claims live in lib/data/market-claims.ts.
 export function TrustStack({
   totalRobots,
   manufacturerCount,

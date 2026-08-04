@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { createServerClient } from "@/lib/supabase/server";
+import { MARKET_CLAIMS } from "@/lib/data/market-claims";
 
 export const metadata: Metadata = {
   title: "The Humanoid Revolution -- Robotomated Intelligence Hub",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 const HERO_STATS = [
   { value: "137", label: "Chinese manufacturers" },
   { value: "0", label: "US commercially available" },
-  { value: "$24T", label: "Projected market 2040" },
+  { value: MARKET_CLAIMS.marketProjection.value, label: "Projected market" },
   { value: "90%", label: "Cost reduction" },
   { value: "67+", label: "Hours autonomous" },
   { value: "$16K", label: "Cheapest available" },

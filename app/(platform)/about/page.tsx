@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MARKET_CLAIMS } from "@/lib/data/market-claims";
 
 export const metadata: Metadata = {
   title: "About Robotomated -- The Operating System for the Abundance Economy",
@@ -65,7 +66,7 @@ const CHANNELS = [
 const STATS = [
   { value: "975", label: "Robots tracked" },
   { value: "319", label: "Manufacturers indexed" },
-  { value: "$24T", label: "Projected market by 2035" },
+  { value: MARKET_CLAIMS.marketProjection.value, label: "Projected market" },
   { value: "137", label: "Chinese humanoid companies" },
   { value: "2027", label: "ISO safety standards deadline" },
 ];
