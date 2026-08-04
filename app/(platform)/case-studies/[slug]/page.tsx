@@ -51,6 +51,11 @@ export default async function CaseStudyPage({ params }: Props) {
           <span className="mt-4 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-white">
             {cs.industry}
           </span>
+          {cs.illustrative && (
+            <span className="ml-2 mt-4 inline-block rounded-full border border-white/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/70">
+              Illustrative example — not a specific customer
+            </span>
+          )}
           <h1 className="mt-4 font-display text-3xl font-extrabold tracking-[-0.03em] text-white sm:text-4xl">
             {cs.title}
           </h1>
@@ -161,6 +166,26 @@ export default async function CaseStudyPage({ params }: Props) {
                 <p className="text-xs text-white/40">{cs.results.quote.role}</p>
               </footer>
             </blockquote>
+          )}
+
+          {cs.sources && cs.sources.length > 0 && (
+            <div className="mt-8">
+              <span className="text-[13px] font-semibold uppercase tracking-wider text-white/50">Sources</span>
+              <ul className="mt-2 space-y-1">
+                {cs.sources.map((s) => (
+                  <li key={s.url}>
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-white/60 underline decoration-white/20 underline-offset-2 transition-colors hover:text-white"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </section>

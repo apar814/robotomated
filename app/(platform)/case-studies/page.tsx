@@ -41,6 +41,11 @@ export default function CaseStudiesPage() {
                   <span className="inline-block rounded-full bg-white/10 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] font-semibold text-white">
                     {cs.industry}
                   </span>
+                  {cs.illustrative && (
+                    <span className="ml-2 inline-block rounded-full border border-white/25 px-3 py-1 font-[family-name:var(--font-ui)] text-[13px] uppercase tracking-[0.06em] font-semibold text-white/60">
+                      Illustrative
+                    </span>
+                  )}
                   <h2 className="mt-3 font-display text-base font-bold leading-snug text-white transition-colors group-hover:text-white">
                     {cs.title}
                   </h2>
