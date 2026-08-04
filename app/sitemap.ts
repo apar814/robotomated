@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 import { getAllIndustrySlugs } from "@/lib/data/industry-types";
+import { getAllCaseStudySlugs } from "@/lib/data/case-studies";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -204,10 +205,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  // Case study slugs
-  const caseStudySlugs = getMdxSlugs("content/case-studies").length > 0
-    ? getMdxSlugs("content/case-studies")
-    : getMdxSlugs("content/guides");
+  // Case study slugs — from the canonical data module, not MDX. The old
+  // fallback to content/guides emitted guide slugs as broken case-study URLs.
+  const caseStudySlugs = getAllCaseStudySlugs();
   const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map(slug => ({
     url: `${BASE_URL}/case-studies/${slug}`,
     lastModified: new Date(),

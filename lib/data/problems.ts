@@ -514,16 +514,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "manufacturing-robotics",
     categorySlug: "manufacturing",
     heroStatement: "A 2% defect rate sounds small until you calculate what it actually costs.",
-    heroSubtext: "At scale, even a 2% defect rate means thousands of rejected parts per week, millions in rework costs, and customer relationships eroding with every bad shipment. Manual inspection catches 80% of defects at best. The other 20% reach your customers.",
-    trends: {
-      heading: "Why defect rates are becoming existential",
-      points: [
-        { stat: "2-5%", description: "Average defect rate in manual manufacturing — each defect costs 3-10x the unit's value in rework and warranty claims" },
-        { stat: "$3.1T", description: "Global annual cost of poor quality across all manufacturing sectors, per ASQ" },
-        { stat: "80%", description: "Maximum defect detection rate for human visual inspection — fatigue drops this to 60% by shift end" },
-        { stat: "47%", description: "Increase in product recalls since 2019, driven by tighter consumer safety regulations" },
-      ],
-    },
+    heroSubtext: "At scale, even small defect rates mean thousands of rejected parts per week, expensive rework, and customer relationships eroding with every bad shipment. Manual inspection is fatigue-limited — defects that slip past it reach your customers.",
     automationSolution: {
       heading: "How robotic inspection and automation eliminate defects",
       description: "AI-powered vision systems inspect 100% of units at line speed, detecting defects invisible to the human eye. Cobots perform assembly operations with 0.02mm repeatability, eliminating the process variability that causes 85% of quality issues. The combination of consistent execution and total inspection drives defect rates below 0.1%.",
@@ -571,10 +562,8 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why manufacturing can't find skilled workers",
       points: [
-        { stat: "2.1M", description: "Manufacturing jobs projected unfilled by 2030, per Deloitte and the Manufacturing Institute" },
-        { stat: "58", description: "Average age of a skilled machinist in the US — retirements are accelerating" },
-        { stat: "45%", description: "Of manufacturers turned down new business in 2024 because they couldn't staff production" },
-        { stat: "$1T", description: "Estimated GDP impact of the manufacturing skills gap by 2030" },
+        { stat: "2.1M", description: "Manufacturing jobs that could go unfilled by 2030 (Deloitte & The Manufacturing Institute skills-gap study, 2021)" },
+        { stat: "$1T", description: "Potential cost to the US economy of the manufacturing skills gap by 2030 (Deloitte & The Manufacturing Institute, 2021)" },
       ],
     },
     automationSolution: {
@@ -624,10 +613,8 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why downtime is getting more expensive",
       points: [
-        { stat: "$260K/hr", description: "Average cost of unplanned downtime in manufacturing, including lost production, labor, and expediting" },
-        { stat: "$50B", description: "Annual cost of unplanned downtime across US manufacturing, per Aberdeen Group" },
-        { stat: "82%", description: "Of companies have experienced unplanned downtime in the past three years" },
-        { stat: "42%", description: "Of unplanned downtime caused by equipment failure that predictive monitoring could have prevented" },
+        { stat: "$260K/hr", description: "Estimated average cost of unplanned downtime for large manufacturers (Aberdeen Group research, 2016)" },
+        { stat: "82%", description: "Of companies experienced unplanned downtime over a three-year period (Aberdeen Group research, 2016)" },
       ],
     },
     automationSolution: {
@@ -673,16 +660,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "manufacturing-robotics",
     categorySlug: "manufacturing",
     heroStatement: "You're buying raw materials just to throw them away.",
-    heroSubtext: "Average manufacturing scrap rates run 3-8%, but in complex processes like machining and injection molding, rates above 10% are common. With material costs up 30% since 2021, every scrapped part hurts more than it used to. The root cause is process variability that human operators cannot control consistently.",
-    trends: {
-      heading: "Why scrap is becoming unaffordable",
-      points: [
-        { stat: "3-8%", description: "Average manufacturing scrap rate, with some processes running 10-15% scrap on complex parts" },
-        { stat: "$100B+", description: "Annual cost of manufacturing scrap in the US — raw material, energy, and labor wasted" },
-        { stat: "30%", description: "Increase in raw material costs since 2021, making every scrapped part significantly more expensive" },
-        { stat: "85%", description: "Of scrap caused by process variability — temperature drift, tool wear, operator inconsistency — not material defects" },
-      ],
-    },
+    heroSubtext: "Scrap compounds quietly: complex processes like machining and injection molding scrap real percentages of everything they make, and rising material costs make every scrapped part hurt more. The root cause is process variability that human operators cannot control consistently.",
     automationSolution: {
       heading: "How automation drives scrap to near zero",
       description: "Closed-loop robotic systems maintain process parameters within tight tolerances continuously. Vision systems catch out-of-spec parts before they consume more material. Cobots perform loading and setup operations identically every time, eliminating the human variability that causes most scrap. When combined with real-time SPC, these systems reduce scrap rates by 50-80%.",
@@ -726,16 +704,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "manufacturing-robotics",
     categorySlug: "manufacturing",
     heroStatement: "Every hour spent on changeover is an hour you're not making product.",
-    heroSubtext: "Changeover times of 2-4 hours per run are common in discrete manufacturing. For facilities running 3-5 changeovers per day, that's 15-25% of available production time lost to setup. As customer demand shifts toward smaller batch sizes and more SKUs, changeover frequency is increasing — making the problem worse.",
-    trends: {
-      heading: "Why changeover time is becoming critical",
-      points: [
-        { stat: "15-25%", description: "Of available production time lost to changeovers in high-mix manufacturing facilities" },
-        { stat: "2-4 hrs", description: "Typical changeover time in discrete manufacturing — tooling, fixtures, programming, first-article inspection" },
-        { stat: "300%", description: "Increase in SKU count for average manufacturers since 2010, driving more frequent changeovers" },
-        { stat: "$1M+", description: "Annual lost production value from changeover time for a mid-size manufacturer running multiple lines" },
-      ],
-    },
+    heroSubtext: "Changeovers eat production time — tooling, fixtures, programming, and first-article inspection between every run. As customer demand shifts toward smaller batch sizes and more SKUs, changeover frequency is increasing — making the problem worse.",
     automationSolution: {
       heading: "How automated changeover slashes setup time",
       description: "Robotic quick-change systems swap tooling, fixtures, and end-effectors in minutes instead of hours. Stored digital recipes eliminate manual parameter entry and trial runs. Cobots with automatic tool changers switch between tasks with zero operator intervention. The goal isn't just faster changeover — it's making batch size economically irrelevant.",
@@ -781,14 +750,12 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "medical-robotics",
     categorySlug: "medical",
     heroStatement: "Medication errors are the third leading cause of death in US hospitals — and most are preventable.",
-    heroSubtext: "More than 7,000 patients die annually from medication errors in the US. An additional 1.5 million are harmed by preventable adverse drug events. The root causes — manual dispensing, look-alike packaging, fatigue-driven mistakes, and handoff failures — are exactly the failure modes that automation eliminates.",
+    heroSubtext: "The Institute of Medicine estimates 1.5 million US patients are harmed by preventable adverse drug events each year. The root causes — manual dispensing, look-alike packaging, fatigue-driven mistakes, and handoff failures — are exactly the failure modes that automation eliminates.",
     trends: {
       heading: "Why medication errors persist despite protocols",
       points: [
-        { stat: "7,000+", description: "Annual deaths from medication errors in US hospitals, per FDA estimates" },
-        { stat: "1.5M", description: "Patients harmed by preventable adverse drug events every year in the US" },
-        { stat: "$42B", description: "Annual cost of medication errors globally, per the WHO" },
-        { stat: "5-10%", description: "Error rate in manual medication dispensing, driven by look-alike drugs, fatigue, and interruptions" },
+        { stat: "1.5M", description: "Preventable adverse drug events harming US patients each year (Institute of Medicine, Preventing Medication Errors, 2006)" },
+        { stat: "$42B", description: "Estimated global annual cost of medication errors (WHO, Medication Without Harm, 2017)" },
       ],
     },
     automationSolution: {
@@ -834,14 +801,11 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "medical-robotics",
     categorySlug: "medical",
     heroStatement: "Your nurses didn't go to school to deliver linens and chase supplies.",
-    heroSubtext: "Nurse burnout has reached crisis levels, with 30% annual turnover rates and 100,000 RNs leaving the profession since 2020. The primary driver isn't patient care — it's the non-clinical burden. Nurses spend 30-40% of their shifts on logistics, documentation, and transport tasks that have nothing to do with why they became nurses.",
+    heroSubtext: "Nurse burnout has reached crisis levels, with roughly 100,000 RNs having left the workforce during the pandemic (NCSBN). The primary driver isn't patient care — it's the non-clinical burden. Nurses spend 30-40% of their shifts on logistics, documentation, and transport tasks that have nothing to do with why they became nurses.",
     trends: {
       heading: "Why nurse burnout is a hospital-wide crisis",
       points: [
-        { stat: "30%", description: "Annual nurse turnover rate in US hospitals, costing $56,000 per replacement" },
-        { stat: "100K+", description: "Registered nurses who left the profession since 2020, accelerating existing shortages" },
-        { stat: "30-40%", description: "Of nursing time spent on non-clinical tasks — supply retrieval, documentation, transport" },
-        { stat: "$9B", description: "Annual cost of nurse turnover to US hospitals, per NSI Nursing Solutions" },
+        { stat: "100K", description: "Registered nurses who left the US workforce during the pandemic (NCSBN workforce study, 2023)" },
       ],
     },
     automationSolution: {
@@ -891,10 +855,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why HAIs persist despite cleaning protocols",
       points: [
-        { stat: "1 in 31", description: "Hospital patients acquire a healthcare-associated infection on any given day, per CDC" },
-        { stat: "99,000", description: "Annual deaths from HAIs in US hospitals — more than car accidents, breast cancer, or AIDS" },
-        { stat: "$28.4B", description: "Annual cost of HAIs to US hospitals, including treatment, extended stays, and penalties" },
-        { stat: "50%", description: "Of high-touch surfaces missed during manual terminal cleaning, per fluorescent marker studies" },
+        { stat: "1 in 38", description: "Hospitalized patients had at least one healthcare-associated infection on a given day in 2023 (CDC HAI prevalence survey)" },
       ],
     },
     automationSolution: {
@@ -940,16 +901,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "medical-robotics",
     categorySlug: "medical",
     heroStatement: "The best surgeon in the world still has hands that shake.",
-    heroSubtext: "Human physiological tremor ranges from 100-200 microns — imperceptible in daily life, but critical when operating near nerves, vessels, and delicate tissues. Surgical robots filter out tremor entirely, provide 10x magnification, and offer 7 degrees of freedom in spaces too small for human wrists. The result is precision that human anatomy physically cannot achieve.",
-    trends: {
-      heading: "Why human precision has reached its ceiling",
-      points: [
-        { stat: "100-200μm", description: "Range of human physiological hand tremor — enough to damage nerves and vessels in microsurgery" },
-        { stat: "30-50%", description: "Reduction in surgical complications when robotic assistance augments human capabilities" },
-        { stat: "10x", description: "Magnification provided by robotic surgical vision systems vs naked eye or standard loupes" },
-        { stat: "0.1mm", description: "Positioning accuracy of modern surgical robots, exceeding human capability by an order of magnitude" },
-      ],
-    },
+    heroSubtext: "Human hands tremor — imperceptibly in daily life, critically when operating near nerves and vessels. Surgical robots filter tremor, magnify the field, and articulate in spaces too small for human wrists.",
     automationSolution: {
       heading: "How surgical robots extend beyond human limits",
       description: "Surgical robots aren't replacing surgeons — they're giving them superhuman capabilities. Tremor-filtered instruments remain perfectly steady inside a beating heart. Articulating wrists bend in ways human anatomy doesn't allow, reaching around structures instead of through them. 3D HD visualization with 10x zoom reveals anatomy invisible to the naked eye. These aren't incremental improvements — they enable procedures that simply weren't possible before.",
@@ -993,16 +945,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "medical-robotics",
     categorySlug: "medical",
     heroStatement: "A surgeon waiting 20 minutes for a surgical tray costs more than most people realize.",
-    heroSubtext: "Internal hospital logistics is a hidden crisis. Nurses wait 20-30 minutes per shift for supplies that should already be there. OR cases are delayed because trays arrive late. Lab results sit in the pneumatic tube system while physicians wait. Every delay cascades into longer stays, frustrated staff, and worse patient outcomes.",
-    trends: {
-      heading: "Why internal hospital logistics is breaking down",
-      points: [
-        { stat: "20-30 min", description: "Average time nurses waste per shift waiting for or retrieving supplies that should have been delivered" },
-        { stat: "46%", description: "Of OR delays attributed to missing supplies or instruments, per perioperative surveys" },
-        { stat: "$1.1M", description: "Average annual cost of manual material transport in a 200-bed hospital" },
-        { stat: "15%", description: "Of medication errors linked to transport delays and handoff failures" },
-      ],
-    },
+    heroSubtext: "Internal hospital logistics is a hidden crisis. Nurses lose real shift time to retrieving supplies that should already be there. OR cases are delayed because trays arrive late. Lab results sit in the pneumatic tube system while physicians wait. Every delay cascades into longer stays, frustrated staff, and worse patient outcomes.",
     automationSolution: {
       heading: "How autonomous delivery robots fix hospital logistics",
       description: "Autonomous delivery robots navigate hospital corridors 24/7, transporting medications, lab specimens, blood products, surgical trays, and supplies on schedule and on demand. They use existing infrastructure — hallways, elevators, automatic doors — and integrate with hospital systems for seamless dispatching. No more calling porters, no more nurses leaving the floor, no more OR delays from late trays.",
@@ -1048,16 +991,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "agricultural-robotics",
     categorySlug: "agricultural",
     heroStatement: "Your crops are rotting in the field because there's nobody left to pick them.",
-    heroSubtext: "Seasonal harvest labor has declined 40% in the past decade. H-2A visa processing is slower and more expensive every year. Meanwhile, crops don't wait — a strawberry field that isn't picked within 48 hours of ripeness loses 30% of its value. Farms are leaving millions of dollars of produce unharvested because the workers simply aren't there.",
-    trends: {
-      heading: "Why seasonal harvest labor is disappearing",
-      points: [
-        { stat: "40%", description: "Decline in available seasonal agricultural labor over the past decade across the US" },
-        { stat: "$50B", description: "Annual crop losses in the US attributed to labor shortages and delayed harvesting" },
-        { stat: "56", description: "Average age of a US farm worker — the workforce is aging out with no pipeline of replacements" },
-        { stat: "72hrs", description: "Window to harvest most fresh produce at peak ripeness before quality and value degrade significantly" },
-      ],
-    },
+    heroSubtext: "Seasonal harvest crews are harder to find every year, and crops don't wait — produce not picked at peak ripeness rapidly loses value. Farms are leaving produce unharvested because the workers simply aren't there.",
     automationSolution: {
       heading: "How robotic harvesters keep crops from going to waste",
       description: "Robotic harvesters use AI vision to identify ripe produce and soft robotic grippers to pick without bruising. They work 20+ hours per day, through darkness and heat, at consistent speed. A single harvesting robot replaces 8-12 seasonal workers for crops like strawberries, tomatoes, and apples — and it shows up every season without fail.",
@@ -1105,10 +1039,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why the chemical approach is failing",
       points: [
-        { stat: "270+", description: "Weed species with confirmed herbicide resistance globally, growing by 10-15 species per year" },
-        { stat: "60%", description: "Of US cropland affected by glyphosate-resistant weeds, up from 30% a decade ago" },
-        { stat: "$43B", description: "Annual cost of weed management and crop losses from weeds in the US alone" },
-        { stat: "80%", description: "Of herbicide applications that hit bare soil, not weeds — a massive waste of chemical and money" },
+        { stat: "270+", description: "Weed species with confirmed herbicide resistance globally (International Survey of Herbicide-Resistant Weeds, weedscience.org)" },
       ],
     },
     automationSolution: {
@@ -1154,16 +1085,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "agricultural-robotics",
     categorySlug: "agricultural",
     heroStatement: "You can't manage what you can't see — and you can't see 1,000 acres from the ground.",
-    heroSubtext: "A human scout covers 5-10 acres per hour on foot, checking maybe 5% of plants. On a 1,000-acre operation, that means problems aren't found until they've spread across entire fields. Drone and robotic monitoring systems cover the entire farm in hours with per-plant resolution, catching disease, pest pressure, and nutrient deficiency 7-14 days before they're visible to the human eye.",
-    trends: {
-      heading: "Why traditional scouting can't keep up",
-      points: [
-        { stat: "5-10 acres/hr", description: "Manual scouting rate on foot, making comprehensive monitoring of large operations physically impossible" },
-        { stat: "5%", description: "Of plants actually inspected during manual scouting — the other 95% is assumption and extrapolation" },
-        { stat: "7-14 days", description: "Earlier detection possible with multispectral imaging vs waiting for visible symptoms" },
-        { stat: "$25B", description: "Annual US crop losses from pest and disease that earlier detection could have reduced" },
-      ],
-    },
+    heroSubtext: "A human scout on foot can only ever sample a field — problems aren't found until they've spread. Drone and robotic monitoring covers the entire farm with per-plant resolution, catching disease and pest pressure before it is visible to the human eye.",
     automationSolution: {
       heading: "How drones and robots deliver total field visibility",
       description: "Agricultural drones equipped with multispectral, thermal, and RGB cameras survey entire farms in hours. AI processes the imagery to generate per-plant health maps showing disease, nutrient stress, water issues, and pest damage. Ground-based scouting robots provide close-up inspection of flagged areas. The combination gives you total visibility at a fraction of the cost of manual scouting.",
@@ -1207,16 +1129,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "agricultural-robotics",
     categorySlug: "agricultural",
     heroStatement: "By the time you notice a sick animal, it's already infected the herd.",
-    heroSubtext: "Livestock disease costs US producers over $3 billion annually, and the majority of that loss comes from late detection. A cow showing visible symptoms has typically been sick for 2-5 days — long enough to spread disease to dozens of herd mates. With herds of hundreds or thousands, individual animal monitoring by human workers is physically impossible. The math demands technology.",
-    trends: {
-      heading: "Why manual livestock monitoring fails at scale",
-      points: [
-        { stat: "$3B", description: "Annual cost of livestock disease to US producers, primarily from late detection and herd spread" },
-        { stat: "2-5 days", description: "Average delay between disease onset and visual detection by farm workers" },
-        { stat: "70%", description: "Of dairy farms report difficulty detecting early-stage mastitis, the industry's most costly disease" },
-        { stat: "1:1,000", description: "Worker-to-animal ratio on many commercial operations, making individual monitoring impossible" },
-      ],
-    },
+    heroSubtext: "Livestock losses are driven by late detection: an animal showing visible symptoms has typically been sick for days — long enough to spread disease through the herd. With herds of hundreds or thousands, individual monitoring by human workers is physically impossible.",
     automationSolution: {
       heading: "How AI monitoring catches disease before it spreads",
       description: "Robotic livestock monitoring combines wearable sensors, autonomous observation robots, and AI analytics to monitor every animal individually 24/7. Changes in body temperature, activity patterns, feeding behavior, and gait are detected algorithmically 2-5 days before visible symptoms. Early alerts enable isolation and treatment before herd-wide spread, dramatically reducing losses and antibiotic use.",
@@ -1260,16 +1173,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "agricultural-robotics",
     categorySlug: "agricultural",
     heroStatement: "A $600K combine makes no sense when your margins are measured in pennies per bushel.",
-    heroSubtext: "Farm equipment prices have surged 40% since 2020, with a new combine harvester now exceeding $600K and a large tractor topping $400K. Meanwhile, commodity margins remain razor-thin. The traditional model of bigger, more expensive equipment is hitting a wall. Smaller, autonomous machines that cost a fraction of conventional equipment and operate around the clock are offering a fundamentally different economic model.",
-    trends: {
-      heading: "Why the traditional equipment model is breaking",
-      points: [
-        { stat: "40%", description: "Increase in farm equipment prices since 2020, driven by supply chain disruptions and manufacturer pricing power" },
-        { stat: "$600K+", description: "Cost of a new Class 9 combine harvester, requiring 5-7 years of payments for most operations" },
-        { stat: "3-5%", description: "Average net farm income margin — leaving almost no room to absorb rising equipment costs" },
-        { stat: "50%", description: "Of farm equipment sits idle for 9+ months of the year, making per-hour utilization costs enormous" },
-      ],
-    },
+    heroSubtext: "Farm equipment prices have surged while commodity margins remain razor-thin. The traditional model of bigger, more expensive equipment is hitting a wall. Smaller, autonomous machines that cost a fraction of conventional equipment and operate around the clock are offering a fundamentally different economic model.",
     automationSolution: {
       heading: "How smaller autonomous machines change the economics",
       description: "Instead of one $600K combine operating 40 days per year, consider a fleet of smaller autonomous machines costing $50K-$150K each that operate 20+ hours per day. They reduce soil compaction (lighter weight), work in conditions too wet for heavy equipment, and eliminate the operator cost that represents 30-40% of traditional equipment TCO. The shift from big iron to smart swarms is reshaping farm economics.",
@@ -1319,10 +1223,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why construction's workforce crisis is structural",
       points: [
-        { stat: "650K", description: "Unfilled construction jobs in the US, per Associated Builders & Contractors — a record high" },
-        { stat: "45%", description: "Decline in construction trade school enrollment over the past 20 years" },
-        { stat: "41%", description: "Of construction firms turned down work in 2024 specifically due to inability to staff projects" },
-        { stat: "$265B", description: "Value of US construction projects at risk from labor shortages annually" },
+        { stat: "650K", description: "Additional construction workers ABC estimated the US needed to attract in 2022 (Associated Builders and Contractors, 2022)" },
       ],
     },
     automationSolution: {
@@ -1368,14 +1269,11 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     industrySlug: "construction-robotics",
     categorySlug: "construction",
     heroStatement: "You're building everything 1.3 times — and you're paying for every extra inch.",
-    heroSubtext: "An estimated 30% of all construction work is rework — tearing out and redoing work that was done wrong the first time. That's $280 billion annually in wasted labor, material, and schedule. The root cause is overwhelmingly the same: errors in translating design intent to field execution. Measurements are wrong, layout marks are off, field conditions don't match plans, and nobody catches it until the drywall is up.",
+    heroSubtext: "A meaningful share of construction work is rework — tearing out and redoing work done wrong the first time (FMI/PlanGrid attribute 52% of it to poor project data). The root cause is overwhelmingly the same: errors in translating design intent to field execution. Measurements are wrong, layout marks are off, field conditions don't match plans, and nobody catches it until the drywall is up.",
     trends: {
       heading: "Why rework remains construction's most expensive problem",
       points: [
-        { stat: "30%", description: "Of construction work is rework from errors — design conflicts, layout mistakes, and field deviations" },
-        { stat: "$280B", description: "Annual cost of construction rework in the US alone, per FMI/PlanGrid research" },
-        { stat: "52%", description: "Of rework caused by poor-quality project data — wrong measurements, outdated drawings, missed conflicts" },
-        { stat: "5-8%", description: "Of total project cost attributable to rework on average, with some projects reaching 15-20%" },
+        { stat: "52%", description: "Of construction rework attributed to poor project data and miscommunication (FMI/PlanGrid, Construction Disconnected, 2018)" },
       ],
     },
     automationSolution: {
@@ -1425,10 +1323,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why construction safety has plateaued despite decades of effort",
       points: [
-        { stat: "1,069", description: "Construction worker fatalities in the US in 2023, per OSHA — the highest of any industry" },
-        { stat: "200K+", description: "Serious non-fatal construction injuries per year, each costing an average of $42,000 in direct costs" },
-        { stat: "60%", description: "Of construction fatalities from the 'Fatal Four': falls, struck-by objects, electrocution, caught-between" },
-        { stat: "$11.5B", description: "Annual direct cost of construction injuries in the US — insurance, medical, legal, and lost productivity" },
+        { stat: "1,075", description: "Fatal injuries in US private construction in 2023 — the most of any industry (BLS Census of Fatal Occupational Injuries)" },
       ],
     },
     automationSolution: {
@@ -1478,10 +1373,8 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why construction can't deliver on time",
       points: [
-        { stat: "77%", description: "Of construction projects finish behind schedule, per McKinsey Global Institute research" },
-        { stat: "20%", description: "Average schedule overrun on late projects — a $10M project becomes $12M before anyone notices" },
-        { stat: "$1.6T", description: "Annual value of global construction productivity lost to delays and inefficiency" },
-        { stat: "35%", description: "Of schedule delays attributed to labor shortages and availability — a problem that's getting worse, not better" },
+        { stat: "20%", description: "How much longer large construction projects typically take versus schedule (McKinsey Global Institute, Reinventing Construction, 2017)" },
+        { stat: "$1.6T", description: "Annual global opportunity from closing the construction productivity gap (McKinsey Global Institute, 2017)" },
       ],
     },
     automationSolution: {
@@ -1528,15 +1421,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "construction",
     heroStatement: "Your best electricians, plumbers, and welders are retiring. Their replacements don't exist.",
     heroSubtext: "The average age of a skilled construction tradesperson is 55. Apprenticeship programs are producing a fraction of the replacements needed. When these veterans retire, they take decades of expertise with them — knowledge that can't be replaced by hiring off the street. The industry is facing not just a labor shortage, but a knowledge extinction event.",
-    trends: {
-      heading: "Why the skilled trades crisis is different from a general labor shortage",
-      points: [
-        { stat: "55", description: "Average age of a skilled construction tradesperson in the US — mass retirements are imminent" },
-        { stat: "60%", description: "Of construction firms report that skilled trades positions are harder to fill than general labor" },
-        { stat: "10 years", description: "Average time to develop a journeyman-level tradesperson — there's no shortcut to experience" },
-        { stat: "80%", description: "Of construction knowledge is tacit — passed person-to-person, not written in manuals, and lost at retirement" },
-      ],
-    },
     automationSolution: {
       heading: "How automation captures expertise and lowers the skill barrier",
       description: "Robotic construction systems encode expert knowledge in software. A welding robot programmed by a master welder produces code-quality welds operated by someone with weeks of training. Robotic layout systems transfer the surveyor's precision to anyone who can operate a tablet. AR-guided assembly walks less experienced workers through complex tasks step-by-step. The expertise lives in the system, not just in people's heads.",
