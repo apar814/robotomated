@@ -14,7 +14,7 @@ export function CertificationSection() {
     <section className="px-6 py-20">
       <div className="mx-auto max-w-7xl">
         {/* Section marker per DESIGN.md */}
-        <div className="section-marker mb-4">08 / CERTIFICATION</div>
+        <div className="section-marker mb-4">09 / CERTIFICATION</div>
 
         <h2
           className="font-[family-name:var(--font-sans)] font-medium"

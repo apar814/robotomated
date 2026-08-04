@@ -10,43 +10,18 @@ interface Video {
   youtubeId: string;
 }
 
-const ROBOT_VIDEOS: Video[] = [
-  {
-    id: "1",
-    title: "Stretch in Amazon Warehouse",
-    company: "Boston Dynamics",
-    useCase: "Logistics & Warehouse",
-    youtubeId: "O8NmWVKqMuk",
-  },
-  {
-    id: "2",
-    title: "Digit Scaling at Scale",
-    company: "Agility Robotics",
-    useCase: "Large-Scale Deployment",
-    youtubeId: "tOH8ykKwGvA",
-  },
-  {
-    id: "3",
-    title: "Tesla Optimus Production",
-    company: "Tesla",
-    useCase: "Manufacturing",
-    youtubeId: "cpIcnc3RF60",
-  },
-  {
-    id: "4",
-    title: "Figure AI Apollo Working",
-    company: "Figure AI",
-    useCase: "General Purpose Humanoid",
-    youtubeId: "Yl-JH6nKl2o",
-  },
-];
+// POLICY: only official manufacturer-channel uploads are permitted here
+// (copyright + editorial independence — no reuploads, no third-party edits).
+// Verify each youtubeId resolves to the manufacturer's own channel before
+// adding it. While this array is empty the section renders nothing.
+const ROBOT_VIDEOS: Video[] = [];
 
 export function HeroVideoLoop() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
   useEffect(() => {
-    if (!autoPlay) return;
+    if (!autoPlay || ROBOT_VIDEOS.length < 2) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % ROBOT_VIDEOS.length);
@@ -55,12 +30,14 @@ export function HeroVideoLoop() {
     return () => clearInterval(interval);
   }, [autoPlay]);
 
+  if (ROBOT_VIDEOS.length === 0) return null;
+
   const current = ROBOT_VIDEOS[currentIndex];
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-black"
-      style={{ aspectRatio: "16 / 9" }}
+      className="relative w-full overflow-hidden"
+      style={{ aspectRatio: "16 / 9", background: "var(--theme-bg)" }}
       onMouseEnter={() => setAutoPlay(false)}
       onMouseLeave={() => setAutoPlay(true)}
     >
@@ -76,21 +53,24 @@ export function HeroVideoLoop() {
         className="absolute inset-0 border-0"
       />
 
-      {/* Dark Overlay + Text */}
-      <div className="absolute inset-0 flex flex-col justify-end bg-black/30 p-6">
+      {/* Bottom-left metadata — DESIGN.md hero pattern, no overlay tint */}
+      <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-12">
         <div className="max-w-2xl">
-          <p className="mb-2 text-xs uppercase tracking-wider text-gray-300">
-            {current.useCase}
-          </p>
-          <h2 className="mb-2 text-2xl font-bold text-white md:text-4xl">
+          <p className="label-uppercase text-[12px] tracking-[0.12em]">{current.useCase}</p>
+          <h2
+            className="mt-2 font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em] text-white"
+            style={{ fontSize: "clamp(24px, 3vw, 40px)" }}
+          >
             {current.title}
           </h2>
-          <p className="text-sm text-gray-200">{current.company}</p>
+          <p className="mt-1 font-[family-name:var(--font-mono)] text-[12px] text-white/50">
+            {current.company}
+          </p>
         </div>
       </div>
 
-      {/* Pagination Dots */}
-      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 transform gap-2">
+      {/* Pagination dots */}
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
         {ROBOT_VIDEOS.map((_, idx) => (
           <button
             key={idx}
@@ -98,16 +78,16 @@ export function HeroVideoLoop() {
               setCurrentIndex(idx);
               setAutoPlay(false);
             }}
-            className={`h-2 rounded-full transition-all ${
-              idx === currentIndex ? "w-8 bg-white" : "w-2 bg-white/50"
+            className={`h-[2px] transition-all ${
+              idx === currentIndex ? "w-8 bg-white" : "w-2 bg-white/40"
             }`}
             aria-label={`Video ${idx + 1}`}
           />
         ))}
       </div>
 
-      {/* Play/Pause Indicator */}
-      <div className="absolute right-6 top-6 text-xs text-white/70">
+      {/* Play state — mono metadata */}
+      <div className="absolute right-6 top-6 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-white/50">
         {autoPlay ? "Playing" : "Paused"}
       </div>
     </div>

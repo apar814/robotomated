@@ -144,7 +144,7 @@ export default async function HomePage() {
           ══════════════════════════════════════════ */}
       <HeroVideoLoop />
       <CTANavigation />
-      <TrustStack />
+      <TrustStack totalRobots={totalRobots} manufacturerCount={manufacturerCount} />
       <NewsHub limit={6} featured={true} />
 
       {/* ══════════════════════════════════════════
@@ -203,7 +203,7 @@ export default async function HomePage() {
       <MotionSection as="section" className="px-6 py-28">
         <div className="mx-auto max-w-7xl">
           {/* Section marker per DESIGN.md */}
-          <div className="section-marker">02 / TRENDING</div>
+          <div className="section-marker">07 / TRENDING</div>
           <h2
             className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
             style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "var(--theme-text-primary)" }}
@@ -337,7 +337,7 @@ export default async function HomePage() {
       {/* ABUNDANCE EQUATION — stripped to DESIGN.md */}
       <section className="px-6 py-32" style={{ background: "var(--theme-bg)" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="section-marker">03 / THE ECONOMICS</div>
+          <div className="section-marker">10 / THE ECONOMICS</div>
           <div className="grid items-start gap-16 lg:grid-cols-2">
             <div>
               <h2 className="font-[family-name:var(--font-sans)] font-medium" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "var(--theme-text-primary)" }}>
@@ -379,7 +379,7 @@ export default async function HomePage() {
       {/* STATS — DESIGN.md: mono numbers, hairline dividers, no color */}
       <section className="px-6 py-24" style={{ background: "var(--theme-bg)" }}>
         <div className="mx-auto max-w-7xl">
-          <div className="section-marker">04 / BY THE NUMBERS</div>
+          <div className="section-marker">11 / BY THE NUMBERS</div>
           <div className="grid grid-cols-2 lg:grid-cols-4">
             {[
               { value: totalRobots.toString(), label: "ROBOTS TRACKED" },

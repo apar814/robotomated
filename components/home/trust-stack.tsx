@@ -1,93 +1,89 @@
-import { CheckCircle, Users, Shield, TrendingUp, Zap, Target } from "lucide-react";
 import Link from "next/link";
+import { CERT_LEVELS } from "@/lib/certifications";
 
 interface TrustSignal {
-  icon: React.ReactNode;
   stat: string;
-  title: string;
+  label: string;
   description: string;
   href: string;
 }
 
-const TRUST_SIGNALS: TrustSignal[] = [
-  {
-    icon: <CheckCircle className="h-8 w-8" />,
-    stat: "0%",
-    title: "Manufacturer Bias",
-    description: "No paid placements. Ever.",
-    href: "/methodology",
-  },
-  {
-    icon: <Users className="h-8 w-8" />,
-    stat: "986",
-    title: "Robots Tracked",
-    description: "Every spec, every review.",
-    href: "/explore",
-  },
-  {
-    icon: <Shield className="h-8 w-8" />,
-    stat: "+73%",
-    title: "Incident Reduction",
-    description: "With certified operators.",
-    href: "/certify",
-  },
-  {
-    icon: <TrendingUp className="h-8 w-8" />,
-    stat: "+34%",
-    title: "Earning Premium",
-    description: "RCO holders on RoboWork.",
-    href: "/robowork",
-  },
-  {
-    icon: <Zap className="h-8 w-8" />,
-    stat: "6",
-    title: "Certification Levels",
-    description: "From awareness to CRO.",
-    href: "/certify",
-  },
-  {
-    icon: <Target className="h-8 w-8" />,
-    stat: "$24T",
-    title: "Market by 2040",
-    description: "Robotics mega-industry.",
-    href: "/market",
-  },
-];
+// Claim-based stats (+73% incident reduction, +34% earning premium, $24T market)
+// are intentionally absent: no citation exists anywhere in the repo for them.
+// Only database-backed numbers and product facts (cert level count) render here.
+export function TrustStack({
+  totalRobots,
+  manufacturerCount,
+}: {
+  totalRobots: number;
+  manufacturerCount: number;
+}) {
+  const signals: TrustSignal[] = [
+    {
+      stat: "0%",
+      label: "MANUFACTURER BIAS",
+      description: "No paid placements. Ever.",
+      href: "/methodology",
+    },
+    {
+      stat: String(totalRobots),
+      label: "ROBOTS TRACKED",
+      description: "Every spec, every review.",
+      href: "/explore",
+    },
+    {
+      stat: String(manufacturerCount),
+      label: "MANUFACTURERS",
+      description: "Independently scored.",
+      href: "/manufacturers",
+    },
+    {
+      stat: String(CERT_LEVELS.length),
+      label: "CERTIFICATION LEVELS",
+      description: "From awareness to CRO.",
+      href: "/certify",
+    },
+  ];
 
-export function TrustStack() {
   return (
-    <section className="bg-gray-950 py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-            Why Robotomated
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-gray-300">
-            The intelligence layer robotics was missing. Independent, transparent, trusted.
-          </p>
-        </div>
+    <section className="px-6 py-28" style={{ background: "var(--theme-bg)" }}>
+      <div className="mx-auto max-w-7xl">
+        <div className="section-marker">03 / TRUST</div>
+        <h2
+          className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
+          style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "var(--theme-text-primary)" }}
+        >
+          Independent by design
+        </h2>
 
-        {/* Grid */}
-        <div className="grid gap-6 md:grid-cols-3">
-          {TRUST_SIGNALS.map((signal, idx) => (
-            <Link key={idx} href={signal.href}>
-              <div className="flex h-full cursor-pointer flex-col rounded-lg border border-gray-800 bg-gray-900 p-8 transition-all hover:border-blue-600 hover:bg-gray-800/50">
-                {/* Icon */}
-                <div className="mb-6 text-blue-400">{signal.icon}</div>
-
-                {/* Stat */}
-                <p className="mb-2 text-4xl font-bold text-white">{signal.stat}</p>
-
-                {/* Title */}
-                <h3 className="mb-2 text-lg font-semibold text-white">{signal.title}</h3>
-
-                {/* Description */}
-                <p className="flex-grow text-sm text-gray-400">{signal.description}</p>
-
-                {/* Arrow */}
-                <p className="mt-4 text-sm font-medium text-blue-400">Learn more &rarr;</p>
-              </div>
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4">
+          {signals.map((signal, i) => (
+            <Link
+              key={signal.label}
+              href={signal.href}
+              className="group px-6 py-8"
+              style={{ borderRight: i < signals.length - 1 ? "1px solid var(--theme-border)" : "none" }}
+            >
+              <span
+                className="block font-[family-name:var(--font-mono)] font-medium"
+                style={{ fontSize: "clamp(28px, 3vw, 48px)", color: "var(--theme-text-primary)" }}
+              >
+                {signal.stat}
+              </span>
+              <span
+                className="mt-2 block text-[12px] font-medium uppercase tracking-[0.12em]"
+                style={{ color: "var(--theme-text-muted)" }}
+              >
+                {signal.label}
+              </span>
+              <span className="mt-3 block text-[14px]" style={{ color: "var(--theme-text-secondary)" }}>
+                {signal.description}
+              </span>
+              <span
+                className="mt-4 block text-[12px] font-medium uppercase tracking-[0.12em] text-white/40 transition-colors group-hover:text-white"
+              >
+                View &rarr;
+              </span>
             </Link>
           ))}
         </div>

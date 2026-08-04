@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { Search, ShoppingCart, Briefcase, Award } from "lucide-react";
 
 interface CTAOption {
-  icon: React.ReactNode;
   title: string;
   description: string;
   cta: string;
@@ -12,73 +10,79 @@ interface CTAOption {
 
 const CTA_OPTIONS: CTAOption[] = [
   {
-    icon: <Search className="h-8 w-8" />,
-    title: "Compare & Research",
-    description: "Search 986 robots, run TCO calc, read independent reviews.",
-    cta: "Explore Robots",
+    title: "Compare & research",
+    description: "Search the full database, run TCO calculations, read independent reviews.",
+    cta: "Explore robots",
     href: "/explore",
-    intent: "Decision-maker / Researcher",
+    intent: "DECISION-MAKER / RESEARCHER",
   },
   {
-    icon: <ShoppingCart className="h-8 w-8" />,
-    title: "Buy or Lease",
-    description: "Purchase outright, lease from $1,500/mo, or certified pre-owned.",
-    cta: "Find My Robot",
+    title: "Buy or lease",
+    description: "Purchase outright, lease monthly, or certified pre-owned.",
+    cta: "Find my robot",
     href: "/find-my-robot",
-    intent: "Procurement / Operations",
+    intent: "PROCUREMENT / OPERATIONS",
   },
   {
-    icon: <Briefcase className="h-8 w-8" />,
-    title: "Hire a Robot",
+    title: "Hire a robot",
     description: "Post a job, get verified bids in 24h. Pay per outcome, not equipment.",
-    cta: "Post a Job",
+    cta: "Post a job",
     href: "/robowork/post",
-    intent: "RaaS Buyer",
+    intent: "RAAS BUYER",
   },
   {
-    icon: <Award className="h-8 w-8" />,
-    title: "Get Certified",
-    description: "6-level RCO program. Earn more on RoboWork. Required by insurers.",
-    cta: "Start Certification",
+    title: "Get certified",
+    description: "The RCO program. Earn more on RoboWork.",
+    cta: "Start certification",
     href: "/certify",
-    intent: "Operators / Professionals",
+    intent: "OPERATORS / PROFESSIONALS",
   },
 ];
 
 export function CTANavigation() {
   return (
-    <section className="bg-black py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white">Choose Your Path</h2>
-          <p className="text-gray-400">
-            Robotomated works for everyone in the robot lifecycle.
-          </p>
-        </div>
+    <section className="px-6 py-28" style={{ background: "var(--theme-bg)" }}>
+      <div className="mx-auto max-w-7xl">
+        <div className="section-marker">02 / CHOOSE YOUR PATH</div>
+        <h2
+          className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
+          style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "var(--theme-text-primary)" }}
+        >
+          One platform, four ways in
+        </h2>
 
-        {/* Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {CTA_OPTIONS.map((option, idx) => (
-            <Link key={idx} href={option.href}>
-              <div className="flex h-full cursor-pointer flex-col rounded-lg border border-gray-800 bg-gray-900 p-8 transition-all hover:border-blue-500 hover:bg-gray-800">
-                {/* Icon */}
-                <div className="mb-6 text-blue-400">{option.icon}</div>
+        <div className="mt-12 grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: "var(--theme-border)" }}>
+          {CTA_OPTIONS.map((option) => (
+            <Link
+              key={option.href}
+              href={option.href}
+              className="group flex h-full flex-col p-8 transition-colors"
+              style={{ background: "var(--theme-bg)" }}
+            >
+              <span
+                className="block text-[11px] font-medium uppercase tracking-[0.12em]"
+                style={{ color: "var(--theme-text-muted)" }}
+              >
+                {option.intent}
+              </span>
 
-                {/* Title */}
-                <h3 className="mb-2 text-lg font-semibold text-white">{option.title}</h3>
+              <span
+                className="mt-4 block font-[family-name:var(--font-sans)] text-[18px] font-medium"
+                style={{ color: "var(--theme-text-primary)" }}
+              >
+                {option.title}
+              </span>
 
-                {/* Description */}
-                <p className="mb-6 flex-grow text-sm text-gray-400">{option.description}</p>
+              <span className="mt-2 block flex-grow text-[14px] leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
+                {option.description}
+              </span>
 
-                {/* Button-styled CTA (span — the whole card is already a link) */}
-                <span className="block w-full rounded-lg bg-blue-600 py-3 text-center font-semibold text-white transition-colors group-hover:bg-blue-700">
-                  {option.cta}
-                </span>
-
-                {/* Intent Label */}
-                <p className="mt-4 text-center text-xs text-gray-500">For: {option.intent}</p>
-              </div>
+              <span
+                className="mt-6 inline-block self-start border border-white/20 px-4 py-2 text-[12px] font-medium uppercase tracking-[0.04em] text-white/80 transition-colors group-hover:border-white group-hover:text-white"
+                style={{ borderRadius: "2px" }}
+              >
+                {option.cta} &rarr;
+              </span>
             </Link>
           ))}
         </div>

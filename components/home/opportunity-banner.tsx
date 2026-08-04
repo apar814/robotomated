@@ -46,7 +46,7 @@ export function OpportunityBanner() {
       style={{ borderColor: "var(--theme-border)", background: "var(--theme-bg)", color: "var(--theme-text-primary)" }}
     >
       <div className="mx-auto max-w-7xl">
-        <div className="section-marker mb-4">07 / THE OPPORTUNITY</div>
+        <div className="section-marker mb-4">08 / THE OPPORTUNITY</div>
         <h2
           className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.03em]"
           style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--theme-text-primary)" }}

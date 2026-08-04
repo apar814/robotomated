@@ -14,13 +14,15 @@ interface NewsItem {
 function relativeTime(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
   const hours = Math.floor(diff / 3600000);
-  if (hours < 1) return "Just now";
-  if (hours < 24) return `${hours}h ago`;
+  if (hours < 1) return "JUST NOW";
+  if (hours < 24) return `${hours}H AGO`;
   const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
+  if (days < 7) return `${days}D AGO`;
   const weeks = Math.floor(days / 7);
-  if (weeks < 5) return `${weeks}w ago`;
-  return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  if (weeks < 5) return `${weeks}W AGO`;
+  return new Date(dateStr)
+    .toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    .toUpperCase();
 }
 
 export async function NewsHub({ limit = 6, featured = false }: { limit?: number; featured?: boolean }) {
@@ -29,76 +31,69 @@ export async function NewsHub({ limit = 6, featured = false }: { limit?: number;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sb = supabase as any;
 
-    const { data: newsItems, error } = await sb
+    const { data, error } = await sb
       .from("news_items")
       .select("id, title, summary, source, category, url, created_at")
       .order("created_at", { ascending: false })
       .limit(limit);
 
     if (error) throw error;
+    const newsItems = (data ?? []) as NewsItem[];
+    if (newsItems.length === 0) return null;
 
     return (
-      <section className={featured ? "bg-black py-16" : "py-12"}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-white">
-              {featured ? "Robotics Intelligence Feed" : "Latest News"}
+      <section className="px-6 py-28" style={{ background: "var(--theme-bg)" }}>
+        <div className="mx-auto max-w-7xl">
+          <div className="section-marker">04 / INTELLIGENCE</div>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2
+              className="font-[family-name:var(--font-sans)] font-medium tracking-[-0.02em]"
+              style={{ fontSize: "clamp(32px, 4vw, 40px)", color: "var(--theme-text-primary)" }}
+            >
+              Latest robotics intelligence
             </h2>
-            <Link href="/news" className="text-sm text-blue-400 hover:text-blue-300">
+            <Link
+              href="/news"
+              className="text-[12px] font-medium uppercase tracking-[0.12em] text-white/40 transition-colors hover:text-white"
+            >
               View all &rarr;
             </Link>
           </div>
 
-          {/* News Grid */}
-          <div className={`grid gap-6 ${featured ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
-            {(newsItems as NewsItem[] | null)?.map((item) => (
-              <article
-                key={item.id}
-                className="rounded-lg border border-gray-800 bg-gray-900 p-6 transition-all hover:border-gray-700"
-              >
-                {/* Category Badge */}
-                <div className="mb-3 inline-block">
-                  <span className="rounded-full bg-blue-900 px-3 py-1 text-xs font-semibold text-blue-200">
-                    {item.category || "Industry"}
+          {/* Editorial cards — no backgrounds, no borders; hairline rules between items */}
+          <div className={`mt-12 grid gap-x-10 ${featured ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+            {newsItems.map((item) => (
+              <article key={item.id} className="pt-6 pb-10" style={{ borderTop: "1px solid var(--theme-border)" }}>
+                {/* Metadata row — uppercase labels, timestamp in --interactive */}
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium uppercase tracking-[0.12em]">
+                  <span style={{ color: "var(--theme-text-muted)" }}>{item.source}</span>
+                  <span style={{ color: "var(--theme-text-muted)" }}>&middot;</span>
+                  <span style={{ color: "var(--theme-text-muted)" }}>{item.category || "INDUSTRY"}</span>
+                  <span style={{ color: "var(--theme-text-muted)" }}>&middot;</span>
+                  <span className="font-[family-name:var(--font-mono)]" style={{ color: "var(--interactive, #D4D4D4)" }}>
+                    {relativeTime(item.created_at)}
                   </span>
                 </div>
 
-                {/* Date */}
-                <p className="mb-2 text-xs text-gray-500">{relativeTime(item.created_at)}</p>
-
-                {/* Title */}
-                <h3 className="mb-3 line-clamp-2 text-lg font-semibold text-white">
-                  {item.title}
+                <h3 className="mt-3">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-[family-name:var(--font-sans)] text-[18px] font-medium leading-snug text-white/90 transition-colors hover:text-white"
+                  >
+                    {item.title}
+                  </a>
                 </h3>
 
-                {/* Summary */}
-                <p className="mb-4 line-clamp-3 text-sm text-gray-400">{item.summary}</p>
-
-                {/* Footer: Source + Link */}
-                <div className="flex items-center justify-between border-t border-gray-800 pt-4">
-                  <span className="text-xs text-gray-500">{item.source}</span>
-                  {item.url && (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium text-blue-400 hover:text-blue-300"
-                    >
-                      Read &rarr;
-                    </a>
-                  )}
-                </div>
+                {item.summary && (
+                  <p className="mt-3 line-clamp-3 text-[14px] leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
+                    {item.summary}
+                  </p>
+                )}
               </article>
             ))}
           </div>
-
-          {/* Empty State */}
-          {(!newsItems || newsItems.length === 0) && (
-            <div className="py-12 text-center">
-              <p className="text-gray-400">No news available yet.</p>
-            </div>
-          )}
         </div>
       </section>
     );
