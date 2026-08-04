@@ -86,7 +86,7 @@ export async function NewsHub({ limit = 6, featured = false }: { limit?: number;
                   </a>
                 </h3>
 
-                {item.summary && (
+                {item.summary && item.summary !== item.title && (
                   <p className="mt-3 line-clamp-3 text-[14px] leading-relaxed" style={{ color: "var(--theme-text-secondary)" }}>
                     {item.summary}
                   </p>
