@@ -448,16 +448,15 @@ export default function CROPage() {
         </div>
       </section>
 
-      {/* ═══ THE ELON TEST ═══ */}
+      {/* ═══ THE STANDARD ═══ */}
       <section className="px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent p-8">
             <p className="font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-white/60">
-              [ THE ELON TEST ]
+              [ THE STANDARD ]
             </p>
             <h3 className="mt-4 font-display text-xl font-bold text-white sm:text-2xl">
-              &ldquo;Would Elon hire someone with CRO? Only if they earned
-              it the right way.&rdquo;
+              CRO cannot be bought. Every holder has:
             </h3>
 
             <div className="mt-6 space-y-3">

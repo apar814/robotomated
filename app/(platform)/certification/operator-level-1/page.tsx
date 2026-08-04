@@ -6,11 +6,11 @@ import type { Cohort } from "@/lib/workforce/types";
 export const metadata: Metadata = {
   title: "Operator Level 1 Certification — $399 Early Bird | Robotomated",
   description:
-    "Become a Robotomated Certified Operator in 4 weeks. Hybrid live + self-paced. 10 hrs/week. $45-75K starting salary. Placement assistance included. No prerequisites.",
+    "Become a Robotomated Certified Operator in 4 weeks. Hybrid live + self-paced. 10 hrs/week. Placement assistance included. No prerequisites.",
   openGraph: {
     title: "Operator Level 1 Certification | Robotomated",
     description:
-      "Become a certified robot operator in 4 weeks. $45-75K starting salary. Placement assistance included.",
+      "Become a certified robot operator in 4 weeks. Placement assistance included.",
     url: "https://robotomated.com/certification/operator-level-1",
     type: "website",
   },
@@ -70,10 +70,6 @@ const MODULES = [
 ];
 
 const FAQ = [
-  {
-    q: "What salary can I expect after certification?",
-    a: "Certified robot operators typically start at $45,000-$75,000 depending on role type and location. Specialized roles like cobot programmers and AMR fleet managers are at the higher end. The Bureau of Labor Statistics projects 25%+ growth in automation-related roles through 2030.",
-  },
   {
     q: "Are there any prerequisites?",
     a: "None. The program is designed for career changers and people new to robotics. We recommend completing our free Level 0 Robot Awareness quiz first to build familiarity, but it is not required.",
@@ -155,7 +151,7 @@ export default async function OperatorLevel1Page({
           <span className="text-white">Robot Operator</span> in 4 Weeks
         </h1>
         <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-2">
-          $45-75K starting roles. No prerequisites. Placement assistance included.
+          No prerequisites. Placement assistance included.
         </p>
         <p className="text-base text-text-tertiary max-w-xl mx-auto mb-8">
           The robotics industry needs operators now. Companies are deploying
@@ -198,7 +194,7 @@ export default async function OperatorLevel1Page({
             { v: "4 weeks", l: "Program Length" },
             { v: "10 hrs/wk", l: "Time Commitment" },
             { v: "70%", l: "Passing Score" },
-            { v: "$45-75K", l: "Starting Salary" },
+            { v: "None", l: "Prerequisites" },
           ].map((s) => (
             <div
               key={s.l}

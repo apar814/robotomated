@@ -83,6 +83,15 @@ export interface MarketClaim {
  *
  * "field growing 25% year-over-year" (/certify/why-certify hero)
  *   Softened to "fast-growing" — growth figure had no source.
+ *
+ * "$45-75K starting salary" — operator-level-1 (metadata, OG, hero,
+ * stats card, salary FAQ)
+ *   Removed 2026-08-03. Unsourced range presented as a program outcome;
+ *   the FAQ's BLS growth attribution was itself unverified.
+ *
+ * "The Elon Test" fabricated quote (/certify/cro)
+ *   Removed 2026-08-03. Invented quote attached to a real named person.
+ *   Section renamed [THE STANDARD]; factual CRO requirements retained.
  */
 export const MARKET_CLAIMS: Record<string, MarketClaim> = {
   marketProjection: {
