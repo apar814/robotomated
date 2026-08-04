@@ -19,6 +19,10 @@ import { MarketPulseTicker } from "@/components/home/market-pulse-ticker";
 import { WhyRobotomated } from "@/components/home/why-robotomated";
 import { Typewriter } from "@/components/home/typewriter";
 import { WorkforceAnnouncement } from "@/components/home/workforce-announcement";
+import { NewsHub } from "@/components/home/news-hub";
+import { HeroVideoLoop } from "@/components/home/hero-video-loop";
+import { TrustStack } from "@/components/home/trust-stack";
+import { CTANavigation } from "@/components/home/cta-navigation";
 import { MotionSection } from "@/components/ui/motion-section";
 import type { RobotCategory } from "@/lib/supabase/types";
 
@@ -134,6 +138,14 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          1.5. TIER-1 OVERHAUL — video, paths, trust, news
+          ══════════════════════════════════════════ */}
+      <HeroVideoLoop />
+      <CTANavigation />
+      <TrustStack />
+      <NewsHub limit={6} featured={true} />
 
       {/* ══════════════════════════════════════════
           2. STATS BAR
