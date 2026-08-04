@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CertificationRoiCalculator } from "@/components/certify/roi-calculator";
 import { CERT_LEVELS } from "@/lib/certifications";
 import { CareerArc } from "@/components/certify/career-arc";
 
@@ -206,18 +205,6 @@ export default function CertifyPage() {
             operate any robot under production pressure.
           </p>
 
-          {/* ROI headline */}
-          <div className="mx-auto mb-14 max-w-2xl rounded-lg border border-border bg-white/5 px-6 py-4 text-center">
-            <p className="text-sm text-white">
-              The average RCO Master earns{" "}
-              <span className="font-bold text-white">$40,000 more per year</span>{" "}
-              than an uncertified operator. The certification pays for itself in{" "}
-              <span className="font-bold text-white">11 days</span>.
-            </p>
-            <p className="mt-1 text-xs text-muted">
-              Most students complete Foundation to Master in 14 weeks.
-            </p>
-          </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
             {CERT_LEVELS.map((lvl) => (
@@ -340,17 +327,11 @@ export default function CertifyPage() {
                   </div>
                 </div>
 
-                {/* Career outcomes + salary */}
+                {/* Career outcomes */}
                 <div className="mt-5 border-t border-border pt-4">
-                  <div className="flex items-baseline justify-between">
-                    <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
-                      Career Outcome
-                    </p>
-                    <p className="text-base font-bold text-white">
-                      {lvl.salaryBump}
-                    </p>
-                  </div>
-                  <p className="mt-0.5 text-right text-[13px] text-muted">avg. salary increase</p>
+                  <p className="font-[family-name:var(--font-ui)] text-[13px] font-semibold uppercase tracking-[0.1em] text-muted">
+                    Career Paths
+                  </p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {lvl.careers.map((c) => (
                       <span
@@ -594,7 +575,7 @@ export default function CertifyPage() {
                 description:
                   "Deploy and manage AI agents that control physical robots. Prompt engineering for physical systems, agent behavior auditing, constraint design, multi-agent coordination.",
                 career: "AI Robot Systems Engineer",
-                premium: "60% salary premium",
+                covers: "Agent constraint design · Behavior auditing · Multi-agent coordination",
                 icon: "A",
               },
               {
@@ -603,7 +584,7 @@ export default function CertifyPage() {
                 description:
                   "Secure robot deployments against physical and cyber threats. Penetration testing, secure architecture, sensor spoofing detection, incident response for physical AI.",
                 career: "Robot Security Engineer",
-                premium: "80% salary premium",
+                covers: "Penetration testing · Secure architecture · Sensor spoofing · Incident response",
                 icon: "S",
               },
               {
@@ -612,7 +593,7 @@ export default function CertifyPage() {
                 description:
                   "Operate robots through digital twin infrastructure. NVIDIA Omniverse, sim-to-real validation, predictive maintenance, scenario testing methodology.",
                 career: "Digital Twin Engineer",
-                premium: "40% salary premium",
+                covers: "Omniverse workflows · Sim-to-real validation · Predictive maintenance",
                 icon: "T",
               },
             ].map((track) => (
@@ -638,7 +619,7 @@ export default function CertifyPage() {
                     <span className="text-white">Career:</span>{" "}
                     {track.career}
                   </p>
-                  <p className="text-xs text-white">{track.premium}</p>
+                  <p className="text-xs text-white">{track.covers}</p>
                 </div>
                 <button className="mt-4 w-full rounded-lg border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
                   Join Waitlist
@@ -766,22 +747,6 @@ export default function CertifyPage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ═══ YOUR ROI ═══ */}
-      <section className="border-t border-border px-4 py-20">
-        <div className="mx-auto max-w-3xl">
-          <p className="mb-2 text-center font-[family-name:var(--font-brand)] text-[13px] font-medium uppercase tracking-[0.2em] text-muted">
-            [ YOUR ROI ]
-          </p>
-          <h2 className="mb-4 text-center font-display text-3xl font-bold">
-            What Is Certification Worth to You?
-          </h2>
-          <p className="mx-auto mb-8 max-w-lg text-center text-muted">
-            Enter your current salary and target level. See exactly what certification is worth over 5 years.
-          </p>
-          <CertificationRoiCalculator />
         </div>
       </section>
 

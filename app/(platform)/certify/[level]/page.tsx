@@ -685,9 +685,6 @@ export default async function CertificationDetailPage({
               </span>
             ))}
           </div>
-          <p className="mt-4 text-lg font-semibold text-white">
-            Average salary increase: {cert.salaryBump}
-          </p>
         </div>
       </section>
 

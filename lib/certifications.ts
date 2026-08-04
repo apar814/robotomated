@@ -20,7 +20,6 @@ export interface CertLevel {
   proves: string;
   outcomes: string[];
   careers: string[];
-  salaryBump: string;
   domains: { name: string; pct: number }[];
   renewalYears: number;
   prerequisites: string;
@@ -56,7 +55,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "Explain ROI fundamentals of automation to stakeholders",
     ],
     careers: ["Any role near robots", "Career changers", "Facility staff"],
-    salaryBump: "$42K\u201358K entry roles",
     domains: [
       { name: "Robot Revolution", pct: 20 },
       { name: "How Robots Work", pct: 25 },
@@ -94,7 +92,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "AMR Technician",
       "Warehouse Automation Specialist",
     ],
-    salaryBump: "$8,000-15,000/year",
     domains: [
       { name: "Safety Fundamentals", pct: 25 },
       { name: "Robot Basics", pct: 20 },
@@ -131,7 +128,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "Integration Specialist",
       "Automation Engineer",
     ],
-    salaryBump: "$20,000-35,000/year",
     domains: [
       { name: "Advanced Programming", pct: 25 },
       { name: "Fleet Management", pct: 20 },
@@ -168,7 +164,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "Fleet Architect",
       "Technical Director",
     ],
-    salaryBump: "$40,000-80,000/year",
     domains: [
       { name: "Sim-to-Real Transfer", pct: 20 },
       { name: "Dexterous Manipulation", pct: 25 },
@@ -206,7 +201,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "VP Operations",
       "Chief Robotics Officer",
     ],
-    salaryBump: "$60,000-150,000/year",
     domains: [
       { name: "Program Design & Training", pct: 30 },
       { name: "Incident Command", pct: 35 },
@@ -242,7 +236,6 @@ export const CERT_LEVELS: CertLevel[] = [
       "Robotics Board Member",
       "Industry Advisor",
     ],
-    salaryBump: "Executive tier",
     domains: [
       { name: "Portfolio Defense", pct: 33 },
       { name: "Panel Review (90 min)", pct: 34 },

@@ -2,79 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Why Get RCO Certified -- The ROI of Robot Operator Certification | Robotomated",
+  title: "Why Get RCO Certified -- Robot Operator Certification | Robotomated",
   description:
-    "Data-driven case for RCO certification. Salary increases, job placement, employer requirements, and what certifications will matter in 2030.",
+    "What RCO certification tests, the standards behind the curriculum, and how employers verify credentials.",
   keywords: [
-    "robot operator certification ROI",
-    "robotics certification salary",
+    "robot operator certification",
     "robot operator jobs",
     "RCO certification value",
   ],
 };
-
-const SALARY_DATA = [
-  {
-    level: "Foundation",
-    levelNum: 1,
-    avgIncrease: "$8,000-15,000",
-    roles: "Robot Operator, AMR Technician",
-    timeToEarn: "20-40 hours study",
-    color: "blue",
-  },
-  {
-    level: "Specialist",
-    levelNum: 2,
-    avgIncrease: "$20,000-35,000",
-    roles: "Integration Specialist, Automation Engineer",
-    timeToEarn: "60-100 hours study",
-    color: "green",
-  },
-  {
-    level: "Master",
-    levelNum: 3,
-    avgIncrease: "$40,000-80,000",
-    roles: "Senior Robot Engineer, Fleet Architect",
-    timeToEarn: "120-200 hours study",
-    color: "violet",
-  },
-  {
-    level: "Fleet Commander",
-    levelNum: 4,
-    avgIncrease: "$60,000-150,000",
-    roles: "Head of Automation, VP Operations, CRO",
-    timeToEarn: "200+ hours study",
-    color: "amber",
-  },
-];
-
-const EMPLOYER_TRENDS = [
-  {
-    year: "2025",
-    trend: "Early adopters require certification for robot operators",
-    pct: "12%",
-  },
-  {
-    year: "2026",
-    trend: "Insurance companies offer discounts for certified operators",
-    pct: "25%",
-  },
-  {
-    year: "2027",
-    trend: "Safety-critical industries mandate certification",
-    pct: "45%",
-  },
-  {
-    year: "2028",
-    trend: "Majority of job postings list certification as preferred",
-    pct: "60%",
-  },
-  {
-    year: "2030",
-    trend: "RCO becomes industry standard — like CPA for finance",
-    pct: "80%+",
-  },
-];
 
 // Substantiated program facts only — pulled from the exam configuration
 // itself (lib/certifications.ts). No testimonials: unattributed quotes were
@@ -108,101 +44,10 @@ export default function WhyCertifyPage() {
             <span className="text-white font-semibold">RCO Certification</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-            In a field growing 25% year-over-year, certification is the
+            In a fast-growing field, certification is the
             difference between being a robot operator and being{" "}
             <span className="font-semibold text-white">the person they call when it matters</span>.
           </p>
-        </div>
-      </section>
-
-      {/* Salary Impact */}
-      <section className="border-b border-border px-4 py-16">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-2 text-center font-display text-2xl font-bold">
-            Salary Impact by Level
-          </h2>
-          <p className="mb-10 text-center text-sm text-muted">
-            Based on industry salary data for robotics professionals with vs. without certification.
-          </p>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            {SALARY_DATA.map((s) => {
-              const colorClasses: Record<string, { badge: string; accent: string }> = {
-                blue: { badge: "bg-white/10 text-white", accent: "text-white" },
-                green: { badge: "bg-white/10 text-white", accent: "text-white" },
-                violet: { badge: "bg-white/10 text-white", accent: "text-white" },
-                amber: { badge: "bg-white/10 text-white", accent: "text-white" },
-              };
-              const c = colorClasses[s.color] || colorClasses.blue;
-
-              return (
-                <div
-                  key={s.level}
-                  className="rounded-xl border border-border bg-[#0A0A0A] p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`rounded-full px-3 py-1 text-[13px] font-bold uppercase tracking-wider ${c.badge}`}
-                    >
-                      Level {s.levelNum}
-                    </span>
-                    <span className="text-xs text-muted">{s.timeToEarn}</span>
-                  </div>
-                  <h3 className="mt-3 font-display text-xl font-bold text-white">
-                    {s.level}
-                  </h3>
-                  <p className={`mt-2 font-[family-name:var(--font-brand)] text-2xl font-bold ${c.accent}`}>
-                    +{s.avgIncrease}/year
-                  </p>
-                  <p className="mt-1 text-xs text-muted">{s.roles}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Employer Requirements Forecast */}
-      <section className="border-b border-border px-4 py-16">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-2 text-center font-display text-2xl font-bold">
-            Where Employer Requirements Are Heading
-          </h2>
-          <p className="mb-10 text-center text-sm text-muted">
-            Projected percentage of robotics employers requiring or preferring certification.
-          </p>
-
-          <div className="space-y-4">
-            {EMPLOYER_TRENDS.map((t) => (
-              <div
-                key={t.year}
-                className="flex items-center gap-4"
-              >
-                <span className="w-12 shrink-0 font-[family-name:var(--font-mono)] text-sm font-bold text-white">
-                  {t.year}
-                </span>
-                <div className="flex-1">
-                  <div className="h-3 w-full rounded-full bg-border">
-                    <div
-                      className="h-3 rounded-full bg-white/40"
-                      style={{ width: t.pct }}
-                    />
-                  </div>
-                </div>
-                <span className="w-10 shrink-0 text-right font-[family-name:var(--font-mono)] text-sm font-bold text-white">
-                  {t.pct}
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 space-y-2">
-            {EMPLOYER_TRENDS.map((t) => (
-              <p key={t.year} className="text-xs text-muted">
-                <span className="font-semibold text-white">{t.year}:</span>{" "}
-                {t.trend}
-              </p>
-            ))}
-          </div>
         </div>
       </section>
 

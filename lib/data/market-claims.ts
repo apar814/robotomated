@@ -52,6 +52,37 @@ export interface MarketClaim {
  * Unattributed testimonials (3, /certify/why-certify)
  *   Removed 2026-08-03. Quotes from unnamed companies with no attribution
  *   are indistinguishable from fabrication. Replaced with program facts.
+ *
+ * ── Tier-1 certify pass (2026-08-03, pre-push) ──
+ *
+ * SALARY_DATA — per-level "avg increase" $8K-15K / $20K-35K / $40K-80K /
+ * $60K-150K (/certify/why-certify "Salary Impact by Level")
+ *   Removed with its section. No salary data exists; "based on industry
+ *   salary data" was false.
+ *
+ * EMPLOYER_TRENDS — 12%→25%→45%→60%→80%+ adoption curve 2025-2030
+ * (/certify/why-certify "Where Employer Requirements Are Heading")
+ *   Removed with its section. Invented forecast rendered as a data chart.
+ *
+ * salaryBump config field — "$42K-58K entry roles" ... "Executive tier"
+ * (lib/certifications.ts, rendered on /certify and /certify/[level])
+ *   Field deleted from schema and all 6 levels. No source.
+ *
+ * "60% / 80% / 40% salary premium" — specialty track badges (/certify)
+ *   Replaced with track coverage (domains/scope). Invented premiums for
+ *   tracks that don't exist yet.
+ *
+ * "The average RCO Master earns $40,000 more per year ... pays for itself
+ * in 11 days ... most students complete in 14 weeks" (/certify ROI headline)
+ *   Removed. Invented earnings + completion stats for a new program.
+ *
+ * CertificationRoiCalculator + AVG_INCREASE ($12K/$27K/$55K/$100K)
+ * (components/certify/roi-calculator.tsx, rendered on /certify "Your ROI")
+ *   Component deleted with its section. An interactive projector of
+ *   invented per-level salary increases.
+ *
+ * "field growing 25% year-over-year" (/certify/why-certify hero)
+ *   Softened to "fast-growing" — growth figure had no source.
  */
 export const MARKET_CLAIMS: Record<string, MarketClaim> = {
   marketProjection: {
