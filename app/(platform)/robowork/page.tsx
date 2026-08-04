@@ -4,6 +4,7 @@ import { createServerClient } from "@/lib/supabase/server";
 import { JOB_CATEGORIES, formatBudget, relativeTime, URGENCY_CONFIG } from "@/lib/robowork/constants";
 import { cn } from "@/lib/utils/cn";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ActivityFeed } from "@/components/robowork/activity-feed";
 
 export const metadata: Metadata = {
   title: "RoboWork — Robot Service Marketplace | Robotomated",
@@ -323,6 +324,9 @@ export default async function RoboWorkPage() {
           </div>
         </div>
       </section>
+
+      {/* ── ACTIVITY FEED ── */}
+      <ActivityFeed />
 
       {/* ── MARKET RATES ── */}
       <section className="border-b border-border px-4 py-12 sm:px-6 lg:px-8">

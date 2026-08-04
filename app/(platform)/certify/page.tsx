@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CertificationRoiCalculator } from "@/components/certify/roi-calculator";
 import { CERT_LEVELS } from "@/lib/certifications";
+import { CareerArc } from "@/components/certify/career-arc";
 
 export const metadata: Metadata = {
   title:
@@ -186,6 +187,9 @@ export default function CertifyPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ CAREER ARC ═══ */}
+      <CareerArc />
 
       {/* ═══ CERTIFICATION LEVELS ═══ */}
       <section id="levels" className="px-4 py-20">
