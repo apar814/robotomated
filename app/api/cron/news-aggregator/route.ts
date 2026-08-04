@@ -14,10 +14,16 @@ interface RssItem {
   description?: string;
 }
 
+// RSS/Atom only — no social platforms, no HTML scraping. Feeds verified live
+// 2026-08-03. Figure AI, Agility Robotics, Apptronik, Universal Robots, and
+// Unitree publish no feeds (probed common paths + autodiscovery) — adding them
+// would require HTML crawling; decide per-source before doing that.
 const RSS_FEEDS = [
   { url: "https://www.therobotreport.com/feed/", source: "The Robot Report" },
   { url: "https://spectrum.ieee.org/feeds/topic/robotics.rss", source: "IEEE Spectrum" },
   { url: "https://roboticsandautomationnews.com/feed/", source: "Robotics & Automation News" },
+  { url: "https://rss.arxiv.org/rss/cs.RO", source: "arXiv cs.RO" },
+  { url: "https://bostondynamics.com/feed/", source: "Boston Dynamics" },
 ];
 
 const CATEGORIES = ["warehouse", "manufacturing", "medical", "agricultural", "construction", "delivery", "drone", "consumer", "funding", "policy", "research"];
