@@ -297,6 +297,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* -- CASE STUDIES -- */}
+      {industry.caseStudies.length > 0 && (
       <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <RevealOnScroll>
@@ -340,6 +341,7 @@ export default async function IndustryPage({ params }: Props) {
           </div>
         </div>
       </section>
+      )}
 
       {/* -- FAQ -- */}
       <section id="faq" className="bg-[#000000] px-4 py-20">

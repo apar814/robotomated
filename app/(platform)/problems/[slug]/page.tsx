@@ -90,6 +90,7 @@ export default async function ProblemPage({ params }: Props) {
       </section>
 
       {/* ── TRENDS: Why this is getting worse ── */}
+      {problem.trends && (
       <section className="bg-[#000000] px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <span className="text-[13px] font-semibold uppercase tracking-widest text-orange">The Trend</span>
@@ -106,6 +107,7 @@ export default async function ProblemPage({ params }: Props) {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── HOW AUTOMATION SOLVES IT ── */}
       <section className="bg-[#000000] px-4 py-20">

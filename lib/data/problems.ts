@@ -8,7 +8,7 @@ export interface ProblemPage {
   categorySlug: string;
   heroStatement: string;
   heroSubtext: string;
-  trends: {
+  trends?: {
     heading: string;
     points: { stat: string; description: string }[];
   };
@@ -39,15 +39,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "warehouse",
     heroStatement: "Warehouse labor costs are rising faster than margins can absorb.",
     heroSubtext: "Average warehouse wages have increased 28% since 2020, with turnover rates exceeding 100% annually in many facilities. For operations running tight margins, the math is becoming impossible.",
-    trends: {
-      heading: "Why labor costs keep climbing",
-      points: [
-        { stat: "28%", description: "Increase in average warehouse wages since 2020, with no signs of slowing" },
-        { stat: "100%+", description: "Annual turnover rate in warehouse roles — every worker replaced costs $5K-$8K in hiring and training" },
-        { stat: "49%", description: "Of warehouse operators report that labor is their single largest cost, exceeding rent and equipment combined" },
-        { stat: "$22/hr", description: "Average fully-loaded cost per warehouse worker in the US, up from $17/hr in 2020" },
-      ],
-    },
     automationSolution: {
       heading: "How warehouse automation addresses labor costs",
       description: "Warehouse robots don't replace your workforce — they multiply it. An AMR handling goods-to-person delivery means each picker covers 3x more orders per shift without walking miles of aisles. The result: fewer hires needed, lower overtime, and dramatic reduction in turnover-related costs.",
@@ -92,15 +83,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "warehouse",
     heroStatement: "You can't hire fast enough — and neither can anyone else.",
     heroSubtext: "The US warehouse sector has over 500,000 unfilled positions. E-commerce growth is creating demand for warehouse workers that the labor market simply cannot meet. Waiting for hiring conditions to improve is not a strategy.",
-    trends: {
-      heading: "Why the shortage isn't going away",
-      points: [
-        { stat: "500K+", description: "Unfilled warehouse positions in the US alone, a number that's grown every year since 2018" },
-        { stat: "35%", description: "Of warehouse operators report they cannot fill open positions within 30 days" },
-        { stat: "270%", description: "Growth in e-commerce order volume since 2019, driving unprecedented demand for warehouse labor" },
-        { stat: "4.5M", description: "Additional warehouse workers needed globally by 2030, per McKinsey estimates" },
-      ],
-    },
     automationSolution: {
       heading: "How to maintain throughput without full staffing",
       description: "Robots allow you to decouple throughput from headcount. Instead of needing 50 workers to process 10,000 orders per day, a fleet of AMRs lets 20 workers handle the same volume. You stop competing for scarce labor and start competing on operational efficiency.",
@@ -145,15 +127,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "warehouse",
     heroStatement: "Your customers expect same-day shipping. Your warehouse delivers in three.",
     heroSubtext: "Amazon has trained consumers to expect next-day or same-day delivery. If your fulfillment takes 2-3 days, you're losing customers to competitors who can move faster. Speed is no longer a differentiator — it's table stakes.",
-    trends: {
-      heading: "Why fulfillment speed is now a survival issue",
-      points: [
-        { stat: "80%", description: "Of consumers expect same-day or next-day delivery, up from 53% in 2020" },
-        { stat: "69%", description: "Of shoppers will switch to a competitor that offers faster delivery" },
-        { stat: "2-4x", description: "The throughput gap between automated and manual warehouses for the same floor space" },
-        { stat: "$15B", description: "Lost revenue annually from order fulfillment delays across US e-commerce" },
-      ],
-    },
     automationSolution: {
       heading: "How automation accelerates fulfillment",
       description: "The bottleneck in most warehouses is walking. Workers spend 60-70% of their shift walking between picks. Goods-to-person robots eliminate this entirely — inventory comes to the picker, picks per hour double or triple, and order-to-ship time drops from hours to minutes.",
@@ -201,10 +174,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why quality pressure is intensifying",
       points: [
-        { stat: "2-5%", description: "Typical defect rate in manual manufacturing processes — each defect costs 3-10x the unit value in rework, returns, and reputation damage" },
-        { stat: "$3.1T", description: "Annual cost of poor quality globally, per ASQ estimates — even small improvements have outsized impact" },
-        { stat: "85%", description: "Of quality issues trace back to process variability, not material or design defects" },
-        { stat: "47%", description: "Increase in product recalls across industries since 2019, driven by tighter regulatory scrutiny" },
+        { stat: "15-20%", description: "Of sales revenue — ASQ's estimate of the cost of poor quality even in mature organizations (ASQ, Cost of Quality)" },
       ],
     },
     automationSolution: {
@@ -251,15 +221,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "medical",
     heroStatement: "Every preventable complication is a patient who trusted you to do better.",
     heroSubtext: "Even in the hands of experienced surgeons, open and laparoscopic procedures carry complication rates of 10-25% depending on the specialty. Robotic-assisted surgery consistently reduces these rates by 30-50% through enhanced precision, 3D visualization, and tremor elimination.",
-    trends: {
-      heading: "Why surgical outcomes are under scrutiny",
-      points: [
-        { stat: "10-25%", description: "Complication rates for traditional surgical approaches, varying by specialty and procedure complexity" },
-        { stat: "30-50%", description: "Reduction in complications with robotic-assisted surgery across urology, gynecology, and general surgery" },
-        { stat: "21%", description: "Shorter hospital stays with robotic surgery vs open procedures, reducing costs and infection risk" },
-        { stat: "$5.6B", description: "Annual cost of preventable surgical complications in US hospitals" },
-      ],
-    },
     automationSolution: {
       heading: "How surgical robots improve outcomes",
       description: "Surgical robots don't replace surgeons — they extend human capability beyond natural limits. 10x magnification, sub-millimeter instrument control, and tremor filtering allow procedures that would be impossible with human hands alone. The result is smaller incisions, less tissue damage, faster recovery, and fewer complications.",
@@ -307,10 +268,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why hospital logistics is reaching a breaking point",
       points: [
-        { stat: "30%", description: "Of nursing time spent on non-patient-care activities like material transport and supply management" },
-        { stat: "500K", description: "Projected nursing shortage in the US by 2030, making every minute of clinical time critical" },
-        { stat: "$1.1M", description: "Average annual cost of manual material transport for a 200-bed hospital" },
-        { stat: "15%", description: "Of medication errors linked to manual transport and handoff processes" },
+        { stat: "1M+", description: "Registered nurses projected to retire from the US workforce by 2030 (AACN Nursing Shortage Fact Sheet, citing Buerhaus et al.)" },
       ],
     },
     automationSolution: {
@@ -357,15 +315,6 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     categorySlug: "agricultural",
     heroStatement: "The people who used to pick your crops aren't coming back.",
     heroSubtext: "US agriculture faces a chronic labor shortage of 300,000+ workers, and it's getting worse every year. An aging farm workforce, stricter immigration enforcement, and competition from better-paying indoor jobs mean farms cannot rely on manual labor the way they have for generations.",
-    trends: {
-      heading: "Why farm labor is disappearing",
-      points: [
-        { stat: "300K+", description: "Unfilled agricultural positions in the US, with shortages particularly acute during harvest season" },
-        { stat: "56", description: "Average age of a US farm worker — the workforce is aging out without replacement" },
-        { stat: "$50B", description: "Annual crop losses in the US attributed to labor shortages and delayed harvesting" },
-        { stat: "40%", description: "Decline in seasonal agricultural visa (H-2A) applicant pool since 2019" },
-      ],
-    },
     automationSolution: {
       heading: "How agricultural robots keep farms productive",
       description: "Agricultural robots can now handle tasks that were considered impossible to automate a decade ago — delicate fruit picking, precision weeding between rows, targeted spraying, and 24/7 crop monitoring. They work at night, in heat, and through weekends. For farms facing existential labor shortages, robots aren't a luxury; they're survival.",
@@ -413,10 +362,7 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why crop loss is a growing crisis",
       points: [
-        { stat: "30-40%", description: "Of global food production lost between field and table, representing $1.2T in annual waste" },
-        { stat: "25%", description: "Of crop losses from pests and disease that could be prevented with earlier detection and targeted treatment" },
-        { stat: "15%", description: "Post-harvest loss from bruising, damage, and improper handling during manual harvesting" },
-        { stat: "$230B", description: "Annual cost of crop losses to US farmers alone" },
+        { stat: "~1/3", description: "Of food produced for human consumption is lost or wasted globally (FAO, Global Food Losses and Food Waste, 2011)" },
       ],
     },
     automationSolution: {
@@ -466,10 +412,8 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why construction can't find workers",
       points: [
-        { stat: "500K+", description: "Additional workers needed in US construction by 2026, per Associated Builders & Contractors" },
-        { stat: "41%", description: "Of construction firms turned down work in 2024 due to inability to staff projects" },
-        { stat: "45%", description: "Decline in trade school enrollment for construction trades over the past decade" },
-        { stat: "$216B", description: "Value of US construction projects delayed or at risk due to labor shortages" },
+        { stat: "500K+", description: "Additional workers the US construction industry needed to attract in 2024 (Associated Builders and Contractors, 2024 workforce analysis)" },
+        { stat: "60%+", description: "Of firms report difficulty filling positions for every craft they employ (AGC, 2024 Workforce Survey Analysis)" },
       ],
     },
     automationSolution: {
@@ -519,10 +463,10 @@ export const PROBLEMS: Record<string, ProblemPage> = {
     trends: {
       heading: "Why traditional safety programs have plateaued",
       points: [
-        { stat: "2.8M", description: "Nonfatal workplace injuries per year in the US, with manufacturing and warehousing among the highest rates" },
-        { stat: "$170B", description: "Annual cost of workplace injuries in the US — workers' comp, lost productivity, legal liability" },
-        { stat: "33%", description: "Of manufacturing injuries from overexertion and repetitive motion — tasks ideally suited for automation" },
-        { stat: "5,486", description: "Workers killed on the job in the US in 2023 — the elimination of hazardous manual tasks saves lives" },
+        { stat: "2.8M", description: "Nonfatal workplace injuries and illnesses reported by US private industry in 2022 (BLS)" },
+        { stat: "$181.4B", description: "Total cost of work injuries in 2024 — wage and productivity losses, medical expenses, administration (NSC Injury Facts)" },
+        { stat: "#1", description: "Overexertion and repetitive motion are the leading causes of serious workplace musculoskeletal injuries (BLS)" },
+        { stat: "5,486", description: "Workers killed on the job in the US in 2022 (BLS Census of Fatal Occupational Injuries)" },
       ],
     },
     automationSolution: {
