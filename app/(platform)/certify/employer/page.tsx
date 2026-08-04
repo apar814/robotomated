@@ -74,16 +74,12 @@ const ROI_STATS = [
     label: "Fewer lost-time incidents in automated deployments (FANUC deployment data)",
   },
   {
-    stat: "40%",
-    label: "More jobs earned by RCO certified RSPs on Robotomated",
+    stat: "6",
+    label: "Certification levels, Level 0 awareness through CRO",
   },
   {
-    stat: "2.3x",
-    label: "Faster robot deployment with trained teams",
-  },
-  {
-    stat: "$18K",
-    label: "Average savings per incident avoided annually",
+    stat: "100%",
+    label: "Of credentials employer-verifiable on the platform",
   },
 ];
 

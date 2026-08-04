@@ -1,3 +1,12 @@
+/**
+ * ILLUSTRATIVE DATA — NOT REAL DEPLOYMENTS.
+ *
+ * The case_study entries below are fictional composites written to model what
+ * a deployment profile looks like. They are NOT sourced from real customers.
+ * Per docs/claims-policy.md, if any of this is ever rendered in UI it MUST
+ * carry a visible "illustrative example" label. As of 2026-08-03 this module
+ * has zero imports — it is dead code and a candidate for deletion.
+ */
 export interface JobProfile {
   id: string;
   job_name: string;

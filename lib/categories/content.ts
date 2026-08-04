@@ -53,9 +53,11 @@ export const CATEGORY_CONTENT: Record<string, CategoryContent> = {
     name: "Medical & Healthcare",
     description: "Surgical systems, hospital delivery robots, disinfection robots, and rehabilitation devices that extend clinical capability and reduce infection risk.",
     stats: [
-      { label: "Market by 2030", value: "$22B" },
-      { label: "Complication reduction", value: "73%" },
-      { label: "Avg stay reduction", value: "60%" },
+      // Clinical outcome claims (complication/stay reduction) removed —
+      // unsourced; see lib/data/market-claims.ts RETIRED block.
+      { label: "Regulatory pathway", value: "FDA 510(k)" },
+      { label: "Robot types", value: "Surgical · Delivery · Disinfection · Rehab" },
+      { label: "Operator control", value: "Surgeon-controlled, not autonomous" },
     ],
     whoUsesIt: "Hospitals, surgical centers, rehabilitation facilities, pharmacies, senior care facilities",
     buyersGuide: [

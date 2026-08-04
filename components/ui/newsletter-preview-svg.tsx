@@ -17,6 +17,12 @@ export function NewsletterPreviewSvg({ className }: { className?: string }) {
       <text x="24" y="58" fill="#555555" fontFamily="monospace" fontSize="11">
         Issue #001 — Weekly Intelligence
       </text>
+      {/* Visible sample label — the numbers below are illustrative mock
+          content, not real data (docs/claims-policy.md) */}
+      <rect x="232" y="28" width="64" height="18" rx="2" fill="none" stroke="#555555" strokeWidth="1" />
+      <text x="264" y="41" fill="#888888" fontFamily="monospace" fontSize="9" fontWeight="600" textAnchor="middle">
+        SAMPLE
+      </text>
 
       {/* Divider */}
       <line x1="24" y1="72" x2="296" y2="72" stroke="#1E2642" strokeWidth="1" />

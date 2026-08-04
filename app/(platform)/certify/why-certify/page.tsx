@@ -76,21 +76,21 @@ const EMPLOYER_TRENDS = [
   },
 ];
 
-const TESTIMONIALS = [
+// Substantiated program facts only — pulled from the exam configuration
+// itself (lib/certifications.ts). No testimonials: unattributed quotes were
+// removed per docs/claims-policy.md.
+const PROGRAM_FACTS = [
   {
-    quote:
-      "The hardest part of scaling our robot fleet isn't the technology — it's finding operators who actually know what they're doing. Certification is the only reliable signal.",
-    author: "VP of Automation, Fortune 500 logistics company",
+    title: "Standards-based curriculum",
+    body: "Exam content covers ISO 10218 (industrial robot safety), ISO/TS 15066 (collaborative robot force and pressure limits), E-Stop and lockout/tagout protocol, and OSHA-tracked incident metrics like lost-time incidents.",
   },
   {
-    quote:
-      "Robot incidents dropped noticeably once we required RCO Foundation for all operators. The ROI on certification pays for itself in the first month.",
-    author: "Director of Safety, major warehouse operator",
+    title: "Proctored, scored, renewable",
+    body: "Every level is a timed exam with a published pass score. Higher levels add practical assessments. Certifications carry renewal dates — the curriculum is updated quarterly as the industry changes.",
   },
   {
-    quote:
-      "When I interview candidates, RCO certification tells me they've been tested on judgment, not just knowledge. That's what matters when things go wrong at 2 AM.",
-    author: "CTO, robotics integration firm",
+    title: "Employer-verifiable credentials",
+    body: "Every certificate has a public verification page. An employer can confirm any candidate's level, standing, and renewal date in seconds — no phone calls, no PDFs.",
   },
 ];
 
@@ -206,23 +206,21 @@ export default function WhyCertifyPage() {
         </div>
       </section>
 
-      {/* What Industry Leaders Say */}
+      {/* What Certification Actually Tests */}
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-10 text-center font-display text-2xl font-bold">
-            What Industry Leaders Say
+            What Certification Actually Tests
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
+            {PROGRAM_FACTS.map((f) => (
               <div
-                key={t.author}
+                key={f.title}
                 className="rounded-xl border border-border bg-[#0A0A0A] p-5"
               >
-                <p className="text-sm leading-relaxed text-muted">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <p className="mt-4 text-xs font-semibold text-white">
-                  — {t.author}
+                <p className="text-sm font-semibold text-white">{f.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {f.body}
                 </p>
               </div>
             ))}

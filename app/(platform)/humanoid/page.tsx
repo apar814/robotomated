@@ -106,6 +106,9 @@ const DEPLOYMENT_TIMELINE = [
   {
     year: "2035",
     title: "Millions Deployed",
+    // TODO: verify the ARK Invest projection against the original publication
+    // before keeping this attribution — see lib/data/market-claims.ts
+    // (marketProjection) for the tracking entry and horizon-year conflict.
     description: "ARK Invest projects humanoid market exceeding $24T. Robots outnumber human workers in select verticals.",
     status: "future" as const,
   },
