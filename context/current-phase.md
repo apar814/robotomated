@@ -36,6 +36,13 @@ launch is gated on database migrations and final verification.
    endpoint registered for /api/stripe/workforce-webhook.
 
 ## Remaining Claims Work (not launch-gating per inventory)
+- **2026-08-11: /learn MDX audit complete — 365 Tier-1 items across 225
+  articles (11 clean).** Fabricated named-hospital clinical studies,
+  invented OSHA/BLS statistics, fake verification claims, internal
+  numeric contradictions. Full itemized inventory:
+  docs/claims-inventory-mdx-2026-08-11.md. This is now the largest
+  outstanding claims liability on the site — several items ship inside
+  FAQPage JSON-LD.
 - Tier-3: rco-questions-trends.ts / rco-questions-commander.ts explanations
   asserting unsourced real-world stats — reframe as scenario assumptions
 - Tier-4: page-by-page pass (eldercare, cleaning, lease, insure, parts,
