@@ -6,6 +6,7 @@ import { BrowseClient } from "@/components/robots/browse-client";
 import { GridSkeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { getCategoryContent } from "@/lib/categories/content";
+import { CategoryGlossaryStrip } from "@/components/learn/category-glossary-strip";
 
 interface Category { id: string; slug: string; name: string; description: string | null }
 interface Mfr { id: string; name: string; robot_count?: number }
@@ -144,6 +145,8 @@ export default async function CategoryPage({ params }: Props) {
           initialCategory={slug}
         />
       </Suspense>
+
+      <CategoryGlossaryStrip category={slug} />
     </div>
   );
 }

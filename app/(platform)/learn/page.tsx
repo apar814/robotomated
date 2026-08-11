@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticles, getCategories } from "@/lib/learn/articles";
+import { EXPLAINERS } from "@/lib/learn/explainers";
+import { GLOSSARY_TERMS } from "@/lib/learn/glossary-index";
 import { ArticleCard } from "@/components/learn/article-card";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { cn } from "@/lib/utils/cn";
@@ -53,6 +55,57 @@ export default function LearnHub() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Field guides */}
+      <section className="border-b border-border px-4 py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="border-b border-border pb-2">
+            <h2 className="font-mono text-xs uppercase tracking-[0.12em] text-text-tertiary">
+              01 / FIELD GUIDES
+            </h2>
+          </div>
+          <p className="mt-4 max-w-2xl text-muted">
+            Long-form guides for buyers and operators — how the technology,
+            the commercial models, and the standards actually work.
+          </p>
+          <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {EXPLAINERS.map((e) => (
+              <li key={e.slug}>
+                <Link href={`/learn/${e.slug}`} className="group block py-1">
+                  <span className="text-foreground transition-colors group-hover:underline">
+                    {e.title}
+                  </span>
+                  <span className="ml-3 font-mono text-[11px] uppercase tracking-[0.12em] text-text-tertiary">
+                    {e.readTime} min
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Glossary */}
+      <section className="border-b border-border px-4 py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="border-b border-border pb-2">
+            <h2 className="font-mono text-xs uppercase tracking-[0.12em] text-text-tertiary">
+              02 / GLOSSARY
+            </h2>
+          </div>
+          <p className="mt-4 max-w-2xl text-muted">
+            {GLOSSARY_TERMS.length} terms across robot types, technical
+            concepts, commercial language, and safety standards — with
+            standards citations where they exist.
+          </p>
+          <Link
+            href="/learn/glossary"
+            className="mt-5 inline-block border border-foreground px-6 py-3 font-mono text-xs uppercase tracking-[0.12em] text-foreground transition-colors hover:bg-foreground hover:text-background"
+          >
+            Browse the glossary &rarr;
+          </Link>
         </div>
       </section>
 

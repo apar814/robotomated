@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 import { getAllIndustrySlugs } from "@/lib/data/industry-types";
 import { getAllCaseStudySlugs } from "@/lib/data/case-studies";
+import { GLOSSARY_TERMS } from "@/lib/learn/glossary-index";
+import { EXPLAINERS } from "@/lib/learn/explainers";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -205,6 +207,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
+  // Learn layer: glossary + field-guide explainers
+  const glossaryPages: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/learn/glossary`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
+    ...GLOSSARY_TERMS.map(t => ({
+      url: `${BASE_URL}/learn/glossary/${t.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    })),
+  ];
+  const explainerPages: MetadataRoute.Sitemap = EXPLAINERS.map(e => ({
+    url: `${BASE_URL}/learn/${e.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   // Case study slugs — from the canonical data module, not MDX. The old
   // fallback to content/guides emitted guide slugs as broken case-study URLs.
   const caseStudySlugs = getAllCaseStudySlugs();
@@ -224,6 +243,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...industryPages,
     ...comparePages,
     ...learnPages,
+    ...glossaryPages,
+    ...explainerPages,
     ...caseStudyPages,
   ];
 }

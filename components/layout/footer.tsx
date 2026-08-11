@@ -17,6 +17,8 @@ const PLATFORM_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
+  { href: "/learn", label: "Learn" },
+  { href: "/learn/glossary", label: "Glossary" },
   { href: "/service", label: "Service & Maintenance" },
   { href: "/developers", label: "Developers" },
   { href: "/manufacturers", label: "Manufacturers" },
