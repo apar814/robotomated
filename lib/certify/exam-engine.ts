@@ -43,7 +43,9 @@ function apportion(weights: number[], total: number): number[] {
   let remaining = total - floors.reduce((a, b) => a + b, 0);
   const order = exact
     .map((e, i) => ({ i, frac: e - floors[i] }))
-    .sort((a, b) => b.frac - a.frac);
+    // ties break toward the larger stratum so the biggest domain gets the
+    // extra seat (SF 12.5 vs RE 7.5 -> 13/7, not 12/8)
+    .sort((a, b) => b.frac - a.frac || weights[b.i] - weights[a.i]);
   for (const { i } of order) {
     if (remaining <= 0) break;
     if (weights[i] > floors[i]) {
