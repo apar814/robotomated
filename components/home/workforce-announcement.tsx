@@ -18,7 +18,7 @@ export function WorkforceAnnouncement() {
           <p className="text-sm text-text-primary truncate">
             <span className="font-semibold">Workforce Network</span>
             <span className="text-text-secondary hidden sm:inline">
-              {" "}— Become a certified robot operator in 4 weeks. $45-75K starting.
+              {" "}— Become a certified robot operator in 4 weeks. Placement assistance included.
             </span>
             <span className="text-text-secondary sm:hidden">
               {" "}— Get certified in 4 weeks

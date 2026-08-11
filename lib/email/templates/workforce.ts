@@ -175,7 +175,7 @@ export const STUDENT_WELCOME_EMAILS = [
         </ul>
       </div>
       <p style="line-height:1.7;font-size:15px;margin:0 0 16px;">
-        After you pass: we connect you with employers in our Workforce Network who are actively hiring certified operators. Starting salary range is $45,000-$75,000 depending on role and location.
+        After you pass: we connect you with employers in our Workforce Network who are actively hiring certified operators. Pay depends on role, employer, and location — we'll share real openings with real numbers when you're certified.
       </p>
       <p style="color:#888;font-size:13px;margin:16px 0 0;">
         See you in a week.

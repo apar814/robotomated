@@ -88,6 +88,17 @@ export interface MarketClaim {
  * stats card, salary FAQ)
  *   Removed 2026-08-03. Unsourced range presented as a program outcome;
  *   the FAQ's BLS growth attribution was itself unverified.
+ *   2026-08-10: three surviving instances removed — employer page stats card
+ *   (/employers/hire-certified-operators), the day-7 student email
+ *   (lib/email/templates/workforce.ts), and the homepage announcement banner
+ *   (components/home/workforce-announcement.tsx).
+ *
+ * careerImpact numeric claims (lib/certify/trend-modules.ts, rendered on
+ * /certify/future-of-robotics): "60% salary premium", "80% salary premium",
+ * "deploy robots 5x faster", "$15-25K to annual salary", "reduces
+ * maintenance costs by 40-60%", "$150K+ salaries"
+ *   Removed 2026-08-10. Same family as the retired specialty-track premiums;
+ *   softened to qualitative capability statements.
  *
  * "The Elon Test" fabricated quote (/certify/cro)
  *   Removed 2026-08-03. Invented quote attached to a real named person.

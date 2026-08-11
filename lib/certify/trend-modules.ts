@@ -43,7 +43,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["VLA models", "LLM-based planners", "ReAct frameworks", "Reinforcement learning from human feedback"],
     keyCompanies: ["Figure AI (Helix)", "1X Technologies", "Google DeepMind (RT-2)", "Physical Intelligence"],
-    careerImpact: "Creates new role: AI Robot Systems Engineer. 60% salary premium over standard operators.",
+    careerImpact: "Creates new role: AI Robot Systems Engineer — an emerging specialization beyond standard operation.",
     examTopics: [
       "Agent behavior auditing",
       "Constraint specification for physical agents",
@@ -74,7 +74,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["Transformers", "Diffusion policies", "Cross-modal attention", "Sim-to-real transfer"],
     keyCompanies: ["Figure AI", "Google DeepMind", "Physical Intelligence", "NVIDIA"],
-    careerImpact: "Operators who understand VLAs can deploy robots 5x faster than those who don't.",
+    careerImpact: "Operators who understand VLAs can deploy and adapt robots far faster than those who don't.",
     examTopics: [
       "VLA deployment troubleshooting",
       "Training data quality assessment",
@@ -104,7 +104,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["NVIDIA Omniverse", "Siemens Xcelerator", "PTC Vuforia", "Unity Robotics", "ROS2 simulation bridges"],
     keyCompanies: ["NVIDIA", "Siemens", "PTC", "Unity", "Dassault Systemes"],
-    careerImpact: "Digital twin skills add $15-25K to annual salary. Growing requirement for fleet managers.",
+    careerImpact: "Digital twin skills are a growing requirement for fleet managers.",
     examTopics: [
       "Twin validation protocols",
       "Predictive maintenance interpretation",
@@ -228,7 +228,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["Zero-trust architecture", "Secure boot", "Network segmentation", "Behavioral anomaly detection"],
     keyCompanies: ["Dragos", "Claroty", "Nozomi Networks", "CyberArk"],
-    careerImpact: "Robot cybersecurity is the fastest-growing specialization. 80% salary premium.",
+    careerImpact: "Robot cybersecurity is one of the fastest-growing operator specializations.",
     examTopics: [
       "Attack vector identification",
       "Incident response procedures",
@@ -290,7 +290,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["Predictive maintenance AI", "Self-diagnostic systems", "Autonomous manufacturing cells"],
     keyCompanies: ["Tesla (Optimus manufacturing)", "FANUC (lights-out factories)", "Bright Machines"],
-    careerImpact: "Understanding self-healing systems reduces maintenance costs by 40-60%.",
+    careerImpact: "Understanding self-healing systems is central to keeping fleet maintenance costs down.",
     examTopics: [
       "Self-diagnostic validation",
       "Automated repair approval workflows",
@@ -380,7 +380,7 @@ export const ROBOTICS_MEGATRENDS: RoboticsTrend[] = [
     ],
     keyTechnologies: ["Radiation-hardened processors", "Delay-tolerant networking", "Autonomous science", "Space-rated actuators"],
     keyCompanies: ["NASA JPL", "SpaceX", "Intuitive Machines", "Astrobotic", "Oceaneering"],
-    careerImpact: "Niche but high-paying. Space robotics engineers command $150K+ salaries.",
+    careerImpact: "Niche specialization with a small, highly specialized talent pool.",
     examTopics: [
       "Latency-tolerant operation design",
       "Extreme environment risk assessment",

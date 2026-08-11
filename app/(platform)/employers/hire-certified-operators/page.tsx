@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const STATS = [
   { value: "975+", label: "Robots Tracked" },
   { value: "200+", label: "Manufacturers" },
-  { value: "$45-75K", label: "Starting Salary" },
+  { value: "$0", label: "Recruiting Fees at Launch" },
   { value: "4 weeks", label: "To Certified" },
 ];
 
