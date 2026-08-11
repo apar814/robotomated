@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
-import { FOUNDATION_QUESTIONS } from "@/lib/data/sample-exam-questions";
 
 export async function POST(request: NextRequest) {
   try {
@@ -89,7 +88,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if questions exist for this certification; seed if not
+    // Question pools are managed by the versioned seed script (Phase 1),
+    // never auto-seeded at exam start. An empty pool is a hard error.
     const { count } = await supabase
       .from("rco_questions")
       .select("id", { count: "exact", head: true })
@@ -97,36 +97,11 @@ export async function POST(request: NextRequest) {
       .eq("active", true);
 
     if (!count || count === 0) {
-      // Seed sample questions for foundation level
-      if (certification.level === 1) {
-        const rows = FOUNDATION_QUESTIONS.map((q) => ({
-          certification_id: certification.id,
-          question_text: q.question_text,
-          question_type: q.question_type,
-          options: q.options,
-          correct_answer: q.correct_answer,
-          explanation: q.explanation,
-          difficulty: q.difficulty,
-          category: q.category,
-        }));
-
-        const { error: seedError } = await supabase
-          .from("rco_questions")
-          .insert(rows);
-
-        if (seedError) {
-          console.error("Failed to seed questions:", seedError);
-          return NextResponse.json(
-            { error: "Failed to prepare exam questions" },
-            { status: 500 }
-          );
-        }
-      } else {
-        return NextResponse.json(
-          { error: "No questions available for this certification" },
-          { status: 400 }
-        );
-      }
+      console.error(`[certify/start] no active questions for ${certification.slug}`);
+      return NextResponse.json(
+        { error: "No questions available for this certification" },
+        { status: 400 }
+      );
     }
 
     // Fetch all active questions for this certification

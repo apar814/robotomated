@@ -111,6 +111,26 @@ export interface MarketClaim {
  *   Removed 2026-08-10. Neither pipeline exists — scores are editorial
  *   judgments from manufacturer specs and documented public sources.
  *   Do not reintroduce unless a real benchmark/usage-data program ships.
+ *
+ * ── Foundation exam bank pass (2026-08-10) ──
+ *
+ * real_world_context stats/anecdotes (19 questions,
+ * lib/data/rco-questions-foundation.ts): claimed 2019 OSHA robot-cell
+ * fatality; "UR support reports >50%"; "DHL reported 30% improvement";
+ * "$200K meat-processor losses"; anonymous 3PL/6RS/Locus throughput
+ * anecdotes with percentages; "<0.1%/yr" failure rate; assorted
+ * "X% of support calls / integrations / false completions" figures
+ *   Removed 2026-08-10. Unsourced real-world claims presented as fact in
+ *   exam teaching content (claims-policy Tier-3). Do not reintroduce
+ *   incident narratives or vendor-attributed statistics into exam content
+ *   without a named, checkable source. Full log:
+ *   docs/rco-foundation-question-audit.md
+ *
+ * v1 sample exam bank (lib/data/sample-exam-questions.ts, 20 questions)
+ *   Retired 2026-08-10 in code (file deleted, auto-seed removed from
+ *   /api/certify/start). The 20 DB rows remain the live pool ONLY until
+ *   the Phase-1 seed script swaps in the audited v2 bank — they must be
+ *   deactivated in that same seed run. 14 conceptual overlaps with v2.
  */
 export const MARKET_CLAIMS: Record<string, MarketClaim> = {
   marketProjection: {
