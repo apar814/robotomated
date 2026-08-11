@@ -123,6 +123,47 @@ export async function POST(
       const expiresAt = new Date();
       expiresAt.setFullYear(expiresAt.getFullYear() + renewalYears);
 
+      // Resolve the holder's real identity. The credential is public on
+      // /verify, so it must carry the person's actual name and email —
+      // sources in order of trust: users profile, auth record, Stripe payer.
+      let holderName = "";
+      let holderEmail = "";
+      if (session.user_id) {
+        const { data: profile } = await supabase
+          .from("users")
+          .select("name, email")
+          .eq("id", session.user_id)
+          .maybeSingle();
+        holderName = profile?.name?.trim() || "";
+        holderEmail = profile?.email?.trim() || "";
+
+        if (!holderName || !holderEmail) {
+          const { data: authData } = await supabase.auth.admin.getUserById(
+            session.user_id
+          );
+          const meta = authData?.user?.user_metadata ?? {};
+          holderEmail = holderEmail || authData?.user?.email || "";
+          holderName =
+            holderName || meta.full_name?.trim() || meta.name?.trim() || "";
+        }
+
+        if (!holderName || !holderEmail) {
+          const { data: payment } = await supabase
+            .from("rco_payments")
+            .select("payer_name, payer_email")
+            .eq("user_id", session.user_id)
+            .eq("certification_id", certification.id)
+            .eq("status", "completed")
+            .order("created_at", { ascending: false })
+            .limit(1)
+            .maybeSingle();
+          if (payment?.payer_name && payment.payer_name !== "Unknown") {
+            holderName = holderName || payment.payer_name;
+          }
+          holderEmail = holderEmail || payment?.payer_email || "";
+        }
+      }
+
       const { error: credError } = await supabase
         .from("rco_credentials")
         .insert({
@@ -130,8 +171,8 @@ export async function POST(
           certification_id: certification.id,
           exam_session_id: session.id,
           credential_id: credentialId,
-          holder_name: "Exam Candidate",
-          holder_email: "pending@robotomated.com",
+          holder_name: holderName || "Exam Candidate",
+          holder_email: holderEmail || "pending@robotomated.com",
           issued_at: new Date().toISOString(),
           expires_at: expiresAt.toISOString(),
           status: "active",
