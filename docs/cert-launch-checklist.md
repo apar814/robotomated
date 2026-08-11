@@ -27,8 +27,8 @@
       /verify page
 
 ## Fast follow after first transaction
-- [ ] handle_new_user trigger + backfill (users table has 0 rows,
-      causing duplicate Stripe customers per purchase)
+- [x] handle_new_user trigger + backfill — migration 042 written
+      (in docs/combined-migrations-039-042.sql bundle); pending DB apply
 
 ## Re-enabling a certification (Specialist / Master / Fleet Commander / CRO)
 

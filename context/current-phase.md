@@ -26,8 +26,10 @@ launch is gated on database migrations and final verification.
    are all missing. Consequences right now: sales page shows no cohort,
    checkout returns "no cohorts enrolling", employer form 500s, /admin
    locked out for everyone (fails closed). Ready-to-paste bundle:
-   docs/combined-migrations-039-040.sql (includes admin-role grant for
-   apar814@gmail.com). Cohort seed = CURRENT_DATE+28d at time of run.
+   docs/combined-migrations-039-042.sql (039 role, 040 news, 041 workforce
+   [renamed from dup 039], 042 handle_new_user trigger + backfill, and the
+   admin-role grant for apar814@gmail.com). Cohort seed = CURRENT_DATE+28d
+   at time of run.
 2. End-to-end Stripe test-mode checkout (needs #1 first): enroll flow,
    webhook enrollment insert, seat count increment, Day-0 email.
 3. STRIPE_WORKFORCE_WEBHOOK_SECRET configured in Vercel + Stripe webhook
