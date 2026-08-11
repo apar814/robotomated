@@ -124,27 +124,34 @@ export default function MethodologyPage() {
       {/* Score interpretation */}
       <section className="border-b border-border px-4 py-12">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-6 text-xl font-bold">Score Interpretation</h2>
+          <h2 className="mb-6 text-xl font-bold">How Scores Actually Distribute</h2>
+          <p className="mb-6 text-sm leading-relaxed text-muted">
+            As of August 2026, scored robots range from 60.5 to 92.5 with a median of 79.
+            Scores cluster tightly — most robots sit within a few points of each other —
+            because robots competing in the same category are often genuinely comparable.
+            The headline number tells you the tier; the dimension breakdown and the weight
+            tool below tell you which robot fits <em>your</em> priorities.
+          </p>
           <div className="overflow-hidden rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-navy-lighter">
                   <th className="px-4 py-3 text-left font-medium text-muted">Range</th>
-                  <th className="px-4 py-3 text-left font-medium text-muted">Rating</th>
-                  <th className="px-4 py-3 text-left font-medium text-muted">Meaning</th>
+                  <th className="px-4 py-3 text-left font-medium text-muted">Share of database</th>
+                  <th className="px-4 py-3 text-left font-medium text-muted">How to read it</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { range: "90–100", rating: "Exceptional", color: "text-white", meaning: "Best-in-class. Excels across most dimensions." },
-                  { range: "80–89", rating: "Excellent", color: "text-white", meaning: "Strong performer with minor trade-offs." },
-                  { range: "70–79", rating: "Good", color: "text-white", meaning: "Solid choice for most use cases." },
-                  { range: "60–69", rating: "Average", color: "text-white/60", meaning: "Gets the job done but has notable weaknesses." },
-                  { range: "Below 60", rating: "Below Average", color: "text-white/60", meaning: "Consider alternatives unless uniquely suited." },
-                ].map(({ range, rating, color, meaning }, i) => (
+                  { range: "90–100", share: "<1%", meaning: "Rare. Only a handful of robots score here." },
+                  { range: "80–89", share: "~40%", meaning: "Strong across the weighted dimensions — compare breakdowns to separate them." },
+                  { range: "70–79", share: "~57%", meaning: "The median robot lives here. Differences show up in the breakdown, not the headline." },
+                  { range: "60–69", share: "~2%", meaning: "Trails its category on several weighted dimensions." },
+                  { range: "Below 60", share: "None", meaning: "Robots without enough verifiable data are left unscored — never scored low by default." },
+                ].map(({ range, share, meaning }, i) => (
                   <tr key={range} className={i % 2 === 0 ? "bg-navy-light" : "bg-navy-lighter"}>
                     <td className="px-4 py-3 font-mono font-semibold">{range}</td>
-                    <td className={`px-4 py-3 font-semibold ${color}`}>{rating}</td>
+                    <td className="px-4 py-3 font-semibold text-white">{share}</td>
                     <td className="px-4 py-3 text-muted">{meaning}</td>
                   </tr>
                 ))}
