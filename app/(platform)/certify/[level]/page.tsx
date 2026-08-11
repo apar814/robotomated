@@ -48,7 +48,7 @@ const DETAIL: Record<string, DetailData> = {
   foundation: {
     tagline: "Your entry point into professional robotics",
     description:
-      "The RCO Foundation validates core robotics knowledge. Designed for anyone entering the robotics field. No prior experience required. You will be tested on safety, types, operations, diagnostics, and compliance across 80 questions in 90 minutes.",
+      "The RCO Foundation validates core robotics knowledge. Designed for anyone entering the robotics field. No prior experience required. You will be tested on safety, types, operations, diagnostics, and compliance across 50 questions in 90 minutes.",
     whoItsFor: [
       "New robotics operators and technicians",
       "Warehouse and logistics staff transitioning to automation",

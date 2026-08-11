@@ -44,7 +44,7 @@ const STUDY_LEVELS: Record<string, StudyLevelData> = {
     description:
       "Master the core knowledge every robot operator needs. Safety, types, operations, diagnostics, and compliance.",
     totalHours: 14,
-    examInfo: { questions: 80, duration: 90, passScore: 75 },
+    examInfo: { questions: 50, duration: 90, passScore: 75 },
     modules: [
       {
         number: 1,

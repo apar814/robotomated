@@ -72,7 +72,7 @@ export const CERT_LEVELS: CertLevel[] = [
     name: "Foundation",
     tag: "ROBOT OPERATOR CERTIFIED",
     tagShort: "FOUNDATION",
-    questions: 80,
+    questions: 50,
     duration: 90,
     passScore: 75,
     price: 149,
