@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
+import {
+  scoreSubmission,
+  type AnswerMap,
+  type OptionOrders,
+  type ScorableQuestion,
+} from "@/lib/certify/exam-engine";
 
 function generateCredentialId(): string {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -68,7 +74,7 @@ export async function POST(
     const questionIds = session.question_ids as string[];
     const { data: questions, error: qError } = await supabase
       .from("rco_questions")
-      .select("id, correct_answer")
+      .select("id, question_type, correct_answers, correct_answer")
       .in("id", questionIds);
 
     if (qError || !questions) {
@@ -78,16 +84,16 @@ export async function POST(
       );
     }
 
-    // Score the exam
-    const answers = (session.answers as Record<string, number>) || {};
-    let correctCount = 0;
-    const totalQuestions = questions.length;
-
-    for (const question of questions) {
-      if (answers[question.id] === question.correct_answer) {
-        correctCount++;
-      }
-    }
+    // Score the exam: submitted served indices are remapped through the
+    // session's option permutation; multi_select is exact-set, no partial
+    // credit; legacy sessions without permutations score as identity.
+    const answers = (session.answers as AnswerMap) || {};
+    const optionOrders = (session.option_orders || {}) as OptionOrders;
+    const { correctCount, total: totalQuestions } = scoreSubmission(
+      questions as ScorableQuestion[],
+      answers,
+      optionOrders
+    );
 
     const score = totalQuestions > 0
       ? Math.round((correctCount / totalQuestions) * 100 * 100) / 100

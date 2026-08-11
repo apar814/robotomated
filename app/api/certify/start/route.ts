@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
+import {
+  stratifiedSelect,
+  makeOptionOrders,
+  type PoolQuestion,
+} from "@/lib/certify/exam-engine";
 
 export async function POST(request: NextRequest) {
   try {
@@ -104,10 +109,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fetch all active questions for this certification
+    // Fetch the active pool with the fields stratified selection needs
     const { data: allQuestions, error: qError } = await supabase
       .from("rco_questions")
-      .select("id")
+      .select("id, domain_code, difficulty, options")
       .eq("certification_id", certification.id)
       .eq("active", true);
 
@@ -118,15 +123,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Randomize and take question_count
-    const shuffled = (allQuestions as { id: string }[])
-      .map((q) => ({ id: q.id, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map((q) => q.id);
+    // Retake bias: collect question ids this user has already been served
+    const { data: priorSessions } = await supabase
+      .from("rco_exam_sessions")
+      .select("question_ids")
+      .eq("user_id", user.id)
+      .eq("certification_id", certification.id);
+    const seenIds = new Set<string>(
+      ((priorSessions || []) as { question_ids: string[] }[]).flatMap(
+        (s) => s.question_ids || []
+      )
+    );
 
-    const selectedIds = shuffled.slice(
-      0,
-      Math.min(certification.question_count, shuffled.length)
+    // Stratified selection: domain + difficulty quotas, Fisher-Yates within
+    // strata, unseen-first. Falls back to a flat shuffle for legacy pools.
+    const selectedIds = stratifiedSelect(
+      allQuestions as PoolQuestion[],
+      certification.question_count,
+      seenIds
+    );
+
+    // Per-session option shuffling: perm[servedIndex] = canonical index.
+    // Stored on the session so scoring can remap submitted indices.
+    const selectedSet = new Set(selectedIds);
+    const optionOrders = makeOptionOrders(
+      (allQuestions as PoolQuestion[]).filter((q) => selectedSet.has(q.id))
     );
 
     // Generate session token
@@ -146,6 +167,7 @@ export async function POST(request: NextRequest) {
         status: "in_progress",
         expires_at: expiresAt.toISOString(),
         question_ids: selectedIds,
+        option_orders: optionOrders,
         answers: {},
         ip_address:
           request.headers.get("x-forwarded-for") ||
