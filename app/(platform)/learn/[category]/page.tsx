@@ -4,15 +4,27 @@ import { getAllArticles, getCategories, formatCategoryName } from "@/lib/learn/a
 import { ArticleCard } from "@/components/learn/article-card";
 import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { NextStepBar } from "@/components/ui/next-step-bar";
+import { EXPLAINERS, getExplainer } from "@/lib/learn/explainers";
+import { ExplainerArticle } from "@/components/learn/explainer-article";
 
 interface Props { params: Promise<{ category: string }> }
 
 export async function generateStaticParams() {
-  return getCategories().map((c) => ({ category: c.slug }));
+  // This segment serves both category listings (/learn/warehouse) and
+  // long-form explainers (/learn/amr-vs-agv) — the explainer registry is
+  // checked first at render time.
+  return [
+    ...getCategories().map((c) => ({ category: c.slug })),
+    ...EXPLAINERS.map((e) => ({ category: e.slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
+  const explainer = getExplainer(category);
+  if (explainer) {
+    return { title: `${explainer.title} | Robotomated`, description: explainer.description };
+  }
   const name = formatCategoryName(category);
   return {
     title: `${name} — RoboLearn`,
@@ -22,6 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function LearnCategoryPage({ params }: Props) {
   const { category } = await params;
+
+  const explainer = getExplainer(category);
+  if (explainer) {
+    return <ExplainerArticle explainer={explainer} />;
+  }
   const allArticles = getAllArticles();
   const articles = allArticles.filter((a) => a.categorySlug === category);
   const categories = getCategories();
