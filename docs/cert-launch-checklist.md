@@ -29,3 +29,24 @@
 ## Fast follow after first transaction
 - [ ] handle_new_user trigger + backfill (users table has 0 rows,
       causing duplicate Stripe customers per purchase)
+
+## Re-enabling a certification (Specialist / Master / Fleet Commander / CRO)
+
+All three required before a cert goes purchasable — no exceptions:
+
+1. [ ] Question pool seeded and verified — pool size >= 2x the
+       configured question_count (claims-policy audited, answer keys
+       verified, stratified selection quotas satisfiable)
+2. [ ] `active: true` in rco_certifications (live DB)
+3. [ ] `comingSoon` removed from the cert's entry in
+       lib/certifications.ts
+
+Config and DB must be changed together in the same deploy window:
+comingSoon (config) drives the UI and the first checkout guard;
+active (DB) drives the second checkout guard plus enroll/start. If
+they disagree, either the UI shows a buy button the API refuses, or
+the UI says "coming soon" for a cert the API would sell.
+
+CRO additionally has NO rco_certifications row at all — one must be
+created (with question_count, passing_score, renewal_years) before it
+can ever be enabled. Until then its checkout 404s at the cert lookup.
