@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { apiRateLimit } from "@/lib/cache/rate-limit";
+import { isMdxCategory, isPublishedMdx } from "@/lib/learn/published-mdx";
 
 async function getAdminRole(
   supabase: SupabaseClient,
@@ -30,6 +31,26 @@ function getClientIp(request: NextRequest): string {
 }
 
 export async function middleware(request: NextRequest) {
+  // Containment 2026-08-11: unpublished /learn MDX articles return 410 Gone
+  // (permanent removal — de-indexes faster than 404). Allowlist:
+  // lib/learn/published-mdx.ts; audit: docs/claims-inventory-mdx-2026-08-11.md.
+  const learnMatch = request.nextUrl.pathname.match(
+    /^\/learn\/([^/]+)\/([^/]+)\/?$/
+  );
+  if (learnMatch) {
+    const [, category, slug] = learnMatch;
+    if (isMdxCategory(category) && !isPublishedMdx(category, slug)) {
+      return new NextResponse("Gone", {
+        status: 410,
+        headers: { "X-Robots-Tag": "noindex" },
+      });
+    }
+  }
+  // Published learn paths need none of the auth/session logic below.
+  if (request.nextUrl.pathname.startsWith("/learn")) {
+    return NextResponse.next();
+  }
+
   // API rate limiting
   if (request.nextUrl.pathname.startsWith("/api/")) {
     if (apiRateLimit) {
@@ -117,5 +138,11 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/admin/:path*", "/login", "/api/:path*"],
+  matcher: [
+    "/account/:path*",
+    "/admin/:path*",
+    "/login",
+    "/api/:path*",
+    "/learn/:path*",
+  ],
 };

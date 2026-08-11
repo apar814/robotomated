@@ -4,8 +4,7 @@ import { getAllIndustrySlugs } from "@/lib/data/industry-types";
 import { getAllCaseStudySlugs } from "@/lib/data/case-studies";
 import { GLOSSARY_TERMS } from "@/lib/learn/glossary-index";
 import { EXPLAINERS } from "@/lib/learn/explainers";
-import * as fs from "fs";
-import * as path from "path";
+import { PUBLISHED_MDX } from "@/lib/learn/published-mdx";
 
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://robotomated.com";
 
@@ -13,17 +12,6 @@ interface CatRow { slug: string; created_at: string }
 interface MfrRow { slug: string; created_at: string }
 interface RobotWithCat { slug: string; updated_at: string; robot_categories: { slug: string } | null }
 
-/** Scan a content directory for MDX files and return slugs */
-function getMdxSlugs(dir: string): string[] {
-  try {
-    const fullPath = path.join(process.cwd(), dir);
-    return fs.readdirSync(fullPath)
-      .filter(f => f.endsWith(".mdx"))
-      .map(f => f.replace(/\.mdx$/, ""));
-  } catch {
-    return [];
-  }
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages always included regardless of DB state
@@ -191,21 +179,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  // Learn content — scan all subdirectories for MDX articles
-  const learnDirs = [
-    "problems", "guides", "cost", "vs", "warehouse", "medical",
-    "manufacturing", "market", "agricultural", "construction",
-    "delivery", "getting-started", "home", "hospitality",
-    "inspection", "retail", "security", "humanoid",
-  ];
-  const learnPages: MetadataRoute.Sitemap = learnDirs.flatMap(dir =>
-    getMdxSlugs(`content/learn/${dir}`).map(slug => ({
-      url: `${BASE_URL}/learn/${dir}/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }))
-  );
+  // Learn MDX content — containment 2026-08-11: only allowlisted articles
+  // are published (lib/learn/published-mdx.ts); everything else is
+  // unpublished and returns 410, so it must not appear here.
+  const learnPages: MetadataRoute.Sitemap = [...PUBLISHED_MDX].map(key => ({
+    url: `${BASE_URL}/learn/${key}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
 
   // Learn layer: glossary + field-guide explainers
   const glossaryPages: MetadataRoute.Sitemap = [

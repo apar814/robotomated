@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { isPublishedMdx } from "./published-mdx";
 
 const CONTENT_DIR = path.join(process.cwd(), "content/learn");
 
@@ -43,8 +44,12 @@ export function getAllArticles(): Article[] {
       const raw = fs.readFileSync(path.join(catDir, file), "utf-8");
       const { data, content } = matter(raw);
       const fm = data as ArticleFrontmatter;
+      const slug = fm.slug || file.replace(/\.mdx$/, "");
+      // Containment 2026-08-11: only allowlisted articles are published.
+      // See lib/learn/published-mdx.ts and docs/claims-inventory-mdx-2026-08-11.md.
+      if (!isPublishedMdx(cat, slug)) continue;
       articles.push({
-        frontmatter: { ...fm, slug: fm.slug || file.replace(/\.mdx$/, "") },
+        frontmatter: { ...fm, slug },
         content,
         categorySlug: cat,
       });
@@ -57,6 +62,9 @@ export function getAllArticles(): Article[] {
 }
 
 export function getArticle(category: string, slug: string): Article | null {
+  // Containment 2026-08-11: unpublished articles do not resolve.
+  if (!isPublishedMdx(category, slug)) return null;
+
   const filePath = path.join(CONTENT_DIR, category, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
 
