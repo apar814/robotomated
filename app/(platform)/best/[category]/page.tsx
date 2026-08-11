@@ -98,7 +98,6 @@ export default async function BestCategoryPage({ params }: Props) {
           description={r.description_short || ""}
           manufacturer={(r.manufacturers as { name: string } | null)?.name || ""}
           price={r.price_current}
-          score={r.robo_score}
           categorySlug={slug}
           status={r.status}
         />

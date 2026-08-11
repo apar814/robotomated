@@ -44,8 +44,8 @@ interface ProductSchemaProps {
   manufacturer: string;
   price?: number | null;
   currency?: string;
-  score?: number | null;
   categorySlug: string;
+  categoryName?: string;
   images?: string[];
   model?: string | null;
   status?: string;
@@ -53,7 +53,7 @@ interface ProductSchemaProps {
 
 export function ProductSchema({
   name, slug, description, manufacturer, price, currency = "USD",
-  score, categorySlug, images, model, status,
+  categorySlug, categoryName, images, model, status,
 }: ProductSchemaProps) {
   const availability = status === "active"
     ? "https://schema.org/InStock"
@@ -71,6 +71,7 @@ export function ProductSchema({
   };
 
   if (model) data.model = model;
+  if (categoryName) data.category = categoryName;
   if (images?.length) data.image = images;
 
   if (price != null) {
@@ -82,16 +83,8 @@ export function ProductSchema({
     };
   }
 
-  if (score != null) {
-    data.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: (score / 20).toFixed(1), // 0-100 → 0-5
-      bestRating: "5",
-      worstRating: "0",
-      ratingCount: 1,
-    };
-  }
-
+  // No aggregateRating: a single editorial score cannot honestly back an
+  // aggregate rating claim. Only real-data fields are emitted.
   return <JsonLd data={data} />;
 }
 
@@ -103,13 +96,14 @@ interface ReviewSchemaProps {
   reviewTitle: string;
   reviewBody: string;
   author: string;
-  score?: number | null;
   publishedAt?: string | null;
 }
 
 export function ReviewSchema({
-  robotName, reviewTitle, reviewBody, author, score, publishedAt,
+  robotName, reviewTitle, reviewBody, author, publishedAt,
 }: ReviewSchemaProps) {
+  // No reviewRating: score-derived ratings are withheld while the scoring
+  // system is under review. Textual review markup only.
   return (
     <JsonLd
       data={{
@@ -119,14 +113,6 @@ export function ReviewSchema({
         reviewBody,
         author: { "@type": "Person", name: author },
         itemReviewed: { "@type": "Product", name: robotName },
-        ...(score != null && {
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: (score / 20).toFixed(1),
-            bestRating: "5",
-            worstRating: "0",
-          },
-        }),
         ...(publishedAt && { datePublished: publishedAt }),
       }}
     />
@@ -153,6 +139,92 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
           name: item.name,
           item: `${BASE_URL}${item.href}`,
         })),
+      }}
+    />
+  );
+}
+
+// ---------------------------------------------------------------------------
+// DefinedTerm / DefinedTermSet (glossary)
+// ---------------------------------------------------------------------------
+export function DefinedTermSetSchema({
+  name, description, url, terms,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  terms: { term: string; slug: string; definition: string }[];
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "DefinedTermSet",
+        name,
+        description,
+        url: `${BASE_URL}${url}`,
+        hasDefinedTerm: terms.map((t) => ({
+          "@type": "DefinedTerm",
+          name: t.term,
+          description: t.definition,
+          url: `${BASE_URL}/learn/glossary/${t.slug}`,
+        })),
+      }}
+    />
+  );
+}
+
+export function DefinedTermSchema({
+  term, slug, definition,
+}: {
+  term: string;
+  slug: string;
+  definition: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        name: term,
+        description: definition,
+        url: `${BASE_URL}/learn/glossary/${slug}`,
+        inDefinedTermSet: {
+          "@type": "DefinedTermSet",
+          name: "Robotomated robotics glossary",
+          url: `${BASE_URL}/learn/glossary`,
+        },
+      }}
+    />
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Article (explainers)
+// ---------------------------------------------------------------------------
+export function ArticleSchema({
+  title, description, url, publishedAt,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  publishedAt: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        url: `${BASE_URL}${url}`,
+        datePublished: publishedAt,
+        author: { "@type": "Organization", name: "Robotomated" },
+        publisher: {
+          "@type": "Organization",
+          name: "Robotomated",
+          url: BASE_URL,
+        },
       }}
     />
   );

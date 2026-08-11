@@ -238,38 +238,10 @@ export default async function RobotDetailPage({ params }: Props) {
 
   return (
     <div className="bg-obsidian">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: robot.name,
-            description: robot.description_short || `${robot.name} by ${mfr?.name || "Unknown"}`,
-            brand: { "@type": "Brand", name: mfr?.name || "Unknown" },
-            ...(robot.price_current && {
-              offers: {
-                "@type": "Offer",
-                price: robot.price_current,
-                priceCurrency: "USD",
-                availability: "https://schema.org/InStock",
-              },
-            }),
-            ...(robot.robo_score && {
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: (robot.robo_score / 10).toFixed(1),
-                bestRating: "10",
-                ratingCount: "1",
-              },
-            }),
-          }),
-        }}
-      />
       <TrackView slug={robot.slug} category={cat?.slug || categorySlug} name={robot.name} />
       <AskAiButton robotName={robot.name} />
-      <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} score={robot.robo_score} categorySlug={categorySlug} model={robot.model_number} status={robot.status} />
-      {expertReviews[0] && <ReviewSchema robotName={robot.name} reviewTitle={expertReviews[0].title} reviewBody={expertReviews[0].body.slice(0, 200)} author="Robotomated Editorial" score={expertReviews[0].robo_score} publishedAt={expertReviews[0].published_at} />}
+      <ProductSchema name={robot.name} slug={robot.slug} description={robot.description_short || ""} manufacturer={mfr?.name || ""} price={robot.price_current} categorySlug={categorySlug} categoryName={cat?.name} model={robot.model_number} status={robot.status} />
+      {expertReviews[0] && <ReviewSchema robotName={robot.name} reviewTitle={expertReviews[0].title} reviewBody={expertReviews[0].body.slice(0, 200)} author="Robotomated Editorial" publishedAt={expertReviews[0].published_at} />}
 
       {/* ── 1. BREADCRUMB ── */}
       <div className="mx-auto max-w-6xl px-4 pt-6 lg:px-6">
