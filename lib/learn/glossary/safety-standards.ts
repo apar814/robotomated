@@ -87,15 +87,15 @@ export const SAFETY_STANDARDS_TERMS: GlossaryTerm[] = [
     related: ["speed-and-separation-monitoring", "safeguarded-space", "iso-10218"],
     group: "safety-standards",
   },
-  // TODO(verify): edition year — cited as ISO 14119:2024; confirm 2024 second edition supersedes 2013
+  // TODO(verify): edition year — cited as ISO 14119:2013; a 2024 second edition may supersede it
   {
     slug: "iso-14119",
     term: "ISO 14119 (interlocking devices)",
     definition:
       "ISO 14119 specifies principles for the design and selection of interlocking devices associated with guards, such as the switches on access doors of a robot cell that stop hazardous motion when the guard is opened. It classifies interlocking device types, addresses guard locking, and defines measures to minimize defeat of interlocks in a reasonably foreseeable manner. Robot cell doors, gates, and removable panels are typically interlocked to this standard.",
     citation: {
-      source: "ISO 14119:2024, International Organization for Standardization",
-      year: "2024",
+      source: "ISO 14119:2013, International Organization for Standardization",
+      year: "2013",
     },
     related: ["safeguarded-space", "iso-10218", "loto"],
     group: "safety-standards",
