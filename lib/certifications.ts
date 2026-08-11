@@ -28,6 +28,8 @@ export interface CertLevel {
   hasPractical?: boolean;
   hasGauntlet?: boolean;
   hasCapstone?: boolean;
+  /** Exam not yet available — page shows a coming-soon state and checkout refuses. */
+  comingSoon?: boolean;
 }
 
 export const CERT_LEVELS: CertLevel[] = [
@@ -135,6 +137,7 @@ export const CERT_LEVELS: CertLevel[] = [
       { name: "Perception & AI", pct: 30 },
     ],
     hasPractical: true,
+    comingSoon: true,
   },
   {
     level: 3,
@@ -172,6 +175,7 @@ export const CERT_LEVELS: CertLevel[] = [
       { name: "System Architecture", pct: 20 },
     ],
     hasGauntlet: true,
+    comingSoon: true,
   },
   {
     level: 4,
@@ -207,6 +211,7 @@ export const CERT_LEVELS: CertLevel[] = [
       { name: "Business Operations", pct: 35 },
     ],
     hasCapstone: true,
+    comingSoon: true,
   },
   {
     level: 5,
@@ -242,6 +247,7 @@ export const CERT_LEVELS: CertLevel[] = [
       { name: "Contribution Commitment", pct: 33 },
     ],
     isCRO: true,
+    comingSoon: true,
   },
 ];
 

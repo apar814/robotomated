@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
-import { CERT_STRIPE_PRICES } from "@/lib/certifications";
+import { CERT_BY_SLUG, CERT_STRIPE_PRICES } from "@/lib/certifications";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +13,13 @@ export async function POST(request: NextRequest) {
     const cert = CERT_STRIPE_PRICES[slug];
     if (!cert) {
       return NextResponse.json({ error: "Invalid certification level" }, { status: 400 });
+    }
+
+    if (CERT_BY_SLUG[slug]?.comingSoon) {
+      return NextResponse.json(
+        { error: "This certification is not yet open for enrollment" },
+        { status: 400 }
+      );
     }
 
     // Get user from auth
@@ -42,12 +49,19 @@ export async function POST(request: NextRequest) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data: certRow } = await (adminSupabase as any)
       .from("rco_certifications")
-      .select("id")
+      .select("id, active")
       .eq("slug", slug)
       .maybeSingle();
 
     if (!certRow?.id) {
       return NextResponse.json({ error: "Certification not found" }, { status: 404 });
+    }
+
+    if (!certRow.active) {
+      return NextResponse.json(
+        { error: "This certification is not yet open for enrollment" },
+        { status: 400 }
+      );
     }
 
     // Get or create Stripe customer

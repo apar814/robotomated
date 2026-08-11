@@ -26,6 +26,23 @@ interface DetailData {
   };
 }
 
+function ComingSoonNotice({ certName }: { certName: string }) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <span className="inline-flex items-center justify-center rounded-sm border border-white/20 bg-white/[0.04] px-10 py-3.5 text-sm font-semibold text-white/70">
+        Coming Soon — Enrollment Not Yet Open
+      </span>
+      <p className="text-xs text-white/50">
+        The {certName} exam is in development.{" "}
+        <Link href="/certify/foundation" className="underline transition-colors hover:text-white">
+          Start with Foundation
+        </Link>{" "}
+        — it&apos;s the entry point to the RCO path.
+      </p>
+    </div>
+  );
+}
+
 const DETAIL: Record<string, DetailData> = {
   foundation: {
     tagline: "Your entry point into professional robotics",
@@ -467,7 +484,11 @@ export default async function CertificationDetailPage({
 
           {/* CTA */}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
+            {cert.comingSoon ? (
+              <ComingSoonNotice certName={cert.name} />
+            ) : (
+              <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
+            )}
             <Link
               href={`/certify/study/${cert.slug}`}
               className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:text-white"
@@ -701,7 +722,11 @@ export default async function CertificationDetailPage({
             {cert.renewalYears > 0 && ` Renewal every ${cert.renewalYears} years.`}
           </p>
           <div className="mt-8">
-            <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
+            {cert.comingSoon ? (
+              <ComingSoonNotice certName={cert.name} />
+            ) : (
+              <EnrollButton slug={cert.slug} price={cert.price} rspPrice={cert.rspPrice} />
+            )}
           </div>
         </div>
       </section>
