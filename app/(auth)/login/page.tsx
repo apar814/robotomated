@@ -14,7 +14,13 @@ function LoginForm() {
 
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [error, setError] = useState(authError === "auth_failed" ? "Authentication failed. Please try again." : "");
+  const [error, setError] = useState(
+    authError === "link_expired"
+      ? "That sign-in link has expired or was already used. Request a new one below."
+      : authError === "auth_failed"
+        ? "Authentication failed. Please try again."
+        : ""
+  );
   const [googleStatus, setGoogleStatus] = useState<"idle" | "loading">("idle");
 
   async function handleGoogleSignIn() {
