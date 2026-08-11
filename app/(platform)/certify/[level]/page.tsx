@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EnrollButton } from "@/components/certify/enroll-button";
+import { PostCheckoutStatus } from "@/components/certify/post-checkout-status";
 import { CERT_BY_SLUG, DETAIL_SLUGS, type CertLevel } from "@/lib/certifications";
 
 /* ══════════════════════════════════════════════
@@ -385,10 +386,13 @@ export async function generateMetadata({
 
 export default async function CertificationDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ level: string }>;
+  searchParams: Promise<{ enrolled?: string }>;
 }) {
   const { level } = await params;
+  const { enrolled } = await searchParams;
   const cert = CERT_BY_SLUG[level];
   const detail = DETAIL[level];
 
@@ -398,6 +402,9 @@ export default async function CertificationDetailPage({
 
   return (
     <div>
+      {enrolled === "true" && !cert.comingSoon && !cert.isFree && (
+        <PostCheckoutStatus slug={cert.slug} />
+      )}
       {/* ═══ HERO ═══ */}
       <section className="border-b border-border px-4 py-16">
         <div className="mx-auto max-w-4xl">
