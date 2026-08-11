@@ -6,13 +6,16 @@
 - lib/stripe/index.ts guard throws on sk_live outside production
 
 ## Before first real transaction
-- [ ] Credential identity: real name/email at issuance, not
-      "Exam Candidate" / pending@robotomated.com
-- [ ] Verify public /verify page renders real identity
-- [ ] Question pool: 100+ questions, randomized per attempt
-      (currently 20 seeded = every candidate sees the whole pool)
-- [ ] Success-page pending state (poll for entitlement, no bare 403)
-- [ ] Full test-mode rehearsal passed end to end via Stripe CLI
+- [x] Credential identity: real name/email at issuance — verified in
+      rehearsal 2026-08-11 (holder "Apar Patel" from users profile)
+- [x] Verify public /verify page renders real identity — verified
+- [x] Question pool: 100 audited questions, stratified 50-question
+      draws, per-session option shuffling (seeded 2026-08-10)
+- [x] Success-page pending state — entitlement polling banner shipped
+      and exercised in rehearsal
+- [x] Full test-mode rehearsal passed end to end via Stripe CLI
+      (2026-08-11: checkout -> webhook -> payment row -> entitlement ->
+      50/50 exam -> credential -> /verify; test data cleaned up)
 
 ## Go-live steps (only after all boxes above)
 - [ ] Stripe dashboard → switch to LIVE mode
