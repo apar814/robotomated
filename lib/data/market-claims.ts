@@ -103,6 +103,14 @@ export interface MarketClaim {
  * "The Elon Test" fabricated quote (/certify/cro)
  *   Removed 2026-08-03. Invented quote attached to a real named person.
  *   Section renamed [THE STANDARD]; factual CRO requirements retained.
+ *
+ * ── RoboScore honesty pass (2026-08-10) ──
+ *
+ * "run benchmarks where possible, and collect real-world usage data from
+ * operators and owners" (/methodology, Process step 1)
+ *   Removed 2026-08-10. Neither pipeline exists — scores are editorial
+ *   judgments from manufacturer specs and documented public sources.
+ *   Do not reintroduce unless a real benchmark/usage-data program ships.
  */
 export const MARKET_CLAIMS: Record<string, MarketClaim> = {
   marketProjection: {

@@ -88,7 +88,7 @@ export default function MethodologyPage() {
           <h2 className="mb-6 text-xl font-bold">Our Process</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { step: "1", title: "Data Collection", desc: "We gather official specs, run benchmarks where possible, and collect real-world usage data from operators and owners." },
+              { step: "1", title: "Data Collection", desc: "We gather manufacturer specifications, official documentation, and documented public sources — press coverage, published deployment reports, and regulatory filings." },
               { step: "2", title: "Dimension Scoring", desc: "Each dimension receives a 0–100 score based on objective criteria calibrated against the full database." },
               { step: "3", title: "Weighted Average", desc: "Dimension scores are combined using fixed weights (shown above). The formula never changes based on the robot." },
               { step: "4", title: "Peer Review", desc: "Scores are reviewed for consistency across the category. We recalibrate when new robots shift benchmarks." },
