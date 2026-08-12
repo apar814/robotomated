@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { stripe, canPersistStripeCustomerId } from "@/lib/stripe";
 import { createUntypedServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 
@@ -96,10 +96,12 @@ export async function POST(request: NextRequest) {
       metadata: { supabase_user_id: user.id },
     });
     customerId = customer.id;
-    await adminSupabase
-      .from("users")
-      .update({ stripe_customer_id: customerId })
-      .eq("id", user.id);
+    if (canPersistStripeCustomerId()) {
+      await adminSupabase
+        .from("users")
+        .update({ stripe_customer_id: customerId })
+        .eq("id", user.id);
+    }
   }
 
   const origin =

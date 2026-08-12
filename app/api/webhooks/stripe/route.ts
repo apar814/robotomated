@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe, STRIPE_WEBHOOK_SECRET } from "@/lib/stripe";
+import { stripe, STRIPE_WEBHOOK_SECRET, canPersistStripeCustomerId } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase/server";
 import type Stripe from "stripe";
 
@@ -42,7 +42,11 @@ export async function POST(request: NextRequest) {
           .from("users")
           .update({
             subscription_tier: "pro" as const,
-            stripe_customer_id: customerId,
+            // customer id is mode-scoped: only persist when key mode
+            // matches the runtime (see canPersistStripeCustomerId)
+            ...(canPersistStripeCustomerId()
+              ? { stripe_customer_id: customerId }
+              : {}),
             stripe_subscription_id: subscriptionId,
             subscription_ends_at: endsAt,
           })

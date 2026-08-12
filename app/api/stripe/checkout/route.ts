@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe, STRIPE_PRICE_ID } from "@/lib/stripe";
+import { stripe, STRIPE_PRICE_ID, canPersistStripeCustomerId } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 
@@ -45,10 +45,12 @@ export async function POST(request: NextRequest) {
     });
     customerId = customer.id;
 
-    await adminSupabase
-      .from("users")
-      .update({ stripe_customer_id: customerId })
-      .eq("id", user.id);
+    if (canPersistStripeCustomerId()) {
+      await adminSupabase
+        .from("users")
+        .update({ stripe_customer_id: customerId })
+        .eq("id", user.id);
+    }
   }
 
   const origin = request.headers.get("origin") || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";

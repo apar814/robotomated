@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { stripe } from "@/lib/stripe";
+import { stripe, canPersistStripeCustomerId } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase/server";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
 import { CERT_BY_SLUG, CERT_STRIPE_PRICES } from "@/lib/certifications";
@@ -80,10 +80,12 @@ export async function POST(request: NextRequest) {
         metadata: { supabase_user_id: user.id },
       });
       customerId = customer.id;
-      await adminSupabase
-        .from("users")
-        .update({ stripe_customer_id: customerId })
-        .eq("id", user.id);
+      if (canPersistStripeCustomerId()) {
+        await adminSupabase
+          .from("users")
+          .update({ stripe_customer_id: customerId })
+          .eq("id", user.id);
+      }
     }
 
     const origin = request.headers.get("origin") || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
